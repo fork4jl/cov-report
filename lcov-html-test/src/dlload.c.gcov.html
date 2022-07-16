@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - [test only] commit 0a2d6137a4 - src/dlload.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">src</a> - dlload.c<span style="font-size: 80%;"> (source / <a href="dlload.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntry">92</td>
+            <td class="headerCovTableEntryHi">94.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+            | Branches:
+            <span class="coverLegendCov">+</span> taken
+            <span class="coverLegendNoCov">-</span> not taken
+            <span class="coverLegendNoCov">#</span> not executed
+</td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntry">76</td>
+            <td class="headerCovTableEntryMed">86.8 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">           Branch data     Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>                :            : // This file is a part of Julia. License is MIT: https://julialang.org/license</a>
+<a name="2"><span class="lineNum">       2 </span>                :            : </a>
+<a name="3"><span class="lineNum">       3 </span>                :            : #include &lt;stdio.h&gt;</a>
+<a name="4"><span class="lineNum">       4 </span>                :            : #include &lt;stdlib.h&gt;</a>
+<a name="5"><span class="lineNum">       5 </span>                :            : #include &lt;string.h&gt;</a>
+<a name="6"><span class="lineNum">       6 </span>                :            : #include &lt;sys/stat.h&gt;</a>
+<a name="7"><span class="lineNum">       7 </span>                :            : </a>
+<a name="8"><span class="lineNum">       8 </span>                :            : #include &quot;platform.h&quot;</a>
+<a name="9"><span class="lineNum">       9 </span>                :            : #include &quot;julia.h&quot;</a>
+<a name="10"><span class="lineNum">      10 </span>                :            : #include &quot;julia_internal.h&quot;</a>
+<a name="11"><span class="lineNum">      11 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="12"><span class="lineNum">      12 </span>                :            : #include &lt;direct.h&gt;</a>
+<a name="13"><span class="lineNum">      13 </span>                :            : #else</a>
+<a name="14"><span class="lineNum">      14 </span>                :            : #include &lt;unistd.h&gt;</a>
+<a name="15"><span class="lineNum">      15 </span>                :            : #include &lt;dlfcn.h&gt;</a>
+<a name="16"><span class="lineNum">      16 </span>                :            : #endif</a>
+<a name="17"><span class="lineNum">      17 </span>                :            : #include &quot;julia_assert.h&quot;</a>
+<a name="18"><span class="lineNum">      18 </span>                :            : </a>
+<a name="19"><span class="lineNum">      19 </span>                :            : #ifdef __cplusplus</a>
+<a name="20"><span class="lineNum">      20 </span>                :            : extern &quot;C&quot; {</a>
+<a name="21"><span class="lineNum">      21 </span>                :            : #endif</a>
+<a name="22"><span class="lineNum">      22 </span>                :            : </a>
+<a name="23"><span class="lineNum">      23 </span>                :            : #if defined(__APPLE__)</a>
+<a name="24"><span class="lineNum">      24 </span>                :            : static char const *const extensions[] = { &quot;&quot;, &quot;.dylib&quot; };</a>
+<a name="25"><span class="lineNum">      25 </span>                :            : #elif defined(_OS_WINDOWS_)</a>
+<a name="26"><span class="lineNum">      26 </span>                :            : static char const *const extensions[] = { &quot;&quot;, &quot;.dll&quot; };</a>
+<a name="27"><span class="lineNum">      27 </span>                :            : extern volatile int needsSymRefreshModuleList;</a>
+<a name="28"><span class="lineNum">      28 </span>                :            : #else</a>
+<a name="29"><span class="lineNum">      29 </span>                :            : static char const *const extensions[] = { &quot;&quot;, &quot;.so&quot; };</a>
+<a name="30"><span class="lineNum">      30 </span>                :            : #endif</a>
+<a name="31"><span class="lineNum">      31 </span>                :            : #define N_EXTENSIONS (sizeof(extensions) / sizeof(char*))</a>
+<a name="32"><span class="lineNum">      32 </span>                :            : </a>
+<a name="33"><span class="lineNum">      33 </span>                :<span class="lineCov">      29378 : static int endswith_extension(const char *path) JL_NOTSAFEPOINT</span></a>
+<a name="34"><span class="lineNum">      34 </span>                :            : {</a>
+<a name="35"><span class="lineNum">      35 </span>        [<span class="branchCov" title="Branch 0 was taken 574 times"> + </span><span class="branchCov" title="Branch 1 was taken 28804 times"> + </span>]:<span class="lineCov">      29378 :     if (!path)</span></a>
+<a name="36"><span class="lineNum">      36 </span>                :<span class="lineCov">        574 :         return 0;</span></a>
+<a name="37"><span class="lineNum">      37 </span>                :<span class="lineCov">      28804 :     size_t len = strlen(path);</span></a>
+<a name="38"><span class="lineNum">      38 </span>                :            :     // Skip the first one since it is empty</a>
+<a name="39"><span class="lineNum">      39 </span>        [<span class="branchCov" title="Branch 0 was taken 28804 times"> + </span><span class="branchCov" title="Branch 1 was taken 21625 times"> + </span>]:<span class="lineCov">      50429 :     for (size_t i = 1; i &lt; N_EXTENSIONS; i++) {</span></a>
+<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">      28804 :         const char *ext = extensions[i];</span></a>
+<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">      28804 :         size_t extlen = strlen(ext);</span></a>
+<a name="42"><span class="lineNum">      42 </span>        [<span class="branchCov" title="Branch 0 was taken 198 times"> + </span><span class="branchCov" title="Branch 1 was taken 28606 times"> + </span>]:<span class="lineCov">      28804 :         if (len &lt; extlen)</span></a>
+<a name="43"><span class="lineNum">      43 </span>                :<span class="lineCov">        198 :             return 0;</span></a>
+<a name="44"><span class="lineNum">      44 </span>                :            :         // Skip version extensions if present</a>
+<a name="45"><span class="lineNum">      45 </span>                :<span class="lineCov">      28606 :         size_t j = len - 1;</span></a>
+<a name="46"><span class="lineNum">      46 </span>        [<span class="branchCov" title="Branch 0 was taken 74747 times"> + </span><span class="branchCov" title="Branch 1 was taken 19802 times"> + </span>]:<span class="lineCov">      94549 :         while (j &gt; 0) {</span></a>
+<a name="47"><span class="lineNum">      47 </span>  [<span class="branchCov" title="Branch 0 was taken 71178 times"> + </span><span class="branchCov" title="Branch 1 was taken 3569 times"> + </span><span class="branchCov" title="Branch 2 was taken 70612 times"> + </span><span class="branchCov" title="Branch 3 was taken 566 times"> + </span> :<span class="lineCov">      74747 :             if (path[j] == '.' || (path[j] &gt;= '0' &amp;&amp; path[j] &lt;= '9'))</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 62374 times"> + </span><span class="branchCov" title="Branch 5 was taken 8238 times"> + </span>]
+<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">      65943 :                 j--;</span></a>
+<a name="49"><span class="lineNum">      49 </span>                :            :             else</a>
+<a name="50"><span class="lineNum">      50 </span>                :            :                 break;</a>
+<a name="51"><span class="lineNum">      51 </span>                :            :         }</a>
+<a name="52"><span class="lineNum">      52 </span>  [<span class="branchCov" title="Branch 0 was taken 23985 times"> + </span><span class="branchCov" title="Branch 1 was taken 4621 times"> + </span><span class="branchCov" title="Branch 2 was taken 3564 times"> + </span><span class="branchCov" title="Branch 3 was taken 20421 times"> + </span> :<span class="lineCov">      28606 :         if ((j == len-1 || path[j+1] == '.') &amp;&amp; memcmp(ext, path + j - extlen + 1, extlen) == 0) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 6981 times"> + </span><span class="branchCov" title="Branch 5 was taken 1204 times"> + </span>]
+<a name="53"><span class="lineNum">      53 </span>                :<span class="lineCov">       6981 :             return 1;</span></a>
+<a name="54"><span class="lineNum">      54 </span>                :            :         }</a>
+<a name="55"><span class="lineNum">      55 </span>                :            :     }</a>
+<a name="56"><span class="lineNum">      56 </span>                :<span class="lineCov">      21625 :     return 0;</span></a>
+<a name="57"><span class="lineNum">      57 </span>                :            : }</a>
+<a name="58"><span class="lineNum">      58 </span>                :            : </a>
+<a name="59"><span class="lineNum">      59 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="60"><span class="lineNum">      60 </span>                :            : #define CRTDLL_BASENAME &quot;msvcrt&quot;</a>
+<a name="61"><span class="lineNum">      61 </span>                :            : </a>
+<a name="62"><span class="lineNum">      62 </span>                :            : JL_DLLEXPORT const char *jl_crtdll_basename = CRTDLL_BASENAME;</a>
+<a name="63"><span class="lineNum">      63 </span>                :            : const char *jl_crtdll_name = CRTDLL_BASENAME &quot;.dll&quot;;</a>
+<a name="64"><span class="lineNum">      64 </span>                :            : </a>
+<a name="65"><span class="lineNum">      65 </span>                :            : #undef CRTDLL_BASENAME</a>
+<a name="66"><span class="lineNum">      66 </span>                :            : #endif</a>
+<a name="67"><span class="lineNum">      67 </span>                :            : </a>
+<a name="68"><span class="lineNum">      68 </span>                :            : #define PATHBUF 4096</a>
+<a name="69"><span class="lineNum">      69 </span>                :            : </a>
+<a name="70"><span class="lineNum">      70 </span>                :            : #define JL_RTLD(flags, FLAG) (flags &amp; JL_RTLD_ ## FLAG ? RTLD_ ## FLAG : 0)</a>
+<a name="71"><span class="lineNum">      71 </span>                :            : </a>
+<a name="72"><span class="lineNum">      72 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="73"><span class="lineNum">      73 </span>                :            : static void win32_formatmessage(DWORD code, char *reason, int len) JL_NOTSAFEPOINT</a>
+<a name="74"><span class="lineNum">      74 </span>                :            : {</a>
+<a name="75"><span class="lineNum">      75 </span>                :            :     DWORD res;</a>
+<a name="76"><span class="lineNum">      76 </span>                :            :     LPWSTR errmsg;</a>
+<a name="77"><span class="lineNum">      77 </span>                :            :     res = FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER |</a>
+<a name="78"><span class="lineNum">      78 </span>                :            :                          FORMAT_MESSAGE_FROM_SYSTEM |</a>
+<a name="79"><span class="lineNum">      79 </span>                :            :                          FORMAT_MESSAGE_IGNORE_INSERTS |</a>
+<a name="80"><span class="lineNum">      80 </span>                :            :                          FORMAT_MESSAGE_MAX_WIDTH_MASK,</a>
+<a name="81"><span class="lineNum">      81 </span>                :            :                          NULL, code,</a>
+<a name="82"><span class="lineNum">      82 </span>                :            :                          MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),</a>
+<a name="83"><span class="lineNum">      83 </span>                :            :                          (LPWSTR)&amp;errmsg, 0, NULL);</a>
+<a name="84"><span class="lineNum">      84 </span>                :            :     if (!res &amp;&amp; (GetLastError() == ERROR_MUI_FILE_NOT_FOUND ||</a>
+<a name="85"><span class="lineNum">      85 </span>                :            :                  GetLastError() == ERROR_RESOURCE_TYPE_NOT_FOUND)) {</a>
+<a name="86"><span class="lineNum">      86 </span>                :            :       res = FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER |</a>
+<a name="87"><span class="lineNum">      87 </span>                :            :                            FORMAT_MESSAGE_FROM_SYSTEM |</a>
+<a name="88"><span class="lineNum">      88 </span>                :            :                            FORMAT_MESSAGE_IGNORE_INSERTS |</a>
+<a name="89"><span class="lineNum">      89 </span>                :            :                            FORMAT_MESSAGE_MAX_WIDTH_MASK,</a>
+<a name="90"><span class="lineNum">      90 </span>                :            :                            NULL, code,</a>
+<a name="91"><span class="lineNum">      91 </span>                :            :                            0, (LPWSTR)&amp;errmsg, 0, NULL);</a>
+<a name="92"><span class="lineNum">      92 </span>                :            :     }</a>
+<a name="93"><span class="lineNum">      93 </span>                :            :     res = WideCharToMultiByte(CP_UTF8, 0, errmsg, -1, reason, len, NULL, NULL);</a>
+<a name="94"><span class="lineNum">      94 </span>                :            :     assert(res &gt; 0 || GetLastError() == ERROR_INSUFFICIENT_BUFFER);</a>
+<a name="95"><span class="lineNum">      95 </span>                :            :     reason[len - 1] = '\0';</a>
+<a name="96"><span class="lineNum">      96 </span>                :            :     LocalFree(errmsg);</a>
+<a name="97"><span class="lineNum">      97 </span>                :            : }</a>
+<a name="98"><span class="lineNum">      98 </span>                :            : #endif</a>
+<a name="99"><span class="lineNum">      99 </span>                :            : </a>
+<a name="100"><span class="lineNum">     100 </span>                :<span class="lineCov">      51237 : JL_DLLEXPORT void *jl_dlopen(const char *filename, unsigned flags) JL_NOTSAFEPOINT</span></a>
+<a name="101"><span class="lineNum">     101 </span>                :            : {</a>
+<a name="102"><span class="lineNum">     102 </span>                :            : #if defined(_OS_WINDOWS_)</a>
+<a name="103"><span class="lineNum">     103 </span>                :            :     size_t len = MultiByteToWideChar(CP_UTF8, 0, filename, -1, NULL, 0);</a>
+<a name="104"><span class="lineNum">     104 </span>                :            :     if (!len) return NULL;</a>
+<a name="105"><span class="lineNum">     105 </span>                :            :     WCHAR *wfilename = (WCHAR*)alloca(len * sizeof(WCHAR));</a>
+<a name="106"><span class="lineNum">     106 </span>                :            :     if (!MultiByteToWideChar(CP_UTF8, 0, filename, -1, wfilename, len)) return NULL;</a>
+<a name="107"><span class="lineNum">     107 </span>                :            :     HANDLE lib = LoadLibraryExW(wfilename, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);</a>
+<a name="108"><span class="lineNum">     108 </span>                :            :     if (lib)</a>
+<a name="109"><span class="lineNum">     109 </span>                :            :         needsSymRefreshModuleList = 1;</a>
+<a name="110"><span class="lineNum">     110 </span>                :            :     return lib;</a>
+<a name="111"><span class="lineNum">     111 </span>                :            : #else</a>
+<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">     102474 :     return dlopen(filename,</span></a>
+<a name="113"><span class="lineNum">     113 </span>                :<span class="lineCov">      51237 :                   (flags &amp; JL_RTLD_NOW ? RTLD_NOW : RTLD_LAZY)</span></a>
+<a name="114"><span class="lineNum">     114 </span>        [<span class="branchCov" title="Branch 0 was taken 1143 times"> + </span><span class="branchCov" title="Branch 1 was taken 50094 times"> + </span>]:<span class="lineCov">      51237 :                   | JL_RTLD(flags, LOCAL)</span></a>
+<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">      51237 :                   | JL_RTLD(flags, GLOBAL)</span></a>
+<a name="116"><span class="lineNum">     116 </span>                :            : #ifdef RTLD_NODELETE</a>
+<a name="117"><span class="lineNum">     117 </span>                :<span class="lineCov">      51237 :                   | JL_RTLD(flags, NODELETE)</span></a>
+<a name="118"><span class="lineNum">     118 </span>                :            : #endif</a>
+<a name="119"><span class="lineNum">     119 </span>                :            : #ifdef RTLD_NOLOAD</a>
+<a name="120"><span class="lineNum">     120 </span>                :<span class="lineCov">      51237 :                   | JL_RTLD(flags, NOLOAD)</span></a>
+<a name="121"><span class="lineNum">     121 </span>                :            : #endif</a>
+<a name="122"><span class="lineNum">     122 </span>                :            : #if defined(RTLD_DEEPBIND) &amp;&amp; !(defined(_COMPILER_ASAN_ENABLED_) || defined(_COMPILER_TSAN_ENABLED_) || defined(_COMPILER_MSAN_ENABLED_))</a>
+<a name="123"><span class="lineNum">     123 </span>                :<span class="lineCov">      51237 :                   | JL_RTLD(flags, DEEPBIND)</span></a>
+<a name="124"><span class="lineNum">     124 </span>                :            : #endif</a>
+<a name="125"><span class="lineNum">     125 </span>                :            : #ifdef RTLD_FIRST</a>
+<a name="126"><span class="lineNum">     126 </span>                :            :                   | JL_RTLD(flags, FIRST)</a>
+<a name="127"><span class="lineNum">     127 </span>                :            : #endif</a>
+<a name="128"><span class="lineNum">     128 </span>                :            :                   );</a>
+<a name="129"><span class="lineNum">     129 </span>                :            : #endif</a>
+<a name="130"><span class="lineNum">     130 </span>                :            : }</a>
+<a name="131"><span class="lineNum">     131 </span>                :            : </a>
+<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">        129 : JL_DLLEXPORT int jl_dlclose(void *handle) JL_NOTSAFEPOINT</span></a>
+<a name="133"><span class="lineNum">     133 </span>                :            : {</a>
+<a name="134"><span class="lineNum">     134 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="135"><span class="lineNum">     135 </span>                :            :     if (!handle) {</a>
+<a name="136"><span class="lineNum">     136 </span>                :            :         return -1;</a>
+<a name="137"><span class="lineNum">     137 </span>                :            :     }</a>
+<a name="138"><span class="lineNum">     138 </span>                :            :     return !FreeLibrary((HMODULE) handle);</a>
+<a name="139"><span class="lineNum">     139 </span>                :            : #else</a>
+<a name="140"><span class="lineNum">     140 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 127 times"> + </span>]:<span class="lineCov">        129 :     if (!handle) {</span></a>
+<a name="141"><span class="lineNum">     141 </span>                :<span class="lineCov">          2 :         dlerror(); /* Reset error status. */</span></a>
+<a name="142"><span class="lineNum">     142 </span>                :<span class="lineCov">          2 :         return -1;</span></a>
+<a name="143"><span class="lineNum">     143 </span>                :            :     }</a>
+<a name="144"><span class="lineNum">     144 </span>                :<span class="lineCov">        127 :     return dlclose(handle);</span></a>
+<a name="145"><span class="lineNum">     145 </span>                :            : #endif</a>
+<a name="146"><span class="lineNum">     146 </span>                :            : }</a>
+<a name="147"><span class="lineNum">     147 </span>                :            : </a>
+<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">      29378 : JL_DLLEXPORT void *jl_load_dynamic_library(const char *modname, unsigned flags, int throw_err)</span></a>
+<a name="149"><span class="lineNum">     149 </span>                :            : {</a>
+<a name="150"><span class="lineNum">     150 </span>                :            :     char path[PATHBUF], relocated[PATHBUF];</a>
+<a name="151"><span class="lineNum">     151 </span>                :            :     int i;</a>
+<a name="152"><span class="lineNum">     152 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="153"><span class="lineNum">     153 </span>                :            :     int err;</a>
+<a name="154"><span class="lineNum">     154 </span>                :            : #endif</a>
+<a name="155"><span class="lineNum">     155 </span>                :            :     uv_stat_t stbuf;</a>
+<a name="156"><span class="lineNum">     156 </span>                :            :     void *handle;</a>
+<a name="157"><span class="lineNum">     157 </span>                :            :     int abspath;</a>
+<a name="158"><span class="lineNum">     158 </span>                :            :     int is_atpath;</a>
+<a name="159"><span class="lineNum">     159 </span>                :            :     // number of extensions to try — if modname already ends with the</a>
+<a name="160"><span class="lineNum">     160 </span>                :            :     // standard extension, then we don't try adding additional extensions</a>
+<a name="161"><span class="lineNum">     161 </span>        [<span class="branchCov" title="Branch 0 was taken 6981 times"> + </span><span class="branchCov" title="Branch 1 was taken 22397 times"> + </span>]:<span class="lineCov">      29378 :     int n_extensions = endswith_extension(modname) ? 1 : N_EXTENSIONS;</span></a>
+<a name="162"><span class="lineNum">     162 </span>                :            :     int ret;</a>
+<a name="163"><span class="lineNum">     163 </span>                :            : </a>
+<a name="164"><span class="lineNum">     164 </span>                :            :     /*</a>
+<a name="165"><span class="lineNum">     165 </span>                :            :       this branch returns handle of libjulia-internal</a>
+<a name="166"><span class="lineNum">     166 </span>                :            :     */</a>
+<a name="167"><span class="lineNum">     167 </span>        [<span class="branchCov" title="Branch 0 was taken 574 times"> + </span><span class="branchCov" title="Branch 1 was taken 28804 times"> + </span>]:<span class="lineCov">      29378 :     if (modname == NULL) {</span></a>
+<a name="168"><span class="lineNum">     168 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="169"><span class="lineNum">     169 </span>                :            :         if (!GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,</a>
+<a name="170"><span class="lineNum">     170 </span>                :            :                                 (LPCWSTR)(uintptr_t)(&amp;jl_load_dynamic_library),</a>
+<a name="171"><span class="lineNum">     171 </span>                :            :                                 (HMODULE*)&amp;handle)) {</a>
+<a name="172"><span class="lineNum">     172 </span>                :            :             jl_error(&quot;could not load base module&quot;);</a>
+<a name="173"><span class="lineNum">     173 </span>                :            :         }</a>
+<a name="174"><span class="lineNum">     174 </span>                :            : #else</a>
+<a name="175"><span class="lineNum">     175 </span>                :            :         Dl_info info;</a>
+<a name="176"><span class="lineNum">     176 </span>  [<span class="branchCov" title="Branch 0 was taken 574 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 574 times"> + </span>]:<span class="lineCov">        574 :         if (!dladdr((void*)(uintptr_t)&amp;jl_load_dynamic_library, &amp;info) || !info.dli_fname) {</span></a>
+<a name="177"><span class="lineNum">     177 </span>                :<span class="lineNoCov">          0 :             jl_error(&quot;could not load base module&quot;);</span></a>
+<a name="178"><span class="lineNum">     178 </span>                :            :         }</a>
+<a name="179"><span class="lineNum">     179 </span>                :<span class="lineCov">        574 :         handle = dlopen(info.dli_fname, RTLD_NOW);</span></a>
+<a name="180"><span class="lineNum">     180 </span>                :            : #endif</a>
+<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">        574 :         goto done;</span></a>
+<a name="182"><span class="lineNum">     182 </span>                :            :     }</a>
+<a name="183"><span class="lineNum">     183 </span>                :            : </a>
+<a name="184"><span class="lineNum">     184 </span>                :<span class="lineCov">      28804 :     abspath = jl_isabspath(modname);</span></a>
+<a name="185"><span class="lineNum">     185 </span>                :<span class="lineCov">      28804 :     is_atpath = 0;</span></a>
+<a name="186"><span class="lineNum">     186 </span>                :            : </a>
+<a name="187"><span class="lineNum">     187 </span>                :            :     // Detect if our `modname` is something like `@rpath/libfoo.dylib`</a>
+<a name="188"><span class="lineNum">     188 </span>                :            : #ifdef _OS_DARWIN_</a>
+<a name="189"><span class="lineNum">     189 </span>                :            :     size_t nameLen = strlen(modname);</a>
+<a name="190"><span class="lineNum">     190 </span>                :            :     const char *const atPaths[] = {&quot;@executable_path/&quot;, &quot;@loader_path/&quot;, &quot;@rpath/&quot;};</a>
+<a name="191"><span class="lineNum">     191 </span>                :            :     for (i = 0; i &lt; sizeof(atPaths)/sizeof(char*); ++i) {</a>
+<a name="192"><span class="lineNum">     192 </span>                :            :         size_t atLen = strlen(atPaths[i]);</a>
+<a name="193"><span class="lineNum">     193 </span>                :            :         if (nameLen &gt;= atLen &amp;&amp; 0 == strncmp(modname, atPaths[i], atLen)) {</a>
+<a name="194"><span class="lineNum">     194 </span>                :            :             is_atpath = 1;</a>
+<a name="195"><span class="lineNum">     195 </span>                :            :         }</a>
+<a name="196"><span class="lineNum">     196 </span>                :            :     }</a>
+<a name="197"><span class="lineNum">     197 </span>                :            : #endif</a>
+<a name="198"><span class="lineNum">     198 </span>                :            : </a>
+<a name="199"><span class="lineNum">     199 </span>                :            :     /*</a>
+<a name="200"><span class="lineNum">     200 </span>                :            :       this branch permutes all base paths in DL_LOAD_PATH with all extensions</a>
+<a name="201"><span class="lineNum">     201 </span>                :            :       note: skip when !jl_base_module to avoid UndefVarError(:DL_LOAD_PATH),</a>
+<a name="202"><span class="lineNum">     202 </span>                :            :             and also skip for absolute paths</a>
+<a name="203"><span class="lineNum">     203 </span>                :            :             and also skip for `@`-paths on macOS</a>
+<a name="204"><span class="lineNum">     204 </span>                :            :       We also do simple string replacement here for elements starting with `@executable_path/`.</a>
+<a name="205"><span class="lineNum">     205 </span>                :            :       While these exist as OS concepts on Darwin, we want to use them on other platforms</a>
+<a name="206"><span class="lineNum">     206 </span>                :            :       such as Windows, so we emulate them here.</a>
+<a name="207"><span class="lineNum">     207 </span>                :            :     */</a>
+<a name="208"><span class="lineNum">     208 </span>  [<span class="branchCov" title="Branch 0 was taken 28078 times"> + </span><span class="branchCov" title="Branch 1 was taken 726 times"> + </span><span class="branchCov" title="Branch 2 was taken 28078 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      28804 :     if (!abspath &amp;&amp; !is_atpath &amp;&amp; jl_base_module != NULL) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 28076 times"> + </span><span class="branchCov" title="Branch 5 was taken 2 times"> + </span>]
+<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">      28076 :         jl_binding_t *b = jl_get_module_binding(jl_base_module, jl_symbol(&quot;DL_LOAD_PATH&quot;));</span></a>
+<a name="210"><span class="lineNum">     210 </span>        [<span class="branchCov" title="Branch 0 was taken 28076 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      28076 :         jl_array_t *DL_LOAD_PATH = (jl_array_t*)(b ? jl_atomic_load_relaxed(&amp;b-&gt;value) : NULL);</span></a>
+<a name="211"><span class="lineNum">     211 </span>        [<span class="branchCov" title="Branch 0 was taken 28076 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      28076 :         if (DL_LOAD_PATH != NULL) {</span></a>
+<a name="212"><span class="lineNum">     212 </span>                :            :             size_t j;</a>
+<a name="213"><span class="lineNum">     213 </span>        [<span class="branchCov" title="Branch 0 was taken 30 times"> + </span><span class="branchCov" title="Branch 1 was taken 28074 times"> + </span>]:<span class="lineCov">      28104 :             for (j = 0; j &lt; jl_array_len(DL_LOAD_PATH); j++) {</span></a>
+<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">         30 :                 char *dl_path = jl_string_data(jl_array_ptr_data(DL_LOAD_PATH)[j]);</span></a>
+<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">         30 :                 size_t len = strlen(dl_path);</span></a>
+<a name="216"><span class="lineNum">     216 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 30 times"> + </span>]:<span class="lineCov">         30 :                 if (len == 0)</span></a>
+<a name="217"><span class="lineNum">     217 </span>                :<span class="lineNoCov">          0 :                     continue;</span></a>
+<a name="218"><span class="lineNum">     218 </span>                :            : </a>
+<a name="219"><span class="lineNum">     219 </span>                :            :                 // Is this entry supposed to be relative to the bindir?</a>
+<a name="220"><span class="lineNum">     220 </span>  [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchCov" title="Branch 1 was taken 6 times"> + </span><span class="branchCov" title="Branch 2 was taken 9 times"> + </span><span class="branchCov" title="Branch 3 was taken 15 times"> + </span>]:<span class="lineCov">         30 :                 if (len &gt;= 16 &amp;&amp; strncmp(dl_path, &quot;@executable_path&quot;, 16) == 0) {</span></a>
+<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">          9 :                     snprintf(relocated, PATHBUF, &quot;%s%s&quot;, jl_options.julia_bindir, dl_path + 16);</span></a>
+<a name="222"><span class="lineNum">     222 </span>                :<span class="lineCov">          9 :                     len = len - 16 + strlen(jl_options.julia_bindir);</span></a>
+<a name="223"><span class="lineNum">     223 </span>                :            :                 } else {</a>
+<a name="224"><span class="lineNum">     224 </span>                :<span class="lineCov">         21 :                     strncpy(relocated, dl_path, PATHBUF);</span></a>
+<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">         21 :                     relocated[PATHBUF-1] = '\0';</span></a>
+<a name="226"><span class="lineNum">     226 </span>                :            :                 }</a>
+<a name="227"><span class="lineNum">     227 </span>        [<span class="branchCov" title="Branch 0 was taken 40 times"> + </span><span class="branchCov" title="Branch 1 was taken 28 times"> + </span>]:<span class="lineCov">         68 :                 for (i = 0; i &lt; n_extensions; i++) {</span></a>
+<a name="228"><span class="lineNum">     228 </span>                :<span class="lineCov">         40 :                     const char *ext = extensions[i];</span></a>
+<a name="229"><span class="lineNum">     229 </span>                :<span class="lineCov">         40 :                     path[0] = '\0';</span></a>
+<a name="230"><span class="lineNum">     230 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 40 times"> + </span>]:<span class="lineCov">         40 :                     if (relocated[len-1] == PATHSEPSTRING[0])</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineNoCov">          0 :                         snprintf(path, PATHBUF, &quot;%s%s%s&quot;, relocated, modname, ext);</span></a>
+<a name="232"><span class="lineNum">     232 </span>                :            :                     else {</a>
+<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">         40 :                         ret = snprintf(path, PATHBUF, &quot;%s&quot; PATHSEPSTRING &quot;%s%s&quot;, relocated, modname, ext);</span></a>
+<a name="234"><span class="lineNum">     234 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 40 times"> + </span>]:<span class="lineCov">         40 :                         if (ret &lt; 0)</span></a>
+<a name="235"><span class="lineNum">     235 </span>                :<span class="lineNoCov">          0 :                             jl_errorf(&quot;path is longer than %d\n&quot;, PATHBUF);</span></a>
+<a name="236"><span class="lineNum">     236 </span>                :            :                     }</a>
+<a name="237"><span class="lineNum">     237 </span>                :            : </a>
+<a name="238"><span class="lineNum">     238 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="239"><span class="lineNum">     239 </span>                :            :                     if (i == 0) { // LoadLibrary already tested the extensions, we just need to check the `stat` result</a>
+<a name="240"><span class="lineNum">     240 </span>                :            : #endif</a>
+<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">         40 :                         handle = jl_dlopen(path, flags);</span></a>
+<a name="242"><span class="lineNum">     242 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 38 times"> + </span>]:<span class="lineCov">         40 :                         if (handle)</span></a>
+<a name="243"><span class="lineNum">     243 </span>                :<span class="lineCov">          2 :                             goto done;</span></a>
+<a name="244"><span class="lineNum">     244 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="245"><span class="lineNum">     245 </span>                :            :                         err = GetLastError();</a>
+<a name="246"><span class="lineNum">     246 </span>                :            :                     }</a>
+<a name="247"><span class="lineNum">     247 </span>                :            : #endif</a>
+<a name="248"><span class="lineNum">     248 </span>                :            :                     // bail out and show the error if file actually exists</a>
+<a name="249"><span class="lineNum">     249 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 38 times"> + </span>]:<span class="lineCov">         38 :                     if (jl_stat(path, (char*)&amp;stbuf) == 0)</span></a>
+<a name="250"><span class="lineNum">     250 </span>                :<span class="lineNoCov">          0 :                         goto notfound;</span></a>
+<a name="251"><span class="lineNum">     251 </span>                :            :                 }</a>
+<a name="252"><span class="lineNum">     252 </span>                :            :             }</a>
+<a name="253"><span class="lineNum">     253 </span>                :            :         }</a>
+<a name="254"><span class="lineNum">     254 </span>                :            :     }</a>
+<a name="255"><span class="lineNum">     255 </span>                :            : </a>
+<a name="256"><span class="lineNum">     256 </span>                :            :     // now fall back and look in default library paths, for all extensions</a>
+<a name="257"><span class="lineNum">     257 </span>        [<span class="branchCov" title="Branch 0 was taken 50623 times"> + </span><span class="branchCov" title="Branch 1 was taken 20009 times"> + </span>]:<span class="lineCov">      70632 :     for (i = 0; i &lt; n_extensions; i++) {</span></a>
+<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">      50623 :         const char *ext = extensions[i];</span></a>
+<a name="259"><span class="lineNum">     259 </span>                :<span class="lineCov">      50623 :         path[0] = '\0';</span></a>
+<a name="260"><span class="lineNum">     260 </span>                :<span class="lineCov">      50623 :         snprintf(path, PATHBUF, &quot;%s%s&quot;, modname, ext);</span></a>
+<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">      50623 :         handle = jl_dlopen(path, flags);</span></a>
+<a name="262"><span class="lineNum">     262 </span>        [<span class="branchCov" title="Branch 0 was taken 8793 times"> + </span><span class="branchCov" title="Branch 1 was taken 41830 times"> + </span>]:<span class="lineCov">      50623 :         if (handle)</span></a>
+<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">       8793 :             goto done;</span></a>
+<a name="264"><span class="lineNum">     264 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="265"><span class="lineNum">     265 </span>                :            :         err = GetLastError();</a>
+<a name="266"><span class="lineNum">     266 </span>                :            :         break; // LoadLibrary already tested the rest</a>
+<a name="267"><span class="lineNum">     267 </span>                :            : #endif</a>
+<a name="268"><span class="lineNum">     268 </span>                :            :     }</a>
+<a name="269"><span class="lineNum">     269 </span>                :            : </a>
+<a name="270"><span class="lineNum">     270 </span>                :<span class="lineCov">      20009 : notfound:</span></a>
+<a name="271"><span class="lineNum">     271 </span>        [<span class="branchCov" title="Branch 0 was taken 20007 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      20009 :     if (throw_err) {</span></a>
+<a name="272"><span class="lineNum">     272 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="273"><span class="lineNum">     273 </span>                :            :         char reason[256];</a>
+<a name="274"><span class="lineNum">     274 </span>                :            :         win32_formatmessage(err, reason, sizeof(reason));</a>
+<a name="275"><span class="lineNum">     275 </span>                :            : #else</a>
+<a name="276"><span class="lineNum">     276 </span>                :<span class="lineCov">      20007 :         const char *reason = dlerror();</span></a>
+<a name="277"><span class="lineNum">     277 </span>                :            : #endif</a>
+<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">      20007 :         jl_errorf(&quot;could not load library \&quot;%s\&quot;\n%s&quot;, modname, reason);</span></a>
+<a name="279"><span class="lineNum">     279 </span>                :            :     }</a>
+<a name="280"><span class="lineNum">     280 </span>                :<span class="lineCov">          2 :     handle = NULL;</span></a>
+<a name="281"><span class="lineNum">     281 </span>                :            : </a>
+<a name="282"><span class="lineNum">     282 </span>                :<span class="lineCov">       9371 : done:</span></a>
+<a name="283"><span class="lineNum">     283 </span>                :<span class="lineCov">       9371 :     return handle;</span></a>
+<a name="284"><span class="lineNum">     284 </span>                :            : }</a>
+<a name="285"><span class="lineNum">     285 </span>                :            : </a>
+<a name="286"><span class="lineNum">     286 </span>                :<span class="lineCov">    1007480 : JL_DLLEXPORT int jl_dlsym(void *handle, const char *symbol, void ** value, int throw_err) JL_NOTSAFEPOINT</span></a>
+<a name="287"><span class="lineNum">     287 </span>                :            : {</a>
+<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">    1007480 :     int symbol_found = 0;</span></a>
+<a name="289"><span class="lineNum">     289 </span>                :            : </a>
+<a name="290"><span class="lineNum">     290 </span>                :            :     /* First, get the symbol value */</a>
+<a name="291"><span class="lineNum">     291 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="292"><span class="lineNum">     292 </span>                :            :     *value = GetProcAddress((HMODULE) handle, symbol);</a>
+<a name="293"><span class="lineNum">     293 </span>                :            : #else</a>
+<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">    1007480 :     *value = dlsym(handle, symbol);</span></a>
+<a name="295"><span class="lineNum">     295 </span>                :            : #endif</a>
+<a name="296"><span class="lineNum">     296 </span>                :            : </a>
+<a name="297"><span class="lineNum">     297 </span>                :            :     /* Next, check for errors. On Windows, a NULL pointer means the symbol was</a>
+<a name="298"><span class="lineNum">     298 </span>                :            :      * not found. On everything else, we can have NULL symbols, so we check for</a>
+<a name="299"><span class="lineNum">     299 </span>                :            :      * non-NULL returns from dlerror(). Since POSIX doesn't require `dlerror`</a>
+<a name="300"><span class="lineNum">     300 </span>                :            :      * to be implemented safely, FreeBSD doesn't (unlike everyone else, who</a>
+<a name="301"><span class="lineNum">     301 </span>                :            :      * realized decades ago that threads are here to stay), so we avoid calling</a>
+<a name="302"><span class="lineNum">     302 </span>                :            :      * `dlerror` unless we need to get the error message.</a>
+<a name="303"><span class="lineNum">     303 </span>                :            :      * https://github.com/freebsd/freebsd-src/blob/12db51d20823a5e3b9e5f8a2ea73156fe1cbfc28/libexec/rtld-elf/rtld.c#L198</a>
+<a name="304"><span class="lineNum">     304 </span>                :            :      */</a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">    1007480 :     symbol_found = *value != NULL;</span></a>
+<a name="306"><span class="lineNum">     306 </span>                :            : #ifndef _OS_WINDOWS_</a>
+<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">    1007480 :     const char *err = &quot;&quot;;</span></a>
+<a name="308"><span class="lineNum">     308 </span>        [<span class="branchCov" title="Branch 0 was taken 56753 times"> + </span><span class="branchCov" title="Branch 1 was taken 950725 times"> + </span>]:<span class="lineCov">    1007480 :     if (!symbol_found) {</span></a>
+<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">      56753 :         dlerror(); /* Reset error status. */</span></a>
+<a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">      56753 :         *value = dlsym(handle, symbol);</span></a>
+<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">      56753 :         err = dlerror();</span></a>
+<a name="312"><span class="lineNum">     312 </span>  [<span class="branchCov" title="Branch 0 was taken 56753 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 66 times"> + </span><span class="branchCov" title="Branch 3 was taken 56687 times"> + </span>]:<span class="lineCov">      56753 :         symbol_found = *value != NULL || err == NULL;</span></a>
+<a name="313"><span class="lineNum">     313 </span>                :            :     }</a>
+<a name="314"><span class="lineNum">     314 </span>                :            : #endif</a>
+<a name="315"><span class="lineNum">     315 </span>                :            : </a>
+<a name="316"><span class="lineNum">     316 </span>  [<span class="branchCov" title="Branch 0 was taken 56687 times"> + </span><span class="branchCov" title="Branch 1 was taken 950791 times"> + </span><span class="branchCov" title="Branch 2 was taken 4 times"> + </span><span class="branchCov" title="Branch 3 was taken 56683 times"> + </span>]:<span class="lineCov">    1007480 :     if (!symbol_found &amp;&amp; throw_err) {</span></a>
+<a name="317"><span class="lineNum">     317 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="318"><span class="lineNum">     318 </span>                :            :         char err[256];</a>
+<a name="319"><span class="lineNum">     319 </span>                :            :         win32_formatmessage(GetLastError(), err, sizeof(err));</a>
+<a name="320"><span class="lineNum">     320 </span>                :            : #endif</a>
+<a name="321"><span class="lineNum">     321 </span>                :            : #ifndef __clang_gcanalyzer__</a>
+<a name="322"><span class="lineNum">     322 </span>                :            :         // Hide the error throwing from the analyser since there isn't a way to express</a>
+<a name="323"><span class="lineNum">     323 </span>                :            :         // &quot;safepoint only when throwing error&quot; currently.</a>
+<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">          4 :         jl_errorf(&quot;could not load symbol \&quot;%s\&quot;:\n%s&quot;, symbol, err);</span></a>
+<a name="325"><span class="lineNum">     325 </span>                :            : #endif</a>
+<a name="326"><span class="lineNum">     326 </span>                :            :     }</a>
+<a name="327"><span class="lineNum">     327 </span>                :<span class="lineCov">    1007470 :     return symbol_found;</span></a>
+<a name="328"><span class="lineNum">     328 </span>                :            : }</a>
+<a name="329"><span class="lineNum">     329 </span>                :            : </a>
+<a name="330"><span class="lineNum">     330 </span>                :            : #ifdef _OS_WINDOWS_</a>
+<a name="331"><span class="lineNum">     331 </span>                :            : //Look for symbols in win32 libraries</a>
+<a name="332"><span class="lineNum">     332 </span>                :            : JL_DLLEXPORT const char *jl_dlfind_win32(const char *f_name)</a>
+<a name="333"><span class="lineNum">     333 </span>                :            : {</a>
+<a name="334"><span class="lineNum">     334 </span>                :            :     void * dummy;</a>
+<a name="335"><span class="lineNum">     335 </span>                :            :     if (jl_dlsym(jl_exe_handle, f_name, &amp;dummy, 0))</a>
+<a name="336"><span class="lineNum">     336 </span>                :            :         return JL_EXE_LIBNAME;</a>
+<a name="337"><span class="lineNum">     337 </span>                :            :     if (jl_dlsym(jl_libjulia_internal_handle, f_name, &amp;dummy, 0))</a>
+<a name="338"><span class="lineNum">     338 </span>                :            :         return JL_LIBJULIA_INTERNAL_DL_LIBNAME;</a>
+<a name="339"><span class="lineNum">     339 </span>                :            :     if (jl_dlsym(jl_libjulia_handle, f_name, &amp;dummy, 0))</a>
+<a name="340"><span class="lineNum">     340 </span>                :            :         return JL_LIBJULIA_DL_LIBNAME;</a>
+<a name="341"><span class="lineNum">     341 </span>                :            :     if (jl_dlsym(jl_kernel32_handle, f_name, &amp;dummy, 0))</a>
+<a name="342"><span class="lineNum">     342 </span>                :            :         return &quot;kernel32&quot;;</a>
+<a name="343"><span class="lineNum">     343 </span>                :            :     if (jl_dlsym(jl_crtdll_handle, f_name, &amp;dummy, 0)) // Prefer crtdll over ntdll</a>
+<a name="344"><span class="lineNum">     344 </span>                :            :         return jl_crtdll_basename;</a>
+<a name="345"><span class="lineNum">     345 </span>                :            :     if (jl_dlsym(jl_ntdll_handle, f_name, &amp;dummy, 0))</a>
+<a name="346"><span class="lineNum">     346 </span>                :            :         return &quot;ntdll&quot;;</a>
+<a name="347"><span class="lineNum">     347 </span>                :            :     if (jl_dlsym(jl_winsock_handle, f_name, &amp;dummy, 0))</a>
+<a name="348"><span class="lineNum">     348 </span>                :            :         return &quot;ws2_32&quot;;</a>
+<a name="349"><span class="lineNum">     349 </span>                :            :     // additional common libraries (libc?) could be added here, but in general,</a>
+<a name="350"><span class="lineNum">     350 </span>                :            :     // it is better to specify the library explicitly in the code. This exists</a>
+<a name="351"><span class="lineNum">     351 </span>                :            :     // mainly to ease compatibility with linux, and for libraries that don't</a>
+<a name="352"><span class="lineNum">     352 </span>                :            :     // have a name (julia.exe and libjulia.dll)</a>
+<a name="353"><span class="lineNum">     353 </span>                :            :     // We could also loop over all libraries that have been used so far, but, again,</a>
+<a name="354"><span class="lineNum">     354 </span>                :            :     // explicit is preferred over implicit</a>
+<a name="355"><span class="lineNum">     355 </span>                :            :     return NULL;</a>
+<a name="356"><span class="lineNum">     356 </span>                :            :     // oops, we didn't find it. NULL defaults to searching jl_RTLD_DEFAULT_handle,</a>
+<a name="357"><span class="lineNum">     357 </span>                :            :     // which defaults to jl_libjulia_internal_handle, where we won't find it, and</a>
+<a name="358"><span class="lineNum">     358 </span>                :            :     // will throw the appropriate error.</a>
+<a name="359"><span class="lineNum">     359 </span>                :            : }</a>
+<a name="360"><span class="lineNum">     360 </span>                :            : #endif</a>
+<a name="361"><span class="lineNum">     361 </span>                :            : </a>
+<a name="362"><span class="lineNum">     362 </span>                :            : #ifdef __cplusplus</a>
+<a name="363"><span class="lineNum">     363 </span>                :            : }</a>
+<a name="364"><span class="lineNum">     364 </span>                :            : #endif</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
