@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/llvm-multiversioning.cpp</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/llvm-multiversioning.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">243</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">27</td>
@@ -303,25 +303,25 @@
 <a name="222"><span class="lineNum">     222 </span>                :            :         std::unique_ptr&lt;ValueToValueMapTy&gt; vmap; // ValueToValueMapTy is not movable....</a>
 <a name="223"><span class="lineNum">     223 </span>                :            :         // function ids that needs relocation to be initialized</a>
 <a name="224"><span class="lineNum">     224 </span>                :            :         std::set&lt;uint32_t&gt; relocs{};</a>
-<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">          1 :         Target(int idx, const jl_target_spec_t &amp;spec) :</span></a>
+<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">          2 :         Target(int idx, const jl_target_spec_t &amp;spec) :</span></a>
 <a name="226"><span class="lineNum">     226 </span>                :            :             idx(idx),</a>
-<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov">          1 :             flags(spec.flags),</span></a>
-<a name="228"><span class="lineNum">     228 </span>                :<span class="lineCov">          1 :             vmap(new ValueToValueMapTy)</span></a>
+<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov">          2 :             flags(spec.flags),</span></a>
+<a name="228"><span class="lineNum">     228 </span>                :<span class="lineCov">          2 :             vmap(new ValueToValueMapTy)</span></a>
 <a name="229"><span class="lineNum">     229 </span>                :            :         {</a>
-<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">          1 :         }</span></a>
+<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">          2 :         }</span></a>
 <a name="231"><span class="lineNum">     231 </span>                :            :     };</a>
 <a name="232"><span class="lineNum">     232 </span>                :            :     struct Group : Target {</a>
 <a name="233"><span class="lineNum">     233 </span>                :            :         std::vector&lt;Target&gt; clones;</a>
 <a name="234"><span class="lineNum">     234 </span>                :            :         std::set&lt;uint32_t&gt; clone_fs;</a>
-<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">          1 :         Group(int base, const jl_target_spec_t &amp;spec) :</span></a>
+<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">          2 :         Group(int base, const jl_target_spec_t &amp;spec) :</span></a>
 <a name="236"><span class="lineNum">     236 </span>                :            :             Target(base, spec),</a>
 <a name="237"><span class="lineNum">     237 </span>                :            :             clones{},</a>
-<a name="238"><span class="lineNum">     238 </span>                :<span class="lineCov">          1 :             clone_fs{}</span></a>
-<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">          1 :         {}</span></a>
-<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">      29064 :         Function *base_func(Function *orig_f) const</span></a>
+<a name="238"><span class="lineNum">     238 </span>                :<span class="lineCov">          2 :             clone_fs{}</span></a>
+<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">          2 :         {}</span></a>
+<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">      58024 :         Function *base_func(Function *orig_f) const</span></a>
 <a name="241"><span class="lineNum">     241 </span>                :            :         {</a>
-<a name="242"><span class="lineNum">     242 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      29064 :             if (idx == 0)</span></a>
-<a name="243"><span class="lineNum">     243 </span>                :<span class="lineCov">      29064 :                 return orig_f;</span></a>
+<a name="242"><span class="lineNum">     242 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      58024 :             if (idx == 0)</span></a>
+<a name="243"><span class="lineNum">     243 </span>                :<span class="lineCov">      58024 :                 return orig_f;</span></a>
 <a name="244"><span class="lineNum">     244 </span>                :<span class="lineNoCov">          0 :             return cast&lt;Function&gt;(vmap-&gt;lookup(orig_f));</span></a>
 <a name="245"><span class="lineNum">     245 </span>                :            :         }</a>
 <a name="246"><span class="lineNum">     246 </span>                :            :     };</a>
@@ -379,49 +379,49 @@
 <a name="298"><span class="lineNum">     298 </span>                :            : };</a>
 <a name="299"><span class="lineNum">     299 </span>                :            : </a>
 <a name="300"><span class="lineNum">     300 </span>                :            : template&lt;typename T&gt;</a>
-<a name="301"><span class="lineNum">     301 </span>                :<span class="lineCov">          2 : static inline std::vector&lt;T*&gt; consume_gv(Module &amp;M, const char *name, bool allow_bad_fvars)</span></a>
+<a name="301"><span class="lineNum">     301 </span>                :<span class="lineCov">          4 : static inline std::vector&lt;T*&gt; consume_gv(Module &amp;M, const char *name, bool allow_bad_fvars)</span></a>
 <a name="302"><span class="lineNum">     302 </span>                :            : {</a>
 <a name="303"><span class="lineNum">     303 </span>                :            :     // Get information about sysimg export functions from the two global variables.</a>
 <a name="304"><span class="lineNum">     304 </span>                :            :     // Strip them from the Module so that it's easier to handle the uses.</a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">          2 :     GlobalVariable *gv = M.getGlobalVariable(name);</span></a>
-<a name="306"><span class="lineNum">     306 </span>  [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">          2 :     assert(gv &amp;&amp; gv-&gt;hasInitializer());</span></a>
-<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">          2 :     auto *ary = cast&lt;ConstantArray&gt;(gv-&gt;getInitializer());</span></a>
-<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov">          2 :     unsigned nele = ary-&gt;getNumOperands();</span></a>
-<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">          2 :     std::vector&lt;T*&gt; res(nele);</span></a>
-<a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">          2 :     unsigned i = 0;</span></a>
-<a name="311"><span class="lineNum">     311 </span>        [<span class="branchCov" title="Branch 0 was taken 43961 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      43963 :     while (i &lt; nele) {</span></a>
-<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov">      43961 :         llvm::Value *val = ary-&gt;getOperand(i)-&gt;stripPointerCasts();</span></a>
-<a name="313"><span class="lineNum">     313 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 43961 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      43961 :         if (allow_bad_fvars &amp;&amp; (!isa&lt;T&gt;(val) || (isa&lt;Function&gt;(val) &amp;&amp; cast&lt;Function&gt;(val)-&gt;isDeclaration()))) {</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">          4 :     GlobalVariable *gv = M.getGlobalVariable(name);</span></a>
+<a name="306"><span class="lineNum">     306 </span>  [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 4 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">          4 :     assert(gv &amp;&amp; gv-&gt;hasInitializer());</span></a>
+<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">          4 :     auto *ary = cast&lt;ConstantArray&gt;(gv-&gt;getInitializer());</span></a>
+<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov">          4 :     unsigned nele = ary-&gt;getNumOperands();</span></a>
+<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">          4 :     std::vector&lt;T*&gt; res(nele);</span></a>
+<a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">          4 :     unsigned i = 0;</span></a>
+<a name="311"><span class="lineNum">     311 </span>        [<span class="branchCov" title="Branch 0 was taken 87818 times"> + </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">      87822 :     while (i &lt; nele) {</span></a>
+<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov">      87818 :         llvm::Value *val = ary-&gt;getOperand(i)-&gt;stripPointerCasts();</span></a>
+<a name="313"><span class="lineNum">     313 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 87818 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      87818 :         if (allow_bad_fvars &amp;&amp; (!isa&lt;T&gt;(val) || (isa&lt;Function&gt;(val) &amp;&amp; cast&lt;Function&gt;(val)-&gt;isDeclaration()))) {</span></a>
 <span class="lineNum">         </span><span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span><span class="branchNoCov" title="Branch 6 was not taken"> - </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span><span class="branchNoCov" title="Branch 8 was not taken"> - </span> 
-<span class="lineNum">         </span>            <span class="branchCov" title="Branch 9 was taken 43961 times"> + </span>]
+<span class="lineNum">         </span>            <span class="branchCov" title="Branch 9 was taken 87818 times"> + </span>]
 <a name="314"><span class="lineNum">     314 </span>                :            :             // Shouldn't happen in regular use, but can happen in bugpoint.</a>
 <a name="315"><span class="lineNum">     315 </span>                :<span class="lineNoCov">          0 :             nele--;</span></a>
 <a name="316"><span class="lineNum">     316 </span>                :<span class="lineNoCov">          0 :             continue;</span></a>
 <a name="317"><span class="lineNum">     317 </span>                :            :         }</a>
-<a name="318"><span class="lineNum">     318 </span>                :<span class="lineCov">      43961 :         res[i++] = cast&lt;T&gt;(val);</span></a>
+<a name="318"><span class="lineNum">     318 </span>                :<span class="lineCov">      87818 :         res[i++] = cast&lt;T&gt;(val);</span></a>
 <a name="319"><span class="lineNum">     319 </span>                :            :     }</a>
-<a name="320"><span class="lineNum">     320 </span>                :<span class="lineCov">          2 :     res.resize(nele);</span></a>
-<a name="321"><span class="lineNum">     321 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :     assert(gv-&gt;use_empty());</span></a>
-<a name="322"><span class="lineNum">     322 </span>                :<span class="lineCov">          2 :     gv-&gt;eraseFromParent();</span></a>
-<a name="323"><span class="lineNum">     323 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          2 :     if (ary-&gt;use_empty())</span></a>
-<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">          2 :         ary-&gt;destroyConstant();</span></a>
-<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">          2 :     return res;</span></a>
+<a name="320"><span class="lineNum">     320 </span>                :<span class="lineCov">          4 :     res.resize(nele);</span></a>
+<a name="321"><span class="lineNum">     321 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">          4 :     assert(gv-&gt;use_empty());</span></a>
+<a name="322"><span class="lineNum">     322 </span>                :<span class="lineCov">          4 :     gv-&gt;eraseFromParent();</span></a>
+<a name="323"><span class="lineNum">     323 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          4 :     if (ary-&gt;use_empty())</span></a>
+<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">          4 :         ary-&gt;destroyConstant();</span></a>
+<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">          4 :     return res;</span></a>
 <a name="326"><span class="lineNum">     326 </span>                :            : }</a>
 <a name="327"><span class="lineNum">     327 </span>                :            : </a>
 <a name="328"><span class="lineNum">     328 </span>                :            : // Collect basic information about targets and functions.</a>
-<a name="329"><span class="lineNum">     329 </span>                :<span class="lineCov">          1 : CloneCtx::CloneCtx(Module &amp;M, function_ref&lt;LoopInfo&amp;(Function&amp;)&gt; GetLI, function_ref&lt;CallGraph&amp;()&gt; GetCG, bool allow_bad_fvars)</span></a>
-<a name="330"><span class="lineNum">     330 </span>                :<span class="lineCov">          1 :     : tbaa_const(tbaa_make_child_with_context(M.getContext(), &quot;jtbaa_const&quot;, nullptr, true).first),</span></a>
+<a name="329"><span class="lineNum">     329 </span>                :<span class="lineCov">          2 : CloneCtx::CloneCtx(Module &amp;M, function_ref&lt;LoopInfo&amp;(Function&amp;)&gt; GetLI, function_ref&lt;CallGraph&amp;()&gt; GetCG, bool allow_bad_fvars)</span></a>
+<a name="330"><span class="lineNum">     330 </span>                :<span class="lineCov">          2 :     : tbaa_const(tbaa_make_child_with_context(M.getContext(), &quot;jtbaa_const&quot;, nullptr, true).first),</span></a>
 <a name="331"><span class="lineNum">     331 </span>                :            :       specs(jl_get_llvm_clone_targets()),</a>
 <a name="332"><span class="lineNum">     332 </span>                :            :       fvars(consume_gv&lt;Function&gt;(M, &quot;jl_sysimg_fvars&quot;, allow_bad_fvars)),</a>
 <a name="333"><span class="lineNum">     333 </span>                :            :       gvars(consume_gv&lt;Constant&gt;(M, &quot;jl_sysimg_gvars&quot;, false)),</a>
 <a name="334"><span class="lineNum">     334 </span>                :            :       M(M),</a>
 <a name="335"><span class="lineNum">     335 </span>                :            :       GetLI(GetLI),</a>
 <a name="336"><span class="lineNum">     336 </span>                :            :       GetCG(GetCG),</a>
-<a name="337"><span class="lineNum">     337 </span>                :<span class="lineCov">          1 :       allow_bad_fvars(allow_bad_fvars)</span></a>
+<a name="337"><span class="lineNum">     337 </span>                :<span class="lineCov">          2 :       allow_bad_fvars(allow_bad_fvars)</span></a>
 <a name="338"><span class="lineNum">     338 </span>                :            : {</a>
-<a name="339"><span class="lineNum">     339 </span>                :<span class="lineCov">          1 :     groups.emplace_back(0, specs[0]);</span></a>
-<a name="340"><span class="lineNum">     340 </span>                :<span class="lineCov">          1 :     uint32_t ntargets = specs.size();</span></a>
-<a name="341"><span class="lineNum">     341 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          1 :     for (uint32_t i = 1; i &lt; ntargets; i++) {</span></a>
+<a name="339"><span class="lineNum">     339 </span>                :<span class="lineCov">          2 :     groups.emplace_back(0, specs[0]);</span></a>
+<a name="340"><span class="lineNum">     340 </span>                :<span class="lineCov">          2 :     uint32_t ntargets = specs.size();</span></a>
+<a name="341"><span class="lineNum">     341 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :     for (uint32_t i = 1; i &lt; ntargets; i++) {</span></a>
 <a name="342"><span class="lineNum">     342 </span>                :<span class="lineNoCov">          0 :         auto &amp;spec = specs[i];</span></a>
 <a name="343"><span class="lineNum">     343 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         if (spec.flags &amp; JL_TARGET_CLONE_ALL) {</span></a>
 <a name="344"><span class="lineNum">     344 </span>                :<span class="lineNoCov">          0 :             has_cloneall = true;</span></a>
@@ -440,15 +440,15 @@
 <a name="357"><span class="lineNum">     357 </span>                :            :             (void)found;</a>
 <a name="358"><span class="lineNum">     358 </span>                :            :         }</a>
 <a name="359"><span class="lineNum">     359 </span>                :            :     }</a>
-<a name="360"><span class="lineNum">     360 </span>                :<span class="lineCov">          1 :     uint32_t nfvars = fvars.size();</span></a>
-<a name="361"><span class="lineNum">     361 </span>        [<span class="branchCov" title="Branch 0 was taken 28495 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      28496 :     for (uint32_t i = 0; i &lt; nfvars; i++)</span></a>
-<a name="362"><span class="lineNum">     362 </span>                :<span class="lineCov">      28495 :         func_ids[fvars[i]] = i + 1;</span></a>
-<a name="363"><span class="lineNum">     363 </span>        [<span class="branchCov" title="Branch 0 was taken 29205 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      29206 :     for (auto &amp;F: M) {</span></a>
-<a name="364"><span class="lineNum">     364 </span>        [<span class="branchCov" title="Branch 0 was taken 141 times"> + </span><span class="branchCov" title="Branch 1 was taken 29064 times"> + </span>]:<span class="lineCov">      29205 :         if (F.empty())</span></a>
-<a name="365"><span class="lineNum">     365 </span>                :<span class="lineCov">        141 :             continue;</span></a>
-<a name="366"><span class="lineNum">     366 </span>                :<span class="lineCov">      29064 :         orig_funcs.push_back(&amp;F);</span></a>
+<a name="360"><span class="lineNum">     360 </span>                :<span class="lineCov">          2 :     uint32_t nfvars = fvars.size();</span></a>
+<a name="361"><span class="lineNum">     361 </span>        [<span class="branchCov" title="Branch 0 was taken 56890 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      56892 :     for (uint32_t i = 0; i &lt; nfvars; i++)</span></a>
+<a name="362"><span class="lineNum">     362 </span>                :<span class="lineCov">      56890 :         func_ids[fvars[i]] = i + 1;</span></a>
+<a name="363"><span class="lineNum">     363 </span>        [<span class="branchCov" title="Branch 0 was taken 58306 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      58308 :     for (auto &amp;F: M) {</span></a>
+<a name="364"><span class="lineNum">     364 </span>        [<span class="branchCov" title="Branch 0 was taken 282 times"> + </span><span class="branchCov" title="Branch 1 was taken 58024 times"> + </span>]:<span class="lineCov">      58306 :         if (F.empty())</span></a>
+<a name="365"><span class="lineNum">     365 </span>                :<span class="lineCov">        282 :             continue;</span></a>
+<a name="366"><span class="lineNum">     366 </span>                :<span class="lineCov">      58024 :         orig_funcs.push_back(&amp;F);</span></a>
 <a name="367"><span class="lineNum">     367 </span>                :            :     }</a>
-<a name="368"><span class="lineNum">     368 </span>                :<span class="lineCov">          1 : }</span></a>
+<a name="368"><span class="lineNum">     368 </span>                :<span class="lineCov">          2 : }</span></a>
 <a name="369"><span class="lineNum">     369 </span>                :            : </a>
 <a name="370"><span class="lineNum">     370 </span>                :<span class="lineNoCov">          0 : void CloneCtx::prepare_vmap(ValueToValueMapTy &amp;vmap)</span></a>
 <a name="371"><span class="lineNum">     371 </span>                :            : {</a>
@@ -481,10 +481,10 @@
 <a name="398"><span class="lineNum">     398 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="399"><span class="lineNum">     399 </span>                :            : </a>
 <a name="400"><span class="lineNum">     400 </span>                :            : // Clone all clone_all targets. Makes sure that the base targets are all available.</a>
-<a name="401"><span class="lineNum">     401 </span>                :<span class="lineCov">          1 : void CloneCtx::clone_bases()</span></a>
+<a name="401"><span class="lineNum">     401 </span>                :<span class="lineCov">          2 : void CloneCtx::clone_bases()</span></a>
 <a name="402"><span class="lineNum">     402 </span>                :            : {</a>
-<a name="403"><span class="lineNum">     403 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          1 :     if (!has_cloneall)</span></a>
-<a name="404"><span class="lineNum">     404 </span>                :<span class="lineCov">          1 :         return;</span></a>
+<a name="403"><span class="lineNum">     403 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          2 :     if (!has_cloneall)</span></a>
+<a name="404"><span class="lineNum">     404 </span>                :<span class="lineCov">          2 :         return;</span></a>
 <a name="405"><span class="lineNum">     405 </span>                :<span class="lineNoCov">          0 :     uint32_t ngrps = groups.size();</span></a>
 <a name="406"><span class="lineNum">     406 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :     for (uint32_t gid = 1; gid &lt; ngrps; gid++) {</span></a>
 <a name="407"><span class="lineNum">     407 </span>                :<span class="lineNoCov">          0 :         auto &amp;grp = groups[gid];</span></a>
@@ -505,106 +505,106 @@
 <a name="422"><span class="lineNum">     422 </span>                :            :     }</a>
 <a name="423"><span class="lineNum">     423 </span>                :            : }</a>
 <a name="424"><span class="lineNum">     424 </span>                :            : </a>
-<a name="425"><span class="lineNum">     425 </span>                :<span class="lineCov">     287603 : bool CloneCtx::is_vector(FunctionType *ty) const</span></a>
+<a name="425"><span class="lineNum">     425 </span>                :<span class="lineCov">     574793 : bool CloneCtx::is_vector(FunctionType *ty) const</span></a>
 <a name="426"><span class="lineNum">     426 </span>                :            : {</a>
-<a name="427"><span class="lineNum">     427 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 287599 times"> + </span>]:<span class="lineCov">     287603 :     if (ty-&gt;getReturnType()-&gt;isVectorTy())</span></a>
-<a name="428"><span class="lineNum">     428 </span>                :<span class="lineCov">          4 :         return true;</span></a>
-<a name="429"><span class="lineNum">     429 </span>        [<span class="branchCov" title="Branch 0 was taken 641412 times"> + </span><span class="branchCov" title="Branch 1 was taken 287599 times"> + </span>]:<span class="lineCov">     929011 :     for (auto arg: ty-&gt;params()) {</span></a>
-<a name="430"><span class="lineNum">     430 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 641412 times"> + </span>]:<span class="lineCov">     641412 :         if (arg-&gt;isVectorTy()) {</span></a>
+<a name="427"><span class="lineNum">     427 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchCov" title="Branch 1 was taken 574785 times"> + </span>]:<span class="lineCov">     574793 :     if (ty-&gt;getReturnType()-&gt;isVectorTy())</span></a>
+<a name="428"><span class="lineNum">     428 </span>                :<span class="lineCov">          8 :         return true;</span></a>
+<a name="429"><span class="lineNum">     429 </span>        [<span class="branchCov" title="Branch 0 was taken 1281940 times"> + </span><span class="branchCov" title="Branch 1 was taken 574785 times"> + </span>]:<span class="lineCov">    1856720 :     for (auto arg: ty-&gt;params()) {</span></a>
+<a name="430"><span class="lineNum">     430 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1281940 times"> + </span>]:<span class="lineCov">    1281940 :         if (arg-&gt;isVectorTy()) {</span></a>
 <a name="431"><span class="lineNum">     431 </span>                :<span class="lineNoCov">          0 :             return true;</span></a>
 <a name="432"><span class="lineNum">     432 </span>                :            :         }</a>
 <a name="433"><span class="lineNum">     433 </span>                :            :     }</a>
-<a name="434"><span class="lineNum">     434 </span>                :<span class="lineCov">     287599 :     return false;</span></a>
+<a name="434"><span class="lineNum">     434 </span>                :<span class="lineCov">     574785 :     return false;</span></a>
 <a name="435"><span class="lineNum">     435 </span>                :            : }</a>
 <a name="436"><span class="lineNum">     436 </span>                :            : </a>
-<a name="437"><span class="lineNum">     437 </span>                :<span class="lineCov">      29064 : uint32_t CloneCtx::collect_func_info(Function &amp;F)</span></a>
+<a name="437"><span class="lineNum">     437 </span>                :<span class="lineCov">      58024 : uint32_t CloneCtx::collect_func_info(Function &amp;F)</span></a>
 <a name="438"><span class="lineNum">     438 </span>                :            : {</a>
-<a name="439"><span class="lineNum">     439 </span>                :<span class="lineCov">      29064 :     uint32_t flag = 0;</span></a>
-<a name="440"><span class="lineNum">     440 </span>        [<span class="branchCov" title="Branch 0 was taken 3917 times"> + </span><span class="branchCov" title="Branch 1 was taken 25147 times"> + </span>]:<span class="lineCov">      29064 :     if (!GetLI(F).empty())</span></a>
-<a name="441"><span class="lineNum">     441 </span>                :<span class="lineCov">       3917 :         flag |= JL_TARGET_CLONE_LOOP;</span></a>
-<a name="442"><span class="lineNum">     442 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 29062 times"> + </span>]:<span class="lineCov">      29064 :     if (is_vector(F.getFunctionType())) {</span></a>
-<a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">          2 :         flag |= JL_TARGET_CLONE_SIMD;</span></a>
-<a name="444"><span class="lineNum">     444 </span>                :<span class="lineCov">          2 :         has_veccall = true;</span></a>
+<a name="439"><span class="lineNum">     439 </span>                :<span class="lineCov">      58024 :     uint32_t flag = 0;</span></a>
+<a name="440"><span class="lineNum">     440 </span>        [<span class="branchCov" title="Branch 0 was taken 7834 times"> + </span><span class="branchCov" title="Branch 1 was taken 50190 times"> + </span>]:<span class="lineCov">      58024 :     if (!GetLI(F).empty())</span></a>
+<a name="441"><span class="lineNum">     441 </span>                :<span class="lineCov">       7834 :         flag |= JL_TARGET_CLONE_LOOP;</span></a>
+<a name="442"><span class="lineNum">     442 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 58020 times"> + </span>]:<span class="lineCov">      58024 :     if (is_vector(F.getFunctionType())) {</span></a>
+<a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">          4 :         flag |= JL_TARGET_CLONE_SIMD;</span></a>
+<a name="444"><span class="lineNum">     444 </span>                :<span class="lineCov">          4 :         has_veccall = true;</span></a>
 <a name="445"><span class="lineNum">     445 </span>                :            :     }</a>
-<a name="446"><span class="lineNum">     446 </span>        [<span class="branchCov" title="Branch 0 was taken 341608 times"> + </span><span class="branchCov" title="Branch 1 was taken 29064 times"> + </span>]:<span class="lineCov">     370672 :     for (auto &amp;bb: F) {</span></a>
-<a name="447"><span class="lineNum">     447 </span>        [<span class="branchCov" title="Branch 0 was taken 5188420 times"> + </span><span class="branchCov" title="Branch 1 was taken 341608 times"> + </span>]:<span class="lineCov">    5530030 :         for (auto &amp;I: bb) {</span></a>
-<a name="448"><span class="lineNum">     448 </span>        [<span class="branchCov" title="Branch 0 was taken 258539 times"> + </span><span class="branchCov" title="Branch 1 was taken 4929880 times"> + </span>]:<span class="lineCov">    5188420 :             if (auto call = dyn_cast&lt;CallInst&gt;(&amp;I)) {</span></a>
-<a name="449"><span class="lineNum">     449 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 258537 times"> + </span>]:<span class="lineCov">     258539 :                 if (is_vector(call-&gt;getFunctionType())) {</span></a>
-<a name="450"><span class="lineNum">     450 </span>                :<span class="lineCov">          2 :                     has_veccall = true;</span></a>
-<a name="451"><span class="lineNum">     451 </span>                :<span class="lineCov">          2 :                     flag |= JL_TARGET_CLONE_SIMD;</span></a>
+<a name="446"><span class="lineNum">     446 </span>        [<span class="branchCov" title="Branch 0 was taken 683039 times"> + </span><span class="branchCov" title="Branch 1 was taken 58024 times"> + </span>]:<span class="lineCov">     741063 :     for (auto &amp;bb: F) {</span></a>
+<a name="447"><span class="lineNum">     447 </span>        [<span class="branchCov" title="Branch 0 was taken 10374700 times"> + </span><span class="branchCov" title="Branch 1 was taken 683039 times"> + </span>]:<span class="lineCov">   11057700 :         for (auto &amp;I: bb) {</span></a>
+<a name="448"><span class="lineNum">     448 </span>        [<span class="branchCov" title="Branch 0 was taken 516769 times"> + </span><span class="branchCov" title="Branch 1 was taken 9857920 times"> + </span>]:<span class="lineCov">   10374700 :             if (auto call = dyn_cast&lt;CallInst&gt;(&amp;I)) {</span></a>
+<a name="449"><span class="lineNum">     449 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 516765 times"> + </span>]:<span class="lineCov">     516769 :                 if (is_vector(call-&gt;getFunctionType())) {</span></a>
+<a name="450"><span class="lineNum">     450 </span>                :<span class="lineCov">          4 :                     has_veccall = true;</span></a>
+<a name="451"><span class="lineNum">     451 </span>                :<span class="lineCov">          4 :                     flag |= JL_TARGET_CLONE_SIMD;</span></a>
 <a name="452"><span class="lineNum">     452 </span>                :            :                 }</a>
-<a name="453"><span class="lineNum">     453 </span>        [<span class="branchCov" title="Branch 0 was taken 208253 times"> + </span><span class="branchCov" title="Branch 1 was taken 50286 times"> + </span>]:<span class="lineCov">     258539 :                 if (auto callee = call-&gt;getCalledFunction()) {</span></a>
-<a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov">     208253 :                     auto name = callee-&gt;getName();</span></a>
-<a name="455"><span class="lineNum">     455 </span>  [<span class="branchCov" title="Branch 0 was taken 208253 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 18 times"> + </span><span class="branchCov" title="Branch 3 was taken 208235 times"> + </span> :<span class="lineCov">     208253 :                     if (name.startswith(&quot;llvm.muladd.&quot;) || name.startswith(&quot;llvm.fma.&quot;)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 18 times"> + </span><span class="branchCov" title="Branch 5 was taken 208235 times"> + </span>]
-<a name="456"><span class="lineNum">     456 </span>                :<span class="lineCov">         18 :                         flag |= JL_TARGET_CLONE_MATH;</span></a>
+<a name="453"><span class="lineNum">     453 </span>        [<span class="branchCov" title="Branch 0 was taken 416327 times"> + </span><span class="branchCov" title="Branch 1 was taken 100442 times"> + </span>]:<span class="lineCov">     516769 :                 if (auto callee = call-&gt;getCalledFunction()) {</span></a>
+<a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov">     416327 :                     auto name = callee-&gt;getName();</span></a>
+<a name="455"><span class="lineNum">     455 </span>  [<span class="branchCov" title="Branch 0 was taken 416327 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 36 times"> + </span><span class="branchCov" title="Branch 3 was taken 416291 times"> + </span> :<span class="lineCov">     416327 :                     if (name.startswith(&quot;llvm.muladd.&quot;) || name.startswith(&quot;llvm.fma.&quot;)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 36 times"> + </span><span class="branchCov" title="Branch 5 was taken 416291 times"> + </span>]
+<a name="456"><span class="lineNum">     456 </span>                :<span class="lineCov">         36 :                         flag |= JL_TARGET_CLONE_MATH;</span></a>
 <a name="457"><span class="lineNum">     457 </span>                :            :                     }</a>
-<a name="458"><span class="lineNum">     458 </span>        [<span class="branchCov" title="Branch 0 was taken 22 times"> + </span><span class="branchCov" title="Branch 1 was taken 208213 times"> + </span>]:<span class="lineCov">     208235 :                     else if (name.startswith(&quot;julia.cpu.&quot;)) {</span></a>
-<a name="459"><span class="lineNum">     459 </span>        [<span class="branchCov" title="Branch 0 was taken 22 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         22 :                         if (name.startswith(&quot;julia.cpu.have_fma.&quot;)) {</span></a>
+<a name="458"><span class="lineNum">     458 </span>        [<span class="branchCov" title="Branch 0 was taken 44 times"> + </span><span class="branchCov" title="Branch 1 was taken 416247 times"> + </span>]:<span class="lineCov">     416291 :                     else if (name.startswith(&quot;julia.cpu.&quot;)) {</span></a>
+<a name="459"><span class="lineNum">     459 </span>        [<span class="branchCov" title="Branch 0 was taken 44 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         44 :                         if (name.startswith(&quot;julia.cpu.have_fma.&quot;)) {</span></a>
 <a name="460"><span class="lineNum">     460 </span>                :            :                             // for some platforms we know they always do (or don't) support</a>
 <a name="461"><span class="lineNum">     461 </span>                :            :                             // FMA. in those cases we don't need to clone the function.</a>
-<a name="462"><span class="lineNum">     462 </span>        [<span class="branchCov" title="Branch 0 was taken 22 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         22 :                             if (!always_have_fma(*callee).hasValue())</span></a>
-<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">         22 :                                 flag |= JL_TARGET_CLONE_CPU;</span></a>
+<a name="462"><span class="lineNum">     462 </span>        [<span class="branchCov" title="Branch 0 was taken 44 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         44 :                             if (!always_have_fma(*callee).hasValue())</span></a>
+<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">         44 :                                 flag |= JL_TARGET_CLONE_CPU;</span></a>
 <a name="464"><span class="lineNum">     464 </span>                :            :                         } else {</a>
 <a name="465"><span class="lineNum">     465 </span>                :<span class="lineNoCov">          0 :                             flag |= JL_TARGET_CLONE_CPU;</span></a>
 <a name="466"><span class="lineNum">     466 </span>                :            :                         }</a>
 <a name="467"><span class="lineNum">     467 </span>                :            :                     }</a>
 <a name="468"><span class="lineNum">     468 </span>                :            :                 }</a>
 <a name="469"><span class="lineNum">     469 </span>                :            :             }</a>
-<a name="470"><span class="lineNum">     470 </span>        [<span class="branchCov" title="Branch 0 was taken 291833 times"> + </span><span class="branchCov" title="Branch 1 was taken 4638050 times"> + </span>]:<span class="lineCov">    4929880 :             else if (auto store = dyn_cast&lt;StoreInst&gt;(&amp;I)) {</span></a>
-<a name="471"><span class="lineNum">     471 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 291831 times"> + </span>]:<span class="lineCov">     291833 :                 if (store-&gt;getValueOperand()-&gt;getType()-&gt;isVectorTy()) {</span></a>
-<a name="472"><span class="lineNum">     472 </span>                :<span class="lineCov">          2 :                     flag |= JL_TARGET_CLONE_SIMD;</span></a>
+<a name="470"><span class="lineNum">     470 </span>        [<span class="branchCov" title="Branch 0 was taken 583290 times"> + </span><span class="branchCov" title="Branch 1 was taken 9274630 times"> + </span>]:<span class="lineCov">    9857920 :             else if (auto store = dyn_cast&lt;StoreInst&gt;(&amp;I)) {</span></a>
+<a name="471"><span class="lineNum">     471 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 583286 times"> + </span>]:<span class="lineCov">     583290 :                 if (store-&gt;getValueOperand()-&gt;getType()-&gt;isVectorTy()) {</span></a>
+<a name="472"><span class="lineNum">     472 </span>                :<span class="lineCov">          4 :                     flag |= JL_TARGET_CLONE_SIMD;</span></a>
 <a name="473"><span class="lineNum">     473 </span>                :            :                 }</a>
 <a name="474"><span class="lineNum">     474 </span>                :            :             }</a>
-<a name="475"><span class="lineNum">     475 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 4638050 times"> + </span>]:<span class="lineCov">    4638050 :             else if (I.getType()-&gt;isVectorTy()) {</span></a>
-<a name="476"><span class="lineNum">     476 </span>                :<span class="lineCov">          2 :                 flag |= JL_TARGET_CLONE_SIMD;</span></a>
+<a name="475"><span class="lineNum">     475 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 9274620 times"> + </span>]:<span class="lineCov">    9274630 :             else if (I.getType()-&gt;isVectorTy()) {</span></a>
+<a name="476"><span class="lineNum">     476 </span>                :<span class="lineCov">          4 :                 flag |= JL_TARGET_CLONE_SIMD;</span></a>
 <a name="477"><span class="lineNum">     477 </span>                :            :             }</a>
-<a name="478"><span class="lineNum">     478 </span>        [<span class="branchCov" title="Branch 0 was taken 1344 times"> + </span><span class="branchCov" title="Branch 1 was taken 5187080 times"> + </span>]:<span class="lineCov">    5188420 :             if (auto mathOp = dyn_cast&lt;FPMathOperator&gt;(&amp;I)) {</span></a>
-<a name="479"><span class="lineNum">     479 </span>        [<span class="branchCov" title="Branch 0 was taken 56 times"> + </span><span class="branchCov" title="Branch 1 was taken 1288 times"> + </span>]:<span class="lineCov">       1344 :                 if (mathOp-&gt;getFastMathFlags().any()) {</span></a>
-<a name="480"><span class="lineNum">     480 </span>                :<span class="lineCov">         56 :                     flag |= JL_TARGET_CLONE_MATH;</span></a>
+<a name="478"><span class="lineNum">     478 </span>        [<span class="branchCov" title="Branch 0 was taken 2688 times"> + </span><span class="branchCov" title="Branch 1 was taken 10372000 times"> + </span>]:<span class="lineCov">   10374700 :             if (auto mathOp = dyn_cast&lt;FPMathOperator&gt;(&amp;I)) {</span></a>
+<a name="479"><span class="lineNum">     479 </span>        [<span class="branchCov" title="Branch 0 was taken 112 times"> + </span><span class="branchCov" title="Branch 1 was taken 2576 times"> + </span>]:<span class="lineCov">       2688 :                 if (mathOp-&gt;getFastMathFlags().any()) {</span></a>
+<a name="480"><span class="lineNum">     480 </span>                :<span class="lineCov">        112 :                     flag |= JL_TARGET_CLONE_MATH;</span></a>
 <a name="481"><span class="lineNum">     481 </span>                :            :                 }</a>
 <a name="482"><span class="lineNum">     482 </span>                :            :             }</a>
-<a name="483"><span class="lineNum">     483 </span>  [<span class="branchCov" title="Branch 0 was taken 4226530 times"> + </span><span class="branchCov" title="Branch 1 was taken 961898 times"> + </span><span class="branchCov" title="Branch 2 was taken 50 times"> + </span><span class="branchCov" title="Branch 3 was taken 4226480 times"> + </span> :<span class="lineCov">    5188420 :             if (has_veccall &amp;&amp; (flag &amp; JL_TARGET_CLONE_SIMD) &amp;&amp; (flag &amp; JL_TARGET_CLONE_MATH)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 50 times"> + </span>]
+<a name="483"><span class="lineNum">     483 </span>  [<span class="branchCov" title="Branch 0 was taken 8701100 times"> + </span><span class="branchCov" title="Branch 1 was taken 1673590 times"> + </span><span class="branchCov" title="Branch 2 was taken 100 times"> + </span><span class="branchCov" title="Branch 3 was taken 8701000 times"> + </span> :<span class="lineCov">   10374700 :             if (has_veccall &amp;&amp; (flag &amp; JL_TARGET_CLONE_SIMD) &amp;&amp; (flag &amp; JL_TARGET_CLONE_MATH)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 100 times"> + </span>]
 <a name="484"><span class="lineNum">     484 </span>                :<span class="lineNoCov">          0 :                 return flag;</span></a>
 <a name="485"><span class="lineNum">     485 </span>                :            :             }</a>
 <a name="486"><span class="lineNum">     486 </span>                :            :         }</a>
 <a name="487"><span class="lineNum">     487 </span>                :            :     }</a>
-<a name="488"><span class="lineNum">     488 </span>                :<span class="lineCov">      29064 :     return flag;</span></a>
+<a name="488"><span class="lineNum">     488 </span>                :<span class="lineCov">      58024 :     return flag;</span></a>
 <a name="489"><span class="lineNum">     489 </span>                :            : }</a>
 <a name="490"><span class="lineNum">     490 </span>                :            : </a>
-<a name="491"><span class="lineNum">     491 </span>                :<span class="lineCov">          1 : void CloneCtx::collect_func_infos()</span></a>
+<a name="491"><span class="lineNum">     491 </span>                :<span class="lineCov">          2 : void CloneCtx::collect_func_infos()</span></a>
 <a name="492"><span class="lineNum">     492 </span>                :            : {</a>
-<a name="493"><span class="lineNum">     493 </span>                :<span class="lineCov">          1 :     uint32_t nfuncs = orig_funcs.size();</span></a>
-<a name="494"><span class="lineNum">     494 </span>                :<span class="lineCov">          1 :     func_infos.resize(nfuncs);</span></a>
-<a name="495"><span class="lineNum">     495 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      29065 :     for (uint32_t i = 0; i &lt; nfuncs; i++) {</span></a>
-<a name="496"><span class="lineNum">     496 </span>                :<span class="lineCov">      29064 :         func_infos[i] = collect_func_info(*orig_funcs[i]);</span></a>
+<a name="493"><span class="lineNum">     493 </span>                :<span class="lineCov">          2 :     uint32_t nfuncs = orig_funcs.size();</span></a>
+<a name="494"><span class="lineNum">     494 </span>                :<span class="lineCov">          2 :     func_infos.resize(nfuncs);</span></a>
+<a name="495"><span class="lineNum">     495 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      58026 :     for (uint32_t i = 0; i &lt; nfuncs; i++) {</span></a>
+<a name="496"><span class="lineNum">     496 </span>                :<span class="lineCov">      58024 :         func_infos[i] = collect_func_info(*orig_funcs[i]);</span></a>
 <a name="497"><span class="lineNum">     497 </span>                :            :     }</a>
-<a name="498"><span class="lineNum">     498 </span>                :<span class="lineCov">          1 : }</span></a>
+<a name="498"><span class="lineNum">     498 </span>                :<span class="lineCov">          2 : }</span></a>
 <a name="499"><span class="lineNum">     499 </span>                :            : </a>
-<a name="500"><span class="lineNum">     500 </span>                :<span class="lineCov">          1 : void CloneCtx::clone_all_partials()</span></a>
+<a name="500"><span class="lineNum">     500 </span>                :<span class="lineCov">          2 : void CloneCtx::clone_all_partials()</span></a>
 <a name="501"><span class="lineNum">     501 </span>                :            : {</a>
 <a name="502"><span class="lineNum">     502 </span>                :            :     // First decide what to clone</a>
 <a name="503"><span class="lineNum">     503 </span>                :            :     // Do this before actually cloning the functions</a>
 <a name="504"><span class="lineNum">     504 </span>                :            :     // so that the call graph is easier to understand</a>
-<a name="505"><span class="lineNum">     505 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :     for (auto &amp;grp: groups) {</span></a>
-<a name="506"><span class="lineNum">     506 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          1 :         for (auto &amp;tgt: grp.clones) {</span></a>
+<a name="505"><span class="lineNum">     505 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :     for (auto &amp;grp: groups) {</span></a>
+<a name="506"><span class="lineNum">     506 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :         for (auto &amp;tgt: grp.clones) {</span></a>
 <a name="507"><span class="lineNum">     507 </span>                :<span class="lineNoCov">          0 :             check_partial(grp, tgt);</span></a>
 <a name="508"><span class="lineNum">     508 </span>                :            :         }</a>
 <a name="509"><span class="lineNum">     509 </span>                :            :     }</a>
-<a name="510"><span class="lineNum">     510 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :     for (auto &amp;grp: groups) {</span></a>
-<a name="511"><span class="lineNum">     511 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          1 :         for (auto &amp;tgt: grp.clones)</span></a>
+<a name="510"><span class="lineNum">     510 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :     for (auto &amp;grp: groups) {</span></a>
+<a name="511"><span class="lineNum">     511 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :         for (auto &amp;tgt: grp.clones)</span></a>
 <a name="512"><span class="lineNum">     512 </span>                :<span class="lineNoCov">          0 :             clone_partial(grp, tgt);</span></a>
 <a name="513"><span class="lineNum">     513 </span>                :            :         // Also set feature strings for base target functions</a>
 <a name="514"><span class="lineNum">     514 </span>                :            :         // now that all the actual cloning is done.</a>
-<a name="515"><span class="lineNum">     515 </span>                :<span class="lineCov">          1 :         auto &amp;base_spec = specs[grp.idx];</span></a>
-<a name="516"><span class="lineNum">     516 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      29065 :         for (auto orig_f: orig_funcs) {</span></a>
-<a name="517"><span class="lineNum">     517 </span>                :<span class="lineCov">      29064 :             add_features(grp.base_func(orig_f), base_spec.cpu_name,</span></a>
-<a name="518"><span class="lineNum">     518 </span>                :<span class="lineCov">      29064 :                          base_spec.cpu_features, base_spec.flags);</span></a>
+<a name="515"><span class="lineNum">     515 </span>                :<span class="lineCov">          2 :         auto &amp;base_spec = specs[grp.idx];</span></a>
+<a name="516"><span class="lineNum">     516 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      58026 :         for (auto orig_f: orig_funcs) {</span></a>
+<a name="517"><span class="lineNum">     517 </span>                :<span class="lineCov">      58024 :             add_features(grp.base_func(orig_f), base_spec.cpu_name,</span></a>
+<a name="518"><span class="lineNum">     518 </span>                :<span class="lineCov">      58024 :                          base_spec.cpu_features, base_spec.flags);</span></a>
 <a name="519"><span class="lineNum">     519 </span>                :            :         }</a>
 <a name="520"><span class="lineNum">     520 </span>                :            :     }</a>
-<a name="521"><span class="lineNum">     521 </span>                :<span class="lineCov">          1 :     func_infos.clear(); // We don't need this anymore</span></a>
-<a name="522"><span class="lineNum">     522 </span>                :<span class="lineCov">          1 : }</span></a>
+<a name="521"><span class="lineNum">     521 </span>                :<span class="lineCov">          2 :     func_infos.clear(); // We don't need this anymore</span></a>
+<a name="522"><span class="lineNum">     522 </span>                :<span class="lineCov">          2 : }</span></a>
 <a name="523"><span class="lineNum">     523 </span>                :            : </a>
 <a name="524"><span class="lineNum">     524 </span>                :<span class="lineNoCov">          0 : void CloneCtx::check_partial(Group &amp;grp, Target &amp;tgt)</span></a>
 <a name="525"><span class="lineNum">     525 </span>                :            : {</a>
@@ -707,28 +707,28 @@
 <a name="622"><span class="lineNum">     622 </span>                :            :     }</a>
 <a name="623"><span class="lineNum">     623 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="624"><span class="lineNum">     624 </span>                :            : </a>
-<a name="625"><span class="lineNum">     625 </span>                :<span class="lineCov">      29064 : void CloneCtx::add_features(Function *F, StringRef name, StringRef features, uint32_t flags) const</span></a>
+<a name="625"><span class="lineNum">     625 </span>                :<span class="lineCov">      58024 : void CloneCtx::add_features(Function *F, StringRef name, StringRef features, uint32_t flags) const</span></a>
 <a name="626"><span class="lineNum">     626 </span>                :            : {</a>
-<a name="627"><span class="lineNum">     627 </span>                :<span class="lineCov">      29064 :     auto attr = F-&gt;getFnAttribute(&quot;target-features&quot;);</span></a>
-<a name="628"><span class="lineNum">     628 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 29064 times"> + </span>]:<span class="lineCov">      29064 :     if (attr.isStringAttribute()) {</span></a>
+<a name="627"><span class="lineNum">     627 </span>                :<span class="lineCov">      58024 :     auto attr = F-&gt;getFnAttribute(&quot;target-features&quot;);</span></a>
+<a name="628"><span class="lineNum">     628 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 58024 times"> + </span>]:<span class="lineCov">      58024 :     if (attr.isStringAttribute()) {</span></a>
 <a name="629"><span class="lineNum">     629 </span>                :<span class="lineNoCov">          0 :         std::string new_features(attr.getValueAsString());</span></a>
 <a name="630"><span class="lineNum">     630 </span>                :<span class="lineNoCov">          0 :         new_features += &quot;,&quot;;</span></a>
 <a name="631"><span class="lineNum">     631 </span>                :<span class="lineNoCov">          0 :         new_features += features;</span></a>
 <a name="632"><span class="lineNum">     632 </span>                :<span class="lineNoCov">          0 :         F-&gt;addFnAttr(&quot;target-features&quot;, new_features);</span></a>
 <a name="633"><span class="lineNum">     633 </span>                :            :     }</a>
 <a name="634"><span class="lineNum">     634 </span>                :            :     else {</a>
-<a name="635"><span class="lineNum">     635 </span>                :<span class="lineCov">      29064 :         F-&gt;addFnAttr(&quot;target-features&quot;, features);</span></a>
+<a name="635"><span class="lineNum">     635 </span>                :<span class="lineCov">      58024 :         F-&gt;addFnAttr(&quot;target-features&quot;, features);</span></a>
 <a name="636"><span class="lineNum">     636 </span>                :            :     }</a>
-<a name="637"><span class="lineNum">     637 </span>                :<span class="lineCov">      29064 :     F-&gt;addFnAttr(&quot;target-cpu&quot;, name);</span></a>
-<a name="638"><span class="lineNum">     638 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      29064 :     if (!F-&gt;hasFnAttribute(Attribute::OptimizeNone)) {</span></a>
-<a name="639"><span class="lineNum">     639 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 29064 times"> + </span>]:<span class="lineCov">      29064 :         if (flags &amp; JL_TARGET_OPTSIZE) {</span></a>
+<a name="637"><span class="lineNum">     637 </span>                :<span class="lineCov">      58024 :     F-&gt;addFnAttr(&quot;target-cpu&quot;, name);</span></a>
+<a name="638"><span class="lineNum">     638 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      58024 :     if (!F-&gt;hasFnAttribute(Attribute::OptimizeNone)) {</span></a>
+<a name="639"><span class="lineNum">     639 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 58024 times"> + </span>]:<span class="lineCov">      58024 :         if (flags &amp; JL_TARGET_OPTSIZE) {</span></a>
 <a name="640"><span class="lineNum">     640 </span>                :<span class="lineNoCov">          0 :             F-&gt;addFnAttr(Attribute::OptimizeForSize);</span></a>
 <a name="641"><span class="lineNum">     641 </span>                :            :         }</a>
-<a name="642"><span class="lineNum">     642 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 29064 times"> + </span>]:<span class="lineCov">      29064 :         else if (flags &amp; JL_TARGET_MINSIZE) {</span></a>
+<a name="642"><span class="lineNum">     642 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 58024 times"> + </span>]:<span class="lineCov">      58024 :         else if (flags &amp; JL_TARGET_MINSIZE) {</span></a>
 <a name="643"><span class="lineNum">     643 </span>                :<span class="lineNoCov">          0 :             F-&gt;addFnAttr(Attribute::MinSize);</span></a>
 <a name="644"><span class="lineNum">     644 </span>                :            :         }</a>
 <a name="645"><span class="lineNum">     645 </span>                :            :     }</a>
-<a name="646"><span class="lineNum">     646 </span>                :<span class="lineCov">      29064 : }</span></a>
+<a name="646"><span class="lineNum">     646 </span>                :<span class="lineCov">      58024 : }</span></a>
 <a name="647"><span class="lineNum">     647 </span>                :            : </a>
 <a name="648"><span class="lineNum">     648 </span>                :<span class="lineNoCov">          0 : uint32_t CloneCtx::get_func_id(Function *F)</span></a>
 <a name="649"><span class="lineNum">     649 </span>                :            : {</a>
@@ -838,7 +838,7 @@
 <a name="752"><span class="lineNum">     752 </span>                :<span class="lineNoCov">          0 :         irbuilder.CreateRet(call);</span></a>
 <a name="753"><span class="lineNum">     753 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="754"><span class="lineNum">     754 </span>                :            : </a>
-<a name="755"><span class="lineNum">     755 </span>                :<span class="lineCov">          1 : void CloneCtx::fix_gv_uses()</span></a>
+<a name="755"><span class="lineNum">     755 </span>                :<span class="lineCov">          2 : void CloneCtx::fix_gv_uses()</span></a>
 <a name="756"><span class="lineNum">     756 </span>                :            : {</a>
 <a name="757"><span class="lineNum">     757 </span>                :<span class="lineNoCov">          0 :     auto single_pass = [&amp;] (Function *orig_f) {</span></a>
 <a name="758"><span class="lineNum">     758 </span>                :<span class="lineNoCov">          0 :         bool changed = false;</span></a>
@@ -866,15 +866,15 @@
 <a name="780"><span class="lineNum">     780 </span>                :<span class="lineNoCov">          0 :             val-&gt;setInitializer(rewrite_gv_init(stack));</span></a>
 <a name="781"><span class="lineNum">     781 </span>                :            :         }</a>
 <a name="782"><span class="lineNum">     782 </span>                :<span class="lineNoCov">          0 :         return changed;</span></a>
-<a name="783"><span class="lineNum">     783 </span>                :<span class="lineCov">          1 :     };</span></a>
-<a name="784"><span class="lineNum">     784 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      29065 :     for (auto orig_f: orig_funcs) {</span></a>
-<a name="785"><span class="lineNum">     785 </span>  [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 29064 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      29064 :         if (!has_cloneall &amp;&amp; !cloned.count(orig_f))</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 29064 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]
-<a name="786"><span class="lineNum">     786 </span>                :<span class="lineCov">      29064 :             continue;</span></a>
+<a name="783"><span class="lineNum">     783 </span>                :<span class="lineCov">          2 :     };</span></a>
+<a name="784"><span class="lineNum">     784 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      58026 :     for (auto orig_f: orig_funcs) {</span></a>
+<a name="785"><span class="lineNum">     785 </span>  [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 58024 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      58024 :         if (!has_cloneall &amp;&amp; !cloned.count(orig_f))</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 58024 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]
+<a name="786"><span class="lineNum">     786 </span>                :<span class="lineCov">      58024 :             continue;</span></a>
 <a name="787"><span class="lineNum">     787 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         while (single_pass(orig_f)) {</span></a>
 <a name="788"><span class="lineNum">     788 </span>                :            :         }</a>
 <a name="789"><span class="lineNum">     789 </span>                :            :     }</a>
-<a name="790"><span class="lineNum">     790 </span>                :<span class="lineCov">          1 : }</span></a>
+<a name="790"><span class="lineNum">     790 </span>                :<span class="lineCov">          2 : }</span></a>
 <a name="791"><span class="lineNum">     791 </span>                :            : </a>
 <a name="792"><span class="lineNum">     792 </span>                :<span class="lineNoCov">          0 : std::pair&lt;uint32_t,GlobalVariable*&gt; CloneCtx::get_reloc_slot(Function *F)</span></a>
 <a name="793"><span class="lineNum">     793 </span>                :            : {</a>
@@ -938,14 +938,14 @@
 <a name="851"><span class="lineNum">     851 </span>                :<span class="lineNoCov">          0 :     return replace;</span></a>
 <a name="852"><span class="lineNum">     852 </span>                :            : }</a>
 <a name="853"><span class="lineNum">     853 </span>                :            : </a>
-<a name="854"><span class="lineNum">     854 </span>                :<span class="lineCov">          1 : void CloneCtx::fix_inst_uses()</span></a>
+<a name="854"><span class="lineNum">     854 </span>                :<span class="lineCov">          2 : void CloneCtx::fix_inst_uses()</span></a>
 <a name="855"><span class="lineNum">     855 </span>                :            : {</a>
-<a name="856"><span class="lineNum">     856 </span>                :<span class="lineCov">          1 :     uint32_t nfuncs = orig_funcs.size();</span></a>
-<a name="857"><span class="lineNum">     857 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :     for (auto &amp;grp: groups) {</span></a>
-<a name="858"><span class="lineNum">     858 </span>                :<span class="lineCov">          2 :         auto suffix = &quot;.clone_&quot; + std::to_string(grp.idx);</span></a>
-<a name="859"><span class="lineNum">     859 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      29065 :         for (uint32_t i = 0; i &lt; nfuncs; i++) {</span></a>
-<a name="860"><span class="lineNum">     860 </span>        [<span class="branchCov" title="Branch 0 was taken 29064 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      29064 :             if (!grp.clone_fs.count(i))</span></a>
-<a name="861"><span class="lineNum">     861 </span>                :<span class="lineCov">      29064 :                 continue;</span></a>
+<a name="856"><span class="lineNum">     856 </span>                :<span class="lineCov">          2 :     uint32_t nfuncs = orig_funcs.size();</span></a>
+<a name="857"><span class="lineNum">     857 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :     for (auto &amp;grp: groups) {</span></a>
+<a name="858"><span class="lineNum">     858 </span>                :<span class="lineCov">          4 :         auto suffix = &quot;.clone_&quot; + std::to_string(grp.idx);</span></a>
+<a name="859"><span class="lineNum">     859 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      58026 :         for (uint32_t i = 0; i &lt; nfuncs; i++) {</span></a>
+<a name="860"><span class="lineNum">     860 </span>        [<span class="branchCov" title="Branch 0 was taken 58024 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      58024 :             if (!grp.clone_fs.count(i))</span></a>
+<a name="861"><span class="lineNum">     861 </span>                :<span class="lineCov">      58024 :                 continue;</span></a>
 <a name="862"><span class="lineNum">     862 </span>                :<span class="lineNoCov">          0 :             auto orig_f = orig_funcs[i];</span></a>
 <a name="863"><span class="lineNum">     863 </span>                :<span class="lineNoCov">          0 :             auto F = grp.base_func(orig_f);</span></a>
 <a name="864"><span class="lineNum">     864 </span>                :            :             bool changed;</a>
@@ -984,10 +984,10 @@
 <a name="897"><span class="lineNum">     897 </span>                :            :             } while (changed);</a>
 <a name="898"><span class="lineNum">     898 </span>                :            :         }</a>
 <a name="899"><span class="lineNum">     899 </span>                :            :     }</a>
-<a name="900"><span class="lineNum">     900 </span>                :<span class="lineCov">          1 : }</span></a>
+<a name="900"><span class="lineNum">     900 </span>                :<span class="lineCov">          2 : }</span></a>
 <a name="901"><span class="lineNum">     901 </span>                :            : </a>
 <a name="902"><span class="lineNum">     902 </span>                :            : template&lt;typename T&gt;</a>
-<a name="903"><span class="lineNum">     903 </span>                :<span class="lineCov">          8 : inline T *CloneCtx::add_comdat(T *G) const</span></a>
+<a name="903"><span class="lineNum">     903 </span>                :<span class="lineCov">         16 : inline T *CloneCtx::add_comdat(T *G) const</span></a>
 <a name="904"><span class="lineNum">     904 </span>                :            : {</a>
 <a name="905"><span class="lineNum">     905 </span>                :            : #if defined(_OS_WINDOWS_)</a>
 <a name="906"><span class="lineNum">     906 </span>                :            :     // add __declspec(dllexport) to everything marked for export</a>
@@ -996,146 +996,146 @@
 <a name="909"><span class="lineNum">     909 </span>                :            :     else</a>
 <a name="910"><span class="lineNum">     910 </span>                :            :         G-&gt;setDLLStorageClass(GlobalValue::DefaultStorageClass);</a>
 <a name="911"><span class="lineNum">     911 </span>                :            : #endif</a>
-<a name="912"><span class="lineNum">     912 </span>                :<span class="lineCov">          8 :     return G;</span></a>
+<a name="912"><span class="lineNum">     912 </span>                :<span class="lineCov">         16 :     return G;</span></a>
 <a name="913"><span class="lineNum">     913 </span>                :            : }</a>
 <a name="914"><span class="lineNum">     914 </span>                :            : </a>
-<a name="915"><span class="lineNum">     915 </span>                :<span class="lineCov">      43959 : Constant *CloneCtx::get_ptrdiff32(Constant *ptr, Constant *base) const</span></a>
+<a name="915"><span class="lineNum">     915 </span>                :<span class="lineCov">      87814 : Constant *CloneCtx::get_ptrdiff32(Constant *ptr, Constant *base) const</span></a>
 <a name="916"><span class="lineNum">     916 </span>                :            : {</a>
-<a name="917"><span class="lineNum">     917 </span>        [<span class="branchCov" title="Branch 0 was taken 43959 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      43959 :     if (ptr-&gt;getType()-&gt;isPointerTy())</span></a>
-<a name="918"><span class="lineNum">     918 </span>                :<span class="lineCov">      43959 :         ptr = ConstantExpr::getPtrToInt(ptr, getSizeTy(ptr-&gt;getContext()));</span></a>
-<a name="919"><span class="lineNum">     919 </span>                :<span class="lineCov">      43959 :     auto ptrdiff = ConstantExpr::getSub(ptr, base);</span></a>
-<a name="920"><span class="lineNum">     920 </span>                :<span class="lineCov">      43959 :     return sizeof(void*) == 8 ? ConstantExpr::getTrunc(ptrdiff, Type::getInt32Ty(ptr-&gt;getContext())) : ptrdiff;</span></a>
+<a name="917"><span class="lineNum">     917 </span>        [<span class="branchCov" title="Branch 0 was taken 87814 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      87814 :     if (ptr-&gt;getType()-&gt;isPointerTy())</span></a>
+<a name="918"><span class="lineNum">     918 </span>                :<span class="lineCov">      87814 :         ptr = ConstantExpr::getPtrToInt(ptr, getSizeTy(ptr-&gt;getContext()));</span></a>
+<a name="919"><span class="lineNum">     919 </span>                :<span class="lineCov">      87814 :     auto ptrdiff = ConstantExpr::getSub(ptr, base);</span></a>
+<a name="920"><span class="lineNum">     920 </span>                :<span class="lineCov">      87814 :     return sizeof(void*) == 8 ? ConstantExpr::getTrunc(ptrdiff, Type::getInt32Ty(ptr-&gt;getContext())) : ptrdiff;</span></a>
 <a name="921"><span class="lineNum">     921 </span>                :            : }</a>
 <a name="922"><span class="lineNum">     922 </span>                :            : </a>
 <a name="923"><span class="lineNum">     923 </span>                :            : template&lt;typename T&gt;</a>
-<a name="924"><span class="lineNum">     924 </span>                :<span class="lineCov">          2 : Constant *CloneCtx::emit_offset_table(const std::vector&lt;T*&gt; &amp;vars, StringRef name) const</span></a>
+<a name="924"><span class="lineNum">     924 </span>                :<span class="lineCov">          4 : Constant *CloneCtx::emit_offset_table(const std::vector&lt;T*&gt; &amp;vars, StringRef name) const</span></a>
 <a name="925"><span class="lineNum">     925 </span>                :            : {</a>
-<a name="926"><span class="lineNum">     926 </span>                :<span class="lineCov">          2 :     auto T_int32 = Type::getInt32Ty(M.getContext());</span></a>
-<a name="927"><span class="lineNum">     927 </span>                :<span class="lineCov">          2 :     auto T_size = getSizeTy(M.getContext());</span></a>
-<a name="928"><span class="lineNum">     928 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :     assert(!vars.empty());</span></a>
-<a name="929"><span class="lineNum">     929 </span>                :<span class="lineCov">          4 :     add_comdat(GlobalAlias::create(T_size, 0, GlobalVariable::ExternalLinkage,</span></a>
-<a name="930"><span class="lineNum">     930 </span>                :<span class="lineCov">          2 :                                    name + &quot;_base&quot;,</span></a>
-<a name="931"><span class="lineNum">     931 </span>                :<span class="lineCov">          2 :                                    ConstantExpr::getBitCast(vars[0], T_size-&gt;getPointerTo()), &amp;M));</span></a>
-<a name="932"><span class="lineNum">     932 </span>                :<span class="lineCov">          2 :     auto vbase = ConstantExpr::getPtrToInt(vars[0], T_size);</span></a>
-<a name="933"><span class="lineNum">     933 </span>                :<span class="lineCov">          2 :     uint32_t nvars = vars.size();</span></a>
-<a name="934"><span class="lineNum">     934 </span>                :<span class="lineCov">          2 :     std::vector&lt;Constant*&gt; offsets(nvars + 1);</span></a>
-<a name="935"><span class="lineNum">     935 </span>                :<span class="lineCov">          2 :     offsets[0] = ConstantInt::get(T_int32, nvars);</span></a>
-<a name="936"><span class="lineNum">     936 </span>                :<span class="lineCov">          2 :     offsets[1] = ConstantInt::get(T_int32, 0);</span></a>
-<a name="937"><span class="lineNum">     937 </span>        [<span class="branchCov" title="Branch 0 was taken 43959 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      43961 :     for (uint32_t i = 1; i &lt; nvars; i++)</span></a>
-<a name="938"><span class="lineNum">     938 </span>                :<span class="lineCov">      43959 :         offsets[i + 1] = get_ptrdiff32(vars[i], vbase);</span></a>
-<a name="939"><span class="lineNum">     939 </span>                :<span class="lineCov">          2 :     ArrayType *vars_type = ArrayType::get(T_int32, nvars + 1);</span></a>
-<a name="940"><span class="lineNum">     940 </span>                :<span class="lineCov">          2 :     add_comdat(new GlobalVariable(M, vars_type, true,</span></a>
+<a name="926"><span class="lineNum">     926 </span>                :<span class="lineCov">          4 :     auto T_int32 = Type::getInt32Ty(M.getContext());</span></a>
+<a name="927"><span class="lineNum">     927 </span>                :<span class="lineCov">          4 :     auto T_size = getSizeTy(M.getContext());</span></a>
+<a name="928"><span class="lineNum">     928 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">          4 :     assert(!vars.empty());</span></a>
+<a name="929"><span class="lineNum">     929 </span>                :<span class="lineCov">          8 :     add_comdat(GlobalAlias::create(T_size, 0, GlobalVariable::ExternalLinkage,</span></a>
+<a name="930"><span class="lineNum">     930 </span>                :<span class="lineCov">          4 :                                    name + &quot;_base&quot;,</span></a>
+<a name="931"><span class="lineNum">     931 </span>                :<span class="lineCov">          4 :                                    ConstantExpr::getBitCast(vars[0], T_size-&gt;getPointerTo()), &amp;M));</span></a>
+<a name="932"><span class="lineNum">     932 </span>                :<span class="lineCov">          4 :     auto vbase = ConstantExpr::getPtrToInt(vars[0], T_size);</span></a>
+<a name="933"><span class="lineNum">     933 </span>                :<span class="lineCov">          4 :     uint32_t nvars = vars.size();</span></a>
+<a name="934"><span class="lineNum">     934 </span>                :<span class="lineCov">          4 :     std::vector&lt;Constant*&gt; offsets(nvars + 1);</span></a>
+<a name="935"><span class="lineNum">     935 </span>                :<span class="lineCov">          4 :     offsets[0] = ConstantInt::get(T_int32, nvars);</span></a>
+<a name="936"><span class="lineNum">     936 </span>                :<span class="lineCov">          4 :     offsets[1] = ConstantInt::get(T_int32, 0);</span></a>
+<a name="937"><span class="lineNum">     937 </span>        [<span class="branchCov" title="Branch 0 was taken 87814 times"> + </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">      87818 :     for (uint32_t i = 1; i &lt; nvars; i++)</span></a>
+<a name="938"><span class="lineNum">     938 </span>                :<span class="lineCov">      87814 :         offsets[i + 1] = get_ptrdiff32(vars[i], vbase);</span></a>
+<a name="939"><span class="lineNum">     939 </span>                :<span class="lineCov">          4 :     ArrayType *vars_type = ArrayType::get(T_int32, nvars + 1);</span></a>
+<a name="940"><span class="lineNum">     940 </span>                :<span class="lineCov">          4 :     add_comdat(new GlobalVariable(M, vars_type, true,</span></a>
 <a name="941"><span class="lineNum">     941 </span>                :            :                                   GlobalVariable::ExternalLinkage,</a>
-<a name="942"><span class="lineNum">     942 </span>                :<span class="lineCov">          2 :                                   ConstantArray::get(vars_type, offsets),</span></a>
-<a name="943"><span class="lineNum">     943 </span>                :<span class="lineCov">          2 :                                   name + &quot;_offsets&quot;));</span></a>
-<a name="944"><span class="lineNum">     944 </span>                :<span class="lineCov">          2 :     return vbase;</span></a>
+<a name="942"><span class="lineNum">     942 </span>                :<span class="lineCov">          4 :                                   ConstantArray::get(vars_type, offsets),</span></a>
+<a name="943"><span class="lineNum">     943 </span>                :<span class="lineCov">          4 :                                   name + &quot;_offsets&quot;));</span></a>
+<a name="944"><span class="lineNum">     944 </span>                :<span class="lineCov">          4 :     return vbase;</span></a>
 <a name="945"><span class="lineNum">     945 </span>                :            : }</a>
 <a name="946"><span class="lineNum">     946 </span>                :            : </a>
-<a name="947"><span class="lineNum">     947 </span>                :<span class="lineCov">          1 : void CloneCtx::emit_metadata()</span></a>
+<a name="947"><span class="lineNum">     947 </span>                :<span class="lineCov">          2 : void CloneCtx::emit_metadata()</span></a>
 <a name="948"><span class="lineNum">     948 </span>                :            : {</a>
-<a name="949"><span class="lineNum">     949 </span>                :<span class="lineCov">          1 :     uint32_t nfvars = fvars.size();</span></a>
-<a name="950"><span class="lineNum">     950 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">          1 :     if (allow_bad_fvars &amp;&amp; nfvars == 0) {</span></a>
+<a name="949"><span class="lineNum">     949 </span>                :<span class="lineCov">          2 :     uint32_t nfvars = fvars.size();</span></a>
+<a name="950"><span class="lineNum">     950 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">          2 :     if (allow_bad_fvars &amp;&amp; nfvars == 0) {</span></a>
 <a name="951"><span class="lineNum">     951 </span>                :            :         // Will result in a non-loadable sysimg, but `allow_bad_fvars` is for bugpoint only</a>
 <a name="952"><span class="lineNum">     952 </span>                :<span class="lineNoCov">          0 :         return;</span></a>
 <a name="953"><span class="lineNum">     953 </span>                :            :     }</a>
 <a name="954"><span class="lineNum">     954 </span>                :            : </a>
 <a name="955"><span class="lineNum">     955 </span>                :            :     // Store back the information about exported functions.</a>
-<a name="956"><span class="lineNum">     956 </span>                :<span class="lineCov">          1 :     auto fbase = emit_offset_table(fvars, &quot;jl_sysimg_fvars&quot;);</span></a>
-<a name="957"><span class="lineNum">     957 </span>                :<span class="lineCov">          1 :     auto gbase = emit_offset_table(gvars, &quot;jl_sysimg_gvars&quot;);</span></a>
+<a name="956"><span class="lineNum">     956 </span>                :<span class="lineCov">          2 :     auto fbase = emit_offset_table(fvars, &quot;jl_sysimg_fvars&quot;);</span></a>
+<a name="957"><span class="lineNum">     957 </span>                :<span class="lineCov">          2 :     auto gbase = emit_offset_table(gvars, &quot;jl_sysimg_gvars&quot;);</span></a>
 <a name="958"><span class="lineNum">     958 </span>                :            : </a>
-<a name="959"><span class="lineNum">     959 </span>                :<span class="lineCov">          1 :     uint32_t ntargets = specs.size();</span></a>
-<a name="960"><span class="lineNum">     960 </span>                :<span class="lineCov">          2 :     SmallVector&lt;Target*, 8&gt; targets(ntargets);</span></a>
-<a name="961"><span class="lineNum">     961 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :     for (auto &amp;grp: groups) {</span></a>
-<a name="962"><span class="lineNum">     962 </span>                :<span class="lineCov">          1 :         targets[grp.idx] = &amp;grp;</span></a>
-<a name="963"><span class="lineNum">     963 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          1 :         for (auto &amp;tgt: grp.clones) {</span></a>
+<a name="959"><span class="lineNum">     959 </span>                :<span class="lineCov">          2 :     uint32_t ntargets = specs.size();</span></a>
+<a name="960"><span class="lineNum">     960 </span>                :<span class="lineCov">          4 :     SmallVector&lt;Target*, 8&gt; targets(ntargets);</span></a>
+<a name="961"><span class="lineNum">     961 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :     for (auto &amp;grp: groups) {</span></a>
+<a name="962"><span class="lineNum">     962 </span>                :<span class="lineCov">          2 :         targets[grp.idx] = &amp;grp;</span></a>
+<a name="963"><span class="lineNum">     963 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :         for (auto &amp;tgt: grp.clones) {</span></a>
 <a name="964"><span class="lineNum">     964 </span>                :<span class="lineNoCov">          0 :             targets[tgt.idx] = &amp;tgt;</span></a>
 <a name="965"><span class="lineNum">     965 </span>                :            :         }</a>
 <a name="966"><span class="lineNum">     966 </span>                :            :     }</a>
 <a name="967"><span class="lineNum">     967 </span>                :            : </a>
 <a name="968"><span class="lineNum">     968 </span>                :            :     // Generate `jl_dispatch_target_ids`</a>
 <a name="969"><span class="lineNum">     969 </span>                :            :     {</a>
-<a name="970"><span class="lineNum">     970 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          1 :         const uint32_t base_flags = has_veccall ? JL_TARGET_VEC_CALL : 0;</span></a>
-<a name="971"><span class="lineNum">     971 </span>                :<span class="lineCov">          1 :         std::vector&lt;uint8_t&gt; data;</span></a>
-<a name="972"><span class="lineNum">     972 </span>                :<span class="lineCov">          2 :         auto push_i32 = [&amp;] (uint32_t v) {</span></a>
+<a name="970"><span class="lineNum">     970 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          2 :         const uint32_t base_flags = has_veccall ? JL_TARGET_VEC_CALL : 0;</span></a>
+<a name="971"><span class="lineNum">     971 </span>                :<span class="lineCov">          2 :         std::vector&lt;uint8_t&gt; data;</span></a>
+<a name="972"><span class="lineNum">     972 </span>                :<span class="lineCov">          4 :         auto push_i32 = [&amp;] (uint32_t v) {</span></a>
 <a name="973"><span class="lineNum">     973 </span>                :            :             uint8_t buff[4];</a>
-<a name="974"><span class="lineNum">     974 </span>                :<span class="lineCov">          2 :             memcpy(buff, &amp;v, 4);</span></a>
-<a name="975"><span class="lineNum">     975 </span>                :<span class="lineCov">          2 :             data.insert(data.end(), buff, buff + 4);</span></a>
-<a name="976"><span class="lineNum">     976 </span>                :<span class="lineCov">          3 :         };</span></a>
-<a name="977"><span class="lineNum">     977 </span>                :<span class="lineCov">          1 :         push_i32(ntargets);</span></a>
-<a name="978"><span class="lineNum">     978 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :         for (uint32_t i = 0; i &lt; ntargets; i++) {</span></a>
-<a name="979"><span class="lineNum">     979 </span>                :<span class="lineCov">          1 :             push_i32(base_flags | (specs[i].flags &amp; JL_TARGET_UNKNOWN_NAME));</span></a>
-<a name="980"><span class="lineNum">     980 </span>                :<span class="lineCov">          1 :             auto &amp;specdata = specs[i].data;</span></a>
-<a name="981"><span class="lineNum">     981 </span>                :<span class="lineCov">          1 :             data.insert(data.end(), specdata.begin(), specdata.end());</span></a>
+<a name="974"><span class="lineNum">     974 </span>                :<span class="lineCov">          4 :             memcpy(buff, &amp;v, 4);</span></a>
+<a name="975"><span class="lineNum">     975 </span>                :<span class="lineCov">          4 :             data.insert(data.end(), buff, buff + 4);</span></a>
+<a name="976"><span class="lineNum">     976 </span>                :<span class="lineCov">          6 :         };</span></a>
+<a name="977"><span class="lineNum">     977 </span>                :<span class="lineCov">          2 :         push_i32(ntargets);</span></a>
+<a name="978"><span class="lineNum">     978 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :         for (uint32_t i = 0; i &lt; ntargets; i++) {</span></a>
+<a name="979"><span class="lineNum">     979 </span>                :<span class="lineCov">          2 :             push_i32(base_flags | (specs[i].flags &amp; JL_TARGET_UNKNOWN_NAME));</span></a>
+<a name="980"><span class="lineNum">     980 </span>                :<span class="lineCov">          2 :             auto &amp;specdata = specs[i].data;</span></a>
+<a name="981"><span class="lineNum">     981 </span>                :<span class="lineCov">          2 :             data.insert(data.end(), specdata.begin(), specdata.end());</span></a>
 <a name="982"><span class="lineNum">     982 </span>                :            :         }</a>
-<a name="983"><span class="lineNum">     983 </span>                :<span class="lineCov">          1 :         auto value = ConstantDataArray::get(M.getContext(), data);</span></a>
-<a name="984"><span class="lineNum">     984 </span>                :<span class="lineCov">          2 :         add_comdat(new GlobalVariable(M, value-&gt;getType(), true,</span></a>
+<a name="983"><span class="lineNum">     983 </span>                :<span class="lineCov">          2 :         auto value = ConstantDataArray::get(M.getContext(), data);</span></a>
+<a name="984"><span class="lineNum">     984 </span>                :<span class="lineCov">          4 :         add_comdat(new GlobalVariable(M, value-&gt;getType(), true,</span></a>
 <a name="985"><span class="lineNum">     985 </span>                :            :                                       GlobalVariable::ExternalLinkage,</a>
-<a name="986"><span class="lineNum">     986 </span>                :<span class="lineCov">          1 :                                       value, &quot;jl_dispatch_target_ids&quot;));</span></a>
+<a name="986"><span class="lineNum">     986 </span>                :<span class="lineCov">          2 :                                       value, &quot;jl_dispatch_target_ids&quot;));</span></a>
 <a name="987"><span class="lineNum">     987 </span>                :            :     }</a>
 <a name="988"><span class="lineNum">     988 </span>                :            : </a>
 <a name="989"><span class="lineNum">     989 </span>                :            :     // Generate `jl_dispatch_reloc_slots`</a>
-<a name="990"><span class="lineNum">     990 </span>                :<span class="lineCov">          2 :     std::set&lt;uint32_t&gt; shared_relocs;</span></a>
+<a name="990"><span class="lineNum">     990 </span>                :<span class="lineCov">          4 :     std::set&lt;uint32_t&gt; shared_relocs;</span></a>
 <a name="991"><span class="lineNum">     991 </span>                :            :     {</a>
-<a name="992"><span class="lineNum">     992 </span>                :<span class="lineCov">          1 :         auto T_int32 = Type::getInt32Ty(M.getContext());</span></a>
-<a name="993"><span class="lineNum">     993 </span>                :<span class="lineCov">          1 :         std::stable_sort(gv_relocs.begin(), gv_relocs.end(),</span></a>
+<a name="992"><span class="lineNum">     992 </span>                :<span class="lineCov">          2 :         auto T_int32 = Type::getInt32Ty(M.getContext());</span></a>
+<a name="993"><span class="lineNum">     993 </span>                :<span class="lineCov">          2 :         std::stable_sort(gv_relocs.begin(), gv_relocs.end(),</span></a>
 <a name="994"><span class="lineNum">     994 </span>                :<span class="lineNoCov">          0 :                          [] (const std::pair&lt;Constant*,uint32_t&gt; &amp;lhs,</span></a>
 <a name="995"><span class="lineNum">     995 </span>                :            :                              const std::pair&lt;Constant*,uint32_t&gt; &amp;rhs) {</a>
 <a name="996"><span class="lineNum">     996 </span>                :<span class="lineNoCov">          0 :                              return lhs.second &lt; rhs.second;</span></a>
 <a name="997"><span class="lineNum">     997 </span>                :            :                          });</a>
-<a name="998"><span class="lineNum">     998 </span>                :<span class="lineCov">          1 :         std::vector&lt;Constant*&gt; values{nullptr};</span></a>
-<a name="999"><span class="lineNum">     999 </span>                :<span class="lineCov">          1 :         uint32_t gv_reloc_idx = 0;</span></a>
-<a name="1000"><span class="lineNum">    1000 </span>                :<span class="lineCov">          1 :         uint32_t ngv_relocs = gv_relocs.size();</span></a>
-<a name="1001"><span class="lineNum">    1001 </span>        [<span class="branchCov" title="Branch 0 was taken 28495 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      28496 :         for (uint32_t id = 0; id &lt; nfvars; id++) {</span></a>
+<a name="998"><span class="lineNum">     998 </span>                :<span class="lineCov">          2 :         std::vector&lt;Constant*&gt; values{nullptr};</span></a>
+<a name="999"><span class="lineNum">     999 </span>                :<span class="lineCov">          2 :         uint32_t gv_reloc_idx = 0;</span></a>
+<a name="1000"><span class="lineNum">    1000 </span>                :<span class="lineCov">          2 :         uint32_t ngv_relocs = gv_relocs.size();</span></a>
+<a name="1001"><span class="lineNum">    1001 </span>        [<span class="branchCov" title="Branch 0 was taken 56890 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      56892 :         for (uint32_t id = 0; id &lt; nfvars; id++) {</span></a>
 <a name="1002"><span class="lineNum">    1002 </span>                :            :             // TODO:</a>
 <a name="1003"><span class="lineNum">    1003 </span>                :            :             // explicitly set section? so that we are sure the relocation slots</a>
 <a name="1004"><span class="lineNum">    1004 </span>                :            :             // are in the same section as `gbase`.</a>
-<a name="1005"><span class="lineNum">    1005 </span>                :<span class="lineCov">      28495 :             auto id_v = ConstantInt::get(T_int32, id);</span></a>
-<a name="1006"><span class="lineNum">    1006 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 28495 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      28495 :             for (; gv_reloc_idx &lt; ngv_relocs &amp;&amp; gv_relocs[gv_reloc_idx].second == id;</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 28495 times"> + </span>]
+<a name="1005"><span class="lineNum">    1005 </span>                :<span class="lineCov">      56890 :             auto id_v = ConstantInt::get(T_int32, id);</span></a>
+<a name="1006"><span class="lineNum">    1006 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 56890 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      56890 :             for (; gv_reloc_idx &lt; ngv_relocs &amp;&amp; gv_relocs[gv_reloc_idx].second == id;</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 56890 times"> + </span>]
 <a name="1007"><span class="lineNum">    1007 </span>                :            :                  gv_reloc_idx++) {</a>
 <a name="1008"><span class="lineNum">    1008 </span>                :<span class="lineNoCov">          0 :                 shared_relocs.insert(id);</span></a>
 <a name="1009"><span class="lineNum">    1009 </span>                :<span class="lineNoCov">          0 :                 values.push_back(id_v);</span></a>
 <a name="1010"><span class="lineNum">    1010 </span>                :<span class="lineNoCov">          0 :                 values.push_back(get_ptrdiff32(gv_relocs[gv_reloc_idx].first, gbase));</span></a>
 <a name="1011"><span class="lineNum">    1011 </span>                :            :             }</a>
-<a name="1012"><span class="lineNum">    1012 </span>                :<span class="lineCov">      28495 :             auto it = const_relocs.find(id);</span></a>
-<a name="1013"><span class="lineNum">    1013 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 28495 times"> + </span>]:<span class="lineCov">      28495 :             if (it != const_relocs.end()) {</span></a>
+<a name="1012"><span class="lineNum">    1012 </span>                :<span class="lineCov">      56890 :             auto it = const_relocs.find(id);</span></a>
+<a name="1013"><span class="lineNum">    1013 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 56890 times"> + </span>]:<span class="lineCov">      56890 :             if (it != const_relocs.end()) {</span></a>
 <a name="1014"><span class="lineNum">    1014 </span>                :<span class="lineNoCov">          0 :                 values.push_back(id_v);</span></a>
 <a name="1015"><span class="lineNum">    1015 </span>                :<span class="lineNoCov">          0 :                 values.push_back(get_ptrdiff32(it-&gt;second, gbase));</span></a>
 <a name="1016"><span class="lineNum">    1016 </span>                :            :             }</a>
-<a name="1017"><span class="lineNum">    1017 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 28495 times"> + </span>]:<span class="lineCov">      28495 :             if (alias_relocs.find(id) != alias_relocs.end()) {</span></a>
+<a name="1017"><span class="lineNum">    1017 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 56890 times"> + </span>]:<span class="lineCov">      56890 :             if (alias_relocs.find(id) != alias_relocs.end()) {</span></a>
 <a name="1018"><span class="lineNum">    1018 </span>                :<span class="lineNoCov">          0 :                 shared_relocs.insert(id);</span></a>
 <a name="1019"><span class="lineNum">    1019 </span>                :            :             }</a>
 <a name="1020"><span class="lineNum">    1020 </span>                :            :         }</a>
-<a name="1021"><span class="lineNum">    1021 </span>                :<span class="lineCov">          1 :         values[0] = ConstantInt::get(T_int32, values.size() / 2);</span></a>
-<a name="1022"><span class="lineNum">    1022 </span>                :<span class="lineCov">          1 :         ArrayType *vars_type = ArrayType::get(T_int32, values.size());</span></a>
-<a name="1023"><span class="lineNum">    1023 </span>                :<span class="lineCov">          2 :         add_comdat(new GlobalVariable(M, vars_type, true, GlobalVariable::ExternalLinkage,</span></a>
-<a name="1024"><span class="lineNum">    1024 </span>                :<span class="lineCov">          2 :                                       ConstantArray::get(vars_type, values),</span></a>
-<a name="1025"><span class="lineNum">    1025 </span>                :<span class="lineCov">          1 :                                       &quot;jl_dispatch_reloc_slots&quot;));</span></a>
+<a name="1021"><span class="lineNum">    1021 </span>                :<span class="lineCov">          2 :         values[0] = ConstantInt::get(T_int32, values.size() / 2);</span></a>
+<a name="1022"><span class="lineNum">    1022 </span>                :<span class="lineCov">          2 :         ArrayType *vars_type = ArrayType::get(T_int32, values.size());</span></a>
+<a name="1023"><span class="lineNum">    1023 </span>                :<span class="lineCov">          4 :         add_comdat(new GlobalVariable(M, vars_type, true, GlobalVariable::ExternalLinkage,</span></a>
+<a name="1024"><span class="lineNum">    1024 </span>                :<span class="lineCov">          4 :                                       ConstantArray::get(vars_type, values),</span></a>
+<a name="1025"><span class="lineNum">    1025 </span>                :<span class="lineCov">          2 :                                       &quot;jl_dispatch_reloc_slots&quot;));</span></a>
 <a name="1026"><span class="lineNum">    1026 </span>                :            :     }</a>
 <a name="1027"><span class="lineNum">    1027 </span>                :            : </a>
 <a name="1028"><span class="lineNum">    1028 </span>                :            :     // Generate `jl_dispatch_fvars_idxs` and `jl_dispatch_fvars_offsets`</a>
 <a name="1029"><span class="lineNum">    1029 </span>                :            :     {</a>
-<a name="1030"><span class="lineNum">    1030 </span>                :<span class="lineCov">          2 :         std::vector&lt;uint32_t&gt; idxs;</span></a>
-<a name="1031"><span class="lineNum">    1031 </span>                :<span class="lineCov">          1 :         std::vector&lt;Constant*&gt; offsets;</span></a>
-<a name="1032"><span class="lineNum">    1032 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :         for (uint32_t i = 0; i &lt; ntargets; i++) {</span></a>
-<a name="1033"><span class="lineNum">    1033 </span>                :<span class="lineCov">          1 :             auto tgt = targets[i];</span></a>
-<a name="1034"><span class="lineNum">    1034 </span>                :<span class="lineCov">          1 :             auto &amp;spec = specs[i];</span></a>
-<a name="1035"><span class="lineNum">    1035 </span>                :<span class="lineCov">          1 :             uint32_t len_idx = idxs.size();</span></a>
-<a name="1036"><span class="lineNum">    1036 </span>                :<span class="lineCov">          1 :             idxs.push_back(0); // We will fill in the real value later.</span></a>
-<a name="1037"><span class="lineNum">    1037 </span>                :<span class="lineCov">          1 :             uint32_t count = 0;</span></a>
-<a name="1038"><span class="lineNum">    1038 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">          1 :             if (i == 0 || spec.flags &amp; JL_TARGET_CLONE_ALL) {</span></a>
-<a name="1039"><span class="lineNum">    1039 </span>                :<span class="lineCov">          1 :                 auto grp = static_cast&lt;Group*&gt;(tgt);</span></a>
-<a name="1040"><span class="lineNum">    1040 </span>                :<span class="lineCov">          1 :                 count = jl_sysimg_tag_mask;</span></a>
-<a name="1041"><span class="lineNum">    1041 </span>        [<span class="branchCov" title="Branch 0 was taken 28495 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">      28496 :                 for (uint32_t j = 0; j &lt; nfvars; j++) {</span></a>
-<a name="1042"><span class="lineNum">    1042 </span>  [<span class="branchCov" title="Branch 0 was taken 28495 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 28495 times"> + </span> :<span class="lineCov">      28495 :                     if (shared_relocs.count(j) || tgt-&gt;relocs.count(j)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 28495 times"> + </span>]
+<a name="1030"><span class="lineNum">    1030 </span>                :<span class="lineCov">          4 :         std::vector&lt;uint32_t&gt; idxs;</span></a>
+<a name="1031"><span class="lineNum">    1031 </span>                :<span class="lineCov">          2 :         std::vector&lt;Constant*&gt; offsets;</span></a>
+<a name="1032"><span class="lineNum">    1032 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :         for (uint32_t i = 0; i &lt; ntargets; i++) {</span></a>
+<a name="1033"><span class="lineNum">    1033 </span>                :<span class="lineCov">          2 :             auto tgt = targets[i];</span></a>
+<a name="1034"><span class="lineNum">    1034 </span>                :<span class="lineCov">          2 :             auto &amp;spec = specs[i];</span></a>
+<a name="1035"><span class="lineNum">    1035 </span>                :<span class="lineCov">          2 :             uint32_t len_idx = idxs.size();</span></a>
+<a name="1036"><span class="lineNum">    1036 </span>                :<span class="lineCov">          2 :             idxs.push_back(0); // We will fill in the real value later.</span></a>
+<a name="1037"><span class="lineNum">    1037 </span>                :<span class="lineCov">          2 :             uint32_t count = 0;</span></a>
+<a name="1038"><span class="lineNum">    1038 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">          2 :             if (i == 0 || spec.flags &amp; JL_TARGET_CLONE_ALL) {</span></a>
+<a name="1039"><span class="lineNum">    1039 </span>                :<span class="lineCov">          2 :                 auto grp = static_cast&lt;Group*&gt;(tgt);</span></a>
+<a name="1040"><span class="lineNum">    1040 </span>                :<span class="lineCov">          2 :                 count = jl_sysimg_tag_mask;</span></a>
+<a name="1041"><span class="lineNum">    1041 </span>        [<span class="branchCov" title="Branch 0 was taken 56890 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">      56892 :                 for (uint32_t j = 0; j &lt; nfvars; j++) {</span></a>
+<a name="1042"><span class="lineNum">    1042 </span>  [<span class="branchCov" title="Branch 0 was taken 56890 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 56890 times"> + </span> :<span class="lineCov">      56890 :                     if (shared_relocs.count(j) || tgt-&gt;relocs.count(j)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 56890 times"> + </span>]
 <a name="1043"><span class="lineNum">    1043 </span>                :<span class="lineNoCov">          0 :                         count++;</span></a>
 <a name="1044"><span class="lineNum">    1044 </span>                :<span class="lineNoCov">          0 :                         idxs.push_back(j);</span></a>
 <a name="1045"><span class="lineNum">    1045 </span>                :            :                     }</a>
-<a name="1046"><span class="lineNum">    1046 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 28495 times"> + </span>]:<span class="lineCov">      28495 :                     if (i != 0) {</span></a>
+<a name="1046"><span class="lineNum">    1046 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 56890 times"> + </span>]:<span class="lineCov">      56890 :                     if (i != 0) {</span></a>
 <a name="1047"><span class="lineNum">    1047 </span>                :<span class="lineNoCov">          0 :                         offsets.push_back(get_ptrdiff32(grp-&gt;base_func(fvars[j]), fbase));</span></a>
 <a name="1048"><span class="lineNum">    1048 </span>                :            :                     }</a>
-<a name="1049"><span class="lineNum">    1049 </span>                :<span class="lineCov">          1 :                 }</span></a>
+<a name="1049"><span class="lineNum">    1049 </span>                :<span class="lineCov">          2 :                 }</span></a>
 <a name="1050"><span class="lineNum">    1050 </span>                :            :             }</a>
 <a name="1051"><span class="lineNum">    1051 </span>                :            :             else {</a>
 <a name="1052"><span class="lineNum">    1052 </span>                :<span class="lineNoCov">          0 :                 auto baseidx = spec.base;</span></a>
@@ -1157,21 +1157,21 @@
 <a name="1067"><span class="lineNum">    1067 </span>                :            :                     }</a>
 <a name="1068"><span class="lineNum">    1068 </span>                :            :                 }</a>
 <a name="1069"><span class="lineNum">    1069 </span>                :            :             }</a>
-<a name="1070"><span class="lineNum">    1070 </span>                :<span class="lineCov">          1 :             idxs[len_idx] = count;</span></a>
+<a name="1070"><span class="lineNum">    1070 </span>                :<span class="lineCov">          2 :             idxs[len_idx] = count;</span></a>
 <a name="1071"><span class="lineNum">    1071 </span>                :            :         }</a>
-<a name="1072"><span class="lineNum">    1072 </span>                :<span class="lineCov">          1 :         auto idxval = ConstantDataArray::get(M.getContext(), idxs);</span></a>
-<a name="1073"><span class="lineNum">    1073 </span>                :<span class="lineCov">          2 :         add_comdat(new GlobalVariable(M, idxval-&gt;getType(), true,</span></a>
+<a name="1072"><span class="lineNum">    1072 </span>                :<span class="lineCov">          2 :         auto idxval = ConstantDataArray::get(M.getContext(), idxs);</span></a>
+<a name="1073"><span class="lineNum">    1073 </span>                :<span class="lineCov">          4 :         add_comdat(new GlobalVariable(M, idxval-&gt;getType(), true,</span></a>
 <a name="1074"><span class="lineNum">    1074 </span>                :            :                                       GlobalVariable::ExternalLinkage,</a>
-<a name="1075"><span class="lineNum">    1075 </span>                :<span class="lineCov">          1 :                                       idxval, &quot;jl_dispatch_fvars_idxs&quot;));</span></a>
-<a name="1076"><span class="lineNum">    1076 </span>                :<span class="lineCov">          1 :         ArrayType *offsets_type = ArrayType::get(Type::getInt32Ty(M.getContext()), offsets.size());</span></a>
-<a name="1077"><span class="lineNum">    1077 </span>                :<span class="lineCov">          2 :         add_comdat(new GlobalVariable(M, offsets_type, true,</span></a>
+<a name="1075"><span class="lineNum">    1075 </span>                :<span class="lineCov">          2 :                                       idxval, &quot;jl_dispatch_fvars_idxs&quot;));</span></a>
+<a name="1076"><span class="lineNum">    1076 </span>                :<span class="lineCov">          2 :         ArrayType *offsets_type = ArrayType::get(Type::getInt32Ty(M.getContext()), offsets.size());</span></a>
+<a name="1077"><span class="lineNum">    1077 </span>                :<span class="lineCov">          4 :         add_comdat(new GlobalVariable(M, offsets_type, true,</span></a>
 <a name="1078"><span class="lineNum">    1078 </span>                :            :                                       GlobalVariable::ExternalLinkage,</a>
-<a name="1079"><span class="lineNum">    1079 </span>                :<span class="lineCov">          2 :                                       ConstantArray::get(offsets_type, offsets),</span></a>
-<a name="1080"><span class="lineNum">    1080 </span>                :<span class="lineCov">          1 :                                       &quot;jl_dispatch_fvars_offsets&quot;));</span></a>
+<a name="1079"><span class="lineNum">    1079 </span>                :<span class="lineCov">          4 :                                       ConstantArray::get(offsets_type, offsets),</span></a>
+<a name="1080"><span class="lineNum">    1080 </span>                :<span class="lineCov">          2 :                                       &quot;jl_dispatch_fvars_offsets&quot;));</span></a>
 <a name="1081"><span class="lineNum">    1081 </span>                :            :     }</a>
 <a name="1082"><span class="lineNum">    1082 </span>                :            : }</a>
 <a name="1083"><span class="lineNum">    1083 </span>                :            : </a>
-<a name="1084"><span class="lineNum">    1084 </span>                :<span class="lineCov">          2 : static bool runMultiVersioning(Module &amp;M, function_ref&lt;LoopInfo&amp;(Function&amp;)&gt; GetLI, function_ref&lt;CallGraph&amp;()&gt; GetCG, bool allow_bad_fvars)</span></a>
+<a name="1084"><span class="lineNum">    1084 </span>                :<span class="lineCov">          4 : static bool runMultiVersioning(Module &amp;M, function_ref&lt;LoopInfo&amp;(Function&amp;)&gt; GetLI, function_ref&lt;CallGraph&amp;()&gt; GetCG, bool allow_bad_fvars)</span></a>
 <a name="1085"><span class="lineNum">    1085 </span>                :            : {</a>
 <a name="1086"><span class="lineNum">    1086 </span>                :            :     // Group targets and identify cloning bases.</a>
 <a name="1087"><span class="lineNum">    1087 </span>                :            :     // Also initialize function info maps (we'll update these maps as we go)</a>
@@ -1181,37 +1181,37 @@
 <a name="1091"><span class="lineNum">    1091 </span>                :            :     //     * Cloned function -&gt; Original function (add as we clone functions)</a>
 <a name="1092"><span class="lineNum">    1092 </span>                :            :     //     * Original function -&gt; Base function (target specific and updated by LLVM)</a>
 <a name="1093"><span class="lineNum">    1093 </span>                :            :     //     * ID -&gt; relocation slots (const).</a>
-<a name="1094"><span class="lineNum">    1094 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :     if (M.getName() == &quot;sysimage&quot;)</span></a>
-<a name="1095"><span class="lineNum">    1095 </span>                :<span class="lineCov">          1 :         return false;</span></a>
+<a name="1094"><span class="lineNum">    1094 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          4 :     if (M.getName() == &quot;sysimage&quot;)</span></a>
+<a name="1095"><span class="lineNum">    1095 </span>                :<span class="lineCov">          2 :         return false;</span></a>
 <a name="1096"><span class="lineNum">    1096 </span>                :            : </a>
-<a name="1097"><span class="lineNum">    1097 </span>                :<span class="lineCov">          1 :     GlobalVariable *fvars = M.getGlobalVariable(&quot;jl_sysimg_fvars&quot;);</span></a>
-<a name="1098"><span class="lineNum">    1098 </span>                :<span class="lineCov">          1 :     GlobalVariable *gvars = M.getGlobalVariable(&quot;jl_sysimg_gvars&quot;);</span></a>
-<a name="1099"><span class="lineNum">    1099 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">          1 :     if (allow_bad_fvars &amp;&amp; (!fvars || !fvars-&gt;hasInitializer() || !isa&lt;ConstantArray&gt;(fvars-&gt;getInitializer()) ||</span></a>
+<a name="1097"><span class="lineNum">    1097 </span>                :<span class="lineCov">          2 :     GlobalVariable *fvars = M.getGlobalVariable(&quot;jl_sysimg_fvars&quot;);</span></a>
+<a name="1098"><span class="lineNum">    1098 </span>                :<span class="lineCov">          2 :     GlobalVariable *gvars = M.getGlobalVariable(&quot;jl_sysimg_gvars&quot;);</span></a>
+<a name="1099"><span class="lineNum">    1099 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">          2 :     if (allow_bad_fvars &amp;&amp; (!fvars || !fvars-&gt;hasInitializer() || !isa&lt;ConstantArray&gt;(fvars-&gt;getInitializer()) ||</span></a>
 <span class="lineNum">         </span><span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span><span class="branchNoCov" title="Branch 6 was not taken"> - </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span><span class="branchNoCov" title="Branch 8 was not taken"> - </span> 
 <span class="lineNum">         </span>            <span class="branchNoCov" title="Branch 9 was not taken"> - </span>]
-<a name="1100"><span class="lineNum">    1100 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">          1 :                             !gvars || !gvars-&gt;hasInitializer() || !isa&lt;ConstantArray&gt;(gvars-&gt;getInitializer())))</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 1 time"> + </span>]
+<a name="1100"><span class="lineNum">    1100 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">          2 :                             !gvars || !gvars-&gt;hasInitializer() || !isa&lt;ConstantArray&gt;(gvars-&gt;getInitializer())))</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 2 times"> + </span>]
 <a name="1101"><span class="lineNum">    1101 </span>                :<span class="lineNoCov">          0 :         return false;</span></a>
 <a name="1102"><span class="lineNum">    1102 </span>                :            : </a>
-<a name="1103"><span class="lineNum">    1103 </span>                :<span class="lineCov">          1 :     CloneCtx clone(M, GetLI, GetCG, allow_bad_fvars);</span></a>
+<a name="1103"><span class="lineNum">    1103 </span>                :<span class="lineCov">          2 :     CloneCtx clone(M, GetLI, GetCG, allow_bad_fvars);</span></a>
 <a name="1104"><span class="lineNum">    1104 </span>                :            : </a>
 <a name="1105"><span class="lineNum">    1105 </span>                :            :     // Collect a list of original functions and clone base functions</a>
-<a name="1106"><span class="lineNum">    1106 </span>                :<span class="lineCov">          1 :     clone.clone_bases();</span></a>
+<a name="1106"><span class="lineNum">    1106 </span>                :<span class="lineCov">          2 :     clone.clone_bases();</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>                :            : </a>
 <a name="1108"><span class="lineNum">    1108 </span>                :            :     // Collect function info (type of instruction used)</a>
-<a name="1109"><span class="lineNum">    1109 </span>                :<span class="lineCov">          1 :     clone.collect_func_infos();</span></a>
+<a name="1109"><span class="lineNum">    1109 </span>                :<span class="lineCov">          2 :     clone.collect_func_infos();</span></a>
 <a name="1110"><span class="lineNum">    1110 </span>                :            : </a>
 <a name="1111"><span class="lineNum">    1111 </span>                :            :     // If any partially cloned target exist decide which functions to clone for these targets.</a>
 <a name="1112"><span class="lineNum">    1112 </span>                :            :     // Clone functions for each group and collect a list of them.</a>
 <a name="1113"><span class="lineNum">    1113 </span>                :            :     // We can also add feature strings for cloned functions</a>
 <a name="1114"><span class="lineNum">    1114 </span>                :            :     // now that no additional cloning needs to be done.</a>
-<a name="1115"><span class="lineNum">    1115 </span>                :<span class="lineCov">          1 :     clone.clone_all_partials();</span></a>
+<a name="1115"><span class="lineNum">    1115 </span>                :<span class="lineCov">          2 :     clone.clone_all_partials();</span></a>
 <a name="1116"><span class="lineNum">    1116 </span>                :            : </a>
 <a name="1117"><span class="lineNum">    1117 </span>                :            :     // Scan **ALL** cloned functions (including full cloning for base target)</a>
 <a name="1118"><span class="lineNum">    1118 </span>                :            :     // for global variables initialization use.</a>
 <a name="1119"><span class="lineNum">    1119 </span>                :            :     // Replace them with `null` slot to be initialized at runtime and record relocation slot.</a>
 <a name="1120"><span class="lineNum">    1120 </span>                :            :     // These relocations must be initialized for **ALL** targets.</a>
-<a name="1121"><span class="lineNum">    1121 </span>                :<span class="lineCov">          1 :     clone.fix_gv_uses();</span></a>
+<a name="1121"><span class="lineNum">    1121 </span>                :<span class="lineCov">          2 :     clone.fix_gv_uses();</span></a>
 <a name="1122"><span class="lineNum">    1122 </span>                :            : </a>
 <a name="1123"><span class="lineNum">    1123 </span>                :            :     // For each group, scan all functions cloned by **PARTIALLY** cloned targets for</a>
 <a name="1124"><span class="lineNum">    1124 </span>                :            :     // instruction use.</a>
@@ -1221,44 +1221,44 @@
 <a name="1128"><span class="lineNum">    1128 </span>                :            :     // a slot load (i.e. if both the caller and the callee are always cloned or not cloned</a>
 <a name="1129"><span class="lineNum">    1129 </span>                :            :     // on all targets, the caller site does not need a relocation slot).</a>
 <a name="1130"><span class="lineNum">    1130 </span>                :            :     // A target needs a slot to be initialized iff at least one caller is not initialized.</a>
-<a name="1131"><span class="lineNum">    1131 </span>                :<span class="lineCov">          1 :     clone.fix_inst_uses();</span></a>
+<a name="1131"><span class="lineNum">    1131 </span>                :<span class="lineCov">          2 :     clone.fix_inst_uses();</span></a>
 <a name="1132"><span class="lineNum">    1132 </span>                :            : </a>
 <a name="1133"><span class="lineNum">    1133 </span>                :            :     // Store back sysimg information with the correct format.</a>
 <a name="1134"><span class="lineNum">    1134 </span>                :            :     // At this point, we should have fixed up all the uses of the cloned functions</a>
 <a name="1135"><span class="lineNum">    1135 </span>                :            :     // and collected all the shared/target-specific relocations.</a>
-<a name="1136"><span class="lineNum">    1136 </span>                :<span class="lineCov">          1 :     clone.emit_metadata();</span></a>
+<a name="1136"><span class="lineNum">    1136 </span>                :<span class="lineCov">          2 :     clone.emit_metadata();</span></a>
 <a name="1137"><span class="lineNum">    1137 </span>                :            : </a>
-<a name="1138"><span class="lineNum">    1138 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          1 :     assert(!verifyModule(M));</span></a>
+<a name="1138"><span class="lineNum">    1138 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :     assert(!verifyModule(M));</span></a>
 <a name="1139"><span class="lineNum">    1139 </span>                :            : </a>
-<a name="1140"><span class="lineNum">    1140 </span>                :<span class="lineCov">          1 :     return true;</span></a>
+<a name="1140"><span class="lineNum">    1140 </span>                :<span class="lineCov">          2 :     return true;</span></a>
 <a name="1141"><span class="lineNum">    1141 </span>                :            : }</a>
 <a name="1142"><span class="lineNum">    1142 </span>                :            : </a>
 <a name="1143"><span class="lineNum">    1143 </span>                :            : struct MultiVersioningLegacy: public ModulePass {</a>
 <a name="1144"><span class="lineNum">    1144 </span>                :            :     static char ID;</a>
-<a name="1145"><span class="lineNum">    1145 </span>                :<span class="lineCov">          1 :     MultiVersioningLegacy(bool allow_bad_fvars=false)</span></a>
-<a name="1146"><span class="lineNum">    1146 </span>                :<span class="lineCov">          1 :         : ModulePass(ID), allow_bad_fvars(allow_bad_fvars)</span></a>
-<a name="1147"><span class="lineNum">    1147 </span>                :<span class="lineCov">          1 :     {}</span></a>
+<a name="1145"><span class="lineNum">    1145 </span>                :<span class="lineCov">          2 :     MultiVersioningLegacy(bool allow_bad_fvars=false)</span></a>
+<a name="1146"><span class="lineNum">    1146 </span>                :<span class="lineCov">          2 :         : ModulePass(ID), allow_bad_fvars(allow_bad_fvars)</span></a>
+<a name="1147"><span class="lineNum">    1147 </span>                :<span class="lineCov">          2 :     {}</span></a>
 <a name="1148"><span class="lineNum">    1148 </span>                :            : </a>
 <a name="1149"><span class="lineNum">    1149 </span>                :            : private:</a>
 <a name="1150"><span class="lineNum">    1150 </span>                :            :     bool runOnModule(Module &amp;M) override;</a>
-<a name="1151"><span class="lineNum">    1151 </span>                :<span class="lineCov">          1 :     void getAnalysisUsage(AnalysisUsage &amp;AU) const override</span></a>
+<a name="1151"><span class="lineNum">    1151 </span>                :<span class="lineCov">          2 :     void getAnalysisUsage(AnalysisUsage &amp;AU) const override</span></a>
 <a name="1152"><span class="lineNum">    1152 </span>                :            :     {</a>
-<a name="1153"><span class="lineNum">    1153 </span>                :<span class="lineCov">          1 :         AU.addRequired&lt;LoopInfoWrapperPass&gt;();</span></a>
-<a name="1154"><span class="lineNum">    1154 </span>                :<span class="lineCov">          1 :         AU.addRequired&lt;CallGraphWrapperPass&gt;();</span></a>
-<a name="1155"><span class="lineNum">    1155 </span>                :<span class="lineCov">          1 :         AU.addPreserved&lt;LoopInfoWrapperPass&gt;();</span></a>
-<a name="1156"><span class="lineNum">    1156 </span>                :<span class="lineCov">          1 :     }</span></a>
+<a name="1153"><span class="lineNum">    1153 </span>                :<span class="lineCov">          2 :         AU.addRequired&lt;LoopInfoWrapperPass&gt;();</span></a>
+<a name="1154"><span class="lineNum">    1154 </span>                :<span class="lineCov">          2 :         AU.addRequired&lt;CallGraphWrapperPass&gt;();</span></a>
+<a name="1155"><span class="lineNum">    1155 </span>                :<span class="lineCov">          2 :         AU.addPreserved&lt;LoopInfoWrapperPass&gt;();</span></a>
+<a name="1156"><span class="lineNum">    1156 </span>                :<span class="lineCov">          2 :     }</span></a>
 <a name="1157"><span class="lineNum">    1157 </span>                :            :     bool allow_bad_fvars;</a>
 <a name="1158"><span class="lineNum">    1158 </span>                :            : };</a>
 <a name="1159"><span class="lineNum">    1159 </span>                :            : </a>
-<a name="1160"><span class="lineNum">    1160 </span>                :<span class="lineCov">          2 : bool MultiVersioningLegacy::runOnModule(Module &amp;M)</span></a>
+<a name="1160"><span class="lineNum">    1160 </span>                :<span class="lineCov">          4 : bool MultiVersioningLegacy::runOnModule(Module &amp;M)</span></a>
 <a name="1161"><span class="lineNum">    1161 </span>                :            : {</a>
-<a name="1162"><span class="lineNum">    1162 </span>                :<span class="lineCov">      29064 :     auto GetLI = [this](Function &amp;F) -&gt; LoopInfo &amp; {</span></a>
-<a name="1163"><span class="lineNum">    1163 </span>                :<span class="lineCov">      29064 :         return getAnalysis&lt;LoopInfoWrapperPass&gt;(F).getLoopInfo();</span></a>
-<a name="1164"><span class="lineNum">    1164 </span>                :<span class="lineCov">          2 :     };</span></a>
+<a name="1162"><span class="lineNum">    1162 </span>                :<span class="lineCov">      58024 :     auto GetLI = [this](Function &amp;F) -&gt; LoopInfo &amp; {</span></a>
+<a name="1163"><span class="lineNum">    1163 </span>                :<span class="lineCov">      58024 :         return getAnalysis&lt;LoopInfoWrapperPass&gt;(F).getLoopInfo();</span></a>
+<a name="1164"><span class="lineNum">    1164 </span>                :<span class="lineCov">          4 :     };</span></a>
 <a name="1165"><span class="lineNum">    1165 </span>                :<span class="lineNoCov">          0 :     auto GetCG = [this]() -&gt; CallGraph &amp; {</span></a>
 <a name="1166"><span class="lineNum">    1166 </span>                :<span class="lineNoCov">          0 :         return getAnalysis&lt;CallGraphWrapperPass&gt;().getCallGraph();</span></a>
-<a name="1167"><span class="lineNum">    1167 </span>                :<span class="lineCov">          2 :     };</span></a>
-<a name="1168"><span class="lineNum">    1168 </span>                :<span class="lineCov">          2 :     return runMultiVersioning(M, GetLI, GetCG, allow_bad_fvars);</span></a>
+<a name="1167"><span class="lineNum">    1167 </span>                :<span class="lineCov">          4 :     };</span></a>
+<a name="1168"><span class="lineNum">    1168 </span>                :<span class="lineCov">          4 :     return runMultiVersioning(M, GetLI, GetCG, allow_bad_fvars);</span></a>
 <a name="1169"><span class="lineNum">    1169 </span>                :            : }</a>
 <a name="1170"><span class="lineNum">    1170 </span>                :            : </a>
 <a name="1171"><span class="lineNum">    1171 </span>                :            : </a>
@@ -1286,9 +1286,9 @@
 <a name="1193"><span class="lineNum">    1193 </span>                :<span class="lineNoCov">          0 :     return PreservedAnalyses::all();</span></a>
 <a name="1194"><span class="lineNum">    1194 </span>                :            : }</a>
 <a name="1195"><span class="lineNum">    1195 </span>                :            : </a>
-<a name="1196"><span class="lineNum">    1196 </span>                :<span class="lineCov">          1 : Pass *createMultiVersioningPass(bool allow_bad_fvars)</span></a>
+<a name="1196"><span class="lineNum">    1196 </span>                :<span class="lineCov">          2 : Pass *createMultiVersioningPass(bool allow_bad_fvars)</span></a>
 <a name="1197"><span class="lineNum">    1197 </span>                :            : {</a>
-<a name="1198"><span class="lineNum">    1198 </span>                :<span class="lineCov">          1 :     return new MultiVersioningLegacy(allow_bad_fvars);</span></a>
+<a name="1198"><span class="lineNum">    1198 </span>                :<span class="lineCov">          2 :     return new MultiVersioningLegacy(allow_bad_fvars);</span></a>
 <a name="1199"><span class="lineNum">    1199 </span>                :            : }</a>
 <a name="1200"><span class="lineNum">    1200 </span>                :            : </a>
 <a name="1201"><span class="lineNum">    1201 </span>                :<span class="lineNoCov">          0 : extern &quot;C&quot; JL_DLLEXPORT void LLVMExtraAddMultiVersioningPass_impl(LLVMPassManagerRef PM)</span></a>

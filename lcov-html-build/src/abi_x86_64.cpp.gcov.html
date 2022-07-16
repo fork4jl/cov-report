@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/abi_x86_64.cpp</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/abi_x86_64.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">96</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -122,56 +122,56 @@
 <a name="44"><span class="lineNum">      44 </span>                :            : // code generation</a>
 <a name="45"><span class="lineNum">      45 </span>                :            : uint8_t int_regs, sse_regs;</a>
 <a name="46"><span class="lineNum">      46 </span>                :            : </a>
-<a name="47"><span class="lineNum">      47 </span>                :<span class="lineCov">      84408 : ABI_x86_64Layout()</span></a>
-<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">      84408 :     : int_regs(6),</span></a>
-<a name="49"><span class="lineNum">      49 </span>                :<span class="lineCov">      84408 :       sse_regs(8)</span></a>
+<a name="47"><span class="lineNum">      47 </span>                :<span class="lineCov">     162865 : ABI_x86_64Layout()</span></a>
+<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">     162865 :     : int_regs(6),</span></a>
+<a name="49"><span class="lineNum">      49 </span>                :<span class="lineCov">     162865 :       sse_regs(8)</span></a>
 <a name="50"><span class="lineNum">      50 </span>                :            : {</a>
-<a name="51"><span class="lineNum">      51 </span>                :<span class="lineCov">      84408 : }</span></a>
+<a name="51"><span class="lineNum">      51 </span>                :<span class="lineCov">     162865 : }</span></a>
 <a name="52"><span class="lineNum">      52 </span>                :            : </a>
-<a name="53"><span class="lineNum">      53 </span>                :<span class="lineCov">     136125 : ABI_x86_64Layout(uint8_t int_regs, uint8_t sse_regs)</span></a>
-<a name="54"><span class="lineNum">      54 </span>                :<span class="lineCov">     136125 :     : int_regs(int_regs),</span></a>
-<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">     136125 :       sse_regs(sse_regs)</span></a>
+<a name="53"><span class="lineNum">      53 </span>                :<span class="lineCov">     261292 : ABI_x86_64Layout(uint8_t int_regs, uint8_t sse_regs)</span></a>
+<a name="54"><span class="lineNum">      54 </span>                :<span class="lineCov">     261292 :     : int_regs(int_regs),</span></a>
+<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">     261292 :       sse_regs(sse_regs)</span></a>
 <a name="56"><span class="lineNum">      56 </span>                :            : {</a>
-<a name="57"><span class="lineNum">      57 </span>                :<span class="lineCov">     136125 : }</span></a>
+<a name="57"><span class="lineNum">      57 </span>                :<span class="lineCov">     261292 : }</span></a>
 <a name="58"><span class="lineNum">      58 </span>                :            : </a>
 <a name="59"><span class="lineNum">      59 </span>                :            : struct Classification {</a>
 <a name="60"><span class="lineNum">      60 </span>                :            :     bool isMemory;</a>
 <a name="61"><span class="lineNum">      61 </span>                :            :     ArgClass classes[2];</a>
 <a name="62"><span class="lineNum">      62 </span>                :            : </a>
-<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">     279608 :     Classification() : isMemory(false)</span></a>
+<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">     537280 :     Classification() : isMemory(false)</span></a>
 <a name="64"><span class="lineNum">      64 </span>                :            :     {</a>
-<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">     279608 :         classes[0] = NoClass;</span></a>
-<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">     279608 :         classes[1] = NoClass;</span></a>
-<a name="67"><span class="lineNum">      67 </span>                :<span class="lineCov">     279608 :     }</span></a>
+<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">     537280 :         classes[0] = NoClass;</span></a>
+<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">     537280 :         classes[1] = NoClass;</span></a>
+<a name="67"><span class="lineNum">      67 </span>                :<span class="lineCov">     537280 :     }</span></a>
 <a name="68"><span class="lineNum">      68 </span>                :            : </a>
-<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">     259783 :     void addField(unsigned offset, ArgClass cl)</span></a>
+<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">     499292 :     void addField(unsigned offset, ArgClass cl)</span></a>
 <a name="70"><span class="lineNum">      70 </span>                :            :     {</a>
-<a name="71"><span class="lineNum">      71 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 259783 times"> + </span>]:<span class="lineCov">     259783 :         if (isMemory)</span></a>
+<a name="71"><span class="lineNum">      71 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 499292 times"> + </span>]:<span class="lineCov">     499292 :         if (isMemory)</span></a>
 <a name="72"><span class="lineNum">      72 </span>                :<span class="lineNoCov">          0 :             return;</span></a>
 <a name="73"><span class="lineNum">      73 </span>                :            : </a>
 <a name="74"><span class="lineNum">      74 </span>                :            :         // Note that we don't need to bother checking if it crosses 8 bytes.</a>
 <a name="75"><span class="lineNum">      75 </span>                :            :         // We don't get here with unaligned fields, and anything that can be</a>
 <a name="76"><span class="lineNum">      76 </span>                :            :         // big enough to cross 8 bytes (cdoubles, reals, structs and arrays)</a>
 <a name="77"><span class="lineNum">      77 </span>                :            :         // is special-cased in classifyType()</a>
-<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">     259783 :         int idx = (offset &lt; 8 ? 0 : 1);</span></a>
+<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">     499292 :         int idx = (offset &lt; 8 ? 0 : 1);</span></a>
 <a name="79"><span class="lineNum">      79 </span>                :            : </a>
-<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">     259783 :         ArgClass nw = merge(classes[idx], cl);</span></a>
-<a name="81"><span class="lineNum">      81 </span>        [<span class="branchCov" title="Branch 0 was taken 259783 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     259783 :         if (nw != classes[idx]) {</span></a>
-<a name="82"><span class="lineNum">      82 </span>                :<span class="lineCov">     259783 :             classes[idx] = nw;</span></a>
+<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">     499292 :         ArgClass nw = merge(classes[idx], cl);</span></a>
+<a name="81"><span class="lineNum">      81 </span>        [<span class="branchCov" title="Branch 0 was taken 499292 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     499292 :         if (nw != classes[idx]) {</span></a>
+<a name="82"><span class="lineNum">      82 </span>                :<span class="lineCov">     499292 :             classes[idx] = nw;</span></a>
 <a name="83"><span class="lineNum">      83 </span>                :            : </a>
-<a name="84"><span class="lineNum">      84 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 259781 times"> + </span>]:<span class="lineCov">     259783 :             if (nw == Memory) {</span></a>
-<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">          2 :                 classes[1-idx] = Memory;</span></a>
-<a name="86"><span class="lineNum">      86 </span>                :<span class="lineCov">          2 :                 isMemory = true;</span></a>
+<a name="84"><span class="lineNum">      84 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 499288 times"> + </span>]:<span class="lineCov">     499292 :             if (nw == Memory) {</span></a>
+<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">          4 :                 classes[1-idx] = Memory;</span></a>
+<a name="86"><span class="lineNum">      86 </span>                :<span class="lineCov">          4 :                 isMemory = true;</span></a>
 <a name="87"><span class="lineNum">      87 </span>                :            :             }</a>
 <a name="88"><span class="lineNum">      88 </span>                :            :         }</a>
 <a name="89"><span class="lineNum">      89 </span>                :            :     }</a>
 <a name="90"><span class="lineNum">      90 </span>                :            : </a>
-<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">     259783 :     static ArgClass merge(ArgClass accum, ArgClass cl)</span></a>
+<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">     499292 :     static ArgClass merge(ArgClass accum, ArgClass cl)</span></a>
 <a name="92"><span class="lineNum">      92 </span>                :            :     {</a>
-<a name="93"><span class="lineNum">      93 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 259783 times"> + </span>]:<span class="lineCov">     259783 :         if (accum == cl)</span></a>
+<a name="93"><span class="lineNum">      93 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 499292 times"> + </span>]:<span class="lineCov">     499292 :         if (accum == cl)</span></a>
 <a name="94"><span class="lineNum">      94 </span>                :<span class="lineNoCov">          0 :             return accum;</span></a>
-<a name="95"><span class="lineNum">      95 </span>        [<span class="branchCov" title="Branch 0 was taken 259783 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     259783 :         if (accum == NoClass)</span></a>
-<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">     259783 :             return cl;</span></a>
+<a name="95"><span class="lineNum">      95 </span>        [<span class="branchCov" title="Branch 0 was taken 499292 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     499292 :         if (accum == NoClass)</span></a>
+<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">     499292 :             return cl;</span></a>
 <a name="97"><span class="lineNum">      97 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         if (cl == NoClass)</span></a>
 <a name="98"><span class="lineNum">      98 </span>                :<span class="lineNoCov">          0 :             return accum;</span></a>
 <a name="99"><span class="lineNum">      99 </span>  [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 3 was not executed"> # </span>]:<span class="lineNoCov">          0 :         if (accum == Memory || cl == Memory)</span></a>
@@ -194,23 +194,23 @@
 <a name="115"><span class="lineNum">     115 </span>                :            :         // make sure other half knows about it too:</a>
 <a name="116"><span class="lineNum">     116 </span>                :            :         accum.addField(offset+16, ComplexX87);</a>
 <a name="117"><span class="lineNum">     117 </span>                :            :     } */</a>
-<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">     279912 : void classifyType(Classification&amp; accum, jl_datatype_t *dt, uint64_t offset) const</span></a>
+<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">     537888 : void classifyType(Classification&amp; accum, jl_datatype_t *dt, uint64_t offset) const</span></a>
 <a name="119"><span class="lineNum">     119 </span>                :            : {</a>
 <a name="120"><span class="lineNum">     120 </span>                :            :     // Floating point types</a>
-<a name="121"><span class="lineNum">     121 </span>  [<span class="branchCov" title="Branch 0 was taken 279730 times"> + </span><span class="branchCov" title="Branch 1 was taken 182 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span><span class="branchCov" title="Branch 3 was taken 279724 times"> + </span>]:<span class="lineCov">     279912 :     if (dt == jl_float64_type || dt == jl_float32_type) {</span></a>
-<a name="122"><span class="lineNum">     122 </span>                :<span class="lineCov">        188 :         accum.addField(offset, Sse);</span></a>
+<a name="121"><span class="lineNum">     121 </span>  [<span class="branchCov" title="Branch 0 was taken 537526 times"> + </span><span class="branchCov" title="Branch 1 was taken 362 times"> + </span><span class="branchCov" title="Branch 2 was taken 12 times"> + </span><span class="branchCov" title="Branch 3 was taken 537514 times"> + </span>]:<span class="lineCov">     537888 :     if (dt == jl_float64_type || dt == jl_float32_type) {</span></a>
+<a name="122"><span class="lineNum">     122 </span>                :<span class="lineCov">        374 :         accum.addField(offset, Sse);</span></a>
 <a name="123"><span class="lineNum">     123 </span>                :            :     }</a>
 <a name="124"><span class="lineNum">     124 </span>                :            :     // Misc types</a>
-<a name="125"><span class="lineNum">     125 </span>        [<span class="branchCov" title="Branch 0 was taken 141483 times"> + </span><span class="branchCov" title="Branch 1 was taken 138241 times"> + </span>]:<span class="lineCov">     279724 :     else if (jl_is_cpointer_type((jl_value_t*)dt)) {</span></a>
-<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">     141483 :         accum.addField(offset, Integer); // passed as a pointer</span></a>
+<a name="125"><span class="lineNum">     125 </span>        [<span class="branchCov" title="Branch 0 was taken 272746 times"> + </span><span class="branchCov" title="Branch 1 was taken 264768 times"> + </span>]:<span class="lineCov">     537514 :     else if (jl_is_cpointer_type((jl_value_t*)dt)) {</span></a>
+<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">     272746 :         accum.addField(offset, Integer); // passed as a pointer</span></a>
 <a name="127"><span class="lineNum">     127 </span>                :            :     }</a>
 <a name="128"><span class="lineNum">     128 </span>                :            :     // Ghost</a>
-<a name="129"><span class="lineNum">     129 </span>        [<span class="branchCov" title="Branch 0 was taken 118264 times"> + </span><span class="branchCov" title="Branch 1 was taken 19977 times"> + </span>]:<span class="lineCov">     138241 :     else if (jl_datatype_size(dt) == 0) {</span></a>
+<a name="129"><span class="lineNum">     129 </span>        [<span class="branchCov" title="Branch 0 was taken 226476 times"> + </span><span class="branchCov" title="Branch 1 was taken 38292 times"> + </span>]:<span class="lineCov">     264768 :     else if (jl_datatype_size(dt) == 0) {</span></a>
 <a name="130"><span class="lineNum">     130 </span>                :            :     }</a>
 <a name="131"><span class="lineNum">     131 </span>                :            :     // BitsTypes and not float, write as Integers</a>
-<a name="132"><span class="lineNum">     132 </span>        [<span class="branchCov" title="Branch 0 was taken 118110 times"> + </span><span class="branchCov" title="Branch 1 was taken 154 times"> + </span>]:<span class="lineCov">     118264 :     else if (jl_is_primitivetype(dt)) {</span></a>
-<a name="133"><span class="lineNum">     133 </span>        [<span class="branchCov" title="Branch 0 was taken 118110 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     118110 :         if (jl_datatype_size(dt) &lt;= 8) {</span></a>
-<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">     118110 :             accum.addField(offset, Integer);</span></a>
+<a name="132"><span class="lineNum">     132 </span>        [<span class="branchCov" title="Branch 0 was taken 226168 times"> + </span><span class="branchCov" title="Branch 1 was taken 308 times"> + </span>]:<span class="lineCov">     226476 :     else if (jl_is_primitivetype(dt)) {</span></a>
+<a name="133"><span class="lineNum">     133 </span>        [<span class="branchCov" title="Branch 0 was taken 226168 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     226168 :         if (jl_datatype_size(dt) &lt;= 8) {</span></a>
+<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">     226168 :             accum.addField(offset, Integer);</span></a>
 <a name="135"><span class="lineNum">     135 </span>                :            :         }</a>
 <a name="136"><span class="lineNum">     136 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         else if (jl_datatype_size(dt) &lt;= 16) {</span></a>
 <a name="137"><span class="lineNum">     137 </span>                :            :             // Int128 or other 128bit wide INTEGER types</a>
@@ -222,119 +222,119 @@
 <a name="143"><span class="lineNum">     143 </span>                :            :         }</a>
 <a name="144"><span class="lineNum">     144 </span>                :            :     }</a>
 <a name="145"><span class="lineNum">     145 </span>                :            :     // struct types that map to SIMD registers</a>
-<a name="146"><span class="lineNum">     146 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 154 times"> + </span>]:<span class="lineCov">        154 :     else if (is_native_simd_type(dt)) {</span></a>
+<a name="146"><span class="lineNum">     146 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 308 times"> + </span>]:<span class="lineCov">        308 :     else if (is_native_simd_type(dt)) {</span></a>
 <a name="147"><span class="lineNum">     147 </span>                :<span class="lineNoCov">          0 :         accum.addField(offset, Sse);</span></a>
 <a name="148"><span class="lineNum">     148 </span>                :            :     }</a>
 <a name="149"><span class="lineNum">     149 </span>                :            :     // Other struct types</a>
-<a name="150"><span class="lineNum">     150 </span>  [<span class="branchCov" title="Branch 0 was taken 152 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 152 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">        154 :     else if (jl_datatype_size(dt) &lt;= 16 &amp;&amp; dt-&gt;layout) {</span></a>
+<a name="150"><span class="lineNum">     150 </span>  [<span class="branchCov" title="Branch 0 was taken 304 times"> + </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span><span class="branchCov" title="Branch 2 was taken 304 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">        308 :     else if (jl_datatype_size(dt) &lt;= 16 &amp;&amp; dt-&gt;layout) {</span></a>
 <a name="151"><span class="lineNum">     151 </span>                :            :         size_t i;</a>
-<a name="152"><span class="lineNum">     152 </span>        [<span class="branchCov" title="Branch 0 was taken 304 times"> + </span><span class="branchCov" title="Branch 1 was taken 152 times"> + </span>]:<span class="lineCov">        456 :         for (i = 0; i &lt; jl_datatype_nfields(dt); ++i) {</span></a>
-<a name="153"><span class="lineNum">     153 </span>                :<span class="lineCov">        304 :             jl_value_t *ty = jl_field_type(dt, i);</span></a>
-<a name="154"><span class="lineNum">     154 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 304 times"> + </span>]:<span class="lineCov">        304 :             if (jl_field_isptr(dt, i))</span></a>
+<a name="152"><span class="lineNum">     152 </span>        [<span class="branchCov" title="Branch 0 was taken 608 times"> + </span><span class="branchCov" title="Branch 1 was taken 304 times"> + </span>]:<span class="lineCov">        912 :         for (i = 0; i &lt; jl_datatype_nfields(dt); ++i) {</span></a>
+<a name="153"><span class="lineNum">     153 </span>                :<span class="lineCov">        608 :             jl_value_t *ty = jl_field_type(dt, i);</span></a>
+<a name="154"><span class="lineNum">     154 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 608 times"> + </span>]:<span class="lineCov">        608 :             if (jl_field_isptr(dt, i))</span></a>
 <a name="155"><span class="lineNum">     155 </span>                :<span class="lineNoCov">          0 :                 ty = (jl_value_t*)jl_voidpointer_type;</span></a>
-<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">        304 :             classifyType(accum, (jl_datatype_t*)ty, offset + jl_field_offset(dt, i));</span></a>
-<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">        152 :         }</span></a>
+<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">        608 :             classifyType(accum, (jl_datatype_t*)ty, offset + jl_field_offset(dt, i));</span></a>
+<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">        304 :         }</span></a>
 <a name="158"><span class="lineNum">     158 </span>                :            :     }</a>
 <a name="159"><span class="lineNum">     159 </span>                :            :     else {</a>
-<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">          2 :         accum.addField(offset, Memory);</span></a>
+<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">          4 :         accum.addField(offset, Memory);</span></a>
 <a name="161"><span class="lineNum">     161 </span>                :            :     }</a>
-<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">     279912 : }</span></a>
+<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">     537888 : }</span></a>
 <a name="163"><span class="lineNum">     163 </span>                :            : </a>
-<a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">     279608 : Classification classify(jl_datatype_t *dt) const</span></a>
+<a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">     537280 : Classification classify(jl_datatype_t *dt) const</span></a>
 <a name="165"><span class="lineNum">     165 </span>                :            : {</a>
-<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">     279608 :     Classification cl;</span></a>
-<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">     279608 :     classifyType(cl, dt, 0);</span></a>
-<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">     279608 :     return cl;</span></a>
+<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">     537280 :     Classification cl;</span></a>
+<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">     537280 :     classifyType(cl, dt, 0);</span></a>
+<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">     537280 :     return cl;</span></a>
 <a name="169"><span class="lineNum">     169 </span>                :            : }</a>
 <a name="170"><span class="lineNum">     170 </span>                :            : </a>
-<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">      84408 : bool use_sret(jl_datatype_t *dt, LLVMContext &amp;ctx) override</span></a>
+<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">     162865 : bool use_sret(jl_datatype_t *dt, LLVMContext &amp;ctx) override</span></a>
 <a name="172"><span class="lineNum">     172 </span>                :            : {</a>
-<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">      84408 :     int sret = classify(dt).isMemory;</span></a>
-<a name="174"><span class="lineNum">     174 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 84406 times"> + </span>]:<span class="lineCov">      84408 :     if (sret) {</span></a>
-<a name="175"><span class="lineNum">     175 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">          2 :         assert(this-&gt;int_regs &gt; 0 &amp;&amp; &quot;No int regs available when determining sret-ness?&quot;);</span></a>
-<a name="176"><span class="lineNum">     176 </span>                :<span class="lineCov">          2 :         this-&gt;int_regs--;</span></a>
+<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">     162865 :     int sret = classify(dt).isMemory;</span></a>
+<a name="174"><span class="lineNum">     174 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 162861 times"> + </span>]:<span class="lineCov">     162865 :     if (sret) {</span></a>
+<a name="175"><span class="lineNum">     175 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">          4 :         assert(this-&gt;int_regs &gt; 0 &amp;&amp; &quot;No int regs available when determining sret-ness?&quot;);</span></a>
+<a name="176"><span class="lineNum">     176 </span>                :<span class="lineCov">          4 :         this-&gt;int_regs--;</span></a>
 <a name="177"><span class="lineNum">     177 </span>                :            :     }</a>
-<a name="178"><span class="lineNum">     178 </span>                :<span class="lineCov">      84408 :     return sret;</span></a>
+<a name="178"><span class="lineNum">     178 </span>                :<span class="lineCov">     162865 :     return sret;</span></a>
 <a name="179"><span class="lineNum">     179 </span>                :            : }</a>
 <a name="180"><span class="lineNum">     180 </span>                :            : </a>
-<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">     136125 : bool needPassByRef(jl_datatype_t *dt, AttrBuilder &amp;ab, LLVMContext &amp;ctx, Type *Ty) override</span></a>
+<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">     261292 : bool needPassByRef(jl_datatype_t *dt, AttrBuilder &amp;ab, LLVMContext &amp;ctx, Type *Ty) override</span></a>
 <a name="182"><span class="lineNum">     182 </span>                :            : {</a>
-<a name="183"><span class="lineNum">     183 </span>                :<span class="lineCov">     136125 :     Classification cl = classify(dt);</span></a>
-<a name="184"><span class="lineNum">     184 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 136125 times"> + </span>]:<span class="lineCov">     136125 :     if (cl.isMemory) {</span></a>
+<a name="183"><span class="lineNum">     183 </span>                :<span class="lineCov">     261292 :     Classification cl = classify(dt);</span></a>
+<a name="184"><span class="lineNum">     184 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 261292 times"> + </span>]:<span class="lineCov">     261292 :     if (cl.isMemory) {</span></a>
 <a name="185"><span class="lineNum">     185 </span>                :<span class="lineNoCov">          0 :         ab.addByValAttr(Ty);</span></a>
 <a name="186"><span class="lineNum">     186 </span>                :<span class="lineNoCov">          0 :         return true;</span></a>
 <a name="187"><span class="lineNum">     187 </span>                :            :     }</a>
 <a name="188"><span class="lineNum">     188 </span>                :            : </a>
 <a name="189"><span class="lineNum">     189 </span>                :            :     // Figure out how many registers we want for this arg:</a>
-<a name="190"><span class="lineNum">     190 </span>                :<span class="lineCov">     272250 :     ABI_x86_64Layout wanted(0, 0);</span></a>
-<a name="191"><span class="lineNum">     191 </span>        [<span class="branchCov" title="Branch 0 was taken 272250 times"> + </span><span class="branchCov" title="Branch 1 was taken 136125 times"> + </span>]:<span class="lineCov">     408375 :     for (int i = 0 ; i &lt; 2; i++) {</span></a>
-<a name="192"><span class="lineNum">     192 </span>        [<span class="branchCov" title="Branch 0 was taken 136150 times"> + </span><span class="branchCov" title="Branch 1 was taken 136100 times"> + </span>]:<span class="lineCov">     272250 :         if (cl.classes[i] == Integer)</span></a>
-<a name="193"><span class="lineNum">     193 </span>                :<span class="lineCov">     136150 :             wanted.int_regs++;</span></a>
-<a name="194"><span class="lineNum">     194 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 136097 times"> + </span>]:<span class="lineCov">     136100 :         else if (cl.classes[i] == Sse)</span></a>
-<a name="195"><span class="lineNum">     195 </span>                :<span class="lineCov">          3 :             wanted.sse_regs++;</span></a>
+<a name="190"><span class="lineNum">     190 </span>                :<span class="lineCov">     522584 :     ABI_x86_64Layout wanted(0, 0);</span></a>
+<a name="191"><span class="lineNum">     191 </span>        [<span class="branchCov" title="Branch 0 was taken 522584 times"> + </span><span class="branchCov" title="Branch 1 was taken 261292 times"> + </span>]:<span class="lineCov">     783876 :     for (int i = 0 ; i &lt; 2; i++) {</span></a>
+<a name="192"><span class="lineNum">     192 </span>        [<span class="branchCov" title="Branch 0 was taken 261342 times"> + </span><span class="branchCov" title="Branch 1 was taken 261242 times"> + </span>]:<span class="lineCov">     522584 :         if (cl.classes[i] == Integer)</span></a>
+<a name="193"><span class="lineNum">     193 </span>                :<span class="lineCov">     261342 :             wanted.int_regs++;</span></a>
+<a name="194"><span class="lineNum">     194 </span>        [<span class="branchCov" title="Branch 0 was taken 6 times"> + </span><span class="branchCov" title="Branch 1 was taken 261236 times"> + </span>]:<span class="lineCov">     261242 :         else if (cl.classes[i] == Sse)</span></a>
+<a name="195"><span class="lineNum">     195 </span>                :<span class="lineCov">          6 :             wanted.sse_regs++;</span></a>
 <a name="196"><span class="lineNum">     196 </span>                :            :     }</a>
 <a name="197"><span class="lineNum">     197 </span>                :            : </a>
-<a name="198"><span class="lineNum">     198 </span>  [<span class="branchCov" title="Branch 0 was taken 135856 times"> + </span><span class="branchCov" title="Branch 1 was taken 269 times"> + </span><span class="branchCov" title="Branch 2 was taken 135856 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     136125 :     if (wanted.int_regs &lt;= this-&gt;int_regs &amp;&amp; wanted.sse_regs &lt;= this-&gt;sse_regs) {</span></a>
-<a name="199"><span class="lineNum">     199 </span>                :<span class="lineCov">     135856 :         this-&gt;int_regs -= wanted.int_regs;</span></a>
-<a name="200"><span class="lineNum">     200 </span>                :<span class="lineCov">     135856 :         this-&gt;sse_regs -= wanted.sse_regs;</span></a>
+<a name="198"><span class="lineNum">     198 </span>  [<span class="branchCov" title="Branch 0 was taken 260805 times"> + </span><span class="branchCov" title="Branch 1 was taken 487 times"> + </span><span class="branchCov" title="Branch 2 was taken 260805 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     261292 :     if (wanted.int_regs &lt;= this-&gt;int_regs &amp;&amp; wanted.sse_regs &lt;= this-&gt;sse_regs) {</span></a>
+<a name="199"><span class="lineNum">     199 </span>                :<span class="lineCov">     260805 :         this-&gt;int_regs -= wanted.int_regs;</span></a>
+<a name="200"><span class="lineNum">     200 </span>                :<span class="lineCov">     260805 :         this-&gt;sse_regs -= wanted.sse_regs;</span></a>
 <a name="201"><span class="lineNum">     201 </span>                :            :     }</a>
-<a name="202"><span class="lineNum">     202 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 269 times"> + </span>]:<span class="lineCov">        269 :     else if (jl_is_structtype(dt)) {</span></a>
+<a name="202"><span class="lineNum">     202 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 487 times"> + </span>]:<span class="lineCov">        487 :     else if (jl_is_structtype(dt)) {</span></a>
 <a name="203"><span class="lineNum">     203 </span>                :            :         // spill to memory even though we would ordinarily pass</a>
 <a name="204"><span class="lineNum">     204 </span>                :            :         // it in registers</a>
 <a name="205"><span class="lineNum">     205 </span>                :<span class="lineNoCov">          0 :         ab.addByValAttr(Ty);</span></a>
 <a name="206"><span class="lineNum">     206 </span>                :<span class="lineNoCov">          0 :         return true;</span></a>
 <a name="207"><span class="lineNum">     207 </span>                :            :     }</a>
-<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">     136125 :     return false;</span></a>
+<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">     261292 :     return false;</span></a>
 <a name="209"><span class="lineNum">     209 </span>                :            : }</a>
 <a name="210"><span class="lineNum">     210 </span>                :            : </a>
 <a name="211"><span class="lineNum">     211 </span>                :            : // Called on behalf of ccall to determine preferred LLVM representation</a>
 <a name="212"><span class="lineNum">     212 </span>                :            : // for an argument or return value.</a>
-<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">      59075 : Type *preferred_llvm_type(jl_datatype_t *dt, bool isret, LLVMContext &amp;ctx) const override</span></a>
+<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">     113123 : Type *preferred_llvm_type(jl_datatype_t *dt, bool isret, LLVMContext &amp;ctx) const override</span></a>
 <a name="214"><span class="lineNum">     214 </span>                :            : {</a>
 <a name="215"><span class="lineNum">     215 </span>                :            :     (void) isret;</a>
 <a name="216"><span class="lineNum">     216 </span>                :            :     // no need to rewrite these types (they are returned as pointers anyways)</a>
-<a name="217"><span class="lineNum">     217 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59075 times"> + </span>]:<span class="lineCov">      59075 :     if (is_native_simd_type(dt))</span></a>
+<a name="217"><span class="lineNum">     217 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 113123 times"> + </span>]:<span class="lineCov">     113123 :     if (is_native_simd_type(dt))</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="219"><span class="lineNum">     219 </span>                :            : </a>
-<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">      59075 :     size_t size = jl_datatype_size(dt);</span></a>
-<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">      59075 :     size_t nbits = jl_datatype_nbits(dt);</span></a>
-<a name="222"><span class="lineNum">     222 </span>  [<span class="branchCov" title="Branch 0 was taken 59075 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 59075 times"> + </span>]:<span class="lineCov">      59075 :     if (size &gt; 16 || size == 0)</span></a>
+<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">     113123 :     size_t size = jl_datatype_size(dt);</span></a>
+<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">     113123 :     size_t nbits = jl_datatype_nbits(dt);</span></a>
+<a name="222"><span class="lineNum">     222 </span>  [<span class="branchCov" title="Branch 0 was taken 113123 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 113123 times"> + </span>]:<span class="lineCov">     113123 :     if (size &gt; 16 || size == 0)</span></a>
 <a name="223"><span class="lineNum">     223 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="224"><span class="lineNum">     224 </span>                :            : </a>
-<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">      59075 :     Classification cl = classify(dt);</span></a>
-<a name="226"><span class="lineNum">     226 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59075 times"> + </span>]:<span class="lineCov">      59075 :     if (cl.isMemory)</span></a>
+<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">     113123 :     Classification cl = classify(dt);</span></a>
+<a name="226"><span class="lineNum">     226 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 113123 times"> + </span>]:<span class="lineCov">     113123 :     if (cl.isMemory)</span></a>
 <a name="227"><span class="lineNum">     227 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="228"><span class="lineNum">     228 </span>                :            : </a>
 <a name="229"><span class="lineNum">     229 </span>                :            :     Type *types[2];</a>
-<a name="230"><span class="lineNum">     230 </span>     [<span class="branchCov" title="Branch 0 was taken 58990 times"> + </span><span class="branchCov" title="Branch 1 was taken 85 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>]:<span class="lineCov">      59075 :     switch (cl.classes[0]) {</span></a>
-<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">      58990 :         case Integer:</span></a>
-<a name="232"><span class="lineNum">     232 </span>        [<span class="branchCov" title="Branch 0 was taken 48953 times"> + </span><span class="branchCov" title="Branch 1 was taken 10037 times"> + </span>]:<span class="lineCov">      58990 :             if (size &gt;= 8)</span></a>
-<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">      48953 :                 types[0] = Type::getInt64Ty(ctx);</span></a>
+<a name="230"><span class="lineNum">     230 </span>     [<span class="branchCov" title="Branch 0 was taken 112954 times"> + </span><span class="branchCov" title="Branch 1 was taken 169 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>]:<span class="lineCov">     113123 :     switch (cl.classes[0]) {</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">     112954 :         case Integer:</span></a>
+<a name="232"><span class="lineNum">     232 </span>        [<span class="branchCov" title="Branch 0 was taken 93491 times"> + </span><span class="branchCov" title="Branch 1 was taken 19463 times"> + </span>]:<span class="lineCov">     112954 :             if (size &gt;= 8)</span></a>
+<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">      93491 :                 types[0] = Type::getInt64Ty(ctx);</span></a>
 <a name="234"><span class="lineNum">     234 </span>                :            :             else</a>
-<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">      10037 :                 types[0] = Type::getIntNTy(ctx, nbits);</span></a>
-<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov">      58990 :             break;</span></a>
-<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">         85 :         case Sse:</span></a>
-<a name="238"><span class="lineNum">     238 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 82 times"> + </span>]:<span class="lineCov">         85 :             if (size &lt;= 4)</span></a>
-<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">          3 :                 types[0] = Type::getFloatTy(ctx);</span></a>
+<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">      19463 :                 types[0] = Type::getIntNTy(ctx, nbits);</span></a>
+<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov">     112954 :             break;</span></a>
+<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">        169 :         case Sse:</span></a>
+<a name="238"><span class="lineNum">     238 </span>        [<span class="branchCov" title="Branch 0 was taken 6 times"> + </span><span class="branchCov" title="Branch 1 was taken 163 times"> + </span>]:<span class="lineCov">        169 :             if (size &lt;= 4)</span></a>
+<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">          6 :                 types[0] = Type::getFloatTy(ctx);</span></a>
 <a name="240"><span class="lineNum">     240 </span>                :            :             else</a>
-<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">         82 :                 types[0] = Type::getDoubleTy(ctx);</span></a>
-<a name="242"><span class="lineNum">     242 </span>                :<span class="lineCov">         85 :             break;</span></a>
+<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">        163 :                 types[0] = Type::getDoubleTy(ctx);</span></a>
+<a name="242"><span class="lineNum">     242 </span>                :<span class="lineCov">        169 :             break;</span></a>
 <a name="243"><span class="lineNum">     243 </span>                :<span class="lineNoCov">          0 :         default:</span></a>
 <a name="244"><span class="lineNum">     244 </span>                :<span class="lineNoCov">          0 :             assert(0 &amp;&amp; &quot;Unexpected cl.classes[0]&quot;);</span></a>
 <a name="245"><span class="lineNum">     245 </span>                :            :     }</a>
-<a name="246"><span class="lineNum">     246 </span>  [<span class="branchCov" title="Branch 0 was taken 58999 times"> + </span><span class="branchCov" title="Branch 1 was taken 67 times"> + </span><span class="branchCov" title="Branch 2 was taken 9 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">      59075 :     switch (cl.classes[1]) {</span></a>
-<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">      58999 :         case NoClass:</span></a>
-<a name="248"><span class="lineNum">     248 </span>                :<span class="lineCov">      58999 :             return types[0];</span></a>
-<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">         67 :         case Integer:</span></a>
-<a name="250"><span class="lineNum">     250 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 67 times"> + </span>]:<span class="lineCov">         67 :             assert(size &gt; 8);</span></a>
-<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">         67 :             types[1] = Type::getIntNTy(ctx, (nbits-64));</span></a>
-<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">         67 :             return StructType::get(ctx,ArrayRef&lt;Type*&gt;(&amp;types[0],2));</span></a>
-<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">          9 :         case Sse:</span></a>
-<a name="254"><span class="lineNum">     254 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 9 times"> + </span>]:<span class="lineCov">          9 :             if (size &lt;= 12)</span></a>
+<a name="246"><span class="lineNum">     246 </span>  [<span class="branchCov" title="Branch 0 was taken 112971 times"> + </span><span class="branchCov" title="Branch 1 was taken 134 times"> + </span><span class="branchCov" title="Branch 2 was taken 18 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     113123 :     switch (cl.classes[1]) {</span></a>
+<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">     112971 :         case NoClass:</span></a>
+<a name="248"><span class="lineNum">     248 </span>                :<span class="lineCov">     112971 :             return types[0];</span></a>
+<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">        134 :         case Integer:</span></a>
+<a name="250"><span class="lineNum">     250 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 134 times"> + </span>]:<span class="lineCov">        134 :             assert(size &gt; 8);</span></a>
+<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">        134 :             types[1] = Type::getIntNTy(ctx, (nbits-64));</span></a>
+<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">        134 :             return StructType::get(ctx,ArrayRef&lt;Type*&gt;(&amp;types[0],2));</span></a>
+<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">         18 :         case Sse:</span></a>
+<a name="254"><span class="lineNum">     254 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 18 times"> + </span>]:<span class="lineCov">         18 :             if (size &lt;= 12)</span></a>
 <a name="255"><span class="lineNum">     255 </span>                :<span class="lineNoCov">          0 :                 types[1] = Type::getFloatTy(ctx);</span></a>
 <a name="256"><span class="lineNum">     256 </span>                :            :             else</a>
-<a name="257"><span class="lineNum">     257 </span>                :<span class="lineCov">          9 :                 types[1] = Type::getDoubleTy(ctx);</span></a>
-<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">          9 :             return StructType::get(ctx,ArrayRef&lt;Type*&gt;(&amp;types[0],2));</span></a>
+<a name="257"><span class="lineNum">     257 </span>                :<span class="lineCov">         18 :                 types[1] = Type::getDoubleTy(ctx);</span></a>
+<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">         18 :             return StructType::get(ctx,ArrayRef&lt;Type*&gt;(&amp;types[0],2));</span></a>
 <a name="259"><span class="lineNum">     259 </span>                :<span class="lineNoCov">          0 :         default:</span></a>
 <a name="260"><span class="lineNum">     260 </span>                :<span class="lineNoCov">          0 :             assert(0 &amp;&amp; &quot;Unexpected cl.classes[0]&quot;);</span></a>
 <a name="261"><span class="lineNum">     261 </span>                :            :     }</a>

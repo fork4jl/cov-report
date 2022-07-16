@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/sys.c</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/sys.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">158</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">43</td>
@@ -141,7 +141,7 @@
 <a name="63"><span class="lineNum">      63 </span>                :            : </a>
 <a name="64"><span class="lineNum">      64 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT int jl_sizeof_off_t(void) { return sizeof(off_t); }</span></a>
 <a name="65"><span class="lineNum">      65 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT int jl_sizeof_mode_t(void) { return sizeof(mode_t); }</span></a>
+<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">          2 : JL_DLLEXPORT int jl_sizeof_mode_t(void) { return sizeof(mode_t); }</span></a>
 <a name="67"><span class="lineNum">      67 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT int jl_ftruncate(int fd, int64_t length)</span></a>
 <a name="68"><span class="lineNum">      68 </span>                :            : {</a>
 <a name="69"><span class="lineNum">      69 </span>                :<span class="lineNoCov">          0 :     return ftruncate(fd, (off_t)length);</span></a>
@@ -169,7 +169,7 @@
 <a name="91"><span class="lineNum">      91 </span>                :            :     return tell.QuadPart;</a>
 <a name="92"><span class="lineNum">      92 </span>                :            : }</a>
 <a name="93"><span class="lineNum">      93 </span>                :            : #endif</a>
-<a name="94"><span class="lineNum">      94 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT int jl_sizeof_ios_t(void) { return sizeof(ios_t); }</span></a>
+<a name="94"><span class="lineNum">      94 </span>                :<span class="lineCov">          2 : JL_DLLEXPORT int jl_sizeof_ios_t(void) { return sizeof(ios_t); }</span></a>
 <a name="95"><span class="lineNum">      95 </span>                :            : </a>
 <a name="96"><span class="lineNum">      96 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT long jl_ios_fd(ios_t *s) { return s-&gt;fd; }</span></a>
 <a name="97"><span class="lineNum">      97 </span>                :            : </a>
@@ -181,98 +181,98 @@
 <a name="103"><span class="lineNum">     103 </span>                :            : // --- dir/file stuff ---</a>
 <a name="104"><span class="lineNum">     104 </span>                :            : </a>
 <a name="105"><span class="lineNum">     105 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT int jl_sizeof_uv_fs_t(void) { return sizeof(uv_fs_t); }</span></a>
-<a name="106"><span class="lineNum">     106 </span>                :<span class="lineCov">        167 : JL_DLLEXPORT char *jl_uv_fs_t_ptr(uv_fs_t *req) { return (char*)req-&gt;ptr; }</span></a>
-<a name="107"><span class="lineNum">     107 </span>                :<span class="lineCov">          4 : JL_DLLEXPORT char *jl_uv_fs_t_path(uv_fs_t *req) { return (char*)req-&gt;path; }</span></a>
+<a name="106"><span class="lineNum">     106 </span>                :<span class="lineCov">        334 : JL_DLLEXPORT char *jl_uv_fs_t_ptr(uv_fs_t *req) { return (char*)req-&gt;ptr; }</span></a>
+<a name="107"><span class="lineNum">     107 </span>                :<span class="lineCov">          8 : JL_DLLEXPORT char *jl_uv_fs_t_path(uv_fs_t *req) { return (char*)req-&gt;path; }</span></a>
 <a name="108"><span class="lineNum">     108 </span>                :            : </a>
 <a name="109"><span class="lineNum">     109 </span>                :            : // --- stat ---</a>
-<a name="110"><span class="lineNum">     110 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT int jl_sizeof_stat(void) { return sizeof(uv_stat_t); }</span></a>
+<a name="110"><span class="lineNum">     110 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT int jl_sizeof_stat(void) { return sizeof(uv_stat_t); }</span></a>
 <a name="111"><span class="lineNum">     111 </span>                :            : </a>
-<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">       3361 : JL_DLLEXPORT int32_t jl_stat(const char *path, char *statbuf) JL_NOTSAFEPOINT</span></a>
+<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">       6705 : JL_DLLEXPORT int32_t jl_stat(const char *path, char *statbuf) JL_NOTSAFEPOINT</span></a>
 <a name="113"><span class="lineNum">     113 </span>                :            : {</a>
 <a name="114"><span class="lineNum">     114 </span>                :            :     uv_fs_t req;</a>
 <a name="115"><span class="lineNum">     115 </span>                :            :     int ret;</a>
 <a name="116"><span class="lineNum">     116 </span>                :            : </a>
 <a name="117"><span class="lineNum">     117 </span>                :            :     // Ideally one would use the statbuf for the storage in req, but</a>
 <a name="118"><span class="lineNum">     118 </span>                :            :     // it's not clear that this is possible using libuv</a>
-<a name="119"><span class="lineNum">     119 </span>                :<span class="lineCov">       3361 :     ret = uv_fs_stat(unused_uv_loop_arg, &amp;req, path, NULL);</span></a>
-<a name="120"><span class="lineNum">     120 </span>        [<span class="branchCov" title="Branch 0 was taken 2186 times"> + </span><span class="branchCov" title="Branch 1 was taken 1175 times"> + </span>]:<span class="lineCov">       3361 :     if (ret == 0)</span></a>
-<a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">       2186 :         memcpy(statbuf, req.ptr, sizeof(uv_stat_t));</span></a>
-<a name="122"><span class="lineNum">     122 </span>                :<span class="lineCov">       3361 :     uv_fs_req_cleanup(&amp;req);</span></a>
-<a name="123"><span class="lineNum">     123 </span>                :<span class="lineCov">       3361 :     return ret;</span></a>
+<a name="119"><span class="lineNum">     119 </span>                :<span class="lineCov">       6705 :     ret = uv_fs_stat(unused_uv_loop_arg, &amp;req, path, NULL);</span></a>
+<a name="120"><span class="lineNum">     120 </span>        [<span class="branchCov" title="Branch 0 was taken 4361 times"> + </span><span class="branchCov" title="Branch 1 was taken 2344 times"> + </span>]:<span class="lineCov">       6705 :     if (ret == 0)</span></a>
+<a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">       4361 :         memcpy(statbuf, req.ptr, sizeof(uv_stat_t));</span></a>
+<a name="122"><span class="lineNum">     122 </span>                :<span class="lineCov">       6705 :     uv_fs_req_cleanup(&amp;req);</span></a>
+<a name="123"><span class="lineNum">     123 </span>                :<span class="lineCov">       6705 :     return ret;</span></a>
 <a name="124"><span class="lineNum">     124 </span>                :            : }</a>
 <a name="125"><span class="lineNum">     125 </span>                :            : </a>
-<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">        203 : JL_DLLEXPORT int32_t jl_lstat(const char *path, char *statbuf)</span></a>
+<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">        406 : JL_DLLEXPORT int32_t jl_lstat(const char *path, char *statbuf)</span></a>
 <a name="127"><span class="lineNum">     127 </span>                :            : {</a>
 <a name="128"><span class="lineNum">     128 </span>                :            :     uv_fs_t req;</a>
 <a name="129"><span class="lineNum">     129 </span>                :            :     int ret;</a>
 <a name="130"><span class="lineNum">     130 </span>                :            : </a>
-<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">        203 :     ret = uv_fs_lstat(unused_uv_loop_arg, &amp;req, path, NULL);</span></a>
-<a name="132"><span class="lineNum">     132 </span>        [<span class="branchCov" title="Branch 0 was taken 198 times"> + </span><span class="branchCov" title="Branch 1 was taken 5 times"> + </span>]:<span class="lineCov">        203 :     if (ret == 0)</span></a>
-<a name="133"><span class="lineNum">     133 </span>                :<span class="lineCov">        198 :         memcpy(statbuf, req.ptr, sizeof(uv_stat_t));</span></a>
-<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">        203 :     uv_fs_req_cleanup(&amp;req);</span></a>
-<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">        203 :     return ret;</span></a>
+<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">        406 :     ret = uv_fs_lstat(unused_uv_loop_arg, &amp;req, path, NULL);</span></a>
+<a name="132"><span class="lineNum">     132 </span>        [<span class="branchCov" title="Branch 0 was taken 396 times"> + </span><span class="branchCov" title="Branch 1 was taken 10 times"> + </span>]:<span class="lineCov">        406 :     if (ret == 0)</span></a>
+<a name="133"><span class="lineNum">     133 </span>                :<span class="lineCov">        396 :         memcpy(statbuf, req.ptr, sizeof(uv_stat_t));</span></a>
+<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">        406 :     uv_fs_req_cleanup(&amp;req);</span></a>
+<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">        406 :     return ret;</span></a>
 <a name="136"><span class="lineNum">     136 </span>                :            : }</a>
 <a name="137"><span class="lineNum">     137 </span>                :            : </a>
-<a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">         12 : JL_DLLEXPORT int32_t jl_fstat(uv_os_fd_t fd, char *statbuf)</span></a>
+<a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">         24 : JL_DLLEXPORT int32_t jl_fstat(uv_os_fd_t fd, char *statbuf)</span></a>
 <a name="139"><span class="lineNum">     139 </span>                :            : {</a>
 <a name="140"><span class="lineNum">     140 </span>                :            :     uv_fs_t req;</a>
 <a name="141"><span class="lineNum">     141 </span>                :            :     int ret;</a>
 <a name="142"><span class="lineNum">     142 </span>                :            : </a>
-<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">         12 :     ret = uv_fs_fstat(unused_uv_loop_arg, &amp;req, fd, NULL);</span></a>
-<a name="144"><span class="lineNum">     144 </span>        [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         12 :     if (ret == 0)</span></a>
-<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">         12 :         memcpy(statbuf, req.ptr, sizeof(uv_stat_t));</span></a>
-<a name="146"><span class="lineNum">     146 </span>                :<span class="lineCov">         12 :     uv_fs_req_cleanup(&amp;req);</span></a>
-<a name="147"><span class="lineNum">     147 </span>                :<span class="lineCov">         12 :     return ret;</span></a>
+<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">         24 :     ret = uv_fs_fstat(unused_uv_loop_arg, &amp;req, fd, NULL);</span></a>
+<a name="144"><span class="lineNum">     144 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         24 :     if (ret == 0)</span></a>
+<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">         24 :         memcpy(statbuf, req.ptr, sizeof(uv_stat_t));</span></a>
+<a name="146"><span class="lineNum">     146 </span>                :<span class="lineCov">         24 :     uv_fs_req_cleanup(&amp;req);</span></a>
+<a name="147"><span class="lineNum">     147 </span>                :<span class="lineCov">         24 :     return ret;</span></a>
 <a name="148"><span class="lineNum">     148 </span>                :            : }</a>
 <a name="149"><span class="lineNum">     149 </span>                :            : </a>
-<a name="150"><span class="lineNum">     150 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_dev(char *statbuf)</span></a>
+<a name="150"><span class="lineNum">     150 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_dev(char *statbuf)</span></a>
 <a name="151"><span class="lineNum">     151 </span>                :            : {</a>
-<a name="152"><span class="lineNum">     152 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_dev;</span></a>
+<a name="152"><span class="lineNum">     152 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_dev;</span></a>
 <a name="153"><span class="lineNum">     153 </span>                :            : }</a>
 <a name="154"><span class="lineNum">     154 </span>                :            : </a>
-<a name="155"><span class="lineNum">     155 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_ino(char *statbuf)</span></a>
+<a name="155"><span class="lineNum">     155 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_ino(char *statbuf)</span></a>
 <a name="156"><span class="lineNum">     156 </span>                :            : {</a>
-<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_ino;</span></a>
+<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_ino;</span></a>
 <a name="158"><span class="lineNum">     158 </span>                :            : }</a>
 <a name="159"><span class="lineNum">     159 </span>                :            : </a>
-<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_mode(char *statbuf)</span></a>
+<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_mode(char *statbuf)</span></a>
 <a name="161"><span class="lineNum">     161 </span>                :            : {</a>
-<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_mode;</span></a>
+<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_mode;</span></a>
 <a name="163"><span class="lineNum">     163 </span>                :            : }</a>
 <a name="164"><span class="lineNum">     164 </span>                :            : </a>
-<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_nlink(char *statbuf)</span></a>
+<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_nlink(char *statbuf)</span></a>
 <a name="166"><span class="lineNum">     166 </span>                :            : {</a>
-<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_nlink;</span></a>
+<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_nlink;</span></a>
 <a name="168"><span class="lineNum">     168 </span>                :            : }</a>
 <a name="169"><span class="lineNum">     169 </span>                :            : </a>
-<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_uid(char *statbuf)</span></a>
+<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_uid(char *statbuf)</span></a>
 <a name="171"><span class="lineNum">     171 </span>                :            : {</a>
-<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_uid;</span></a>
+<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_uid;</span></a>
 <a name="173"><span class="lineNum">     173 </span>                :            : }</a>
 <a name="174"><span class="lineNum">     174 </span>                :            : </a>
-<a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_gid(char *statbuf)</span></a>
+<a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_gid(char *statbuf)</span></a>
 <a name="176"><span class="lineNum">     176 </span>                :            : {</a>
-<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_gid;</span></a>
+<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_gid;</span></a>
 <a name="178"><span class="lineNum">     178 </span>                :            : }</a>
 <a name="179"><span class="lineNum">     179 </span>                :            : </a>
-<a name="180"><span class="lineNum">     180 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT unsigned int jl_stat_rdev(char *statbuf)</span></a>
+<a name="180"><span class="lineNum">     180 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT unsigned int jl_stat_rdev(char *statbuf)</span></a>
 <a name="181"><span class="lineNum">     181 </span>                :            : {</a>
-<a name="182"><span class="lineNum">     182 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_rdev;</span></a>
+<a name="182"><span class="lineNum">     182 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_rdev;</span></a>
 <a name="183"><span class="lineNum">     183 </span>                :            : }</a>
 <a name="184"><span class="lineNum">     184 </span>                :            : </a>
-<a name="185"><span class="lineNum">     185 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT uint64_t jl_stat_size(char *statbuf)</span></a>
+<a name="185"><span class="lineNum">     185 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT uint64_t jl_stat_size(char *statbuf)</span></a>
 <a name="186"><span class="lineNum">     186 </span>                :            : {</a>
-<a name="187"><span class="lineNum">     187 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_size;</span></a>
+<a name="187"><span class="lineNum">     187 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_size;</span></a>
 <a name="188"><span class="lineNum">     188 </span>                :            : }</a>
 <a name="189"><span class="lineNum">     189 </span>                :            : </a>
-<a name="190"><span class="lineNum">     190 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT uint64_t jl_stat_blksize(char *statbuf)</span></a>
+<a name="190"><span class="lineNum">     190 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT uint64_t jl_stat_blksize(char *statbuf)</span></a>
 <a name="191"><span class="lineNum">     191 </span>                :            : {</a>
-<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_blksize;</span></a>
+<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_blksize;</span></a>
 <a name="193"><span class="lineNum">     193 </span>                :            : }</a>
 <a name="194"><span class="lineNum">     194 </span>                :            : </a>
-<a name="195"><span class="lineNum">     195 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT uint64_t jl_stat_blocks(char *statbuf)</span></a>
+<a name="195"><span class="lineNum">     195 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT uint64_t jl_stat_blocks(char *statbuf)</span></a>
 <a name="196"><span class="lineNum">     196 </span>                :            : {</a>
-<a name="197"><span class="lineNum">     197 </span>                :<span class="lineCov">       3576 :     return ((uv_stat_t*)statbuf)-&gt;st_blocks;</span></a>
+<a name="197"><span class="lineNum">     197 </span>                :<span class="lineCov">       7135 :     return ((uv_stat_t*)statbuf)-&gt;st_blocks;</span></a>
 <a name="198"><span class="lineNum">     198 </span>                :            : }</a>
 <a name="199"><span class="lineNum">     199 </span>                :            : </a>
 <a name="200"><span class="lineNum">     200 </span>                :            : /*</a>
@@ -285,18 +285,18 @@
 <a name="207"><span class="lineNum">     207 </span>                :            : }</a>
 <a name="208"><span class="lineNum">     208 </span>                :            : */</a>
 <a name="209"><span class="lineNum">     209 </span>                :            : </a>
-<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT double jl_stat_mtime(char *statbuf)</span></a>
+<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT double jl_stat_mtime(char *statbuf)</span></a>
 <a name="211"><span class="lineNum">     211 </span>                :            : {</a>
 <a name="212"><span class="lineNum">     212 </span>                :            :     uv_stat_t *s;</a>
-<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">       3576 :     s = (uv_stat_t*)statbuf;</span></a>
-<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">       3576 :     return (double)s-&gt;st_mtim.tv_sec + (double)s-&gt;st_mtim.tv_nsec * 1e-9;</span></a>
+<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">       7135 :     s = (uv_stat_t*)statbuf;</span></a>
+<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">       7135 :     return (double)s-&gt;st_mtim.tv_sec + (double)s-&gt;st_mtim.tv_nsec * 1e-9;</span></a>
 <a name="215"><span class="lineNum">     215 </span>                :            : }</a>
 <a name="216"><span class="lineNum">     216 </span>                :            : </a>
-<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">       3576 : JL_DLLEXPORT double jl_stat_ctime(char *statbuf)</span></a>
+<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">       7135 : JL_DLLEXPORT double jl_stat_ctime(char *statbuf)</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :            : {</a>
 <a name="219"><span class="lineNum">     219 </span>                :            :     uv_stat_t *s;</a>
-<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">       3576 :     s = (uv_stat_t*)statbuf;</span></a>
-<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">       3576 :     return (double)s-&gt;st_ctim.tv_sec + (double)s-&gt;st_ctim.tv_nsec * 1e-9;</span></a>
+<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">       7135 :     s = (uv_stat_t*)statbuf;</span></a>
+<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">       7135 :     return (double)s-&gt;st_ctim.tv_sec + (double)s-&gt;st_ctim.tv_nsec * 1e-9;</span></a>
 <a name="222"><span class="lineNum">     222 </span>                :            : }</a>
 <a name="223"><span class="lineNum">     223 </span>                :            : </a>
 <a name="224"><span class="lineNum">     224 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT unsigned long jl_getuid(void)</span></a>
@@ -319,21 +319,21 @@
 <a name="241"><span class="lineNum">     241 </span>                :            : </a>
 <a name="242"><span class="lineNum">     242 </span>                :            : // --- buffer manipulation ---</a>
 <a name="243"><span class="lineNum">     243 </span>                :            : </a>
-<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">     130649 : JL_DLLEXPORT jl_array_t *jl_take_buffer(ios_t *s)</span></a>
+<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">     250271 : JL_DLLEXPORT jl_array_t *jl_take_buffer(ios_t *s)</span></a>
 <a name="245"><span class="lineNum">     245 </span>                :            : {</a>
 <a name="246"><span class="lineNum">     246 </span>                :            :     size_t n;</a>
 <a name="247"><span class="lineNum">     247 </span>                :            :     jl_array_t *a;</a>
-<a name="248"><span class="lineNum">     248 </span>        [<span class="branchCov" title="Branch 0 was taken 15483 times"> + </span><span class="branchCov" title="Branch 1 was taken 115166 times"> + </span>]:<span class="lineCov">     130649 :     if (s-&gt;buf == &amp;s-&gt;local[0]) {</span></a>
+<a name="248"><span class="lineNum">     248 </span>        [<span class="branchCov" title="Branch 0 was taken 28754 times"> + </span><span class="branchCov" title="Branch 1 was taken 221517 times"> + </span>]:<span class="lineCov">     250271 :     if (s-&gt;buf == &amp;s-&gt;local[0]) {</span></a>
 <a name="249"><span class="lineNum">     249 </span>                :            :         // small data case. copies, but this can be avoided using the</a>
 <a name="250"><span class="lineNum">     250 </span>                :            :         // technique of jl_readuntil below.</a>
-<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">      15483 :         a = jl_pchar_to_array(s-&gt;buf, s-&gt;size);</span></a>
-<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">      15483 :         ios_trunc(s, 0);</span></a>
+<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">      28754 :         a = jl_pchar_to_array(s-&gt;buf, s-&gt;size);</span></a>
+<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">      28754 :         ios_trunc(s, 0);</span></a>
 <a name="253"><span class="lineNum">     253 </span>                :            :     }</a>
 <a name="254"><span class="lineNum">     254 </span>                :            :     else {</a>
-<a name="255"><span class="lineNum">     255 </span>                :<span class="lineCov">     115166 :         char *b = ios_take_buffer(s, &amp;n);</span></a>
-<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">     115166 :         a = jl_ptr_to_array_1d(jl_array_uint8_type, b, n-1, 1);</span></a>
+<a name="255"><span class="lineNum">     255 </span>                :<span class="lineCov">     221517 :         char *b = ios_take_buffer(s, &amp;n);</span></a>
+<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">     221517 :         a = jl_ptr_to_array_1d(jl_array_uint8_type, b, n-1, 1);</span></a>
 <a name="257"><span class="lineNum">     257 </span>                :            :     }</a>
-<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">     130649 :     return a;</span></a>
+<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">     250271 :     return a;</span></a>
 <a name="259"><span class="lineNum">     259 </span>                :            : }</a>
 <a name="260"><span class="lineNum">     260 </span>                :            : </a>
 <a name="261"><span class="lineNum">     261 </span>                :            : // str: if 1 return a string, otherwise return a Vector{UInt8}</a>
@@ -341,101 +341,101 @@
 <a name="263"><span class="lineNum">     263 </span>                :            : //   0 - keep delimiter</a>
 <a name="264"><span class="lineNum">     264 </span>                :            : //   1 - remove 1 byte delimiter</a>
 <a name="265"><span class="lineNum">     265 </span>                :            : //   2 - remove 2 bytes \r\n if present</a>
-<a name="266"><span class="lineNum">     266 </span>                :<span class="lineCov">       3214 : JL_DLLEXPORT jl_value_t *jl_readuntil(ios_t *s, uint8_t delim, uint8_t str, uint8_t chomp)</span></a>
+<a name="266"><span class="lineNum">     266 </span>                :<span class="lineCov">       6428 : JL_DLLEXPORT jl_value_t *jl_readuntil(ios_t *s, uint8_t delim, uint8_t str, uint8_t chomp)</span></a>
 <a name="267"><span class="lineNum">     267 </span>                :            : {</a>
 <a name="268"><span class="lineNum">     268 </span>                :            :     jl_array_t *a;</a>
 <a name="269"><span class="lineNum">     269 </span>                :            :     // manually inlined common case</a>
-<a name="270"><span class="lineNum">     270 </span>                :<span class="lineCov">       3214 :     char *pd = (char*)memchr(s-&gt;buf + s-&gt;bpos, delim, (size_t)(s-&gt;size - s-&gt;bpos));</span></a>
-<a name="271"><span class="lineNum">     271 </span>        [<span class="branchCov" title="Branch 0 was taken 3209 times"> + </span><span class="branchCov" title="Branch 1 was taken 5 times"> + </span>]:<span class="lineCov">       3214 :     if (pd) {</span></a>
-<a name="272"><span class="lineNum">     272 </span>                :<span class="lineCov">       3209 :         size_t n = pd - (s-&gt;buf + s-&gt;bpos) + 1;</span></a>
-<a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">       3209 :         size_t nchomp = 0;</span></a>
-<a name="274"><span class="lineNum">     274 </span>        [<span class="branchCov" title="Branch 0 was taken 3209 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       3209 :         if (chomp) {</span></a>
-<a name="275"><span class="lineNum">     275 </span>        [<span class="branchCov" title="Branch 0 was taken 3209 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       3209 :             nchomp = chomp == 2 ? ios_nchomp(s, n) : 1;</span></a>
+<a name="270"><span class="lineNum">     270 </span>                :<span class="lineCov">       6428 :     char *pd = (char*)memchr(s-&gt;buf + s-&gt;bpos, delim, (size_t)(s-&gt;size - s-&gt;bpos));</span></a>
+<a name="271"><span class="lineNum">     271 </span>        [<span class="branchCov" title="Branch 0 was taken 6418 times"> + </span><span class="branchCov" title="Branch 1 was taken 10 times"> + </span>]:<span class="lineCov">       6428 :     if (pd) {</span></a>
+<a name="272"><span class="lineNum">     272 </span>                :<span class="lineCov">       6418 :         size_t n = pd - (s-&gt;buf + s-&gt;bpos) + 1;</span></a>
+<a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">       6418 :         size_t nchomp = 0;</span></a>
+<a name="274"><span class="lineNum">     274 </span>        [<span class="branchCov" title="Branch 0 was taken 6418 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       6418 :         if (chomp) {</span></a>
+<a name="275"><span class="lineNum">     275 </span>        [<span class="branchCov" title="Branch 0 was taken 6418 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       6418 :             nchomp = chomp == 2 ? ios_nchomp(s, n) : 1;</span></a>
 <a name="276"><span class="lineNum">     276 </span>                :            :         }</a>
-<a name="277"><span class="lineNum">     277 </span>        [<span class="branchCov" title="Branch 0 was taken 3209 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       3209 :         if (str) {</span></a>
-<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">       3209 :             jl_value_t *str = jl_pchar_to_string(s-&gt;buf + s-&gt;bpos, n - nchomp);</span></a>
-<a name="279"><span class="lineNum">     279 </span>                :<span class="lineCov">       3209 :             s-&gt;bpos += n;</span></a>
-<a name="280"><span class="lineNum">     280 </span>                :<span class="lineCov">       3209 :             return str;</span></a>
+<a name="277"><span class="lineNum">     277 </span>        [<span class="branchCov" title="Branch 0 was taken 6418 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       6418 :         if (str) {</span></a>
+<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">       6418 :             jl_value_t *str = jl_pchar_to_string(s-&gt;buf + s-&gt;bpos, n - nchomp);</span></a>
+<a name="279"><span class="lineNum">     279 </span>                :<span class="lineCov">       6418 :             s-&gt;bpos += n;</span></a>
+<a name="280"><span class="lineNum">     280 </span>                :<span class="lineCov">       6418 :             return str;</span></a>
 <a name="281"><span class="lineNum">     281 </span>                :            :         }</a>
 <a name="282"><span class="lineNum">     282 </span>                :<span class="lineNoCov">          0 :         a = jl_alloc_array_1d(jl_array_uint8_type, n - nchomp);</span></a>
 <a name="283"><span class="lineNum">     283 </span>                :<span class="lineNoCov">          0 :         memcpy(jl_array_data(a), s-&gt;buf + s-&gt;bpos, n - nchomp);</span></a>
 <a name="284"><span class="lineNum">     284 </span>                :<span class="lineNoCov">          0 :         s-&gt;bpos += n;</span></a>
 <a name="285"><span class="lineNum">     285 </span>                :            :     }</a>
 <a name="286"><span class="lineNum">     286 </span>                :            :     else {</a>
-<a name="287"><span class="lineNum">     287 </span>                :<span class="lineCov">          5 :         a = jl_alloc_array_1d(jl_array_uint8_type, 80);</span></a>
+<a name="287"><span class="lineNum">     287 </span>                :<span class="lineCov">         10 :         a = jl_alloc_array_1d(jl_array_uint8_type, 80);</span></a>
 <a name="288"><span class="lineNum">     288 </span>                :            :         ios_t dest;</a>
-<a name="289"><span class="lineNum">     289 </span>                :<span class="lineCov">          5 :         ios_mem(&amp;dest, 0);</span></a>
-<a name="290"><span class="lineNum">     290 </span>                :<span class="lineCov">          5 :         ios_setbuf(&amp;dest, (char*)a-&gt;data, 80, 0);</span></a>
-<a name="291"><span class="lineNum">     291 </span>                :<span class="lineCov">          5 :         size_t n = ios_copyuntil(&amp;dest, s, delim);</span></a>
-<a name="292"><span class="lineNum">     292 </span>  [<span class="branchCov" title="Branch 0 was taken 5 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 5 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">          5 :         if (chomp &amp;&amp; n &gt; 0 &amp;&amp; dest.buf[n - 1] == delim) {</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 5 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]
-<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">          5 :             n--;</span></a>
-<a name="294"><span class="lineNum">     294 </span>  [<span class="branchCov" title="Branch 0 was taken 5 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 5 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">          5 :             if (chomp == 2 &amp;&amp; n &gt; 0 &amp;&amp; dest.buf[n - 1] == '\r') {</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 5 times"> + </span>]
+<a name="289"><span class="lineNum">     289 </span>                :<span class="lineCov">         10 :         ios_mem(&amp;dest, 0);</span></a>
+<a name="290"><span class="lineNum">     290 </span>                :<span class="lineCov">         10 :         ios_setbuf(&amp;dest, (char*)a-&gt;data, 80, 0);</span></a>
+<a name="291"><span class="lineNum">     291 </span>                :<span class="lineCov">         10 :         size_t n = ios_copyuntil(&amp;dest, s, delim);</span></a>
+<a name="292"><span class="lineNum">     292 </span>  [<span class="branchCov" title="Branch 0 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">         10 :         if (chomp &amp;&amp; n &gt; 0 &amp;&amp; dest.buf[n - 1] == delim) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]
+<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">         10 :             n--;</span></a>
+<a name="294"><span class="lineNum">     294 </span>  [<span class="branchCov" title="Branch 0 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">         10 :             if (chomp == 2 &amp;&amp; n &gt; 0 &amp;&amp; dest.buf[n - 1] == '\r') {</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 10 times"> + </span>]
 <a name="295"><span class="lineNum">     295 </span>                :<span class="lineNoCov">          0 :                 n--;</span></a>
 <a name="296"><span class="lineNum">     296 </span>                :            :             }</a>
-<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">          5 :             int truncret = ios_trunc(&amp;dest, n); // it should always be possible to truncate dest</span></a>
-<a name="298"><span class="lineNum">     298 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 5 times"> + </span>]:<span class="lineCov">          5 :             assert(truncret == 0);</span></a>
+<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">         10 :             int truncret = ios_trunc(&amp;dest, n); // it should always be possible to truncate dest</span></a>
+<a name="298"><span class="lineNum">     298 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 10 times"> + </span>]:<span class="lineCov">         10 :             assert(truncret == 0);</span></a>
 <a name="299"><span class="lineNum">     299 </span>                :            :             (void)truncret; // ensure the variable is used to avoid warnings</a>
 <a name="300"><span class="lineNum">     300 </span>                :            :         }</a>
-<a name="301"><span class="lineNum">     301 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 5 times"> + </span>]:<span class="lineCov">          5 :         if (dest.buf != a-&gt;data) {</span></a>
+<a name="301"><span class="lineNum">     301 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 10 times"> + </span>]:<span class="lineCov">         10 :         if (dest.buf != a-&gt;data) {</span></a>
 <a name="302"><span class="lineNum">     302 </span>                :<span class="lineNoCov">          0 :             a = jl_take_buffer(&amp;dest);</span></a>
 <a name="303"><span class="lineNum">     303 </span>                :            :         }</a>
 <a name="304"><span class="lineNum">     304 </span>                :            :         else {</a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">          5 :             a-&gt;length = n;</span></a>
-<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">          5 :             a-&gt;nrows = n;</span></a>
-<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">          5 :             ((char*)a-&gt;data)[n] = '\0';</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">         10 :             a-&gt;length = n;</span></a>
+<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">         10 :             a-&gt;nrows = n;</span></a>
+<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">         10 :             ((char*)a-&gt;data)[n] = '\0';</span></a>
 <a name="308"><span class="lineNum">     308 </span>                :            :         }</a>
-<a name="309"><span class="lineNum">     309 </span>        [<span class="branchCov" title="Branch 0 was taken 5 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          5 :         if (str) {</span></a>
-<a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">          5 :             JL_GC_PUSH1(&amp;a);</span></a>
-<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">          5 :             jl_value_t *st = jl_array_to_string(a);</span></a>
-<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov">          5 :             JL_GC_POP();</span></a>
-<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">          5 :             return st;</span></a>
+<a name="309"><span class="lineNum">     309 </span>        [<span class="branchCov" title="Branch 0 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         10 :         if (str) {</span></a>
+<a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">         10 :             JL_GC_PUSH1(&amp;a);</span></a>
+<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">         10 :             jl_value_t *st = jl_array_to_string(a);</span></a>
+<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov">         10 :             JL_GC_POP();</span></a>
+<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">         10 :             return st;</span></a>
 <a name="314"><span class="lineNum">     314 </span>                :            :         }</a>
 <a name="315"><span class="lineNum">     315 </span>                :            :     }</a>
 <a name="316"><span class="lineNum">     316 </span>                :<span class="lineNoCov">          0 :     return (jl_value_t*)a;</span></a>
 <a name="317"><span class="lineNum">     317 </span>                :            : }</a>
 <a name="318"><span class="lineNum">     318 </span>                :            : </a>
-<a name="319"><span class="lineNum">     319 </span>                :<span class="lineCov">        372 : JL_DLLEXPORT int jl_ios_buffer_n(ios_t *s, const size_t n)</span></a>
+<a name="319"><span class="lineNum">     319 </span>                :<span class="lineCov">        744 : JL_DLLEXPORT int jl_ios_buffer_n(ios_t *s, const size_t n)</span></a>
 <a name="320"><span class="lineNum">     320 </span>                :            : {</a>
 <a name="321"><span class="lineNum">     321 </span>                :            :     size_t space, ret;</a>
 <a name="322"><span class="lineNum">     322 </span>                :            :     do {</a>
-<a name="323"><span class="lineNum">     323 </span>                :<span class="lineCov">        372 :         space = (size_t)(s-&gt;size - s-&gt;bpos);</span></a>
-<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">        372 :         ret = ios_readprep(s, n);</span></a>
-<a name="325"><span class="lineNum">     325 </span>  [<span class="branchCov" title="Branch 0 was taken 372 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 372 times"> + </span>]:<span class="lineCov">        372 :         if (space == ret &amp;&amp; ret &lt; n)</span></a>
+<a name="323"><span class="lineNum">     323 </span>                :<span class="lineCov">        744 :         space = (size_t)(s-&gt;size - s-&gt;bpos);</span></a>
+<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">        744 :         ret = ios_readprep(s, n);</span></a>
+<a name="325"><span class="lineNum">     325 </span>  [<span class="branchCov" title="Branch 0 was taken 744 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 744 times"> + </span>]:<span class="lineCov">        744 :         if (space == ret &amp;&amp; ret &lt; n)</span></a>
 <a name="326"><span class="lineNum">     326 </span>                :<span class="lineNoCov">          0 :             return 1;</span></a>
-<a name="327"><span class="lineNum">     327 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 372 times"> + </span>]:<span class="lineCov">        372 :     } while (ret &lt; n);</span></a>
-<a name="328"><span class="lineNum">     328 </span>                :<span class="lineCov">        372 :     return 0;</span></a>
+<a name="327"><span class="lineNum">     327 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 744 times"> + </span>]:<span class="lineCov">        744 :     } while (ret &lt; n);</span></a>
+<a name="328"><span class="lineNum">     328 </span>                :<span class="lineCov">        744 :     return 0;</span></a>
 <a name="329"><span class="lineNum">     329 </span>                :            : }</a>
 <a name="330"><span class="lineNum">     330 </span>                :            : </a>
-<a name="331"><span class="lineNum">     331 </span>                :<span class="lineCov">        372 : JL_DLLEXPORT uint64_t jl_ios_get_nbyte_int(ios_t *s, const size_t n)</span></a>
+<a name="331"><span class="lineNum">     331 </span>                :<span class="lineCov">        744 : JL_DLLEXPORT uint64_t jl_ios_get_nbyte_int(ios_t *s, const size_t n)</span></a>
 <a name="332"><span class="lineNum">     332 </span>                :            : {</a>
-<a name="333"><span class="lineNum">     333 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 372 times"> + </span>]:<span class="lineCov">        372 :     assert(n &lt;= 8);</span></a>
-<a name="334"><span class="lineNum">     334 </span>                :<span class="lineCov">        372 :     uint64_t x = 0;</span></a>
-<a name="335"><span class="lineNum">     335 </span>                :<span class="lineCov">        372 :     uint8_t *buf = (uint8_t*)&amp;s-&gt;buf[s-&gt;bpos];</span></a>
-<a name="336"><span class="lineNum">     336 </span>        [<span class="branchCov" title="Branch 0 was taken 272 times"> + </span><span class="branchCov" title="Branch 1 was taken 100 times"> + </span>]:<span class="lineCov">        372 :     if (n == 8) {</span></a>
+<a name="333"><span class="lineNum">     333 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 744 times"> + </span>]:<span class="lineCov">        744 :     assert(n &lt;= 8);</span></a>
+<a name="334"><span class="lineNum">     334 </span>                :<span class="lineCov">        744 :     uint64_t x = 0;</span></a>
+<a name="335"><span class="lineNum">     335 </span>                :<span class="lineCov">        744 :     uint8_t *buf = (uint8_t*)&amp;s-&gt;buf[s-&gt;bpos];</span></a>
+<a name="336"><span class="lineNum">     336 </span>        [<span class="branchCov" title="Branch 0 was taken 544 times"> + </span><span class="branchCov" title="Branch 1 was taken 200 times"> + </span>]:<span class="lineCov">        744 :     if (n == 8) {</span></a>
 <a name="337"><span class="lineNum">     337 </span>                :            :         // expecting loop unrolling optimization</a>
-<a name="338"><span class="lineNum">     338 </span>        [<span class="branchCov" title="Branch 0 was taken 2176 times"> + </span><span class="branchCov" title="Branch 1 was taken 272 times"> + </span>]:<span class="lineCov">       2448 :         for (size_t i = 0; i &lt; 8; i++)</span></a>
-<a name="339"><span class="lineNum">     339 </span>                :<span class="lineCov">       2176 :             x |= (uint64_t)buf[i] &lt;&lt; (i &lt;&lt; 3);</span></a>
+<a name="338"><span class="lineNum">     338 </span>        [<span class="branchCov" title="Branch 0 was taken 4352 times"> + </span><span class="branchCov" title="Branch 1 was taken 544 times"> + </span>]:<span class="lineCov">       4896 :         for (size_t i = 0; i &lt; 8; i++)</span></a>
+<a name="339"><span class="lineNum">     339 </span>                :<span class="lineCov">       4352 :             x |= (uint64_t)buf[i] &lt;&lt; (i &lt;&lt; 3);</span></a>
 <a name="340"><span class="lineNum">     340 </span>                :            :     }</a>
-<a name="341"><span class="lineNum">     341 </span>        [<span class="branchCov" title="Branch 0 was taken 100 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        100 :     else if (n &gt;= 4) {</span></a>
+<a name="341"><span class="lineNum">     341 </span>        [<span class="branchCov" title="Branch 0 was taken 200 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        200 :     else if (n &gt;= 4) {</span></a>
 <a name="342"><span class="lineNum">     342 </span>                :            :         // expecting loop unrolling optimization</a>
-<a name="343"><span class="lineNum">     343 </span>        [<span class="branchCov" title="Branch 0 was taken 400 times"> + </span><span class="branchCov" title="Branch 1 was taken 100 times"> + </span>]:<span class="lineCov">        500 :         for (size_t i = 0; i &lt; 4; i++)</span></a>
-<a name="344"><span class="lineNum">     344 </span>                :<span class="lineCov">        400 :             x |= (uint64_t)buf[i] &lt;&lt; (i &lt;&lt; 3);</span></a>
-<a name="345"><span class="lineNum">     345 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 100 times"> + </span>]:<span class="lineCov">        100 :         for (size_t i = 4; i &lt; n; i++)</span></a>
+<a name="343"><span class="lineNum">     343 </span>        [<span class="branchCov" title="Branch 0 was taken 800 times"> + </span><span class="branchCov" title="Branch 1 was taken 200 times"> + </span>]:<span class="lineCov">       1000 :         for (size_t i = 0; i &lt; 4; i++)</span></a>
+<a name="344"><span class="lineNum">     344 </span>                :<span class="lineCov">        800 :             x |= (uint64_t)buf[i] &lt;&lt; (i &lt;&lt; 3);</span></a>
+<a name="345"><span class="lineNum">     345 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 200 times"> + </span>]:<span class="lineCov">        200 :         for (size_t i = 4; i &lt; n; i++)</span></a>
 <a name="346"><span class="lineNum">     346 </span>                :<span class="lineNoCov">          0 :             x |= (uint64_t)buf[i] &lt;&lt; (i &lt;&lt; 3);</span></a>
 <a name="347"><span class="lineNum">     347 </span>                :            :     }</a>
 <a name="348"><span class="lineNum">     348 </span>                :            :     else {</a>
 <a name="349"><span class="lineNum">     349 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         for (size_t i = 0; i &lt; n; i++)</span></a>
 <a name="350"><span class="lineNum">     350 </span>                :<span class="lineNoCov">          0 :             x |= (uint64_t)buf[i] &lt;&lt; (i &lt;&lt; 3);</span></a>
 <a name="351"><span class="lineNum">     351 </span>                :            :     }</a>
-<a name="352"><span class="lineNum">     352 </span>                :<span class="lineCov">        372 :     s-&gt;bpos += n;</span></a>
-<a name="353"><span class="lineNum">     353 </span>                :<span class="lineCov">        372 :     return x;</span></a>
+<a name="352"><span class="lineNum">     352 </span>                :<span class="lineCov">        744 :     s-&gt;bpos += n;</span></a>
+<a name="353"><span class="lineNum">     353 </span>                :<span class="lineCov">        744 :     return x;</span></a>
 <a name="354"><span class="lineNum">     354 </span>                :            : }</a>
 <a name="355"><span class="lineNum">     355 </span>                :            : </a>
 <a name="356"><span class="lineNum">     356 </span>                :            : // -- syscall utilities --</a>
 <a name="357"><span class="lineNum">     357 </span>                :            : </a>
-<a name="358"><span class="lineNum">     358 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT int jl_errno(void) JL_NOTSAFEPOINT { return errno; }</span></a>
+<a name="358"><span class="lineNum">     358 </span>                :<span class="lineCov">          2 : JL_DLLEXPORT int jl_errno(void) JL_NOTSAFEPOINT { return errno; }</span></a>
 <a name="359"><span class="lineNum">     359 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT void jl_set_errno(int e) JL_NOTSAFEPOINT { errno = e; }</span></a>
 <a name="360"><span class="lineNum">     360 </span>                :            : </a>
 <a name="361"><span class="lineNum">     361 </span>                :            : // -- get the number of CPU threads (logical cores) --</a>
@@ -456,7 +456,7 @@
 <a name="376"><span class="lineNum">     376 </span>                :            : // until it's released, we will just recognize the M1 by its CPU family</a>
 <a name="377"><span class="lineNum">     377 </span>                :            : // identifier, then subtract how many efficiency cores we know it has.</a>
 <a name="378"><span class="lineNum">     378 </span>                :            : </a>
-<a name="379"><span class="lineNum">     379 </span>                :<span class="lineCov">          5 : JL_DLLEXPORT int jl_cpu_threads(void) JL_NOTSAFEPOINT</span></a>
+<a name="379"><span class="lineNum">     379 </span>                :<span class="lineCov">         10 : JL_DLLEXPORT int jl_cpu_threads(void) JL_NOTSAFEPOINT</span></a>
 <a name="380"><span class="lineNum">     380 </span>                :            : {</a>
 <a name="381"><span class="lineNum">     381 </span>                :            : #if defined(HW_AVAILCPU) &amp;&amp; defined(HW_NCPU)</a>
 <a name="382"><span class="lineNum">     382 </span>                :            :     size_t len = 4;</a>
@@ -492,10 +492,10 @@
 <a name="412"><span class="lineNum">     412 </span>                :            : #endif</a>
 <a name="413"><span class="lineNum">     413 </span>                :            :     return count;</a>
 <a name="414"><span class="lineNum">     414 </span>                :            : #elif defined(_SC_NPROCESSORS_ONLN)</a>
-<a name="415"><span class="lineNum">     415 </span>                :<span class="lineCov">          5 :     long count = sysconf(_SC_NPROCESSORS_ONLN);</span></a>
-<a name="416"><span class="lineNum">     416 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 5 times"> + </span>]:<span class="lineCov">          5 :     if (count &lt; 1)</span></a>
+<a name="415"><span class="lineNum">     415 </span>                :<span class="lineCov">         10 :     long count = sysconf(_SC_NPROCESSORS_ONLN);</span></a>
+<a name="416"><span class="lineNum">     416 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 10 times"> + </span>]:<span class="lineCov">         10 :     if (count &lt; 1)</span></a>
 <a name="417"><span class="lineNum">     417 </span>                :<span class="lineNoCov">          0 :         return 1;</span></a>
-<a name="418"><span class="lineNum">     418 </span>                :<span class="lineCov">          5 :     return count;</span></a>
+<a name="418"><span class="lineNum">     418 </span>                :<span class="lineCov">         10 :     return count;</span></a>
 <a name="419"><span class="lineNum">     419 </span>                :            : #elif defined(_OS_WINDOWS_)</a>
 <a name="420"><span class="lineNum">     420 </span>                :            :     //Try to get WIN7 API method</a>
 <a name="421"><span class="lineNum">     421 </span>                :            :     GAPC gapc;</a>
@@ -539,9 +539,9 @@
 <a name="459"><span class="lineNum">     459 </span>                :            : </a>
 <a name="460"><span class="lineNum">     460 </span>                :            : // -- high resolution timers --</a>
 <a name="461"><span class="lineNum">     461 </span>                :            : // Returns time in nanosec</a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">       9705 : JL_DLLEXPORT uint64_t jl_hrtime(void) JL_NOTSAFEPOINT</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      18603 : JL_DLLEXPORT uint64_t jl_hrtime(void) JL_NOTSAFEPOINT</span></a>
 <a name="463"><span class="lineNum">     463 </span>                :            : {</a>
-<a name="464"><span class="lineNum">     464 </span>                :<span class="lineCov">       9705 :     return uv_hrtime();</span></a>
+<a name="464"><span class="lineNum">     464 </span>                :<span class="lineCov">      18603 :     return uv_hrtime();</span></a>
 <a name="465"><span class="lineNum">     465 </span>                :            : }</a>
 <a name="466"><span class="lineNum">     466 </span>                :            : </a>
 <a name="467"><span class="lineNum">     467 </span>                :            : // -- iterating the environment --</a>
@@ -554,13 +554,13 @@
 <a name="474"><span class="lineNum">     474 </span>                :            : #endif</a>
 <a name="475"><span class="lineNum">     475 </span>                :            : #endif</a>
 <a name="476"><span class="lineNum">     476 </span>                :            : </a>
-<a name="477"><span class="lineNum">     477 </span>                :<span class="lineCov">        230 : JL_DLLEXPORT jl_value_t *jl_environ(int i)</span></a>
+<a name="477"><span class="lineNum">     477 </span>                :<span class="lineCov">        460 : JL_DLLEXPORT jl_value_t *jl_environ(int i)</span></a>
 <a name="478"><span class="lineNum">     478 </span>                :            : {</a>
 <a name="479"><span class="lineNum">     479 </span>                :            : #ifdef __APPLE__</a>
 <a name="480"><span class="lineNum">     480 </span>                :            :     char **environ = *_NSGetEnviron();</a>
 <a name="481"><span class="lineNum">     481 </span>                :            : #endif</a>
-<a name="482"><span class="lineNum">     482 </span>                :<span class="lineCov">        230 :     char *env = environ[i];</span></a>
-<a name="483"><span class="lineNum">     483 </span>        [<span class="branchCov" title="Branch 0 was taken 225 times"> + </span><span class="branchCov" title="Branch 1 was taken 5 times"> + </span>]:<span class="lineCov">        230 :     return env ? jl_pchar_to_string(env, strlen(env)) : jl_nothing;</span></a>
+<a name="482"><span class="lineNum">     482 </span>                :<span class="lineCov">        460 :     char *env = environ[i];</span></a>
+<a name="483"><span class="lineNum">     483 </span>        [<span class="branchCov" title="Branch 0 was taken 450 times"> + </span><span class="branchCov" title="Branch 1 was taken 10 times"> + </span>]:<span class="lineCov">        460 :     return env ? jl_pchar_to_string(env, strlen(env)) : jl_nothing;</span></a>
 <a name="484"><span class="lineNum">     484 </span>                :            : }</a>
 <a name="485"><span class="lineNum">     485 </span>                :            : </a>
 <a name="486"><span class="lineNum">     486 </span>                :            : // -- child process status --</a>
@@ -593,15 +593,15 @@
 <a name="513"><span class="lineNum">     513 </span>                :            : JL_STREAM *JL_STDOUT = (JL_STREAM*)STDOUT_FILENO;</a>
 <a name="514"><span class="lineNum">     514 </span>                :            : JL_STREAM *JL_STDERR = (JL_STREAM*)STDERR_FILENO;</a>
 <a name="515"><span class="lineNum">     515 </span>                :            : </a>
-<a name="516"><span class="lineNum">     516 </span>                :<span class="lineCov">          6 : JL_DLLEXPORT JL_STREAM *jl_stdin_stream(void)  { return JL_STDIN; }</span></a>
-<a name="517"><span class="lineNum">     517 </span>                :<span class="lineCov">          6 : JL_DLLEXPORT JL_STREAM *jl_stdout_stream(void) { return JL_STDOUT; }</span></a>
-<a name="518"><span class="lineNum">     518 </span>                :<span class="lineCov">          6 : JL_DLLEXPORT JL_STREAM *jl_stderr_stream(void) { return JL_STDERR; }</span></a>
+<a name="516"><span class="lineNum">     516 </span>                :<span class="lineCov">         12 : JL_DLLEXPORT JL_STREAM *jl_stdin_stream(void)  { return JL_STDIN; }</span></a>
+<a name="517"><span class="lineNum">     517 </span>                :<span class="lineCov">         12 : JL_DLLEXPORT JL_STREAM *jl_stdout_stream(void) { return JL_STDOUT; }</span></a>
+<a name="518"><span class="lineNum">     518 </span>                :<span class="lineCov">         12 : JL_DLLEXPORT JL_STREAM *jl_stderr_stream(void) { return JL_STDERR; }</span></a>
 <a name="519"><span class="lineNum">     519 </span>                :            : </a>
-<a name="520"><span class="lineNum">     520 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT int jl_termios_size(void) {</span></a>
+<a name="520"><span class="lineNum">     520 </span>                :<span class="lineCov">          2 : JL_DLLEXPORT int jl_termios_size(void) {</span></a>
 <a name="521"><span class="lineNum">     521 </span>                :            : #if defined(_OS_WINDOWS_)</a>
 <a name="522"><span class="lineNum">     522 </span>                :            :     return 0;</a>
 <a name="523"><span class="lineNum">     523 </span>                :            : #else</a>
-<a name="524"><span class="lineNum">     524 </span>                :<span class="lineCov">          1 :     return sizeof(struct termios);</span></a>
+<a name="524"><span class="lineNum">     524 </span>                :<span class="lineCov">          2 :     return sizeof(struct termios);</span></a>
 <a name="525"><span class="lineNum">     525 </span>                :            : #endif</a>
 <a name="526"><span class="lineNum">     526 </span>                :            : }</a>
 <a name="527"><span class="lineNum">     527 </span>                :            : </a>
@@ -618,9 +618,9 @@
 <a name="538"><span class="lineNum">     538 </span>                :<span class="lineNoCov">          0 :     *float64align = __alignof(double);</span></a>
 <a name="539"><span class="lineNum">     539 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="540"><span class="lineNum">     540 </span>                :            : </a>
-<a name="541"><span class="lineNum">     541 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT jl_value_t *jl_is_char_signed(void)</span></a>
+<a name="541"><span class="lineNum">     541 </span>                :<span class="lineCov">          2 : JL_DLLEXPORT jl_value_t *jl_is_char_signed(void)</span></a>
 <a name="542"><span class="lineNum">     542 </span>                :            : {</a>
-<a name="543"><span class="lineNum">     543 </span>                :<span class="lineCov">          1 :     return ((char)255) &lt; 0 ? jl_true : jl_false;</span></a>
+<a name="543"><span class="lineNum">     543 </span>                :<span class="lineCov">          2 :     return ((char)255) &lt; 0 ? jl_true : jl_false;</span></a>
 <a name="544"><span class="lineNum">     544 </span>                :            : }</a>
 <a name="545"><span class="lineNum">     545 </span>                :            : </a>
 <a name="546"><span class="lineNum">     546 </span>                :            : // -- misc sysconf info --</a>
@@ -637,11 +637,11 @@
 <a name="557"><span class="lineNum">     557 </span>                :            :     return cachedPagesize;</a>
 <a name="558"><span class="lineNum">     558 </span>                :            : }</a>
 <a name="559"><span class="lineNum">     559 </span>                :            : #else</a>
-<a name="560"><span class="lineNum">     560 </span>                :<span class="lineCov">         25 : JL_DLLEXPORT long jl_getpagesize(void)</span></a>
+<a name="560"><span class="lineNum">     560 </span>                :<span class="lineCov">         47 : JL_DLLEXPORT long jl_getpagesize(void)</span></a>
 <a name="561"><span class="lineNum">     561 </span>                :            : {</a>
-<a name="562"><span class="lineNum">     562 </span>                :<span class="lineCov">         25 :     long page_size = sysconf(_SC_PAGESIZE);</span></a>
-<a name="563"><span class="lineNum">     563 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 25 times"> + </span>]:<span class="lineCov">         25 :     assert(page_size != -1);</span></a>
-<a name="564"><span class="lineNum">     564 </span>                :<span class="lineCov">         25 :     return page_size;</span></a>
+<a name="562"><span class="lineNum">     562 </span>                :<span class="lineCov">         47 :     long page_size = sysconf(_SC_PAGESIZE);</span></a>
+<a name="563"><span class="lineNum">     563 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 47 times"> + </span>]:<span class="lineCov">         47 :     assert(page_size != -1);</span></a>
+<a name="564"><span class="lineNum">     564 </span>                :<span class="lineCov">         47 :     return page_size;</span></a>
 <a name="565"><span class="lineNum">     565 </span>                :            : }</a>
 <a name="566"><span class="lineNum">     566 </span>                :            : #endif</a>
 <a name="567"><span class="lineNum">     567 </span>                :            : </a>
@@ -663,19 +663,19 @@
 <a name="583"><span class="lineNum">     583 </span>                :            : }</a>
 <a name="584"><span class="lineNum">     584 </span>                :            : #endif</a>
 <a name="585"><span class="lineNum">     585 </span>                :            : </a>
-<a name="586"><span class="lineNum">     586 </span>                :<span class="lineCov">          5 : JL_DLLEXPORT long jl_SC_CLK_TCK(void)</span></a>
+<a name="586"><span class="lineNum">     586 </span>                :<span class="lineCov">         10 : JL_DLLEXPORT long jl_SC_CLK_TCK(void)</span></a>
 <a name="587"><span class="lineNum">     587 </span>                :            : {</a>
 <a name="588"><span class="lineNum">     588 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="589"><span class="lineNum">     589 </span>                :<span class="lineCov">          5 :     return sysconf(_SC_CLK_TCK);</span></a>
+<a name="589"><span class="lineNum">     589 </span>                :<span class="lineCov">         10 :     return sysconf(_SC_CLK_TCK);</span></a>
 <a name="590"><span class="lineNum">     590 </span>                :            : #else</a>
 <a name="591"><span class="lineNum">     591 </span>                :            :     return 0;</a>
 <a name="592"><span class="lineNum">     592 </span>                :            : #endif</a>
 <a name="593"><span class="lineNum">     593 </span>                :            : }</a>
 <a name="594"><span class="lineNum">     594 </span>                :            : </a>
 <a name="595"><span class="lineNum">     595 </span>                :            : // Takes a handle (as returned from dlopen()) and returns the absolute path to the image loaded</a>
-<a name="596"><span class="lineNum">     596 </span>                :<span class="lineCov">         40 : JL_DLLEXPORT const char *jl_pathname_for_handle(void *handle)</span></a>
+<a name="596"><span class="lineNum">     596 </span>                :<span class="lineCov">         80 : JL_DLLEXPORT const char *jl_pathname_for_handle(void *handle)</span></a>
 <a name="597"><span class="lineNum">     597 </span>                :            : {</a>
-<a name="598"><span class="lineNum">     598 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 40 times"> + </span>]:<span class="lineCov">         40 :     if (!handle)</span></a>
+<a name="598"><span class="lineNum">     598 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 80 times"> + </span>]:<span class="lineCov">         80 :     if (!handle)</span></a>
 <a name="599"><span class="lineNum">     599 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="600"><span class="lineNum">     600 </span>                :            : </a>
 <a name="601"><span class="lineNum">     601 </span>                :            : #ifdef __APPLE__</a>
@@ -717,7 +717,7 @@
 <a name="637"><span class="lineNum">     637 </span>                :            : #else // Linux, FreeBSD, ...</a>
 <a name="638"><span class="lineNum">     638 </span>                :            : </a>
 <a name="639"><span class="lineNum">     639 </span>                :            :     struct link_map *map;</a>
-<a name="640"><span class="lineNum">     640 </span>                :<span class="lineCov">         40 :     dlinfo(handle, RTLD_DI_LINKMAP, &amp;map);</span></a>
+<a name="640"><span class="lineNum">     640 </span>                :<span class="lineCov">         80 :     dlinfo(handle, RTLD_DI_LINKMAP, &amp;map);</span></a>
 <a name="641"><span class="lineNum">     641 </span>                :            : #ifdef _COMPILER_MSAN_ENABLED_</a>
 <a name="642"><span class="lineNum">     642 </span>                :            :     __msan_unpoison(&amp;map,sizeof(struct link_map*));</a>
 <a name="643"><span class="lineNum">     643 </span>                :            :     if (map) {</a>
@@ -725,8 +725,8 @@
 <a name="645"><span class="lineNum">     645 </span>                :            :         __msan_unpoison_string(map-&gt;l_name);</a>
 <a name="646"><span class="lineNum">     646 </span>                :            :     }</a>
 <a name="647"><span class="lineNum">     647 </span>                :            : #endif</a>
-<a name="648"><span class="lineNum">     648 </span>        [<span class="branchCov" title="Branch 0 was taken 40 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         40 :     if (map)</span></a>
-<a name="649"><span class="lineNum">     649 </span>                :<span class="lineCov">         40 :         return map-&gt;l_name;</span></a>
+<a name="648"><span class="lineNum">     648 </span>        [<span class="branchCov" title="Branch 0 was taken 80 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         80 :     if (map)</span></a>
+<a name="649"><span class="lineNum">     649 </span>                :<span class="lineCov">         80 :         return map-&gt;l_name;</span></a>
 <a name="650"><span class="lineNum">     650 </span>                :            : </a>
 <a name="651"><span class="lineNum">     651 </span>                :            : #endif</a>
 <a name="652"><span class="lineNum">     652 </span>                :<span class="lineNoCov">          0 :     return NULL;</span></a>
@@ -762,27 +762,27 @@
 <a name="682"><span class="lineNum">     682 </span>                :            : }</a>
 <a name="683"><span class="lineNum">     683 </span>                :            : #endif</a>
 <a name="684"><span class="lineNum">     684 </span>                :            : </a>
-<a name="685"><span class="lineNum">     685 </span>                :<span class="lineCov">          7 : JL_DLLEXPORT void jl_raise_debugger(void)</span></a>
+<a name="685"><span class="lineNum">     685 </span>                :<span class="lineCov">         14 : JL_DLLEXPORT void jl_raise_debugger(void)</span></a>
 <a name="686"><span class="lineNum">     686 </span>                :            : {</a>
 <a name="687"><span class="lineNum">     687 </span>                :            : #if defined(_OS_WINDOWS_)</a>
 <a name="688"><span class="lineNum">     688 </span>                :            :     if (IsDebuggerPresent() == 1)</a>
 <a name="689"><span class="lineNum">     689 </span>                :            :         DebugBreak();</a>
 <a name="690"><span class="lineNum">     690 </span>                :            : #else</a>
-<a name="691"><span class="lineNum">     691 </span>                :<span class="lineCov">          7 :     raise(SIGTRAP);</span></a>
+<a name="691"><span class="lineNum">     691 </span>                :<span class="lineCov">         14 :     raise(SIGTRAP);</span></a>
 <a name="692"><span class="lineNum">     692 </span>                :            : #endif // _OS_WINDOWS_</a>
-<a name="693"><span class="lineNum">     693 </span>                :<span class="lineCov">          7 : }</span></a>
+<a name="693"><span class="lineNum">     693 </span>                :<span class="lineCov">         14 : }</span></a>
 <a name="694"><span class="lineNum">     694 </span>                :            : </a>
-<a name="695"><span class="lineNum">     695 </span>                :<span class="lineCov">          5 : JL_DLLEXPORT jl_sym_t *jl_get_UNAME(void) JL_NOTSAFEPOINT</span></a>
+<a name="695"><span class="lineNum">     695 </span>                :<span class="lineCov">         10 : JL_DLLEXPORT jl_sym_t *jl_get_UNAME(void) JL_NOTSAFEPOINT</span></a>
 <a name="696"><span class="lineNum">     696 </span>                :            : {</a>
-<a name="697"><span class="lineNum">     697 </span>                :<span class="lineCov">          5 :     return jl_symbol(JL_BUILD_UNAME);</span></a>
+<a name="697"><span class="lineNum">     697 </span>                :<span class="lineCov">         10 :     return jl_symbol(JL_BUILD_UNAME);</span></a>
 <a name="698"><span class="lineNum">     698 </span>                :            : }</a>
 <a name="699"><span class="lineNum">     699 </span>                :            : </a>
-<a name="700"><span class="lineNum">     700 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT jl_sym_t *jl_get_ARCH(void) JL_NOTSAFEPOINT</span></a>
+<a name="700"><span class="lineNum">     700 </span>                :<span class="lineCov">          2 : JL_DLLEXPORT jl_sym_t *jl_get_ARCH(void) JL_NOTSAFEPOINT</span></a>
 <a name="701"><span class="lineNum">     701 </span>                :            : {</a>
-<a name="702"><span class="lineNum">     702 </span>                :<span class="lineCov">          1 :     return jl_symbol(JL_BUILD_ARCH);</span></a>
+<a name="702"><span class="lineNum">     702 </span>                :<span class="lineCov">          2 :     return jl_symbol(JL_BUILD_ARCH);</span></a>
 <a name="703"><span class="lineNum">     703 </span>                :            : }</a>
 <a name="704"><span class="lineNum">     704 </span>                :            : </a>
-<a name="705"><span class="lineNum">     705 </span>                :<span class="lineCov">          6 : JL_DLLEXPORT size_t jl_maxrss(void)</span></a>
+<a name="705"><span class="lineNum">     705 </span>                :<span class="lineCov">         10 : JL_DLLEXPORT size_t jl_maxrss(void)</span></a>
 <a name="706"><span class="lineNum">     706 </span>                :            : {</a>
 <a name="707"><span class="lineNum">     707 </span>                :            : #if defined(_OS_WINDOWS_)</a>
 <a name="708"><span class="lineNum">     708 </span>                :            :     PROCESS_MEMORY_COUNTERS counter;</a>
@@ -793,10 +793,10 @@
 <a name="713"><span class="lineNum">     713 </span>                :            : //        All of them return `ru_maxrss` in kilobytes.</a>
 <a name="714"><span class="lineNum">     714 </span>                :            : #elif defined(_OS_LINUX_) || defined(_OS_DARWIN_) || defined (_OS_FREEBSD_)</a>
 <a name="715"><span class="lineNum">     715 </span>                :            :     struct rusage rusage;</a>
-<a name="716"><span class="lineNum">     716 </span>                :<span class="lineCov">          6 :     getrusage( RUSAGE_SELF, &amp;rusage );</span></a>
+<a name="716"><span class="lineNum">     716 </span>                :<span class="lineCov">         10 :     getrusage( RUSAGE_SELF, &amp;rusage );</span></a>
 <a name="717"><span class="lineNum">     717 </span>                :            : </a>
 <a name="718"><span class="lineNum">     718 </span>                :            : #if defined(_OS_LINUX_) || defined(_OS_FREEBSD_)</a>
-<a name="719"><span class="lineNum">     719 </span>                :<span class="lineCov">          6 :     return (size_t)(rusage.ru_maxrss * 1024);</span></a>
+<a name="719"><span class="lineNum">     719 </span>                :<span class="lineCov">         10 :     return (size_t)(rusage.ru_maxrss * 1024);</span></a>
 <a name="720"><span class="lineNum">     720 </span>                :            : #else</a>
 <a name="721"><span class="lineNum">     721 </span>                :            :     return (size_t)rusage.ru_maxrss;</a>
 <a name="722"><span class="lineNum">     722 </span>                :            : #endif</a>
@@ -809,36 +809,36 @@
 <a name="729"><span class="lineNum">     729 </span>                :            : // Simple `rand()` like function, with global seed and added thread-safety</a>
 <a name="730"><span class="lineNum">     730 </span>                :            : // (but slow and insecure)</a>
 <a name="731"><span class="lineNum">     731 </span>                :            : static _Atomic(uint64_t) g_rngseed;</a>
-<a name="732"><span class="lineNum">     732 </span>                :<span class="lineCov">         39 : JL_DLLEXPORT uint64_t jl_rand(void) JL_NOTSAFEPOINT</span></a>
+<a name="732"><span class="lineNum">     732 </span>                :<span class="lineCov">         77 : JL_DLLEXPORT uint64_t jl_rand(void) JL_NOTSAFEPOINT</span></a>
 <a name="733"><span class="lineNum">     733 </span>                :            : {</a>
-<a name="734"><span class="lineNum">     734 </span>                :<span class="lineCov">         39 :     uint64_t max = UINT64_MAX;</span></a>
-<a name="735"><span class="lineNum">     735 </span>                :<span class="lineCov">         39 :     uint64_t unbias = UINT64_MAX;</span></a>
-<a name="736"><span class="lineNum">     736 </span>                :<span class="lineCov">         39 :     uint64_t rngseed0 = jl_atomic_load_relaxed(&amp;g_rngseed);</span></a>
+<a name="734"><span class="lineNum">     734 </span>                :<span class="lineCov">         77 :     uint64_t max = UINT64_MAX;</span></a>
+<a name="735"><span class="lineNum">     735 </span>                :<span class="lineCov">         77 :     uint64_t unbias = UINT64_MAX;</span></a>
+<a name="736"><span class="lineNum">     736 </span>                :<span class="lineCov">         77 :     uint64_t rngseed0 = jl_atomic_load_relaxed(&amp;g_rngseed);</span></a>
 <a name="737"><span class="lineNum">     737 </span>                :            :     uint64_t rngseed;</a>
 <a name="738"><span class="lineNum">     738 </span>                :            :     uint64_t rnd;</a>
 <a name="739"><span class="lineNum">     739 </span>                :            :     do {</a>
-<a name="740"><span class="lineNum">     740 </span>                :<span class="lineCov">         39 :         rngseed = rngseed0;</span></a>
-<a name="741"><span class="lineNum">     741 </span>                :<span class="lineCov">         39 :         rnd = cong(max, unbias, &amp;rngseed);</span></a>
-<a name="742"><span class="lineNum">     742 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 39 times"> + </span>]:<span class="lineCov">         39 :     } while (!jl_atomic_cmpswap_relaxed(&amp;g_rngseed, &amp;rngseed0, rngseed));</span></a>
-<a name="743"><span class="lineNum">     743 </span>                :<span class="lineCov">         39 :     return rnd;</span></a>
+<a name="740"><span class="lineNum">     740 </span>                :<span class="lineCov">         77 :         rngseed = rngseed0;</span></a>
+<a name="741"><span class="lineNum">     741 </span>                :<span class="lineCov">         77 :         rnd = cong(max, unbias, &amp;rngseed);</span></a>
+<a name="742"><span class="lineNum">     742 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 77 times"> + </span>]:<span class="lineCov">         77 :     } while (!jl_atomic_cmpswap_relaxed(&amp;g_rngseed, &amp;rngseed0, rngseed));</span></a>
+<a name="743"><span class="lineNum">     743 </span>                :<span class="lineCov">         77 :     return rnd;</span></a>
 <a name="744"><span class="lineNum">     744 </span>                :            : }</a>
 <a name="745"><span class="lineNum">     745 </span>                :            : </a>
-<a name="746"><span class="lineNum">     746 </span>                :<span class="lineCov">          8 : JL_DLLEXPORT void jl_srand(uint64_t rngseed) JL_NOTSAFEPOINT</span></a>
+<a name="746"><span class="lineNum">     746 </span>                :<span class="lineCov">         15 : JL_DLLEXPORT void jl_srand(uint64_t rngseed) JL_NOTSAFEPOINT</span></a>
 <a name="747"><span class="lineNum">     747 </span>                :            : {</a>
-<a name="748"><span class="lineNum">     748 </span>                :<span class="lineCov">          8 :     jl_atomic_store_relaxed(&amp;g_rngseed, rngseed);</span></a>
-<a name="749"><span class="lineNum">     749 </span>                :<span class="lineCov">          8 : }</span></a>
+<a name="748"><span class="lineNum">     748 </span>                :<span class="lineCov">         15 :     jl_atomic_store_relaxed(&amp;g_rngseed, rngseed);</span></a>
+<a name="749"><span class="lineNum">     749 </span>                :<span class="lineCov">         15 : }</span></a>
 <a name="750"><span class="lineNum">     750 </span>                :            : </a>
-<a name="751"><span class="lineNum">     751 </span>                :<span class="lineCov">          8 : void jl_init_rand(void) JL_NOTSAFEPOINT</span></a>
+<a name="751"><span class="lineNum">     751 </span>                :<span class="lineCov">         15 : void jl_init_rand(void) JL_NOTSAFEPOINT</span></a>
 <a name="752"><span class="lineNum">     752 </span>                :            : {</a>
 <a name="753"><span class="lineNum">     753 </span>                :            :     uint64_t rngseed;</a>
-<a name="754"><span class="lineNum">     754 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">          8 :     if (uv_random(NULL, NULL, &amp;rngseed, sizeof(rngseed), 0, NULL)) {</span></a>
+<a name="754"><span class="lineNum">     754 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15 times"> + </span>]:<span class="lineCov">         15 :     if (uv_random(NULL, NULL, &amp;rngseed, sizeof(rngseed), 0, NULL)) {</span></a>
 <a name="755"><span class="lineNum">     755 </span>                :<span class="lineNoCov">          0 :         ios_puts(&quot;WARNING: Entropy pool not available to seed RNG; using ad-hoc entropy sources.\n&quot;, ios_stderr);</span></a>
 <a name="756"><span class="lineNum">     756 </span>                :<span class="lineNoCov">          0 :         rngseed = uv_hrtime();</span></a>
 <a name="757"><span class="lineNum">     757 </span>                :<span class="lineNoCov">          0 :         rngseed ^= int64hash(uv_os_getpid());</span></a>
 <a name="758"><span class="lineNum">     758 </span>                :            :     }</a>
-<a name="759"><span class="lineNum">     759 </span>                :<span class="lineCov">          8 :     jl_srand(rngseed);</span></a>
-<a name="760"><span class="lineNum">     760 </span>                :<span class="lineCov">          8 :     srand(rngseed);</span></a>
-<a name="761"><span class="lineNum">     761 </span>                :<span class="lineCov">          8 : }</span></a>
+<a name="759"><span class="lineNum">     759 </span>                :<span class="lineCov">         15 :     jl_srand(rngseed);</span></a>
+<a name="760"><span class="lineNum">     760 </span>                :<span class="lineCov">         15 :     srand(rngseed);</span></a>
+<a name="761"><span class="lineNum">     761 </span>                :<span class="lineCov">         15 : }</span></a>
 <a name="762"><span class="lineNum">     762 </span>                :            : </a>
 <a name="763"><span class="lineNum">     763 </span>                :            : #ifdef __cplusplus</a>
 <a name="764"><span class="lineNum">     764 </span>                :            : }</a>

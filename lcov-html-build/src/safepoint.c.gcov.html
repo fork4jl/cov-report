@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/safepoint.c</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/safepoint.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">18</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -163,35 +163,35 @@
 <a name="85"><span class="lineNum">      85 </span>                :            : #endif</a>
 <a name="86"><span class="lineNum">      86 </span>                :            : }</a>
 <a name="87"><span class="lineNum">      87 </span>                :            : </a>
-<a name="88"><span class="lineNum">      88 </span>                :<span class="lineCov">          8 : void jl_safepoint_init(void)</span></a>
+<a name="88"><span class="lineNum">      88 </span>                :<span class="lineCov">         15 : void jl_safepoint_init(void)</span></a>
 <a name="89"><span class="lineNum">      89 </span>                :            : {</a>
-<a name="90"><span class="lineNum">      90 </span>                :<span class="lineCov">          8 :     uv_mutex_init(&amp;safepoint_lock);</span></a>
-<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">          8 :     uv_cond_init(&amp;safepoint_cond);</span></a>
+<a name="90"><span class="lineNum">      90 </span>                :<span class="lineCov">         15 :     uv_mutex_init(&amp;safepoint_lock);</span></a>
+<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">         15 :     uv_cond_init(&amp;safepoint_cond);</span></a>
 <a name="92"><span class="lineNum">      92 </span>                :            :     // jl_page_size isn't available yet.</a>
-<a name="93"><span class="lineNum">      93 </span>                :<span class="lineCov">          8 :     size_t pgsz = jl_getpagesize();</span></a>
+<a name="93"><span class="lineNum">      93 </span>                :<span class="lineCov">         15 :     size_t pgsz = jl_getpagesize();</span></a>
 <a name="94"><span class="lineNum">      94 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="95"><span class="lineNum">      95 </span>                :            :     char *addr = (char*)VirtualAlloc(NULL, pgsz * 3, MEM_COMMIT, PAGE_READONLY);</a>
 <a name="96"><span class="lineNum">      96 </span>                :            : #else</a>
-<a name="97"><span class="lineNum">      97 </span>                :<span class="lineCov">          8 :     char *addr = (char*)mmap(0, pgsz * 3, PROT_READ,</span></a>
+<a name="97"><span class="lineNum">      97 </span>                :<span class="lineCov">         15 :     char *addr = (char*)mmap(0, pgsz * 3, PROT_READ,</span></a>
 <a name="98"><span class="lineNum">      98 </span>                :            :                              MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);</a>
-<a name="99"><span class="lineNum">      99 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">          8 :     if (addr == MAP_FAILED)</span></a>
+<a name="99"><span class="lineNum">      99 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15 times"> + </span>]:<span class="lineCov">         15 :     if (addr == MAP_FAILED)</span></a>
 <a name="100"><span class="lineNum">     100 </span>                :<span class="lineNoCov">          0 :         addr = NULL;</span></a>
 <a name="101"><span class="lineNum">     101 </span>                :            : #endif</a>
-<a name="102"><span class="lineNum">     102 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">          8 :     if (addr == NULL) {</span></a>
+<a name="102"><span class="lineNum">     102 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15 times"> + </span>]:<span class="lineCov">         15 :     if (addr == NULL) {</span></a>
 <a name="103"><span class="lineNum">     103 </span>                :<span class="lineNoCov">          0 :         jl_printf(JL_STDERR, &quot;could not allocate GC synchronization page\n&quot;);</span></a>
 <a name="104"><span class="lineNum">     104 </span>                :<span class="lineNoCov">          0 :         jl_gc_debug_critical_error();</span></a>
 <a name="105"><span class="lineNum">     105 </span>                :<span class="lineNoCov">          0 :         abort();</span></a>
 <a name="106"><span class="lineNum">     106 </span>                :            :     }</a>
 <a name="107"><span class="lineNum">     107 </span>                :            :     // The signal page is for the gc safepoint.</a>
 <a name="108"><span class="lineNum">     108 </span>                :            :     // The page before it is the sigint pending flag.</a>
-<a name="109"><span class="lineNum">     109 </span>                :<span class="lineCov">          8 :     jl_safepoint_pages = addr;</span></a>
-<a name="110"><span class="lineNum">     110 </span>                :<span class="lineCov">          8 : }</span></a>
+<a name="109"><span class="lineNum">     109 </span>                :<span class="lineCov">         15 :     jl_safepoint_pages = addr;</span></a>
+<a name="110"><span class="lineNum">     110 </span>                :<span class="lineCov">         15 : }</span></a>
 <a name="111"><span class="lineNum">     111 </span>                :            : </a>
-<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">        638 : int jl_safepoint_start_gc(void)</span></a>
+<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">       1174 : int jl_safepoint_start_gc(void)</span></a>
 <a name="113"><span class="lineNum">     113 </span>                :            : {</a>
-<a name="114"><span class="lineNum">     114 </span>        [<span class="branchCov" title="Branch 0 was taken 638 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        638 :     if (jl_n_threads == 1) {</span></a>
-<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">        638 :         jl_atomic_store_relaxed(&amp;jl_gc_running, 1);</span></a>
-<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">        638 :         return 1;</span></a>
+<a name="114"><span class="lineNum">     114 </span>        [<span class="branchCov" title="Branch 0 was taken 1174 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       1174 :     if (jl_n_threads == 1) {</span></a>
+<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">       1174 :         jl_atomic_store_relaxed(&amp;jl_gc_running, 1);</span></a>
+<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">       1174 :         return 1;</span></a>
 <a name="117"><span class="lineNum">     117 </span>                :            :     }</a>
 <a name="118"><span class="lineNum">     118 </span>                :            :     // The thread should have set this already</a>
 <a name="119"><span class="lineNum">     119 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :     assert(jl_atomic_load_relaxed(&amp;jl_current_task-&gt;ptls-&gt;gc_state) == JL_GC_STATE_WAITING);</span></a>
@@ -212,12 +212,12 @@
 <a name="134"><span class="lineNum">     134 </span>                :<span class="lineNoCov">          0 :     return 1;</span></a>
 <a name="135"><span class="lineNum">     135 </span>                :            : }</a>
 <a name="136"><span class="lineNum">     136 </span>                :            : </a>
-<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">        638 : void jl_safepoint_end_gc(void)</span></a>
+<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">       1174 : void jl_safepoint_end_gc(void)</span></a>
 <a name="138"><span class="lineNum">     138 </span>                :            : {</a>
-<a name="139"><span class="lineNum">     139 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 638 times"> + </span>]:<span class="lineCov">        638 :     assert(jl_atomic_load_relaxed(&amp;jl_gc_running));</span></a>
-<a name="140"><span class="lineNum">     140 </span>        [<span class="branchCov" title="Branch 0 was taken 638 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        638 :     if (jl_n_threads == 1) {</span></a>
-<a name="141"><span class="lineNum">     141 </span>                :<span class="lineCov">        638 :         jl_atomic_store_relaxed(&amp;jl_gc_running, 0);</span></a>
-<a name="142"><span class="lineNum">     142 </span>                :<span class="lineCov">        638 :         return;</span></a>
+<a name="139"><span class="lineNum">     139 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1174 times"> + </span>]:<span class="lineCov">       1174 :     assert(jl_atomic_load_relaxed(&amp;jl_gc_running));</span></a>
+<a name="140"><span class="lineNum">     140 </span>        [<span class="branchCov" title="Branch 0 was taken 1174 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       1174 :     if (jl_n_threads == 1) {</span></a>
+<a name="141"><span class="lineNum">     141 </span>                :<span class="lineCov">       1174 :         jl_atomic_store_relaxed(&amp;jl_gc_running, 0);</span></a>
+<a name="142"><span class="lineNum">     142 </span>                :<span class="lineCov">       1174 :         return;</span></a>
 <a name="143"><span class="lineNum">     143 </span>                :            :     }</a>
 <a name="144"><span class="lineNum">     144 </span>                :<span class="lineNoCov">          0 :     uv_mutex_lock(&amp;safepoint_lock);</span></a>
 <a name="145"><span class="lineNum">     145 </span>                :            :     // Need to reset the page protection before resetting the flag since</a>

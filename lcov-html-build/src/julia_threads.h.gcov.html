@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/julia_threads.h</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/julia_threads.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">7</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -414,20 +414,20 @@
 <a name="336"><span class="lineNum">     336 </span>                :            :         (void)safepoint_load;                           \</a>
 <a name="337"><span class="lineNum">     337 </span>                :            :     } while (0)</a>
 <a name="338"><span class="lineNum">     338 </span>                :            : #endif</a>
-<a name="339"><span class="lineNum">     339 </span>                :<span class="lineCov">      10300 : STATIC_INLINE int8_t jl_gc_state_set(jl_ptls_t ptls, int8_t state,</span></a>
+<a name="339"><span class="lineNum">     339 </span>                :<span class="lineCov">      19998 : STATIC_INLINE int8_t jl_gc_state_set(jl_ptls_t ptls, int8_t state,</span></a>
 <a name="340"><span class="lineNum">     340 </span>                :            :                                      int8_t old_state)</a>
 <a name="341"><span class="lineNum">     341 </span>                :            : {</a>
-<a name="342"><span class="lineNum">     342 </span>                :<span class="lineCov">      10300 :     jl_atomic_store_release(&amp;ptls-&gt;gc_state, state);</span></a>
+<a name="342"><span class="lineNum">     342 </span>                :<span class="lineCov">      19998 :     jl_atomic_store_release(&amp;ptls-&gt;gc_state, state);</span></a>
 <a name="343"><span class="lineNum">     343 </span>                :            :     // A safe point is required if we transition from GC-safe region to</a>
 <a name="344"><span class="lineNum">     344 </span>                :            :     // non GC-safe region.</a>
-<a name="345"><span class="lineNum">     345 </span>  [<span class="branchCov" title="Branch 0 was taken 855 times"> + </span><span class="branchCov" title="Branch 1 was taken 9445 times"> + </span><span class="branchCov" title="Branch 2 was taken 855 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">      10300 :     if (old_state &amp;&amp; !state)</span></a>
-<a name="346"><span class="lineNum">     346 </span>                :<span class="lineCov">        855 :         jl_gc_safepoint_(ptls);</span></a>
-<a name="347"><span class="lineNum">     347 </span>                :<span class="lineCov">      10300 :     return old_state;</span></a>
+<a name="345"><span class="lineNum">     345 </span>  [<span class="branchCov" title="Branch 0 was taken 1540 times"> + </span><span class="branchCov" title="Branch 1 was taken 18458 times"> + </span><span class="branchCov" title="Branch 2 was taken 1540 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">      19998 :     if (old_state &amp;&amp; !state)</span></a>
+<a name="346"><span class="lineNum">     346 </span>                :<span class="lineCov">       1540 :         jl_gc_safepoint_(ptls);</span></a>
+<a name="347"><span class="lineNum">     347 </span>                :<span class="lineCov">      19998 :     return old_state;</span></a>
 <a name="348"><span class="lineNum">     348 </span>                :            : }</a>
-<a name="349"><span class="lineNum">     349 </span>                :<span class="lineCov">       7928 : STATIC_INLINE int8_t jl_gc_state_save_and_set(jl_ptls_t ptls,</span></a>
+<a name="349"><span class="lineNum">     349 </span>                :<span class="lineCov">      15509 : STATIC_INLINE int8_t jl_gc_state_save_and_set(jl_ptls_t ptls,</span></a>
 <a name="350"><span class="lineNum">     350 </span>                :            :                                               int8_t state)</a>
 <a name="351"><span class="lineNum">     351 </span>                :            : {</a>
-<a name="352"><span class="lineNum">     352 </span>                :<span class="lineCov">       7928 :     return jl_gc_state_set(ptls, state, jl_atomic_load_relaxed(&amp;ptls-&gt;gc_state));</span></a>
+<a name="352"><span class="lineNum">     352 </span>                :<span class="lineCov">      15509 :     return jl_gc_state_set(ptls, state, jl_atomic_load_relaxed(&amp;ptls-&gt;gc_state));</span></a>
 <a name="353"><span class="lineNum">     353 </span>                :            : }</a>
 <a name="354"><span class="lineNum">     354 </span>                :            : #ifdef __clang_gcanalyzer__</a>
 <a name="355"><span class="lineNum">     355 </span>                :            : int8_t jl_gc_unsafe_enter(jl_ptls_t ptls); // Can be a safepoint</a>

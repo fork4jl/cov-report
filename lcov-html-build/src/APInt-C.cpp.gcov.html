@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/APInt-C.cpp</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/APInt-C.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">86</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -91,8 +91,8 @@
 <a name="13"><span class="lineNum">      13 </span>                :            : </a>
 <a name="14"><span class="lineNum">      14 </span>                :            : using namespace llvm;</a>
 <a name="15"><span class="lineNum">      15 </span>                :            : </a>
-<a name="16"><span class="lineNum">      16 </span>                :<span class="lineCov">     196973 : inline uint64_t RoundUpToAlignment(uint64_t Value, uint64_t Align, uint64_t Skew = 0) {</span></a>
-<a name="17"><span class="lineNum">      17 </span>                :<span class="lineCov">     196973 :     return alignTo(Value, Align, Skew);</span></a>
+<a name="16"><span class="lineNum">      16 </span>                :<span class="lineCov">     176844 : inline uint64_t RoundUpToAlignment(uint64_t Value, uint64_t Align, uint64_t Skew = 0) {</span></a>
+<a name="17"><span class="lineNum">      17 </span>                :<span class="lineCov">     176844 :     return alignTo(Value, Align, Skew);</span></a>
 <a name="18"><span class="lineNum">      18 </span>                :            : }</a>
 <a name="19"><span class="lineNum">      19 </span>                :            : </a>
 <a name="20"><span class="lineNum">      20 </span>                :            : const unsigned int integerPartWidth = llvm::APInt::APINT_BITS_PER_WORD;</a>
@@ -248,13 +248,13 @@
 <a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">          3 : }</span></a>
 <a name="165"><span class="lineNum">     165 </span>                :            : </a>
 <a name="166"><span class="lineNum">     166 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">          4 : void LLVMXor(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
-<a name="168"><span class="lineNum">     168 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">          8 :     CREATE(a)</span></a>
-<a name="169"><span class="lineNum">     169 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">          8 :     CREATE(b)</span></a>
-<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">          4 :     a ^= b;</span></a>
-<a name="171"><span class="lineNum">     171 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 4 times"> + </span> :<span class="lineCov">          4 :     ASSIGN(r, a)</span></a>
-<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 4 times"> + </span><span class="branchNoCov" title="Branch 6 was not taken"> - </span><span class="branchCov" title="Branch 7 was taken 4 times"> + </span>]
-<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">          4 : }</span></a>
+<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">          8 : void LLVMXor(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
+<a name="168"><span class="lineNum">     168 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">         16 :     CREATE(a)</span></a>
+<a name="169"><span class="lineNum">     169 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">         16 :     CREATE(b)</span></a>
+<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">          8 :     a ^= b;</span></a>
+<a name="171"><span class="lineNum">     171 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 8 times"> + </span> :<span class="lineCov">          8 :     ASSIGN(r, a)</span></a>
+<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 8 times"> + </span><span class="branchNoCov" title="Branch 6 was not taken"> - </span><span class="branchCov" title="Branch 7 was taken 8 times"> + </span>]
+<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">          8 : }</span></a>
 <a name="173"><span class="lineNum">     173 </span>                :            : </a>
 <a name="174"><span class="lineNum">     174 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
 <a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">          5 : void LLVMShl(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
@@ -335,14 +335,14 @@
 <a name="242"><span class="lineNum">     242 </span>                :            : }</a>
 <a name="243"><span class="lineNum">     243 </span>                :            : </a>
 <a name="244"><span class="lineNum">     244 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">        461 : int LLVMMul_sov(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
-<a name="246"><span class="lineNum">     246 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 461 times"> + </span>]:<span class="lineCov">        922 :     CREATE(a)</span></a>
-<a name="247"><span class="lineNum">     247 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 461 times"> + </span>]:<span class="lineCov">        461 :     CREATE(b)</span></a>
+<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">        459 : int LLVMMul_sov(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
+<a name="246"><span class="lineNum">     246 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 459 times"> + </span>]:<span class="lineCov">        918 :     CREATE(a)</span></a>
+<a name="247"><span class="lineNum">     247 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 459 times"> + </span>]:<span class="lineCov">        459 :     CREATE(b)</span></a>
 <a name="248"><span class="lineNum">     248 </span>                :            :     bool Overflow;</a>
-<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">        461 :     a = a.smul_ov(b, Overflow);</span></a>
-<a name="250"><span class="lineNum">     250 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 461 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 461 times"> + </span> :<span class="lineCov">        461 :     ASSIGN(r, a)</span></a>
-<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 461 times"> + </span><span class="branchCov" title="Branch 6 was taken 461 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
-<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">        461 :     return Overflow;</span></a>
+<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">        459 :     a = a.smul_ov(b, Overflow);</span></a>
+<a name="250"><span class="lineNum">     250 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 459 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 459 times"> + </span> :<span class="lineCov">        459 :     ASSIGN(r, a)</span></a>
+<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 459 times"> + </span><span class="branchCov" title="Branch 6 was taken 459 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
+<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">        459 :     return Overflow;</span></a>
 <a name="252"><span class="lineNum">     252 </span>                :            : }</a>
 <a name="253"><span class="lineNum">     253 </span>                :            : </a>
 <a name="254"><span class="lineNum">     254 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
@@ -357,16 +357,16 @@
 <a name="262"><span class="lineNum">     262 </span>                :            : }</a>
 <a name="263"><span class="lineNum">     263 </span>                :            : </a>
 <a name="264"><span class="lineNum">     264 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="265"><span class="lineNum">     265 </span>                :<span class="lineCov">         69 : int LLVMDiv_sov(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
-<a name="266"><span class="lineNum">     266 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 69 times"> + </span>]:<span class="lineCov">        138 :     CREATE(a)</span></a>
-<a name="267"><span class="lineNum">     267 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 69 times"> + </span>]:<span class="lineCov">        138 :     CREATE(b)</span></a>
-<a name="268"><span class="lineNum">     268 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 69 times"> + </span>]:<span class="lineCov">         69 :     if (!b)</span></a>
+<a name="265"><span class="lineNum">     265 </span>                :<span class="lineCov">         64 : int LLVMDiv_sov(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
+<a name="266"><span class="lineNum">     266 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 64 times"> + </span>]:<span class="lineCov">        128 :     CREATE(a)</span></a>
+<a name="267"><span class="lineNum">     267 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 64 times"> + </span>]:<span class="lineCov">        128 :     CREATE(b)</span></a>
+<a name="268"><span class="lineNum">     268 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 64 times"> + </span>]:<span class="lineCov">         64 :     if (!b)</span></a>
 <a name="269"><span class="lineNum">     269 </span>                :<span class="lineNoCov">          0 :         return true;</span></a>
 <a name="270"><span class="lineNum">     270 </span>                :            :     bool Overflow;</a>
-<a name="271"><span class="lineNum">     271 </span>                :<span class="lineCov">         69 :     a = a.sdiv_ov(b, Overflow);</span></a>
-<a name="272"><span class="lineNum">     272 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 69 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 69 times"> + </span> :<span class="lineCov">         69 :     ASSIGN(r, a)</span></a>
-<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 69 times"> + </span><span class="branchCov" title="Branch 6 was taken 69 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
-<a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">         69 :     return Overflow;</span></a>
+<a name="271"><span class="lineNum">     271 </span>                :<span class="lineCov">         64 :     a = a.sdiv_ov(b, Overflow);</span></a>
+<a name="272"><span class="lineNum">     272 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 64 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 64 times"> + </span> :<span class="lineCov">         64 :     ASSIGN(r, a)</span></a>
+<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 64 times"> + </span><span class="branchCov" title="Branch 6 was taken 64 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
+<a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">         64 :     return Overflow;</span></a>
 <a name="274"><span class="lineNum">     274 </span>                :            : }</a>
 <a name="275"><span class="lineNum">     275 </span>                :            : </a>
 <a name="276"><span class="lineNum">     276 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
@@ -382,15 +382,15 @@
 <a name="285"><span class="lineNum">     285 </span>                :            : }</a>
 <a name="286"><span class="lineNum">     286 </span>                :            : </a>
 <a name="287"><span class="lineNum">     287 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">       1807 : int LLVMRem_sov(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
-<a name="289"><span class="lineNum">     289 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1807 times"> + </span>]:<span class="lineCov">       3614 :     CREATE(a)</span></a>
-<a name="290"><span class="lineNum">     290 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1807 times"> + </span>]:<span class="lineCov">       3614 :     CREATE(b)</span></a>
-<a name="291"><span class="lineNum">     291 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1807 times"> + </span>]:<span class="lineCov">       1807 :     if (!b)</span></a>
+<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">       1802 : int LLVMRem_sov(unsigned numbits, integerPart *pa, integerPart *pb, integerPart *pr) {</span></a>
+<a name="289"><span class="lineNum">     289 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1802 times"> + </span>]:<span class="lineCov">       3604 :     CREATE(a)</span></a>
+<a name="290"><span class="lineNum">     290 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1802 times"> + </span>]:<span class="lineCov">       3604 :     CREATE(b)</span></a>
+<a name="291"><span class="lineNum">     291 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1802 times"> + </span>]:<span class="lineCov">       1802 :     if (!b)</span></a>
 <a name="292"><span class="lineNum">     292 </span>                :<span class="lineNoCov">          0 :         return true;</span></a>
-<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">       1807 :     a = a.srem(b);</span></a>
-<a name="294"><span class="lineNum">     294 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1807 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 1807 times"> + </span> :<span class="lineCov">       1807 :     ASSIGN(r, a)</span></a>
-<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 1807 times"> + </span><span class="branchCov" title="Branch 6 was taken 1807 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
-<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">       1807 :     return false;</span></a>
+<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">       1802 :     a = a.srem(b);</span></a>
+<a name="294"><span class="lineNum">     294 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1802 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 1802 times"> + </span> :<span class="lineCov">       1802 :     ASSIGN(r, a)</span></a>
+<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 1802 times"> + </span><span class="branchCov" title="Branch 6 was taken 1802 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
+<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">       1802 :     return false;</span></a>
 <a name="296"><span class="lineNum">     296 </span>                :            : }</a>
 <a name="297"><span class="lineNum">     297 </span>                :            : </a>
 <a name="298"><span class="lineNum">     298 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
@@ -537,29 +537,29 @@
 <a name="437"><span class="lineNum">     437 </span>                :<span class="lineCov">       4782 : }</span></a>
 <a name="438"><span class="lineNum">     438 </span>                :            : </a>
 <a name="439"><span class="lineNum">     439 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="440"><span class="lineNum">     440 </span>                :<span class="lineCov">      55584 : void LLVMZExt(unsigned inumbits, integerPart *pa, unsigned onumbits, integerPart *pr) {</span></a>
-<a name="441"><span class="lineNum">     441 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 55584 times"> + </span>]:<span class="lineCov">      55584 :     if (!(onumbits &gt; inumbits))</span></a>
+<a name="440"><span class="lineNum">     440 </span>                :<span class="lineCov">      48871 : void LLVMZExt(unsigned inumbits, integerPart *pa, unsigned onumbits, integerPart *pr) {</span></a>
+<a name="441"><span class="lineNum">     441 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 48871 times"> + </span>]:<span class="lineCov">      48871 :     if (!(onumbits &gt; inumbits))</span></a>
 <a name="442"><span class="lineNum">     442 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;ZExt: output bitsize must be &gt; input bitsize&quot;);</span></a>
-<a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">      55584 :     unsigned inumbytes = RoundUpToAlignment(inumbits, host_char_bit) / host_char_bit;</span></a>
-<a name="444"><span class="lineNum">     444 </span>                :<span class="lineCov">      55584 :     unsigned onumbytes = RoundUpToAlignment(onumbits, host_char_bit) / host_char_bit;</span></a>
-<a name="445"><span class="lineNum">     445 </span>                :<span class="lineCov">      55584 :     int bits = (0 - inumbits) % host_char_bit;</span></a>
+<a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">      48871 :     unsigned inumbytes = RoundUpToAlignment(inumbits, host_char_bit) / host_char_bit;</span></a>
+<a name="444"><span class="lineNum">     444 </span>                :<span class="lineCov">      48871 :     unsigned onumbytes = RoundUpToAlignment(onumbits, host_char_bit) / host_char_bit;</span></a>
+<a name="445"><span class="lineNum">     445 </span>                :<span class="lineCov">      48871 :     int bits = (0 - inumbits) % host_char_bit;</span></a>
 <a name="446"><span class="lineNum">     446 </span>                :            :     // copy over the input bytes</a>
-<a name="447"><span class="lineNum">     447 </span>                :<span class="lineCov">      55584 :     memcpy(pr, pa, inumbytes);</span></a>
-<a name="448"><span class="lineNum">     448 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 55584 times"> + </span>]:<span class="lineCov">      55584 :     if (bits) {</span></a>
+<a name="447"><span class="lineNum">     447 </span>                :<span class="lineCov">      48871 :     memcpy(pr, pa, inumbytes);</span></a>
+<a name="448"><span class="lineNum">     448 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 48871 times"> + </span>]:<span class="lineCov">      48871 :     if (bits) {</span></a>
 <a name="449"><span class="lineNum">     449 </span>                :            :         // zero the remaining bits of the partial byte</a>
 <a name="450"><span class="lineNum">     450 </span>                :<span class="lineNoCov">          0 :         ((unsigned char*)pr)[inumbytes - 1] = ((unsigned char*)pa)[inumbytes - 1] &lt;&lt; bits &gt;&gt; bits;</span></a>
 <a name="451"><span class="lineNum">     451 </span>                :            :     }</a>
 <a name="452"><span class="lineNum">     452 </span>                :            :     // zero-extend the rest of the bytes</a>
-<a name="453"><span class="lineNum">     453 </span>                :<span class="lineCov">      55584 :     memset((char*)pr + inumbytes, 0, onumbytes - inumbytes);</span></a>
-<a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov">      55584 : }</span></a>
+<a name="453"><span class="lineNum">     453 </span>                :<span class="lineCov">      48871 :     memset((char*)pr + inumbytes, 0, onumbytes - inumbytes);</span></a>
+<a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov">      48871 : }</span></a>
 <a name="455"><span class="lineNum">     455 </span>                :            : </a>
 <a name="456"><span class="lineNum">     456 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="457"><span class="lineNum">     457 </span>                :<span class="lineCov">      76224 : void LLVMTrunc(unsigned inumbits, integerPart *pa, unsigned onumbits, integerPart *pr) {</span></a>
-<a name="458"><span class="lineNum">     458 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 76224 times"> + </span>]:<span class="lineCov">      76224 :     if (!(onumbits &lt; inumbits))</span></a>
+<a name="457"><span class="lineNum">     457 </span>                :<span class="lineCov">      69517 : void LLVMTrunc(unsigned inumbits, integerPart *pa, unsigned onumbits, integerPart *pr) {</span></a>
+<a name="458"><span class="lineNum">     458 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 69517 times"> + </span>]:<span class="lineCov">      69517 :     if (!(onumbits &lt; inumbits))</span></a>
 <a name="459"><span class="lineNum">     459 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;Trunc: output bitsize must be &lt; input bitsize&quot;);</span></a>
-<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">      76224 :     unsigned onumbytes = RoundUpToAlignment(onumbits, host_char_bit) / host_char_bit;</span></a>
-<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">      76224 :     memcpy(pr, pa, onumbytes);</span></a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      76224 : }</span></a>
+<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">      69517 :     unsigned onumbytes = RoundUpToAlignment(onumbits, host_char_bit) / host_char_bit;</span></a>
+<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">      69517 :     memcpy(pr, pa, onumbytes);</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      69517 : }</span></a>
 <a name="463"><span class="lineNum">     463 </span>                :            : </a>
 <a name="464"><span class="lineNum">     464 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
 <a name="465"><span class="lineNum">     465 </span>                :<span class="lineNoCov">          0 : unsigned countTrailingZeros_8(uint8_t Val) {</span></a>

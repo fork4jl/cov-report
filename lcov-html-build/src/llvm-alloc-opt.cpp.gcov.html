@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/llvm-alloc-opt.cpp</title>
+  <title>LCOV - [build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc - src/llvm-alloc-opt.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
+            <td class="headerValue">[build process] commit ef510b1f346f4c9f9d86eaceace5ca54961a1dbc</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">73</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 22:35:00</td>
+            <td class="headerValue">2022-07-17 01:01:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">14</td>
@@ -187,11 +187,11 @@
 <a name="109"><span class="lineNum">     109 </span>                :            : };</a>
 <a name="110"><span class="lineNum">     110 </span>                :            : </a>
 <a name="111"><span class="lineNum">     111 </span>                :            : struct Optimizer {</a>
-<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">          8 :     Optimizer(Function &amp;F, AllocOpt &amp;pass, function_ref&lt;DominatorTree&amp;()&gt; GetDT)</span></a>
-<a name="113"><span class="lineNum">     113 </span>                :<span class="lineCov">          8 :         : F(F),</span></a>
+<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">         16 :     Optimizer(Function &amp;F, AllocOpt &amp;pass, function_ref&lt;DominatorTree&amp;()&gt; GetDT)</span></a>
+<a name="113"><span class="lineNum">     113 </span>                :<span class="lineCov">         16 :         : F(F),</span></a>
 <a name="114"><span class="lineNum">     114 </span>                :            :           pass(pass),</a>
-<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">          8 :           GetDT(std::move(GetDT))</span></a>
-<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">          8 :     {}</span></a>
+<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">         16 :           GetDT(std::move(GetDT))</span></a>
+<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">         16 :     {}</span></a>
 <a name="117"><span class="lineNum">     117 </span>                :            : </a>
 <a name="118"><span class="lineNum">     118 </span>                :            :     void initialize();</a>
 <a name="119"><span class="lineNum">     119 </span>                :            :     void optimizeAll();</a>
@@ -267,34 +267,34 @@
 <a name="189"><span class="lineNum">     189 </span>                :            :     std::map&lt;BasicBlock*, llvm::WeakVH&gt; first_safepoint;</a>
 <a name="190"><span class="lineNum">     190 </span>                :            : };</a>
 <a name="191"><span class="lineNum">     191 </span>                :            : </a>
-<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">        411 : void Optimizer::pushInstruction(Instruction *I)</span></a>
+<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">        822 : void Optimizer::pushInstruction(Instruction *I)</span></a>
 <a name="193"><span class="lineNum">     193 </span>                :            : {</a>
-<a name="194"><span class="lineNum">     194 </span>                :<span class="lineCov">        411 :     ssize_t sz = getGCAllocSize(I);</span></a>
-<a name="195"><span class="lineNum">     195 </span>        [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchCov" title="Branch 1 was taken 399 times"> + </span>]:<span class="lineCov">        411 :     if (sz != -1) {</span></a>
-<a name="196"><span class="lineNum">     196 </span>                :<span class="lineCov">         12 :         worklist.insert(std::make_pair(cast&lt;CallInst&gt;(I), sz));</span></a>
+<a name="194"><span class="lineNum">     194 </span>                :<span class="lineCov">        822 :     ssize_t sz = getGCAllocSize(I);</span></a>
+<a name="195"><span class="lineNum">     195 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchCov" title="Branch 1 was taken 798 times"> + </span>]:<span class="lineCov">        822 :     if (sz != -1) {</span></a>
+<a name="196"><span class="lineNum">     196 </span>                :<span class="lineCov">         24 :         worklist.insert(std::make_pair(cast&lt;CallInst&gt;(I), sz));</span></a>
 <a name="197"><span class="lineNum">     197 </span>                :            :     }</a>
-<a name="198"><span class="lineNum">     198 </span>                :<span class="lineCov">        411 : }</span></a>
+<a name="198"><span class="lineNum">     198 </span>                :<span class="lineCov">        822 : }</span></a>
 <a name="199"><span class="lineNum">     199 </span>                :            : </a>
-<a name="200"><span class="lineNum">     200 </span>                :<span class="lineCov">          8 : void Optimizer::initialize()</span></a>
+<a name="200"><span class="lineNum">     200 </span>                :<span class="lineCov">         16 : void Optimizer::initialize()</span></a>
 <a name="201"><span class="lineNum">     201 </span>                :            : {</a>
-<a name="202"><span class="lineNum">     202 </span>        [<span class="branchCov" title="Branch 0 was taken 53 times"> + </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">         61 :     for (auto &amp;bb: F) {</span></a>
-<a name="203"><span class="lineNum">     203 </span>        [<span class="branchCov" title="Branch 0 was taken 411 times"> + </span><span class="branchCov" title="Branch 1 was taken 53 times"> + </span>]:<span class="lineCov">        464 :         for (auto &amp;I: bb) {</span></a>
-<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">        411 :             pushInstruction(&amp;I);</span></a>
+<a name="202"><span class="lineNum">     202 </span>        [<span class="branchCov" title="Branch 0 was taken 106 times"> + </span><span class="branchCov" title="Branch 1 was taken 16 times"> + </span>]:<span class="lineCov">        122 :     for (auto &amp;bb: F) {</span></a>
+<a name="203"><span class="lineNum">     203 </span>        [<span class="branchCov" title="Branch 0 was taken 822 times"> + </span><span class="branchCov" title="Branch 1 was taken 106 times"> + </span>]:<span class="lineCov">        928 :         for (auto &amp;I: bb) {</span></a>
+<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">        822 :             pushInstruction(&amp;I);</span></a>
 <a name="205"><span class="lineNum">     205 </span>                :            :         }</a>
 <a name="206"><span class="lineNum">     206 </span>                :            :     }</a>
-<a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">          8 : }</span></a>
+<a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">         16 : }</span></a>
 <a name="208"><span class="lineNum">     208 </span>                :            : </a>
-<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">         20 : void Optimizer::optimizeAll()</span></a>
+<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">         40 : void Optimizer::optimizeAll()</span></a>
 <a name="210"><span class="lineNum">     210 </span>                :            : {</a>
-<a name="211"><span class="lineNum">     211 </span>        [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">         20 :     while (!worklist.empty()) {</span></a>
-<a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">         12 :         auto item = worklist.pop_back_val();</span></a>
-<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">         12 :         auto orig = item.first;</span></a>
-<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">         12 :         size_t sz = item.second;</span></a>
-<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">         12 :         checkInst(orig);</span></a>
-<a name="216"><span class="lineNum">     216 </span>        [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         12 :         if (use_info.escaped) {</span></a>
-<a name="217"><span class="lineNum">     217 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 12 times"> + </span>]:<span class="lineCov">         12 :             if (use_info.hastypeof)</span></a>
+<a name="211"><span class="lineNum">     211 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchCov" title="Branch 1 was taken 16 times"> + </span>]:<span class="lineCov">         40 :     while (!worklist.empty()) {</span></a>
+<a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">         24 :         auto item = worklist.pop_back_val();</span></a>
+<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">         24 :         auto orig = item.first;</span></a>
+<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">         24 :         size_t sz = item.second;</span></a>
+<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">         24 :         checkInst(orig);</span></a>
+<a name="216"><span class="lineNum">     216 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         24 :         if (use_info.escaped) {</span></a>
+<a name="217"><span class="lineNum">     217 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 24 times"> + </span>]:<span class="lineCov">         24 :             if (use_info.hastypeof)</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :<span class="lineNoCov">          0 :                 optimizeTag(orig);</span></a>
-<a name="219"><span class="lineNum">     219 </span>                :<span class="lineCov">         12 :             continue;</span></a>
+<a name="219"><span class="lineNum">     219 </span>                :<span class="lineCov">         24 :             continue;</span></a>
 <a name="220"><span class="lineNum">     220 </span>                :            :         }</a>
 <a name="221"><span class="lineNum">     221 </span>  [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 3 was not executed"> # </span>]:<span class="lineNoCov">          0 :         if (use_info.haserror || use_info.returned) {</span></a>
 <a name="222"><span class="lineNum">     222 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :             if (use_info.hastypeof)</span></a>
@@ -339,12 +339,12 @@
 <a name="258"><span class="lineNum">     258 </span>                :            :         // The object has no fields with mix reference access</a>
 <a name="259"><span class="lineNum">     259 </span>                :<span class="lineNoCov">          0 :         moveToStack(orig, sz, has_ref);</span></a>
 <a name="260"><span class="lineNum">     260 </span>                :            :     }</a>
-<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">          8 : }</span></a>
+<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">         16 : }</span></a>
 <a name="262"><span class="lineNum">     262 </span>                :            : </a>
-<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">          8 : bool Optimizer::finalize()</span></a>
+<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">         16 : bool Optimizer::finalize()</span></a>
 <a name="264"><span class="lineNum">     264 </span>                :            : {</a>
-<a name="265"><span class="lineNum">     265 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          8 :     if (removed.empty())</span></a>
-<a name="266"><span class="lineNum">     266 </span>                :<span class="lineCov">          8 :         return false;</span></a>
+<a name="265"><span class="lineNum">     265 </span>        [<span class="branchCov" title="Branch 0 was taken 16 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         16 :     if (removed.empty())</span></a>
+<a name="266"><span class="lineNum">     266 </span>                :<span class="lineCov">         16 :         return false;</span></a>
 <a name="267"><span class="lineNum">     267 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :     for (auto inst: removed)</span></a>
 <a name="268"><span class="lineNum">     268 </span>                :<span class="lineNoCov">          0 :         inst-&gt;eraseFromParent();</span></a>
 <a name="269"><span class="lineNum">     269 </span>                :<span class="lineNoCov">          0 :     return true;</span></a>
@@ -386,25 +386,25 @@
 <a name="304"><span class="lineNum">     304 </span>                :<span class="lineNoCov">          0 :     return first;</span></a>
 <a name="305"><span class="lineNum">     305 </span>                :            : }</a>
 <a name="306"><span class="lineNum">     306 </span>                :            : </a>
-<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">        411 : ssize_t Optimizer::getGCAllocSize(Instruction *I)</span></a>
+<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">        822 : ssize_t Optimizer::getGCAllocSize(Instruction *I)</span></a>
 <a name="308"><span class="lineNum">     308 </span>                :            : {</a>
-<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">        411 :     auto call = dyn_cast&lt;CallInst&gt;(I);</span></a>
-<a name="310"><span class="lineNum">     310 </span>        [<span class="branchCov" title="Branch 0 was taken 312 times"> + </span><span class="branchCov" title="Branch 1 was taken 99 times"> + </span>]:<span class="lineCov">        411 :     if (!call)</span></a>
-<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">        312 :         return -1;</span></a>
-<a name="312"><span class="lineNum">     312 </span>        [<span class="branchCov" title="Branch 0 was taken 87 times"> + </span><span class="branchCov" title="Branch 1 was taken 12 times"> + </span>]:<span class="lineCov">         99 :     if (call-&gt;getCalledOperand() != pass.alloc_obj_func)</span></a>
-<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">         87 :         return -1;</span></a>
-<a name="314"><span class="lineNum">     314 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 12 times"> + </span>]:<span class="lineCov">         12 :     assert(call-&gt;arg_size() == 3);</span></a>
-<a name="315"><span class="lineNum">     315 </span>                :<span class="lineCov">         12 :     size_t sz = (size_t)cast&lt;ConstantInt&gt;(call-&gt;getArgOperand(1))-&gt;getZExtValue();</span></a>
-<a name="316"><span class="lineNum">     316 </span>  [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 12 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         12 :     if (sz &lt; IntegerType::MAX_INT_BITS / 8 &amp;&amp; sz &lt; INT32_MAX)</span></a>
-<a name="317"><span class="lineNum">     317 </span>                :<span class="lineCov">         12 :         return sz;</span></a>
+<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">        822 :     auto call = dyn_cast&lt;CallInst&gt;(I);</span></a>
+<a name="310"><span class="lineNum">     310 </span>        [<span class="branchCov" title="Branch 0 was taken 624 times"> + </span><span class="branchCov" title="Branch 1 was taken 198 times"> + </span>]:<span class="lineCov">        822 :     if (!call)</span></a>
+<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">        624 :         return -1;</span></a>
+<a name="312"><span class="lineNum">     312 </span>        [<span class="branchCov" title="Branch 0 was taken 174 times"> + </span><span class="branchCov" title="Branch 1 was taken 24 times"> + </span>]:<span class="lineCov">        198 :     if (call-&gt;getCalledOperand() != pass.alloc_obj_func)</span></a>
+<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">        174 :         return -1;</span></a>
+<a name="314"><span class="lineNum">     314 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 24 times"> + </span>]:<span class="lineCov">         24 :     assert(call-&gt;arg_size() == 3);</span></a>
+<a name="315"><span class="lineNum">     315 </span>                :<span class="lineCov">         24 :     size_t sz = (size_t)cast&lt;ConstantInt&gt;(call-&gt;getArgOperand(1))-&gt;getZExtValue();</span></a>
+<a name="316"><span class="lineNum">     316 </span>  [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 24 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         24 :     if (sz &lt; IntegerType::MAX_INT_BITS / 8 &amp;&amp; sz &lt; INT32_MAX)</span></a>
+<a name="317"><span class="lineNum">     317 </span>                :<span class="lineCov">         24 :         return sz;</span></a>
 <a name="318"><span class="lineNum">     318 </span>                :<span class="lineNoCov">          0 :     return -1;</span></a>
 <a name="319"><span class="lineNum">     319 </span>                :            : }</a>
 <a name="320"><span class="lineNum">     320 </span>                :            : </a>
-<a name="321"><span class="lineNum">     321 </span>                :<span class="lineCov">         12 : void Optimizer::checkInst(Instruction *I)</span></a>
+<a name="321"><span class="lineNum">     321 </span>                :<span class="lineCov">         24 : void Optimizer::checkInst(Instruction *I)</span></a>
 <a name="322"><span class="lineNum">     322 </span>                :            : {</a>
-<a name="323"><span class="lineNum">     323 </span>                :<span class="lineCov">         12 :     jl_alloc::EscapeAnalysisRequiredArgs required{use_info, check_stack, pass, *pass.DL};</span></a>
-<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">         12 :     jl_alloc::runEscapeAnalysis(I, required);</span></a>
-<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">         12 : }</span></a>
+<a name="323"><span class="lineNum">     323 </span>                :<span class="lineCov">         24 :     jl_alloc::EscapeAnalysisRequiredArgs required{use_info, check_stack, pass, *pass.DL};</span></a>
+<a name="324"><span class="lineNum">     324 </span>                :<span class="lineCov">         24 :     jl_alloc::runEscapeAnalysis(I, required);</span></a>
+<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">         24 : }</span></a>
 <a name="326"><span class="lineNum">     326 </span>                :            : </a>
 <a name="327"><span class="lineNum">     327 </span>                :<span class="lineNoCov">          0 : void Optimizer::insertLifetimeEnd(Value *ptr, Constant *sz, Instruction *insert)</span></a>
 <a name="328"><span class="lineNum">     328 </span>                :            : {</a>
@@ -1249,51 +1249,51 @@
 <a name="1155"><span class="lineNum">    1155 </span>                :            :     }</a>
 <a name="1156"><span class="lineNum">    1156 </span>                :            : }</a>
 <a name="1157"><span class="lineNum">    1157 </span>                :            : </a>
-<a name="1158"><span class="lineNum">    1158 </span>                :<span class="lineCov">         12 : bool AllocOpt::doInitialization(Module &amp;M)</span></a>
+<a name="1158"><span class="lineNum">    1158 </span>                :<span class="lineCov">         24 : bool AllocOpt::doInitialization(Module &amp;M)</span></a>
 <a name="1159"><span class="lineNum">    1159 </span>                :            : {</a>
-<a name="1160"><span class="lineNum">    1160 </span>                :<span class="lineCov">         12 :     initAll(M);</span></a>
-<a name="1161"><span class="lineNum">    1161 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchCov" title="Branch 1 was taken 4 times"> + </span>]:<span class="lineCov">         12 :     if (!alloc_obj_func)</span></a>
-<a name="1162"><span class="lineNum">    1162 </span>                :<span class="lineCov">          8 :         return false;</span></a>
+<a name="1160"><span class="lineNum">    1160 </span>                :<span class="lineCov">         24 :     initAll(M);</span></a>
+<a name="1161"><span class="lineNum">    1161 </span>        [<span class="branchCov" title="Branch 0 was taken 16 times"> + </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">         24 :     if (!alloc_obj_func)</span></a>
+<a name="1162"><span class="lineNum">    1162 </span>                :<span class="lineCov">         16 :         return false;</span></a>
 <a name="1163"><span class="lineNum">    1163 </span>                :            : </a>
-<a name="1164"><span class="lineNum">    1164 </span>                :<span class="lineCov">          4 :     DL = &amp;M.getDataLayout();</span></a>
+<a name="1164"><span class="lineNum">    1164 </span>                :<span class="lineCov">          8 :     DL = &amp;M.getDataLayout();</span></a>
 <a name="1165"><span class="lineNum">    1165 </span>                :            : </a>
-<a name="1166"><span class="lineNum">    1166 </span>                :<span class="lineCov">          4 :     lifetime_start = Intrinsic::getDeclaration(&amp;M, Intrinsic::lifetime_start, { Type::getInt8PtrTy(M.getContext()) });</span></a>
-<a name="1167"><span class="lineNum">    1167 </span>                :<span class="lineCov">          4 :     lifetime_end = Intrinsic::getDeclaration(&amp;M, Intrinsic::lifetime_end, { Type::getInt8PtrTy(M.getContext()) });</span></a>
+<a name="1166"><span class="lineNum">    1166 </span>                :<span class="lineCov">          8 :     lifetime_start = Intrinsic::getDeclaration(&amp;M, Intrinsic::lifetime_start, { Type::getInt8PtrTy(M.getContext()) });</span></a>
+<a name="1167"><span class="lineNum">    1167 </span>                :<span class="lineCov">          8 :     lifetime_end = Intrinsic::getDeclaration(&amp;M, Intrinsic::lifetime_end, { Type::getInt8PtrTy(M.getContext()) });</span></a>
 <a name="1168"><span class="lineNum">    1168 </span>                :            : </a>
-<a name="1169"><span class="lineNum">    1169 </span>                :<span class="lineCov">          4 :     return true;</span></a>
+<a name="1169"><span class="lineNum">    1169 </span>                :<span class="lineCov">          8 :     return true;</span></a>
 <a name="1170"><span class="lineNum">    1170 </span>                :            : }</a>
 <a name="1171"><span class="lineNum">    1171 </span>                :            : </a>
-<a name="1172"><span class="lineNum">    1172 </span>                :<span class="lineCov">         20 : bool AllocOpt::runOnFunction(Function &amp;F, function_ref&lt;DominatorTree&amp;()&gt; GetDT)</span></a>
+<a name="1172"><span class="lineNum">    1172 </span>                :<span class="lineCov">         40 : bool AllocOpt::runOnFunction(Function &amp;F, function_ref&lt;DominatorTree&amp;()&gt; GetDT)</span></a>
 <a name="1173"><span class="lineNum">    1173 </span>                :            : {</a>
-<a name="1174"><span class="lineNum">    1174 </span>        [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">         20 :     if (!alloc_obj_func)</span></a>
-<a name="1175"><span class="lineNum">    1175 </span>                :<span class="lineCov">         12 :         return false;</span></a>
-<a name="1176"><span class="lineNum">    1176 </span>                :<span class="lineCov">          8 :     Optimizer optimizer(F, *this, std::move(GetDT));</span></a>
-<a name="1177"><span class="lineNum">    1177 </span>                :<span class="lineCov">          8 :     optimizer.initialize();</span></a>
-<a name="1178"><span class="lineNum">    1178 </span>                :<span class="lineCov">          8 :     optimizer.optimizeAll();</span></a>
-<a name="1179"><span class="lineNum">    1179 </span>                :<span class="lineCov">          8 :     bool modified = optimizer.finalize();</span></a>
-<a name="1180"><span class="lineNum">    1180 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">          8 :     assert(!verifyFunction(F, &amp;errs()));</span></a>
-<a name="1181"><span class="lineNum">    1181 </span>                :<span class="lineCov">          8 :     return modified;</span></a>
+<a name="1174"><span class="lineNum">    1174 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchCov" title="Branch 1 was taken 16 times"> + </span>]:<span class="lineCov">         40 :     if (!alloc_obj_func)</span></a>
+<a name="1175"><span class="lineNum">    1175 </span>                :<span class="lineCov">         24 :         return false;</span></a>
+<a name="1176"><span class="lineNum">    1176 </span>                :<span class="lineCov">         16 :     Optimizer optimizer(F, *this, std::move(GetDT));</span></a>
+<a name="1177"><span class="lineNum">    1177 </span>                :<span class="lineCov">         16 :     optimizer.initialize();</span></a>
+<a name="1178"><span class="lineNum">    1178 </span>                :<span class="lineCov">         16 :     optimizer.optimizeAll();</span></a>
+<a name="1179"><span class="lineNum">    1179 </span>                :<span class="lineCov">         16 :     bool modified = optimizer.finalize();</span></a>
+<a name="1180"><span class="lineNum">    1180 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 16 times"> + </span>]:<span class="lineCov">         16 :     assert(!verifyFunction(F, &amp;errs()));</span></a>
+<a name="1181"><span class="lineNum">    1181 </span>                :<span class="lineCov">         16 :     return modified;</span></a>
 <a name="1182"><span class="lineNum">    1182 </span>                :            : }</a>
 <a name="1183"><span class="lineNum">    1183 </span>                :            : </a>
 <a name="1184"><span class="lineNum">    1184 </span>                :            : struct AllocOptLegacy : public FunctionPass {</a>
 <a name="1185"><span class="lineNum">    1185 </span>                :            :     static char ID;</a>
 <a name="1186"><span class="lineNum">    1186 </span>                :            :     AllocOpt opt;</a>
-<a name="1187"><span class="lineNum">    1187 </span>                :<span class="lineCov">          4 :     AllocOptLegacy() : FunctionPass(ID) {</span></a>
-<a name="1188"><span class="lineNum">    1188 </span>                :<span class="lineCov">          4 :         llvm::initializeDominatorTreeWrapperPassPass(*PassRegistry::getPassRegistry());</span></a>
-<a name="1189"><span class="lineNum">    1189 </span>                :<span class="lineCov">          4 :     }</span></a>
-<a name="1190"><span class="lineNum">    1190 </span>                :<span class="lineCov">         12 :     bool doInitialization(Module &amp;m) override {</span></a>
-<a name="1191"><span class="lineNum">    1191 </span>                :<span class="lineCov">         12 :         return opt.doInitialization(m);</span></a>
+<a name="1187"><span class="lineNum">    1187 </span>                :<span class="lineCov">          8 :     AllocOptLegacy() : FunctionPass(ID) {</span></a>
+<a name="1188"><span class="lineNum">    1188 </span>                :<span class="lineCov">          8 :         llvm::initializeDominatorTreeWrapperPassPass(*PassRegistry::getPassRegistry());</span></a>
+<a name="1189"><span class="lineNum">    1189 </span>                :<span class="lineCov">          8 :     }</span></a>
+<a name="1190"><span class="lineNum">    1190 </span>                :<span class="lineCov">         24 :     bool doInitialization(Module &amp;m) override {</span></a>
+<a name="1191"><span class="lineNum">    1191 </span>                :<span class="lineCov">         24 :         return opt.doInitialization(m);</span></a>
 <a name="1192"><span class="lineNum">    1192 </span>                :            :     }</a>
-<a name="1193"><span class="lineNum">    1193 </span>                :<span class="lineCov">         20 :     bool runOnFunction(Function &amp;F) override {</span></a>
-<a name="1194"><span class="lineNum">    1194 </span>                :<span class="lineCov">         20 :         return opt.runOnFunction(F, [this]() -&gt; DominatorTree &amp; {return getAnalysis&lt;DominatorTreeWrapperPass&gt;().getDomTree();});</span></a>
+<a name="1193"><span class="lineNum">    1193 </span>                :<span class="lineCov">         40 :     bool runOnFunction(Function &amp;F) override {</span></a>
+<a name="1194"><span class="lineNum">    1194 </span>                :<span class="lineCov">         40 :         return opt.runOnFunction(F, [this]() -&gt; DominatorTree &amp; {return getAnalysis&lt;DominatorTreeWrapperPass&gt;().getDomTree();});</span></a>
 <a name="1195"><span class="lineNum">    1195 </span>                :            :     }</a>
-<a name="1196"><span class="lineNum">    1196 </span>                :<span class="lineCov">          4 :     void getAnalysisUsage(AnalysisUsage &amp;AU) const override</span></a>
+<a name="1196"><span class="lineNum">    1196 </span>                :<span class="lineCov">          8 :     void getAnalysisUsage(AnalysisUsage &amp;AU) const override</span></a>
 <a name="1197"><span class="lineNum">    1197 </span>                :            :     {</a>
-<a name="1198"><span class="lineNum">    1198 </span>                :<span class="lineCov">          4 :         FunctionPass::getAnalysisUsage(AU);</span></a>
-<a name="1199"><span class="lineNum">    1199 </span>                :<span class="lineCov">          4 :         AU.addRequired&lt;DominatorTreeWrapperPass&gt;();</span></a>
-<a name="1200"><span class="lineNum">    1200 </span>                :<span class="lineCov">          4 :         AU.addPreserved&lt;DominatorTreeWrapperPass&gt;();</span></a>
-<a name="1201"><span class="lineNum">    1201 </span>                :<span class="lineCov">          4 :         AU.setPreservesCFG();</span></a>
-<a name="1202"><span class="lineNum">    1202 </span>                :<span class="lineCov">          4 :     }</span></a>
+<a name="1198"><span class="lineNum">    1198 </span>                :<span class="lineCov">          8 :         FunctionPass::getAnalysisUsage(AU);</span></a>
+<a name="1199"><span class="lineNum">    1199 </span>                :<span class="lineCov">          8 :         AU.addRequired&lt;DominatorTreeWrapperPass&gt;();</span></a>
+<a name="1200"><span class="lineNum">    1200 </span>                :<span class="lineCov">          8 :         AU.addPreserved&lt;DominatorTreeWrapperPass&gt;();</span></a>
+<a name="1201"><span class="lineNum">    1201 </span>                :<span class="lineCov">          8 :         AU.setPreservesCFG();</span></a>
+<a name="1202"><span class="lineNum">    1202 </span>                :<span class="lineCov">          8 :     }</span></a>
 <a name="1203"><span class="lineNum">    1203 </span>                :            : };</a>
 <a name="1204"><span class="lineNum">    1204 </span>                :            : </a>
 <a name="1205"><span class="lineNum">    1205 </span>                :            : char AllocOptLegacy::ID = 0;</a>
@@ -1303,9 +1303,9 @@
 <a name="1209"><span class="lineNum">    1209 </span>                :            : </a>
 <a name="1210"><span class="lineNum">    1210 </span>                :            : }</a>
 <a name="1211"><span class="lineNum">    1211 </span>                :            : </a>
-<a name="1212"><span class="lineNum">    1212 </span>                :<span class="lineCov">          4 : Pass *createAllocOptPass()</span></a>
+<a name="1212"><span class="lineNum">    1212 </span>                :<span class="lineCov">          8 : Pass *createAllocOptPass()</span></a>
 <a name="1213"><span class="lineNum">    1213 </span>                :            : {</a>
-<a name="1214"><span class="lineNum">    1214 </span>                :<span class="lineCov">          4 :     return new AllocOptLegacy();</span></a>
+<a name="1214"><span class="lineNum">    1214 </span>                :<span class="lineCov">          8 :     return new AllocOptLegacy();</span></a>
 <a name="1215"><span class="lineNum">    1215 </span>                :            : }</a>
 <a name="1216"><span class="lineNum">    1216 </span>                :            : </a>
 <a name="1217"><span class="lineNum">    1217 </span>                :<span class="lineNoCov">          0 : PreservedAnalyses AllocOptPass::run(Function &amp;F, FunctionAnalysisManager &amp;AM) {</span></a>
