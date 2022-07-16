@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/runtime_ccall.cpp</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/runtime_ccall.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">25</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -132,14 +132,14 @@
 <a name="54"><span class="lineNum">      54 </span>                :            : }</a>
 <a name="55"><span class="lineNum">      55 </span>                :            : </a>
 <a name="56"><span class="lineNum">      56 </span>                :            : extern &quot;C&quot; JL_DLLEXPORT</a>
-<a name="57"><span class="lineNum">      57 </span>                :<span class="lineCov">       2593 : void *jl_load_and_lookup(const char *f_lib, const char *f_name, _Atomic(void*) *hnd)</span></a>
+<a name="57"><span class="lineNum">      57 </span>                :<span class="lineCov">       2590 : void *jl_load_and_lookup(const char *f_lib, const char *f_name, _Atomic(void*) *hnd)</span></a>
 <a name="58"><span class="lineNum">      58 </span>                :            : {</a>
-<a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov">       2593 :     void *handle = jl_atomic_load_acquire(hnd);</span></a>
-<a name="60"><span class="lineNum">      60 </span>        [<span class="branchCov" title="Branch 0 was taken 41 times"> + </span><span class="branchCov" title="Branch 1 was taken 2552 times"> + </span>]:<span class="lineCov">       2593 :     if (!handle)</span></a>
+<a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov">       2590 :     void *handle = jl_atomic_load_acquire(hnd);</span></a>
+<a name="60"><span class="lineNum">      60 </span>        [<span class="branchCov" title="Branch 0 was taken 41 times"> + </span><span class="branchCov" title="Branch 1 was taken 2549 times"> + </span>]:<span class="lineCov">       2590 :     if (!handle)</span></a>
 <a name="61"><span class="lineNum">      61 </span>                :<span class="lineCov">         41 :         jl_atomic_store_release(hnd, (handle = jl_get_library(f_lib)));</span></a>
 <a name="62"><span class="lineNum">      62 </span>                :            :     void * ptr;</a>
-<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">       2593 :     jl_dlsym(handle, f_name, &amp;ptr, 1);</span></a>
-<a name="64"><span class="lineNum">      64 </span>                :<span class="lineCov">       2593 :     return ptr;</span></a>
+<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">       2590 :     jl_dlsym(handle, f_name, &amp;ptr, 1);</span></a>
+<a name="64"><span class="lineNum">      64 </span>                :<span class="lineCov">       2590 :     return ptr;</span></a>
 <a name="65"><span class="lineNum">      65 </span>                :            : }</a>
 <a name="66"><span class="lineNum">      66 </span>                :            : </a>
 <a name="67"><span class="lineNum">      67 </span>                :            : // jl_load_and_lookup, but with library computed at run time on first call</a>

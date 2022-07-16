@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/intrinsics.cpp</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/intrinsics.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">698</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">32</td>
@@ -234,11 +234,11 @@
 <a name="156"><span class="lineNum">     156 </span>                :            : }</a>
 <a name="157"><span class="lineNum">     157 </span>                :            : </a>
 <a name="158"><span class="lineNum">     158 </span>                :            : // convert an llvm type to same-size int type</a>
-<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov">     905399 : static Type *INTT(Type *t)</span></a>
+<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov">     905401 : static Type *INTT(Type *t)</span></a>
 <a name="160"><span class="lineNum">     160 </span>                :            : {</a>
-<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">     905399 :     auto &amp;ctxt = t-&gt;getContext();</span></a>
-<a name="162"><span class="lineNum">     162 </span>        [<span class="branchCov" title="Branch 0 was taken 897341 times"> + </span><span class="branchCov" title="Branch 1 was taken 8058 times"> + </span>]:<span class="lineCov">     905399 :     if (t-&gt;isIntegerTy())</span></a>
-<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">     897341 :         return t;</span></a>
+<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">     905401 :     auto &amp;ctxt = t-&gt;getContext();</span></a>
+<a name="162"><span class="lineNum">     162 </span>        [<span class="branchCov" title="Branch 0 was taken 897343 times"> + </span><span class="branchCov" title="Branch 1 was taken 8058 times"> + </span>]:<span class="lineCov">     905401 :     if (t-&gt;isIntegerTy())</span></a>
+<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">     897343 :         return t;</span></a>
 <a name="164"><span class="lineNum">     164 </span>        [<span class="branchCov" title="Branch 0 was taken 7895 times"> + </span><span class="branchCov" title="Branch 1 was taken 163 times"> + </span>]:<span class="lineCov">       8058 :     if (t-&gt;isPointerTy())</span></a>
 <a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">       7895 :         return getSizeTy(ctxt);</span></a>
 <a name="166"><span class="lineNum">     166 </span>        [<span class="branchCov" title="Branch 0 was taken 147 times"> + </span><span class="branchCov" title="Branch 1 was taken 16 times"> + </span>]:<span class="lineCov">        163 :     if (t == getDoubleTy(ctxt))</span></a>
@@ -262,52 +262,52 @@
 <a name="184"><span class="lineNum">     184 </span>                :<span class="lineCov">       2473 :     return ctx.builder.CreateZExt(x, to);</span></a>
 <a name="185"><span class="lineNum">     185 </span>                :            : }</a>
 <a name="186"><span class="lineNum">     186 </span>                :            : </a>
-<a name="187"><span class="lineNum">     187 </span>                :<span class="lineCov">     639292 : static Constant *julia_const_to_llvm(jl_codectx_t &amp;ctx, const void *ptr, jl_datatype_t *bt)</span></a>
+<a name="187"><span class="lineNum">     187 </span>                :<span class="lineCov">     639293 : static Constant *julia_const_to_llvm(jl_codectx_t &amp;ctx, const void *ptr, jl_datatype_t *bt)</span></a>
 <a name="188"><span class="lineNum">     188 </span>                :            : {</a>
 <a name="189"><span class="lineNum">     189 </span>                :            :     // assumes `jl_is_pointerfree(bt)`.</a>
 <a name="190"><span class="lineNum">     190 </span>                :            :     // `ptr` can point to a inline field, do not read the tag from it.</a>
 <a name="191"><span class="lineNum">     191 </span>                :            :     // make sure to return exactly the type specified by</a>
 <a name="192"><span class="lineNum">     192 </span>                :            :     // julia_type_to_llvm as this will be assumed by the callee.</a>
-<a name="193"><span class="lineNum">     193 </span>        [<span class="branchCov" title="Branch 0 was taken 1636 times"> + </span><span class="branchCov" title="Branch 1 was taken 637656 times"> + </span>]:<span class="lineCov">     639292 :     if (bt == jl_bool_type)</span></a>
+<a name="193"><span class="lineNum">     193 </span>        [<span class="branchCov" title="Branch 0 was taken 1636 times"> + </span><span class="branchCov" title="Branch 1 was taken 637657 times"> + </span>]:<span class="lineCov">     639293 :     if (bt == jl_bool_type)</span></a>
 <a name="194"><span class="lineNum">     194 </span>        [<span class="branchCov" title="Branch 0 was taken 425 times"> + </span><span class="branchCov" title="Branch 1 was taken 1211 times"> + </span>]:<span class="lineCov">       1636 :         return ConstantInt::get(getInt8Ty(ctx.builder.getContext()), (*(const uint8_t*)ptr) ? 1 : 0);</span></a>
 <a name="195"><span class="lineNum">     195 </span>                :            : </a>
-<a name="196"><span class="lineNum">     196 </span>                :<span class="lineCov">     637656 :     Type *lt = julia_struct_to_llvm(ctx, (jl_value_t*)bt, NULL);</span></a>
+<a name="196"><span class="lineNum">     196 </span>                :<span class="lineCov">     637657 :     Type *lt = julia_struct_to_llvm(ctx, (jl_value_t*)bt, NULL);</span></a>
 <a name="197"><span class="lineNum">     197 </span>                :            : </a>
-<a name="198"><span class="lineNum">     198 </span>  [<span class="branchCov" title="Branch 0 was taken 28 times"> + </span><span class="branchCov" title="Branch 1 was taken 637628 times"> + </span><span class="branchCov" title="Branch 2 was taken 28 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">     637656 :     if (jl_is_vecelement_type((jl_value_t*)bt) &amp;&amp; !jl_is_uniontype(jl_tparam0(bt)))</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 28 times"> + </span><span class="branchCov" title="Branch 5 was taken 637628 times"> + </span>]
+<a name="198"><span class="lineNum">     198 </span>  [<span class="branchCov" title="Branch 0 was taken 28 times"> + </span><span class="branchCov" title="Branch 1 was taken 637629 times"> + </span><span class="branchCov" title="Branch 2 was taken 28 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">     637657 :     if (jl_is_vecelement_type((jl_value_t*)bt) &amp;&amp; !jl_is_uniontype(jl_tparam0(bt)))</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 28 times"> + </span><span class="branchCov" title="Branch 5 was taken 637629 times"> + </span>]
 <a name="199"><span class="lineNum">     199 </span>                :<span class="lineCov">         28 :         bt = (jl_datatype_t*)jl_tparam0(bt);</span></a>
 <a name="200"><span class="lineNum">     200 </span>                :            : </a>
-<a name="201"><span class="lineNum">     201 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 637656 times"> + </span>]:<span class="lineCov">     637656 :     if (type_is_ghost(lt))</span></a>
+<a name="201"><span class="lineNum">     201 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 637657 times"> + </span>]:<span class="lineCov">     637657 :     if (type_is_ghost(lt))</span></a>
 <a name="202"><span class="lineNum">     202 </span>                :<span class="lineNoCov">          0 :         return UndefValue::get(lt);</span></a>
 <a name="203"><span class="lineNum">     203 </span>                :            : </a>
-<a name="204"><span class="lineNum">     204 </span>        [<span class="branchCov" title="Branch 0 was taken 14 times"> + </span><span class="branchCov" title="Branch 1 was taken 637642 times"> + </span>]:<span class="lineCov">     637656 :     if (lt-&gt;isFloatTy()) {</span></a>
+<a name="204"><span class="lineNum">     204 </span>        [<span class="branchCov" title="Branch 0 was taken 14 times"> + </span><span class="branchCov" title="Branch 1 was taken 637643 times"> + </span>]:<span class="lineCov">     637657 :     if (lt-&gt;isFloatTy()) {</span></a>
 <a name="205"><span class="lineNum">     205 </span>                :<span class="lineCov">         14 :         uint32_t data32 = *(const uint32_t*)ptr;</span></a>
 <a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">         14 :         return ConstantFP::get(ctx.builder.getContext(),</span></a>
 <a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">         28 :                 APFloat(lt-&gt;getFltSemantics(), APInt(32, data32)));</span></a>
 <a name="208"><span class="lineNum">     208 </span>                :            :     }</a>
-<a name="209"><span class="lineNum">     209 </span>        [<span class="branchCov" title="Branch 0 was taken 6006 times"> + </span><span class="branchCov" title="Branch 1 was taken 631636 times"> + </span>]:<span class="lineCov">     637642 :     if (lt-&gt;isDoubleTy()) {</span></a>
+<a name="209"><span class="lineNum">     209 </span>        [<span class="branchCov" title="Branch 0 was taken 6006 times"> + </span><span class="branchCov" title="Branch 1 was taken 631637 times"> + </span>]:<span class="lineCov">     637643 :     if (lt-&gt;isDoubleTy()) {</span></a>
 <a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">       6006 :         uint64_t data64 = *(const uint64_t*)ptr;</span></a>
 <a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">       6006 :         return ConstantFP::get(ctx.builder.getContext(),</span></a>
 <a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">      12012 :                 APFloat(lt-&gt;getFltSemantics(), APInt(64, data64)));</span></a>
 <a name="213"><span class="lineNum">     213 </span>                :            :     }</a>
-<a name="214"><span class="lineNum">     214 </span>  [<span class="branchCov" title="Branch 0 was taken 631636 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 17283 times"> + </span><span class="branchCov" title="Branch 3 was taken 614353 times"> + </span> :<span class="lineCov">     631636 :     if (lt-&gt;isFloatingPointTy() || lt-&gt;isIntegerTy() || lt-&gt;isPointerTy()) {</span></a>
-<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 17283 times"> + </span><span class="branchCov" title="Branch 6 was taken 614353 times"> + </span><span class="branchCov" title="Branch 7 was taken 17283 times"> + </span>]
-<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">     614353 :         int nb = jl_datatype_size(bt);</span></a>
+<a name="214"><span class="lineNum">     214 </span>  [<span class="branchCov" title="Branch 0 was taken 631637 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 17283 times"> + </span><span class="branchCov" title="Branch 3 was taken 614354 times"> + </span> :<span class="lineCov">     631637 :     if (lt-&gt;isFloatingPointTy() || lt-&gt;isIntegerTy() || lt-&gt;isPointerTy()) {</span></a>
+<span class="lineNum">         </span>   <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 17283 times"> + </span><span class="branchCov" title="Branch 6 was taken 614354 times"> + </span><span class="branchCov" title="Branch 7 was taken 17283 times"> + </span>]
+<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">     614354 :         int nb = jl_datatype_size(bt);</span></a>
 <a name="216"><span class="lineNum">     216 </span>                :<span class="lineCov">    1228710 :         APInt val(8 * nb, 0);</span></a>
-<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">     614353 :         void *bits = const_cast&lt;uint64_t*&gt;(val.getRawData());</span></a>
+<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">     614354 :         void *bits = const_cast&lt;uint64_t*&gt;(val.getRawData());</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :            :         assert(sys::IsLittleEndianHost);</a>
-<a name="219"><span class="lineNum">     219 </span>                :<span class="lineCov">     614353 :         memcpy(bits, ptr, nb);</span></a>
-<a name="220"><span class="lineNum">     220 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614353 times"> + </span>]:<span class="lineCov">     614353 :         if (lt-&gt;isFloatingPointTy()) {</span></a>
+<a name="219"><span class="lineNum">     219 </span>                :<span class="lineCov">     614354 :         memcpy(bits, ptr, nb);</span></a>
+<a name="220"><span class="lineNum">     220 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614354 times"> + </span>]:<span class="lineCov">     614354 :         if (lt-&gt;isFloatingPointTy()) {</span></a>
 <a name="221"><span class="lineNum">     221 </span>                :<span class="lineNoCov">          0 :             return ConstantFP::get(ctx.builder.getContext(),</span></a>
 <a name="222"><span class="lineNum">     222 </span>                :<span class="lineNoCov">          0 :                     APFloat(lt-&gt;getFltSemantics(), val));</span></a>
 <a name="223"><span class="lineNum">     223 </span>                :            :         }</a>
-<a name="224"><span class="lineNum">     224 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614353 times"> + </span>]:<span class="lineCov">     614353 :         if (lt-&gt;isPointerTy()) {</span></a>
+<a name="224"><span class="lineNum">     224 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614354 times"> + </span>]:<span class="lineCov">     614354 :         if (lt-&gt;isPointerTy()) {</span></a>
 <a name="225"><span class="lineNum">     225 </span>                :<span class="lineNoCov">          0 :             Type *Ty = IntegerType::get(ctx.builder.getContext(), 8 * nb);</span></a>
 <a name="226"><span class="lineNum">     226 </span>                :<span class="lineNoCov">          0 :             Constant *addr = ConstantInt::get(Ty, val);</span></a>
 <a name="227"><span class="lineNum">     227 </span>                :<span class="lineNoCov">          0 :             return ConstantExpr::getIntToPtr(addr, lt);</span></a>
 <a name="228"><span class="lineNum">     228 </span>                :            :         }</a>
-<a name="229"><span class="lineNum">     229 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614353 times"> + </span>]:<span class="lineCov">     614353 :         assert(cast&lt;IntegerType&gt;(lt)-&gt;getBitWidth() == 8u * nb);</span></a>
-<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">     614353 :         return ConstantInt::get(lt, val);</span></a>
+<a name="229"><span class="lineNum">     229 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614354 times"> + </span>]:<span class="lineCov">     614354 :         assert(cast&lt;IntegerType&gt;(lt)-&gt;getBitWidth() == 8u * nb);</span></a>
+<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">     614354 :         return ConstantInt::get(lt, val);</span></a>
 <a name="231"><span class="lineNum">     231 </span>                :            :     }</a>
 <a name="232"><span class="lineNum">     232 </span>                :            : </a>
 <a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">      17283 :     size_t nf = jl_datatype_nfields(bt);</span></a>
@@ -388,35 +388,35 @@
 <a name="308"><span class="lineNum">     308 </span>                :            :     jl_unreachable();</a>
 <a name="309"><span class="lineNum">     309 </span>                :            : }</a>
 <a name="310"><span class="lineNum">     310 </span>                :            : </a>
-<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">     869518 : static Constant *julia_const_to_llvm(jl_codectx_t &amp;ctx, jl_value_t *e)</span></a>
+<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">     869519 : static Constant *julia_const_to_llvm(jl_codectx_t &amp;ctx, jl_value_t *e)</span></a>
 <a name="312"><span class="lineNum">     312 </span>                :            : {</a>
-<a name="313"><span class="lineNum">     313 </span>        [<span class="branchCov" title="Branch 0 was taken 139232 times"> + </span><span class="branchCov" title="Branch 1 was taken 730286 times"> + </span>]:<span class="lineCov">     869518 :     if (e == jl_true)</span></a>
+<a name="313"><span class="lineNum">     313 </span>        [<span class="branchCov" title="Branch 0 was taken 139232 times"> + </span><span class="branchCov" title="Branch 1 was taken 730287 times"> + </span>]:<span class="lineCov">     869519 :     if (e == jl_true)</span></a>
 <a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov">     139232 :         return ConstantInt::get(getInt8Ty(ctx.builder.getContext()), 1);</span></a>
-<a name="315"><span class="lineNum">     315 </span>        [<span class="branchCov" title="Branch 0 was taken 123961 times"> + </span><span class="branchCov" title="Branch 1 was taken 606325 times"> + </span>]:<span class="lineCov">     730286 :     if (e == jl_false)</span></a>
+<a name="315"><span class="lineNum">     315 </span>        [<span class="branchCov" title="Branch 0 was taken 123961 times"> + </span><span class="branchCov" title="Branch 1 was taken 606326 times"> + </span>]:<span class="lineCov">     730287 :     if (e == jl_false)</span></a>
 <a name="316"><span class="lineNum">     316 </span>                :<span class="lineCov">     123961 :         return ConstantInt::get(getInt8Ty(ctx.builder.getContext()), 0);</span></a>
-<a name="317"><span class="lineNum">     317 </span>                :<span class="lineCov">     606325 :     jl_value_t *bt = jl_typeof(e);</span></a>
-<a name="318"><span class="lineNum">     318 </span>        [<span class="branchCov" title="Branch 0 was taken 7393 times"> + </span><span class="branchCov" title="Branch 1 was taken 598932 times"> + </span>]:<span class="lineCov">     606325 :     if (!jl_is_pointerfree(bt))</span></a>
+<a name="317"><span class="lineNum">     317 </span>                :<span class="lineCov">     606326 :     jl_value_t *bt = jl_typeof(e);</span></a>
+<a name="318"><span class="lineNum">     318 </span>        [<span class="branchCov" title="Branch 0 was taken 7393 times"> + </span><span class="branchCov" title="Branch 1 was taken 598933 times"> + </span>]:<span class="lineCov">     606326 :     if (!jl_is_pointerfree(bt))</span></a>
 <a name="319"><span class="lineNum">     319 </span>                :<span class="lineCov">       7393 :         return NULL;</span></a>
-<a name="320"><span class="lineNum">     320 </span>                :<span class="lineCov">     598932 :     return julia_const_to_llvm(ctx, e, (jl_datatype_t*)bt);</span></a>
+<a name="320"><span class="lineNum">     320 </span>                :<span class="lineCov">     598933 :     return julia_const_to_llvm(ctx, e, (jl_datatype_t*)bt);</span></a>
 <a name="321"><span class="lineNum">     321 </span>                :            : }</a>
 <a name="322"><span class="lineNum">     322 </span>                :            : </a>
-<a name="323"><span class="lineNum">     323 </span>                :<span class="lineCov">    2787400 : static Value *emit_unboxed_coercion(jl_codectx_t &amp;ctx, Type *to, Value *unboxed)</span></a>
+<a name="323"><span class="lineNum">     323 </span>                :<span class="lineCov">    2787410 : static Value *emit_unboxed_coercion(jl_codectx_t &amp;ctx, Type *to, Value *unboxed)</span></a>
 <a name="324"><span class="lineNum">     324 </span>                :            : {</a>
-<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">    2787400 :     Type *ty = unboxed-&gt;getType();</span></a>
-<a name="326"><span class="lineNum">     326 </span>        [<span class="branchCov" title="Branch 0 was taken 2421250 times"> + </span><span class="branchCov" title="Branch 1 was taken 366147 times"> + </span>]:<span class="lineCov">    2787400 :     if (ty == to)</span></a>
-<a name="327"><span class="lineNum">     327 </span>                :<span class="lineCov">    2421250 :         return unboxed;</span></a>
-<a name="328"><span class="lineNum">     328 </span>                :<span class="lineCov">     366147 :     bool frompointer = ty-&gt;isPointerTy();</span></a>
-<a name="329"><span class="lineNum">     329 </span>                :<span class="lineCov">     366147 :     bool topointer = to-&gt;isPointerTy();</span></a>
-<a name="330"><span class="lineNum">     330 </span>                :<span class="lineCov">     366147 :     const DataLayout &amp;DL = jl_Module-&gt;getDataLayout();</span></a>
-<a name="331"><span class="lineNum">     331 </span>  [<span class="branchCov" title="Branch 0 was taken 256654 times"> + </span><span class="branchCov" title="Branch 1 was taken 109493 times"> + </span><span class="branchCov" title="Branch 2 was taken 256654 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">     366147 :     if (ty-&gt;isIntegerTy(1) &amp;&amp; to-&gt;isIntegerTy(8)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 256654 times"> + </span><span class="branchCov" title="Branch 5 was taken 109493 times"> + </span>]
+<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">    2787410 :     Type *ty = unboxed-&gt;getType();</span></a>
+<a name="326"><span class="lineNum">     326 </span>        [<span class="branchCov" title="Branch 0 was taken 2421260 times"> + </span><span class="branchCov" title="Branch 1 was taken 366151 times"> + </span>]:<span class="lineCov">    2787410 :     if (ty == to)</span></a>
+<a name="327"><span class="lineNum">     327 </span>                :<span class="lineCov">    2421260 :         return unboxed;</span></a>
+<a name="328"><span class="lineNum">     328 </span>                :<span class="lineCov">     366151 :     bool frompointer = ty-&gt;isPointerTy();</span></a>
+<a name="329"><span class="lineNum">     329 </span>                :<span class="lineCov">     366151 :     bool topointer = to-&gt;isPointerTy();</span></a>
+<a name="330"><span class="lineNum">     330 </span>                :<span class="lineCov">     366151 :     const DataLayout &amp;DL = jl_Module-&gt;getDataLayout();</span></a>
+<a name="331"><span class="lineNum">     331 </span>  [<span class="branchCov" title="Branch 0 was taken 256656 times"> + </span><span class="branchCov" title="Branch 1 was taken 109495 times"> + </span><span class="branchCov" title="Branch 2 was taken 256656 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">     366151 :     if (ty-&gt;isIntegerTy(1) &amp;&amp; to-&gt;isIntegerTy(8)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 256656 times"> + </span><span class="branchCov" title="Branch 5 was taken 109495 times"> + </span>]
 <a name="332"><span class="lineNum">     332 </span>                :            :         // bools may be stored internally as int8</a>
-<a name="333"><span class="lineNum">     333 </span>                :<span class="lineCov">     256654 :         unboxed = ctx.builder.CreateZExt(unboxed, to);</span></a>
+<a name="333"><span class="lineNum">     333 </span>                :<span class="lineCov">     256656 :         unboxed = ctx.builder.CreateZExt(unboxed, to);</span></a>
 <a name="334"><span class="lineNum">     334 </span>                :            :     }</a>
-<a name="335"><span class="lineNum">     335 </span>  [<span class="branchCov" title="Branch 0 was taken 101348 times"> + </span><span class="branchCov" title="Branch 1 was taken 8145 times"> + </span><span class="branchCov" title="Branch 2 was taken 101348 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">     109493 :     else if (ty-&gt;isIntegerTy(8) &amp;&amp; to-&gt;isIntegerTy(1)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 101348 times"> + </span><span class="branchCov" title="Branch 5 was taken 8145 times"> + </span>]
+<a name="335"><span class="lineNum">     335 </span>  [<span class="branchCov" title="Branch 0 was taken 101350 times"> + </span><span class="branchCov" title="Branch 1 was taken 8145 times"> + </span><span class="branchCov" title="Branch 2 was taken 101350 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">     109495 :     else if (ty-&gt;isIntegerTy(8) &amp;&amp; to-&gt;isIntegerTy(1)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 101350 times"> + </span><span class="branchCov" title="Branch 5 was taken 8145 times"> + </span>]
 <a name="336"><span class="lineNum">     336 </span>                :            :         // bools may be stored internally as int8</a>
-<a name="337"><span class="lineNum">     337 </span>                :<span class="lineCov">     101348 :         unboxed = ctx.builder.CreateTrunc(unboxed, to);</span></a>
+<a name="337"><span class="lineNum">     337 </span>                :<span class="lineCov">     101350 :         unboxed = ctx.builder.CreateTrunc(unboxed, to);</span></a>
 <a name="338"><span class="lineNum">     338 </span>                :            :     }</a>
 <a name="339"><span class="lineNum">     339 </span>  [<span class="branchCov" title="Branch 0 was taken 8145 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 8145 times"> + </span> :<span class="lineCov">       8145 :     else if (ty-&gt;isVoidTy() || DL.getTypeSizeInBits(ty) != DL.getTypeSizeInBits(to)) {</span></a>
 <span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 8145 times"> + </span>]
@@ -424,11 +424,11 @@
 <a name="341"><span class="lineNum">     341 </span>                :            :         //emit_unreachable(ctx);</a>
 <a name="342"><span class="lineNum">     342 </span>                :<span class="lineNoCov">          0 :         return UndefValue::get(to);</span></a>
 <a name="343"><span class="lineNum">     343 </span>                :            :     }</a>
-<a name="344"><span class="lineNum">     344 </span>  [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 366121 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 26 times"> + </span>]:<span class="lineCov">     366147 :     if (frompointer &amp;&amp; topointer) {</span></a>
+<a name="344"><span class="lineNum">     344 </span>  [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 366125 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 26 times"> + </span>]:<span class="lineCov">     366151 :     if (frompointer &amp;&amp; topointer) {</span></a>
 <a name="345"><span class="lineNum">     345 </span>                :<span class="lineNoCov">          0 :         unboxed = emit_bitcast(ctx, unboxed, to);</span></a>
 <a name="346"><span class="lineNum">     346 </span>                :            :     }</a>
-<a name="347"><span class="lineNum">     347 </span>  [<span class="branchCov" title="Branch 0 was taken 224 times"> + </span><span class="branchCov" title="Branch 1 was taken 365923 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 224 times"> + </span> :<span class="lineCov">     366147 :     else if (!ty-&gt;isIntOrPtrTy() &amp;&amp; !ty-&gt;isFloatingPointTy()) {</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 366147 times"> + </span>]
+<a name="347"><span class="lineNum">     347 </span>  [<span class="branchCov" title="Branch 0 was taken 224 times"> + </span><span class="branchCov" title="Branch 1 was taken 365927 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 224 times"> + </span> :<span class="lineCov">     366151 :     else if (!ty-&gt;isIntOrPtrTy() &amp;&amp; !ty-&gt;isFloatingPointTy()) {</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 366151 times"> + </span>]
 <a name="348"><span class="lineNum">     348 </span>                :            : #ifndef JL_NDEBUG</a>
 <a name="349"><span class="lineNum">     349 </span>                :<span class="lineNoCov">          0 :         const DataLayout &amp;DL = jl_Module-&gt;getDataLayout();</span></a>
 <a name="350"><span class="lineNum">     350 </span>                :            : #endif</a>
@@ -437,30 +437,30 @@
 <a name="353"><span class="lineNum">     353 </span>                :<span class="lineNoCov">          0 :         ctx.builder.CreateStore(unboxed, cast);</span></a>
 <a name="354"><span class="lineNum">     354 </span>                :<span class="lineNoCov">          0 :         unboxed = ctx.builder.CreateLoad(to, ctx.builder.CreateBitCast(cast, to-&gt;getPointerTo()));</span></a>
 <a name="355"><span class="lineNum">     355 </span>                :            :     }</a>
-<a name="356"><span class="lineNum">     356 </span>        [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 366121 times"> + </span>]:<span class="lineCov">     366147 :     else if (frompointer) {</span></a>
+<a name="356"><span class="lineNum">     356 </span>        [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 366125 times"> + </span>]:<span class="lineCov">     366151 :     else if (frompointer) {</span></a>
 <a name="357"><span class="lineNum">     357 </span>                :<span class="lineCov">         26 :         Type *INTT_to = INTT(to);</span></a>
 <a name="358"><span class="lineNum">     358 </span>                :<span class="lineCov">         26 :         unboxed = ctx.builder.CreatePtrToInt(unboxed, INTT_to);</span></a>
 <a name="359"><span class="lineNum">     359 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 26 times"> + </span>]:<span class="lineCov">         26 :         if (INTT_to != to)</span></a>
 <a name="360"><span class="lineNum">     360 </span>                :<span class="lineNoCov">          0 :             unboxed = ctx.builder.CreateBitCast(unboxed, to);</span></a>
 <a name="361"><span class="lineNum">     361 </span>                :            :     }</a>
-<a name="362"><span class="lineNum">     362 </span>        [<span class="branchCov" title="Branch 0 was taken 7895 times"> + </span><span class="branchCov" title="Branch 1 was taken 358226 times"> + </span>]:<span class="lineCov">     366121 :     else if (topointer) {</span></a>
+<a name="362"><span class="lineNum">     362 </span>        [<span class="branchCov" title="Branch 0 was taken 7895 times"> + </span><span class="branchCov" title="Branch 1 was taken 358230 times"> + </span>]:<span class="lineCov">     366125 :     else if (topointer) {</span></a>
 <a name="363"><span class="lineNum">     363 </span>                :<span class="lineCov">       7895 :         Type *INTT_to = INTT(to);</span></a>
 <a name="364"><span class="lineNum">     364 </span>        [<span class="branchCov" title="Branch 0 was taken 7895 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       7895 :         if (to != INTT_to)</span></a>
 <a name="365"><span class="lineNum">     365 </span>                :<span class="lineCov">       7895 :             unboxed = ctx.builder.CreateBitCast(unboxed, INTT_to);</span></a>
 <a name="366"><span class="lineNum">     366 </span>                :<span class="lineCov">       7895 :         unboxed = emit_inttoptr(ctx, unboxed, to);</span></a>
 <a name="367"><span class="lineNum">     367 </span>                :            :     }</a>
 <a name="368"><span class="lineNum">     368 </span>                :            :     else {</a>
-<a name="369"><span class="lineNum">     369 </span>                :<span class="lineCov">     358226 :         unboxed = ctx.builder.CreateBitCast(unboxed, to);</span></a>
+<a name="369"><span class="lineNum">     369 </span>                :<span class="lineCov">     358230 :         unboxed = ctx.builder.CreateBitCast(unboxed, to);</span></a>
 <a name="370"><span class="lineNum">     370 </span>                :            :     }</a>
-<a name="371"><span class="lineNum">     371 </span>                :<span class="lineCov">     366147 :     return unboxed;</span></a>
+<a name="371"><span class="lineNum">     371 </span>                :<span class="lineCov">     366151 :     return unboxed;</span></a>
 <a name="372"><span class="lineNum">     372 </span>                :            : }</a>
 <a name="373"><span class="lineNum">     373 </span>                :            : </a>
 <a name="374"><span class="lineNum">     374 </span>                :            : // emit code to unpack a raw value from a box into registers</a>
-<a name="375"><span class="lineNum">     375 </span>                :<span class="lineCov">    2890060 : static Value *emit_unbox(jl_codectx_t &amp;ctx, Type *to, const jl_cgval_t &amp;x, jl_value_t *jt)</span></a>
+<a name="375"><span class="lineNum">     375 </span>                :<span class="lineCov">    2890070 : static Value *emit_unbox(jl_codectx_t &amp;ctx, Type *to, const jl_cgval_t &amp;x, jl_value_t *jt)</span></a>
 <a name="376"><span class="lineNum">     376 </span>                :            : {</a>
-<a name="377"><span class="lineNum">     377 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2890060 times"> + </span>]:<span class="lineCov">    2890060 :     assert(to != getVoidTy(ctx.builder.getContext()));</span></a>
+<a name="377"><span class="lineNum">     377 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2890070 times"> + </span>]:<span class="lineCov">    2890070 :     assert(to != getVoidTy(ctx.builder.getContext()));</span></a>
 <a name="378"><span class="lineNum">     378 </span>                :            :     // TODO: fully validate that x.typ == jt?</a>
-<a name="379"><span class="lineNum">     379 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2890060 times"> + </span>]:<span class="lineCov">    2890060 :     if (x.isghost) {</span></a>
+<a name="379"><span class="lineNum">     379 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2890070 times"> + </span>]:<span class="lineCov">    2890070 :     if (x.isghost) {</span></a>
 <a name="380"><span class="lineNum">     380 </span>                :            :         // this can happen when a branch yielding a different type ends</a>
 <a name="381"><span class="lineNum">     381 </span>                :            :         // up being dead code, and type inference knows that the other</a>
 <a name="382"><span class="lineNum">     382 </span>                :            :         // branch's type is the only one that matters.</a>
@@ -471,11 +471,11 @@
 <a name="387"><span class="lineNum">     387 </span>                :<span class="lineNoCov">          0 :         return UndefValue::get(to); // type mismatch error</span></a>
 <a name="388"><span class="lineNum">     388 </span>                :            :     }</a>
 <a name="389"><span class="lineNum">     389 </span>                :            : </a>
-<a name="390"><span class="lineNum">     390 </span>        [<span class="branchCov" title="Branch 0 was taken 819155 times"> + </span><span class="branchCov" title="Branch 1 was taken 2070900 times"> + </span>]:<span class="lineCov">    2890060 :     Constant *c = x.constant ? julia_const_to_llvm(ctx, x.constant) : NULL;</span></a>
-<a name="391"><span class="lineNum">     391 </span>  [<span class="branchCov" title="Branch 0 was taken 921200 times"> + </span><span class="branchCov" title="Branch 1 was taken 1968860 times"> + </span><span class="branchCov" title="Branch 2 was taken 818542 times"> + </span><span class="branchCov" title="Branch 3 was taken 102658 times"> + </span> :<span class="lineCov">    2890060 :     if (!x.ispointer() || c) { // already unboxed, but sometimes need conversion</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 2787400 times"> + </span><span class="branchCov" title="Branch 5 was taken 102658 times"> + </span>]
-<a name="392"><span class="lineNum">     392 </span>        [<span class="branchCov" title="Branch 0 was taken 1968860 times"> + </span><span class="branchCov" title="Branch 1 was taken 818542 times"> + </span>]:<span class="lineCov">    2787400 :         Value *unboxed = c ? c : x.V;</span></a>
-<a name="393"><span class="lineNum">     393 </span>                :<span class="lineCov">    2787400 :         return emit_unboxed_coercion(ctx, to, unboxed);</span></a>
+<a name="390"><span class="lineNum">     390 </span>        [<span class="branchCov" title="Branch 0 was taken 819156 times"> + </span><span class="branchCov" title="Branch 1 was taken 2070910 times"> + </span>]:<span class="lineCov">    2890070 :     Constant *c = x.constant ? julia_const_to_llvm(ctx, x.constant) : NULL;</span></a>
+<a name="391"><span class="lineNum">     391 </span>  [<span class="branchCov" title="Branch 0 was taken 921201 times"> + </span><span class="branchCov" title="Branch 1 was taken 1968870 times"> + </span><span class="branchCov" title="Branch 2 was taken 818543 times"> + </span><span class="branchCov" title="Branch 3 was taken 102658 times"> + </span> :<span class="lineCov">    2890070 :     if (!x.ispointer() || c) { // already unboxed, but sometimes need conversion</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 2787410 times"> + </span><span class="branchCov" title="Branch 5 was taken 102658 times"> + </span>]
+<a name="392"><span class="lineNum">     392 </span>        [<span class="branchCov" title="Branch 0 was taken 1968870 times"> + </span><span class="branchCov" title="Branch 1 was taken 818543 times"> + </span>]:<span class="lineCov">    2787410 :         Value *unboxed = c ? c : x.V;</span></a>
+<a name="393"><span class="lineNum">     393 </span>                :<span class="lineCov">    2787410 :         return emit_unboxed_coercion(ctx, to, unboxed);</span></a>
 <a name="394"><span class="lineNum">     394 </span>                :            :     }</a>
 <a name="395"><span class="lineNum">     395 </span>                :            : </a>
 <a name="396"><span class="lineNum">     396 </span>                :            :     // bools stored as int8, so an extra Trunc is needed to get an int1</a>
@@ -523,33 +523,33 @@
 <a name="434"><span class="lineNum">     434 </span>                :            : }</a>
 <a name="435"><span class="lineNum">     435 </span>                :            : </a>
 <a name="436"><span class="lineNum">     436 </span>                :            : // emit code to store a raw value into a destination</a>
-<a name="437"><span class="lineNum">     437 </span>                :<span class="lineCov">      98862 : static void emit_unbox_store(jl_codectx_t &amp;ctx, const jl_cgval_t &amp;x, Value *dest, MDNode *tbaa_dest, unsigned alignment, bool isVolatile)</span></a>
+<a name="437"><span class="lineNum">     437 </span>                :<span class="lineCov">      98874 : static void emit_unbox_store(jl_codectx_t &amp;ctx, const jl_cgval_t &amp;x, Value *dest, MDNode *tbaa_dest, unsigned alignment, bool isVolatile)</span></a>
 <a name="438"><span class="lineNum">     438 </span>                :            : {</a>
-<a name="439"><span class="lineNum">     439 </span>        [<span class="branchCov" title="Branch 0 was taken 2328 times"> + </span><span class="branchCov" title="Branch 1 was taken 96534 times"> + </span>]:<span class="lineCov">      98862 :     if (x.isghost) {</span></a>
+<a name="439"><span class="lineNum">     439 </span>        [<span class="branchCov" title="Branch 0 was taken 2328 times"> + </span><span class="branchCov" title="Branch 1 was taken 96546 times"> + </span>]:<span class="lineCov">      98874 :     if (x.isghost) {</span></a>
 <a name="440"><span class="lineNum">     440 </span>                :            :         // this can happen when a branch yielding a different type ends</a>
 <a name="441"><span class="lineNum">     441 </span>                :            :         // up being dead code, and type inference knows that the other</a>
 <a name="442"><span class="lineNum">     442 </span>                :            :         // branch's type is the only one that matters.</a>
 <a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">       2328 :         return;</span></a>
 <a name="444"><span class="lineNum">     444 </span>                :            :     }</a>
 <a name="445"><span class="lineNum">     445 </span>                :            : </a>
-<a name="446"><span class="lineNum">     446 </span>                :<span class="lineCov">      96534 :     Value *unboxed = nullptr;</span></a>
-<a name="447"><span class="lineNum">     447 </span>        [<span class="branchCov" title="Branch 0 was taken 45553 times"> + </span><span class="branchCov" title="Branch 1 was taken 50981 times"> + </span>]:<span class="lineCov">      96534 :     if (!x.ispointer()) { // already unboxed, but sometimes need conversion</span></a>
-<a name="448"><span class="lineNum">     448 </span>                :<span class="lineCov">      45553 :         unboxed = x.V;</span></a>
-<a name="449"><span class="lineNum">     449 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 45553 times"> + </span>]:<span class="lineCov">      45553 :         assert(unboxed);</span></a>
+<a name="446"><span class="lineNum">     446 </span>                :<span class="lineCov">      96546 :     Value *unboxed = nullptr;</span></a>
+<a name="447"><span class="lineNum">     447 </span>        [<span class="branchCov" title="Branch 0 was taken 45565 times"> + </span><span class="branchCov" title="Branch 1 was taken 50981 times"> + </span>]:<span class="lineCov">      96546 :     if (!x.ispointer()) { // already unboxed, but sometimes need conversion</span></a>
+<a name="448"><span class="lineNum">     448 </span>                :<span class="lineCov">      45565 :         unboxed = x.V;</span></a>
+<a name="449"><span class="lineNum">     449 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 45565 times"> + </span>]:<span class="lineCov">      45565 :         assert(unboxed);</span></a>
 <a name="450"><span class="lineNum">     450 </span>                :            :     }</a>
 <a name="451"><span class="lineNum">     451 </span>                :            : </a>
 <a name="452"><span class="lineNum">     452 </span>                :            :     // bools stored as int8, but can be narrowed to int1 often</a>
-<a name="453"><span class="lineNum">     453 </span>        [<span class="branchCov" title="Branch 0 was taken 7575 times"> + </span><span class="branchCov" title="Branch 1 was taken 88959 times"> + </span>]:<span class="lineCov">      96534 :     if (x.typ == (jl_value_t*)jl_bool_type)</span></a>
+<a name="453"><span class="lineNum">     453 </span>        [<span class="branchCov" title="Branch 0 was taken 7575 times"> + </span><span class="branchCov" title="Branch 1 was taken 88971 times"> + </span>]:<span class="lineCov">      96546 :     if (x.typ == (jl_value_t*)jl_bool_type)</span></a>
 <a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov">       7575 :         unboxed = emit_unbox(ctx, getInt8Ty(ctx.builder.getContext()), x, (jl_value_t*)jl_bool_type);</span></a>
 <a name="455"><span class="lineNum">     455 </span>                :            : </a>
-<a name="456"><span class="lineNum">     456 </span>        [<span class="branchCov" title="Branch 0 was taken 50545 times"> + </span><span class="branchCov" title="Branch 1 was taken 45989 times"> + </span>]:<span class="lineCov">      96534 :     if (unboxed) {</span></a>
-<a name="457"><span class="lineNum">     457 </span>                :<span class="lineCov">      50545 :         Type *dest_ty = unboxed-&gt;getType()-&gt;getPointerTo();</span></a>
-<a name="458"><span class="lineNum">     458 </span>        [<span class="branchCov" title="Branch 0 was taken 24158 times"> + </span><span class="branchCov" title="Branch 1 was taken 26387 times"> + </span>]:<span class="lineCov">      50545 :         if (dest-&gt;getType() != dest_ty)</span></a>
-<a name="459"><span class="lineNum">     459 </span>                :<span class="lineCov">      24158 :             dest = emit_bitcast(ctx, dest, dest_ty);</span></a>
-<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">      50545 :         StoreInst *store = ctx.builder.CreateAlignedStore(unboxed, dest, Align(alignment));</span></a>
-<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">      50545 :         store-&gt;setVolatile(isVolatile);</span></a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      50545 :         tbaa_decorate(tbaa_dest, store);</span></a>
-<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">      50545 :         return;</span></a>
+<a name="456"><span class="lineNum">     456 </span>        [<span class="branchCov" title="Branch 0 was taken 50557 times"> + </span><span class="branchCov" title="Branch 1 was taken 45989 times"> + </span>]:<span class="lineCov">      96546 :     if (unboxed) {</span></a>
+<a name="457"><span class="lineNum">     457 </span>                :<span class="lineCov">      50557 :         Type *dest_ty = unboxed-&gt;getType()-&gt;getPointerTo();</span></a>
+<a name="458"><span class="lineNum">     458 </span>        [<span class="branchCov" title="Branch 0 was taken 24170 times"> + </span><span class="branchCov" title="Branch 1 was taken 26387 times"> + </span>]:<span class="lineCov">      50557 :         if (dest-&gt;getType() != dest_ty)</span></a>
+<a name="459"><span class="lineNum">     459 </span>                :<span class="lineCov">      24170 :             dest = emit_bitcast(ctx, dest, dest_ty);</span></a>
+<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">      50557 :         StoreInst *store = ctx.builder.CreateAlignedStore(unboxed, dest, Align(alignment));</span></a>
+<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">      50557 :         store-&gt;setVolatile(isVolatile);</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      50557 :         tbaa_decorate(tbaa_dest, store);</span></a>
+<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">      50557 :         return;</span></a>
 <a name="464"><span class="lineNum">     464 </span>                :            :     }</a>
 <a name="465"><span class="lineNum">     465 </span>                :            : </a>
 <a name="466"><span class="lineNum">     466 </span>                :<span class="lineCov">      45989 :     Value *src = data_pointer(ctx, x);</span></a>
@@ -1208,33 +1208,33 @@
 <a name="1110"><span class="lineNum">    1110 </span>                :<span class="lineCov">      52915 :     return mark_julia_type(ctx, ifelse_result, isboxed, jt);</span></a>
 <a name="1111"><span class="lineNum">    1111 </span>                :            : }</a>
 <a name="1112"><span class="lineNum">    1112 </span>                :            : </a>
-<a name="1113"><span class="lineNum">    1113 </span>                :<span class="lineCov">     868268 : static jl_cgval_t emit_intrinsic(jl_codectx_t &amp;ctx, intrinsic f, jl_value_t **args, size_t nargs)</span></a>
+<a name="1113"><span class="lineNum">    1113 </span>                :<span class="lineCov">     868270 : static jl_cgval_t emit_intrinsic(jl_codectx_t &amp;ctx, intrinsic f, jl_value_t **args, size_t nargs)</span></a>
 <a name="1114"><span class="lineNum">    1114 </span>                :            : {</a>
-<a name="1115"><span class="lineNum">    1115 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 868268 times"> + </span>]:<span class="lineCov">     868268 :     assert(f &lt; num_intrinsics);</span></a>
-<a name="1116"><span class="lineNum">    1116 </span>  [<span class="branchCov" title="Branch 0 was taken 1698 times"> + </span><span class="branchCov" title="Branch 1 was taken 866570 times"> + </span><span class="branchCov" title="Branch 2 was taken 66 times"> + </span><span class="branchCov" title="Branch 3 was taken 1632 times"> + </span>]:<span class="lineCov">     868268 :     if (f == cglobal &amp;&amp; nargs == 1)</span></a>
+<a name="1115"><span class="lineNum">    1115 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 868270 times"> + </span>]:<span class="lineCov">     868270 :     assert(f &lt; num_intrinsics);</span></a>
+<a name="1116"><span class="lineNum">    1116 </span>  [<span class="branchCov" title="Branch 0 was taken 1698 times"> + </span><span class="branchCov" title="Branch 1 was taken 866572 times"> + </span><span class="branchCov" title="Branch 2 was taken 66 times"> + </span><span class="branchCov" title="Branch 3 was taken 1632 times"> + </span>]:<span class="lineCov">     868270 :     if (f == cglobal &amp;&amp; nargs == 1)</span></a>
 <a name="1117"><span class="lineNum">    1117 </span>                :<span class="lineCov">         66 :         f = cglobal_auto;</span></a>
-<a name="1118"><span class="lineNum">    1118 </span>                :<span class="lineCov">     868268 :     unsigned expected_nargs = jl_intrinsic_nargs((int)f);</span></a>
-<a name="1119"><span class="lineNum">    1119 </span>  [<span class="branchCov" title="Branch 0 was taken 868063 times"> + </span><span class="branchCov" title="Branch 1 was taken 205 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 868063 times"> + </span>]:<span class="lineCov">     868268 :     if (expected_nargs &amp;&amp; expected_nargs != nargs) {</span></a>
+<a name="1118"><span class="lineNum">    1118 </span>                :<span class="lineCov">     868270 :     unsigned expected_nargs = jl_intrinsic_nargs((int)f);</span></a>
+<a name="1119"><span class="lineNum">    1119 </span>  [<span class="branchCov" title="Branch 0 was taken 868065 times"> + </span><span class="branchCov" title="Branch 1 was taken 205 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 868065 times"> + </span>]:<span class="lineCov">     868270 :     if (expected_nargs &amp;&amp; expected_nargs != nargs) {</span></a>
 <a name="1120"><span class="lineNum">    1120 </span>                :<span class="lineNoCov">          0 :         jl_errorf(&quot;intrinsic #%d %s: wrong number of arguments&quot;, f, jl_intrinsic_name((int)f));</span></a>
 <a name="1121"><span class="lineNum">    1121 </span>                :            :     }</a>
 <a name="1122"><span class="lineNum">    1122 </span>                :            : </a>
-<a name="1123"><span class="lineNum">    1123 </span>        [<span class="branchCov" title="Branch 0 was taken 205 times"> + </span><span class="branchCov" title="Branch 1 was taken 868063 times"> + </span>]:<span class="lineCov">     868268 :     if (f == llvmcall)</span></a>
+<a name="1123"><span class="lineNum">    1123 </span>        [<span class="branchCov" title="Branch 0 was taken 205 times"> + </span><span class="branchCov" title="Branch 1 was taken 868065 times"> + </span>]:<span class="lineCov">     868270 :     if (f == llvmcall)</span></a>
 <a name="1124"><span class="lineNum">    1124 </span>                :<span class="lineCov">        205 :         return emit_llvmcall(ctx, args, nargs);</span></a>
-<a name="1125"><span class="lineNum">    1125 </span>  [<span class="branchCov" title="Branch 0 was taken 867997 times"> + </span><span class="branchCov" title="Branch 1 was taken 66 times"> + </span><span class="branchCov" title="Branch 2 was taken 1632 times"> + </span><span class="branchCov" title="Branch 3 was taken 866365 times"> + </span>]:<span class="lineCov">     868063 :     if (f == cglobal_auto || f == cglobal)</span></a>
+<a name="1125"><span class="lineNum">    1125 </span>  [<span class="branchCov" title="Branch 0 was taken 867999 times"> + </span><span class="branchCov" title="Branch 1 was taken 66 times"> + </span><span class="branchCov" title="Branch 2 was taken 1632 times"> + </span><span class="branchCov" title="Branch 3 was taken 866367 times"> + </span>]:<span class="lineCov">     868065 :     if (f == cglobal_auto || f == cglobal)</span></a>
 <a name="1126"><span class="lineNum">    1126 </span>                :<span class="lineCov">       1698 :         return emit_cglobal(ctx, args, nargs);</span></a>
 <a name="1127"><span class="lineNum">    1127 </span>                :            : </a>
-<a name="1128"><span class="lineNum">    1128 </span>                :<span class="lineCov">     866365 :     jl_cgval_t *argv = (jl_cgval_t*)alloca(sizeof(jl_cgval_t) * nargs);</span></a>
-<a name="1129"><span class="lineNum">    1129 </span>        [<span class="branchCov" title="Branch 0 was taken 1597700 times"> + </span><span class="branchCov" title="Branch 1 was taken 866365 times"> + </span>]:<span class="lineCov">    2464060 :     for (size_t i = 0; i &lt; nargs; ++i) {</span></a>
+<a name="1128"><span class="lineNum">    1128 </span>                :<span class="lineCov">     866367 :     jl_cgval_t *argv = (jl_cgval_t*)alloca(sizeof(jl_cgval_t) * nargs);</span></a>
+<a name="1129"><span class="lineNum">    1129 </span>        [<span class="branchCov" title="Branch 0 was taken 1597700 times"> + </span><span class="branchCov" title="Branch 1 was taken 866367 times"> + </span>]:<span class="lineCov">    2464070 :     for (size_t i = 0; i &lt; nargs; ++i) {</span></a>
 <a name="1130"><span class="lineNum">    1130 </span>                :<span class="lineCov">    1597700 :         argv[i] = emit_expr(ctx, args[i + 1]);</span></a>
 <a name="1131"><span class="lineNum">    1131 </span>                :            :     }</a>
 <a name="1132"><span class="lineNum">    1132 </span>                :            : </a>
 <a name="1133"><span class="lineNum">    1133 </span>                :            :     // this forces everything to use runtime-intrinsics (e.g. for testing)</a>
 <a name="1134"><span class="lineNum">    1134 </span>                :            :     // return emit_runtime_call(ctx, f, argv, nargs);</a>
 <a name="1135"><span class="lineNum">    1135 </span>                :            : </a>
-<a name="1136"><span class="lineNum">    1136 </span>  [<span class="branchCov" title="Branch 0 was taken 40832 times"> + </span><span class="branchCov" title="Branch 1 was taken 5448 times"> + </span><span class="branchCov" title="Branch 2 was taken 1190 times"> + </span><span class="branchCov" title="Branch 3 was taken 5 times"> + </span> :<span class="lineCov">     866365 :     switch (f) {</span></a>
+<a name="1136"><span class="lineNum">    1136 </span>  [<span class="branchCov" title="Branch 0 was taken 40832 times"> + </span><span class="branchCov" title="Branch 1 was taken 5448 times"> + </span><span class="branchCov" title="Branch 2 was taken 1190 times"> + </span><span class="branchCov" title="Branch 3 was taken 5 times"> + </span> :<span class="lineCov">     866367 :     switch (f) {</span></a>
 <span class="lineNum">         </span><span class="branchCov" title="Branch 4 was taken 939 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span><span class="branchCov" title="Branch 6 was taken 131759 times"> + </span><span class="branchCov" title="Branch 7 was taken 19736 times"> + </span><span class="branchCov" title="Branch 8 was taken 9656 times"> + </span> 
 <span class="lineNum">         </span><span class="branchCov" title="Branch 9 was taken 16386 times"> + </span><span class="branchCov" title="Branch 10 was taken 118 times"> + </span><span class="branchCov" title="Branch 11 was taken 416 times"> + </span><span class="branchCov" title="Branch 12 was taken 24 times"> + </span><span class="branchCov" title="Branch 13 was taken 157 times"> + </span> 
-<span class="lineNum">         </span>   <span class="branchCov" title="Branch 14 was taken 9 times"> + </span><span class="branchCov" title="Branch 15 was taken 8 times"> + </span><span class="branchCov" title="Branch 16 was taken 86094 times"> + </span><span class="branchCov" title="Branch 17 was taken 146 times"> + </span> 
+<span class="lineNum">         </span>   <span class="branchCov" title="Branch 14 was taken 9 times"> + </span><span class="branchCov" title="Branch 15 was taken 8 times"> + </span><span class="branchCov" title="Branch 16 was taken 86096 times"> + </span><span class="branchCov" title="Branch 17 was taken 146 times"> + </span> 
 <span class="lineNum">         </span>            <span class="branchCov" title="Branch 18 was taken 553442 times"> + </span>]
 <a name="1137"><span class="lineNum">    1137 </span>                :<span class="lineCov">      40832 :     case arraylen: {</span></a>
 <a name="1138"><span class="lineNum">    1138 </span>                :<span class="lineCov">      40832 :         ++Emitted_arraylen;</span></a>
@@ -1308,16 +1308,16 @@
 <a name="1206"><span class="lineNum">    1206 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8 times"> + </span>]:<span class="lineCov">          8 :         assert(nargs == 2);</span></a>
 <a name="1207"><span class="lineNum">    1207 </span>                :<span class="lineCov">          8 :         return generic_cast(ctx, f, Instruction::FPExt, argv, false, false);</span></a>
 <a name="1208"><span class="lineNum">    1208 </span>                :            : </a>
-<a name="1209"><span class="lineNum">    1209 </span>                :<span class="lineCov">      86094 :     case not_int: {</span></a>
-<a name="1210"><span class="lineNum">    1210 </span>                :<span class="lineCov">      86094 :         ++Emitted_not_int;</span></a>
-<a name="1211"><span class="lineNum">    1211 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 86094 times"> + </span>]:<span class="lineCov">      86094 :         assert(nargs == 1);</span></a>
-<a name="1212"><span class="lineNum">    1212 </span>                :<span class="lineCov">      86094 :         const jl_cgval_t &amp;x = argv[0];</span></a>
-<a name="1213"><span class="lineNum">    1213 </span>        [<span class="branchCov" title="Branch 0 was taken 11 times"> + </span><span class="branchCov" title="Branch 1 was taken 86083 times"> + </span>]:<span class="lineCov">      86094 :         if (!jl_is_primitivetype(x.typ))</span></a>
+<a name="1209"><span class="lineNum">    1209 </span>                :<span class="lineCov">      86096 :     case not_int: {</span></a>
+<a name="1210"><span class="lineNum">    1210 </span>                :<span class="lineCov">      86096 :         ++Emitted_not_int;</span></a>
+<a name="1211"><span class="lineNum">    1211 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 86096 times"> + </span>]:<span class="lineCov">      86096 :         assert(nargs == 1);</span></a>
+<a name="1212"><span class="lineNum">    1212 </span>                :<span class="lineCov">      86096 :         const jl_cgval_t &amp;x = argv[0];</span></a>
+<a name="1213"><span class="lineNum">    1213 </span>        [<span class="branchCov" title="Branch 0 was taken 11 times"> + </span><span class="branchCov" title="Branch 1 was taken 86085 times"> + </span>]:<span class="lineCov">      86096 :         if (!jl_is_primitivetype(x.typ))</span></a>
 <a name="1214"><span class="lineNum">    1214 </span>                :<span class="lineCov">         11 :             return emit_runtime_call(ctx, f, argv, nargs);</span></a>
-<a name="1215"><span class="lineNum">    1215 </span>                :<span class="lineCov">      86083 :         Type *xt = INTT(bitstype_to_llvm(x.typ, ctx.builder.getContext(), true));</span></a>
-<a name="1216"><span class="lineNum">    1216 </span>                :<span class="lineCov">      86083 :         Value *from = emit_unbox(ctx, xt, x, x.typ);</span></a>
-<a name="1217"><span class="lineNum">    1217 </span>                :<span class="lineCov">      86083 :         Value *ans = ctx.builder.CreateNot(from);</span></a>
-<a name="1218"><span class="lineNum">    1218 </span>                :<span class="lineCov">      86083 :         return mark_julia_type(ctx, ans, false, x.typ);</span></a>
+<a name="1215"><span class="lineNum">    1215 </span>                :<span class="lineCov">      86085 :         Type *xt = INTT(bitstype_to_llvm(x.typ, ctx.builder.getContext(), true));</span></a>
+<a name="1216"><span class="lineNum">    1216 </span>                :<span class="lineCov">      86085 :         Value *from = emit_unbox(ctx, xt, x, x.typ);</span></a>
+<a name="1217"><span class="lineNum">    1217 </span>                :<span class="lineCov">      86085 :         Value *ans = ctx.builder.CreateNot(from);</span></a>
+<a name="1218"><span class="lineNum">    1218 </span>                :<span class="lineCov">      86085 :         return mark_julia_type(ctx, ans, false, x.typ);</span></a>
 <a name="1219"><span class="lineNum">    1219 </span>                :            :     }</a>
 <a name="1220"><span class="lineNum">    1220 </span>                :            : </a>
 <a name="1221"><span class="lineNum">    1221 </span>                :<span class="lineCov">        146 :     case have_fma: {</span></a>

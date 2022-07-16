@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/sys.c</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/sys.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">158</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">43</td>
@@ -319,21 +319,21 @@
 <a name="241"><span class="lineNum">     241 </span>                :            : </a>
 <a name="242"><span class="lineNum">     242 </span>                :            : // --- buffer manipulation ---</a>
 <a name="243"><span class="lineNum">     243 </span>                :            : </a>
-<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">     130603 : JL_DLLEXPORT jl_array_t *jl_take_buffer(ios_t *s)</span></a>
+<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">     130649 : JL_DLLEXPORT jl_array_t *jl_take_buffer(ios_t *s)</span></a>
 <a name="245"><span class="lineNum">     245 </span>                :            : {</a>
 <a name="246"><span class="lineNum">     246 </span>                :            :     size_t n;</a>
 <a name="247"><span class="lineNum">     247 </span>                :            :     jl_array_t *a;</a>
-<a name="248"><span class="lineNum">     248 </span>        [<span class="branchCov" title="Branch 0 was taken 15460 times"> + </span><span class="branchCov" title="Branch 1 was taken 115143 times"> + </span>]:<span class="lineCov">     130603 :     if (s-&gt;buf == &amp;s-&gt;local[0]) {</span></a>
+<a name="248"><span class="lineNum">     248 </span>        [<span class="branchCov" title="Branch 0 was taken 15483 times"> + </span><span class="branchCov" title="Branch 1 was taken 115166 times"> + </span>]:<span class="lineCov">     130649 :     if (s-&gt;buf == &amp;s-&gt;local[0]) {</span></a>
 <a name="249"><span class="lineNum">     249 </span>                :            :         // small data case. copies, but this can be avoided using the</a>
 <a name="250"><span class="lineNum">     250 </span>                :            :         // technique of jl_readuntil below.</a>
-<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">      15460 :         a = jl_pchar_to_array(s-&gt;buf, s-&gt;size);</span></a>
-<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">      15460 :         ios_trunc(s, 0);</span></a>
+<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">      15483 :         a = jl_pchar_to_array(s-&gt;buf, s-&gt;size);</span></a>
+<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">      15483 :         ios_trunc(s, 0);</span></a>
 <a name="253"><span class="lineNum">     253 </span>                :            :     }</a>
 <a name="254"><span class="lineNum">     254 </span>                :            :     else {</a>
-<a name="255"><span class="lineNum">     255 </span>                :<span class="lineCov">     115143 :         char *b = ios_take_buffer(s, &amp;n);</span></a>
-<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">     115143 :         a = jl_ptr_to_array_1d(jl_array_uint8_type, b, n-1, 1);</span></a>
+<a name="255"><span class="lineNum">     255 </span>                :<span class="lineCov">     115166 :         char *b = ios_take_buffer(s, &amp;n);</span></a>
+<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">     115166 :         a = jl_ptr_to_array_1d(jl_array_uint8_type, b, n-1, 1);</span></a>
 <a name="257"><span class="lineNum">     257 </span>                :            :     }</a>
-<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">     130603 :     return a;</span></a>
+<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">     130649 :     return a;</span></a>
 <a name="259"><span class="lineNum">     259 </span>                :            : }</a>
 <a name="260"><span class="lineNum">     260 </span>                :            : </a>
 <a name="261"><span class="lineNum">     261 </span>                :            : // str: if 1 return a string, otherwise return a Vector{UInt8}</a>
@@ -539,9 +539,9 @@
 <a name="459"><span class="lineNum">     459 </span>                :            : </a>
 <a name="460"><span class="lineNum">     460 </span>                :            : // -- high resolution timers --</a>
 <a name="461"><span class="lineNum">     461 </span>                :            : // Returns time in nanosec</a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">       9700 : JL_DLLEXPORT uint64_t jl_hrtime(void) JL_NOTSAFEPOINT</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">       9705 : JL_DLLEXPORT uint64_t jl_hrtime(void) JL_NOTSAFEPOINT</span></a>
 <a name="463"><span class="lineNum">     463 </span>                :            : {</a>
-<a name="464"><span class="lineNum">     464 </span>                :<span class="lineCov">       9700 :     return uv_hrtime();</span></a>
+<a name="464"><span class="lineNum">     464 </span>                :<span class="lineCov">       9705 :     return uv_hrtime();</span></a>
 <a name="465"><span class="lineNum">     465 </span>                :            : }</a>
 <a name="466"><span class="lineNum">     466 </span>                :            : </a>
 <a name="467"><span class="lineNum">     467 </span>                :            : // -- iterating the environment --</a>

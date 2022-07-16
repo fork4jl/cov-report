@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/jlapi.c</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/jlapi.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">123</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">24</td>
@@ -210,11 +210,11 @@
 <a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">         14 : }</span></a>
 <a name="133"><span class="lineNum">     133 </span>                :            : </a>
 <a name="134"><span class="lineNum">     134 </span>                :            : // get the name of a type as a string</a>
-<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">     326910 : JL_DLLEXPORT const char *jl_typename_str(jl_value_t *v)</span></a>
+<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">     326918 : JL_DLLEXPORT const char *jl_typename_str(jl_value_t *v)</span></a>
 <a name="136"><span class="lineNum">     136 </span>                :            : {</a>
-<a name="137"><span class="lineNum">     137 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 326910 times"> + </span>]:<span class="lineCov">     326910 :     if (!jl_is_datatype(v))</span></a>
+<a name="137"><span class="lineNum">     137 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 326918 times"> + </span>]:<span class="lineCov">     326918 :     if (!jl_is_datatype(v))</span></a>
 <a name="138"><span class="lineNum">     138 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
-<a name="139"><span class="lineNum">     139 </span>                :<span class="lineCov">     326910 :     return jl_symbol_name(((jl_datatype_t*)v)-&gt;name-&gt;name);</span></a>
+<a name="139"><span class="lineNum">     139 </span>                :<span class="lineCov">     326918 :     return jl_symbol_name(((jl_datatype_t*)v)-&gt;name-&gt;name);</span></a>
 <a name="140"><span class="lineNum">     140 </span>                :            : }</a>
 <a name="141"><span class="lineNum">     141 </span>                :            : </a>
 <a name="142"><span class="lineNum">     142 </span>                :            : // get the name of typeof(v) as a string</a>
@@ -497,9 +497,9 @@
 <a name="419"><span class="lineNum">     419 </span>                :<span class="lineNoCov">          0 :     return jl_typeof(v);</span></a>
 <a name="420"><span class="lineNum">     420 </span>                :            : }</a>
 <a name="421"><span class="lineNum">     421 </span>                :            : </a>
-<a name="422"><span class="lineNum">     422 </span>                :<span class="lineCov">     214274 : JL_DLLEXPORT jl_value_t *(jl_get_fieldtypes)(jl_value_t *v)</span></a>
+<a name="422"><span class="lineNum">     422 </span>                :<span class="lineCov">     214520 : JL_DLLEXPORT jl_value_t *(jl_get_fieldtypes)(jl_value_t *v)</span></a>
 <a name="423"><span class="lineNum">     423 </span>                :            : {</a>
-<a name="424"><span class="lineNum">     424 </span>        [<span class="branchCov" title="Branch 0 was taken 213236 times"> + </span><span class="branchCov" title="Branch 1 was taken 1038 times"> + </span>]:<span class="lineCov">     214274 :     return (jl_value_t*)jl_get_fieldtypes((jl_datatype_t*)v);</span></a>
+<a name="424"><span class="lineNum">     424 </span>        [<span class="branchCov" title="Branch 0 was taken 213480 times"> + </span><span class="branchCov" title="Branch 1 was taken 1040 times"> + </span>]:<span class="lineCov">     214520 :     return (jl_value_t*)jl_get_fieldtypes((jl_datatype_t*)v);</span></a>
 <a name="425"><span class="lineNum">     425 </span>                :            : }</a>
 <a name="426"><span class="lineNum">     426 </span>                :            : </a>
 <a name="427"><span class="lineNum">     427 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT int ijl_egal(jl_value_t *a, jl_value_t *b)</span></a>
@@ -534,11 +534,11 @@
 <a name="456"><span class="lineNum">     456 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="457"><span class="lineNum">     457 </span>                :            : #endif</a>
 <a name="458"><span class="lineNum">     458 </span>                :            : </a>
-<a name="459"><span class="lineNum">     459 </span>                :<span class="lineCov">      19992 : JL_DLLEXPORT void jl_gc_safepoint(void)</span></a>
+<a name="459"><span class="lineNum">     459 </span>                :<span class="lineCov">      19982 : JL_DLLEXPORT void jl_gc_safepoint(void)</span></a>
 <a name="460"><span class="lineNum">     460 </span>                :            : {</a>
-<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">      19992 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      19992 :     jl_gc_safepoint_(ct-&gt;ptls);</span></a>
-<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">      19992 : }</span></a>
+<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">      19982 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">      19982 :     jl_gc_safepoint_(ct-&gt;ptls);</span></a>
+<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">      19982 : }</span></a>
 <a name="464"><span class="lineNum">     464 </span>                :            : </a>
 <a name="465"><span class="lineNum">     465 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT void (jl_cpu_pause)(void)</span></a>
 <a name="466"><span class="lineNum">     466 </span>                :            : {</a>

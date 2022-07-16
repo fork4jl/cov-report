@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/debuginfo.h</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/debuginfo.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">2</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -86,10 +86,10 @@
 <a name="8"><span class="lineNum">       8 </span>                :            : bool jl_dylib_DI_for_fptr(size_t pointer, llvm::object::SectionRef *Section, int64_t *slide, llvm::DIContext **context,</a>
 <a name="9"><span class="lineNum">       9 </span>                :            :     bool onlySysImg, bool *isSysImg, void **saddr, char **name, char **filename) JL_NOTSAFEPOINT;</a>
 <a name="10"><span class="lineNum">      10 </span>                :            : </a>
-<a name="11"><span class="lineNum">      11 </span>                :<span class="lineCov">        204 : static object::SectionedAddress makeAddress(</span></a>
+<a name="11"><span class="lineNum">      11 </span>                :<span class="lineCov">        215 : static object::SectionedAddress makeAddress(</span></a>
 <a name="12"><span class="lineNum">      12 </span>                :            :         llvm::object::SectionRef Section, uint64_t address) JL_NOTSAFEPOINT</a>
 <a name="13"><span class="lineNum">      13 </span>                :            : {</a>
-<a name="14"><span class="lineNum">      14 </span>                :<span class="lineCov">        204 :     return object::SectionedAddress{address, Section.getIndex()};</span></a>
+<a name="14"><span class="lineNum">      14 </span>                :<span class="lineCov">        215 :     return object::SectionedAddress{address, Section.getIndex()};</span></a>
 <a name="15"><span class="lineNum">      15 </span>                :            : }</a>
 </pre>
       </td>

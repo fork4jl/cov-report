@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/ast.c</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/ast.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">621</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">35</td>
@@ -1070,19 +1070,19 @@
 <a name="984"><span class="lineNum">     984 </span>                :<span class="lineCov">        969 :     return res;</span></a>
 <a name="985"><span class="lineNum">     985 </span>                :            : }</a>
 <a name="986"><span class="lineNum">     986 </span>                :            : </a>
-<a name="987"><span class="lineNum">     987 </span>                :<span class="lineCov">     105916 : int jl_has_meta(jl_array_t *body, jl_sym_t *sym) JL_NOTSAFEPOINT</span></a>
+<a name="987"><span class="lineNum">     987 </span>                :<span class="lineCov">     105994 : int jl_has_meta(jl_array_t *body, jl_sym_t *sym) JL_NOTSAFEPOINT</span></a>
 <a name="988"><span class="lineNum">     988 </span>                :            : {</a>
-<a name="989"><span class="lineNum">     989 </span>                :<span class="lineCov">     105916 :     size_t i, l = jl_array_len(body);</span></a>
-<a name="990"><span class="lineNum">     990 </span>        [<span class="branchCov" title="Branch 0 was taken 4211980 times"> + </span><span class="branchCov" title="Branch 1 was taken 104418 times"> + </span>]:<span class="lineCov">    4316400 :     for (i = 0; i &lt; l; i++) {</span></a>
-<a name="991"><span class="lineNum">     991 </span>                :<span class="lineCov">    4211980 :         jl_expr_t *stmt = (jl_expr_t*)jl_array_ptr_ref(body, i);</span></a>
-<a name="992"><span class="lineNum">     992 </span>  [<span class="branchCov" title="Branch 0 was taken 2323350 times"> + </span><span class="branchCov" title="Branch 1 was taken 1888640 times"> + </span><span class="branchCov" title="Branch 2 was taken 1573 times"> + </span><span class="branchCov" title="Branch 3 was taken 2321780 times"> + </span>]:<span class="lineCov">    4211980 :         if (jl_is_expr((jl_value_t*)stmt) &amp;&amp; stmt-&gt;head == jl_meta_sym) {</span></a>
+<a name="989"><span class="lineNum">     989 </span>                :<span class="lineCov">     105994 :     size_t i, l = jl_array_len(body);</span></a>
+<a name="990"><span class="lineNum">     990 </span>        [<span class="branchCov" title="Branch 0 was taken 4212230 times"> + </span><span class="branchCov" title="Branch 1 was taken 104496 times"> + </span>]:<span class="lineCov">    4316730 :     for (i = 0; i &lt; l; i++) {</span></a>
+<a name="991"><span class="lineNum">     991 </span>                :<span class="lineCov">    4212230 :         jl_expr_t *stmt = (jl_expr_t*)jl_array_ptr_ref(body, i);</span></a>
+<a name="992"><span class="lineNum">     992 </span>  [<span class="branchCov" title="Branch 0 was taken 2323480 times"> + </span><span class="branchCov" title="Branch 1 was taken 1888750 times"> + </span><span class="branchCov" title="Branch 2 was taken 1573 times"> + </span><span class="branchCov" title="Branch 3 was taken 2321910 times"> + </span>]:<span class="lineCov">    4212230 :         if (jl_is_expr((jl_value_t*)stmt) &amp;&amp; stmt-&gt;head == jl_meta_sym) {</span></a>
 <a name="993"><span class="lineNum">     993 </span>                :<span class="lineCov">       1573 :             size_t i, l = jl_array_len(stmt-&gt;args);</span></a>
 <a name="994"><span class="lineNum">     994 </span>        [<span class="branchCov" title="Branch 0 was taken 1596 times"> + </span><span class="branchCov" title="Branch 1 was taken 75 times"> + </span>]:<span class="lineCov">       1671 :             for (i = 0; i &lt; l; i++)</span></a>
 <a name="995"><span class="lineNum">     995 </span>        [<span class="branchCov" title="Branch 0 was taken 1498 times"> + </span><span class="branchCov" title="Branch 1 was taken 98 times"> + </span>]:<span class="lineCov">       1596 :                 if (jl_array_ptr_ref(stmt-&gt;args, i) == (jl_value_t*)sym)</span></a>
 <a name="996"><span class="lineNum">     996 </span>                :<span class="lineCov">       1498 :                     return 1;</span></a>
 <a name="997"><span class="lineNum">     997 </span>                :            :         }</a>
 <a name="998"><span class="lineNum">     998 </span>                :            :     }</a>
-<a name="999"><span class="lineNum">     999 </span>                :<span class="lineCov">     104418 :     return 0;</span></a>
+<a name="999"><span class="lineNum">     999 </span>                :<span class="lineCov">     104496 :     return 0;</span></a>
 <a name="1000"><span class="lineNum">    1000 </span>                :            : }</a>
 <a name="1001"><span class="lineNum">    1001 </span>                :            : </a>
 <a name="1002"><span class="lineNum">    1002 </span>                :<span class="lineCov">      15675 : static jl_value_t *jl_invoke_julia_macro(jl_array_t *args, jl_module_t *inmodule, jl_module_t **ctx, size_t world, int throw_load_error)</span></a>

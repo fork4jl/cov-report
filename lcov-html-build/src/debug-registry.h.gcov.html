@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/debug-registry.h</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/debug-registry.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">11</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -111,20 +111,20 @@
 <a name="33"><span class="lineNum">      33 </span>                :            :             std::unique_lock&lt;std::mutex&gt; lock;</a>
 <a name="34"><span class="lineNum">      34 </span>                :            :             CResourceT &amp;resource;</a>
 <a name="35"><span class="lineNum">      35 </span>                :            : </a>
-<a name="36"><span class="lineNum">      36 </span>                :<span class="lineCov">      83100 :             Lock(std::mutex &amp;mutex, CResourceT &amp;resource) JL_NOTSAFEPOINT : lock(mutex), resource(resource) {}</span></a>
+<a name="36"><span class="lineNum">      36 </span>                :<span class="lineCov">      83151 :             Lock(std::mutex &amp;mutex, CResourceT &amp;resource) JL_NOTSAFEPOINT : lock(mutex), resource(resource) {}</span></a>
 <a name="37"><span class="lineNum">      37 </span>                :            :             Lock(Lock &amp;&amp;) JL_NOTSAFEPOINT = default;</a>
 <a name="38"><span class="lineNum">      38 </span>                :            :             Lock &amp;operator=(Lock &amp;&amp;) JL_NOTSAFEPOINT = default;</a>
 <a name="39"><span class="lineNum">      39 </span>                :            : </a>
-<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">      82948 :             CResourceT &amp;operator*() JL_NOTSAFEPOINT {</span></a>
-<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">      82948 :                 return resource;</span></a>
+<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">      82987 :             CResourceT &amp;operator*() JL_NOTSAFEPOINT {</span></a>
+<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">      82987 :                 return resource;</span></a>
 <a name="42"><span class="lineNum">      42 </span>                :            :             }</a>
 <a name="43"><span class="lineNum">      43 </span>                :            : </a>
 <a name="44"><span class="lineNum">      44 </span>                :            :             const CResourceT &amp;operator*() const JL_NOTSAFEPOINT {</a>
 <a name="45"><span class="lineNum">      45 </span>                :            :                 return resource;</a>
 <a name="46"><span class="lineNum">      46 </span>                :            :             }</a>
 <a name="47"><span class="lineNum">      47 </span>                :            : </a>
-<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">        304 :             CResourceT *operator-&gt;() JL_NOTSAFEPOINT {</span></a>
-<a name="49"><span class="lineNum">      49 </span>                :<span class="lineCov">        304 :                 return &amp;**this;</span></a>
+<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">        328 :             CResourceT *operator-&gt;() JL_NOTSAFEPOINT {</span></a>
+<a name="49"><span class="lineNum">      49 </span>                :<span class="lineCov">        328 :                 return &amp;**this;</span></a>
 <a name="50"><span class="lineNum">      50 </span>                :            :             }</a>
 <a name="51"><span class="lineNum">      51 </span>                :            : </a>
 <a name="52"><span class="lineNum">      52 </span>                :            :             const CResourceT *operator-&gt;() const JL_NOTSAFEPOINT {</a>
@@ -135,7 +135,7 @@
 <a name="57"><span class="lineNum">      57 </span>                :            :                 return resource;</a>
 <a name="58"><span class="lineNum">      58 </span>                :            :             }</a>
 <a name="59"><span class="lineNum">      59 </span>                :            : </a>
-<a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">      83100 :             ~Lock() JL_NOTSAFEPOINT = default;</span></a>
+<a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">      83151 :             ~Lock() JL_NOTSAFEPOINT = default;</span></a>
 <a name="61"><span class="lineNum">      61 </span>                :            :         };</a>
 <a name="62"><span class="lineNum">      62 </span>                :            :     private:</a>
 <a name="63"><span class="lineNum">      63 </span>                :            : </a>
@@ -147,12 +147,12 @@
 <a name="69"><span class="lineNum">      69 </span>                :            : </a>
 <a name="70"><span class="lineNum">      70 </span>                :<span class="lineCov">         24 :         Locked(ResourceT resource = ResourceT()) JL_NOTSAFEPOINT : mutex(), resource(std::move(resource)) {}</span></a>
 <a name="71"><span class="lineNum">      71 </span>                :            : </a>
-<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">      82796 :         LockT operator*() JL_NOTSAFEPOINT {</span></a>
-<a name="73"><span class="lineNum">      73 </span>                :<span class="lineCov">      82796 :             return LockT(mutex, resource);</span></a>
+<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">      82823 :         LockT operator*() JL_NOTSAFEPOINT {</span></a>
+<a name="73"><span class="lineNum">      73 </span>                :<span class="lineCov">      82823 :             return LockT(mutex, resource);</span></a>
 <a name="74"><span class="lineNum">      74 </span>                :            :         }</a>
 <a name="75"><span class="lineNum">      75 </span>                :            : </a>
-<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">        304 :         ConstLockT operator*() const JL_NOTSAFEPOINT {</span></a>
-<a name="77"><span class="lineNum">      77 </span>                :<span class="lineCov">        304 :             return ConstLockT(mutex, resource);</span></a>
+<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">        328 :         ConstLockT operator*() const JL_NOTSAFEPOINT {</span></a>
+<a name="77"><span class="lineNum">      77 </span>                :<span class="lineCov">        328 :             return ConstLockT(mutex, resource);</span></a>
 <a name="78"><span class="lineNum">      78 </span>                :            :         }</a>
 <a name="79"><span class="lineNum">      79 </span>                :            : </a>
 <a name="80"><span class="lineNum">      80 </span>                :            :         ~Locked() JL_NOTSAFEPOINT = default;</a>

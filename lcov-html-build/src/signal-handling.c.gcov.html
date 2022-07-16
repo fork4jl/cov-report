@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/signal-handling.c</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/signal-handling.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">67</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">17</td>
@@ -132,49 +132,49 @@
 <a name="54"><span class="lineNum">      54 </span>                :            : #endif</a>
 <a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">          8 : }</span></a>
 <a name="56"><span class="lineNum">      56 </span>                :            : </a>
-<a name="57"><span class="lineNum">      57 </span>                :<span class="lineCov">        224 : uintptr_t jl_lock_profile_rd_held(void)</span></a>
+<a name="57"><span class="lineNum">      57 </span>                :<span class="lineCov">        250 : uintptr_t jl_lock_profile_rd_held(void)</span></a>
 <a name="58"><span class="lineNum">      58 </span>                :            : {</a>
 <a name="59"><span class="lineNum">      59 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">        224 :     return (uintptr_t)pthread_getspecific(debuginfo_asyncsafe_held);</span></a>
+<a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">        250 :     return (uintptr_t)pthread_getspecific(debuginfo_asyncsafe_held);</span></a>
 <a name="61"><span class="lineNum">      61 </span>                :            : #else</a>
 <a name="62"><span class="lineNum">      62 </span>                :            :     return (uintptr_t)TlsGetValue(debuginfo_asyncsafe_held);</a>
 <a name="63"><span class="lineNum">      63 </span>                :            : #endif</a>
 <a name="64"><span class="lineNum">      64 </span>                :            : }</a>
 <a name="65"><span class="lineNum">      65 </span>                :            : </a>
-<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">        112 : void jl_lock_profile(void)</span></a>
+<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">        125 : void jl_lock_profile(void)</span></a>
 <a name="67"><span class="lineNum">      67 </span>                :            : {</a>
-<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">        112 :     uintptr_t held = jl_lock_profile_rd_held();</span></a>
-<a name="69"><span class="lineNum">      69 </span>        [<span class="branchCov" title="Branch 0 was taken 112 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        112 :     if (held++ == 0)</span></a>
-<a name="70"><span class="lineNum">      70 </span>                :<span class="lineCov">        112 :         uv_rwlock_rdlock(&amp;debuginfo_asyncsafe);</span></a>
+<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">        125 :     uintptr_t held = jl_lock_profile_rd_held();</span></a>
+<a name="69"><span class="lineNum">      69 </span>        [<span class="branchCov" title="Branch 0 was taken 125 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        125 :     if (held++ == 0)</span></a>
+<a name="70"><span class="lineNum">      70 </span>                :<span class="lineCov">        125 :         uv_rwlock_rdlock(&amp;debuginfo_asyncsafe);</span></a>
 <a name="71"><span class="lineNum">      71 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">        112 :     pthread_setspecific(debuginfo_asyncsafe_held, (void*)held);</span></a>
+<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">        125 :     pthread_setspecific(debuginfo_asyncsafe_held, (void*)held);</span></a>
 <a name="73"><span class="lineNum">      73 </span>                :            : #else</a>
 <a name="74"><span class="lineNum">      74 </span>                :            :     TlsSetValue(debuginfo_asyncsafe_held, (void*)held);</a>
 <a name="75"><span class="lineNum">      75 </span>                :            : #endif</a>
-<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">        112 : }</span></a>
+<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">        125 : }</span></a>
 <a name="77"><span class="lineNum">      77 </span>                :            : </a>
-<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">        112 : JL_DLLEXPORT void jl_unlock_profile(void)</span></a>
+<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">        125 : JL_DLLEXPORT void jl_unlock_profile(void)</span></a>
 <a name="79"><span class="lineNum">      79 </span>                :            : {</a>
-<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">        112 :     uintptr_t held = jl_lock_profile_rd_held();</span></a>
-<a name="81"><span class="lineNum">      81 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 112 times"> + </span>]:<span class="lineCov">        112 :     assert(held);</span></a>
-<a name="82"><span class="lineNum">      82 </span>        [<span class="branchCov" title="Branch 0 was taken 112 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        112 :     if (--held == 0)</span></a>
-<a name="83"><span class="lineNum">      83 </span>                :<span class="lineCov">        112 :         uv_rwlock_rdunlock(&amp;debuginfo_asyncsafe);</span></a>
+<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">        125 :     uintptr_t held = jl_lock_profile_rd_held();</span></a>
+<a name="81"><span class="lineNum">      81 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 125 times"> + </span>]:<span class="lineCov">        125 :     assert(held);</span></a>
+<a name="82"><span class="lineNum">      82 </span>        [<span class="branchCov" title="Branch 0 was taken 125 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        125 :     if (--held == 0)</span></a>
+<a name="83"><span class="lineNum">      83 </span>                :<span class="lineCov">        125 :         uv_rwlock_rdunlock(&amp;debuginfo_asyncsafe);</span></a>
 <a name="84"><span class="lineNum">      84 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">        112 :     pthread_setspecific(debuginfo_asyncsafe_held, (void*)held);</span></a>
+<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">        125 :     pthread_setspecific(debuginfo_asyncsafe_held, (void*)held);</span></a>
 <a name="86"><span class="lineNum">      86 </span>                :            : #else</a>
 <a name="87"><span class="lineNum">      87 </span>                :            :     TlsSetValue(debuginfo_asyncsafe_held, (void*)held);</a>
 <a name="88"><span class="lineNum">      88 </span>                :            : #endif</a>
-<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">        112 : }</span></a>
+<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">        125 : }</span></a>
 <a name="90"><span class="lineNum">      90 </span>                :            : </a>
-<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">      87929 : void jl_lock_profile_wr(void)</span></a>
+<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">      87978 : void jl_lock_profile_wr(void)</span></a>
 <a name="92"><span class="lineNum">      92 </span>                :            : {</a>
-<a name="93"><span class="lineNum">      93 </span>                :<span class="lineCov">      87929 :     uv_rwlock_wrlock(&amp;debuginfo_asyncsafe);</span></a>
-<a name="94"><span class="lineNum">      94 </span>                :<span class="lineCov">      87929 : }</span></a>
+<a name="93"><span class="lineNum">      93 </span>                :<span class="lineCov">      87978 :     uv_rwlock_wrlock(&amp;debuginfo_asyncsafe);</span></a>
+<a name="94"><span class="lineNum">      94 </span>                :<span class="lineCov">      87978 : }</span></a>
 <a name="95"><span class="lineNum">      95 </span>                :            : </a>
-<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">      87929 : void jl_unlock_profile_wr(void)</span></a>
+<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">      87978 : void jl_unlock_profile_wr(void)</span></a>
 <a name="97"><span class="lineNum">      97 </span>                :            : {</a>
-<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">      87929 :     uv_rwlock_wrunlock(&amp;debuginfo_asyncsafe);</span></a>
-<a name="99"><span class="lineNum">      99 </span>                :<span class="lineCov">      87929 : }</span></a>
+<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">      87978 :     uv_rwlock_wrunlock(&amp;debuginfo_asyncsafe);</span></a>
+<a name="99"><span class="lineNum">      99 </span>                :<span class="lineCov">      87978 : }</span></a>
 <a name="100"><span class="lineNum">     100 </span>                :            : </a>
 <a name="101"><span class="lineNum">     101 </span>                :            : </a>
 <a name="102"><span class="lineNum">     102 </span>                :            : #ifndef _OS_WINDOWS_</a>
@@ -182,23 +182,23 @@
 <a name="104"><span class="lineNum">     104 </span>                :            : static int *profile_round_robin_thread_order = NULL;</a>
 <a name="105"><span class="lineNum">     105 </span>                :            : static int profile_round_robin_thread_order_size = 0;</a>
 <a name="106"><span class="lineNum">     106 </span>                :            : </a>
-<a name="107"><span class="lineNum">     107 </span>                :<span class="lineCov">         60 : static void jl_shuffle_int_array_inplace(int *carray, int size, uint64_t *seed)</span></a>
+<a name="107"><span class="lineNum">     107 </span>                :<span class="lineCov">         74 : static void jl_shuffle_int_array_inplace(int *carray, int size, uint64_t *seed)</span></a>
 <a name="108"><span class="lineNum">     108 </span>                :            : {</a>
 <a name="109"><span class="lineNum">     109 </span>                :            :     // The &quot;modern Fisher–Yates shuffle&quot; - O(n) algorithm</a>
 <a name="110"><span class="lineNum">     110 </span>                :            :     // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm</a>
-<a name="111"><span class="lineNum">     111 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 60 times"> + </span>]:<span class="lineCov">         60 :     for (int i = size; i-- &gt; 1; ) {</span></a>
+<a name="111"><span class="lineNum">     111 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 74 times"> + </span>]:<span class="lineCov">         74 :     for (int i = size; i-- &gt; 1; ) {</span></a>
 <a name="112"><span class="lineNum">     112 </span>                :<span class="lineNoCov">          0 :         uint64_t unbias = UINT64_MAX; // slightly biased, but i is very small</span></a>
 <a name="113"><span class="lineNum">     113 </span>                :<span class="lineNoCov">          0 :         size_t j = cong(i, unbias, seed);</span></a>
 <a name="114"><span class="lineNum">     114 </span>                :<span class="lineNoCov">          0 :         uint64_t tmp = carray[j];</span></a>
 <a name="115"><span class="lineNum">     115 </span>                :<span class="lineNoCov">          0 :         carray[j] = carray[i];</span></a>
 <a name="116"><span class="lineNum">     116 </span>                :<span class="lineNoCov">          0 :         carray[i] = tmp;</span></a>
 <a name="117"><span class="lineNum">     117 </span>                :            :     }</a>
-<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">         60 : }</span></a>
+<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">         74 : }</span></a>
 <a name="119"><span class="lineNum">     119 </span>                :            : </a>
 <a name="120"><span class="lineNum">     120 </span>                :            : </a>
-<a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">         60 : static int *profile_get_randperm(int size)</span></a>
+<a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">         74 : static int *profile_get_randperm(int size)</span></a>
 <a name="122"><span class="lineNum">     122 </span>                :            : {</a>
-<a name="123"><span class="lineNum">     123 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 59 times"> + </span>]:<span class="lineCov">         60 :     if (profile_round_robin_thread_order_size &lt; size) {</span></a>
+<a name="123"><span class="lineNum">     123 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 73 times"> + </span>]:<span class="lineCov">         74 :     if (profile_round_robin_thread_order_size &lt; size) {</span></a>
 <a name="124"><span class="lineNum">     124 </span>                :<span class="lineCov">          1 :         free(profile_round_robin_thread_order);</span></a>
 <a name="125"><span class="lineNum">     125 </span>                :<span class="lineCov">          1 :         profile_round_robin_thread_order = (int*)malloc_s(size * sizeof(int));</span></a>
 <a name="126"><span class="lineNum">     126 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          2 :         for (int i = 0; i &lt; size; i++)</span></a>
@@ -206,22 +206,22 @@
 <a name="128"><span class="lineNum">     128 </span>                :<span class="lineCov">          1 :         profile_round_robin_thread_order_size = size;</span></a>
 <a name="129"><span class="lineNum">     129 </span>                :<span class="lineCov">          1 :         profile_cong_rng_seed = jl_rand();</span></a>
 <a name="130"><span class="lineNum">     130 </span>                :            :     }</a>
-<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">         60 :     jl_shuffle_int_array_inplace(profile_round_robin_thread_order, size, &amp;profile_cong_rng_seed);</span></a>
-<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">         60 :     return profile_round_robin_thread_order;</span></a>
+<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">         74 :     jl_shuffle_int_array_inplace(profile_round_robin_thread_order, size, &amp;profile_cong_rng_seed);</span></a>
+<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">         74 :     return profile_round_robin_thread_order;</span></a>
 <a name="133"><span class="lineNum">     133 </span>                :            : }</a>
 <a name="134"><span class="lineNum">     134 </span>                :            : #endif</a>
 <a name="135"><span class="lineNum">     135 </span>                :            : </a>
 <a name="136"><span class="lineNum">     136 </span>                :            : </a>
-<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">         61 : JL_DLLEXPORT int jl_profile_is_buffer_full(void)</span></a>
+<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">         75 : JL_DLLEXPORT int jl_profile_is_buffer_full(void)</span></a>
 <a name="138"><span class="lineNum">     138 </span>                :            : {</a>
 <a name="139"><span class="lineNum">     139 </span>                :            :     // declare buffer full if there isn't enough room to take samples across all threads</a>
 <a name="140"><span class="lineNum">     140 </span>                :            :     #if defined(_OS_WINDOWS_)</a>
 <a name="141"><span class="lineNum">     141 </span>                :            :         uint64_t nthreads = 1; // windows only profiles the main thread</a>
 <a name="142"><span class="lineNum">     142 </span>                :            :     #else</a>
-<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">         61 :         uint64_t nthreads = jl_n_threads;</span></a>
+<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">         75 :         uint64_t nthreads = jl_n_threads;</span></a>
 <a name="144"><span class="lineNum">     144 </span>                :            :     #endif</a>
 <a name="145"><span class="lineNum">     145 </span>                :            :     // the `+ 6` is for the two block terminators `0` plus 4 metadata entries</a>
-<a name="146"><span class="lineNum">     146 </span>                :<span class="lineCov">         61 :     return bt_size_cur + (((JL_BT_MAX_ENTRY_SIZE + 1) + 6) * nthreads) &gt; bt_size_max;</span></a>
+<a name="146"><span class="lineNum">     146 </span>                :<span class="lineCov">         75 :     return bt_size_cur + (((JL_BT_MAX_ENTRY_SIZE + 1) + 6) * nthreads) &gt; bt_size_max;</span></a>
 <a name="147"><span class="lineNum">     147 </span>                :            : }</a>
 <a name="148"><span class="lineNum">     148 </span>                :            : </a>
 <a name="149"><span class="lineNum">     149 </span>                :            : static uint64_t jl_last_sigint_trigger = 0;</a>
@@ -328,9 +328,9 @@
 <a name="250"><span class="lineNum">     250 </span>                :<span class="lineCov">          5 :     profile_show_peek_cond_loc = cond;</span></a>
 <a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">          5 : }</span></a>
 <a name="252"><span class="lineNum">     252 </span>                :            : </a>
-<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">         60 : static void jl_check_profile_autostop(void)</span></a>
+<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">         74 : static void jl_check_profile_autostop(void)</span></a>
 <a name="254"><span class="lineNum">     254 </span>                :            : {</a>
-<a name="255"><span class="lineNum">     255 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 60 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         60 :     if ((profile_autostop_time != -1.0) &amp;&amp; (jl_hrtime() &gt; profile_autostop_time)) {</span></a>
+<a name="255"><span class="lineNum">     255 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 74 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         74 :     if ((profile_autostop_time != -1.0) &amp;&amp; (jl_hrtime() &gt; profile_autostop_time)) {</span></a>
 <a name="256"><span class="lineNum">     256 </span>                :<span class="lineNoCov">          0 :         profile_autostop_time = -1.0;</span></a>
 <a name="257"><span class="lineNum">     257 </span>                :<span class="lineNoCov">          0 :         jl_profile_stop_timer();</span></a>
 <a name="258"><span class="lineNum">     258 </span>                :<span class="lineNoCov">          0 :         jl_safe_printf(&quot;\n==============================================================\n&quot;);</span></a>
@@ -338,7 +338,7 @@
 <a name="260"><span class="lineNum">     260 </span>                :<span class="lineNoCov">          0 :         jl_safe_printf(&quot;==============================================================\n\n&quot;);</span></a>
 <a name="261"><span class="lineNum">     261 </span>                :<span class="lineNoCov">          0 :         uv_async_send((uv_async_t*)profile_show_peek_cond_loc);</span></a>
 <a name="262"><span class="lineNum">     262 </span>                :            :     }</a>
-<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">         60 : }</span></a>
+<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">         74 : }</span></a>
 <a name="264"><span class="lineNum">     264 </span>                :            : </a>
 <a name="265"><span class="lineNum">     265 </span>                :            : #if defined(_WIN32)</a>
 <a name="266"><span class="lineNum">     266 </span>                :            : #include &quot;signals-win.c&quot;</a>
@@ -526,9 +526,9 @@
 <a name="447"><span class="lineNum">     447 </span>                :<span class="lineCov">          1 :     return (uint8_t*) bt_data_prof;</span></a>
 <a name="448"><span class="lineNum">     448 </span>                :            : }</a>
 <a name="449"><span class="lineNum">     449 </span>                :            : </a>
-<a name="450"><span class="lineNum">     450 </span>                :<span class="lineCov">       6107 : JL_DLLEXPORT size_t jl_profile_len_data(void)</span></a>
+<a name="450"><span class="lineNum">     450 </span>                :<span class="lineCov">       7793 : JL_DLLEXPORT size_t jl_profile_len_data(void)</span></a>
 <a name="451"><span class="lineNum">     451 </span>                :            : {</a>
-<a name="452"><span class="lineNum">     452 </span>                :<span class="lineCov">       6107 :     return bt_size_cur;</span></a>
+<a name="452"><span class="lineNum">     452 </span>                :<span class="lineCov">       7793 :     return bt_size_cur;</span></a>
 <a name="453"><span class="lineNum">     453 </span>                :            : }</a>
 <a name="454"><span class="lineNum">     454 </span>                :            : </a>
 <a name="455"><span class="lineNum">     455 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT size_t jl_profile_maxlen_data(void)</span></a>

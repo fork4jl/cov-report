@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/rtutils.c</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/rtutils.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">404</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">30</td>
@@ -281,16 +281,16 @@
 <a name="203"><span class="lineNum">     203 </span>                :            : }</a>
 <a name="204"><span class="lineNum">     204 </span>                :            : </a>
 <a name="205"><span class="lineNum">     205 </span>                :            : // get kwsorter field, with appropriate error check and message</a>
-<a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">     164652 : JL_DLLEXPORT jl_value_t *jl_get_keyword_sorter(jl_value_t *f)</span></a>
+<a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">     167281 : JL_DLLEXPORT jl_value_t *jl_get_keyword_sorter(jl_value_t *f)</span></a>
 <a name="207"><span class="lineNum">     207 </span>                :            : {</a>
-<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">     164652 :     return jl_get_kwsorter(jl_typeof(f));</span></a>
+<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">     167281 :     return jl_get_kwsorter(jl_typeof(f));</span></a>
 <a name="209"><span class="lineNum">     209 </span>                :            : }</a>
 <a name="210"><span class="lineNum">     210 </span>                :            : </a>
-<a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">    1682890 : JL_DLLEXPORT void jl_typeassert(jl_value_t *x, jl_value_t *t)</span></a>
+<a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">    1685380 : JL_DLLEXPORT void jl_typeassert(jl_value_t *x, jl_value_t *t)</span></a>
 <a name="212"><span class="lineNum">     212 </span>                :            : {</a>
-<a name="213"><span class="lineNum">     213 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1682890 times"> + </span>]:<span class="lineCov">    1682890 :     if (!jl_isa(x,t))</span></a>
+<a name="213"><span class="lineNum">     213 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1685380 times"> + </span>]:<span class="lineCov">    1685380 :     if (!jl_isa(x,t))</span></a>
 <a name="214"><span class="lineNum">     214 </span>                :<span class="lineNoCov">          0 :         jl_type_error(&quot;typeassert&quot;, t, x);</span></a>
-<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">    1682890 : }</span></a>
+<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">    1685380 : }</span></a>
 <a name="216"><span class="lineNum">     216 </span>                :            : </a>
 <a name="217"><span class="lineNum">     217 </span>                :            : #ifndef HAVE_SSP</a>
 <a name="218"><span class="lineNum">     218 </span>                :            : JL_DLLEXPORT uintptr_t __stack_chk_guard = (uintptr_t)0xBAD57ACCBAD67ACC; // 0xBADSTACKBADSTACK</a>
@@ -306,30 +306,30 @@
 <a name="228"><span class="lineNum">     228 </span>                :            : </a>
 <a name="229"><span class="lineNum">     229 </span>                :            : // exceptions -----------------------------------------------------------------</a>
 <a name="230"><span class="lineNum">     230 </span>                :            : </a>
-<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">    1523850 : JL_DLLEXPORT void jl_enter_handler(jl_handler_t *eh)</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">    1531440 : JL_DLLEXPORT void jl_enter_handler(jl_handler_t *eh)</span></a>
 <a name="232"><span class="lineNum">     232 </span>                :            : {</a>
-<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">    1523850 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">    1531440 :     jl_task_t *ct = jl_current_task;</span></a>
 <a name="234"><span class="lineNum">     234 </span>                :            :     // Must have no safepoint</a>
-<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">    1523850 :     eh-&gt;prev = ct-&gt;eh;</span></a>
-<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov">    1523850 :     eh-&gt;gcstack = ct-&gt;gcstack;</span></a>
-<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">    1523850 :     eh-&gt;gc_state = jl_atomic_load_relaxed(&amp;ct-&gt;ptls-&gt;gc_state);</span></a>
-<a name="238"><span class="lineNum">     238 </span>                :<span class="lineCov">    1523850 :     eh-&gt;locks_len = ct-&gt;ptls-&gt;locks.len;</span></a>
-<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">    1523850 :     eh-&gt;defer_signal = ct-&gt;ptls-&gt;defer_signal;</span></a>
-<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">    1523850 :     eh-&gt;world_age = ct-&gt;world_age;</span></a>
-<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">    1523850 :     ct-&gt;eh = eh;</span></a>
+<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">    1531440 :     eh-&gt;prev = ct-&gt;eh;</span></a>
+<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov">    1531440 :     eh-&gt;gcstack = ct-&gt;gcstack;</span></a>
+<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">    1531440 :     eh-&gt;gc_state = jl_atomic_load_relaxed(&amp;ct-&gt;ptls-&gt;gc_state);</span></a>
+<a name="238"><span class="lineNum">     238 </span>                :<span class="lineCov">    1531440 :     eh-&gt;locks_len = ct-&gt;ptls-&gt;locks.len;</span></a>
+<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">    1531440 :     eh-&gt;defer_signal = ct-&gt;ptls-&gt;defer_signal;</span></a>
+<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">    1531440 :     eh-&gt;world_age = ct-&gt;world_age;</span></a>
+<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">    1531440 :     ct-&gt;eh = eh;</span></a>
 <a name="242"><span class="lineNum">     242 </span>                :            : #ifdef ENABLE_TIMINGS</a>
 <a name="243"><span class="lineNum">     243 </span>                :            :     eh-&gt;timing_stack = ct-&gt;ptls-&gt;timing_stack;</a>
 <a name="244"><span class="lineNum">     244 </span>                :            : #endif</a>
-<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">    1523850 : }</span></a>
+<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">    1531440 : }</span></a>
 <a name="246"><span class="lineNum">     246 </span>                :            : </a>
 <a name="247"><span class="lineNum">     247 </span>                :            : // Restore thread local state to saved state in error handler `eh`.</a>
 <a name="248"><span class="lineNum">     248 </span>                :            : // This is executed in two circumstances:</a>
 <a name="249"><span class="lineNum">     249 </span>                :            : // * We leave a try block through normal control flow</a>
 <a name="250"><span class="lineNum">     250 </span>                :            : // * An exception causes a nonlocal jump to the catch block. In this case</a>
 <a name="251"><span class="lineNum">     251 </span>                :            : //   there's additional cleanup required, eg pushing the exception stack.</a>
-<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">    1521740 : JL_DLLEXPORT void jl_eh_restore_state(jl_handler_t *eh)</span></a>
+<a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">    1529330 : JL_DLLEXPORT void jl_eh_restore_state(jl_handler_t *eh)</span></a>
 <a name="253"><span class="lineNum">     253 </span>                :            : {</a>
-<a name="254"><span class="lineNum">     254 </span>                :<span class="lineCov">    1521740 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="254"><span class="lineNum">     254 </span>                :<span class="lineCov">    1529330 :     jl_task_t *ct = jl_current_task;</span></a>
 <a name="255"><span class="lineNum">     255 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="256"><span class="lineNum">     256 </span>                :            :     if (ct-&gt;ptls-&gt;needs_resetstkoflw) {</a>
 <a name="257"><span class="lineNum">     257 </span>                :            :         _resetstkoflw();</a>
@@ -339,50 +339,50 @@
 <a name="261"><span class="lineNum">     261 </span>                :            :     // `eh` may be not equal to `ct-&gt;eh`. See `jl_pop_handler`</a>
 <a name="262"><span class="lineNum">     262 </span>                :            :     // This function should **NOT** have any safepoint before the ones at the</a>
 <a name="263"><span class="lineNum">     263 </span>                :            :     // end.</a>
-<a name="264"><span class="lineNum">     264 </span>                :<span class="lineCov">    1521740 :     sig_atomic_t old_defer_signal = ct-&gt;ptls-&gt;defer_signal;</span></a>
-<a name="265"><span class="lineNum">     265 </span>                :<span class="lineCov">    1521740 :     int8_t old_gc_state = jl_atomic_load_relaxed(&amp;ct-&gt;ptls-&gt;gc_state);</span></a>
-<a name="266"><span class="lineNum">     266 </span>                :<span class="lineCov">    1521740 :     ct-&gt;eh = eh-&gt;prev;</span></a>
-<a name="267"><span class="lineNum">     267 </span>                :<span class="lineCov">    1521740 :     ct-&gt;gcstack = eh-&gt;gcstack;</span></a>
-<a name="268"><span class="lineNum">     268 </span>                :<span class="lineCov">    1521740 :     small_arraylist_t *locks = &amp;ct-&gt;ptls-&gt;locks;</span></a>
-<a name="269"><span class="lineNum">     269 </span>                :<span class="lineCov">    1521740 :     int unlocks = locks-&gt;len &gt; eh-&gt;locks_len;</span></a>
-<a name="270"><span class="lineNum">     270 </span>        [<span class="branchCov" title="Branch 0 was taken 2062 times"> + </span><span class="branchCov" title="Branch 1 was taken 1519670 times"> + </span>]:<span class="lineCov">    1521740 :     if (unlocks) {</span></a>
+<a name="264"><span class="lineNum">     264 </span>                :<span class="lineCov">    1529330 :     sig_atomic_t old_defer_signal = ct-&gt;ptls-&gt;defer_signal;</span></a>
+<a name="265"><span class="lineNum">     265 </span>                :<span class="lineCov">    1529330 :     int8_t old_gc_state = jl_atomic_load_relaxed(&amp;ct-&gt;ptls-&gt;gc_state);</span></a>
+<a name="266"><span class="lineNum">     266 </span>                :<span class="lineCov">    1529330 :     ct-&gt;eh = eh-&gt;prev;</span></a>
+<a name="267"><span class="lineNum">     267 </span>                :<span class="lineCov">    1529330 :     ct-&gt;gcstack = eh-&gt;gcstack;</span></a>
+<a name="268"><span class="lineNum">     268 </span>                :<span class="lineCov">    1529330 :     small_arraylist_t *locks = &amp;ct-&gt;ptls-&gt;locks;</span></a>
+<a name="269"><span class="lineNum">     269 </span>                :<span class="lineCov">    1529330 :     int unlocks = locks-&gt;len &gt; eh-&gt;locks_len;</span></a>
+<a name="270"><span class="lineNum">     270 </span>        [<span class="branchCov" title="Branch 0 was taken 2062 times"> + </span><span class="branchCov" title="Branch 1 was taken 1527260 times"> + </span>]:<span class="lineCov">    1529330 :     if (unlocks) {</span></a>
 <a name="271"><span class="lineNum">     271 </span>        [<span class="branchCov" title="Branch 0 was taken 2062 times"> + </span><span class="branchCov" title="Branch 1 was taken 2062 times"> + </span>]:<span class="lineCov">       4124 :         for (size_t i = locks-&gt;len; i &gt; eh-&gt;locks_len; i--)</span></a>
 <a name="272"><span class="lineNum">     272 </span>                :<span class="lineCov">       2062 :             jl_mutex_unlock_nogc((jl_mutex_t*)locks-&gt;items[i - 1]);</span></a>
 <a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">       2062 :         locks-&gt;len = eh-&gt;locks_len;</span></a>
 <a name="274"><span class="lineNum">     274 </span>                :            :     }</a>
-<a name="275"><span class="lineNum">     275 </span>                :<span class="lineCov">    1521740 :     ct-&gt;world_age = eh-&gt;world_age;</span></a>
-<a name="276"><span class="lineNum">     276 </span>                :<span class="lineCov">    1521740 :     ct-&gt;ptls-&gt;defer_signal = eh-&gt;defer_signal;</span></a>
-<a name="277"><span class="lineNum">     277 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1521740 times"> + </span>]:<span class="lineCov">    1521740 :     if (old_gc_state != eh-&gt;gc_state) {</span></a>
+<a name="275"><span class="lineNum">     275 </span>                :<span class="lineCov">    1529330 :     ct-&gt;world_age = eh-&gt;world_age;</span></a>
+<a name="276"><span class="lineNum">     276 </span>                :<span class="lineCov">    1529330 :     ct-&gt;ptls-&gt;defer_signal = eh-&gt;defer_signal;</span></a>
+<a name="277"><span class="lineNum">     277 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1529330 times"> + </span>]:<span class="lineCov">    1529330 :     if (old_gc_state != eh-&gt;gc_state) {</span></a>
 <a name="278"><span class="lineNum">     278 </span>                :<span class="lineNoCov">          0 :         jl_atomic_store_release(&amp;ct-&gt;ptls-&gt;gc_state, eh-&gt;gc_state);</span></a>
 <a name="279"><span class="lineNum">     279 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         if (old_gc_state) {</span></a>
 <a name="280"><span class="lineNum">     280 </span>                :<span class="lineNoCov">          0 :             jl_gc_safepoint_(ct-&gt;ptls);</span></a>
 <a name="281"><span class="lineNum">     281 </span>                :            :         }</a>
 <a name="282"><span class="lineNum">     282 </span>                :            :     }</a>
-<a name="283"><span class="lineNum">     283 </span>  [<span class="branchCov" title="Branch 0 was taken 1415810 times"> + </span><span class="branchCov" title="Branch 1 was taken 105924 times"> + </span><span class="branchCov" title="Branch 2 was taken 57 times"> + </span><span class="branchCov" title="Branch 3 was taken 1415750 times"> + </span>]:<span class="lineCov">    1521740 :     if (old_defer_signal &amp;&amp; !eh-&gt;defer_signal) {</span></a>
-<a name="284"><span class="lineNum">     284 </span>                :<span class="lineCov">         57 :         jl_sigint_safepoint(ct-&gt;ptls);</span></a>
+<a name="283"><span class="lineNum">     283 </span>  [<span class="branchCov" title="Branch 0 was taken 1423350 times"> + </span><span class="branchCov" title="Branch 1 was taken 105976 times"> + </span><span class="branchCov" title="Branch 2 was taken 56 times"> + </span><span class="branchCov" title="Branch 3 was taken 1423290 times"> + </span>]:<span class="lineCov">    1529330 :     if (old_defer_signal &amp;&amp; !eh-&gt;defer_signal) {</span></a>
+<a name="284"><span class="lineNum">     284 </span>                :<span class="lineCov">         56 :         jl_sigint_safepoint(ct-&gt;ptls);</span></a>
 <a name="285"><span class="lineNum">     285 </span>                :            :     }</a>
-<a name="286"><span class="lineNum">     286 </span>  [<span class="branchCov" title="Branch 0 was taken 243074 times"> + </span><span class="branchCov" title="Branch 1 was taken 1278660 times"> + </span><span class="branchCov" title="Branch 2 was taken 623 times"> + </span><span class="branchCov" title="Branch 3 was taken 242451 times"> + </span>]:<span class="lineCov">    1521740 :     if (jl_atomic_load_relaxed(&amp;jl_gc_have_pending_finalizers) &amp;&amp;</span></a>
-<a name="287"><span class="lineNum">     287 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 623 times"> + </span>]:<span class="lineCov">        623 :             unlocks &amp;&amp; eh-&gt;locks_len == 0) {</span></a>
+<a name="286"><span class="lineNum">     286 </span>  [<span class="branchCov" title="Branch 0 was taken 243928 times"> + </span><span class="branchCov" title="Branch 1 was taken 1285400 times"> + </span><span class="branchCov" title="Branch 2 was taken 626 times"> + </span><span class="branchCov" title="Branch 3 was taken 243302 times"> + </span>]:<span class="lineCov">    1529330 :     if (jl_atomic_load_relaxed(&amp;jl_gc_have_pending_finalizers) &amp;&amp;</span></a>
+<a name="287"><span class="lineNum">     287 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 626 times"> + </span>]:<span class="lineCov">        626 :             unlocks &amp;&amp; eh-&gt;locks_len == 0) {</span></a>
 <a name="288"><span class="lineNum">     288 </span>                :<span class="lineNoCov">          0 :         jl_gc_run_pending_finalizers(ct);</span></a>
 <a name="289"><span class="lineNum">     289 </span>                :            :     }</a>
-<a name="290"><span class="lineNum">     290 </span>                :<span class="lineCov">    1521740 : }</span></a>
+<a name="290"><span class="lineNum">     290 </span>                :<span class="lineCov">    1529330 : }</span></a>
 <a name="291"><span class="lineNum">     291 </span>                :            : </a>
-<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">     224884 : JL_DLLEXPORT void jl_pop_handler(int n)</span></a>
+<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">     224962 : JL_DLLEXPORT void jl_pop_handler(int n)</span></a>
 <a name="293"><span class="lineNum">     293 </span>                :            : {</a>
-<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     224884 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="295"><span class="lineNum">     295 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 224884 times"> + </span>]:<span class="lineCov">     224884 :     if (__unlikely(n &lt;= 0))</span></a>
+<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     224962 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="295"><span class="lineNum">     295 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 224962 times"> + </span>]:<span class="lineCov">     224962 :     if (__unlikely(n &lt;= 0))</span></a>
 <a name="296"><span class="lineNum">     296 </span>                :<span class="lineNoCov">          0 :         return;</span></a>
-<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     224884 :     jl_handler_t *eh = ct-&gt;eh;</span></a>
-<a name="298"><span class="lineNum">     298 </span>        [<span class="branchCov" title="Branch 0 was taken 1860 times"> + </span><span class="branchCov" title="Branch 1 was taken 224884 times"> + </span>]:<span class="lineCov">     226744 :     while (--n &gt; 0)</span></a>
-<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">       1860 :         eh = eh-&gt;prev;</span></a>
-<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">     224884 :     jl_eh_restore_state(eh);</span></a>
+<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     224962 :     jl_handler_t *eh = ct-&gt;eh;</span></a>
+<a name="298"><span class="lineNum">     298 </span>        [<span class="branchCov" title="Branch 0 was taken 1868 times"> + </span><span class="branchCov" title="Branch 1 was taken 224962 times"> + </span>]:<span class="lineCov">     226830 :     while (--n &gt; 0)</span></a>
+<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">       1868 :         eh = eh-&gt;prev;</span></a>
+<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">     224962 :     jl_eh_restore_state(eh);</span></a>
 <a name="301"><span class="lineNum">     301 </span>                :            : }</a>
 <a name="302"><span class="lineNum">     302 </span>                :            : </a>
-<a name="303"><span class="lineNum">     303 </span>                :<span class="lineCov">    1523850 : JL_DLLEXPORT size_t jl_excstack_state(void) JL_NOTSAFEPOINT</span></a>
+<a name="303"><span class="lineNum">     303 </span>                :<span class="lineCov">    1531440 : JL_DLLEXPORT size_t jl_excstack_state(void) JL_NOTSAFEPOINT</span></a>
 <a name="304"><span class="lineNum">     304 </span>                :            : {</a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">    1523850 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">    1523850 :     jl_excstack_t *s = ct-&gt;excstack;</span></a>
-<a name="307"><span class="lineNum">     307 </span>        [<span class="branchCov" title="Branch 0 was taken 1478740 times"> + </span><span class="branchCov" title="Branch 1 was taken 45112 times"> + </span>]:<span class="lineCov">    1523850 :     return s ? s-&gt;top : 0;</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">    1531440 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">    1531440 :     jl_excstack_t *s = ct-&gt;excstack;</span></a>
+<a name="307"><span class="lineNum">     307 </span>        [<span class="branchCov" title="Branch 0 was taken 1486430 times"> + </span><span class="branchCov" title="Branch 1 was taken 45014 times"> + </span>]:<span class="lineCov">    1531440 :     return s ? s-&gt;top : 0;</span></a>
 <a name="308"><span class="lineNum">     308 </span>                :            : }</a>
 <a name="309"><span class="lineNum">     309 </span>                :            : </a>
 <a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">       4566 : JL_DLLEXPORT void jl_restore_excstack(size_t state) JL_NOTSAFEPOINT</span></a>

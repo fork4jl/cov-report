@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/dlload.c</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/dlload.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">60</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -364,15 +364,15 @@
 <a name="283"><span class="lineNum">     283 </span>                :<span class="lineCov">        118 :     return handle;</span></a>
 <a name="284"><span class="lineNum">     284 </span>                :            : }</a>
 <a name="285"><span class="lineNum">     285 </span>                :            : </a>
-<a name="286"><span class="lineNum">     286 </span>                :<span class="lineCov">     105310 : JL_DLLEXPORT int jl_dlsym(void *handle, const char *symbol, void ** value, int throw_err) JL_NOTSAFEPOINT</span></a>
+<a name="286"><span class="lineNum">     286 </span>                :<span class="lineCov">     105316 : JL_DLLEXPORT int jl_dlsym(void *handle, const char *symbol, void ** value, int throw_err) JL_NOTSAFEPOINT</span></a>
 <a name="287"><span class="lineNum">     287 </span>                :            : {</a>
-<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">     105310 :     int symbol_found = 0;</span></a>
+<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">     105316 :     int symbol_found = 0;</span></a>
 <a name="289"><span class="lineNum">     289 </span>                :            : </a>
 <a name="290"><span class="lineNum">     290 </span>                :            :     /* First, get the symbol value */</a>
 <a name="291"><span class="lineNum">     291 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="292"><span class="lineNum">     292 </span>                :            :     *value = GetProcAddress((HMODULE) handle, symbol);</a>
 <a name="293"><span class="lineNum">     293 </span>                :            : #else</a>
-<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     105310 :     *value = dlsym(handle, symbol);</span></a>
+<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     105316 :     *value = dlsym(handle, symbol);</span></a>
 <a name="295"><span class="lineNum">     295 </span>                :            : #endif</a>
 <a name="296"><span class="lineNum">     296 </span>                :            : </a>
 <a name="297"><span class="lineNum">     297 </span>                :            :     /* Next, check for errors. On Windows, a NULL pointer means the symbol was</a>
@@ -383,10 +383,10 @@
 <a name="302"><span class="lineNum">     302 </span>                :            :      * `dlerror` unless we need to get the error message.</a>
 <a name="303"><span class="lineNum">     303 </span>                :            :      * https://github.com/freebsd/freebsd-src/blob/12db51d20823a5e3b9e5f8a2ea73156fe1cbfc28/libexec/rtld-elf/rtld.c#L198</a>
 <a name="304"><span class="lineNum">     304 </span>                :            :      */</a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">     105310 :     symbol_found = *value != NULL;</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">     105316 :     symbol_found = *value != NULL;</span></a>
 <a name="306"><span class="lineNum">     306 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">     105310 :     const char *err = &quot;&quot;;</span></a>
-<a name="308"><span class="lineNum">     308 </span>        [<span class="branchCov" title="Branch 0 was taken 16848 times"> + </span><span class="branchCov" title="Branch 1 was taken 88462 times"> + </span>]:<span class="lineCov">     105310 :     if (!symbol_found) {</span></a>
+<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">     105316 :     const char *err = &quot;&quot;;</span></a>
+<a name="308"><span class="lineNum">     308 </span>        [<span class="branchCov" title="Branch 0 was taken 16848 times"> + </span><span class="branchCov" title="Branch 1 was taken 88468 times"> + </span>]:<span class="lineCov">     105316 :     if (!symbol_found) {</span></a>
 <a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">      16848 :         dlerror(); /* Reset error status. */</span></a>
 <a name="310"><span class="lineNum">     310 </span>                :<span class="lineCov">      16848 :         *value = dlsym(handle, symbol);</span></a>
 <a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov">      16848 :         err = dlerror();</span></a>
@@ -394,7 +394,7 @@
 <a name="313"><span class="lineNum">     313 </span>                :            :     }</a>
 <a name="314"><span class="lineNum">     314 </span>                :            : #endif</a>
 <a name="315"><span class="lineNum">     315 </span>                :            : </a>
-<a name="316"><span class="lineNum">     316 </span>  [<span class="branchCov" title="Branch 0 was taken 16822 times"> + </span><span class="branchCov" title="Branch 1 was taken 88488 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 16822 times"> + </span>]:<span class="lineCov">     105310 :     if (!symbol_found &amp;&amp; throw_err) {</span></a>
+<a name="316"><span class="lineNum">     316 </span>  [<span class="branchCov" title="Branch 0 was taken 16822 times"> + </span><span class="branchCov" title="Branch 1 was taken 88494 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 16822 times"> + </span>]:<span class="lineCov">     105316 :     if (!symbol_found &amp;&amp; throw_err) {</span></a>
 <a name="317"><span class="lineNum">     317 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="318"><span class="lineNum">     318 </span>                :            :         char err[256];</a>
 <a name="319"><span class="lineNum">     319 </span>                :            :         win32_formatmessage(GetLastError(), err, sizeof(err));</a>
@@ -405,7 +405,7 @@
 <a name="324"><span class="lineNum">     324 </span>                :<span class="lineNoCov">          0 :         jl_errorf(&quot;could not load symbol \&quot;%s\&quot;:\n%s&quot;, symbol, err);</span></a>
 <a name="325"><span class="lineNum">     325 </span>                :            : #endif</a>
 <a name="326"><span class="lineNum">     326 </span>                :            :     }</a>
-<a name="327"><span class="lineNum">     327 </span>                :<span class="lineCov">     105310 :     return symbol_found;</span></a>
+<a name="327"><span class="lineNum">     327 </span>                :<span class="lineCov">     105316 :     return symbol_found;</span></a>
 <a name="328"><span class="lineNum">     328 </span>                :            : }</a>
 <a name="329"><span class="lineNum">     329 </span>                :            : </a>
 <a name="330"><span class="lineNum">     330 </span>                :            : #ifdef _OS_WINDOWS_</a>

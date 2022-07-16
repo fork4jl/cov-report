@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/llvm-cpufeatures.cpp</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/llvm-cpufeatures.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">41</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -169,14 +169,14 @@
 <a name="90"><span class="lineNum">      90 </span>                :<span class="lineCov">        124 :     return;</span></a>
 <a name="91"><span class="lineNum">      91 </span>                :            : }</a>
 <a name="92"><span class="lineNum">      92 </span>                :            : </a>
-<a name="93"><span class="lineNum">      93 </span>                :<span class="lineCov">      22229 : bool lowerCPUFeatures(Module &amp;M)</span></a>
+<a name="93"><span class="lineNum">      93 </span>                :<span class="lineCov">      22238 : bool lowerCPUFeatures(Module &amp;M)</span></a>
 <a name="94"><span class="lineNum">      94 </span>                :            : {</a>
-<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">      44458 :     SmallVector&lt;Instruction*,6&gt; Materialized;</span></a>
+<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">      44476 :     SmallVector&lt;Instruction*,6&gt; Materialized;</span></a>
 <a name="96"><span class="lineNum">      96 </span>                :            : </a>
-<a name="97"><span class="lineNum">      97 </span>        [<span class="branchCov" title="Branch 0 was taken 344069 times"> + </span><span class="branchCov" title="Branch 1 was taken 22229 times"> + </span>]:<span class="lineCov">     366298 :     for (auto &amp;F: M.functions()) {</span></a>
-<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">     344069 :         auto FN = F.getName();</span></a>
+<a name="97"><span class="lineNum">      97 </span>        [<span class="branchCov" title="Branch 0 was taken 344215 times"> + </span><span class="branchCov" title="Branch 1 was taken 22238 times"> + </span>]:<span class="lineCov">     366453 :     for (auto &amp;F: M.functions()) {</span></a>
+<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">     344215 :         auto FN = F.getName();</span></a>
 <a name="99"><span class="lineNum">      99 </span>                :            : </a>
-<a name="100"><span class="lineNum">     100 </span>        [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 344043 times"> + </span>]:<span class="lineCov">     344069 :         if (FN.startswith(&quot;julia.cpu.have_fma.&quot;)) {</span></a>
+<a name="100"><span class="lineNum">     100 </span>        [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 344189 times"> + </span>]:<span class="lineCov">     344215 :         if (FN.startswith(&quot;julia.cpu.have_fma.&quot;)) {</span></a>
 <a name="101"><span class="lineNum">     101 </span>        [<span class="branchCov" title="Branch 0 was taken 124 times"> + </span><span class="branchCov" title="Branch 1 was taken 26 times"> + </span>]:<span class="lineCov">        150 :             for (Use &amp;U: F.uses()) {</span></a>
 <a name="102"><span class="lineNum">     102 </span>                :<span class="lineCov">        124 :                 User *RU = U.getUser();</span></a>
 <a name="103"><span class="lineNum">     103 </span>                :<span class="lineCov">        124 :                 CallInst *I = cast&lt;CallInst&gt;(RU);</span></a>
@@ -186,14 +186,14 @@
 <a name="107"><span class="lineNum">     107 </span>                :            :         }</a>
 <a name="108"><span class="lineNum">     108 </span>                :            :     }</a>
 <a name="109"><span class="lineNum">     109 </span>                :            : </a>
-<a name="110"><span class="lineNum">     110 </span>        [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 22203 times"> + </span>]:<span class="lineCov">      22229 :     if (!Materialized.empty()) {</span></a>
+<a name="110"><span class="lineNum">     110 </span>        [<span class="branchCov" title="Branch 0 was taken 26 times"> + </span><span class="branchCov" title="Branch 1 was taken 22212 times"> + </span>]:<span class="lineCov">      22238 :     if (!Materialized.empty()) {</span></a>
 <a name="111"><span class="lineNum">     111 </span>        [<span class="branchCov" title="Branch 0 was taken 124 times"> + </span><span class="branchCov" title="Branch 1 was taken 26 times"> + </span>]:<span class="lineCov">        150 :         for (auto I: Materialized) {</span></a>
 <a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">        124 :             I-&gt;eraseFromParent();</span></a>
 <a name="113"><span class="lineNum">     113 </span>                :            :         }</a>
 <a name="114"><span class="lineNum">     114 </span>                :            :         assert(!verifyModule(M));</a>
 <a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">         26 :         return true;</span></a>
 <a name="116"><span class="lineNum">     116 </span>                :            :     } else {</a>
-<a name="117"><span class="lineNum">     117 </span>                :<span class="lineCov">      22203 :         return false;</span></a>
+<a name="117"><span class="lineNum">     117 </span>                :<span class="lineCov">      22212 :         return false;</span></a>
 <a name="118"><span class="lineNum">     118 </span>                :            :     }</a>
 <a name="119"><span class="lineNum">     119 </span>                :            : }</a>
 <a name="120"><span class="lineNum">     120 </span>                :            : </a>
@@ -210,9 +210,9 @@
 <a name="131"><span class="lineNum">     131 </span>                :            :     static char ID;</a>
 <a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">          9 :     CPUFeaturesLegacy() : ModulePass(ID) {};</span></a>
 <a name="133"><span class="lineNum">     133 </span>                :            : </a>
-<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">      22229 :     bool runOnModule(Module &amp;M)</span></a>
+<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">      22238 :     bool runOnModule(Module &amp;M)</span></a>
 <a name="135"><span class="lineNum">     135 </span>                :            :     {</a>
-<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">      22229 :         return lowerCPUFeatures(M);</span></a>
+<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">      22238 :         return lowerCPUFeatures(M);</span></a>
 <a name="137"><span class="lineNum">     137 </span>                :            :     }</a>
 <a name="138"><span class="lineNum">     138 </span>                :            : };</a>
 <a name="139"><span class="lineNum">     139 </span>                :            : </a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [build process] commit 0a2d6137a4 - src/julia_atomics.h - functions</title>
+  <title>LCOV - [build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4 - src/julia_atomics.h - functions</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[build process] commit 0a2d6137a4</td>
+            <td class="headerValue">[build process] commit 414c1ee4b89b6e73b5da3528b8d7b245a48e96a4</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">5</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 18:00:24</td>
+            <td class="headerValue">2022-07-16 22:35:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -76,68 +76,68 @@
       <td width="20%" class="tableHead">Hit count <span class="tableHeadSort"><img src="../glass.png" width=10 height=14 alt="Sort by hit count" title="Sort by hit count" border=0></span></td>
     </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#108">_Z19jl_atomic_fetch_addImmET_PSt6atomicIS0_ET0_</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#108">unsigned long jl_atomic_fetch_add&lt;unsigned long, unsigned long&gt;(std::atomic&lt;unsigned long&gt;*, unsigned long)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIaET_PSt6atomicIS0_ESt12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">signed char jl_atomic_load_explicit&lt;signed char&gt;(std::atomic&lt;signed char&gt;*, std::memory_order)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIsET_PSt6atomicIS0_ESt12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">short jl_atomic_load_explicit&lt;short&gt;(std::atomic&lt;short&gt;*, std::memory_order)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">_Z24jl_atomic_store_explicitIaaEvPSt6atomicIT_ET0_St12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">void jl_atomic_store_explicit&lt;signed char, signed char&gt;(std::atomic&lt;signed char&gt;*, signed char, std::memory_order)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">_Z24jl_atomic_store_explicitImiEvPSt6atomicIT_ET0_St12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">void jl_atomic_store_explicit&lt;unsigned long, int&gt;(std::atomic&lt;unsigned long&gt;*, int, std::memory_order)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#113">_Z28jl_atomic_fetch_add_explicitImmET_PSt6atomicIS0_ET0_St12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#113">unsigned long jl_atomic_fetch_add_explicit&lt;unsigned long, unsigned long&gt;(std::atomic&lt;unsigned long&gt;*, unsigned long, std::memory_order)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">_Z24jl_atomic_store_explicitIP10_jl_task_tS1_EvPSt6atomicIT_ET0_St12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">void jl_atomic_store_explicit&lt;_jl_task_t*, _jl_task_t*&gt;(std::atomic&lt;_jl_task_t*&gt;*, _jl_task_t*, std::memory_order)</a></td>
               <td class="coverFnHi">8</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitImET_PSt6atomicIS0_ESt12memory_order</a></td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">unsigned long jl_atomic_load_explicit&lt;unsigned long&gt;(std::atomic&lt;unsigned long&gt;*, std::memory_order)</a></td>
               <td class="coverFnHi">209</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">_Z24jl_atomic_store_explicitIPFP11_jl_value_tS1_PS1_jP19_jl_code_instance_tES6_EvPSt6atomicIT_ET0_St12memory_order</a></td>
-              <td class="coverFnHi">21450</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">void jl_atomic_store_explicit&lt;_jl_value_t* (*)(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*), _jl_value_t* (*)(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*)&gt;(std::atomic&lt;_jl_value_t* (*)(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*)&gt;*, _jl_value_t* (*)(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*), std::memory_order)</a></td>
+              <td class="coverFnHi">21459</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">_Z24jl_atomic_store_explicitIPvS0_EvPSt6atomicIT_ET0_St12memory_order</a></td>
-              <td class="coverFnHi">21491</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">void jl_atomic_store_explicit&lt;void*, void*&gt;(std::atomic&lt;void*&gt;*, void*, std::memory_order)</a></td>
+              <td class="coverFnHi">21500</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">_Z24jl_atomic_store_explicitIP11_jl_value_tS1_EvPSt6atomicIT_ET0_St12memory_order</a></td>
-              <td class="coverFnHi">30733</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#101">void jl_atomic_store_explicit&lt;_jl_value_t*, _jl_value_t*&gt;(std::atomic&lt;_jl_value_t*&gt;*, _jl_value_t*, std::memory_order)</a></td>
+              <td class="coverFnHi">30734</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIPvET_PSt6atomicIS1_ESt12memory_order</a></td>
-              <td class="coverFnHi">72987</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">void* jl_atomic_load_explicit&lt;void*&gt;(std::atomic&lt;void*&gt;*, std::memory_order)</a></td>
+              <td class="coverFnHi">72984</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIPFP11_jl_value_tS1_PS1_jP19_jl_code_instance_tEET_PSt6atomicIS7_ESt12memory_order</a></td>
-              <td class="coverFnHi">289531</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_jl_value_t* (*jl_atomic_load_explicit&lt;_jl_value_t* (*)(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*)&gt;(std::atomic&lt;_jl_value_t* (*)(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*)&gt;*, std::memory_order))(_jl_value_t*, _jl_value_t**, unsigned int, _jl_code_instance_t*)</a></td>
+              <td class="coverFnHi">289565</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIP11_jl_value_tET_PSt6atomicIS2_ESt12memory_order</a></td>
-              <td class="coverFnHi">67690200</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_jl_value_t* jl_atomic_load_explicit&lt;_jl_value_t*&gt;(std::atomic&lt;_jl_value_t*&gt;*, std::memory_order)</a></td>
+              <td class="coverFnHi">67702300</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIP19_jl_code_instance_tET_PSt6atomicIS2_ESt12memory_order</a></td>
-              <td class="coverFnHi">77832900</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_jl_code_instance_t* jl_atomic_load_explicit&lt;_jl_code_instance_t*&gt;(std::atomic&lt;_jl_code_instance_t*&gt;*, std::memory_order)</a></td>
+              <td class="coverFnHi">81135600</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">_Z23jl_atomic_load_explicitIhET_PSt6atomicIS0_ESt12memory_order</a></td>
-              <td class="coverFnHi">77845100</td>
+              <td class="coverFn"><a href="julia_atomics.h.gcov.html#89">unsigned char jl_atomic_load_explicit&lt;unsigned char&gt;(std::atomic&lt;unsigned char&gt;*, std::memory_order)</a></td>
+              <td class="coverFnHi">81147800</td>
             </tr>
   </table>
   <br>
