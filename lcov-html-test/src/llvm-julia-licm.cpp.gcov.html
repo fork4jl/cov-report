@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/llvm-julia-licm.cpp</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/llvm-julia-licm.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">135</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -127,22 +127,22 @@
 <a name="49"><span class="lineNum">      49 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="50"><span class="lineNum">      50 </span>                :            : </a>
 <a name="51"><span class="lineNum">      51 </span>                :            : //Stolen and modified from LICM.cpp</a>
-<a name="52"><span class="lineNum">      52 </span>                :<span class="lineCov">       9895 : static void moveInstructionBefore(Instruction &amp;I, Instruction &amp;Dest,</span></a>
+<a name="52"><span class="lineNum">      52 </span>                :<span class="lineCov">       9867 : static void moveInstructionBefore(Instruction &amp;I, Instruction &amp;Dest,</span></a>
 <a name="53"><span class="lineNum">      53 </span>                :            :                                   MemorySSAUpdater &amp;MSSAU,</a>
 <a name="54"><span class="lineNum">      54 </span>                :            :                                   ScalarEvolution *SE) {</a>
-<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">       9895 :   I.moveBefore(&amp;Dest);</span></a>
-<a name="56"><span class="lineNum">      56 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 9895 times"> + </span>]:<span class="lineCov">       9895 :   if (MSSAU.getMemorySSA())</span></a>
+<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">       9867 :   I.moveBefore(&amp;Dest);</span></a>
+<a name="56"><span class="lineNum">      56 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 9867 times"> + </span>]:<span class="lineCov">       9867 :   if (MSSAU.getMemorySSA())</span></a>
 <a name="57"><span class="lineNum">      57 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :     if (MemoryUseOrDef *OldMemAcc = cast_or_null&lt;MemoryUseOrDef&gt;(</span></a>
 <a name="58"><span class="lineNum">      58 </span>                :            :             MSSAU.getMemorySSA()-&gt;getMemoryAccess(&amp;I)))</a>
 <a name="59"><span class="lineNum">      59 </span>                :<span class="lineNoCov">          0 :       MSSAU.moveToPlace(OldMemAcc, Dest.getParent(),</span></a>
 <a name="60"><span class="lineNum">      60 </span>                :            :                          MemorySSA::BeforeTerminator);</a>
-<a name="61"><span class="lineNum">      61 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 9895 times"> + </span>]:<span class="lineCov">       9895 :   if (SE)</span></a>
+<a name="61"><span class="lineNum">      61 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 9867 times"> + </span>]:<span class="lineCov">       9867 :   if (SE)</span></a>
 <a name="62"><span class="lineNum">      62 </span>                :<span class="lineNoCov">          0 :     SE-&gt;forgetValue(&amp;I);</span></a>
-<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">       9895 : }</span></a>
+<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">       9867 : }</span></a>
 <a name="64"><span class="lineNum">      64 </span>                :            : </a>
-<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">      22177 : static void createNewInstruction(Instruction *New, Instruction *Ref, MemorySSAUpdater &amp;MSSAU) {</span></a>
-<a name="66"><span class="lineNum">      66 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 22177 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      22177 :   if (MSSAU.getMemorySSA() &amp;&amp; MSSAU.getMemorySSA()-&gt;getMemoryAccess(Ref)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 22177 times"> + </span>]
+<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">      22454 : static void createNewInstruction(Instruction *New, Instruction *Ref, MemorySSAUpdater &amp;MSSAU) {</span></a>
+<a name="66"><span class="lineNum">      66 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 22454 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">      22454 :   if (MSSAU.getMemorySSA() &amp;&amp; MSSAU.getMemorySSA()-&gt;getMemoryAccess(Ref)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 22454 times"> + </span>]
 <a name="67"><span class="lineNum">      67 </span>                :            :     // Create a new MemoryAccess and let MemorySSA set its defining access.</a>
 <a name="68"><span class="lineNum">      68 </span>                :<span class="lineNoCov">          0 :     MemoryAccess *NewMemAcc = MSSAU.createMemoryAccessInBB(</span></a>
 <a name="69"><span class="lineNum">      69 </span>                :<span class="lineNoCov">          0 :         New, nullptr, New-&gt;getParent(), MemorySSA::Beginning);</span></a>
@@ -155,26 +155,26 @@
 <a name="76"><span class="lineNum">      76 </span>                :            :       }</a>
 <a name="77"><span class="lineNum">      77 </span>                :            :     }</a>
 <a name="78"><span class="lineNum">      78 </span>                :            :   }</a>
-<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">      22177 : }</span></a>
+<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">      22454 : }</span></a>
 <a name="80"><span class="lineNum">      80 </span>                :            : </a>
 <a name="81"><span class="lineNum">      81 </span>                :            : //Stolen and modified to update SE from LoopInfo.cpp</a>
 <a name="82"><span class="lineNum">      82 </span>                :            : static bool makeLoopInvariant(Loop *L, Value *V, bool &amp;Changed, Instruction *InsertPt, MemorySSAUpdater &amp;MSSAU, ScalarEvolution *SE);</a>
 <a name="83"><span class="lineNum">      83 </span>                :            : </a>
-<a name="84"><span class="lineNum">      84 </span>                :<span class="lineCov">      88870 : static bool makeLoopInvariant(Loop *L, Instruction *I, bool &amp;Changed, Instruction *InsertPt, MemorySSAUpdater &amp;MSSAU, ScalarEvolution *SE) {</span></a>
+<a name="84"><span class="lineNum">      84 </span>                :<span class="lineCov">      68103 : static bool makeLoopInvariant(Loop *L, Instruction *I, bool &amp;Changed, Instruction *InsertPt, MemorySSAUpdater &amp;MSSAU, ScalarEvolution *SE) {</span></a>
 <a name="85"><span class="lineNum">      85 </span>                :            :   // Test if the value is already loop-invariant.</a>
-<a name="86"><span class="lineNum">      86 </span>        [<span class="branchCov" title="Branch 0 was taken 1546 times"> + </span><span class="branchCov" title="Branch 1 was taken 87324 times"> + </span>]:<span class="lineCov">      88870 :   if (L-&gt;isLoopInvariant(I))</span></a>
-<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">       1546 :     return true;</span></a>
-<a name="88"><span class="lineNum">      88 </span>        [<span class="branchCov" title="Branch 0 was taken 87180 times"> + </span><span class="branchCov" title="Branch 1 was taken 144 times"> + </span>]:<span class="lineCov">      87324 :   if (!isSafeToSpeculativelyExecute(I))</span></a>
-<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">      87180 :     return false;</span></a>
-<a name="90"><span class="lineNum">      90 </span>        [<span class="branchCov" title="Branch 0 was taken 90 times"> + </span><span class="branchCov" title="Branch 1 was taken 54 times"> + </span>]:<span class="lineCov">        144 :   if (I-&gt;mayReadFromMemory())</span></a>
+<a name="86"><span class="lineNum">      86 </span>        [<span class="branchCov" title="Branch 0 was taken 1516 times"> + </span><span class="branchCov" title="Branch 1 was taken 66587 times"> + </span>]:<span class="lineCov">      68103 :   if (L-&gt;isLoopInvariant(I))</span></a>
+<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">       1516 :     return true;</span></a>
+<a name="88"><span class="lineNum">      88 </span>        [<span class="branchCov" title="Branch 0 was taken 66439 times"> + </span><span class="branchCov" title="Branch 1 was taken 148 times"> + </span>]:<span class="lineCov">      66587 :   if (!isSafeToSpeculativelyExecute(I))</span></a>
+<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">      66439 :     return false;</span></a>
+<a name="90"><span class="lineNum">      90 </span>        [<span class="branchCov" title="Branch 0 was taken 90 times"> + </span><span class="branchCov" title="Branch 1 was taken 58 times"> + </span>]:<span class="lineCov">        148 :   if (I-&gt;mayReadFromMemory())</span></a>
 <a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">         90 :     return false;</span></a>
 <a name="92"><span class="lineNum">      92 </span>                :            :   // EH block instructions are immobile.</a>
-<a name="93"><span class="lineNum">      93 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 54 times"> + </span>]:<span class="lineCov">         54 :   if (I-&gt;isEHPad())</span></a>
+<a name="93"><span class="lineNum">      93 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 58 times"> + </span>]:<span class="lineCov">         58 :   if (I-&gt;isEHPad())</span></a>
 <a name="94"><span class="lineNum">      94 </span>                :<span class="lineNoCov">          0 :     return false;</span></a>
 <a name="95"><span class="lineNum">      95 </span>                :            :   // Don't hoist instructions with loop-variant operands.</a>
-<a name="96"><span class="lineNum">      96 </span>        [<span class="branchCov" title="Branch 0 was taken 54 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         54 :   for (Value *Operand : I-&gt;operands())</span></a>
-<a name="97"><span class="lineNum">      97 </span>        [<span class="branchCov" title="Branch 0 was taken 54 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         54 :     if (!makeLoopInvariant(L, Operand, Changed, InsertPt, MSSAU, SE))</span></a>
-<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">         54 :       return false;</span></a>
+<a name="96"><span class="lineNum">      96 </span>        [<span class="branchCov" title="Branch 0 was taken 58 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         58 :   for (Value *Operand : I-&gt;operands())</span></a>
+<a name="97"><span class="lineNum">      97 </span>        [<span class="branchCov" title="Branch 0 was taken 58 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         58 :     if (!makeLoopInvariant(L, Operand, Changed, InsertPt, MSSAU, SE))</span></a>
+<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">         58 :       return false;</span></a>
 <a name="99"><span class="lineNum">      99 </span>                :            : </a>
 <a name="100"><span class="lineNum">     100 </span>                :            :   // Hoist.</a>
 <a name="101"><span class="lineNum">     101 </span>                :<span class="lineNoCov">          0 :   moveInstructionBefore(*I, *InsertPt, MSSAU, SE);</span></a>
@@ -189,22 +189,22 @@
 <a name="110"><span class="lineNum">     110 </span>                :<span class="lineNoCov">          0 :   return true;</span></a>
 <a name="111"><span class="lineNum">     111 </span>                :            : }</a>
 <a name="112"><span class="lineNum">     112 </span>                :            : </a>
-<a name="113"><span class="lineNum">     113 </span>                :<span class="lineCov">      91147 : static bool makeLoopInvariant(Loop *L, Value *V, bool &amp;Changed, Instruction *InsertPt, MemorySSAUpdater &amp;MSSAU, ScalarEvolution *SE) {</span></a>
-<a name="114"><span class="lineNum">     114 </span>        [<span class="branchCov" title="Branch 0 was taken 88870 times"> + </span><span class="branchCov" title="Branch 1 was taken 2277 times"> + </span>]:<span class="lineCov">      91147 :   if (Instruction *I = dyn_cast&lt;Instruction&gt;(V))</span></a>
-<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">      88870 :     return makeLoopInvariant(L, I, Changed, InsertPt, MSSAU, SE);</span></a>
-<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">       2277 :   return true; // All non-instructions are loop-invariant.</span></a>
+<a name="113"><span class="lineNum">     113 </span>                :<span class="lineCov">      70328 : static bool makeLoopInvariant(Loop *L, Value *V, bool &amp;Changed, Instruction *InsertPt, MemorySSAUpdater &amp;MSSAU, ScalarEvolution *SE) {</span></a>
+<a name="114"><span class="lineNum">     114 </span>        [<span class="branchCov" title="Branch 0 was taken 68103 times"> + </span><span class="branchCov" title="Branch 1 was taken 2225 times"> + </span>]:<span class="lineCov">      70328 :   if (Instruction *I = dyn_cast&lt;Instruction&gt;(V))</span></a>
+<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">      68103 :     return makeLoopInvariant(L, I, Changed, InsertPt, MSSAU, SE);</span></a>
+<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">       2225 :   return true; // All non-instructions are loop-invariant.</span></a>
 <a name="117"><span class="lineNum">     117 </span>                :            : }</a>
 <a name="118"><span class="lineNum">     118 </span>                :            : </a>
 <a name="119"><span class="lineNum">     119 </span>                :            : struct JuliaLICMPassLegacy : public LoopPass {</a>
 <a name="120"><span class="lineNum">     120 </span>                :            :     static char ID;</a>
-<a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">       1150 :     JuliaLICMPassLegacy() : LoopPass(ID) {};</span></a>
+<a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">       1148 :     JuliaLICMPassLegacy() : LoopPass(ID) {};</span></a>
 <a name="122"><span class="lineNum">     122 </span>                :            : </a>
 <a name="123"><span class="lineNum">     123 </span>                :            :     bool runOnLoop(Loop *L, LPPassManager &amp;LPM) override;</a>
 <a name="124"><span class="lineNum">     124 </span>                :            : </a>
 <a name="125"><span class="lineNum">     125 </span>                :            :     protected:</a>
-<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">       1150 :         void getAnalysisUsage(AnalysisUsage &amp;AU) const override {</span></a>
-<a name="127"><span class="lineNum">     127 </span>                :<span class="lineCov">       1150 :             getLoopAnalysisUsage(AU);</span></a>
-<a name="128"><span class="lineNum">     128 </span>                :<span class="lineCov">       1150 :         }</span></a>
+<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">       1148 :         void getAnalysisUsage(AnalysisUsage &amp;AU) const override {</span></a>
+<a name="127"><span class="lineNum">     127 </span>                :<span class="lineCov">       1148 :             getLoopAnalysisUsage(AU);</span></a>
+<a name="128"><span class="lineNum">     128 </span>                :<span class="lineCov">       1148 :         }</span></a>
 <a name="129"><span class="lineNum">     129 </span>                :            : };</a>
 <a name="130"><span class="lineNum">     130 </span>                :            : </a>
 <a name="131"><span class="lineNum">     131 </span>                :            : struct JuliaLICM : public JuliaPassContext {</a>
@@ -212,65 +212,65 @@
 <a name="133"><span class="lineNum">     133 </span>                :            :     function_ref&lt;LoopInfo &amp;()&gt; GetLI;</a>
 <a name="134"><span class="lineNum">     134 </span>                :            :     function_ref&lt;MemorySSA *()&gt; GetMSSA;</a>
 <a name="135"><span class="lineNum">     135 </span>                :            :     function_ref&lt;ScalarEvolution *()&gt; GetSE;</a>
-<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">     591295 :     JuliaLICM(function_ref&lt;DominatorTree &amp;()&gt; GetDT,</span></a>
+<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">     514150 :     JuliaLICM(function_ref&lt;DominatorTree &amp;()&gt; GetDT,</span></a>
 <a name="137"><span class="lineNum">     137 </span>                :            :               function_ref&lt;LoopInfo &amp;()&gt; GetLI,</a>
 <a name="138"><span class="lineNum">     138 </span>                :            :               function_ref&lt;MemorySSA *()&gt; GetMSSA,</a>
-<a name="139"><span class="lineNum">     139 </span>                :<span class="lineCov">     591295 :               function_ref&lt;ScalarEvolution *()&gt; GetSE) :</span></a>
+<a name="139"><span class="lineNum">     139 </span>                :<span class="lineCov">     514150 :               function_ref&lt;ScalarEvolution *()&gt; GetSE) :</span></a>
 <a name="140"><span class="lineNum">     140 </span>                :            :                 GetDT(GetDT),</a>
 <a name="141"><span class="lineNum">     141 </span>                :            :                 GetLI(GetLI),</a>
 <a name="142"><span class="lineNum">     142 </span>                :            :                 GetMSSA(GetMSSA),</a>
-<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">     591295 :                 GetSE(GetSE) {}</span></a>
+<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">     514150 :                 GetSE(GetSE) {}</span></a>
 <a name="144"><span class="lineNum">     144 </span>                :            : </a>
-<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">     591295 :     bool runOnLoop(Loop *L)</span></a>
+<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">     514150 :     bool runOnLoop(Loop *L)</span></a>
 <a name="146"><span class="lineNum">     146 </span>                :            :     {</a>
 <a name="147"><span class="lineNum">     147 </span>                :            :         // Get the preheader block to move instructions into,</a>
 <a name="148"><span class="lineNum">     148 </span>                :            :         // required to run this pass.</a>
-<a name="149"><span class="lineNum">     149 </span>                :<span class="lineCov">     591295 :         BasicBlock *preheader = L-&gt;getLoopPreheader();</span></a>
-<a name="150"><span class="lineNum">     150 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 591295 times"> + </span>]:<span class="lineCov">     591295 :         if (!preheader)</span></a>
+<a name="149"><span class="lineNum">     149 </span>                :<span class="lineCov">     514150 :         BasicBlock *preheader = L-&gt;getLoopPreheader();</span></a>
+<a name="150"><span class="lineNum">     150 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 514150 times"> + </span>]:<span class="lineCov">     514150 :         if (!preheader)</span></a>
 <a name="151"><span class="lineNum">     151 </span>                :<span class="lineNoCov">          0 :             return false;</span></a>
-<a name="152"><span class="lineNum">     152 </span>                :<span class="lineCov">     591295 :         BasicBlock *header = L-&gt;getHeader();</span></a>
-<a name="153"><span class="lineNum">     153 </span>                :<span class="lineCov">     591295 :         const llvm::DataLayout &amp;DL = header-&gt;getModule()-&gt;getDataLayout();</span></a>
-<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov">     591295 :         initFunctions(*header-&gt;getModule());</span></a>
+<a name="152"><span class="lineNum">     152 </span>                :<span class="lineCov">     514150 :         BasicBlock *header = L-&gt;getHeader();</span></a>
+<a name="153"><span class="lineNum">     153 </span>                :<span class="lineCov">     514150 :         const llvm::DataLayout &amp;DL = header-&gt;getModule()-&gt;getDataLayout();</span></a>
+<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov">     514150 :         initFunctions(*header-&gt;getModule());</span></a>
 <a name="155"><span class="lineNum">     155 </span>                :            :         // Also require `gc_preserve_begin_func` whereas</a>
 <a name="156"><span class="lineNum">     156 </span>                :            :         // `gc_preserve_end_func` is optional since the input to</a>
 <a name="157"><span class="lineNum">     157 </span>                :            :         // `gc_preserve_end_func` must be from `gc_preserve_begin_func`.</a>
 <a name="158"><span class="lineNum">     158 </span>                :            :         // We also hoist write barriers here, so we don't exit if write_barrier_func exists</a>
-<a name="159"><span class="lineNum">     159 </span>  [<span class="branchCov" title="Branch 0 was taken 559610 times"> + </span><span class="branchCov" title="Branch 1 was taken 31685 times"> + </span><span class="branchCov" title="Branch 2 was taken 330881 times"> + </span><span class="branchCov" title="Branch 3 was taken 228729 times"> + </span> :<span class="lineCov">     591295 :         if (!gc_preserve_begin_func &amp;&amp; !write_barrier_func &amp;&amp; !write_barrier_binding_func &amp;&amp;</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 328084 times"> + </span><span class="branchCov" title="Branch 5 was taken 2797 times"> + </span>]
-<a name="160"><span class="lineNum">     160 </span>        [<span class="branchCov" title="Branch 0 was taken 163232 times"> + </span><span class="branchCov" title="Branch 1 was taken 164852 times"> + </span>]:<span class="lineCov">     328084 :             !alloc_obj_func)</span></a>
-<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">     163232 :             return false;</span></a>
-<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">     428063 :         auto LI = &amp;GetLI();</span></a>
-<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">     428063 :         auto DT = &amp;GetDT();</span></a>
-<a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">     428063 :         auto MSSA = GetMSSA();</span></a>
-<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">     428063 :         auto SE = GetSE();</span></a>
-<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">     856126 :         MemorySSAUpdater MSSAU(MSSA);</span></a>
+<a name="159"><span class="lineNum">     159 </span>  [<span class="branchCov" title="Branch 0 was taken 482146 times"> + </span><span class="branchCov" title="Branch 1 was taken 32004 times"> + </span><span class="branchCov" title="Branch 2 was taken 327509 times"> + </span><span class="branchCov" title="Branch 3 was taken 154637 times"> + </span> :<span class="lineCov">     514150 :         if (!gc_preserve_begin_func &amp;&amp; !write_barrier_func &amp;&amp; !write_barrier_binding_func &amp;&amp;</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 324916 times"> + </span><span class="branchCov" title="Branch 5 was taken 2593 times"> + </span>]
+<a name="160"><span class="lineNum">     160 </span>        [<span class="branchCov" title="Branch 0 was taken 159488 times"> + </span><span class="branchCov" title="Branch 1 was taken 165428 times"> + </span>]:<span class="lineCov">     324916 :             !alloc_obj_func)</span></a>
+<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">     159488 :             return false;</span></a>
+<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">     354662 :         auto LI = &amp;GetLI();</span></a>
+<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">     354662 :         auto DT = &amp;GetDT();</span></a>
+<a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">     354662 :         auto MSSA = GetMSSA();</span></a>
+<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">     354662 :         auto SE = GetSE();</span></a>
+<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">     709324 :         MemorySSAUpdater MSSAU(MSSA);</span></a>
 <a name="167"><span class="lineNum">     167 </span>                :            : </a>
 <a name="168"><span class="lineNum">     168 </span>                :            :         // Lazy initialization of exit blocks insertion points.</a>
-<a name="169"><span class="lineNum">     169 </span>                :<span class="lineCov">     428063 :         bool exit_pts_init = false;</span></a>
-<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">     856126 :         SmallVector&lt;Instruction*, 8&gt; _exit_pts;</span></a>
-<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">       4601 :         auto get_exit_pts = [&amp;] () -&gt; ArrayRef&lt;Instruction*&gt; {</span></a>
-<a name="172"><span class="lineNum">     172 </span>        [<span class="branchCov" title="Branch 0 was taken 4143 times"> + </span><span class="branchCov" title="Branch 1 was taken 458 times"> + </span>]:<span class="lineCov">       4601 :             if (!exit_pts_init) {</span></a>
-<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">       4143 :                 exit_pts_init = true;</span></a>
-<a name="174"><span class="lineNum">     174 </span>                :<span class="lineCov">       8286 :                 SmallVector&lt;BasicBlock*, 8&gt; exit_bbs;</span></a>
-<a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">       4143 :                 L-&gt;getUniqueExitBlocks(exit_bbs);</span></a>
-<a name="176"><span class="lineNum">     176 </span>        [<span class="branchCov" title="Branch 0 was taken 19527 times"> + </span><span class="branchCov" title="Branch 1 was taken 4143 times"> + </span>]:<span class="lineCov">      23670 :                 for (BasicBlock *bb: exit_bbs) {</span></a>
-<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">      19527 :                     _exit_pts.push_back(&amp;*bb-&gt;getFirstInsertionPt());</span></a>
+<a name="169"><span class="lineNum">     169 </span>                :<span class="lineCov">     354662 :         bool exit_pts_init = false;</span></a>
+<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">     709324 :         SmallVector&lt;Instruction*, 8&gt; _exit_pts;</span></a>
+<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">       4603 :         auto get_exit_pts = [&amp;] () -&gt; ArrayRef&lt;Instruction*&gt; {</span></a>
+<a name="172"><span class="lineNum">     172 </span>        [<span class="branchCov" title="Branch 0 was taken 4146 times"> + </span><span class="branchCov" title="Branch 1 was taken 457 times"> + </span>]:<span class="lineCov">       4603 :             if (!exit_pts_init) {</span></a>
+<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">       4146 :                 exit_pts_init = true;</span></a>
+<a name="174"><span class="lineNum">     174 </span>                :<span class="lineCov">       8292 :                 SmallVector&lt;BasicBlock*, 8&gt; exit_bbs;</span></a>
+<a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">       4146 :                 L-&gt;getUniqueExitBlocks(exit_bbs);</span></a>
+<a name="176"><span class="lineNum">     176 </span>        [<span class="branchCov" title="Branch 0 was taken 19809 times"> + </span><span class="branchCov" title="Branch 1 was taken 4146 times"> + </span>]:<span class="lineCov">      23955 :                 for (BasicBlock *bb: exit_bbs) {</span></a>
+<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">      19809 :                     _exit_pts.push_back(&amp;*bb-&gt;getFirstInsertionPt());</span></a>
 <a name="178"><span class="lineNum">     178 </span>                :            :                 }</a>
 <a name="179"><span class="lineNum">     179 </span>                :            :             }</a>
-<a name="180"><span class="lineNum">     180 </span>                :<span class="lineCov">       4601 :             return _exit_pts;</span></a>
-<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">     428063 :         };</span></a>
+<a name="180"><span class="lineNum">     180 </span>                :<span class="lineCov">       4603 :             return _exit_pts;</span></a>
+<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">     354662 :         };</span></a>
 <a name="182"><span class="lineNum">     182 </span>                :            : </a>
-<a name="183"><span class="lineNum">     183 </span>                :<span class="lineCov">     428063 :         bool changed = false;</span></a>
+<a name="183"><span class="lineNum">     183 </span>                :<span class="lineCov">     354662 :         bool changed = false;</span></a>
 <a name="184"><span class="lineNum">     184 </span>                :            :         // Scan in the right order so that we'll hoist the `begin`</a>
 <a name="185"><span class="lineNum">     185 </span>                :            :         // before we consider sinking `end`.</a>
-<a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">     428063 :         LoopBlocksRPO worklist(L);</span></a>
-<a name="187"><span class="lineNum">     187 </span>                :<span class="lineCov">     428063 :         worklist.perform(LI);</span></a>
-<a name="188"><span class="lineNum">     188 </span>        [<span class="branchCov" title="Branch 0 was taken 7490050 times"> + </span><span class="branchCov" title="Branch 1 was taken 428063 times"> + </span>]:<span class="lineCov">    7918110 :         for (auto *bb : worklist) {</span></a>
-<a name="189"><span class="lineNum">     189 </span>        [<span class="branchCov" title="Branch 0 was taken 41282100 times"> + </span><span class="branchCov" title="Branch 1 was taken 7490050 times"> + </span>]:<span class="lineCov">   48772200 :             for (BasicBlock::iterator II = bb-&gt;begin(), E = bb-&gt;end(); II != E;) {</span></a>
-<a name="190"><span class="lineNum">     190 </span>                :<span class="lineCov">   41282100 :                 auto call = dyn_cast&lt;CallInst&gt;(&amp;*II++);</span></a>
-<a name="191"><span class="lineNum">     191 </span>        [<span class="branchCov" title="Branch 0 was taken 39273600 times"> + </span><span class="branchCov" title="Branch 1 was taken 2008560 times"> + </span>]:<span class="lineCov">   41282100 :                 if (!call)</span></a>
-<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">   39273600 :                     continue;</span></a>
-<a name="193"><span class="lineNum">     193 </span>                :<span class="lineCov">    2008560 :                 Value *callee = call-&gt;getCalledOperand();</span></a>
+<a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">     354662 :         LoopBlocksRPO worklist(L);</span></a>
+<a name="187"><span class="lineNum">     187 </span>                :<span class="lineCov">     354662 :         worklist.perform(LI);</span></a>
+<a name="188"><span class="lineNum">     188 </span>        [<span class="branchCov" title="Branch 0 was taken 5224800 times"> + </span><span class="branchCov" title="Branch 1 was taken 354662 times"> + </span>]:<span class="lineCov">    5579460 :         for (auto *bb : worklist) {</span></a>
+<a name="189"><span class="lineNum">     189 </span>        [<span class="branchCov" title="Branch 0 was taken 30863900 times"> + </span><span class="branchCov" title="Branch 1 was taken 5224800 times"> + </span>]:<span class="lineCov">   36088700 :             for (BasicBlock::iterator II = bb-&gt;begin(), E = bb-&gt;end(); II != E;) {</span></a>
+<a name="190"><span class="lineNum">     190 </span>                :<span class="lineCov">   30863900 :                 auto call = dyn_cast&lt;CallInst&gt;(&amp;*II++);</span></a>
+<a name="191"><span class="lineNum">     191 </span>        [<span class="branchCov" title="Branch 0 was taken 29387000 times"> + </span><span class="branchCov" title="Branch 1 was taken 1476890 times"> + </span>]:<span class="lineCov">   30863900 :                 if (!call)</span></a>
+<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">   29387000 :                     continue;</span></a>
+<a name="193"><span class="lineNum">     193 </span>                :<span class="lineCov">    1476890 :                 Value *callee = call-&gt;getCalledOperand();</span></a>
 <a name="194"><span class="lineNum">     194 </span>                :            :                 assert(callee != nullptr);</a>
 <a name="195"><span class="lineNum">     195 </span>                :            :                 // It is always legal to extend the preserve period</a>
 <a name="196"><span class="lineNum">     196 </span>                :            :                 // so we only need to make sure it is legal to move/clone</a>
@@ -278,112 +278,112 @@
 <a name="198"><span class="lineNum">     198 </span>                :            :                 // If all the input arguments dominates the whole loop we can</a>
 <a name="199"><span class="lineNum">     199 </span>                :            :                 // hoist the `begin` and if a `begin` dominates the loop the</a>
 <a name="200"><span class="lineNum">     200 </span>                :            :                 // corresponding `end` can be moved to the loop exit.</a>
-<a name="201"><span class="lineNum">     201 </span>        [<span class="branchCov" title="Branch 0 was taken 10181 times"> + </span><span class="branchCov" title="Branch 1 was taken 1998380 times"> + </span>]:<span class="lineCov">    2008560 :                 if (callee == gc_preserve_begin_func) {</span></a>
-<a name="202"><span class="lineNum">     202 </span>                :<span class="lineCov">      10181 :                     bool canhoist = true;</span></a>
-<a name="203"><span class="lineNum">     203 </span>        [<span class="branchCov" title="Branch 0 was taken 10188 times"> + </span><span class="branchCov" title="Branch 1 was taken 4517 times"> + </span>]:<span class="lineCov">      14705 :                     for (Use &amp;U : call-&gt;args()) {</span></a>
+<a name="201"><span class="lineNum">     201 </span>        [<span class="branchCov" title="Branch 0 was taken 10302 times"> + </span><span class="branchCov" title="Branch 1 was taken 1466590 times"> + </span>]:<span class="lineCov">    1476890 :                 if (callee == gc_preserve_begin_func) {</span></a>
+<a name="202"><span class="lineNum">     202 </span>                :<span class="lineCov">      10302 :                     bool canhoist = true;</span></a>
+<a name="203"><span class="lineNum">     203 </span>        [<span class="branchCov" title="Branch 0 was taken 10311 times"> + </span><span class="branchCov" title="Branch 1 was taken 4519 times"> + </span>]:<span class="lineCov">      14830 :                     for (Use &amp;U : call-&gt;args()) {</span></a>
 <a name="204"><span class="lineNum">     204 </span>                :            :                         // Check if all arguments are generated outside the loop</a>
-<a name="205"><span class="lineNum">     205 </span>                :<span class="lineCov">      10188 :                         auto origin = dyn_cast&lt;Instruction&gt;(U.get());</span></a>
-<a name="206"><span class="lineNum">     206 </span>        [<span class="branchCov" title="Branch 0 was taken 3255 times"> + </span><span class="branchCov" title="Branch 1 was taken 6933 times"> + </span>]:<span class="lineCov">      10188 :                         if (!origin)</span></a>
-<a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">       3255 :                             continue;</span></a>
-<a name="208"><span class="lineNum">     208 </span>        [<span class="branchCov" title="Branch 0 was taken 5664 times"> + </span><span class="branchCov" title="Branch 1 was taken 1269 times"> + </span>]:<span class="lineCov">       6933 :                         if (!DT-&gt;properlyDominates(origin-&gt;getParent(), header)) {</span></a>
-<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">       5664 :                             canhoist = false;</span></a>
-<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">       5664 :                             break;</span></a>
+<a name="205"><span class="lineNum">     205 </span>                :<span class="lineCov">      10311 :                         auto origin = dyn_cast&lt;Instruction&gt;(U.get());</span></a>
+<a name="206"><span class="lineNum">     206 </span>        [<span class="branchCov" title="Branch 0 was taken 3254 times"> + </span><span class="branchCov" title="Branch 1 was taken 7057 times"> + </span>]:<span class="lineCov">      10311 :                         if (!origin)</span></a>
+<a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">       3254 :                             continue;</span></a>
+<a name="208"><span class="lineNum">     208 </span>        [<span class="branchCov" title="Branch 0 was taken 5783 times"> + </span><span class="branchCov" title="Branch 1 was taken 1274 times"> + </span>]:<span class="lineCov">       7057 :                         if (!DT-&gt;properlyDominates(origin-&gt;getParent(), header)) {</span></a>
+<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">       5783 :                             canhoist = false;</span></a>
+<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">       5783 :                             break;</span></a>
 <a name="211"><span class="lineNum">     211 </span>                :            :                         }</a>
 <a name="212"><span class="lineNum">     212 </span>                :            :                     }</a>
-<a name="213"><span class="lineNum">     213 </span>        [<span class="branchCov" title="Branch 0 was taken 5664 times"> + </span><span class="branchCov" title="Branch 1 was taken 4517 times"> + </span>]:<span class="lineCov">      10181 :                     if (!canhoist)</span></a>
-<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">       5664 :                         continue;</span></a>
-<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">       4517 :                     ++HoistedPreserveBegin;</span></a>
-<a name="216"><span class="lineNum">     216 </span>                :<span class="lineCov">       4517 :                     moveInstructionBefore(*call, *preheader-&gt;getTerminator(), MSSAU, SE);</span></a>
-<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">       4517 :                     changed = true;</span></a>
+<a name="213"><span class="lineNum">     213 </span>        [<span class="branchCov" title="Branch 0 was taken 5783 times"> + </span><span class="branchCov" title="Branch 1 was taken 4519 times"> + </span>]:<span class="lineCov">      10302 :                     if (!canhoist)</span></a>
+<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">       5783 :                         continue;</span></a>
+<a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">       4519 :                     ++HoistedPreserveBegin;</span></a>
+<a name="216"><span class="lineNum">     216 </span>                :<span class="lineCov">       4519 :                     moveInstructionBefore(*call, *preheader-&gt;getTerminator(), MSSAU, SE);</span></a>
+<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">       4519 :                     changed = true;</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :            :                 }</a>
-<a name="219"><span class="lineNum">     219 </span>        [<span class="branchCov" title="Branch 0 was taken 10369 times"> + </span><span class="branchCov" title="Branch 1 was taken 1988010 times"> + </span>]:<span class="lineCov">    1998380 :                 else if (callee == gc_preserve_end_func) {</span></a>
-<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">      10369 :                     auto begin = cast&lt;Instruction&gt;(call-&gt;getArgOperand(0));</span></a>
-<a name="221"><span class="lineNum">     221 </span>        [<span class="branchCov" title="Branch 0 was taken 5768 times"> + </span><span class="branchCov" title="Branch 1 was taken 4601 times"> + </span>]:<span class="lineCov">      10369 :                     if (!DT-&gt;properlyDominates(begin-&gt;getParent(), header))</span></a>
-<a name="222"><span class="lineNum">     222 </span>                :<span class="lineCov">       5768 :                         continue;</span></a>
-<a name="223"><span class="lineNum">     223 </span>                :<span class="lineCov">       4601 :                     changed = true;</span></a>
-<a name="224"><span class="lineNum">     224 </span>                :<span class="lineCov">       4601 :                     auto exit_pts = get_exit_pts();</span></a>
-<a name="225"><span class="lineNum">     225 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4601 times"> + </span>]:<span class="lineCov">       4601 :                     if (exit_pts.empty()) {</span></a>
+<a name="219"><span class="lineNum">     219 </span>        [<span class="branchCov" title="Branch 0 was taken 10490 times"> + </span><span class="branchCov" title="Branch 1 was taken 1456100 times"> + </span>]:<span class="lineCov">    1466590 :                 else if (callee == gc_preserve_end_func) {</span></a>
+<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">      10490 :                     auto begin = cast&lt;Instruction&gt;(call-&gt;getArgOperand(0));</span></a>
+<a name="221"><span class="lineNum">     221 </span>        [<span class="branchCov" title="Branch 0 was taken 5887 times"> + </span><span class="branchCov" title="Branch 1 was taken 4603 times"> + </span>]:<span class="lineCov">      10490 :                     if (!DT-&gt;properlyDominates(begin-&gt;getParent(), header))</span></a>
+<a name="222"><span class="lineNum">     222 </span>                :<span class="lineCov">       5887 :                         continue;</span></a>
+<a name="223"><span class="lineNum">     223 </span>                :<span class="lineCov">       4603 :                     changed = true;</span></a>
+<a name="224"><span class="lineNum">     224 </span>                :<span class="lineCov">       4603 :                     auto exit_pts = get_exit_pts();</span></a>
+<a name="225"><span class="lineNum">     225 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4603 times"> + </span>]:<span class="lineCov">       4603 :                     if (exit_pts.empty()) {</span></a>
 <a name="226"><span class="lineNum">     226 </span>                :<span class="lineNoCov">          0 :                         ++ErasedPreserveEnd;</span></a>
 <a name="227"><span class="lineNum">     227 </span>                :<span class="lineNoCov">          0 :                         eraseInstruction(*call, MSSAU);</span></a>
 <a name="228"><span class="lineNum">     228 </span>                :<span class="lineNoCov">          0 :                         continue;</span></a>
 <a name="229"><span class="lineNum">     229 </span>                :            :                     }</a>
-<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">       4601 :                     ++SunkPreserveEnd;</span></a>
-<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">       4601 :                     moveInstructionBefore(*call, *exit_pts[0], MSSAU, SE);</span></a>
-<a name="232"><span class="lineNum">     232 </span>        [<span class="branchCov" title="Branch 0 was taken 22177 times"> + </span><span class="branchCov" title="Branch 1 was taken 4601 times"> + </span>]:<span class="lineCov">      26778 :                     for (unsigned i = 1; i &lt; exit_pts.size(); i++) {</span></a>
+<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">       4603 :                     ++SunkPreserveEnd;</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">       4603 :                     moveInstructionBefore(*call, *exit_pts[0], MSSAU, SE);</span></a>
+<a name="232"><span class="lineNum">     232 </span>        [<span class="branchCov" title="Branch 0 was taken 22454 times"> + </span><span class="branchCov" title="Branch 1 was taken 4603 times"> + </span>]:<span class="lineCov">      27057 :                     for (unsigned i = 1; i &lt; exit_pts.size(); i++) {</span></a>
 <a name="233"><span class="lineNum">     233 </span>                :            :                         // Clone exit</a>
-<a name="234"><span class="lineNum">     234 </span>                :<span class="lineCov">      22177 :                         auto CI = CallInst::Create(call, {}, exit_pts[i]);</span></a>
-<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">      22177 :                         createNewInstruction(CI, call, MSSAU);</span></a>
+<a name="234"><span class="lineNum">     234 </span>                :<span class="lineCov">      22454 :                         auto CI = CallInst::Create(call, {}, exit_pts[i]);</span></a>
+<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">      22454 :                         createNewInstruction(CI, call, MSSAU);</span></a>
 <a name="236"><span class="lineNum">     236 </span>                :            :                     }</a>
 <a name="237"><span class="lineNum">     237 </span>                :            :                 }</a>
-<a name="238"><span class="lineNum">     238 </span>        [<span class="branchCov" title="Branch 0 was taken 1901160 times"> + </span><span class="branchCov" title="Branch 1 was taken 86849 times"> + </span>]:<span class="lineCov">    1988010 :                 else if (callee == write_barrier_func ||</span></a>
-<a name="239"><span class="lineNum">     239 </span>        [<span class="branchCov" title="Branch 0 was taken 451 times"> + </span><span class="branchCov" title="Branch 1 was taken 1900710 times"> + </span>]:<span class="lineCov">    1901160 :                          callee == write_barrier_binding_func) {</span></a>
-<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">      87300 :                     bool valid = true;</span></a>
-<a name="241"><span class="lineNum">     241 </span>        [<span class="branchCov" title="Branch 0 was taken 88648 times"> + </span><span class="branchCov" title="Branch 1 was taken 30 times"> + </span>]:<span class="lineCov">      88678 :                     for (std::size_t i = 0; i &lt; call-&gt;arg_size(); i++) {</span></a>
-<a name="242"><span class="lineNum">     242 </span>        [<span class="branchCov" title="Branch 0 was taken 87270 times"> + </span><span class="branchCov" title="Branch 1 was taken 1378 times"> + </span>]:<span class="lineCov">      88648 :                         if (!makeLoopInvariant(L, call-&gt;getArgOperand(i),</span></a>
+<a name="238"><span class="lineNum">     238 </span>        [<span class="branchCov" title="Branch 0 was taken 1389980 times"> + </span><span class="branchCov" title="Branch 1 was taken 66120 times"> + </span>]:<span class="lineCov">    1456100 :                 else if (callee == write_barrier_func ||</span></a>
+<a name="239"><span class="lineNum">     239 </span>        [<span class="branchCov" title="Branch 0 was taken 439 times"> + </span><span class="branchCov" title="Branch 1 was taken 1389540 times"> + </span>]:<span class="lineCov">    1389980 :                          callee == write_barrier_binding_func) {</span></a>
+<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">      66559 :                     bool valid = true;</span></a>
+<a name="241"><span class="lineNum">     241 </span>        [<span class="branchCov" title="Branch 0 was taken 67915 times"> + </span><span class="branchCov" title="Branch 1 was taken 30 times"> + </span>]:<span class="lineCov">      67945 :                     for (std::size_t i = 0; i &lt; call-&gt;arg_size(); i++) {</span></a>
+<a name="242"><span class="lineNum">     242 </span>        [<span class="branchCov" title="Branch 0 was taken 66529 times"> + </span><span class="branchCov" title="Branch 1 was taken 1386 times"> + </span>]:<span class="lineCov">      67915 :                         if (!makeLoopInvariant(L, call-&gt;getArgOperand(i),</span></a>
 <a name="243"><span class="lineNum">     243 </span>                :            :                             changed, preheader-&gt;getTerminator(),</a>
 <a name="244"><span class="lineNum">     244 </span>                :            :                             MSSAU, SE)) {</a>
-<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">      87270 :                             valid = false;</span></a>
-<a name="246"><span class="lineNum">     246 </span>                :<span class="lineCov">      87270 :                             break;</span></a>
+<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">      66529 :                             valid = false;</span></a>
+<a name="246"><span class="lineNum">     246 </span>                :<span class="lineCov">      66529 :                             break;</span></a>
 <a name="247"><span class="lineNum">     247 </span>                :            :                         }</a>
 <a name="248"><span class="lineNum">     248 </span>                :            :                     }</a>
-<a name="249"><span class="lineNum">     249 </span>        [<span class="branchCov" title="Branch 0 was taken 30 times"> + </span><span class="branchCov" title="Branch 1 was taken 87270 times"> + </span>]:<span class="lineCov">      87300 :                     if (valid) {</span></a>
+<a name="249"><span class="lineNum">     249 </span>        [<span class="branchCov" title="Branch 0 was taken 30 times"> + </span><span class="branchCov" title="Branch 1 was taken 66529 times"> + </span>]:<span class="lineCov">      66559 :                     if (valid) {</span></a>
 <a name="250"><span class="lineNum">     250 </span>                :<span class="lineCov">         30 :                         ++HoistedWriteBarrier;</span></a>
 <a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">         30 :                         moveInstructionBefore(*call, *preheader-&gt;getTerminator(), MSSAU, SE);</span></a>
 <a name="252"><span class="lineNum">     252 </span>                :<span class="lineCov">         30 :                         changed = true;</span></a>
-<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">      87300 :                     }</span></a>
+<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">      66559 :                     }</span></a>
 <a name="254"><span class="lineNum">     254 </span>                :            :                 }</a>
-<a name="255"><span class="lineNum">     255 </span>        [<span class="branchCov" title="Branch 0 was taken 96173 times"> + </span><span class="branchCov" title="Branch 1 was taken 1804540 times"> + </span>]:<span class="lineCov">    1900710 :                 else if (callee == alloc_obj_func) {</span></a>
-<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">      96173 :                     jl_alloc::AllocUseInfo use_info;</span></a>
-<a name="257"><span class="lineNum">     257 </span>                :<span class="lineCov">      96173 :                     jl_alloc::CheckInst::Stack check_stack;</span></a>
-<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">      96173 :                     jl_alloc::EscapeAnalysisRequiredArgs required{use_info, check_stack, *this, DL};</span></a>
-<a name="259"><span class="lineNum">     259 </span>                :<span class="lineCov">      96173 :                     jl_alloc::runEscapeAnalysis(call, required, jl_alloc::EscapeAnalysisOptionalArgs().with_valid_set(&amp;L-&gt;getBlocksSet()));</span></a>
-<a name="260"><span class="lineNum">     260 </span>  [<span class="branchCov" title="Branch 0 was taken 871 times"> + </span><span class="branchCov" title="Branch 1 was taken 95302 times"> + </span><span class="branchCov" title="Branch 2 was taken 56 times"> + </span><span class="branchCov" title="Branch 3 was taken 815 times"> + </span>]:<span class="lineCov">      96173 :                     if (use_info.escaped || use_info.addrescaped) {</span></a>
-<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">      95358 :                         continue;</span></a>
+<a name="255"><span class="lineNum">     255 </span>        [<span class="branchCov" title="Branch 0 was taken 96898 times"> + </span><span class="branchCov" title="Branch 1 was taken 1292640 times"> + </span>]:<span class="lineCov">    1389540 :                 else if (callee == alloc_obj_func) {</span></a>
+<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">      96898 :                     jl_alloc::AllocUseInfo use_info;</span></a>
+<a name="257"><span class="lineNum">     257 </span>                :<span class="lineCov">      96898 :                     jl_alloc::CheckInst::Stack check_stack;</span></a>
+<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">      96898 :                     jl_alloc::EscapeAnalysisRequiredArgs required{use_info, check_stack, *this, DL};</span></a>
+<a name="259"><span class="lineNum">     259 </span>                :<span class="lineCov">      96898 :                     jl_alloc::runEscapeAnalysis(call, required, jl_alloc::EscapeAnalysisOptionalArgs().with_valid_set(&amp;L-&gt;getBlocksSet()));</span></a>
+<a name="260"><span class="lineNum">     260 </span>  [<span class="branchCov" title="Branch 0 was taken 843 times"> + </span><span class="branchCov" title="Branch 1 was taken 96055 times"> + </span><span class="branchCov" title="Branch 2 was taken 58 times"> + </span><span class="branchCov" title="Branch 3 was taken 785 times"> + </span>]:<span class="lineCov">      96898 :                     if (use_info.escaped || use_info.addrescaped) {</span></a>
+<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">      96113 :                         continue;</span></a>
 <a name="262"><span class="lineNum">     262 </span>                :            :                     }</a>
-<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">        815 :                     bool valid = true;</span></a>
-<a name="264"><span class="lineNum">     264 </span>        [<span class="branchCov" title="Branch 0 was taken 2445 times"> + </span><span class="branchCov" title="Branch 1 was taken 815 times"> + </span>]:<span class="lineCov">       3260 :                     for (std::size_t i = 0; i &lt; call-&gt;arg_size(); i++) {</span></a>
-<a name="265"><span class="lineNum">     265 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2445 times"> + </span>]:<span class="lineCov">       2445 :                         if (!makeLoopInvariant(L, call-&gt;getArgOperand(i), changed,</span></a>
+<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">        785 :                     bool valid = true;</span></a>
+<a name="264"><span class="lineNum">     264 </span>        [<span class="branchCov" title="Branch 0 was taken 2355 times"> + </span><span class="branchCov" title="Branch 1 was taken 785 times"> + </span>]:<span class="lineCov">       3140 :                     for (std::size_t i = 0; i &lt; call-&gt;arg_size(); i++) {</span></a>
+<a name="265"><span class="lineNum">     265 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2355 times"> + </span>]:<span class="lineCov">       2355 :                         if (!makeLoopInvariant(L, call-&gt;getArgOperand(i), changed,</span></a>
 <a name="266"><span class="lineNum">     266 </span>                :            :                             preheader-&gt;getTerminator(), MSSAU, SE)) {</a>
 <a name="267"><span class="lineNum">     267 </span>                :<span class="lineNoCov">          0 :                             valid = false;</span></a>
 <a name="268"><span class="lineNum">     268 </span>                :<span class="lineNoCov">          0 :                             break;</span></a>
 <a name="269"><span class="lineNum">     269 </span>                :            :                         }</a>
 <a name="270"><span class="lineNum">     270 </span>                :            :                     }</a>
-<a name="271"><span class="lineNum">     271 </span>        [<span class="branchCov" title="Branch 0 was taken 68 times"> + </span><span class="branchCov" title="Branch 1 was taken 747 times"> + </span>]:<span class="lineCov">        815 :                     if (use_info.refstore) {</span></a>
+<a name="271"><span class="lineNum">     271 </span>        [<span class="branchCov" title="Branch 0 was taken 70 times"> + </span><span class="branchCov" title="Branch 1 was taken 715 times"> + </span>]:<span class="lineCov">        785 :                     if (use_info.refstore) {</span></a>
 <a name="272"><span class="lineNum">     272 </span>                :            :                         // We need to add write barriers to any stores</a>
 <a name="273"><span class="lineNum">     273 </span>                :            :                         // that may start crossing generations</a>
-<a name="274"><span class="lineNum">     274 </span>                :<span class="lineCov">         68 :                         continue;</span></a>
+<a name="274"><span class="lineNum">     274 </span>                :<span class="lineCov">         70 :                         continue;</span></a>
 <a name="275"><span class="lineNum">     275 </span>                :            :                     }</a>
-<a name="276"><span class="lineNum">     276 </span>        [<span class="branchCov" title="Branch 0 was taken 747 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        747 :                     if (valid) {</span></a>
-<a name="277"><span class="lineNum">     277 </span>                :<span class="lineCov">        747 :                         ++HoistedAllocation;</span></a>
-<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">        747 :                         moveInstructionBefore(*call, *preheader-&gt;getTerminator(), MSSAU, SE);</span></a>
-<a name="279"><span class="lineNum">     279 </span>                :<span class="lineCov">        747 :                         changed = true;</span></a>
+<a name="276"><span class="lineNum">     276 </span>        [<span class="branchCov" title="Branch 0 was taken 715 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        715 :                     if (valid) {</span></a>
+<a name="277"><span class="lineNum">     277 </span>                :<span class="lineCov">        715 :                         ++HoistedAllocation;</span></a>
+<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">        715 :                         moveInstructionBefore(*call, *preheader-&gt;getTerminator(), MSSAU, SE);</span></a>
+<a name="279"><span class="lineNum">     279 </span>                :<span class="lineCov">        715 :                         changed = true;</span></a>
 <a name="280"><span class="lineNum">     280 </span>                :            :                     }</a>
 <a name="281"><span class="lineNum">     281 </span>                :            :                 }</a>
 <a name="282"><span class="lineNum">     282 </span>                :            :             }</a>
 <a name="283"><span class="lineNum">     283 </span>                :            :         }</a>
-<a name="284"><span class="lineNum">     284 </span>  [<span class="branchCov" title="Branch 0 was taken 4558 times"> + </span><span class="branchCov" title="Branch 1 was taken 423505 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 4558 times"> + </span>]:<span class="lineCov">     428063 :         if (changed &amp;&amp; SE) {</span></a>
+<a name="284"><span class="lineNum">     284 </span>  [<span class="branchCov" title="Branch 0 was taken 4552 times"> + </span><span class="branchCov" title="Branch 1 was taken 350110 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 4552 times"> + </span>]:<span class="lineCov">     354662 :         if (changed &amp;&amp; SE) {</span></a>
 <a name="285"><span class="lineNum">     285 </span>                :<span class="lineNoCov">          0 :             SE-&gt;forgetLoopDispositions(L);</span></a>
 <a name="286"><span class="lineNum">     286 </span>                :            :         }</a>
 <a name="287"><span class="lineNum">     287 </span>                :            :         assert(!verifyFunction(*L-&gt;getHeader()-&gt;getParent(), &amp;errs()));</a>
-<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">     428063 :         return changed;</span></a>
+<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">     354662 :         return changed;</span></a>
 <a name="289"><span class="lineNum">     289 </span>                :            :     }</a>
 <a name="290"><span class="lineNum">     290 </span>                :            : };</a>
 <a name="291"><span class="lineNum">     291 </span>                :            : </a>
-<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">     591295 : bool JuliaLICMPassLegacy::runOnLoop(Loop *L, LPPassManager &amp;LPM) {</span></a>
-<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">     428063 :     auto GetDT = [this]() -&gt; DominatorTree &amp; {</span></a>
-<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     428063 :         return getAnalysis&lt;DominatorTreeWrapperPass&gt;().getDomTree();</span></a>
-<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">     591295 :     };</span></a>
-<a name="296"><span class="lineNum">     296 </span>                :<span class="lineCov">     428063 :     auto GetLI = [this]() -&gt; LoopInfo &amp; {</span></a>
-<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     428063 :         return getAnalysis&lt;LoopInfoWrapperPass&gt;().getLoopInfo();</span></a>
-<a name="298"><span class="lineNum">     298 </span>                :<span class="lineCov">     591295 :     };</span></a>
-<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">     428063 :     auto GetMSSA = []() {</span></a>
-<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">     428063 :         return nullptr;</span></a>
+<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">     514150 : bool JuliaLICMPassLegacy::runOnLoop(Loop *L, LPPassManager &amp;LPM) {</span></a>
+<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">     354662 :     auto GetDT = [this]() -&gt; DominatorTree &amp; {</span></a>
+<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     354662 :         return getAnalysis&lt;DominatorTreeWrapperPass&gt;().getDomTree();</span></a>
+<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">     514150 :     };</span></a>
+<a name="296"><span class="lineNum">     296 </span>                :<span class="lineCov">     354662 :     auto GetLI = [this]() -&gt; LoopInfo &amp; {</span></a>
+<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     354662 :         return getAnalysis&lt;LoopInfoWrapperPass&gt;().getLoopInfo();</span></a>
+<a name="298"><span class="lineNum">     298 </span>                :<span class="lineCov">     514150 :     };</span></a>
+<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">     354662 :     auto GetMSSA = []() {</span></a>
+<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">     354662 :         return nullptr;</span></a>
 <a name="301"><span class="lineNum">     301 </span>                :            :     };</a>
-<a name="302"><span class="lineNum">     302 </span>                :<span class="lineCov">     428063 :     auto GetSE = []() {</span></a>
-<a name="303"><span class="lineNum">     303 </span>                :<span class="lineCov">     428063 :         return nullptr;</span></a>
+<a name="302"><span class="lineNum">     302 </span>                :<span class="lineCov">     354662 :     auto GetSE = []() {</span></a>
+<a name="303"><span class="lineNum">     303 </span>                :<span class="lineCov">     354662 :         return nullptr;</span></a>
 <a name="304"><span class="lineNum">     304 </span>                :            :     };</a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">     591295 :     auto juliaLICM = JuliaLICM(GetDT, GetLI, GetMSSA, GetSE);</span></a>
-<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">     591295 :     return juliaLICM.runOnLoop(L);</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">     514150 :     auto juliaLICM = JuliaLICM(GetDT, GetLI, GetMSSA, GetSE);</span></a>
+<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">     514150 :     return juliaLICM.runOnLoop(L);</span></a>
 <a name="307"><span class="lineNum">     307 </span>                :            : }</a>
 <a name="308"><span class="lineNum">     308 </span>                :            : </a>
 <a name="309"><span class="lineNum">     309 </span>                :            : char JuliaLICMPassLegacy::ID = 0;</a>
@@ -417,9 +417,9 @@
 <a name="337"><span class="lineNum">     337 </span>                :<span class="lineNoCov">          0 :     return PreservedAnalyses::all();</span></a>
 <a name="338"><span class="lineNum">     338 </span>                :            : }</a>
 <a name="339"><span class="lineNum">     339 </span>                :            : </a>
-<a name="340"><span class="lineNum">     340 </span>                :<span class="lineCov">       1150 : Pass *createJuliaLICMPass()</span></a>
+<a name="340"><span class="lineNum">     340 </span>                :<span class="lineCov">       1148 : Pass *createJuliaLICMPass()</span></a>
 <a name="341"><span class="lineNum">     341 </span>                :            : {</a>
-<a name="342"><span class="lineNum">     342 </span>                :<span class="lineCov">       1150 :     return new JuliaLICMPassLegacy();</span></a>
+<a name="342"><span class="lineNum">     342 </span>                :<span class="lineCov">       1148 :     return new JuliaLICMPassLegacy();</span></a>
 <a name="343"><span class="lineNum">     343 </span>                :            : }</a>
 <a name="344"><span class="lineNum">     344 </span>                :            : </a>
 <a name="345"><span class="lineNum">     345 </span>                :<span class="lineNoCov">          0 : extern &quot;C&quot; JL_DLLEXPORT void LLVMExtraJuliaLICMPass_impl(LLVMPassManagerRef PM)</span></a>

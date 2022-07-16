@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/runtime_intrinsics.c - functions</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/runtime_intrinsics.c - functions</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">349</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">139</td>
@@ -940,16 +940,16 @@
               <td class="coverFnHi">47</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1423">jl_checked_sdiv_int</a></td>
-              <td class="coverFnHi">64</td>
-            </tr>
-    <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#189">__gnu_h2f_ieee</a></td>
               <td class="coverFnHi">66</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#20">half_to_float</a></td>
               <td class="coverFnHi">66</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1423">jl_checked_sdiv_int</a></td>
+              <td class="coverFnHi">69</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1348">jl_ctlz_int</a></td>
@@ -964,32 +964,32 @@
               <td class="coverFnHi">150</td>
             </tr>
     <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1333">jl_xor_int32</a></td>
+              <td class="coverFnHi">254</td>
+            </tr>
+    <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1335">jl_shl_int16</a></td>
-              <td class="coverFnHi">249</td>
+              <td class="coverFnHi">259</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1337">jl_lshr_int16</a></td>
-              <td class="coverFnHi">251</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1333">jl_xor_int32</a></td>
-              <td class="coverFnHi">256</td>
+              <td class="coverFnHi">261</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1420">jl_checked_smul_int</a></td>
-              <td class="coverFnHi">459</td>
+              <td class="coverFnHi">461</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1021">jl_intrinsiclambda_checked</a></td>
-              <td class="coverFnHi">459</td>
+              <td class="coverFnHi">461</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1425">jl_checked_srem_int</a></td>
-              <td class="coverFnHi">1802</td>
+              <td class="coverFnHi">1807</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1038">jl_intrinsiclambda_checkeddiv</a></td>
-              <td class="coverFnHi">1866</td>
+              <td class="coverFnHi">1876</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1345">jl_ctpop_int</a></td>
@@ -997,7 +997,7 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#936">select_intrinsic_checked</a></td>
-              <td class="coverFnHi">2325</td>
+              <td class="coverFnHi">2337</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1357">jl_sext_int</a></td>
@@ -1009,11 +1009,11 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1333">jl_xor_int64</a></td>
-              <td class="coverFnHi">10356</td>
+              <td class="coverFnHi">10420</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1333">jl_xor_int</a></td>
-              <td class="coverFnHi">11250</td>
+              <td class="coverFnHi">11298</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#795">jl_intrinsiclambda_u1</a></td>
@@ -1036,36 +1036,32 @@
               <td class="coverFnHi">16929</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1288">jl_eq_int64</a></td>
-              <td class="coverFnHi">17467</td>
-            </tr>
-    <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1449">ijl_arraylen</a></td>
               <td class="coverFnHi">18181</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1331">jl_or_int64</a></td>
-              <td class="coverFnHi">18536</td>
+              <td class="coverFnHi">18623</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1288">jl_eq_int64</a></td>
+              <td class="coverFnHi">18935</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1353">jl_not_int64</a></td>
-              <td class="coverFnHi">21173</td>
+              <td class="coverFnHi">21193</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1337">jl_lshr_int8</a></td>
-              <td class="coverFnHi">22594</td>
+              <td class="coverFnHi">23212</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1335">jl_shl_int8</a></td>
-              <td class="coverFnHi">22602</td>
+              <td class="coverFnHi">23220</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1331">jl_or_int32</a></td>
-              <td class="coverFnHi">24566</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1288">jl_eq_int32</a></td>
-              <td class="coverFnHi">36185</td>
+              <td class="coverFnHi">24726</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1339">jl_ashr_int64</a></td>
@@ -1076,28 +1072,32 @@
               <td class="coverFnHi">40387</td>
             </tr>
     <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1288">jl_eq_int32</a></td>
+              <td class="coverFnHi">41430</td>
+            </tr>
+    <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1358">jl_zext_int</a></td>
-              <td class="coverFnHi">48873</td>
+              <td class="coverFnHi">55586</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1151">jl_add_ptr</a></td>
-              <td class="coverFnHi">53697</td>
+              <td class="coverFnHi">56449</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1151">jl_add_ptr64</a></td>
-              <td class="coverFnHi">53697</td>
+              <td class="coverFnHi">56449</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#246">ijl_pointerref</a></td>
-              <td class="coverFnHi">59367</td>
+              <td class="coverFnHi">59382</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1288">jl_eq_int</a></td>
-              <td class="coverFnHi">69500</td>
+              <td class="coverFnHi">76213</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1356">jl_trunc_int</a></td>
-              <td class="coverFnHi">69531</td>
+              <td class="coverFnHi">76244</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1337">jl_lshr_int64</a></td>
@@ -1109,59 +1109,59 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1331">jl_or_int8</a></td>
-              <td class="coverFnHi">95374</td>
+              <td class="coverFnHi">99239</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#822">jl_intrinsic_cvt</a></td>
-              <td class="coverFnHi">123198</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1337">jl_lshr_int32</a></td>
-              <td class="coverFnHi">133202</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1335">jl_shl_int32</a></td>
-              <td class="coverFnHi">133218</td>
+              <td class="coverFnHi">136624</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1329">jl_and_int64</a></td>
-              <td class="coverFnHi">136585</td>
+              <td class="coverFnHi">137450</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1337">jl_lshr_int32</a></td>
+              <td class="coverFnHi">139806</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1335">jl_shl_int32</a></td>
+              <td class="coverFnHi">139822</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1331">jl_or_int</a></td>
-              <td class="coverFnHi">138479</td>
+              <td class="coverFnHi">142591</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1329">jl_and_int32</a></td>
-              <td class="coverFnHi">167371</td>
+              <td class="coverFnHi">175960</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1296">jl_ule_int</a></td>
-              <td class="coverFnHi">202312</td>
+              <td class="coverFnHi">203669</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1296">jl_ule_int64</a></td>
-              <td class="coverFnHi">202312</td>
+              <td class="coverFnHi">203669</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1156">jl_mul_int</a></td>
-              <td class="coverFnHi">210065</td>
+              <td class="coverFnHi">219052</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1156">jl_mul_int64</a></td>
-              <td class="coverFnHi">210065</td>
+              <td class="coverFnHi">219052</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1337">jl_lshr_int</a></td>
-              <td class="coverFnHi">235720</td>
+              <td class="coverFnHi">242952</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1335">jl_shl_int</a></td>
-              <td class="coverFnHi">237538</td>
+              <td class="coverFnHi">244770</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1150">jl_add_int32</a></td>
-              <td class="coverFnHi">246351</td>
+              <td class="coverFnHi">251426</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1283">jl_fma_float32</a></td>
@@ -1173,23 +1173,23 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#204">__truncdfhf2</a></td>
-              <td class="coverFnHi">282213</td>
+              <td class="coverFnHi">282104</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#161">float_to_half</a></td>
-              <td class="coverFnHi">282243</td>
+              <td class="coverFnHi">282134</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1293">jl_ult_int</a></td>
-              <td class="coverFnHi">434785</td>
+              <td class="coverFnHi">439038</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1293">jl_ult_int64</a></td>
-              <td class="coverFnHi">434785</td>
+              <td class="coverFnHi">439038</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#229">ijl_bitcast</a></td>
-              <td class="coverFnHi">486677</td>
+              <td class="coverFnHi">499370</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1283">jl_fma_float</a></td>
@@ -1197,87 +1197,87 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1329">jl_and_int8</a></td>
-              <td class="coverFnHi">791744</td>
+              <td class="coverFnHi">808899</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1329">jl_and_int</a></td>
-              <td class="coverFnHi">1095700</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1153">jl_sub_int</a></td>
-              <td class="coverFnHi">2304100</td>
-            </tr>
-    <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1153">jl_sub_int64</a></td>
-              <td class="coverFnHi">2304100</td>
+              <td class="coverFnHi">1122310</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1295">jl_sle_int</a></td>
-              <td class="coverFnHi">2327560</td>
+              <td class="coverFnHi">2383050</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1295">jl_sle_int64</a></td>
-              <td class="coverFnHi">2327560</td>
+              <td class="coverFnHi">2383050</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1292">jl_slt_int64</a></td>
-              <td class="coverFnHi">2481280</td>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1153">jl_sub_int</a></td>
+              <td class="coverFnHi">2386480</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1292">jl_slt_int</a></td>
-              <td class="coverFnHi">2481430</td>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1153">jl_sub_int64</a></td>
+              <td class="coverFnHi">2386480</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1353">jl_not_int8</a></td>
-              <td class="coverFnHi">2489760</td>
+              <td class="coverFnHi">2491680</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1353">jl_not_int</a></td>
-              <td class="coverFnHi">2511120</td>
+              <td class="coverFnHi">2513050</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#787">jl_intrinsiclambda_ty1</a></td>
-              <td class="coverFnHi">2528050</td>
+              <td class="coverFnHi">2529980</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#704">select_intrinsic_1</a></td>
-              <td class="coverFnHi">2528050</td>
+              <td class="coverFnHi">2529980</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#756">jl_iintrinsic_1</a></td>
-              <td class="coverFnHi">2539380</td>
+              <td class="coverFnHi">2541310</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1292">jl_slt_int64</a></td>
+              <td class="coverFnHi">2559120</td>
+            </tr>
+    <tr>
+              <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1292">jl_slt_int</a></td>
+              <td class="coverFnHi">2559270</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1014">jl_intrinsiclambda_cmp</a></td>
-              <td class="coverFnHi">5515590</td>
+              <td class="coverFnHi">5661240</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#915">select_intrinsic_cmp</a></td>
-              <td class="coverFnHi">5515590</td>
+              <td class="coverFnHi">5661240</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1150">jl_add_int64</a></td>
-              <td class="coverFnHi">20208100</td>
+              <td class="coverFnHi">20847600</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1150">jl_add_int</a></td>
-              <td class="coverFnHi">20454500</td>
+              <td class="coverFnHi">21099000</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#1006">jl_intrinsiclambda_2</a></td>
-              <td class="coverFnHi">24781400</td>
+              <td class="coverFnHi">25565300</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#892">select_intrinsic_2</a></td>
-              <td class="coverFnHi">24781400</td>
+              <td class="coverFnHi">25565300</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#967">jl_iintrinsic_2</a></td>
-              <td class="coverFnHi">30299300</td>
+              <td class="coverFnHi">31228900</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="runtime_intrinsics.c.gcov.html#529">select_by_size</a></td>
-              <td class="coverFnHi">32838700</td>
+              <td class="coverFnHi">33770200</td>
             </tr>
   </table>
   <br>

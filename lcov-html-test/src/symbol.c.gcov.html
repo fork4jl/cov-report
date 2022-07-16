@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/symbol.c</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/symbol.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">79</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">12</td>
@@ -97,91 +97,91 @@
 <a name="19"><span class="lineNum">      19 </span>                :            : </a>
 <a name="20"><span class="lineNum">      20 </span>                :            : #define MAX_SYM_LEN ((size_t)INTPTR_MAX - sizeof(jl_taggedvalue_t) - sizeof(jl_sym_t) - 1)</a>
 <a name="21"><span class="lineNum">      21 </span>                :            : </a>
-<a name="22"><span class="lineNum">      22 </span>                :<span class="lineCov">  115660000 : static uintptr_t hash_symbol(const char *str, size_t len) JL_NOTSAFEPOINT</span></a>
+<a name="22"><span class="lineNum">      22 </span>                :<span class="lineCov">  109865000 : static uintptr_t hash_symbol(const char *str, size_t len) JL_NOTSAFEPOINT</span></a>
 <a name="23"><span class="lineNum">      23 </span>                :            : {</a>
-<a name="24"><span class="lineNum">      24 </span>                :<span class="lineCov">  115660000 :     uintptr_t oid = memhash(str, len) ^ ~(uintptr_t)0/3*2;</span></a>
+<a name="24"><span class="lineNum">      24 </span>                :<span class="lineCov">  109865000 :     uintptr_t oid = memhash(str, len) ^ ~(uintptr_t)0/3*2;</span></a>
 <a name="25"><span class="lineNum">      25 </span>                :            :     // compute the same hash value as v1.6 and earlier, which used `hash_uint(3h - objectid(sym))`</a>
-<a name="26"><span class="lineNum">      26 </span>                :<span class="lineCov">  115662000 :     return inthash(-oid);</span></a>
+<a name="26"><span class="lineNum">      26 </span>                :<span class="lineCov">  109867000 :     return inthash(-oid);</span></a>
 <a name="27"><span class="lineNum">      27 </span>                :            : }</a>
 <a name="28"><span class="lineNum">      28 </span>                :            : </a>
-<a name="29"><span class="lineNum">      29 </span>                :<span class="lineCov">   15618200 : static size_t symbol_nbytes(size_t len) JL_NOTSAFEPOINT</span></a>
+<a name="29"><span class="lineNum">      29 </span>                :<span class="lineCov">   15591500 : static size_t symbol_nbytes(size_t len) JL_NOTSAFEPOINT</span></a>
 <a name="30"><span class="lineNum">      30 </span>                :            : {</a>
-<a name="31"><span class="lineNum">      31 </span>                :<span class="lineCov">   15618200 :     return (sizeof(jl_taggedvalue_t) + sizeof(jl_sym_t) + len + 1 + 7) &amp; -8;</span></a>
+<a name="31"><span class="lineNum">      31 </span>                :<span class="lineCov">   15591500 :     return (sizeof(jl_taggedvalue_t) + sizeof(jl_sym_t) + len + 1 + 7) &amp; -8;</span></a>
 <a name="32"><span class="lineNum">      32 </span>                :            : }</a>
 <a name="33"><span class="lineNum">      33 </span>                :            : </a>
-<a name="34"><span class="lineNum">      34 </span>                :<span class="lineCov">   15618200 : static jl_sym_t *mk_symbol(const char *str, size_t len) JL_NOTSAFEPOINT</span></a>
+<a name="34"><span class="lineNum">      34 </span>                :<span class="lineCov">   15591500 : static jl_sym_t *mk_symbol(const char *str, size_t len) JL_NOTSAFEPOINT</span></a>
 <a name="35"><span class="lineNum">      35 </span>                :            : {</a>
 <a name="36"><span class="lineNum">      36 </span>                :            :     jl_sym_t *sym;</a>
-<a name="37"><span class="lineNum">      37 </span>                :<span class="lineCov">   15618200 :     size_t nb = symbol_nbytes(len);</span></a>
-<a name="38"><span class="lineNum">      38 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15618200 times"> + </span>]:<span class="lineCov">   15618200 :     assert(jl_symbol_type &amp;&amp; &quot;not initialized&quot;);</span></a>
+<a name="37"><span class="lineNum">      37 </span>                :<span class="lineCov">   15591500 :     size_t nb = symbol_nbytes(len);</span></a>
+<a name="38"><span class="lineNum">      38 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15591500 times"> + </span>]:<span class="lineCov">   15591500 :     assert(jl_symbol_type &amp;&amp; &quot;not initialized&quot;);</span></a>
 <a name="39"><span class="lineNum">      39 </span>                :            : </a>
-<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">   15618200 :     jl_taggedvalue_t *tag = (jl_taggedvalue_t*)jl_gc_perm_alloc_nolock(nb, 0, sizeof(void*), 0);</span></a>
-<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">   15618200 :     sym = (jl_sym_t*)jl_valueof(tag);</span></a>
+<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">   15591500 :     jl_taggedvalue_t *tag = (jl_taggedvalue_t*)jl_gc_perm_alloc_nolock(nb, 0, sizeof(void*), 0);</span></a>
+<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">   15591500 :     sym = (jl_sym_t*)jl_valueof(tag);</span></a>
 <a name="42"><span class="lineNum">      42 </span>                :            :     // set to old marked so that we won't look at it in the GC or write barrier.</a>
-<a name="43"><span class="lineNum">      43 </span>                :<span class="lineCov">   15618200 :     tag-&gt;header = ((uintptr_t)jl_symbol_type) | GC_OLD_MARKED;</span></a>
-<a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">   15618200 :     jl_atomic_store_relaxed(&amp;sym-&gt;left, NULL);</span></a>
-<a name="45"><span class="lineNum">      45 </span>                :<span class="lineCov">   15618200 :     jl_atomic_store_relaxed(&amp;sym-&gt;right, NULL);</span></a>
-<a name="46"><span class="lineNum">      46 </span>                :<span class="lineCov">   15618200 :     sym-&gt;hash = hash_symbol(str, len);</span></a>
-<a name="47"><span class="lineNum">      47 </span>                :<span class="lineCov">   15618200 :     memcpy(jl_symbol_name(sym), str, len);</span></a>
-<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">   15618200 :     jl_symbol_name(sym)[len] = 0;</span></a>
-<a name="49"><span class="lineNum">      49 </span>                :<span class="lineCov">   15618200 :     return sym;</span></a>
+<a name="43"><span class="lineNum">      43 </span>                :<span class="lineCov">   15591500 :     tag-&gt;header = ((uintptr_t)jl_symbol_type) | GC_OLD_MARKED;</span></a>
+<a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">   15591500 :     jl_atomic_store_relaxed(&amp;sym-&gt;left, NULL);</span></a>
+<a name="45"><span class="lineNum">      45 </span>                :<span class="lineCov">   15591500 :     jl_atomic_store_relaxed(&amp;sym-&gt;right, NULL);</span></a>
+<a name="46"><span class="lineNum">      46 </span>                :<span class="lineCov">   15591500 :     sym-&gt;hash = hash_symbol(str, len);</span></a>
+<a name="47"><span class="lineNum">      47 </span>                :<span class="lineCov">   15591500 :     memcpy(jl_symbol_name(sym), str, len);</span></a>
+<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">   15591500 :     jl_symbol_name(sym)[len] = 0;</span></a>
+<a name="49"><span class="lineNum">      49 </span>                :<span class="lineCov">   15591500 :     return sym;</span></a>
 <a name="50"><span class="lineNum">      50 </span>                :            : }</a>
 <a name="51"><span class="lineNum">      51 </span>                :            : </a>
-<a name="52"><span class="lineNum">      52 </span>                :<span class="lineCov">  100042000 : static jl_sym_t *symtab_lookup(_Atomic(jl_sym_t*) *ptree, const char *str, size_t len, _Atomic(jl_sym_t*) **slot) JL_NOTSAFEPOINT</span></a>
+<a name="52"><span class="lineNum">      52 </span>                :<span class="lineCov">   94273600 : static jl_sym_t *symtab_lookup(_Atomic(jl_sym_t*) *ptree, const char *str, size_t len, _Atomic(jl_sym_t*) **slot) JL_NOTSAFEPOINT</span></a>
 <a name="53"><span class="lineNum">      53 </span>                :            : {</a>
-<a name="54"><span class="lineNum">      54 </span>                :<span class="lineCov">  100042000 :     jl_sym_t *node = jl_atomic_load_relaxed(ptree); // consume</span></a>
-<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">  100042000 :     uintptr_t h = hash_symbol(str, len);</span></a>
+<a name="54"><span class="lineNum">      54 </span>                :<span class="lineCov">   94273600 :     jl_sym_t *node = jl_atomic_load_relaxed(ptree); // consume</span></a>
+<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">   94273600 :     uintptr_t h = hash_symbol(str, len);</span></a>
 <a name="56"><span class="lineNum">      56 </span>                :            : </a>
 <a name="57"><span class="lineNum">      57 </span>                :            :     // Tree nodes sorted by major key of (int(hash)) and minor key of (str).</a>
-<a name="58"><span class="lineNum">      58 </span>        [<span class="branchCov" title="Branch 0 was taken 1717780000 times"> + </span><span class="branchCov" title="Branch 1 was taken 15629700 times"> + </span>]:<span class="lineCov"> 1733410000 :     while (node != NULL) {</span></a>
-<a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov"> 1717780000 :         intptr_t x = (intptr_t)(h - node-&gt;hash);</span></a>
-<a name="60"><span class="lineNum">      60 </span>        [<span class="branchCov" title="Branch 0 was taken 84422900 times"> + </span><span class="branchCov" title="Branch 1 was taken 1633360000 times"> + </span>]:<span class="lineCov"> 1717780000 :         if (x == 0) {</span></a>
-<a name="61"><span class="lineNum">      61 </span>                :<span class="lineCov">   84422900 :             x = strncmp(str, jl_symbol_name(node), len);</span></a>
-<a name="62"><span class="lineNum">      62 </span>  [<span class="branchCov" title="Branch 0 was taken 84412600 times"> + </span><span class="branchCov" title="Branch 1 was taken 10302 times"> + </span><span class="branchCov" title="Branch 2 was taken 84422500 times"> + </span><span class="branchNoExec" title="Branch 3 was not executed"> # </span>]:<span class="lineCov">   84422900 :             if (x == 0 &amp;&amp; jl_symbol_name(node)[len] == 0) {</span></a>
-<a name="63"><span class="lineNum">      63 </span>        [<span class="branchCov" title="Branch 0 was taken 84422400 times"> + </span><span class="branchCov" title="Branch 1 was taken 71 times"> + </span>]:<span class="lineCov">   84422500 :                 if (slot != NULL)</span></a>
-<a name="64"><span class="lineNum">      64 </span>                :<span class="lineCov">   84422400 :                     *slot = ptree;</span></a>
-<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">   84422500 :                 return node;</span></a>
+<a name="58"><span class="lineNum">      58 </span>        [<span class="branchCov" title="Branch 0 was taken 1613290000 times"> + </span><span class="branchCov" title="Branch 1 was taken 15601400 times"> + </span>]:<span class="lineCov"> 1628890000 :     while (node != NULL) {</span></a>
+<a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov"> 1613290000 :         intptr_t x = (intptr_t)(h - node-&gt;hash);</span></a>
+<a name="60"><span class="lineNum">      60 </span>        [<span class="branchCov" title="Branch 0 was taken 78681900 times"> + </span><span class="branchCov" title="Branch 1 was taken 1534610000 times"> + </span>]:<span class="lineCov"> 1613290000 :         if (x == 0) {</span></a>
+<a name="61"><span class="lineNum">      61 </span>                :<span class="lineCov">   78681900 :             x = strncmp(str, jl_symbol_name(node), len);</span></a>
+<a name="62"><span class="lineNum">      62 </span>  [<span class="branchCov" title="Branch 0 was taken 78672600 times"> + </span><span class="branchCov" title="Branch 1 was taken 9250 times"> + </span><span class="branchCov" title="Branch 2 was taken 78681500 times"> + </span><span class="branchNoExec" title="Branch 3 was not executed"> # </span>]:<span class="lineCov">   78681900 :             if (x == 0 &amp;&amp; jl_symbol_name(node)[len] == 0) {</span></a>
+<a name="63"><span class="lineNum">      63 </span>        [<span class="branchCov" title="Branch 0 was taken 78681500 times"> + </span><span class="branchCov" title="Branch 1 was taken 53 times"> + </span>]:<span class="lineCov">   78681500 :                 if (slot != NULL)</span></a>
+<a name="64"><span class="lineNum">      64 </span>                :<span class="lineCov">   78681500 :                     *slot = ptree;</span></a>
+<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">   78681500 :                 return node;</span></a>
 <a name="66"><span class="lineNum">      66 </span>                :            :             }</a>
 <a name="67"><span class="lineNum">      67 </span>                :            :         }</a>
-<a name="68"><span class="lineNum">      68 </span>        [<span class="branchCov" title="Branch 0 was taken 834686000 times"> + </span><span class="branchCov" title="Branch 1 was taken 798679000 times"> + </span>]:<span class="lineCov"> 1633370000 :         if (x &lt; 0)</span></a>
-<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">  834686000 :             ptree = &amp;node-&gt;left;</span></a>
+<a name="68"><span class="lineNum">      68 </span>        [<span class="branchCov" title="Branch 0 was taken 809654000 times"> + </span><span class="branchCov" title="Branch 1 was taken 724966000 times"> + </span>]:<span class="lineCov"> 1534620000 :         if (x &lt; 0)</span></a>
+<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">  809654000 :             ptree = &amp;node-&gt;left;</span></a>
 <a name="70"><span class="lineNum">      70 </span>                :            :         else</a>
-<a name="71"><span class="lineNum">      71 </span>                :<span class="lineCov">  798679000 :             ptree = &amp;node-&gt;right;</span></a>
-<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov"> 1633370000 :         node = jl_atomic_load_relaxed(ptree); // consume</span></a>
+<a name="71"><span class="lineNum">      71 </span>                :<span class="lineCov">  724966000 :             ptree = &amp;node-&gt;right;</span></a>
+<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov"> 1534620000 :         node = jl_atomic_load_relaxed(ptree); // consume</span></a>
 <a name="73"><span class="lineNum">      73 </span>                :            :     }</a>
-<a name="74"><span class="lineNum">      74 </span>        [<span class="branchCov" title="Branch 0 was taken 15618200 times"> + </span><span class="branchCov" title="Branch 1 was taken 11523 times"> + </span>]:<span class="lineCov">   15629700 :     if (slot != NULL)</span></a>
-<a name="75"><span class="lineNum">      75 </span>                :<span class="lineCov">   15618200 :         *slot = ptree;</span></a>
-<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">   15629700 :     return node;</span></a>
+<a name="74"><span class="lineNum">      74 </span>        [<span class="branchCov" title="Branch 0 was taken 15591500 times"> + </span><span class="branchCov" title="Branch 1 was taken 9980 times"> + </span>]:<span class="lineCov">   15601400 :     if (slot != NULL)</span></a>
+<a name="75"><span class="lineNum">      75 </span>                :<span class="lineCov">   15591500 :         *slot = ptree;</span></a>
+<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">   15601400 :     return node;</span></a>
 <a name="77"><span class="lineNum">      77 </span>                :            : }</a>
 <a name="78"><span class="lineNum">      78 </span>                :            : </a>
-<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">  100042000 : jl_sym_t *_jl_symbol(const char *str, size_t len) JL_NOTSAFEPOINT // (or throw)</span></a>
+<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">   94273600 : jl_sym_t *_jl_symbol(const char *str, size_t len) JL_NOTSAFEPOINT // (or throw)</span></a>
 <a name="80"><span class="lineNum">      80 </span>                :            : {</a>
 <a name="81"><span class="lineNum">      81 </span>                :            : #ifndef __clang_gcanalyzer__</a>
 <a name="82"><span class="lineNum">      82 </span>                :            :     // Hide the error throwing from the analyser since there isn't a way to express</a>
 <a name="83"><span class="lineNum">      83 </span>                :            :     // &quot;safepoint only when throwing error&quot; currently.</a>
-<a name="84"><span class="lineNum">      84 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 100042000 times"> + </span>]:<span class="lineCov">  100042000 :     if (len &gt; MAX_SYM_LEN)</span></a>
+<a name="84"><span class="lineNum">      84 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 94273600 times"> + </span>]:<span class="lineCov">   94273600 :     if (len &gt; MAX_SYM_LEN)</span></a>
 <a name="85"><span class="lineNum">      85 </span>                :<span class="lineNoCov">          0 :         jl_exceptionf(jl_argumenterror_type, &quot;Symbol name too long&quot;);</span></a>
 <a name="86"><span class="lineNum">      86 </span>                :            : #endif</a>
-<a name="87"><span class="lineNum">      87 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 100042000 times"> + </span>]:<span class="lineCov">  100042000 :     assert(!memchr(str, 0, len));</span></a>
+<a name="87"><span class="lineNum">      87 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 94273600 times"> + </span>]:<span class="lineCov">   94273600 :     assert(!memchr(str, 0, len));</span></a>
 <a name="88"><span class="lineNum">      88 </span>                :            :     _Atomic(jl_sym_t*) *slot;</a>
-<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">  100042000 :     jl_sym_t *node = symtab_lookup(&amp;symtab, str, len, &amp;slot);</span></a>
-<a name="90"><span class="lineNum">      90 </span>        [<span class="branchCov" title="Branch 0 was taken 15618200 times"> + </span><span class="branchCov" title="Branch 1 was taken 84422400 times"> + </span>]:<span class="lineCov">  100041000 :     if (node == NULL) {</span></a>
-<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">   15618200 :         uv_mutex_lock(&amp;gc_perm_lock);</span></a>
+<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">   94273600 :     jl_sym_t *node = symtab_lookup(&amp;symtab, str, len, &amp;slot);</span></a>
+<a name="90"><span class="lineNum">      90 </span>        [<span class="branchCov" title="Branch 0 was taken 15591500 times"> + </span><span class="branchCov" title="Branch 1 was taken 78681500 times"> + </span>]:<span class="lineCov">   94273000 :     if (node == NULL) {</span></a>
+<a name="91"><span class="lineNum">      91 </span>                :<span class="lineCov">   15591500 :         uv_mutex_lock(&amp;gc_perm_lock);</span></a>
 <a name="92"><span class="lineNum">      92 </span>                :            :         // Someone might have updated it, check and look up again</a>
-<a name="93"><span class="lineNum">      93 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15618200 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">   15618200 :         if (jl_atomic_load_relaxed(slot) != NULL &amp;&amp; (node = symtab_lookup(slot, str, len, &amp;slot))) {</span></a>
+<a name="93"><span class="lineNum">      93 </span>  [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15591500 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">   15591500 :         if (jl_atomic_load_relaxed(slot) != NULL &amp;&amp; (node = symtab_lookup(slot, str, len, &amp;slot))) {</span></a>
 <a name="94"><span class="lineNum">      94 </span>                :<span class="lineNoCov">          0 :             uv_mutex_unlock(&amp;gc_perm_lock);</span></a>
 <a name="95"><span class="lineNum">      95 </span>                :<span class="lineNoCov">          0 :             return node;</span></a>
 <a name="96"><span class="lineNum">      96 </span>                :            :         }</a>
-<a name="97"><span class="lineNum">      97 </span>                :<span class="lineCov">   15618200 :         node = mk_symbol(str, len);</span></a>
-<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">   15618200 :         jl_atomic_store_release(slot, node);</span></a>
-<a name="99"><span class="lineNum">      99 </span>                :<span class="lineCov">   15618200 :         uv_mutex_unlock(&amp;gc_perm_lock);</span></a>
+<a name="97"><span class="lineNum">      97 </span>                :<span class="lineCov">   15591500 :         node = mk_symbol(str, len);</span></a>
+<a name="98"><span class="lineNum">      98 </span>                :<span class="lineCov">   15591500 :         jl_atomic_store_release(slot, node);</span></a>
+<a name="99"><span class="lineNum">      99 </span>                :<span class="lineCov">   15591500 :         uv_mutex_unlock(&amp;gc_perm_lock);</span></a>
 <a name="100"><span class="lineNum">     100 </span>                :            :     }</a>
-<a name="101"><span class="lineNum">     101 </span>                :<span class="lineCov">  100041000 :     return node;</span></a>
+<a name="101"><span class="lineNum">     101 </span>                :<span class="lineCov">   94273000 :     return node;</span></a>
 <a name="102"><span class="lineNum">     102 </span>                :            : }</a>
 <a name="103"><span class="lineNum">     103 </span>                :            : </a>
-<a name="104"><span class="lineNum">     104 </span>                :<span class="lineCov">   28217700 : JL_DLLEXPORT jl_sym_t *jl_symbol(const char *str) JL_NOTSAFEPOINT // (or throw)</span></a>
+<a name="104"><span class="lineNum">     104 </span>                :<span class="lineCov">   27724200 : JL_DLLEXPORT jl_sym_t *jl_symbol(const char *str) JL_NOTSAFEPOINT // (or throw)</span></a>
 <a name="105"><span class="lineNum">     105 </span>                :            : {</a>
-<a name="106"><span class="lineNum">     106 </span>                :<span class="lineCov">   28217700 :     return _jl_symbol(str, strlen(str));</span></a>
+<a name="106"><span class="lineNum">     106 </span>                :<span class="lineCov">   27724200 :     return _jl_symbol(str, strlen(str));</span></a>
 <a name="107"><span class="lineNum">     107 </span>                :            : }</a>
 <a name="108"><span class="lineNum">     108 </span>                :            : </a>
 <a name="109"><span class="lineNum">     109 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT jl_sym_t *jl_symbol_lookup(const char *str) JL_NOTSAFEPOINT</span></a>
@@ -189,11 +189,11 @@
 <a name="111"><span class="lineNum">     111 </span>                :<span class="lineNoCov">          0 :     return symtab_lookup(&amp;symtab, str, strlen(str), NULL);</span></a>
 <a name="112"><span class="lineNum">     112 </span>                :            : }</a>
 <a name="113"><span class="lineNum">     113 </span>                :            : </a>
-<a name="114"><span class="lineNum">     114 </span>                :<span class="lineCov">     414023 : JL_DLLEXPORT jl_sym_t *jl_symbol_n(const char *str, size_t len)</span></a>
+<a name="114"><span class="lineNum">     114 </span>                :<span class="lineCov">     414351 : JL_DLLEXPORT jl_sym_t *jl_symbol_n(const char *str, size_t len)</span></a>
 <a name="115"><span class="lineNum">     115 </span>                :            : {</a>
-<a name="116"><span class="lineNum">     116 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 414022 times"> + </span>]:<span class="lineCov">     414023 :     if (memchr(str, 0, len))</span></a>
+<a name="116"><span class="lineNum">     116 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 414350 times"> + </span>]:<span class="lineCov">     414351 :     if (memchr(str, 0, len))</span></a>
 <a name="117"><span class="lineNum">     117 </span>                :<span class="lineCov">          1 :         jl_exceptionf(jl_argumenterror_type, &quot;Symbol name may not contain \\0&quot;);</span></a>
-<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">     414022 :     return _jl_symbol(str, len);</span></a>
+<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">     414350 :     return _jl_symbol(str, len);</span></a>
 <a name="119"><span class="lineNum">     119 </span>                :            : }</a>
 <a name="120"><span class="lineNum">     120 </span>                :            : </a>
 <a name="121"><span class="lineNum">     121 </span>                :<span class="lineCov">          3 : JL_DLLEXPORT jl_sym_t *jl_get_root_symbol(void)</span></a>
@@ -203,7 +203,7 @@
 <a name="125"><span class="lineNum">     125 </span>                :            : </a>
 <a name="126"><span class="lineNum">     126 </span>                :            : static _Atomic(uint32_t) gs_ctr = 0;  // TODO: per-module?</a>
 <a name="127"><span class="lineNum">     127 </span>                :<span class="lineCov">          3 : uint32_t jl_get_gs_ctr(void) { return jl_atomic_load_relaxed(&amp;gs_ctr); }</span></a>
-<a name="128"><span class="lineNum">     128 </span>                :<span class="lineCov">        567 : void jl_set_gs_ctr(uint32_t ctr) { jl_atomic_store_relaxed(&amp;gs_ctr, ctr); }</span></a>
+<a name="128"><span class="lineNum">     128 </span>                :<span class="lineCov">        566 : void jl_set_gs_ctr(uint32_t ctr) { jl_atomic_store_relaxed(&amp;gs_ctr, ctr); }</span></a>
 <a name="129"><span class="lineNum">     129 </span>                :            : </a>
 <a name="130"><span class="lineNum">     130 </span>                :<span class="lineCov">        421 : JL_DLLEXPORT jl_sym_t *jl_gensym(void)</span></a>
 <a name="131"><span class="lineNum">     131 </span>                :            : {</a>
@@ -215,31 +215,31 @@
 <a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">        421 :     return jl_symbol(n);</span></a>
 <a name="138"><span class="lineNum">     138 </span>                :            : }</a>
 <a name="139"><span class="lineNum">     139 </span>                :            : </a>
-<a name="140"><span class="lineNum">     140 </span>                :<span class="lineCov">        548 : JL_DLLEXPORT jl_sym_t *jl_tagged_gensym(const char *str, size_t len)</span></a>
+<a name="140"><span class="lineNum">     140 </span>                :<span class="lineCov">        545 : JL_DLLEXPORT jl_sym_t *jl_tagged_gensym(const char *str, size_t len)</span></a>
 <a name="141"><span class="lineNum">     141 </span>                :            : {</a>
-<a name="142"><span class="lineNum">     142 </span>        [<span class="branchCov" title="Branch 0 was taken 33 times"> + </span><span class="branchCov" title="Branch 1 was taken 515 times"> + </span>]:<span class="lineCov">        548 :     if (len == (size_t)-1) {</span></a>
+<a name="142"><span class="lineNum">     142 </span>        [<span class="branchCov" title="Branch 0 was taken 33 times"> + </span><span class="branchCov" title="Branch 1 was taken 512 times"> + </span>]:<span class="lineCov">        545 :     if (len == (size_t)-1) {</span></a>
 <a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">         33 :         len = strlen(str);</span></a>
 <a name="144"><span class="lineNum">     144 </span>                :            :     }</a>
-<a name="145"><span class="lineNum">     145 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 514 times"> + </span>]:<span class="lineCov">        515 :     else if (memchr(str, 0, len)) {</span></a>
+<a name="145"><span class="lineNum">     145 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 511 times"> + </span>]:<span class="lineCov">        512 :     else if (memchr(str, 0, len)) {</span></a>
 <a name="146"><span class="lineNum">     146 </span>                :<span class="lineCov">          1 :         jl_exceptionf(jl_argumenterror_type, &quot;Symbol name may not contain \\0&quot;);</span></a>
 <a name="147"><span class="lineNum">     147 </span>                :            :     }</a>
 <a name="148"><span class="lineNum">     148 </span>                :            :     char gs_name[14];</a>
-<a name="149"><span class="lineNum">     149 </span>                :<span class="lineCov">        547 :     size_t alloc_len = sizeof(gs_name) + len + 3;</span></a>
-<a name="150"><span class="lineNum">     150 </span>  [<span class="branchCov" title="Branch 0 was taken 547 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 547 times"> + </span>]:<span class="lineCov">        547 :     if (len &gt; MAX_SYM_LEN || alloc_len &gt; MAX_SYM_LEN)</span></a>
+<a name="149"><span class="lineNum">     149 </span>                :<span class="lineCov">        544 :     size_t alloc_len = sizeof(gs_name) + len + 3;</span></a>
+<a name="150"><span class="lineNum">     150 </span>  [<span class="branchCov" title="Branch 0 was taken 544 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 544 times"> + </span>]:<span class="lineCov">        544 :     if (len &gt; MAX_SYM_LEN || alloc_len &gt; MAX_SYM_LEN)</span></a>
 <a name="151"><span class="lineNum">     151 </span>                :<span class="lineNoCov">          0 :         jl_exceptionf(jl_argumenterror_type, &quot;Symbol name too long&quot;);</span></a>
-<a name="152"><span class="lineNum">     152 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 547 times"> + </span>]:<span class="lineCov">        547 :     char *name = (char*)(len &gt;= 256 ? malloc_s(alloc_len) : alloca(alloc_len));</span></a>
+<a name="152"><span class="lineNum">     152 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 544 times"> + </span>]:<span class="lineCov">        544 :     char *name = (char*)(len &gt;= 256 ? malloc_s(alloc_len) : alloca(alloc_len));</span></a>
 <a name="153"><span class="lineNum">     153 </span>                :            :     char *n;</a>
-<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov">        547 :     name[0] = '#';</span></a>
-<a name="155"><span class="lineNum">     155 </span>                :<span class="lineCov">        547 :     name[1] = '#';</span></a>
-<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">        547 :     name[2 + len] = '#';</span></a>
-<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">        547 :     memcpy(name + 2, str, len);</span></a>
-<a name="158"><span class="lineNum">     158 </span>                :<span class="lineCov">        547 :     uint32_t ctr = jl_atomic_fetch_add(&amp;gs_ctr, 1);</span></a>
-<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov">        547 :     n = uint2str(gs_name, sizeof(gs_name), ctr, 10);</span></a>
-<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">        547 :     memcpy(name + 3 + len, n, sizeof(gs_name) - (n - gs_name));</span></a>
-<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">        547 :     jl_sym_t *sym = _jl_symbol(name, alloc_len - (n - gs_name)- 1);</span></a>
-<a name="162"><span class="lineNum">     162 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 547 times"> + </span>]:<span class="lineCov">        547 :     if (len &gt;= 256)</span></a>
+<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov">        544 :     name[0] = '#';</span></a>
+<a name="155"><span class="lineNum">     155 </span>                :<span class="lineCov">        544 :     name[1] = '#';</span></a>
+<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">        544 :     name[2 + len] = '#';</span></a>
+<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">        544 :     memcpy(name + 2, str, len);</span></a>
+<a name="158"><span class="lineNum">     158 </span>                :<span class="lineCov">        544 :     uint32_t ctr = jl_atomic_fetch_add(&amp;gs_ctr, 1);</span></a>
+<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov">        544 :     n = uint2str(gs_name, sizeof(gs_name), ctr, 10);</span></a>
+<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">        544 :     memcpy(name + 3 + len, n, sizeof(gs_name) - (n - gs_name));</span></a>
+<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">        544 :     jl_sym_t *sym = _jl_symbol(name, alloc_len - (n - gs_name)- 1);</span></a>
+<a name="162"><span class="lineNum">     162 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 544 times"> + </span>]:<span class="lineCov">        544 :     if (len &gt;= 256)</span></a>
 <a name="163"><span class="lineNum">     163 </span>                :<span class="lineNoCov">          0 :         free(name);</span></a>
-<a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">        547 :     return sym;</span></a>
+<a name="164"><span class="lineNum">     164 </span>                :<span class="lineCov">        544 :     return sym;</span></a>
 <a name="165"><span class="lineNum">     165 </span>                :            : }</a>
 <a name="166"><span class="lineNum">     166 </span>                :            : </a>
 <a name="167"><span class="lineNum">     167 </span>                :            : #ifdef __cplusplus</a>

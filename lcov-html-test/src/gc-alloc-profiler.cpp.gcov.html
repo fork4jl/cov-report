@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/gc-alloc-profiler.cpp</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/gc-alloc-profiler.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">49</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -126,30 +126,30 @@
 <a name="48"><span class="lineNum">      48 </span>                :            : </a>
 <a name="49"><span class="lineNum">      49 </span>                :            : // === stack stuff ===</a>
 <a name="50"><span class="lineNum">      50 </span>                :            : </a>
-<a name="51"><span class="lineNum">      51 </span>                :<span class="lineCov">      89824 : jl_raw_backtrace_t get_raw_backtrace() JL_NOTSAFEPOINT {</span></a>
+<a name="51"><span class="lineNum">      51 </span>                :<span class="lineCov">      89669 : jl_raw_backtrace_t get_raw_backtrace() JL_NOTSAFEPOINT {</span></a>
 <a name="52"><span class="lineNum">      52 </span>                :            :     // We first record the backtrace onto a MAX-sized buffer, so that we don't have to</a>
 <a name="53"><span class="lineNum">      53 </span>                :            :     // allocate the buffer until we know the size. To ensure thread-safety, we use a</a>
 <a name="54"><span class="lineNum">      54 </span>                :            :     // per-thread backtrace buffer.</a>
-<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">      89824 :     jl_ptls_t ptls = jl_current_task-&gt;ptls;</span></a>
-<a name="56"><span class="lineNum">      56 </span>                :<span class="lineCov">      89824 :     jl_bt_element_t *shared_bt_data_buffer = ptls-&gt;profiling_bt_buffer;</span></a>
-<a name="57"><span class="lineNum">      57 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 89823 times"> + </span>]:<span class="lineCov">      89824 :     if (shared_bt_data_buffer == NULL) {</span></a>
+<a name="55"><span class="lineNum">      55 </span>                :<span class="lineCov">      89669 :     jl_ptls_t ptls = jl_current_task-&gt;ptls;</span></a>
+<a name="56"><span class="lineNum">      56 </span>                :<span class="lineCov">      89669 :     jl_bt_element_t *shared_bt_data_buffer = ptls-&gt;profiling_bt_buffer;</span></a>
+<a name="57"><span class="lineNum">      57 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 89668 times"> + </span>]:<span class="lineCov">      89669 :     if (shared_bt_data_buffer == NULL) {</span></a>
 <a name="58"><span class="lineNum">      58 </span>                :<span class="lineCov">          1 :         size_t size = sizeof(jl_bt_element_t) * (JL_MAX_BT_SIZE + 1);</span></a>
 <a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov">          1 :         shared_bt_data_buffer = (jl_bt_element_t*) malloc_s(size);</span></a>
 <a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">          1 :         ptls-&gt;profiling_bt_buffer = shared_bt_data_buffer;</span></a>
 <a name="61"><span class="lineNum">      61 </span>                :            :     }</a>
 <a name="62"><span class="lineNum">      62 </span>                :            : </a>
-<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">      89824 :     size_t bt_size = rec_backtrace(shared_bt_data_buffer, JL_MAX_BT_SIZE, 2);</span></a>
+<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">      89669 :     size_t bt_size = rec_backtrace(shared_bt_data_buffer, JL_MAX_BT_SIZE, 2);</span></a>
 <a name="64"><span class="lineNum">      64 </span>                :            : </a>
 <a name="65"><span class="lineNum">      65 </span>                :            :     // Then we copy only the needed bytes out of the buffer into our profile.</a>
-<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">      89824 :     size_t bt_bytes = bt_size * sizeof(jl_bt_element_t);</span></a>
-<a name="67"><span class="lineNum">      67 </span>                :<span class="lineCov">      89824 :     jl_bt_element_t *bt_data = (jl_bt_element_t*) malloc_s(bt_bytes);</span></a>
-<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">      89824 :     memcpy(bt_data, shared_bt_data_buffer, bt_bytes);</span></a>
+<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov">      89669 :     size_t bt_bytes = bt_size * sizeof(jl_bt_element_t);</span></a>
+<a name="67"><span class="lineNum">      67 </span>                :<span class="lineCov">      89669 :     jl_bt_element_t *bt_data = (jl_bt_element_t*) malloc_s(bt_bytes);</span></a>
+<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">      89669 :     memcpy(bt_data, shared_bt_data_buffer, bt_bytes);</span></a>
 <a name="69"><span class="lineNum">      69 </span>                :            : </a>
 <a name="70"><span class="lineNum">      70 </span>                :            : </a>
 <a name="71"><span class="lineNum">      71 </span>                :            :     return jl_raw_backtrace_t{</a>
 <a name="72"><span class="lineNum">      72 </span>                :            :         bt_data,</a>
 <a name="73"><span class="lineNum">      73 </span>                :            :         bt_size</a>
-<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">      89824 :     };</span></a>
+<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">      89669 :     };</span></a>
 <a name="75"><span class="lineNum">      75 </span>                :            : }</a>
 <a name="76"><span class="lineNum">      76 </span>                :            : </a>
 <a name="77"><span class="lineNum">      77 </span>                :            : // == exported interface ==</a>
@@ -170,8 +170,8 @@
 <a name="92"><span class="lineNum">      92 </span>                :            :     // combine allocs</a>
 <a name="93"><span class="lineNum">      93 </span>                :            :     // TODO: interleave to preserve ordering</a>
 <a name="94"><span class="lineNum">      94 </span>        [<span class="branchCov" title="Branch 0 was taken 12 times"> + </span><span class="branchCov" title="Branch 1 was taken 12 times"> + </span>]:<span class="lineCov">         24 :     for (auto&amp; profile : g_alloc_profile.per_thread_profiles) {</span></a>
-<a name="95"><span class="lineNum">      95 </span>        [<span class="branchCov" title="Branch 0 was taken 84574 times"> + </span><span class="branchCov" title="Branch 1 was taken 12 times"> + </span>]:<span class="lineCov">      84586 :         for (const auto&amp; alloc : profile.allocs) {</span></a>
-<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">      84574 :             g_combined_results.combined_allocs.push_back(alloc);</span></a>
+<a name="95"><span class="lineNum">      95 </span>        [<span class="branchCov" title="Branch 0 was taken 84419 times"> + </span><span class="branchCov" title="Branch 1 was taken 12 times"> + </span>]:<span class="lineCov">      84431 :         for (const auto&amp; alloc : profile.allocs) {</span></a>
+<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">      84419 :             g_combined_results.combined_allocs.push_back(alloc);</span></a>
 <a name="97"><span class="lineNum">      97 </span>                :            :         }</a>
 <a name="98"><span class="lineNum">      98 </span>                :            : </a>
 <a name="99"><span class="lineNum">      99 </span>                :<span class="lineCov">         12 :         profile.allocs.clear();</span></a>
@@ -198,8 +198,8 @@
 <a name="120"><span class="lineNum">     120 </span>                :            :     }</a>
 <a name="121"><span class="lineNum">     121 </span>                :            : </a>
 <a name="122"><span class="lineNum">     122 </span>                :            :     // Free the allocs that have been already combined into the combined results object.</a>
-<a name="123"><span class="lineNum">     123 </span>        [<span class="branchCov" title="Branch 0 was taken 84574 times"> + </span><span class="branchCov" title="Branch 1 was taken 6 times"> + </span>]:<span class="lineCov">      84580 :     for (auto alloc : g_combined_results.combined_allocs) {</span></a>
-<a name="124"><span class="lineNum">     124 </span>                :<span class="lineCov">      84574 :         free(alloc.backtrace.data);</span></a>
+<a name="123"><span class="lineNum">     123 </span>        [<span class="branchCov" title="Branch 0 was taken 84419 times"> + </span><span class="branchCov" title="Branch 1 was taken 6 times"> + </span>]:<span class="lineCov">      84425 :     for (auto alloc : g_combined_results.combined_allocs) {</span></a>
+<a name="124"><span class="lineNum">     124 </span>                :<span class="lineCov">      84419 :         free(alloc.backtrace.data);</span></a>
 <a name="125"><span class="lineNum">     125 </span>                :            :     }</a>
 <a name="126"><span class="lineNum">     126 </span>                :            : </a>
 <a name="127"><span class="lineNum">     127 </span>                :<span class="lineCov">          6 :     g_combined_results.combined_allocs.clear();</span></a>
@@ -207,23 +207,23 @@
 <a name="129"><span class="lineNum">     129 </span>                :            : </a>
 <a name="130"><span class="lineNum">     130 </span>                :            : // == callback called into by the outside ==</a>
 <a name="131"><span class="lineNum">     131 </span>                :            : </a>
-<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">      89824 : void _maybe_record_alloc_to_profile(jl_value_t *val, size_t size, jl_datatype_t *type) JL_NOTSAFEPOINT {</span></a>
-<a name="133"><span class="lineNum">     133 </span>                :<span class="lineCov">      89824 :     auto&amp; global_profile = g_alloc_profile;</span></a>
-<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">      89824 :     auto thread_id = jl_atomic_load_relaxed(&amp;jl_current_task-&gt;tid);</span></a>
-<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">      89824 :     auto&amp; profile = global_profile.per_thread_profiles[thread_id];</span></a>
+<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">      89669 : void _maybe_record_alloc_to_profile(jl_value_t *val, size_t size, jl_datatype_t *type) JL_NOTSAFEPOINT {</span></a>
+<a name="133"><span class="lineNum">     133 </span>                :<span class="lineCov">      89669 :     auto&amp; global_profile = g_alloc_profile;</span></a>
+<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">      89669 :     auto thread_id = jl_atomic_load_relaxed(&amp;jl_current_task-&gt;tid);</span></a>
+<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">      89669 :     auto&amp; profile = global_profile.per_thread_profiles[thread_id];</span></a>
 <a name="136"><span class="lineNum">     136 </span>                :            : </a>
-<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">      89824 :     auto sample_val = double(rand()) / double(RAND_MAX);</span></a>
-<a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">      89824 :     auto should_record = sample_val &lt;= global_profile.sample_rate;</span></a>
-<a name="139"><span class="lineNum">     139 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 89824 times"> + </span>]:<span class="lineCov">      89824 :     if (!should_record) {</span></a>
+<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">      89669 :     auto sample_val = double(rand()) / double(RAND_MAX);</span></a>
+<a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">      89669 :     auto should_record = sample_val &lt;= global_profile.sample_rate;</span></a>
+<a name="139"><span class="lineNum">     139 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 89669 times"> + </span>]:<span class="lineCov">      89669 :     if (!should_record) {</span></a>
 <a name="140"><span class="lineNum">     140 </span>                :<span class="lineNoCov">          0 :         return;</span></a>
 <a name="141"><span class="lineNum">     141 </span>                :            :     }</a>
 <a name="142"><span class="lineNum">     142 </span>                :            : </a>
-<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">      89824 :     profile.allocs.emplace_back(jl_raw_alloc_t{</span></a>
+<a name="143"><span class="lineNum">     143 </span>                :<span class="lineCov">      89669 :     profile.allocs.emplace_back(jl_raw_alloc_t{</span></a>
 <a name="144"><span class="lineNum">     144 </span>                :            :         type,</a>
-<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">      89824 :         get_raw_backtrace(),</span></a>
+<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">      89669 :         get_raw_backtrace(),</span></a>
 <a name="146"><span class="lineNum">     146 </span>                :            :         size,</a>
-<a name="147"><span class="lineNum">     147 </span>                :<span class="lineCov">      89824 :         (void *)jl_current_task,</span></a>
-<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">      89824 :         cycleclock()</span></a>
+<a name="147"><span class="lineNum">     147 </span>                :<span class="lineCov">      89669 :         (void *)jl_current_task,</span></a>
+<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">      89669 :         cycleclock()</span></a>
 <a name="149"><span class="lineNum">     149 </span>                :            :     });</a>
 <a name="150"><span class="lineNum">     150 </span>                :            : }</a>
 <a name="151"><span class="lineNum">     151 </span>                :            : </a>

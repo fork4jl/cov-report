@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/jitlayers.h</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/jitlayers.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">71</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">45</td>
@@ -143,9 +143,9 @@
 <a name="65"><span class="lineNum">      65 </span>                :            : GlobalVariable *jl_emit_RTLD_DEFAULT_var(Module *M);</a>
 <a name="66"><span class="lineNum">      66 </span>                :            : DataLayout jl_create_datalayout(TargetMachine &amp;TM);</a>
 <a name="67"><span class="lineNum">      67 </span>                :            : </a>
-<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">     190612 : static inline bool imaging_default() {</span></a>
-<a name="69"><span class="lineNum">      69 </span>  [<span class="branchCov" title="Branch 0 was taken 190612 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 8050 times"> + </span><span class="branchCov" title="Branch 3 was taken 182562 times"> + </span> :<span class="lineCov">     190612 :     return jl_options.image_codegen || (jl_generating_output() &amp;&amp; !jl_options.incremental);</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 6931 times"> + </span><span class="branchCov" title="Branch 5 was taken 1119 times"> + </span>]
+<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">     189012 : static inline bool imaging_default() {</span></a>
+<a name="69"><span class="lineNum">      69 </span>  [<span class="branchCov" title="Branch 0 was taken 189012 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 8057 times"> + </span><span class="branchCov" title="Branch 3 was taken 180955 times"> + </span> :<span class="lineCov">     189012 :     return jl_options.image_codegen || (jl_generating_output() &amp;&amp; !jl_options.incremental);</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 6940 times"> + </span><span class="branchCov" title="Branch 5 was taken 1117 times"> + </span>]
 <a name="70"><span class="lineNum">      70 </span>                :            : }</a>
 <a name="71"><span class="lineNum">      71 </span>                :            : </a>
 <a name="72"><span class="lineNum">      72 </span>                :            : struct jl_locked_stream {</a>
@@ -156,14 +156,14 @@
 <a name="77"><span class="lineNum">      77 </span>                :            :         std::unique_lock&lt;std::mutex&gt; lck;</a>
 <a name="78"><span class="lineNum">      78 </span>                :            :         JL_STREAM *&amp;stream;</a>
 <a name="79"><span class="lineNum">      79 </span>                :            : </a>
-<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">    1430210 :         lock(std::mutex &amp;mutex, JL_STREAM *&amp;stream) : lck(mutex), stream(stream) {}</span></a>
+<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">    1408990 :         lock(std::mutex &amp;mutex, JL_STREAM *&amp;stream) : lck(mutex), stream(stream) {}</span></a>
 <a name="81"><span class="lineNum">      81 </span>                :            : </a>
 <a name="82"><span class="lineNum">      82 </span>                :<span class="lineCov">          8 :         JL_STREAM *&amp;operator*() {</span></a>
 <a name="83"><span class="lineNum">      83 </span>                :<span class="lineCov">          8 :             return stream;</span></a>
 <a name="84"><span class="lineNum">      84 </span>                :            :         }</a>
 <a name="85"><span class="lineNum">      85 </span>                :            : </a>
-<a name="86"><span class="lineNum">      86 </span>                :<span class="lineCov">    1430200 :         explicit operator bool() {</span></a>
-<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">    1430200 :             return !!stream;</span></a>
+<a name="86"><span class="lineNum">      86 </span>                :<span class="lineCov">    1408980 :         explicit operator bool() {</span></a>
+<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">    1408980 :             return !!stream;</span></a>
 <a name="88"><span class="lineNum">      88 </span>                :            :         }</a>
 <a name="89"><span class="lineNum">      89 </span>                :            : </a>
 <a name="90"><span class="lineNum">      90 </span>                :<span class="lineCov">         17 :         operator JL_STREAM *() {</span></a>
@@ -171,8 +171,8 @@
 <a name="92"><span class="lineNum">      92 </span>                :            :         }</a>
 <a name="93"><span class="lineNum">      93 </span>                :            :     };</a>
 <a name="94"><span class="lineNum">      94 </span>                :            : </a>
-<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">    1430210 :     lock operator*() {</span></a>
-<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">    1430210 :         return lock(mutex, stream);</span></a>
+<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">    1408990 :     lock operator*() {</span></a>
+<a name="96"><span class="lineNum">      96 </span>                :<span class="lineCov">    1408990 :         return lock(mutex, stream);</span></a>
 <a name="97"><span class="lineNum">      97 </span>                :            :     }</a>
 <a name="98"><span class="lineNum">      98 </span>                :            : };</a>
 <a name="99"><span class="lineNum">      99 </span>                :            : </a>
@@ -233,7 +233,7 @@
 <a name="154"><span class="lineNum">     154 </span>                :            :     const jl_cgparams_t *params = &amp;jl_default_cgparams;</a>
 <a name="155"><span class="lineNum">     155 </span>                :            :     bool cache = false;</a>
 <a name="156"><span class="lineNum">     156 </span>                :            :     bool imaging;</a>
-<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">     190034 :     _jl_codegen_params_t(orc::ThreadSafeContext ctx) : tsctx(std::move(ctx)), tsctx_lock(tsctx.getLock()), imaging(imaging_default()) {}</span></a>
+<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">     188435 :     _jl_codegen_params_t(orc::ThreadSafeContext ctx) : tsctx(std::move(ctx)), tsctx_lock(tsctx.getLock()), imaging(imaging_default()) {}</span></a>
 <a name="158"><span class="lineNum">     158 </span>                :            : } jl_codegen_params_t;</a>
 <a name="159"><span class="lineNum">     159 </span>                :            : </a>
 <a name="160"><span class="lineNum">     160 </span>                :            : jl_llvm_functions_t jl_emit_code(</a>
@@ -268,21 +268,21 @@
 <a name="189"><span class="lineNum">     189 </span>                :            : </a>
 <a name="190"><span class="lineNum">     190 </span>                :            : void add_named_global(StringRef name, void *addr);</a>
 <a name="191"><span class="lineNum">     191 </span>                :            : </a>
-<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">   26985948 : static inline Constant *literal_static_pointer_val(const void *p, Type *T)</span></a>
+<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">   23902527 : static inline Constant *literal_static_pointer_val(const void *p, Type *T)</span></a>
 <a name="193"><span class="lineNum">     193 </span>                :            : {</a>
 <a name="194"><span class="lineNum">     194 </span>                :            :     // this function will emit a static pointer into the generated code</a>
 <a name="195"><span class="lineNum">     195 </span>                :            :     // the generated code will only be valid during the current session,</a>
 <a name="196"><span class="lineNum">     196 </span>                :            :     // and thus, this should typically be avoided in new API's</a>
 <a name="197"><span class="lineNum">     197 </span>                :            : #if defined(_P64)</a>
-<a name="198"><span class="lineNum">     198 </span>                :<span class="lineCov">   26985948 :     return ConstantExpr::getIntToPtr(ConstantInt::get(Type::getInt64Ty(T-&gt;getContext()), (uint64_t)p), T);</span></a>
+<a name="198"><span class="lineNum">     198 </span>                :<span class="lineCov">   23902527 :     return ConstantExpr::getIntToPtr(ConstantInt::get(Type::getInt64Ty(T-&gt;getContext()), (uint64_t)p), T);</span></a>
 <a name="199"><span class="lineNum">     199 </span>                :            : #else</a>
 <a name="200"><span class="lineNum">     200 </span>                :            :     return ConstantExpr::getIntToPtr(ConstantInt::get(Type::getInt32Ty(T-&gt;getContext()), (uint32_t)p), T);</a>
 <a name="201"><span class="lineNum">     201 </span>                :            : #endif</a>
 <a name="202"><span class="lineNum">     202 </span>                :            : }</a>
 <a name="203"><span class="lineNum">     203 </span>                :            : </a>
-<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">     784009 : static const inline char *name_from_method_instance(jl_method_instance_t *li) JL_NOTSAFEPOINT</span></a>
+<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">     771157 : static const inline char *name_from_method_instance(jl_method_instance_t *li) JL_NOTSAFEPOINT</span></a>
 <a name="205"><span class="lineNum">     205 </span>                :            : {</a>
-<a name="206"><span class="lineNum">     206 </span>        [<span class="branchCov" title="Branch 0 was taken 781787 times"> + </span><span class="branchCov" title="Branch 1 was taken 2222 times"> + </span>]:<span class="lineCov">     784009 :     return jl_is_method(li-&gt;def.method) ? jl_symbol_name(li-&gt;def.method-&gt;name) : &quot;top-level scope&quot;;</span></a>
+<a name="206"><span class="lineNum">     206 </span>        [<span class="branchCov" title="Branch 0 was taken 768935 times"> + </span><span class="branchCov" title="Branch 1 was taken 2222 times"> + </span>]:<span class="lineCov">     771157 :     return jl_is_method(li-&gt;def.method) ? jl_symbol_name(li-&gt;def.method-&gt;name) : &quot;top-level scope&quot;;</span></a>
 <a name="207"><span class="lineNum">     207 </span>                :            : }</a>
 <a name="208"><span class="lineNum">     208 </span>                :            : </a>
 <a name="209"><span class="lineNum">     209 </span>                :            : typedef JITSymbol JL_JITSymbol;</a>
@@ -315,17 +315,17 @@
 <a name="236"><span class="lineNum">     236 </span>                :            :     &gt;</a>
 <a name="237"><span class="lineNum">     237 </span>                :            :     struct ResourcePool {</a>
 <a name="238"><span class="lineNum">     238 </span>                :            :         public:</a>
-<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">       5112 :         ResourcePool(std::function&lt;ResourceT()&gt; creator) : creator(std::move(creator)), mutex(std::make_unique&lt;WNMutex&gt;()) {}</span></a>
+<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">       5103 :         ResourcePool(std::function&lt;ResourceT()&gt; creator) : creator(std::move(creator)), mutex(std::make_unique&lt;WNMutex&gt;()) {}</span></a>
 <a name="240"><span class="lineNum">     240 </span>                :            :         class OwningResource {</a>
 <a name="241"><span class="lineNum">     241 </span>                :            :             public:</a>
-<a name="242"><span class="lineNum">     242 </span>                :<span class="lineCov">   78787060 :             OwningResource(ResourcePool &amp;pool, ResourceT resource) : pool(pool), resource(std::move(resource)) {}</span></a>
+<a name="242"><span class="lineNum">     242 </span>                :<span class="lineCov">   82076008 :             OwningResource(ResourcePool &amp;pool, ResourceT resource) : pool(pool), resource(std::move(resource)) {}</span></a>
 <a name="243"><span class="lineNum">     243 </span>                :            :             OwningResource(const OwningResource &amp;) = delete;</a>
 <a name="244"><span class="lineNum">     244 </span>                :            :             OwningResource &amp;operator=(const OwningResource &amp;) = delete;</a>
 <a name="245"><span class="lineNum">     245 </span>                :            :             OwningResource(OwningResource &amp;&amp;) = default;</a>
 <a name="246"><span class="lineNum">     246 </span>                :            :             OwningResource &amp;operator=(OwningResource &amp;&amp;) = default;</a>
-<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">   78787059 :             ~OwningResource() {</span></a>
-<a name="248"><span class="lineNum">     248 </span>        [<span class="branchCov" title="Branch 0 was taken 78787059 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">   78787059 :                 if (resource) pool.release(std::move(*resource));</span></a>
-<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">   78787059 :             }</span></a>
+<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">   82076007 :             ~OwningResource() {</span></a>
+<a name="248"><span class="lineNum">     248 </span>        [<span class="branchCov" title="Branch 0 was taken 82076007 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">   82076007 :                 if (resource) pool.release(std::move(*resource));</span></a>
+<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">   82076007 :             }</span></a>
 <a name="250"><span class="lineNum">     250 </span>                :            :             ResourceT release() {</a>
 <a name="251"><span class="lineNum">     251 </span>                :            :                 ResourceT res(std::move(*resource));</a>
 <a name="252"><span class="lineNum">     252 </span>                :            :                 resource.reset();</a>
@@ -334,8 +334,8 @@
 <a name="255"><span class="lineNum">     255 </span>                :            :             void reset(ResourceT res) {</a>
 <a name="256"><span class="lineNum">     256 </span>                :            :                 *resource = std::move(res);</a>
 <a name="257"><span class="lineNum">     257 </span>                :            :             }</a>
-<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">   78787060 :             ResourceT &amp;operator*() {</span></a>
-<a name="259"><span class="lineNum">     259 </span>                :<span class="lineCov">   78787060 :                 return *resource;</span></a>
+<a name="258"><span class="lineNum">     258 </span>                :<span class="lineCov">   82076008 :             ResourceT &amp;operator*() {</span></a>
+<a name="259"><span class="lineNum">     259 </span>                :<span class="lineCov">   82076008 :                 return *resource;</span></a>
 <a name="260"><span class="lineNum">     260 </span>                :            :             }</a>
 <a name="261"><span class="lineNum">     261 </span>                :            :             ResourceT *operator-&gt;() {</a>
 <a name="262"><span class="lineNum">     262 </span>                :            :                 return get();</a>
@@ -360,44 +360,44 @@
 <a name="281"><span class="lineNum">     281 </span>                :            :             llvm::Optional&lt;ResourceT&gt; resource;</a>
 <a name="282"><span class="lineNum">     282 </span>                :            :         };</a>
 <a name="283"><span class="lineNum">     283 </span>                :            : </a>
-<a name="284"><span class="lineNum">     284 </span>                :<span class="lineCov">   78787060 :         OwningResource operator*() {</span></a>
-<a name="285"><span class="lineNum">     285 </span>                :<span class="lineCov">   78787060 :             return OwningResource(*this, acquire());</span></a>
+<a name="284"><span class="lineNum">     284 </span>                :<span class="lineCov">   82076008 :         OwningResource operator*() {</span></a>
+<a name="285"><span class="lineNum">     285 </span>                :<span class="lineCov">   82076008 :             return OwningResource(*this, acquire());</span></a>
 <a name="286"><span class="lineNum">     286 </span>                :            :         }</a>
 <a name="287"><span class="lineNum">     287 </span>                :            : </a>
 <a name="288"><span class="lineNum">     288 </span>                :            :         OwningResource get() {</a>
 <a name="289"><span class="lineNum">     289 </span>                :            :             return **this;</a>
 <a name="290"><span class="lineNum">     290 </span>                :            :         }</a>
 <a name="291"><span class="lineNum">     291 </span>                :            : </a>
-<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">   78787060 :         ResourceT acquire() {</span></a>
-<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">  157573720 :             std::unique_lock&lt;std::mutex&gt; lock(mutex-&gt;mutex);</span></a>
-<a name="294"><span class="lineNum">     294 </span>        [<span class="branchCov" title="Branch 0 was taken 78784352 times"> + </span><span class="branchCov" title="Branch 1 was taken 2721 times"> + </span>]:<span class="lineCov">   78787060 :             if (!pool.empty()) {</span></a>
-<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">   78784352 :                 return pop(pool);</span></a>
+<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">   82076008 :         ResourceT acquire() {</span></a>
+<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">  164151616 :             std::unique_lock&lt;std::mutex&gt; lock(mutex-&gt;mutex);</span></a>
+<a name="294"><span class="lineNum">     294 </span>        [<span class="branchCov" title="Branch 0 was taken 82073304 times"> + </span><span class="branchCov" title="Branch 1 was taken 2716 times"> + </span>]:<span class="lineCov">   82076008 :             if (!pool.empty()) {</span></a>
+<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">   82073304 :                 return pop(pool);</span></a>
 <a name="296"><span class="lineNum">     296 </span>                :            :             }</a>
 <a name="297"><span class="lineNum">     297 </span>                :            :             if (!max || created &lt; max) {</a>
-<a name="298"><span class="lineNum">     298 </span>                :<span class="lineCov">       2721 :                 created++;</span></a>
-<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">       2721 :                 return creator();</span></a>
+<a name="298"><span class="lineNum">     298 </span>                :<span class="lineCov">       2716 :                 created++;</span></a>
+<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">       2716 :                 return creator();</span></a>
 <a name="300"><span class="lineNum">     300 </span>                :            :             }</a>
 <a name="301"><span class="lineNum">     301 </span>                :            :             mutex-&gt;empty.wait(lock, [&amp;](){ return !pool.empty(); });</a>
 <a name="302"><span class="lineNum">     302 </span>                :            :             assert(!pool.empty() &amp;&amp; &quot;Expected resource pool to have a value!&quot;);</a>
 <a name="303"><span class="lineNum">     303 </span>                :            :             return pop(pool);</a>
 <a name="304"><span class="lineNum">     304 </span>                :            :         }</a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">   78787059 :         void release(ResourceT &amp;&amp;resource) {</span></a>
-<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">  157573718 :             std::lock_guard&lt;std::mutex&gt; lock(mutex-&gt;mutex);</span></a>
-<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">   78787059 :             pool.push(std::move(resource));</span></a>
-<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov">   78787059 :             mutex-&gt;empty.notify_one();</span></a>
-<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">   78787059 :         }</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">   82076007 :         void release(ResourceT &amp;&amp;resource) {</span></a>
+<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">  164151614 :             std::lock_guard&lt;std::mutex&gt; lock(mutex-&gt;mutex);</span></a>
+<a name="307"><span class="lineNum">     307 </span>                :<span class="lineCov">   82076007 :             pool.push(std::move(resource));</span></a>
+<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov">   82076007 :             mutex-&gt;empty.notify_one();</span></a>
+<a name="309"><span class="lineNum">     309 </span>                :<span class="lineCov">   82076007 :         }</span></a>
 <a name="310"><span class="lineNum">     310 </span>                :            :         private:</a>
 <a name="311"><span class="lineNum">     311 </span>                :            :         template&lt;typename T, typename Container&gt;</a>
-<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov">   78105400 :         static ResourceT pop(std::queue&lt;T, Container&gt; &amp;pool) {</span></a>
-<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">   78105400 :             ResourceT top = std::move(pool.front());</span></a>
-<a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov">   78105400 :             pool.pop();</span></a>
-<a name="315"><span class="lineNum">     315 </span>                :<span class="lineCov">   78105400 :             return top;</span></a>
+<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov">   81406400 :         static ResourceT pop(std::queue&lt;T, Container&gt; &amp;pool) {</span></a>
+<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">   81406400 :             ResourceT top = std::move(pool.front());</span></a>
+<a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov">   81406400 :             pool.pop();</span></a>
+<a name="315"><span class="lineNum">     315 </span>                :<span class="lineCov">   81406400 :             return top;</span></a>
 <a name="316"><span class="lineNum">     316 </span>                :            :         }</a>
 <a name="317"><span class="lineNum">     317 </span>                :            :         template&lt;typename PoolT&gt;</a>
-<a name="318"><span class="lineNum">     318 </span>                :<span class="lineCov">     678952 :         static ResourceT pop(PoolT &amp;pool) {</span></a>
-<a name="319"><span class="lineNum">     319 </span>                :<span class="lineCov">     678952 :             ResourceT top = std::move(pool.top());</span></a>
-<a name="320"><span class="lineNum">     320 </span>                :<span class="lineCov">     678952 :             pool.pop();</span></a>
-<a name="321"><span class="lineNum">     321 </span>                :<span class="lineCov">     678952 :             return top;</span></a>
+<a name="318"><span class="lineNum">     318 </span>                :<span class="lineCov">     666904 :         static ResourceT pop(PoolT &amp;pool) {</span></a>
+<a name="319"><span class="lineNum">     319 </span>                :<span class="lineCov">     666904 :             ResourceT top = std::move(pool.top());</span></a>
+<a name="320"><span class="lineNum">     320 </span>                :<span class="lineCov">     666904 :             pool.pop();</span></a>
+<a name="321"><span class="lineNum">     321 </span>                :<span class="lineCov">     666904 :             return top;</span></a>
 <a name="322"><span class="lineNum">     322 </span>                :            :         }</a>
 <a name="323"><span class="lineNum">     323 </span>                :            :         std::function&lt;ResourceT()&gt; creator;</a>
 <a name="324"><span class="lineNum">     324 </span>                :            :         size_t created = 0;</a>
@@ -418,13 +418,13 @@
 <a name="339"><span class="lineNum">     339 </span>                :            :     struct OptSelLayerT : orc::IRLayer {</a>
 <a name="340"><span class="lineNum">     340 </span>                :            : </a>
 <a name="341"><span class="lineNum">     341 </span>                :            :         template&lt;size_t N&gt;</a>
-<a name="342"><span class="lineNum">     342 </span>                :<span class="lineCov">        568 :         OptSelLayerT(const std::array&lt;std::unique_ptr&lt;PipelineT&gt;, N&gt; &amp;optimizers)</span></a>
-<a name="343"><span class="lineNum">     343 </span>                :<span class="lineCov">        568 :             : orc::IRLayer(optimizers[0]-&gt;OptimizeLayer.getExecutionSession(),</span></a>
-<a name="344"><span class="lineNum">     344 </span>                :<span class="lineCov">        568 :                 optimizers[0]-&gt;OptimizeLayer.getManglingOptions()),</span></a>
+<a name="342"><span class="lineNum">     342 </span>                :<span class="lineCov">        567 :         OptSelLayerT(const std::array&lt;std::unique_ptr&lt;PipelineT&gt;, N&gt; &amp;optimizers)</span></a>
+<a name="343"><span class="lineNum">     343 </span>                :<span class="lineCov">        567 :             : orc::IRLayer(optimizers[0]-&gt;OptimizeLayer.getExecutionSession(),</span></a>
+<a name="344"><span class="lineNum">     344 </span>                :<span class="lineCov">        567 :                 optimizers[0]-&gt;OptimizeLayer.getManglingOptions()),</span></a>
 <a name="345"><span class="lineNum">     345 </span>                :            :             optimizers(optimizers.data()),</a>
-<a name="346"><span class="lineNum">     346 </span>                :<span class="lineCov">       1704 :             count(N) {</span></a>
+<a name="346"><span class="lineNum">     346 </span>                :<span class="lineCov">       1701 :             count(N) {</span></a>
 <a name="347"><span class="lineNum">     347 </span>                :            :             static_assert(N &gt; 0, &quot;Expected array with at least one optimizer!&quot;);</a>
-<a name="348"><span class="lineNum">     348 </span>                :<span class="lineCov">        568 :         }</span></a>
+<a name="348"><span class="lineNum">     348 </span>                :<span class="lineCov">        567 :         }</span></a>
 <a name="349"><span class="lineNum">     349 </span>                :            : </a>
 <a name="350"><span class="lineNum">     350 </span>                :            :         void emit(std::unique_ptr&lt;orc::MaterializationResponsibility&gt; R, orc::ThreadSafeModule TSM) override;</a>
 <a name="351"><span class="lineNum">     351 </span>                :            : </a>
@@ -456,8 +456,8 @@
 <a name="377"><span class="lineNum">     377 </span>                :            :     uint64_t getGlobalValueAddress(StringRef Name);</a>
 <a name="378"><span class="lineNum">     378 </span>                :            :     uint64_t getFunctionAddress(StringRef Name);</a>
 <a name="379"><span class="lineNum">     379 </span>                :            :     StringRef getFunctionAtAddress(uint64_t Addr, jl_code_instance_t *codeinst);</a>
-<a name="380"><span class="lineNum">     380 </span>                :<span class="lineCov">   78106200 :     auto getContext() {</span></a>
-<a name="381"><span class="lineNum">     381 </span>                :<span class="lineCov">   78106200 :         return *ContextPool;</span></a>
+<a name="380"><span class="lineNum">     380 </span>                :<span class="lineCov">   81407200 :     auto getContext() {</span></a>
+<a name="381"><span class="lineNum">     381 </span>                :<span class="lineCov">   81407200 :         return *ContextPool;</span></a>
 <a name="382"><span class="lineNum">     382 </span>                :            :     }</a>
 <a name="383"><span class="lineNum">     383 </span>                :<span class="lineCov">          9 :     orc::ThreadSafeContext acquireContext() {</span></a>
 <a name="384"><span class="lineNum">     384 </span>                :<span class="lineCov">          9 :         return ContextPool.acquire();</span></a>
@@ -478,18 +478,18 @@
 <a name="399"><span class="lineNum">     399 </span>                :            : </a>
 <a name="400"><span class="lineNum">     400 </span>                :            :     size_t getTotalBytes() const;</a>
 <a name="401"><span class="lineNum">     401 </span>                :            : </a>
-<a name="402"><span class="lineNum">     402 </span>                :<span class="lineCov">    1476100 :     JITDebugInfoRegistry &amp;getDebugInfoRegistry() JL_NOTSAFEPOINT {</span></a>
-<a name="403"><span class="lineNum">     403 </span>                :<span class="lineCov">    1476100 :         return DebugRegistry;</span></a>
+<a name="402"><span class="lineNum">     402 </span>                :<span class="lineCov">    1464800 :     JITDebugInfoRegistry &amp;getDebugInfoRegistry() JL_NOTSAFEPOINT {</span></a>
+<a name="403"><span class="lineNum">     403 </span>                :<span class="lineCov">    1464800 :         return DebugRegistry;</span></a>
 <a name="404"><span class="lineNum">     404 </span>                :            :     }</a>
 <a name="405"><span class="lineNum">     405 </span>                :            : </a>
-<a name="406"><span class="lineNum">     406 </span>                :<span class="lineCov">     370625 :     jl_locked_stream &amp;get_dump_emitted_mi_name_stream() JL_NOTSAFEPOINT {</span></a>
-<a name="407"><span class="lineNum">     407 </span>                :<span class="lineCov">     370625 :         return dump_emitted_mi_name_stream;</span></a>
+<a name="406"><span class="lineNum">     406 </span>                :<span class="lineCov">     364657 :     jl_locked_stream &amp;get_dump_emitted_mi_name_stream() JL_NOTSAFEPOINT {</span></a>
+<a name="407"><span class="lineNum">     407 </span>                :<span class="lineCov">     364657 :         return dump_emitted_mi_name_stream;</span></a>
 <a name="408"><span class="lineNum">     408 </span>                :            :     }</a>
-<a name="409"><span class="lineNum">     409 </span>                :<span class="lineCov">     378723 :     jl_locked_stream &amp;get_dump_compiles_stream() JL_NOTSAFEPOINT {</span></a>
-<a name="410"><span class="lineNum">     410 </span>                :<span class="lineCov">     378723 :         return dump_compiles_stream;</span></a>
+<a name="409"><span class="lineNum">     409 </span>                :<span class="lineCov">     375522 :     jl_locked_stream &amp;get_dump_compiles_stream() JL_NOTSAFEPOINT {</span></a>
+<a name="410"><span class="lineNum">     410 </span>                :<span class="lineCov">     375522 :         return dump_compiles_stream;</span></a>
 <a name="411"><span class="lineNum">     411 </span>                :            :     }</a>
-<a name="412"><span class="lineNum">     412 </span>                :<span class="lineCov">     680862 :     jl_locked_stream &amp;get_dump_llvm_opt_stream() JL_NOTSAFEPOINT {</span></a>
-<a name="413"><span class="lineNum">     413 </span>                :<span class="lineCov">     680862 :         return dump_llvm_opt_stream;</span></a>
+<a name="412"><span class="lineNum">     412 </span>                :<span class="lineCov">     668810 :     jl_locked_stream &amp;get_dump_llvm_opt_stream() JL_NOTSAFEPOINT {</span></a>
+<a name="413"><span class="lineNum">     413 </span>                :<span class="lineCov">     668810 :         return dump_llvm_opt_stream;</span></a>
 <a name="414"><span class="lineNum">     414 </span>                :            :     }</a>
 <a name="415"><span class="lineNum">     415 </span>                :            : private:</a>
 <a name="416"><span class="lineNum">     416 </span>                :            :     std::string getMangledName(StringRef Name);</a>
@@ -527,8 +527,8 @@
 <a name="448"><span class="lineNum">     448 </span>                :            : extern JuliaOJIT *jl_ExecutionEngine;</a>
 <a name="449"><span class="lineNum">     449 </span>                :            : orc::ThreadSafeModule jl_create_llvm_module(StringRef name, orc::ThreadSafeContext ctx, bool imaging_mode, const DataLayout &amp;DL = jl_ExecutionEngine-&gt;getDataLayout(), const Triple &amp;triple = jl_ExecutionEngine-&gt;getTargetTriple());</a>
 <a name="450"><span class="lineNum">     450 </span>                :            : </a>
-<a name="451"><span class="lineNum">     451 </span>                :<span class="lineCov">      38185 : orc::ThreadSafeModule &amp;jl_codegen_params_t::shared_module(Module &amp;from) {</span></a>
-<a name="452"><span class="lineNum">     452 </span>        [<span class="branchCov" title="Branch 0 was taken 1295 times"> + </span><span class="branchCov" title="Branch 1 was taken 36890 times"> + </span>]:<span class="lineCov">      38185 :     if (!_shared_module) {</span></a>
+<a name="451"><span class="lineNum">     451 </span>                :<span class="lineCov">      38194 : orc::ThreadSafeModule &amp;jl_codegen_params_t::shared_module(Module &amp;from) {</span></a>
+<a name="452"><span class="lineNum">     452 </span>        [<span class="branchCov" title="Branch 0 was taken 1295 times"> + </span><span class="branchCov" title="Branch 1 was taken 36899 times"> + </span>]:<span class="lineCov">      38194 :     if (!_shared_module) {</span></a>
 <a name="453"><span class="lineNum">     453 </span>                :<span class="lineCov">       1295 :         _shared_module = jl_create_llvm_module(&quot;globals&quot;, tsctx, imaging, from.getDataLayout(), Triple(from.getTargetTriple()));</span></a>
 <a name="454"><span class="lineNum">     454 </span>                :            :         assert(&amp;from.getContext() == tsctx.getContext() &amp;&amp; &quot;Module context differs from codegen_params context!&quot;);</a>
 <a name="455"><span class="lineNum">     455 </span>                :            :     } else {</a>
@@ -536,7 +536,7 @@
 <a name="457"><span class="lineNum">     457 </span>                :            :         assert(from.getDataLayout() == _shared_module.getModuleUnlocked()-&gt;getDataLayout() &amp;&amp; &quot;Module data layout differs from shared module data layout!&quot;);</a>
 <a name="458"><span class="lineNum">     458 </span>                :            :         assert(from.getTargetTriple() == _shared_module.getModuleUnlocked()-&gt;getTargetTriple() &amp;&amp; &quot;Module target triple differs from shared module target triple!&quot;);</a>
 <a name="459"><span class="lineNum">     459 </span>                :            :     }</a>
-<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">      38185 :     return _shared_module;</span></a>
+<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">      38194 :     return _shared_module;</span></a>
 <a name="461"><span class="lineNum">     461 </span>                :            : }</a>
 <a name="462"><span class="lineNum">     462 </span>                :            : </a>
 <a name="463"><span class="lineNum">     463 </span>                :            : Pass *createLowerPTLSPass(bool imaging_mode);</a>
@@ -559,9 +559,9 @@
 <a name="480"><span class="lineNum">     480 </span>                :            : #include &quot;passes.h&quot;</a>
 <a name="481"><span class="lineNum">     481 </span>                :            : </a>
 <a name="482"><span class="lineNum">     482 </span>                :            : // Whether the Function is an llvm or julia intrinsic.</a>
-<a name="483"><span class="lineNum">     483 </span>                :<span class="lineCov">    3075650 : static inline bool isIntrinsicFunction(Function *F)</span></a>
+<a name="483"><span class="lineNum">     483 </span>                :<span class="lineCov">    2990760 : static inline bool isIntrinsicFunction(Function *F)</span></a>
 <a name="484"><span class="lineNum">     484 </span>                :            : {</a>
-<a name="485"><span class="lineNum">     485 </span>  [<span class="branchCov" title="Branch 0 was taken 2220960 times"> + </span><span class="branchCov" title="Branch 1 was taken 854696 times"> + </span><span class="branchCov" title="Branch 2 was taken 802422 times"> + </span><span class="branchCov" title="Branch 3 was taken 1418530 times"> + </span>]:<span class="lineCov">    3075650 :     return F-&gt;isIntrinsic() || F-&gt;getName().startswith(&quot;julia.&quot;);</span></a>
+<a name="485"><span class="lineNum">     485 </span>  [<span class="branchCov" title="Branch 0 was taken 2155480 times"> + </span><span class="branchCov" title="Branch 1 was taken 835279 times"> + </span><span class="branchCov" title="Branch 2 was taken 778682 times"> + </span><span class="branchCov" title="Branch 3 was taken 1376800 times"> + </span>]:<span class="lineCov">    2990760 :     return F-&gt;isIntrinsic() || F-&gt;getName().startswith(&quot;julia.&quot;);</span></a>
 <a name="486"><span class="lineNum">     486 </span>                :            : }</a>
 <a name="487"><span class="lineNum">     487 </span>                :            : </a>
 <a name="488"><span class="lineNum">     488 </span>                :            : CodeGenOpt::Level CodeGenOptLevelFor(int optlevel);</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/llvm-remove-addrspaces.cpp</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/llvm-remove-addrspaces.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">177</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -114,12 +114,12 @@
 <a name="36"><span class="lineNum">      36 </span>                :            :     {</a>
 <a name="37"><span class="lineNum">      37 </span>                :<span class="lineCov">         49 :     }</span></a>
 <a name="38"><span class="lineNum">      38 </span>                :            : </a>
-<a name="39"><span class="lineNum">      39 </span>                :<span class="lineCov">      19714 :     Type *remapType(Type *SrcTy)</span></a>
+<a name="39"><span class="lineNum">      39 </span>                :<span class="lineCov">      19716 :     Type *remapType(Type *SrcTy)</span></a>
 <a name="40"><span class="lineNum">      40 </span>                :            :     {</a>
 <a name="41"><span class="lineNum">      41 </span>                :            :         // If we already have an entry for this type, return it.</a>
-<a name="42"><span class="lineNum">      42 </span>                :<span class="lineCov">      19714 :         Type *DstTy = MappedTypes[SrcTy];</span></a>
-<a name="43"><span class="lineNum">      43 </span>        [<span class="branchCov" title="Branch 0 was taken 18632 times"> + </span><span class="branchCov" title="Branch 1 was taken 1082 times"> + </span>]:<span class="lineCov">      19714 :         if (DstTy)</span></a>
-<a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">      18632 :             return DstTy;</span></a>
+<a name="42"><span class="lineNum">      42 </span>                :<span class="lineCov">      19716 :         Type *DstTy = MappedTypes[SrcTy];</span></a>
+<a name="43"><span class="lineNum">      43 </span>        [<span class="branchCov" title="Branch 0 was taken 18634 times"> + </span><span class="branchCov" title="Branch 1 was taken 1082 times"> + </span>]:<span class="lineCov">      19716 :         if (DstTy)</span></a>
+<a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">      18634 :             return DstTy;</span></a>
 <a name="45"><span class="lineNum">      45 </span>                :            : </a>
 <a name="46"><span class="lineNum">      46 </span>                :<span class="lineCov">       1082 :         DstTy = SrcTy;</span></a>
 <a name="47"><span class="lineNum">      47 </span>        [<span class="branchCov" title="Branch 0 was taken 616 times"> + </span><span class="branchCov" title="Branch 1 was taken 466 times"> + </span>]:<span class="lineCov">       1082 :         if (auto Ty = dyn_cast&lt;PointerType&gt;(SrcTy)) {</span></a>
@@ -209,10 +209,10 @@
 <a name="131"><span class="lineNum">     131 </span>                :            :     {</a>
 <a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">         49 :     }</span></a>
 <a name="133"><span class="lineNum">     133 </span>                :            : </a>
-<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">       2196 :     Value *materialize(Value *SrcV)</span></a>
+<a name="134"><span class="lineNum">     134 </span>                :<span class="lineCov">       2198 :     Value *materialize(Value *SrcV)</span></a>
 <a name="135"><span class="lineNum">     135 </span>                :            :     {</a>
-<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">       2196 :         Value *DstV = nullptr;</span></a>
-<a name="137"><span class="lineNum">     137 </span>        [<span class="branchCov" title="Branch 0 was taken 765 times"> + </span><span class="branchCov" title="Branch 1 was taken 1431 times"> + </span>]:<span class="lineCov">       2196 :         if (auto CE = dyn_cast&lt;ConstantExpr&gt;(SrcV)) {</span></a>
+<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">       2198 :         Value *DstV = nullptr;</span></a>
+<a name="137"><span class="lineNum">     137 </span>        [<span class="branchCov" title="Branch 0 was taken 765 times"> + </span><span class="branchCov" title="Branch 1 was taken 1433 times"> + </span>]:<span class="lineCov">       2198 :         if (auto CE = dyn_cast&lt;ConstantExpr&gt;(SrcV)) {</span></a>
 <a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">        765 :             Type *Ty = remapType(CE-&gt;getType());</span></a>
 <a name="139"><span class="lineNum">     139 </span>        [<span class="branchCov" title="Branch 0 was taken 312 times"> + </span><span class="branchCov" title="Branch 1 was taken 453 times"> + </span>]:<span class="lineCov">        765 :             if (CE-&gt;getOpcode() == Instruction::AddrSpaceCast) {</span></a>
 <a name="140"><span class="lineNum">     140 </span>                :            :                 // peek through addrspacecasts if their address spaces match</a>
@@ -253,7 +253,7 @@
 <a name="175"><span class="lineNum">     175 </span>                :            :                     dbgs() &lt;&lt; &quot;Materializing value:\n&quot;</a>
 <a name="176"><span class="lineNum">     176 </span>                :            :                            &lt;&lt; &quot;  from &quot; &lt;&lt; *SrcV &lt;&lt; &quot;\n&quot;</a>
 <a name="177"><span class="lineNum">     177 </span>                :            :                            &lt;&lt; &quot;  to   &quot; &lt;&lt; *DstV &lt;&lt; &quot;\n&quot;);</a>
-<a name="178"><span class="lineNum">     178 </span>                :<span class="lineCov">       2196 :         return DstV;</span></a>
+<a name="178"><span class="lineNum">     178 </span>                :<span class="lineCov">       2198 :         return DstV;</span></a>
 <a name="179"><span class="lineNum">     179 </span>                :            :     }</a>
 <a name="180"><span class="lineNum">     180 </span>                :            : </a>
 <a name="181"><span class="lineNum">     181 </span>                :            : private:</a>

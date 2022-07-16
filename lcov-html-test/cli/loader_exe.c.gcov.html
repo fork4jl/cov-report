@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - cli/loader_exe.c</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - cli/loader_exe.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">4</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -90,7 +90,7 @@
 <a name="12"><span class="lineNum">      12 </span>                :            : #include &quot;loader_win_utils.c&quot;</a>
 <a name="13"><span class="lineNum">      13 </span>                :            : #endif</a>
 <a name="14"><span class="lineNum">      14 </span>                :            : </a>
-<a name="15"><span class="lineNum">      15 </span>                :<span class="lineCov">51275690830 : JULIA_DEFINE_FAST_TLS</span></a>
+<a name="15"><span class="lineNum">      15 </span>                :<span class="lineCov">65081547260 : JULIA_DEFINE_FAST_TLS</span></a>
 <a name="16"><span class="lineNum">      16 </span>                :            : </a>
 <a name="17"><span class="lineNum">      17 </span>                :            : #ifdef _COMPILER_ASAN_ENABLED_</a>
 <a name="18"><span class="lineNum">      18 </span>                :            : JL_DLLEXPORT const char* __asan_default_options()</a>
@@ -110,7 +110,7 @@
 <a name="32"><span class="lineNum">      32 </span>                :            :     char ** argv = (char **)malloc(sizeof(char*) * (argc + 1));</a>
 <a name="33"><span class="lineNum">      33 </span>                :            :     setup_stdio();</a>
 <a name="34"><span class="lineNum">      34 </span>                :            : #else</a>
-<a name="35"><span class="lineNum">      35 </span>                :<span class="lineCov">        604 : int main(int argc, char * argv[])</span></a>
+<a name="35"><span class="lineNum">      35 </span>                :<span class="lineCov">        603 : int main(int argc, char * argv[])</span></a>
 <a name="36"><span class="lineNum">      36 </span>                :            : {</a>
 <a name="37"><span class="lineNum">      37 </span>                :            : #endif</a>
 <a name="38"><span class="lineNum">      38 </span>                :            : </a>
@@ -134,10 +134,10 @@
 <a name="56"><span class="lineNum">      56 </span>                :            : #endif</a>
 <a name="57"><span class="lineNum">      57 </span>                :            : </a>
 <a name="58"><span class="lineNum">      58 </span>                :            :     // Call load_repl with our initialization arguments:</a>
-<a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov">        604 :     int ret = jl_load_repl(argc, argv);</span></a>
+<a name="59"><span class="lineNum">      59 </span>                :<span class="lineCov">        603 :     int ret = jl_load_repl(argc, argv);</span></a>
 <a name="60"><span class="lineNum">      60 </span>                :            : </a>
 <a name="61"><span class="lineNum">      61 </span>                :            :     // On Windows we're running without the CRT that would do this for us</a>
-<a name="62"><span class="lineNum">      62 </span>                :<span class="lineCov">        383 :     exit(ret);</span></a>
+<a name="62"><span class="lineNum">      62 </span>                :<span class="lineCov">        382 :     exit(ret);</span></a>
 <a name="63"><span class="lineNum">      63 </span>                :            :     return ret;</a>
 <a name="64"><span class="lineNum">      64 </span>                :            : }</a>
 <a name="65"><span class="lineNum">      65 </span>                :            : </a>

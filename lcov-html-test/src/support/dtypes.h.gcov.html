@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/support/dtypes.h</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/support/dtypes.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,20 +28,20 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntryMed">89.4 %</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntryMed">86.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
@@ -229,12 +229,12 @@
 <a name="151"><span class="lineNum">     151 </span>                :            :                 cond_;                                  \</a>
 <a name="152"><span class="lineNum">     152 </span>                :            :             }))</a>
 <a name="153"><span class="lineNum">     153 </span>                :            : #elif defined(__GNUC__)</a>
-<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov"> 8903812708 : static inline void jl_assume_(int cond)</span></a>
+<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov"> 6809002708 : static inline void jl_assume_(int cond)</span></a>
 <a name="155"><span class="lineNum">     155 </span>                :            : {</a>
-<a name="156"><span class="lineNum">     156 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8903812708 times"> + </span>]:<span class="lineCov"> 8903812708 :     if (!cond) {</span></a>
+<a name="156"><span class="lineNum">     156 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 6809002708 times"> + </span>]:<span class="lineCov"> 6809002708 :     if (!cond) {</span></a>
 <a name="157"><span class="lineNum">     157 </span>                :<span class="lineNoCov">          0 :         __builtin_unreachable();</span></a>
 <a name="158"><span class="lineNum">     158 </span>                :            :     }</a>
-<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov"> 8903812708 : }</span></a>
+<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov"> 6809002708 : }</span></a>
 <a name="160"><span class="lineNum">     160 </span>                :            : #define jl_assume(cond) (__extension__ ({               \</a>
 <a name="161"><span class="lineNum">     161 </span>                :            :                 __typeof__(cond) cond_ = (cond);        \</a>
 <a name="162"><span class="lineNum">     162 </span>                :            :                 jl_assume_(!!(cond_));                  \</a>
@@ -279,17 +279,17 @@
 <a name="201"><span class="lineNum">     201 </span>                :            : typedef int32_t int_t;</a>
 <a name="202"><span class="lineNum">     202 </span>                :            : #endif</a>
 <a name="203"><span class="lineNum">     203 </span>                :            : </a>
-<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">   35469117 : STATIC_INLINE unsigned int next_power_of_two(unsigned int val) JL_NOTSAFEPOINT</span></a>
+<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">   36312951 : STATIC_INLINE unsigned int next_power_of_two(unsigned int val) JL_NOTSAFEPOINT</span></a>
 <a name="205"><span class="lineNum">     205 </span>                :            : {</a>
 <a name="206"><span class="lineNum">     206 </span>                :            :     /* this function taken from libuv src/unix/core.c */</a>
-<a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">   35469117 :     val -= 1;</span></a>
-<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">   35469117 :     val |= val &gt;&gt; 1;</span></a>
-<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">   35469117 :     val |= val &gt;&gt; 2;</span></a>
-<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">   35469117 :     val |= val &gt;&gt; 4;</span></a>
-<a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">   35469117 :     val |= val &gt;&gt; 8;</span></a>
-<a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">   35469117 :     val |= val &gt;&gt; 16;</span></a>
-<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">   35469117 :     val += 1;</span></a>
-<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">   35469117 :     return val;</span></a>
+<a name="207"><span class="lineNum">     207 </span>                :<span class="lineCov">   36312951 :     val -= 1;</span></a>
+<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">   36312951 :     val |= val &gt;&gt; 1;</span></a>
+<a name="209"><span class="lineNum">     209 </span>                :<span class="lineCov">   36312951 :     val |= val &gt;&gt; 2;</span></a>
+<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">   36312951 :     val |= val &gt;&gt; 4;</span></a>
+<a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">   36312951 :     val |= val &gt;&gt; 8;</span></a>
+<a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">   36312951 :     val |= val &gt;&gt; 16;</span></a>
+<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">   36312951 :     val += 1;</span></a>
+<a name="214"><span class="lineNum">     214 </span>                :<span class="lineCov">   36312951 :     return val;</span></a>
 <a name="215"><span class="lineNum">     215 </span>                :            : }</a>
 <a name="216"><span class="lineNum">     216 </span>                :            : </a>
 <a name="217"><span class="lineNum">     217 </span>                :            : #define LLT_ALIGN(x, sz) (((x) + (sz)-1) &amp; ~((sz)-1))</a>
@@ -361,86 +361,86 @@
 <a name="283"><span class="lineNum">     283 </span>                :            :     return val;</a>
 <a name="284"><span class="lineNum">     284 </span>                :            : }</a>
 <a name="285"><span class="lineNum">     285 </span>                :            : </a>
-<a name="286"><span class="lineNum">     286 </span>                :<span class="lineCov">  180436000 : STATIC_INLINE uint64_t jl_load_unaligned_i64(const void *ptr) JL_NOTSAFEPOINT</span></a>
+<a name="286"><span class="lineNum">     286 </span>                :<span class="lineCov">  133012000 : STATIC_INLINE uint64_t jl_load_unaligned_i64(const void *ptr) JL_NOTSAFEPOINT</span></a>
 <a name="287"><span class="lineNum">     287 </span>                :            : {</a>
 <a name="288"><span class="lineNum">     288 </span>                :            :     uint64_t val;</a>
-<a name="289"><span class="lineNum">     289 </span>                :<span class="lineCov">  180436000 :     memcpy(&amp;val, ptr, sizeof(uint64_t));</span></a>
-<a name="290"><span class="lineNum">     290 </span>                :<span class="lineCov">  180436000 :     return val;</span></a>
+<a name="289"><span class="lineNum">     289 </span>                :<span class="lineCov">  133012000 :     memcpy(&amp;val, ptr, sizeof(uint64_t));</span></a>
+<a name="290"><span class="lineNum">     290 </span>                :<span class="lineCov">  133012000 :     return val;</span></a>
 <a name="291"><span class="lineNum">     291 </span>                :            : }</a>
 <a name="292"><span class="lineNum">     292 </span>                :            : </a>
-<a name="293"><span class="lineNum">     293 </span>                :<span class="lineCov">     427010 : STATIC_INLINE double jl_load_ptraligned_f64(const void *ptr) JL_NOTSAFEPOINT</span></a>
+<a name="293"><span class="lineNum">     293 </span>                :            : STATIC_INLINE double jl_load_ptraligned_f64(const void *ptr) JL_NOTSAFEPOINT</a>
 <a name="294"><span class="lineNum">     294 </span>                :            : {</a>
 <a name="295"><span class="lineNum">     295 </span>                :            :     double val;</a>
-<a name="296"><span class="lineNum">     296 </span>                :<span class="lineCov">     427010 :     memcpy(&amp;val, jl_assume_aligned(ptr, sizeof(void*)), sizeof(double));</span></a>
-<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     427010 :     return val;</span></a>
+<a name="296"><span class="lineNum">     296 </span>                :            :     memcpy(&amp;val, jl_assume_aligned(ptr, sizeof(void*)), sizeof(double));</a>
+<a name="297"><span class="lineNum">     297 </span>                :            :     return val;</a>
 <a name="298"><span class="lineNum">     298 </span>                :            : }</a>
 <a name="299"><span class="lineNum">     299 </span>                :            : </a>
-<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">     805283 : STATIC_INLINE uint64_t jl_load_ptraligned_i64(const void *ptr) JL_NOTSAFEPOINT</span></a>
+<a name="300"><span class="lineNum">     300 </span>                :            : STATIC_INLINE uint64_t jl_load_ptraligned_i64(const void *ptr) JL_NOTSAFEPOINT</a>
 <a name="301"><span class="lineNum">     301 </span>                :            : {</a>
 <a name="302"><span class="lineNum">     302 </span>                :            :     uint64_t val;</a>
-<a name="303"><span class="lineNum">     303 </span>                :<span class="lineCov">     805283 :     memcpy(&amp;val, jl_assume_aligned(ptr, sizeof(void*)), sizeof(uint64_t));</span></a>
-<a name="304"><span class="lineNum">     304 </span>                :<span class="lineCov">     805283 :     return val;</span></a>
+<a name="303"><span class="lineNum">     303 </span>                :            :     memcpy(&amp;val, jl_assume_aligned(ptr, sizeof(void*)), sizeof(uint64_t));</a>
+<a name="304"><span class="lineNum">     304 </span>                :            :     return val;</a>
 <a name="305"><span class="lineNum">     305 </span>                :            : }</a>
 <a name="306"><span class="lineNum">     306 </span>                :            : </a>
 <a name="307"><span class="lineNum">     307 </span>                :            : </a>
-<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov"> 6335540731 : STATIC_INLINE uint32_t jl_load_unaligned_i32(const void *ptr) JL_NOTSAFEPOINT</span></a>
+<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov"> 3869586828 : STATIC_INLINE uint32_t jl_load_unaligned_i32(const void *ptr) JL_NOTSAFEPOINT</span></a>
 <a name="309"><span class="lineNum">     309 </span>                :            : {</a>
 <a name="310"><span class="lineNum">     310 </span>                :            :     uint32_t val;</a>
-<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov"> 6335540731 :     memcpy(&amp;val, ptr, 4);</span></a>
-<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov"> 6335540731 :     return val;</span></a>
+<a name="311"><span class="lineNum">     311 </span>                :<span class="lineCov"> 3869586828 :     memcpy(&amp;val, ptr, 4);</span></a>
+<a name="312"><span class="lineNum">     312 </span>                :<span class="lineCov"> 3869586828 :     return val;</span></a>
 <a name="313"><span class="lineNum">     313 </span>                :            : }</a>
-<a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov"> 2476981082 : STATIC_INLINE uint16_t jl_load_unaligned_i16(const void *ptr) JL_NOTSAFEPOINT</span></a>
+<a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov">       1085 : STATIC_INLINE uint16_t jl_load_unaligned_i16(const void *ptr) JL_NOTSAFEPOINT</span></a>
 <a name="315"><span class="lineNum">     315 </span>                :            : {</a>
 <a name="316"><span class="lineNum">     316 </span>                :            :     uint16_t val;</a>
-<a name="317"><span class="lineNum">     317 </span>                :<span class="lineCov"> 2476981082 :     memcpy(&amp;val, ptr, 2);</span></a>
-<a name="318"><span class="lineNum">     318 </span>                :<span class="lineCov"> 2476981082 :     return val;</span></a>
+<a name="317"><span class="lineNum">     317 </span>                :<span class="lineCov">       1085 :     memcpy(&amp;val, ptr, 2);</span></a>
+<a name="318"><span class="lineNum">     318 </span>                :<span class="lineCov">       1085 :     return val;</span></a>
 <a name="319"><span class="lineNum">     319 </span>                :            : }</a>
 <a name="320"><span class="lineNum">     320 </span>                :            : </a>
 <a name="321"><span class="lineNum">     321 </span>                :            : STATIC_INLINE void jl_store_unaligned_i64(void *ptr, uint64_t val) JL_NOTSAFEPOINT</a>
 <a name="322"><span class="lineNum">     322 </span>                :            : {</a>
 <a name="323"><span class="lineNum">     323 </span>                :            :     memcpy(ptr, &amp;val, 8);</a>
 <a name="324"><span class="lineNum">     324 </span>                :            : }</a>
-<a name="325"><span class="lineNum">     325 </span>                :<span class="lineCov">     948523 : STATIC_INLINE void jl_store_unaligned_i32(void *ptr, uint32_t val) JL_NOTSAFEPOINT</span></a>
+<a name="325"><span class="lineNum">     325 </span>                :            : STATIC_INLINE void jl_store_unaligned_i32(void *ptr, uint32_t val) JL_NOTSAFEPOINT</a>
 <a name="326"><span class="lineNum">     326 </span>                :            : {</a>
-<a name="327"><span class="lineNum">     327 </span>                :<span class="lineCov">     948523 :     memcpy(ptr, &amp;val, 4);</span></a>
-<a name="328"><span class="lineNum">     328 </span>                :<span class="lineCov">     948523 : }</span></a>
+<a name="327"><span class="lineNum">     327 </span>                :            :     memcpy(ptr, &amp;val, 4);</a>
+<a name="328"><span class="lineNum">     328 </span>                :            : }</a>
 <a name="329"><span class="lineNum">     329 </span>                :            : STATIC_INLINE void jl_store_unaligned_i16(void *ptr, uint16_t val) JL_NOTSAFEPOINT</a>
 <a name="330"><span class="lineNum">     330 </span>                :            : {</a>
 <a name="331"><span class="lineNum">     331 </span>                :            :     memcpy(ptr, &amp;val, 2);</a>
 <a name="332"><span class="lineNum">     332 </span>                :            : }</a>
 <a name="333"><span class="lineNum">     333 </span>                :            : </a>
-<a name="334"><span class="lineNum">     334 </span>                :<span class="lineCov">   49849622 : STATIC_INLINE void *malloc_s(size_t sz) JL_NOTSAFEPOINT {</span></a>
-<a name="335"><span class="lineNum">     335 </span>                :<span class="lineCov">   49849622 :     int last_errno = errno;</span></a>
+<a name="334"><span class="lineNum">     334 </span>                :<span class="lineCov">   52837593 : STATIC_INLINE void *malloc_s(size_t sz) JL_NOTSAFEPOINT {</span></a>
+<a name="335"><span class="lineNum">     335 </span>                :<span class="lineCov">   52837593 :     int last_errno = errno;</span></a>
 <a name="336"><span class="lineNum">     336 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="337"><span class="lineNum">     337 </span>                :            :     DWORD last_error = GetLastError();</a>
 <a name="338"><span class="lineNum">     338 </span>                :            : #endif</a>
-<a name="339"><span class="lineNum">     339 </span>        [<span class="branchCov" title="Branch 0 was taken 49845823 times"> + </span><span class="branchCov" title="Branch 1 was taken 3738 times"> + </span>]:<span class="lineCov">   49849622 :     void *p = malloc(sz == 0 ? 1 : sz);</span></a>
-<a name="340"><span class="lineNum">     340 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 49849622 times"> + </span>]:<span class="lineCov">   49849622 :     if (p == NULL) {</span></a>
+<a name="339"><span class="lineNum">     339 </span>        [<span class="branchCov" title="Branch 0 was taken 52833893 times"> + </span><span class="branchCov" title="Branch 1 was taken 3726 times"> + </span>]:<span class="lineCov">   52837593 :     void *p = malloc(sz == 0 ? 1 : sz);</span></a>
+<a name="340"><span class="lineNum">     340 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 52837593 times"> + </span>]:<span class="lineCov">   52837593 :     if (p == NULL) {</span></a>
 <a name="341"><span class="lineNum">     341 </span>                :<span class="lineNoCov">          0 :         perror(&quot;(julia) malloc&quot;);</span></a>
 <a name="342"><span class="lineNum">     342 </span>                :<span class="lineNoCov">          0 :         abort();</span></a>
 <a name="343"><span class="lineNum">     343 </span>                :            :     }</a>
 <a name="344"><span class="lineNum">     344 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="345"><span class="lineNum">     345 </span>                :            :     SetLastError(last_error);</a>
 <a name="346"><span class="lineNum">     346 </span>                :            : #endif</a>
-<a name="347"><span class="lineNum">     347 </span>                :<span class="lineCov">   49849622 :     errno = last_errno;</span></a>
-<a name="348"><span class="lineNum">     348 </span>                :<span class="lineCov">   49849622 :     return p;</span></a>
+<a name="347"><span class="lineNum">     347 </span>                :<span class="lineCov">   52837593 :     errno = last_errno;</span></a>
+<a name="348"><span class="lineNum">     348 </span>                :<span class="lineCov">   52837593 :     return p;</span></a>
 <a name="349"><span class="lineNum">     349 </span>                :            : }</a>
 <a name="350"><span class="lineNum">     350 </span>                :            : </a>
-<a name="351"><span class="lineNum">     351 </span>                :<span class="lineCov">     465966 : STATIC_INLINE void *realloc_s(void *p, size_t sz) JL_NOTSAFEPOINT {</span></a>
-<a name="352"><span class="lineNum">     352 </span>                :<span class="lineCov">     465966 :     int last_errno = errno;</span></a>
+<a name="351"><span class="lineNum">     351 </span>                :<span class="lineCov">     470616 : STATIC_INLINE void *realloc_s(void *p, size_t sz) JL_NOTSAFEPOINT {</span></a>
+<a name="352"><span class="lineNum">     352 </span>                :<span class="lineCov">     470616 :     int last_errno = errno;</span></a>
 <a name="353"><span class="lineNum">     353 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="354"><span class="lineNum">     354 </span>                :            :     DWORD last_error = GetLastError();</a>
 <a name="355"><span class="lineNum">     355 </span>                :            : #endif</a>
-<a name="356"><span class="lineNum">     356 </span>        [<span class="branchCov" title="Branch 0 was taken 465966 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     465966 :     p = realloc(p, sz == 0 ? 1 : sz);</span></a>
-<a name="357"><span class="lineNum">     357 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 465966 times"> + </span>]:<span class="lineCov">     465966 :     if (p == NULL) {</span></a>
+<a name="356"><span class="lineNum">     356 </span>        [<span class="branchCov" title="Branch 0 was taken 470616 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">     470616 :     p = realloc(p, sz == 0 ? 1 : sz);</span></a>
+<a name="357"><span class="lineNum">     357 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 470616 times"> + </span>]:<span class="lineCov">     470616 :     if (p == NULL) {</span></a>
 <a name="358"><span class="lineNum">     358 </span>                :<span class="lineNoCov">          0 :         perror(&quot;(julia) realloc&quot;);</span></a>
 <a name="359"><span class="lineNum">     359 </span>                :<span class="lineNoCov">          0 :         abort();</span></a>
 <a name="360"><span class="lineNum">     360 </span>                :            :     }</a>
 <a name="361"><span class="lineNum">     361 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="362"><span class="lineNum">     362 </span>                :            :     SetLastError(last_error);</a>
 <a name="363"><span class="lineNum">     363 </span>                :            : #endif</a>
-<a name="364"><span class="lineNum">     364 </span>                :<span class="lineCov">     465966 :     errno = last_errno;</span></a>
-<a name="365"><span class="lineNum">     365 </span>                :<span class="lineCov">     465966 :     return p;</span></a>
+<a name="364"><span class="lineNum">     364 </span>                :<span class="lineCov">     470616 :     errno = last_errno;</span></a>
+<a name="365"><span class="lineNum">     365 </span>                :<span class="lineCov">     470616 :     return p;</span></a>
 <a name="366"><span class="lineNum">     366 </span>                :            : }</a>
 <a name="367"><span class="lineNum">     367 </span>                :            : </a>
 <a name="368"><span class="lineNum">     368 </span>                :            : #endif /* DTYPES_H */</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/gc-alloc-profiler.h</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/gc-alloc-profiler.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">4</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -115,11 +115,11 @@
 <a name="37"><span class="lineNum">      37 </span>                :            : </a>
 <a name="38"><span class="lineNum">      38 </span>                :            : #define jl_gc_unknown_type_tag ((jl_datatype_t*)0xdeadaa03)</a>
 <a name="39"><span class="lineNum">      39 </span>                :            : </a>
-<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">15854734534 : static inline void maybe_record_alloc_to_profile(jl_value_t *val, size_t size, jl_datatype_t *typ) JL_NOTSAFEPOINT {</span></a>
-<a name="41"><span class="lineNum">      41 </span>        [<span class="branchCov" title="Branch 0 was taken 89824 times"> + </span><span class="branchCov" title="Branch 1 was taken 15854627144 times"> + </span>]:<span class="lineCov">15854734534 :     if (__unlikely(g_alloc_profile_enabled)) {</span></a>
-<a name="42"><span class="lineNum">      42 </span>                :<span class="lineCov">      89824 :         _maybe_record_alloc_to_profile(val, size, typ);</span></a>
+<a name="40"><span class="lineNum">      40 </span>                :<span class="lineCov">14824682665 : static inline void maybe_record_alloc_to_profile(jl_value_t *val, size_t size, jl_datatype_t *typ) JL_NOTSAFEPOINT {</span></a>
+<a name="41"><span class="lineNum">      41 </span>        [<span class="branchCov" title="Branch 0 was taken 89669 times"> + </span><span class="branchCov" title="Branch 1 was taken 14824575275 times"> + </span>]:<span class="lineCov">14824682665 :     if (__unlikely(g_alloc_profile_enabled)) {</span></a>
+<a name="42"><span class="lineNum">      42 </span>                :<span class="lineCov">      89669 :         _maybe_record_alloc_to_profile(val, size, typ);</span></a>
 <a name="43"><span class="lineNum">      43 </span>                :            :     }</a>
-<a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">15854734534 : }</span></a>
+<a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">14824682665 : }</span></a>
 <a name="45"><span class="lineNum">      45 </span>                :            : </a>
 <a name="46"><span class="lineNum">      46 </span>                :            : #ifdef __cplusplus</a>
 <a name="47"><span class="lineNum">      47 </span>                :            : }</a>

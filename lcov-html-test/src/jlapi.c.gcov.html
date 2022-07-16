@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/jlapi.c</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/jlapi.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">152</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">31</td>
@@ -105,25 +105,25 @@
 <a name="27"><span class="lineNum">      27 </span>                :<span class="lineNoCov">          0 :     return jl_main_module != NULL;</span></a>
 <a name="28"><span class="lineNum">      28 </span>                :            : }</a>
 <a name="29"><span class="lineNum">      29 </span>                :            : </a>
-<a name="30"><span class="lineNum">      30 </span>                :<span class="lineCov">        566 : JL_DLLEXPORT void jl_set_ARGS(int argc, char **argv)</span></a>
+<a name="30"><span class="lineNum">      30 </span>                :<span class="lineCov">        565 : JL_DLLEXPORT void jl_set_ARGS(int argc, char **argv)</span></a>
 <a name="31"><span class="lineNum">      31 </span>                :            : {</a>
-<a name="32"><span class="lineNum">      32 </span>        [<span class="branchCov" title="Branch 0 was taken 566 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        566 :     if (jl_core_module != NULL) {</span></a>
-<a name="33"><span class="lineNum">      33 </span>                :<span class="lineCov">        566 :         jl_array_t *args = (jl_array_t*)jl_get_global(jl_core_module, jl_symbol(&quot;ARGS&quot;));</span></a>
-<a name="34"><span class="lineNum">      34 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        566 :         if (args == NULL) {</span></a>
+<a name="32"><span class="lineNum">      32 </span>        [<span class="branchCov" title="Branch 0 was taken 565 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        565 :     if (jl_core_module != NULL) {</span></a>
+<a name="33"><span class="lineNum">      33 </span>                :<span class="lineCov">        565 :         jl_array_t *args = (jl_array_t*)jl_get_global(jl_core_module, jl_symbol(&quot;ARGS&quot;));</span></a>
+<a name="34"><span class="lineNum">      34 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 564 times"> + </span>]:<span class="lineCov">        565 :         if (args == NULL) {</span></a>
 <a name="35"><span class="lineNum">      35 </span>                :<span class="lineCov">          1 :             args = jl_alloc_vec_any(0);</span></a>
 <a name="36"><span class="lineNum">      36 </span>                :<span class="lineCov">          1 :             JL_GC_PUSH1(&amp;args);</span></a>
 <a name="37"><span class="lineNum">      37 </span>                :<span class="lineCov">          1 :             jl_set_const(jl_core_module, jl_symbol(&quot;ARGS&quot;), (jl_value_t*)args);</span></a>
 <a name="38"><span class="lineNum">      38 </span>                :<span class="lineCov">          1 :             JL_GC_POP();</span></a>
 <a name="39"><span class="lineNum">      39 </span>                :            :         }</a>
-<a name="40"><span class="lineNum">      40 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 566 times"> + </span>]:<span class="lineCov">        566 :         assert(jl_array_len(args) == 0);</span></a>
-<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">        566 :         jl_array_grow_end(args, argc);</span></a>
+<a name="40"><span class="lineNum">      40 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        565 :         assert(jl_array_len(args) == 0);</span></a>
+<a name="41"><span class="lineNum">      41 </span>                :<span class="lineCov">        565 :         jl_array_grow_end(args, argc);</span></a>
 <a name="42"><span class="lineNum">      42 </span>                :            :         int i;</a>
-<a name="43"><span class="lineNum">      43 </span>        [<span class="branchCov" title="Branch 0 was taken 190 times"> + </span><span class="branchCov" title="Branch 1 was taken 566 times"> + </span>]:<span class="lineCov">        756 :         for (i = 0; i &lt; argc; i++) {</span></a>
+<a name="43"><span class="lineNum">      43 </span>        [<span class="branchCov" title="Branch 0 was taken 190 times"> + </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        755 :         for (i = 0; i &lt; argc; i++) {</span></a>
 <a name="44"><span class="lineNum">      44 </span>                :<span class="lineCov">        190 :             jl_value_t *s = (jl_value_t*)jl_cstr_to_string(argv[i]);</span></a>
 <a name="45"><span class="lineNum">      45 </span>                :<span class="lineCov">        190 :             jl_arrayset(args, s, i);</span></a>
 <a name="46"><span class="lineNum">      46 </span>                :            :         }</a>
 <a name="47"><span class="lineNum">      47 </span>                :            :     }</a>
-<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">        566 : }</span></a>
+<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">        565 : }</span></a>
 <a name="49"><span class="lineNum">      49 </span>                :            : </a>
 <a name="50"><span class="lineNum">      50 </span>                :            : // First argument is the usr/bin directory where the julia binary is, or NULL to guess.</a>
 <a name="51"><span class="lineNum">      51 </span>                :            : // Second argument is the path of a system image file (*.so).</a>
@@ -193,10 +193,10 @@
 <a name="115"><span class="lineNum">     115 </span>                :<span class="lineNoCov">          0 :     return r;</span></a>
 <a name="116"><span class="lineNum">     116 </span>                :            : }</a>
 <a name="117"><span class="lineNum">     117 </span>                :            : </a>
-<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">     210379 : JL_DLLEXPORT jl_value_t *jl_current_exception(void) JL_GLOBALLY_ROOTED JL_NOTSAFEPOINT</span></a>
+<a name="118"><span class="lineNum">     118 </span>                :<span class="lineCov">     210263 : JL_DLLEXPORT jl_value_t *jl_current_exception(void) JL_GLOBALLY_ROOTED JL_NOTSAFEPOINT</span></a>
 <a name="119"><span class="lineNum">     119 </span>                :            : {</a>
-<a name="120"><span class="lineNum">     120 </span>                :<span class="lineCov">     210379 :     jl_excstack_t *s = jl_current_task-&gt;excstack;</span></a>
-<a name="121"><span class="lineNum">     121 </span>  [<span class="branchCov" title="Branch 0 was taken 210379 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 210379 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     210379 :     return s &amp;&amp; s-&gt;top != 0 ? jl_excstack_exception(s, s-&gt;top) : jl_nothing;</span></a>
+<a name="120"><span class="lineNum">     120 </span>                :<span class="lineCov">     210263 :     jl_excstack_t *s = jl_current_task-&gt;excstack;</span></a>
+<a name="121"><span class="lineNum">     121 </span>  [<span class="branchCov" title="Branch 0 was taken 210263 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 210263 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     210263 :     return s &amp;&amp; s-&gt;top != 0 ? jl_excstack_exception(s, s-&gt;top) : jl_nothing;</span></a>
 <a name="122"><span class="lineNum">     122 </span>                :            : }</a>
 <a name="123"><span class="lineNum">     123 </span>                :            : </a>
 <a name="124"><span class="lineNum">     124 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT jl_value_t *jl_exception_occurred(void)</span></a>
@@ -204,17 +204,17 @@
 <a name="126"><span class="lineNum">     126 </span>                :<span class="lineNoCov">          0 :     return jl_current_task-&gt;ptls-&gt;previous_exception;</span></a>
 <a name="127"><span class="lineNum">     127 </span>                :            : }</a>
 <a name="128"><span class="lineNum">     128 </span>                :            : </a>
-<a name="129"><span class="lineNum">     129 </span>                :<span class="lineCov">        294 : JL_DLLEXPORT void jl_exception_clear(void)</span></a>
+<a name="129"><span class="lineNum">     129 </span>                :<span class="lineCov">        298 : JL_DLLEXPORT void jl_exception_clear(void)</span></a>
 <a name="130"><span class="lineNum">     130 </span>                :            : {</a>
-<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">        294 :     jl_current_task-&gt;ptls-&gt;previous_exception = NULL;</span></a>
-<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">        294 : }</span></a>
+<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">        298 :     jl_current_task-&gt;ptls-&gt;previous_exception = NULL;</span></a>
+<a name="132"><span class="lineNum">     132 </span>                :<span class="lineCov">        298 : }</span></a>
 <a name="133"><span class="lineNum">     133 </span>                :            : </a>
 <a name="134"><span class="lineNum">     134 </span>                :            : // get the name of a type as a string</a>
-<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">    8646070 : JL_DLLEXPORT const char *jl_typename_str(jl_value_t *v)</span></a>
+<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">    9246230 : JL_DLLEXPORT const char *jl_typename_str(jl_value_t *v)</span></a>
 <a name="136"><span class="lineNum">     136 </span>                :            : {</a>
-<a name="137"><span class="lineNum">     137 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 8646070 times"> + </span>]:<span class="lineCov">    8646070 :     if (!jl_is_datatype(v))</span></a>
+<a name="137"><span class="lineNum">     137 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 9246230 times"> + </span>]:<span class="lineCov">    9246230 :     if (!jl_is_datatype(v))</span></a>
 <a name="138"><span class="lineNum">     138 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
-<a name="139"><span class="lineNum">     139 </span>                :<span class="lineCov">    8646070 :     return jl_symbol_name(((jl_datatype_t*)v)-&gt;name-&gt;name);</span></a>
+<a name="139"><span class="lineNum">     139 </span>                :<span class="lineCov">    9246230 :     return jl_symbol_name(((jl_datatype_t*)v)-&gt;name-&gt;name);</span></a>
 <a name="140"><span class="lineNum">     140 </span>                :            : }</a>
 <a name="141"><span class="lineNum">     141 </span>                :            : </a>
 <a name="142"><span class="lineNum">     142 </span>                :            : // get the name of typeof(v) as a string</a>
@@ -370,20 +370,20 @@
 <a name="292"><span class="lineNum">     292 </span>                :<span class="lineNoCov">          0 :         jl_call0(yieldfunc);</span></a>
 <a name="293"><span class="lineNum">     293 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="294"><span class="lineNum">     294 </span>                :            : </a>
-<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">        208 : JL_DLLEXPORT jl_value_t *jl_get_field(jl_value_t *o, const char *fld)</span></a>
+<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">        212 : JL_DLLEXPORT jl_value_t *jl_get_field(jl_value_t *o, const char *fld)</span></a>
 <a name="296"><span class="lineNum">     296 </span>                :            : {</a>
 <a name="297"><span class="lineNum">     297 </span>                :            :     jl_value_t *v;</a>
-<a name="298"><span class="lineNum">     298 </span>  [<span class="branchCov" title="Branch 0 was taken 208 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 208 times"> + </span><span class="branchCov" title="Branch 3 was taken 208 times"> + </span>]:<span class="lineCov">        416 :     JL_TRY {</span></a>
-<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">        208 :         jl_value_t *s = (jl_value_t*)jl_symbol(fld);</span></a>
-<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">        208 :         int i = jl_field_index((jl_datatype_t*)jl_typeof(o), (jl_sym_t*)s, 1);</span></a>
-<a name="301"><span class="lineNum">     301 </span>                :<span class="lineCov">        208 :         v = jl_get_nth_field(o, i);</span></a>
-<a name="302"><span class="lineNum">     302 </span>                :<span class="lineCov">        208 :         jl_exception_clear();</span></a>
+<a name="298"><span class="lineNum">     298 </span>  [<span class="branchCov" title="Branch 0 was taken 212 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 212 times"> + </span><span class="branchCov" title="Branch 3 was taken 212 times"> + </span>]:<span class="lineCov">        424 :     JL_TRY {</span></a>
+<a name="299"><span class="lineNum">     299 </span>                :<span class="lineCov">        212 :         jl_value_t *s = (jl_value_t*)jl_symbol(fld);</span></a>
+<a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">        212 :         int i = jl_field_index((jl_datatype_t*)jl_typeof(o), (jl_sym_t*)s, 1);</span></a>
+<a name="301"><span class="lineNum">     301 </span>                :<span class="lineCov">        212 :         v = jl_get_nth_field(o, i);</span></a>
+<a name="302"><span class="lineNum">     302 </span>                :<span class="lineCov">        212 :         jl_exception_clear();</span></a>
 <a name="303"><span class="lineNum">     303 </span>                :            :     }</a>
 <a name="304"><span class="lineNum">     304 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :     JL_CATCH {</span></a>
 <a name="305"><span class="lineNum">     305 </span>                :<span class="lineNoCov">          0 :         jl_current_task-&gt;ptls-&gt;previous_exception = jl_current_exception();</span></a>
 <a name="306"><span class="lineNum">     306 </span>                :<span class="lineNoCov">          0 :         v = NULL;</span></a>
 <a name="307"><span class="lineNum">     307 </span>                :            :     }</a>
-<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov">        208 :     return v;</span></a>
+<a name="308"><span class="lineNum">     308 </span>                :<span class="lineCov">        212 :     return v;</span></a>
 <a name="309"><span class="lineNum">     309 </span>                :            : }</a>
 <a name="310"><span class="lineNum">     310 </span>                :            : </a>
 <a name="311"><span class="lineNum">     311 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT void jl_sigatomic_begin(void)</span></a>
@@ -416,9 +416,9 @@
 <a name="338"><span class="lineNum">     338 </span>                :            : #endif</a>
 <a name="339"><span class="lineNum">     339 </span>                :            : }</a>
 <a name="340"><span class="lineNum">     340 </span>                :            : </a>
-<a name="341"><span class="lineNum">     341 </span>                :<span class="lineCov">        566 : JL_DLLEXPORT jl_value_t *jl_get_julia_bindir(void)</span></a>
+<a name="341"><span class="lineNum">     341 </span>                :<span class="lineCov">        565 : JL_DLLEXPORT jl_value_t *jl_get_julia_bindir(void)</span></a>
 <a name="342"><span class="lineNum">     342 </span>                :            : {</a>
-<a name="343"><span class="lineNum">     343 </span>                :<span class="lineCov">        566 :     return jl_cstr_to_string(jl_options.julia_bindir);</span></a>
+<a name="343"><span class="lineNum">     343 </span>                :<span class="lineCov">        565 :     return jl_cstr_to_string(jl_options.julia_bindir);</span></a>
 <a name="344"><span class="lineNum">     344 </span>                :            : }</a>
 <a name="345"><span class="lineNum">     345 </span>                :            : </a>
 <a name="346"><span class="lineNum">     346 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT jl_value_t *jl_get_julia_bin(void)</span></a>
@@ -457,27 +457,27 @@
 <a name="379"><span class="lineNum">     379 </span>                :            : }</a>
 <a name="380"><span class="lineNum">     380 </span>                :            : </a>
 <a name="381"><span class="lineNum">     381 </span>                :            : // return char* from String field in Base.GIT_VERSION_INFO</a>
-<a name="382"><span class="lineNum">     382 </span>                :<span class="lineCov">        208 : static const char *git_info_string(const char *fld)</span></a>
+<a name="382"><span class="lineNum">     382 </span>                :<span class="lineCov">        212 : static const char *git_info_string(const char *fld)</span></a>
 <a name="383"><span class="lineNum">     383 </span>                :            : {</a>
 <a name="384"><span class="lineNum">     384 </span>                :            :     static jl_value_t *GIT_VERSION_INFO = NULL;</a>
-<a name="385"><span class="lineNum">     385 </span>        [<span class="branchCov" title="Branch 0 was taken 104 times"> + </span><span class="branchCov" title="Branch 1 was taken 104 times"> + </span>]:<span class="lineCov">        208 :     if (!GIT_VERSION_INFO)</span></a>
-<a name="386"><span class="lineNum">     386 </span>                :<span class="lineCov">        104 :         GIT_VERSION_INFO = jl_get_global(jl_base_module, jl_symbol(&quot;GIT_VERSION_INFO&quot;));</span></a>
-<a name="387"><span class="lineNum">     387 </span>                :<span class="lineCov">        208 :     jl_value_t *f = jl_get_field(GIT_VERSION_INFO, fld);</span></a>
-<a name="388"><span class="lineNum">     388 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 208 times"> + </span>]:<span class="lineCov">        208 :     assert(jl_is_string(f));</span></a>
-<a name="389"><span class="lineNum">     389 </span>                :<span class="lineCov">        208 :     return jl_string_data(f);</span></a>
+<a name="385"><span class="lineNum">     385 </span>        [<span class="branchCov" title="Branch 0 was taken 106 times"> + </span><span class="branchCov" title="Branch 1 was taken 106 times"> + </span>]:<span class="lineCov">        212 :     if (!GIT_VERSION_INFO)</span></a>
+<a name="386"><span class="lineNum">     386 </span>                :<span class="lineCov">        106 :         GIT_VERSION_INFO = jl_get_global(jl_base_module, jl_symbol(&quot;GIT_VERSION_INFO&quot;));</span></a>
+<a name="387"><span class="lineNum">     387 </span>                :<span class="lineCov">        212 :     jl_value_t *f = jl_get_field(GIT_VERSION_INFO, fld);</span></a>
+<a name="388"><span class="lineNum">     388 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 212 times"> + </span>]:<span class="lineCov">        212 :     assert(jl_is_string(f));</span></a>
+<a name="389"><span class="lineNum">     389 </span>                :<span class="lineCov">        212 :     return jl_string_data(f);</span></a>
 <a name="390"><span class="lineNum">     390 </span>                :            : }</a>
 <a name="391"><span class="lineNum">     391 </span>                :            : </a>
 <a name="392"><span class="lineNum">     392 </span>                :<span class="lineCov">        479 : JL_DLLEXPORT const char *jl_git_branch(void)</span></a>
 <a name="393"><span class="lineNum">     393 </span>                :            : {</a>
 <a name="394"><span class="lineNum">     394 </span>                :            :     static const char *branch = NULL;</a>
-<a name="395"><span class="lineNum">     395 </span>        [<span class="branchCov" title="Branch 0 was taken 104 times"> + </span><span class="branchCov" title="Branch 1 was taken 375 times"> + </span>]:<span class="lineCov">        479 :     if (!branch) branch = git_info_string(&quot;branch&quot;);</span></a>
+<a name="395"><span class="lineNum">     395 </span>        [<span class="branchCov" title="Branch 0 was taken 106 times"> + </span><span class="branchCov" title="Branch 1 was taken 373 times"> + </span>]:<span class="lineCov">        479 :     if (!branch) branch = git_info_string(&quot;branch&quot;);</span></a>
 <a name="396"><span class="lineNum">     396 </span>                :<span class="lineCov">        479 :     return branch;</span></a>
 <a name="397"><span class="lineNum">     397 </span>                :            : }</a>
 <a name="398"><span class="lineNum">     398 </span>                :            : </a>
 <a name="399"><span class="lineNum">     399 </span>                :<span class="lineCov">        461 : JL_DLLEXPORT const char *jl_git_commit(void)</span></a>
 <a name="400"><span class="lineNum">     400 </span>                :            : {</a>
 <a name="401"><span class="lineNum">     401 </span>                :            :     static const char *commit = NULL;</a>
-<a name="402"><span class="lineNum">     402 </span>        [<span class="branchCov" title="Branch 0 was taken 104 times"> + </span><span class="branchCov" title="Branch 1 was taken 357 times"> + </span>]:<span class="lineCov">        461 :     if (!commit) commit = git_info_string(&quot;commit&quot;);</span></a>
+<a name="402"><span class="lineNum">     402 </span>        [<span class="branchCov" title="Branch 0 was taken 106 times"> + </span><span class="branchCov" title="Branch 1 was taken 355 times"> + </span>]:<span class="lineCov">        461 :     if (!commit) commit = git_info_string(&quot;commit&quot;);</span></a>
 <a name="403"><span class="lineNum">     403 </span>                :<span class="lineCov">        461 :     return commit;</span></a>
 <a name="404"><span class="lineNum">     404 </span>                :            : }</a>
 <a name="405"><span class="lineNum">     405 </span>                :            : </a>
@@ -497,9 +497,9 @@
 <a name="419"><span class="lineNum">     419 </span>                :<span class="lineNoCov">          0 :     return jl_typeof(v);</span></a>
 <a name="420"><span class="lineNum">     420 </span>                :            : }</a>
 <a name="421"><span class="lineNum">     421 </span>                :            : </a>
-<a name="422"><span class="lineNum">     422 </span>                :<span class="lineCov">    4886350 : JL_DLLEXPORT jl_value_t *(jl_get_fieldtypes)(jl_value_t *v)</span></a>
+<a name="422"><span class="lineNum">     422 </span>                :<span class="lineCov">    4477920 : JL_DLLEXPORT jl_value_t *(jl_get_fieldtypes)(jl_value_t *v)</span></a>
 <a name="423"><span class="lineNum">     423 </span>                :            : {</a>
-<a name="424"><span class="lineNum">     424 </span>        [<span class="branchCov" title="Branch 0 was taken 4867370 times"> + </span><span class="branchCov" title="Branch 1 was taken 18980 times"> + </span>]:<span class="lineCov">    4886350 :     return (jl_value_t*)jl_get_fieldtypes((jl_datatype_t*)v);</span></a>
+<a name="424"><span class="lineNum">     424 </span>        [<span class="branchCov" title="Branch 0 was taken 4459240 times"> + </span><span class="branchCov" title="Branch 1 was taken 18685 times"> + </span>]:<span class="lineCov">    4477920 :     return (jl_value_t*)jl_get_fieldtypes((jl_datatype_t*)v);</span></a>
 <a name="425"><span class="lineNum">     425 </span>                :            : }</a>
 <a name="426"><span class="lineNum">     426 </span>                :            : </a>
 <a name="427"><span class="lineNum">     427 </span>                :<span class="lineCov">        210 : JL_DLLEXPORT int ijl_egal(jl_value_t *a, jl_value_t *b)</span></a>
@@ -534,11 +534,11 @@
 <a name="456"><span class="lineNum">     456 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="457"><span class="lineNum">     457 </span>                :            : #endif</a>
 <a name="458"><span class="lineNum">     458 </span>                :            : </a>
-<a name="459"><span class="lineNum">     459 </span>                :<span class="lineCov">    1694170 : JL_DLLEXPORT void jl_gc_safepoint(void)</span></a>
+<a name="459"><span class="lineNum">     459 </span>                :<span class="lineCov">    1664920 : JL_DLLEXPORT void jl_gc_safepoint(void)</span></a>
 <a name="460"><span class="lineNum">     460 </span>                :            : {</a>
-<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">    1694170 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">    1694170 :     jl_gc_safepoint_(ct-&gt;ptls);</span></a>
-<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">    1694170 : }</span></a>
+<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">    1664920 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">    1664920 :     jl_gc_safepoint_(ct-&gt;ptls);</span></a>
+<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">    1664920 : }</span></a>
 <a name="464"><span class="lineNum">     464 </span>                :            : </a>
 <a name="465"><span class="lineNum">     465 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT void (jl_cpu_pause)(void)</span></a>
 <a name="466"><span class="lineNum">     466 </span>                :            : {</a>
@@ -630,25 +630,25 @@
 <a name="552"><span class="lineNum">     552 </span>                :<span class="lineCov">          2 :     return 0;</span></a>
 <a name="553"><span class="lineNum">     553 </span>                :            : }</a>
 <a name="554"><span class="lineNum">     554 </span>                :            : </a>
-<a name="555"><span class="lineNum">     555 </span>                :<span class="lineCov">        566 : static NOINLINE int true_main(int argc, char *argv[])</span></a>
+<a name="555"><span class="lineNum">     555 </span>                :<span class="lineCov">        565 : static NOINLINE int true_main(int argc, char *argv[])</span></a>
 <a name="556"><span class="lineNum">     556 </span>                :            : {</a>
-<a name="557"><span class="lineNum">     557 </span>                :<span class="lineCov">        566 :     jl_set_ARGS(argc, argv);</span></a>
+<a name="557"><span class="lineNum">     557 </span>                :<span class="lineCov">        565 :     jl_set_ARGS(argc, argv);</span></a>
 <a name="558"><span class="lineNum">     558 </span>                :            : </a>
-<a name="559"><span class="lineNum">     559 </span>                :<span class="lineCov">       1132 :     jl_function_t *start_client = jl_base_module ?</span></a>
-<a name="560"><span class="lineNum">     560 </span>        [<span class="branchCov" title="Branch 0 was taken 564 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">        566 :         (jl_function_t*)jl_get_global(jl_base_module, jl_symbol(&quot;_start&quot;)) : NULL;</span></a>
+<a name="559"><span class="lineNum">     559 </span>                :<span class="lineCov">       1130 :     jl_function_t *start_client = jl_base_module ?</span></a>
+<a name="560"><span class="lineNum">     560 </span>        [<span class="branchCov" title="Branch 0 was taken 563 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">        565 :         (jl_function_t*)jl_get_global(jl_base_module, jl_symbol(&quot;_start&quot;)) : NULL;</span></a>
 <a name="561"><span class="lineNum">     561 </span>                :            : </a>
-<a name="562"><span class="lineNum">     562 </span>        [<span class="branchCov" title="Branch 0 was taken 564 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">        566 :     if (start_client) {</span></a>
-<a name="563"><span class="lineNum">     563 </span>  [<span class="branchCov" title="Branch 0 was taken 564 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 564 times"> + </span><span class="branchCov" title="Branch 3 was taken 384 times"> + </span>]:<span class="lineCov">        948 :         JL_TRY {</span></a>
-<a name="564"><span class="lineNum">     564 </span>                :<span class="lineCov">        564 :             jl_task_t *ct = jl_current_task;</span></a>
-<a name="565"><span class="lineNum">     565 </span>                :<span class="lineCov">        564 :             size_t last_age = ct-&gt;world_age;</span></a>
-<a name="566"><span class="lineNum">     566 </span>                :<span class="lineCov">        564 :             ct-&gt;world_age = jl_get_world_counter();</span></a>
-<a name="567"><span class="lineNum">     567 </span>                :<span class="lineCov">        564 :             jl_apply(&amp;start_client, 1);</span></a>
-<a name="568"><span class="lineNum">     568 </span>                :<span class="lineCov">        384 :             ct-&gt;world_age = last_age;</span></a>
+<a name="562"><span class="lineNum">     562 </span>        [<span class="branchCov" title="Branch 0 was taken 563 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">        565 :     if (start_client) {</span></a>
+<a name="563"><span class="lineNum">     563 </span>  [<span class="branchCov" title="Branch 0 was taken 563 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 563 times"> + </span><span class="branchCov" title="Branch 3 was taken 383 times"> + </span>]:<span class="lineCov">        946 :         JL_TRY {</span></a>
+<a name="564"><span class="lineNum">     564 </span>                :<span class="lineCov">        563 :             jl_task_t *ct = jl_current_task;</span></a>
+<a name="565"><span class="lineNum">     565 </span>                :<span class="lineCov">        563 :             size_t last_age = ct-&gt;world_age;</span></a>
+<a name="566"><span class="lineNum">     566 </span>                :<span class="lineCov">        563 :             ct-&gt;world_age = jl_get_world_counter();</span></a>
+<a name="567"><span class="lineNum">     567 </span>                :<span class="lineCov">        563 :             jl_apply(&amp;start_client, 1);</span></a>
+<a name="568"><span class="lineNum">     568 </span>                :<span class="lineCov">        383 :             ct-&gt;world_age = last_age;</span></a>
 <a name="569"><span class="lineNum">     569 </span>                :            :         }</a>
 <a name="570"><span class="lineNum">     570 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         JL_CATCH {</span></a>
 <a name="571"><span class="lineNum">     571 </span>                :<span class="lineNoCov">          0 :             jl_no_exc_handler(jl_current_exception());</span></a>
 <a name="572"><span class="lineNum">     572 </span>                :            :         }</a>
-<a name="573"><span class="lineNum">     573 </span>                :<span class="lineCov">        384 :         return 0;</span></a>
+<a name="573"><span class="lineNum">     573 </span>                :<span class="lineCov">        383 :         return 0;</span></a>
 <a name="574"><span class="lineNum">     574 </span>                :            :     }</a>
 <a name="575"><span class="lineNum">     575 </span>                :            : </a>
 <a name="576"><span class="lineNum">     576 </span>                :            :     // run program if specified, otherwise enter REPL</a>
@@ -698,7 +698,7 @@
 <a name="620"><span class="lineNum">     620 </span>                :<span class="lineNoCov">          0 :     return 0;</span></a>
 <a name="621"><span class="lineNum">     621 </span>                :            : }</a>
 <a name="622"><span class="lineNum">     622 </span>                :            : </a>
-<a name="623"><span class="lineNum">     623 </span>                :<span class="lineCov">        603 : static void lock_low32(void)</span></a>
+<a name="623"><span class="lineNum">     623 </span>                :<span class="lineCov">        602 : static void lock_low32(void)</span></a>
 <a name="624"><span class="lineNum">     624 </span>                :            : {</a>
 <a name="625"><span class="lineNum">     625 </span>                :            : #if defined(_OS_WINDOWS_) &amp;&amp; defined(_P64) &amp;&amp; defined(JL_DEBUG_BUILD)</a>
 <a name="626"><span class="lineNum">     626 </span>                :            :     // Prevent usage of the 32-bit address space on Win64, to catch pointer cast errors.</a>
@@ -733,7 +733,7 @@
 <a name="655"><span class="lineNum">     655 </span>                :            :         meminfo.BaseAddress = (void*)((char*)meminfo.BaseAddress + meminfo.RegionSize);</a>
 <a name="656"><span class="lineNum">     656 </span>                :            :     }</a>
 <a name="657"><span class="lineNum">     657 </span>                :            : #endif</a>
-<a name="658"><span class="lineNum">     658 </span>                :<span class="lineCov">        603 :     return;</span></a>
+<a name="658"><span class="lineNum">     658 </span>                :<span class="lineCov">        602 :     return;</span></a>
 <a name="659"><span class="lineNum">     659 </span>                :            : }</a>
 <a name="660"><span class="lineNum">     660 </span>                :            : </a>
 <a name="661"><span class="lineNum">     661 </span>                :            : // Actual definition in `ast.c`</a>
@@ -750,29 +750,29 @@
 <a name="672"><span class="lineNum">     672 </span>                :<span class="lineNoCov">          0 : }</span></a>
 <a name="673"><span class="lineNum">     673 </span>                :            : #endif</a>
 <a name="674"><span class="lineNum">     674 </span>                :            : </a>
-<a name="675"><span class="lineNum">     675 </span>                :<span class="lineCov">        603 : JL_DLLEXPORT int jl_repl_entrypoint(int argc, char *argv[])</span></a>
+<a name="675"><span class="lineNum">     675 </span>                :<span class="lineCov">        602 : JL_DLLEXPORT int jl_repl_entrypoint(int argc, char *argv[])</span></a>
 <a name="676"><span class="lineNum">     676 </span>                :            : {</a>
 <a name="677"><span class="lineNum">     677 </span>                :            :     // no-op on Windows, note that the caller must have already converted</a>
 <a name="678"><span class="lineNum">     678 </span>                :            :     // from `wchar_t` to `UTF-8` already if we're running on Windows.</a>
-<a name="679"><span class="lineNum">     679 </span>                :<span class="lineCov">        603 :     uv_setup_args(argc, argv);</span></a>
+<a name="679"><span class="lineNum">     679 </span>                :<span class="lineCov">        602 :     uv_setup_args(argc, argv);</span></a>
 <a name="680"><span class="lineNum">     680 </span>                :            : </a>
 <a name="681"><span class="lineNum">     681 </span>                :            :     // No-op on non-windows</a>
-<a name="682"><span class="lineNum">     682 </span>                :<span class="lineCov">        603 :     lock_low32();</span></a>
+<a name="682"><span class="lineNum">     682 </span>                :<span class="lineCov">        602 :     lock_low32();</span></a>
 <a name="683"><span class="lineNum">     683 </span>                :            : </a>
-<a name="684"><span class="lineNum">     684 </span>                :<span class="lineCov">        603 :     libsupport_init();</span></a>
-<a name="685"><span class="lineNum">     685 </span>  [<span class="branchCov" title="Branch 0 was taken 603 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchCov" title="Branch 3 was taken 602 times"> + </span>]:<span class="lineCov">        603 :     int lisp_prompt = (argc &gt;= 2 &amp;&amp; strcmp((char*)argv[1],&quot;--lisp&quot;) == 0);</span></a>
-<a name="686"><span class="lineNum">     686 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 602 times"> + </span>]:<span class="lineCov">        603 :     if (lisp_prompt) {</span></a>
+<a name="684"><span class="lineNum">     684 </span>                :<span class="lineCov">        602 :     libsupport_init();</span></a>
+<a name="685"><span class="lineNum">     685 </span>  [<span class="branchCov" title="Branch 0 was taken 602 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchCov" title="Branch 3 was taken 601 times"> + </span>]:<span class="lineCov">        602 :     int lisp_prompt = (argc &gt;= 2 &amp;&amp; strcmp((char*)argv[1],&quot;--lisp&quot;) == 0);</span></a>
+<a name="686"><span class="lineNum">     686 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 601 times"> + </span>]:<span class="lineCov">        602 :     if (lisp_prompt) {</span></a>
 <a name="687"><span class="lineNum">     687 </span>                :<span class="lineCov">          1 :         memmove(&amp;argv[1], &amp;argv[2], (argc-2)*sizeof(void*));</span></a>
 <a name="688"><span class="lineNum">     688 </span>                :<span class="lineCov">          1 :         argc--;</span></a>
 <a name="689"><span class="lineNum">     689 </span>                :            :     }</a>
-<a name="690"><span class="lineNum">     690 </span>                :<span class="lineCov">        603 :     char **new_argv = argv;</span></a>
-<a name="691"><span class="lineNum">     691 </span>                :<span class="lineCov">        603 :     jl_parse_opts(&amp;argc, (char***)&amp;new_argv);</span></a>
+<a name="690"><span class="lineNum">     690 </span>                :<span class="lineCov">        602 :     char **new_argv = argv;</span></a>
+<a name="691"><span class="lineNum">     691 </span>                :<span class="lineCov">        602 :     jl_parse_opts(&amp;argc, (char***)&amp;new_argv);</span></a>
 <a name="692"><span class="lineNum">     692 </span>                :            : </a>
 <a name="693"><span class="lineNum">     693 </span>                :            :     // The parent process requested that we detach from the rr session.</a>
 <a name="694"><span class="lineNum">     694 </span>                :            :     // N.B.: In a perfect world, we would only do this for the portion of</a>
 <a name="695"><span class="lineNum">     695 </span>                :            :     // the execution where we actually need to exclude rr (e.g. because we're</a>
 <a name="696"><span class="lineNum">     696 </span>                :            :     // testing for the absence of a memory-model-dependent bug).</a>
-<a name="697"><span class="lineNum">     697 </span>  [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 2 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.rr_detach &amp;&amp; jl_running_under_rr(0)) {</span></a>
+<a name="697"><span class="lineNum">     697 </span>  [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 571 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 2 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.rr_detach &amp;&amp; jl_running_under_rr(0)) {</span></a>
 <a name="698"><span class="lineNum">     698 </span>                :            : #ifdef _OS_LINUX_</a>
 <a name="699"><span class="lineNum">     699 </span>                :<span class="lineNoCov">          0 :         rr_detach_teleport();</span></a>
 <a name="700"><span class="lineNum">     700 </span>                :<span class="lineNoCov">          0 :         execv(&quot;/proc/self/exe&quot;, argv);</span></a>
@@ -780,15 +780,15 @@
 <a name="702"><span class="lineNum">     702 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;Failed to self-execute&quot;);</span></a>
 <a name="703"><span class="lineNum">     703 </span>                :            :     }</a>
 <a name="704"><span class="lineNum">     704 </span>                :            : </a>
-<a name="705"><span class="lineNum">     705 </span>                :<span class="lineCov">        574 :     julia_init(jl_options.image_file_specified ? JL_IMAGE_CWD : JL_IMAGE_JULIA_HOME);</span></a>
-<a name="706"><span class="lineNum">     706 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 566 times"> + </span>]:<span class="lineCov">        567 :     if (lisp_prompt) {</span></a>
+<a name="705"><span class="lineNum">     705 </span>                :<span class="lineCov">        573 :     julia_init(jl_options.image_file_specified ? JL_IMAGE_CWD : JL_IMAGE_JULIA_HOME);</span></a>
+<a name="706"><span class="lineNum">     706 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        566 :     if (lisp_prompt) {</span></a>
 <a name="707"><span class="lineNum">     707 </span>                :<span class="lineCov">          1 :         jl_current_task-&gt;world_age = jl_get_world_counter();</span></a>
 <a name="708"><span class="lineNum">     708 </span>                :<span class="lineCov">          1 :         jl_lisp_prompt();</span></a>
 <a name="709"><span class="lineNum">     709 </span>                :<span class="lineNoCov">          0 :         return 0;</span></a>
 <a name="710"><span class="lineNum">     710 </span>                :            :     }</a>
-<a name="711"><span class="lineNum">     711 </span>                :<span class="lineCov">        566 :     int ret = true_main(argc, (char**)new_argv);</span></a>
-<a name="712"><span class="lineNum">     712 </span>                :<span class="lineCov">        386 :     jl_atexit_hook(ret);</span></a>
-<a name="713"><span class="lineNum">     713 </span>                :<span class="lineCov">        382 :     return ret;</span></a>
+<a name="711"><span class="lineNum">     711 </span>                :<span class="lineCov">        565 :     int ret = true_main(argc, (char**)new_argv);</span></a>
+<a name="712"><span class="lineNum">     712 </span>                :<span class="lineCov">        385 :     jl_atexit_hook(ret);</span></a>
+<a name="713"><span class="lineNum">     713 </span>                :<span class="lineCov">        381 :     return ret;</span></a>
 <a name="714"><span class="lineNum">     714 </span>                :            : }</a>
 <a name="715"><span class="lineNum">     715 </span>                :            : </a>
 <a name="716"><span class="lineNum">     716 </span>                :            : #ifdef __cplusplus</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/runtime_intrinsics.c</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/runtime_intrinsics.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">349</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">139</td>
@@ -238,32 +238,32 @@
 <a name="160"><span class="lineNum">     160 </span>                :            :     0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18,</a>
 <a name="161"><span class="lineNum">     161 </span>                :            :     0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x0d};</a>
 <a name="162"><span class="lineNum">     162 </span>                :            : </a>
-<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">     282243 : static inline uint16_t float_to_half(float param) JL_NOTSAFEPOINT</span></a>
+<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">     282134 : static inline uint16_t float_to_half(float param) JL_NOTSAFEPOINT</span></a>
 <a name="164"><span class="lineNum">     164 </span>                :            : {</a>
 <a name="165"><span class="lineNum">     165 </span>                :            :     uint32_t f;</a>
-<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">     282243 :     memcpy(&amp;f, &amp;param, sizeof(float));</span></a>
-<a name="167"><span class="lineNum">     167 </span>        [<span class="branchCov" title="Branch 0 was taken 451 times"> + </span><span class="branchCov" title="Branch 1 was taken 281792 times"> + </span>]:<span class="lineCov">     282243 :     if (isnan(param)) {</span></a>
-<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">        451 :         uint32_t t = 0x8000 ^ (0x8000 &amp; ((uint16_t)(f &gt;&gt; 0x10)));</span></a>
-<a name="169"><span class="lineNum">     169 </span>                :<span class="lineCov">        451 :         return t ^ ((uint16_t)(f &gt;&gt; 0xd));</span></a>
+<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">     282134 :     memcpy(&amp;f, &amp;param, sizeof(float));</span></a>
+<a name="167"><span class="lineNum">     167 </span>        [<span class="branchCov" title="Branch 0 was taken 452 times"> + </span><span class="branchCov" title="Branch 1 was taken 281682 times"> + </span>]:<span class="lineCov">     282134 :     if (isnan(param)) {</span></a>
+<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">        452 :         uint32_t t = 0x8000 ^ (0x8000 &amp; ((uint16_t)(f &gt;&gt; 0x10)));</span></a>
+<a name="169"><span class="lineNum">     169 </span>                :<span class="lineCov">        452 :         return t ^ ((uint16_t)(f &gt;&gt; 0xd));</span></a>
 <a name="170"><span class="lineNum">     170 </span>                :            :     }</a>
-<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">     281792 :     int i = ((f &amp; ~0x007fffff) &gt;&gt; 23);</span></a>
-<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">     281792 :     uint8_t sh = shifttable[i];</span></a>
-<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">     281792 :     f &amp;= 0x007fffff;</span></a>
+<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">     281682 :     int i = ((f &amp; ~0x007fffff) &gt;&gt; 23);</span></a>
+<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">     281682 :     uint8_t sh = shifttable[i];</span></a>
+<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">     281682 :     f &amp;= 0x007fffff;</span></a>
 <a name="174"><span class="lineNum">     174 </span>                :            :     // If `val` is subnormal, the tables are set up to force the</a>
 <a name="175"><span class="lineNum">     175 </span>                :            :     // result to 0, so the significand has an implicit `1` in the</a>
 <a name="176"><span class="lineNum">     176 </span>                :            :     // cases we care about.</a>
-<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">     281792 :     f |= 0x007fffff + 0x1;</span></a>
-<a name="178"><span class="lineNum">     178 </span>                :<span class="lineCov">     281792 :     uint16_t h = (uint16_t)(basetable[i] + ((f &gt;&gt; sh) &amp; 0x03ff));</span></a>
+<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">     281682 :     f |= 0x007fffff + 0x1;</span></a>
+<a name="178"><span class="lineNum">     178 </span>                :<span class="lineCov">     281682 :     uint16_t h = (uint16_t)(basetable[i] + ((f &gt;&gt; sh) &amp; 0x03ff));</span></a>
 <a name="179"><span class="lineNum">     179 </span>                :            :     // round</a>
 <a name="180"><span class="lineNum">     180 </span>                :            :     // NOTE: we maybe should ignore NaNs here, but the payload is</a>
 <a name="181"><span class="lineNum">     181 </span>                :            :     // getting truncated anyway so &quot;rounding&quot; it might not matter</a>
-<a name="182"><span class="lineNum">     182 </span>                :<span class="lineCov">     281792 :     int nextbit = (f &gt;&gt; (sh - 1)) &amp; 1;</span></a>
-<a name="183"><span class="lineNum">     183 </span>  [<span class="branchCov" title="Branch 0 was taken 146722 times"> + </span><span class="branchCov" title="Branch 1 was taken 135070 times"> + </span><span class="branchCov" title="Branch 2 was taken 146722 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     281792 :     if (nextbit != 0 &amp;&amp; (h &amp; 0x7C00) != 0x7C00) {</span></a>
+<a name="182"><span class="lineNum">     182 </span>                :<span class="lineCov">     281682 :     int nextbit = (f &gt;&gt; (sh - 1)) &amp; 1;</span></a>
+<a name="183"><span class="lineNum">     183 </span>  [<span class="branchCov" title="Branch 0 was taken 146662 times"> + </span><span class="branchCov" title="Branch 1 was taken 135020 times"> + </span><span class="branchCov" title="Branch 2 was taken 146662 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">     281682 :     if (nextbit != 0 &amp;&amp; (h &amp; 0x7C00) != 0x7C00) {</span></a>
 <a name="184"><span class="lineNum">     184 </span>                :            :         // Round halfway to even or check lower bits</a>
-<a name="185"><span class="lineNum">     185 </span>  [<span class="branchCov" title="Branch 0 was taken 81471 times"> + </span><span class="branchCov" title="Branch 1 was taken 65251 times"> + </span><span class="branchCov" title="Branch 2 was taken 81447 times"> + </span><span class="branchCov" title="Branch 3 was taken 24 times"> + </span>]:<span class="lineCov">     146722 :         if ((h &amp; 1) == 1 || (f &amp; ((1 &lt;&lt; (sh - 1)) - 1)) != 0)</span></a>
-<a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">     146698 :             h += UINT16_C(1);</span></a>
+<a name="185"><span class="lineNum">     185 </span>  [<span class="branchCov" title="Branch 0 was taken 81449 times"> + </span><span class="branchCov" title="Branch 1 was taken 65213 times"> + </span><span class="branchCov" title="Branch 2 was taken 81425 times"> + </span><span class="branchCov" title="Branch 3 was taken 24 times"> + </span>]:<span class="lineCov">     146662 :         if ((h &amp; 1) == 1 || (f &amp; ((1 &lt;&lt; (sh - 1)) - 1)) != 0)</span></a>
+<a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">     146638 :             h += UINT16_C(1);</span></a>
 <a name="187"><span class="lineNum">     187 </span>                :            :     }</a>
-<a name="188"><span class="lineNum">     188 </span>                :<span class="lineCov">     281792 :     return h;</span></a>
+<a name="188"><span class="lineNum">     188 </span>                :<span class="lineCov">     281682 :     return h;</span></a>
 <a name="189"><span class="lineNum">     189 </span>                :            : }</a>
 <a name="190"><span class="lineNum">     190 </span>                :            : </a>
 <a name="191"><span class="lineNum">     191 </span>                :<span class="lineCov">         66 : JL_DLLEXPORT float __gnu_h2f_ieee(uint16_t param)</span></a>
@@ -281,64 +281,64 @@
 <a name="203"><span class="lineNum">     203 </span>                :<span class="lineCov">         30 :     return float_to_half(param);</span></a>
 <a name="204"><span class="lineNum">     204 </span>                :            : }</a>
 <a name="205"><span class="lineNum">     205 </span>                :            : </a>
-<a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">     282213 : JL_DLLEXPORT uint16_t __truncdfhf2(double param)</span></a>
+<a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">     282104 : JL_DLLEXPORT uint16_t __truncdfhf2(double param)</span></a>
 <a name="207"><span class="lineNum">     207 </span>                :            : {</a>
-<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">     282213 :     float res = (float)param;</span></a>
+<a name="208"><span class="lineNum">     208 </span>                :<span class="lineCov">     282104 :     float res = (float)param;</span></a>
 <a name="209"><span class="lineNum">     209 </span>                :            :     uint32_t resi;</a>
-<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">     282213 :     memcpy(&amp;resi, &amp;res, sizeof(res));</span></a>
-<a name="211"><span class="lineNum">     211 </span>        [<span class="branchCov" title="Branch 0 was taken 8549 times"> + </span><span class="branchCov" title="Branch 1 was taken 273664 times"> + </span>]:<span class="lineCov">     282213 :     if ((resi&amp;0x7fffffffu) &lt; 0x38800000u){ // if Float16(res) is subnormal</span></a>
+<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">     282104 :     memcpy(&amp;resi, &amp;res, sizeof(res));</span></a>
+<a name="211"><span class="lineNum">     211 </span>        [<span class="branchCov" title="Branch 0 was taken 8548 times"> + </span><span class="branchCov" title="Branch 1 was taken 273556 times"> + </span>]:<span class="lineCov">     282104 :     if ((resi&amp;0x7fffffffu) &lt; 0x38800000u){ // if Float16(res) is subnormal</span></a>
 <a name="212"><span class="lineNum">     212 </span>                :            :         // shift so that the mantissa lines up where it would for normal Float16</a>
-<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">       8549 :         uint32_t shift = 113u-((resi &amp; 0x7f800000u)&gt;&gt;23u);</span></a>
-<a name="214"><span class="lineNum">     214 </span>        [<span class="branchCov" title="Branch 0 was taken 8224 times"> + </span><span class="branchCov" title="Branch 1 was taken 325 times"> + </span>]:<span class="lineCov">       8549 :         if (shift&lt;23u) {</span></a>
+<a name="213"><span class="lineNum">     213 </span>                :<span class="lineCov">       8548 :         uint32_t shift = 113u-((resi &amp; 0x7f800000u)&gt;&gt;23u);</span></a>
+<a name="214"><span class="lineNum">     214 </span>        [<span class="branchCov" title="Branch 0 was taken 8224 times"> + </span><span class="branchCov" title="Branch 1 was taken 324 times"> + </span>]:<span class="lineCov">       8548 :         if (shift&lt;23u) {</span></a>
 <a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">       8224 :             resi |= 0x00800000; // set implicit bit</span></a>
 <a name="216"><span class="lineNum">     216 </span>                :<span class="lineCov">       8224 :             resi &gt;&gt;= shift;</span></a>
 <a name="217"><span class="lineNum">     217 </span>                :            :         }</a>
 <a name="218"><span class="lineNum">     218 </span>                :            :     }</a>
-<a name="219"><span class="lineNum">     219 </span>        [<span class="branchCov" title="Branch 0 was taken 253992 times"> + </span><span class="branchCov" title="Branch 1 was taken 28221 times"> + </span>]:<span class="lineCov">     282213 :     if ((resi &amp; 0x1fffu) == 0x1000u) { // if we are halfway between 2 Float16 values</span></a>
+<a name="219"><span class="lineNum">     219 </span>        [<span class="branchCov" title="Branch 0 was taken 253992 times"> + </span><span class="branchCov" title="Branch 1 was taken 28112 times"> + </span>]:<span class="lineCov">     282104 :     if ((resi &amp; 0x1fffu) == 0x1000u) { // if we are halfway between 2 Float16 values</span></a>
 <a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">     253992 :         memcpy(&amp;resi, &amp;res, sizeof(res));</span></a>
 <a name="221"><span class="lineNum">     221 </span>                :            :         // adjust the value by 1 ULP in the direction that will make Float16(res) give the right answer</a>
 <a name="222"><span class="lineNum">     222 </span>                :<span class="lineCov">     253992 :         resi += (fabs(res) &lt; fabs(param)) - (fabs(param) &lt; fabs(res));</span></a>
 <a name="223"><span class="lineNum">     223 </span>                :<span class="lineCov">     253992 :         memcpy(&amp;res, &amp;resi, sizeof(res));</span></a>
 <a name="224"><span class="lineNum">     224 </span>                :            :     }</a>
-<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">     282213 :     return float_to_half(res);</span></a>
+<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">     282104 :     return float_to_half(res);</span></a>
 <a name="226"><span class="lineNum">     226 </span>                :            : }</a>
 <a name="227"><span class="lineNum">     227 </span>                :            : </a>
 <a name="228"><span class="lineNum">     228 </span>                :            : #endif</a>
 <a name="229"><span class="lineNum">     229 </span>                :            : </a>
 <a name="230"><span class="lineNum">     230 </span>                :            : // run time version of bitcast intrinsic</a>
-<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">     486677 : JL_DLLEXPORT jl_value_t *jl_bitcast(jl_value_t *ty, jl_value_t *v)</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">     499370 : JL_DLLEXPORT jl_value_t *jl_bitcast(jl_value_t *ty, jl_value_t *v)</span></a>
 <a name="232"><span class="lineNum">     232 </span>                :            : {</a>
-<a name="233"><span class="lineNum">     233 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 486675 times"> + </span>]:<span class="lineCov">     486677 :     JL_TYPECHK(bitcast, datatype, ty);</span></a>
-<a name="234"><span class="lineNum">     234 </span>  [<span class="branchCov" title="Branch 0 was taken 486675 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 5 times"> + </span><span class="branchCov" title="Branch 3 was taken 486670 times"> + </span>]:<span class="lineCov">     486675 :     if (!jl_is_concrete_type(ty) || !jl_is_primitivetype(ty))</span></a>
+<a name="233"><span class="lineNum">     233 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 499368 times"> + </span>]:<span class="lineCov">     499370 :     JL_TYPECHK(bitcast, datatype, ty);</span></a>
+<a name="234"><span class="lineNum">     234 </span>  [<span class="branchCov" title="Branch 0 was taken 499368 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 5 times"> + </span><span class="branchCov" title="Branch 3 was taken 499363 times"> + </span>]:<span class="lineCov">     499368 :     if (!jl_is_concrete_type(ty) || !jl_is_primitivetype(ty))</span></a>
 <a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">          5 :         jl_error(&quot;bitcast: target type not a leaf primitive type&quot;);</span></a>
-<a name="236"><span class="lineNum">     236 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 486669 times"> + </span>]:<span class="lineCov">     486670 :     if (!jl_is_primitivetype(jl_typeof(v)))</span></a>
+<a name="236"><span class="lineNum">     236 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 499362 times"> + </span>]:<span class="lineCov">     499363 :     if (!jl_is_primitivetype(jl_typeof(v)))</span></a>
 <a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">          1 :         jl_error(&quot;bitcast: value not a primitive type&quot;);</span></a>
-<a name="238"><span class="lineNum">     238 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 486669 times"> + </span>]:<span class="lineCov">     486669 :     if (jl_datatype_size(jl_typeof(v)) != jl_datatype_size(ty))</span></a>
+<a name="238"><span class="lineNum">     238 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 499362 times"> + </span>]:<span class="lineCov">     499362 :     if (jl_datatype_size(jl_typeof(v)) != jl_datatype_size(ty))</span></a>
 <a name="239"><span class="lineNum">     239 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;bitcast: argument size does not match size of target type&quot;);</span></a>
-<a name="240"><span class="lineNum">     240 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 486669 times"> + </span>]:<span class="lineCov">     486669 :     if (ty == jl_typeof(v))</span></a>
+<a name="240"><span class="lineNum">     240 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 499362 times"> + </span>]:<span class="lineCov">     499362 :     if (ty == jl_typeof(v))</span></a>
 <a name="241"><span class="lineNum">     241 </span>                :<span class="lineNoCov">          0 :         return v;</span></a>
-<a name="242"><span class="lineNum">     242 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 486669 times"> + </span>]:<span class="lineCov">     486669 :     if (ty == (jl_value_t*)jl_bool_type)</span></a>
+<a name="242"><span class="lineNum">     242 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 499362 times"> + </span>]:<span class="lineCov">     499362 :     if (ty == (jl_value_t*)jl_bool_type)</span></a>
 <a name="243"><span class="lineNum">     243 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :         return *(uint8_t*)jl_data_ptr(v) &amp; 1 ? jl_true : jl_false;</span></a>
-<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">     486669 :     return jl_new_bits(ty, jl_data_ptr(v));</span></a>
+<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">     499362 :     return jl_new_bits(ty, jl_data_ptr(v));</span></a>
 <a name="245"><span class="lineNum">     245 </span>                :            : }</a>
 <a name="246"><span class="lineNum">     246 </span>                :            : </a>
 <a name="247"><span class="lineNum">     247 </span>                :            : // run time version of pointerref intrinsic (warning: i is not rooted)</a>
-<a name="248"><span class="lineNum">     248 </span>                :<span class="lineCov">      59367 : JL_DLLEXPORT jl_value_t *jl_pointerref(jl_value_t *p, jl_value_t *i, jl_value_t *align)</span></a>
+<a name="248"><span class="lineNum">     248 </span>                :<span class="lineCov">      59382 : JL_DLLEXPORT jl_value_t *jl_pointerref(jl_value_t *p, jl_value_t *i, jl_value_t *align)</span></a>
 <a name="249"><span class="lineNum">     249 </span>                :            : {</a>
-<a name="250"><span class="lineNum">     250 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59367 times"> + </span>]:<span class="lineCov">      59367 :     JL_TYPECHK(pointerref, pointer, p);</span></a>
-<a name="251"><span class="lineNum">     251 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59367 times"> + </span>]:<span class="lineCov">      59367 :     JL_TYPECHK(pointerref, long, i)</span></a>
-<a name="252"><span class="lineNum">     252 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59367 times"> + </span>]:<span class="lineCov">      59367 :     JL_TYPECHK(pointerref, long, align);</span></a>
-<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">      59367 :     jl_value_t *ety = jl_tparam0(jl_typeof(p));</span></a>
-<a name="254"><span class="lineNum">     254 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59367 times"> + </span>]:<span class="lineCov">      59367 :     if (ety == (jl_value_t*)jl_any_type) {</span></a>
+<a name="250"><span class="lineNum">     250 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59382 times"> + </span>]:<span class="lineCov">      59382 :     JL_TYPECHK(pointerref, pointer, p);</span></a>
+<a name="251"><span class="lineNum">     251 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59382 times"> + </span>]:<span class="lineCov">      59382 :     JL_TYPECHK(pointerref, long, i)</span></a>
+<a name="252"><span class="lineNum">     252 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59382 times"> + </span>]:<span class="lineCov">      59382 :     JL_TYPECHK(pointerref, long, align);</span></a>
+<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">      59382 :     jl_value_t *ety = jl_tparam0(jl_typeof(p));</span></a>
+<a name="254"><span class="lineNum">     254 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59382 times"> + </span>]:<span class="lineCov">      59382 :     if (ety == (jl_value_t*)jl_any_type) {</span></a>
 <a name="255"><span class="lineNum">     255 </span>                :<span class="lineNoCov">          0 :         jl_value_t **pp = (jl_value_t**)(jl_unbox_long(p) + (jl_unbox_long(i)-1)*sizeof(void*));</span></a>
 <a name="256"><span class="lineNum">     256 </span>                :<span class="lineNoCov">          0 :         return *pp;</span></a>
 <a name="257"><span class="lineNum">     257 </span>                :            :     }</a>
 <a name="258"><span class="lineNum">     258 </span>                :            :     else {</a>
-<a name="259"><span class="lineNum">     259 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59367 times"> + </span>]:<span class="lineCov">      59367 :         if (!is_valid_intrinsic_elptr(ety))</span></a>
+<a name="259"><span class="lineNum">     259 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 59382 times"> + </span>]:<span class="lineCov">      59382 :         if (!is_valid_intrinsic_elptr(ety))</span></a>
 <a name="260"><span class="lineNum">     260 </span>                :<span class="lineNoCov">          0 :             jl_error(&quot;pointerref: invalid pointer&quot;);</span></a>
-<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">      59367 :         size_t nb = LLT_ALIGN(jl_datatype_size(ety), jl_datatype_align(ety));</span></a>
-<a name="262"><span class="lineNum">     262 </span>                :<span class="lineCov">      59367 :         char *pp = (char*)jl_unbox_long(p) + (jl_unbox_long(i)-1)*nb;</span></a>
-<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">      59367 :         return jl_new_bits(ety, pp);</span></a>
+<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">      59382 :         size_t nb = LLT_ALIGN(jl_datatype_size(ety), jl_datatype_align(ety));</span></a>
+<a name="262"><span class="lineNum">     262 </span>                :<span class="lineCov">      59382 :         char *pp = (char*)jl_unbox_long(p) + (jl_unbox_long(i)-1)*nb;</span></a>
+<a name="263"><span class="lineNum">     263 </span>                :<span class="lineCov">      59382 :         return jl_new_bits(ety, pp);</span></a>
 <a name="264"><span class="lineNum">     264 </span>                :            :     }</a>
 <a name="265"><span class="lineNum">     265 </span>                :            : }</a>
 <a name="266"><span class="lineNum">     266 </span>                :            : </a>
@@ -606,17 +606,17 @@
 <a name="528"><span class="lineNum">     528 </span>                :<span class="lineCov">          4 :     return 0;</span></a>
 <a name="529"><span class="lineNum">     529 </span>                :            : }</a>
 <a name="530"><span class="lineNum">     530 </span>                :            : </a>
-<a name="531"><span class="lineNum">     531 </span>                :<span class="lineCov">   32838700 : static inline unsigned select_by_size(unsigned sz) JL_NOTSAFEPOINT</span></a>
+<a name="531"><span class="lineNum">     531 </span>                :<span class="lineCov">   33770200 : static inline unsigned select_by_size(unsigned sz) JL_NOTSAFEPOINT</span></a>
 <a name="532"><span class="lineNum">     532 </span>                :            : {</a>
 <a name="533"><span class="lineNum">     533 </span>                :            :     /* choose the right sized function specialization */</a>
-<a name="534"><span class="lineNum">     534 </span>  [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 3437960 times"> + </span><span class="branchCov" title="Branch 2 was taken 630 times"> + </span><span class="branchCov" title="Branch 3 was taken 741347 times"> + </span> :<span class="lineCov">   32838700 :     switch (sz) {</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 28658100 times"> + </span><span class="branchCov" title="Branch 5 was taken 619 times"> + </span>]
+<a name="534"><span class="lineNum">     534 </span>  [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 3462140 times"> + </span><span class="branchCov" title="Branch 2 was taken 650 times"> + </span><span class="branchCov" title="Branch 3 was taken 773622 times"> + </span> :<span class="lineCov">   33770200 :     switch (sz) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 29533200 times"> + </span><span class="branchCov" title="Branch 5 was taken 603 times"> + </span>]
 <a name="535"><span class="lineNum">     535 </span>                :<span class="lineCov">          3 :     default: return 0;</span></a>
-<a name="536"><span class="lineNum">     536 </span>                :<span class="lineCov">    3437960 :     case  1: return 1;</span></a>
-<a name="537"><span class="lineNum">     537 </span>                :<span class="lineCov">        630 :     case  2: return 2;</span></a>
-<a name="538"><span class="lineNum">     538 </span>                :<span class="lineCov">     741347 :     case  4: return 3;</span></a>
-<a name="539"><span class="lineNum">     539 </span>                :<span class="lineCov">   28658100 :     case  8: return 4;</span></a>
-<a name="540"><span class="lineNum">     540 </span>                :<span class="lineCov">        619 :     case 16: return 5;</span></a>
+<a name="536"><span class="lineNum">     536 </span>                :<span class="lineCov">    3462140 :     case  1: return 1;</span></a>
+<a name="537"><span class="lineNum">     537 </span>                :<span class="lineCov">        650 :     case  2: return 2;</span></a>
+<a name="538"><span class="lineNum">     538 </span>                :<span class="lineCov">     773622 :     case  4: return 3;</span></a>
+<a name="539"><span class="lineNum">     539 </span>                :<span class="lineCov">   29533200 :     case  8: return 4;</span></a>
+<a name="540"><span class="lineNum">     540 </span>                :<span class="lineCov">        603 :     case 16: return 5;</span></a>
 <a name="541"><span class="lineNum">     541 </span>                :            :     }</a>
 <a name="542"><span class="lineNum">     542 </span>                :            : }</a>
 <a name="543"><span class="lineNum">     543 </span>                :            : </a>
@@ -782,7 +782,7 @@
 <a name="703"><span class="lineNum">     703 </span>                :            : // unary operator generator //</a>
 <a name="704"><span class="lineNum">     704 </span>                :            : </a>
 <a name="705"><span class="lineNum">     705 </span>                :            : typedef void (*intrinsic_1_t)(unsigned, void*, void*);</a>
-<a name="706"><span class="lineNum">     706 </span>        [<span class="branchCov" title="Branch 0 was taken 110 times"> + </span><span class="branchCov" title="Branch 1 was taken 2527940 times"> + </span>]:<span class="lineCov">    2528050 : SELECTOR_FUNC(intrinsic_1)</span></a>
+<a name="706"><span class="lineNum">     706 </span>        [<span class="branchCov" title="Branch 0 was taken 108 times"> + </span><span class="branchCov" title="Branch 1 was taken 2529870 times"> + </span>]:<span class="lineCov">    2529980 : SELECTOR_FUNC(intrinsic_1)</span></a>
 <a name="707"><span class="lineNum">     707 </span>                :            : #define un_iintrinsic(name, u) \</a>
 <a name="708"><span class="lineNum">     708 </span>                :            : JL_DLLEXPORT jl_value_t *jl_##name(jl_value_t *a) \</a>
 <a name="709"><span class="lineNum">     709 </span>                :            : { \</a>
@@ -834,22 +834,22 @@
 <a name="755"><span class="lineNum">     755 </span>                :            : uu_iintrinsic(name, u)</a>
 <a name="756"><span class="lineNum">     756 </span>                :            : </a>
 <a name="757"><span class="lineNum">     757 </span>                :            : static inline</a>
-<a name="758"><span class="lineNum">     758 </span>                :<span class="lineCov">    2539380 : jl_value_t *jl_iintrinsic_1(jl_value_t *ty, jl_value_t *a, const char *name,</span></a>
+<a name="758"><span class="lineNum">     758 </span>                :<span class="lineCov">    2541310 : jl_value_t *jl_iintrinsic_1(jl_value_t *ty, jl_value_t *a, const char *name,</span></a>
 <a name="759"><span class="lineNum">     759 </span>                :            :                             char (*getsign)(void*, unsigned),</a>
 <a name="760"><span class="lineNum">     760 </span>                :            :                             jl_value_t *(*lambda1)(jl_value_t*, void*, unsigned, unsigned, const void*), const void *list)</a>
 <a name="761"><span class="lineNum">     761 </span>                :            : {</a>
-<a name="762"><span class="lineNum">     762 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2539380 times"> + </span>]:<span class="lineCov">    2539380 :     if (!jl_is_primitivetype(jl_typeof(a)))</span></a>
+<a name="762"><span class="lineNum">     762 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 2541310 times"> + </span>]:<span class="lineCov">    2541310 :     if (!jl_is_primitivetype(jl_typeof(a)))</span></a>
 <a name="763"><span class="lineNum">     763 </span>                :<span class="lineCov">          2 :         jl_errorf(&quot;%s: value is not a primitive type&quot;, name);</span></a>
-<a name="764"><span class="lineNum">     764 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2539380 times"> + </span>]:<span class="lineCov">    2539380 :     if (!jl_is_primitivetype(ty))</span></a>
+<a name="764"><span class="lineNum">     764 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2541310 times"> + </span>]:<span class="lineCov">    2541310 :     if (!jl_is_primitivetype(ty))</span></a>
 <a name="765"><span class="lineNum">     765 </span>                :<span class="lineNoCov">          0 :         jl_errorf(&quot;%s: type is not a primitive type&quot;, name);</span></a>
-<a name="766"><span class="lineNum">     766 </span>                :<span class="lineCov">    2539380 :     void *pa = jl_data_ptr(a);</span></a>
-<a name="767"><span class="lineNum">     767 </span>                :<span class="lineCov">    2539380 :     unsigned isize = jl_datatype_size(jl_typeof(a));</span></a>
-<a name="768"><span class="lineNum">     768 </span>                :<span class="lineCov">    2539380 :     unsigned isize2 = next_power_of_two(isize);</span></a>
-<a name="769"><span class="lineNum">     769 </span>                :<span class="lineCov">    2539380 :     unsigned osize = jl_datatype_size(ty);</span></a>
-<a name="770"><span class="lineNum">     770 </span>                :<span class="lineCov">    2539380 :     unsigned osize2 = next_power_of_two(osize);</span></a>
-<a name="771"><span class="lineNum">     771 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2539380 times"> + </span>]:<span class="lineCov">    2539380 :     if (isize2 &gt; osize2)</span></a>
+<a name="766"><span class="lineNum">     766 </span>                :<span class="lineCov">    2541310 :     void *pa = jl_data_ptr(a);</span></a>
+<a name="767"><span class="lineNum">     767 </span>                :<span class="lineCov">    2541310 :     unsigned isize = jl_datatype_size(jl_typeof(a));</span></a>
+<a name="768"><span class="lineNum">     768 </span>                :<span class="lineCov">    2541310 :     unsigned isize2 = next_power_of_two(isize);</span></a>
+<a name="769"><span class="lineNum">     769 </span>                :<span class="lineCov">    2541310 :     unsigned osize = jl_datatype_size(ty);</span></a>
+<a name="770"><span class="lineNum">     770 </span>                :<span class="lineCov">    2541310 :     unsigned osize2 = next_power_of_two(osize);</span></a>
+<a name="771"><span class="lineNum">     771 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2541310 times"> + </span>]:<span class="lineCov">    2541310 :     if (isize2 &gt; osize2)</span></a>
 <a name="772"><span class="lineNum">     772 </span>                :<span class="lineNoCov">          0 :         osize2 = isize2;</span></a>
-<a name="773"><span class="lineNum">     773 </span>  [<span class="branchCov" title="Branch 0 was taken 2539380 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 2539380 times"> + </span>]:<span class="lineCov">    2539380 :     if (osize2 &gt; isize || isize2 &gt; isize) {</span></a>
+<a name="773"><span class="lineNum">     773 </span>  [<span class="branchCov" title="Branch 0 was taken 2541310 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 2541310 times"> + </span>]:<span class="lineCov">    2541310 :     if (osize2 &gt; isize || isize2 &gt; isize) {</span></a>
 <a name="774"><span class="lineNum">     774 </span>                :            :         /* if needed, round type up to a real c-type and set/clear the unused bits */</a>
 <a name="775"><span class="lineNum">     775 </span>                :            :         void *pa2;</a>
 <a name="776"><span class="lineNum">     776 </span>                :<span class="lineNoCov">          0 :         pa2 = alloca(osize2);</span></a>
@@ -859,18 +859,18 @@
 <a name="780"><span class="lineNum">     780 </span>                :<span class="lineNoCov">          0 :         memset((char*)pa2 + isize, getsign(pa, isize), osize2 - isize);</span></a>
 <a name="781"><span class="lineNum">     781 </span>                :<span class="lineNoCov">          0 :         pa = pa2;</span></a>
 <a name="782"><span class="lineNum">     782 </span>                :            :     }</a>
-<a name="783"><span class="lineNum">     783 </span>                :<span class="lineCov">    2539380 :     jl_value_t *newv = lambda1(ty, pa, osize, osize2, list);</span></a>
-<a name="784"><span class="lineNum">     784 </span>        [<span class="branchCov" title="Branch 0 was taken 2413590 times"> + </span><span class="branchCov" title="Branch 1 was taken 125790 times"> + </span>]:<span class="lineCov">    2539380 :     if (ty == (jl_value_t*)jl_bool_type)</span></a>
-<a name="785"><span class="lineNum">     785 </span>        [<span class="branchCov" title="Branch 0 was taken 2332060 times"> + </span><span class="branchCov" title="Branch 1 was taken 81530 times"> + </span>]:<span class="lineCov">    2413590 :         return *(uint8_t*)jl_data_ptr(newv) &amp; 1 ? jl_true : jl_false;</span></a>
-<a name="786"><span class="lineNum">     786 </span>                :<span class="lineCov">     125790 :     return newv;</span></a>
+<a name="783"><span class="lineNum">     783 </span>                :<span class="lineCov">    2541310 :     jl_value_t *newv = lambda1(ty, pa, osize, osize2, list);</span></a>
+<a name="784"><span class="lineNum">     784 </span>        [<span class="branchCov" title="Branch 0 was taken 2413490 times"> + </span><span class="branchCov" title="Branch 1 was taken 127817 times"> + </span>]:<span class="lineCov">    2541310 :     if (ty == (jl_value_t*)jl_bool_type)</span></a>
+<a name="785"><span class="lineNum">     785 </span>        [<span class="branchCov" title="Branch 0 was taken 2331980 times"> + </span><span class="branchCov" title="Branch 1 was taken 81513 times"> + </span>]:<span class="lineCov">    2413490 :         return *(uint8_t*)jl_data_ptr(newv) &amp; 1 ? jl_true : jl_false;</span></a>
+<a name="786"><span class="lineNum">     786 </span>                :<span class="lineCov">     127817 :     return newv;</span></a>
 <a name="787"><span class="lineNum">     787 </span>                :            : }</a>
 <a name="788"><span class="lineNum">     788 </span>                :            : </a>
-<a name="789"><span class="lineNum">     789 </span>                :<span class="lineCov">    2528050 : static inline jl_value_t *jl_intrinsiclambda_ty1(jl_value_t *ty, void *pa, unsigned osize, unsigned osize2, const void *voidlist)</span></a>
+<a name="789"><span class="lineNum">     789 </span>                :<span class="lineCov">    2529980 : static inline jl_value_t *jl_intrinsiclambda_ty1(jl_value_t *ty, void *pa, unsigned osize, unsigned osize2, const void *voidlist)</span></a>
 <a name="790"><span class="lineNum">     790 </span>                :            : {</a>
-<a name="791"><span class="lineNum">     791 </span>                :<span class="lineCov">    2528050 :     intrinsic_1_t op = select_intrinsic_1(osize2, (const intrinsic_1_t*)voidlist);</span></a>
-<a name="792"><span class="lineNum">     792 </span>                :<span class="lineCov">    2528050 :     void *pr = alloca(osize2);</span></a>
-<a name="793"><span class="lineNum">     793 </span>                :<span class="lineCov">    2528050 :     op(osize * host_char_bit, pa, pr);</span></a>
-<a name="794"><span class="lineNum">     794 </span>                :<span class="lineCov">    2528050 :     return jl_new_bits(ty, pr);</span></a>
+<a name="791"><span class="lineNum">     791 </span>                :<span class="lineCov">    2529980 :     intrinsic_1_t op = select_intrinsic_1(osize2, (const intrinsic_1_t*)voidlist);</span></a>
+<a name="792"><span class="lineNum">     792 </span>                :<span class="lineCov">    2529980 :     void *pr = alloca(osize2);</span></a>
+<a name="793"><span class="lineNum">     793 </span>                :<span class="lineCov">    2529980 :     op(osize * host_char_bit, pa, pr);</span></a>
+<a name="794"><span class="lineNum">     794 </span>                :<span class="lineCov">    2529980 :     return jl_new_bits(ty, pr);</span></a>
 <a name="795"><span class="lineNum">     795 </span>                :            : }</a>
 <a name="796"><span class="lineNum">     796 </span>                :            : </a>
 <a name="797"><span class="lineNum">     797 </span>                :<span class="lineCov">      11330 : static inline jl_value_t *jl_intrinsiclambda_u1(jl_value_t *ty, void *pa, unsigned osize, unsigned osize2, const void *voidlist)</span></a>
@@ -900,21 +900,21 @@
 <a name="821"><span class="lineNum">     821 </span>                :            :     return jl_intrinsic_cvt(ty, a, #name, LLVMOP); \</a>
 <a name="822"><span class="lineNum">     822 </span>                :            : }</a>
 <a name="823"><span class="lineNum">     823 </span>                :            : </a>
-<a name="824"><span class="lineNum">     824 </span>                :<span class="lineCov">     123198 : static inline jl_value_t *jl_intrinsic_cvt(jl_value_t *ty, jl_value_t *a, const char *name, intrinsic_cvt_t op)</span></a>
+<a name="824"><span class="lineNum">     824 </span>                :<span class="lineCov">     136624 : static inline jl_value_t *jl_intrinsic_cvt(jl_value_t *ty, jl_value_t *a, const char *name, intrinsic_cvt_t op)</span></a>
 <a name="825"><span class="lineNum">     825 </span>                :            : {</a>
-<a name="826"><span class="lineNum">     826 </span>                :<span class="lineCov">     123198 :     jl_value_t *aty = jl_typeof(a);</span></a>
-<a name="827"><span class="lineNum">     827 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 123197 times"> + </span>]:<span class="lineCov">     123198 :     if (!jl_is_primitivetype(aty))</span></a>
+<a name="826"><span class="lineNum">     826 </span>                :<span class="lineCov">     136624 :     jl_value_t *aty = jl_typeof(a);</span></a>
+<a name="827"><span class="lineNum">     827 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 136623 times"> + </span>]:<span class="lineCov">     136624 :     if (!jl_is_primitivetype(aty))</span></a>
 <a name="828"><span class="lineNum">     828 </span>                :<span class="lineCov">          1 :         jl_errorf(&quot;%s: value is not a primitive type&quot;, name);</span></a>
-<a name="829"><span class="lineNum">     829 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 123197 times"> + </span>]:<span class="lineCov">     123197 :     if (!jl_is_primitivetype(ty))</span></a>
+<a name="829"><span class="lineNum">     829 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 136623 times"> + </span>]:<span class="lineCov">     136623 :     if (!jl_is_primitivetype(ty))</span></a>
 <a name="830"><span class="lineNum">     830 </span>                :<span class="lineNoCov">          0 :         jl_errorf(&quot;%s: type is not a primitive type&quot;, name);</span></a>
-<a name="831"><span class="lineNum">     831 </span>                :<span class="lineCov">     123197 :     void *pa = jl_data_ptr(a);</span></a>
-<a name="832"><span class="lineNum">     832 </span>                :<span class="lineCov">     123197 :     unsigned isize = jl_datatype_size(aty);</span></a>
-<a name="833"><span class="lineNum">     833 </span>                :<span class="lineCov">     123197 :     unsigned osize = jl_datatype_size(ty);</span></a>
-<a name="834"><span class="lineNum">     834 </span>                :<span class="lineCov">     123197 :     void *pr = alloca(osize);</span></a>
-<a name="835"><span class="lineNum">     835 </span>                :<span class="lineCov">     123197 :     unsigned isize_bits = isize * host_char_bit;</span></a>
-<a name="836"><span class="lineNum">     836 </span>                :<span class="lineCov">     123197 :     unsigned osize_bits = osize * host_char_bit;</span></a>
-<a name="837"><span class="lineNum">     837 </span>                :<span class="lineCov">     123197 :     op(isize_bits, pa, osize_bits, pr);</span></a>
-<a name="838"><span class="lineNum">     838 </span>                :<span class="lineCov">     123191 :     return jl_new_bits(ty, pr);</span></a>
+<a name="831"><span class="lineNum">     831 </span>                :<span class="lineCov">     136623 :     void *pa = jl_data_ptr(a);</span></a>
+<a name="832"><span class="lineNum">     832 </span>                :<span class="lineCov">     136623 :     unsigned isize = jl_datatype_size(aty);</span></a>
+<a name="833"><span class="lineNum">     833 </span>                :<span class="lineCov">     136623 :     unsigned osize = jl_datatype_size(ty);</span></a>
+<a name="834"><span class="lineNum">     834 </span>                :<span class="lineCov">     136623 :     void *pr = alloca(osize);</span></a>
+<a name="835"><span class="lineNum">     835 </span>                :<span class="lineCov">     136623 :     unsigned isize_bits = isize * host_char_bit;</span></a>
+<a name="836"><span class="lineNum">     836 </span>                :<span class="lineCov">     136623 :     unsigned osize_bits = osize * host_char_bit;</span></a>
+<a name="837"><span class="lineNum">     837 </span>                :<span class="lineCov">     136623 :     op(isize_bits, pa, osize_bits, pr);</span></a>
+<a name="838"><span class="lineNum">     838 </span>                :<span class="lineCov">     136617 :     return jl_new_bits(ty, pr);</span></a>
 <a name="839"><span class="lineNum">     839 </span>                :            : }</a>
 <a name="840"><span class="lineNum">     840 </span>                :            : </a>
 <a name="841"><span class="lineNum">     841 </span>                :            : // floating point</a>
@@ -970,7 +970,7 @@
 <a name="891"><span class="lineNum">     891 </span>                :            : // integer</a>
 <a name="892"><span class="lineNum">     892 </span>                :            : </a>
 <a name="893"><span class="lineNum">     893 </span>                :            : typedef void (*intrinsic_2_t)(unsigned, void*, void*, void*);</a>
-<a name="894"><span class="lineNum">     894 </span>        [<span class="branchCov" title="Branch 0 was taken 509 times"> + </span><span class="branchCov" title="Branch 1 was taken 24780900 times"> + </span>]:<span class="lineCov">   24781400 : SELECTOR_FUNC(intrinsic_2)</span></a>
+<a name="894"><span class="lineNum">     894 </span>        [<span class="branchCov" title="Branch 0 was taken 495 times"> + </span><span class="branchCov" title="Branch 1 was taken 25564800 times"> + </span>]:<span class="lineCov">   25565300 : SELECTOR_FUNC(intrinsic_2)</span></a>
 <a name="895"><span class="lineNum">     895 </span>                :            : #define bi_iintrinsic(name, u, cvtb) \</a>
 <a name="896"><span class="lineNum">     896 </span>                :            : JL_DLLEXPORT jl_value_t *jl_##name(jl_value_t *a, jl_value_t *b) \</a>
 <a name="897"><span class="lineNum">     897 </span>                :            : { \</a>
@@ -993,7 +993,7 @@
 <a name="914"><span class="lineNum">     914 </span>                :            :     bi_iintrinsic_cnvtb_fast(LLVMOP, OP, name, u, 0)</a>
 <a name="915"><span class="lineNum">     915 </span>                :            : </a>
 <a name="916"><span class="lineNum">     916 </span>                :            : typedef int (*intrinsic_cmp_t)(unsigned, void*, void*);</a>
-<a name="917"><span class="lineNum">     917 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 5515590 times"> + </span>]:<span class="lineCov">    5515590 : SELECTOR_FUNC(intrinsic_cmp)</span></a>
+<a name="917"><span class="lineNum">     917 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 5661240 times"> + </span>]:<span class="lineCov">    5661240 : SELECTOR_FUNC(intrinsic_cmp)</span></a>
 <a name="918"><span class="lineNum">     918 </span>                :            : #define cmp_iintrinsic(name, u) \</a>
 <a name="919"><span class="lineNum">     919 </span>                :            : JL_DLLEXPORT jl_value_t *jl_##name(jl_value_t *a, jl_value_t *b) \</a>
 <a name="920"><span class="lineNum">     920 </span>                :            : { \</a>
@@ -1014,7 +1014,7 @@
 <a name="935"><span class="lineNum">     935 </span>                :            : cmp_iintrinsic(name, u)</a>
 <a name="936"><span class="lineNum">     936 </span>                :            : </a>
 <a name="937"><span class="lineNum">     937 </span>                :            : typedef int (*intrinsic_checked_t)(unsigned, void*, void*, void*) JL_NOTSAFEPOINT;</a>
-<a name="938"><span class="lineNum">     938 </span>        [<span class="branchCov" title="Branch 0 was taken 2325 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       2325 : SELECTOR_FUNC(intrinsic_checked)</span></a>
+<a name="938"><span class="lineNum">     938 </span>        [<span class="branchCov" title="Branch 0 was taken 2337 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">       2337 : SELECTOR_FUNC(intrinsic_checked)</span></a>
 <a name="939"><span class="lineNum">     939 </span>                :            : #define checked_iintrinsic(name, u, lambda_checked) \</a>
 <a name="940"><span class="lineNum">     940 </span>                :            : JL_DLLEXPORT jl_value_t *jl_##name(jl_value_t *a, jl_value_t *b) \</a>
 <a name="941"><span class="lineNum">     941 </span>                :            : { \</a>
@@ -1045,33 +1045,33 @@
 <a name="966"><span class="lineNum">     966 </span>                :            : checked_iintrinsic(name, u, jl_intrinsiclambda_checkeddiv)</a>
 <a name="967"><span class="lineNum">     967 </span>                :            : </a>
 <a name="968"><span class="lineNum">     968 </span>                :            : static inline</a>
-<a name="969"><span class="lineNum">     969 </span>                :<span class="lineCov">   30299300 : jl_value_t *jl_iintrinsic_2(jl_value_t *a, jl_value_t *b, const char *name,</span></a>
+<a name="969"><span class="lineNum">     969 </span>                :<span class="lineCov">   31228900 : jl_value_t *jl_iintrinsic_2(jl_value_t *a, jl_value_t *b, const char *name,</span></a>
 <a name="970"><span class="lineNum">     970 </span>                :            :                             char (*getsign)(void*, unsigned),</a>
 <a name="971"><span class="lineNum">     971 </span>                :            :                             jl_value_t *(*lambda2)(jl_value_t*, void*, void*, unsigned, unsigned, const void*),</a>
 <a name="972"><span class="lineNum">     972 </span>                :            :                             const void *list, int cvtb)</a>
 <a name="973"><span class="lineNum">     973 </span>                :            : {</a>
-<a name="974"><span class="lineNum">     974 </span>                :<span class="lineCov">   30299300 :     jl_value_t *ty = jl_typeof(a);</span></a>
-<a name="975"><span class="lineNum">     975 </span>                :<span class="lineCov">   30299300 :     jl_value_t *tyb = jl_typeof(b);</span></a>
-<a name="976"><span class="lineNum">     976 </span>        [<span class="branchCov" title="Branch 0 was taken 431546 times"> + </span><span class="branchCov" title="Branch 1 was taken 29867800 times"> + </span>]:<span class="lineCov">   30299300 :     if (tyb != ty) {</span></a>
-<a name="977"><span class="lineNum">     977 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 431542 times"> + </span>]:<span class="lineCov">     431546 :         if (!cvtb)</span></a>
+<a name="974"><span class="lineNum">     974 </span>                :<span class="lineCov">   31228900 :     jl_value_t *ty = jl_typeof(a);</span></a>
+<a name="975"><span class="lineNum">     975 </span>                :<span class="lineCov">   31228900 :     jl_value_t *tyb = jl_typeof(b);</span></a>
+<a name="976"><span class="lineNum">     976 </span>        [<span class="branchCov" title="Branch 0 was taken 446010 times"> + </span><span class="branchCov" title="Branch 1 was taken 30782900 times"> + </span>]:<span class="lineCov">   31228900 :     if (tyb != ty) {</span></a>
+<a name="977"><span class="lineNum">     977 </span>        [<span class="branchCov" title="Branch 0 was taken 4 times"> + </span><span class="branchCov" title="Branch 1 was taken 446006 times"> + </span>]:<span class="lineCov">     446010 :         if (!cvtb)</span></a>
 <a name="978"><span class="lineNum">     978 </span>                :<span class="lineCov">          4 :             jl_errorf(&quot;%s: types of a and b must match&quot;, name);</span></a>
-<a name="979"><span class="lineNum">     979 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 431542 times"> + </span>]:<span class="lineCov">     431542 :         if (!jl_is_primitivetype(tyb))</span></a>
+<a name="979"><span class="lineNum">     979 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 446006 times"> + </span>]:<span class="lineCov">     446006 :         if (!jl_is_primitivetype(tyb))</span></a>
 <a name="980"><span class="lineNum">     980 </span>                :<span class="lineNoCov">          0 :             jl_errorf(&quot;%s: b is not a primitive type&quot;, name);</span></a>
 <a name="981"><span class="lineNum">     981 </span>                :            :     }</a>
-<a name="982"><span class="lineNum">     982 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 30299300 times"> + </span>]:<span class="lineCov">   30299300 :     if (!jl_is_primitivetype(ty))</span></a>
+<a name="982"><span class="lineNum">     982 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 31228900 times"> + </span>]:<span class="lineCov">   31228900 :     if (!jl_is_primitivetype(ty))</span></a>
 <a name="983"><span class="lineNum">     983 </span>                :<span class="lineNoCov">          0 :         jl_errorf(&quot;%s: a is not a primitive type&quot;, name);</span></a>
-<a name="984"><span class="lineNum">     984 </span>                :<span class="lineCov">   30299300 :     void *pa = jl_data_ptr(a), *pb = jl_data_ptr(b);</span></a>
-<a name="985"><span class="lineNum">     985 </span>                :<span class="lineCov">   30299300 :     unsigned sz = jl_datatype_size(ty);</span></a>
-<a name="986"><span class="lineNum">     986 </span>                :<span class="lineCov">   30299300 :     unsigned sz2 = next_power_of_two(sz);</span></a>
-<a name="987"><span class="lineNum">     987 </span>        [<span class="branchCov" title="Branch 0 was taken 513645 times"> + </span><span class="branchCov" title="Branch 1 was taken 29785700 times"> + </span>]:<span class="lineCov">   30299300 :     unsigned szb = cvtb ? jl_datatype_size(tyb) : sz;</span></a>
-<a name="988"><span class="lineNum">     988 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 30299300 times"> + </span>]:<span class="lineCov">   30299300 :     if (sz2 &gt; sz) {</span></a>
+<a name="984"><span class="lineNum">     984 </span>                :<span class="lineCov">   31228900 :     void *pa = jl_data_ptr(a), *pb = jl_data_ptr(b);</span></a>
+<a name="985"><span class="lineNum">     985 </span>                :<span class="lineCov">   31228900 :     unsigned sz = jl_datatype_size(ty);</span></a>
+<a name="986"><span class="lineNum">     986 </span>                :<span class="lineCov">   31228900 :     unsigned sz2 = next_power_of_two(sz);</span></a>
+<a name="987"><span class="lineNum">     987 </span>        [<span class="branchCov" title="Branch 0 was taken 528109 times"> + </span><span class="branchCov" title="Branch 1 was taken 30700800 times"> + </span>]:<span class="lineCov">   31228900 :     unsigned szb = cvtb ? jl_datatype_size(tyb) : sz;</span></a>
+<a name="988"><span class="lineNum">     988 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 31228900 times"> + </span>]:<span class="lineCov">   31228900 :     if (sz2 &gt; sz) {</span></a>
 <a name="989"><span class="lineNum">     989 </span>                :            :         /* round type up to the appropriate c-type and set/clear the unused bits */</a>
 <a name="990"><span class="lineNum">     990 </span>                :<span class="lineCov">          2 :         void *pa2 = alloca(sz2);</span></a>
 <a name="991"><span class="lineNum">     991 </span>                :<span class="lineCov">          2 :         memcpy(pa2, pa, sz);</span></a>
 <a name="992"><span class="lineNum">     992 </span>                :<span class="lineCov">          2 :         memset((char*)pa2 + sz, getsign(pa, sz), sz2 - sz);</span></a>
 <a name="993"><span class="lineNum">     993 </span>                :<span class="lineCov">          2 :         pa = pa2;</span></a>
 <a name="994"><span class="lineNum">     994 </span>                :            :     }</a>
-<a name="995"><span class="lineNum">     995 </span>        [<span class="branchCov" title="Branch 0 was taken 38635 times"> + </span><span class="branchCov" title="Branch 1 was taken 30260700 times"> + </span>]:<span class="lineCov">   30299300 :     if (sz2 &gt; szb) {</span></a>
+<a name="995"><span class="lineNum">     995 </span>        [<span class="branchCov" title="Branch 0 was taken 38635 times"> + </span><span class="branchCov" title="Branch 1 was taken 31190300 times"> + </span>]:<span class="lineCov">   31228900 :     if (sz2 &gt; szb) {</span></a>
 <a name="996"><span class="lineNum">     996 </span>                :            :         /* round type up to the appropriate c-type and set/clear/truncate the unused bits</a>
 <a name="997"><span class="lineNum">     997 </span>                :            :          * (zero-extend if cvtb is set, since in that case b is unsigned while the sign of a comes from the op)</a>
 <a name="998"><span class="lineNum">     998 </span>                :            :          */</a>
@@ -1080,50 +1080,50 @@
 <a name="1001"><span class="lineNum">    1001 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 38633 times"> + </span>]:<span class="lineCov">      38635 :         memset((char*)pb2 + szb, cvtb ? 0 : getsign(pb, szb), sz2 - szb);</span></a>
 <a name="1002"><span class="lineNum">    1002 </span>                :<span class="lineCov">      38635 :         pb = pb2;</span></a>
 <a name="1003"><span class="lineNum">    1003 </span>                :            :     }</a>
-<a name="1004"><span class="lineNum">    1004 </span>                :<span class="lineCov">   30299300 :     jl_value_t *newv = lambda2(ty, pa, pb, sz, sz2, list);</span></a>
-<a name="1005"><span class="lineNum">    1005 </span>                :<span class="lineCov">   30299300 :     return newv;</span></a>
+<a name="1004"><span class="lineNum">    1004 </span>                :<span class="lineCov">   31228900 :     jl_value_t *newv = lambda2(ty, pa, pb, sz, sz2, list);</span></a>
+<a name="1005"><span class="lineNum">    1005 </span>                :<span class="lineCov">   31228900 :     return newv;</span></a>
 <a name="1006"><span class="lineNum">    1006 </span>                :            : }</a>
 <a name="1007"><span class="lineNum">    1007 </span>                :            : </a>
-<a name="1008"><span class="lineNum">    1008 </span>                :<span class="lineCov">   24781400 : static inline jl_value_t *jl_intrinsiclambda_2(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
+<a name="1008"><span class="lineNum">    1008 </span>                :<span class="lineCov">   25565300 : static inline jl_value_t *jl_intrinsiclambda_2(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
 <a name="1009"><span class="lineNum">    1009 </span>                :            : {</a>
-<a name="1010"><span class="lineNum">    1010 </span>                :<span class="lineCov">   24781400 :     void *pr = alloca(sz2);</span></a>
-<a name="1011"><span class="lineNum">    1011 </span>                :<span class="lineCov">   24781400 :     intrinsic_2_t op = select_intrinsic_2(sz2, (const intrinsic_2_t*)voidlist);</span></a>
-<a name="1012"><span class="lineNum">    1012 </span>                :<span class="lineCov">   24781400 :     op(sz * host_char_bit, pa, pb, pr);</span></a>
-<a name="1013"><span class="lineNum">    1013 </span>                :<span class="lineCov">   24781400 :     return jl_new_bits(ty, pr);</span></a>
+<a name="1010"><span class="lineNum">    1010 </span>                :<span class="lineCov">   25565300 :     void *pr = alloca(sz2);</span></a>
+<a name="1011"><span class="lineNum">    1011 </span>                :<span class="lineCov">   25565300 :     intrinsic_2_t op = select_intrinsic_2(sz2, (const intrinsic_2_t*)voidlist);</span></a>
+<a name="1012"><span class="lineNum">    1012 </span>                :<span class="lineCov">   25565300 :     op(sz * host_char_bit, pa, pb, pr);</span></a>
+<a name="1013"><span class="lineNum">    1013 </span>                :<span class="lineCov">   25565300 :     return jl_new_bits(ty, pr);</span></a>
 <a name="1014"><span class="lineNum">    1014 </span>                :            : }</a>
 <a name="1015"><span class="lineNum">    1015 </span>                :            : </a>
-<a name="1016"><span class="lineNum">    1016 </span>                :<span class="lineCov">    5515590 : static inline jl_value_t *jl_intrinsiclambda_cmp(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
+<a name="1016"><span class="lineNum">    1016 </span>                :<span class="lineCov">    5661240 : static inline jl_value_t *jl_intrinsiclambda_cmp(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
 <a name="1017"><span class="lineNum">    1017 </span>                :            : {</a>
-<a name="1018"><span class="lineNum">    1018 </span>                :<span class="lineCov">    5515590 :     intrinsic_cmp_t op = select_intrinsic_cmp(sz2, (const intrinsic_cmp_t*)voidlist);</span></a>
-<a name="1019"><span class="lineNum">    1019 </span>                :<span class="lineCov">    5515590 :     int cmp = op(sz * host_char_bit, pa, pb);</span></a>
-<a name="1020"><span class="lineNum">    1020 </span>        [<span class="branchCov" title="Branch 0 was taken 3335650 times"> + </span><span class="branchCov" title="Branch 1 was taken 2179940 times"> + </span>]:<span class="lineCov">    5515590 :     return cmp ? jl_true : jl_false;</span></a>
+<a name="1018"><span class="lineNum">    1018 </span>                :<span class="lineCov">    5661240 :     intrinsic_cmp_t op = select_intrinsic_cmp(sz2, (const intrinsic_cmp_t*)voidlist);</span></a>
+<a name="1019"><span class="lineNum">    1019 </span>                :<span class="lineCov">    5661240 :     int cmp = op(sz * host_char_bit, pa, pb);</span></a>
+<a name="1020"><span class="lineNum">    1020 </span>        [<span class="branchCov" title="Branch 0 was taken 3415520 times"> + </span><span class="branchCov" title="Branch 1 was taken 2245720 times"> + </span>]:<span class="lineCov">    5661240 :     return cmp ? jl_true : jl_false;</span></a>
 <a name="1021"><span class="lineNum">    1021 </span>                :            : }</a>
 <a name="1022"><span class="lineNum">    1022 </span>                :            : </a>
-<a name="1023"><span class="lineNum">    1023 </span>                :<span class="lineCov">        459 : static inline jl_value_t *jl_intrinsiclambda_checked(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
+<a name="1023"><span class="lineNum">    1023 </span>                :<span class="lineCov">        461 : static inline jl_value_t *jl_intrinsiclambda_checked(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
 <a name="1024"><span class="lineNum">    1024 </span>                :            : {</a>
 <a name="1025"><span class="lineNum">    1025 </span>                :            :     jl_value_t *params[2];</a>
-<a name="1026"><span class="lineNum">    1026 </span>                :<span class="lineCov">        459 :     params[0] = ty;</span></a>
-<a name="1027"><span class="lineNum">    1027 </span>                :<span class="lineCov">        459 :     params[1] = (jl_value_t*)jl_bool_type;</span></a>
-<a name="1028"><span class="lineNum">    1028 </span>                :<span class="lineCov">        459 :     jl_datatype_t *tuptyp = jl_apply_tuple_type_v(params, 2);</span></a>
+<a name="1026"><span class="lineNum">    1026 </span>                :<span class="lineCov">        461 :     params[0] = ty;</span></a>
+<a name="1027"><span class="lineNum">    1027 </span>                :<span class="lineCov">        461 :     params[1] = (jl_value_t*)jl_bool_type;</span></a>
+<a name="1028"><span class="lineNum">    1028 </span>                :<span class="lineCov">        461 :     jl_datatype_t *tuptyp = jl_apply_tuple_type_v(params, 2);</span></a>
 <a name="1029"><span class="lineNum">    1029 </span>                :            :     JL_GC_PROMISE_ROOTED(tuptyp); // (JL_ALWAYS_LEAFTYPE)</a>
-<a name="1030"><span class="lineNum">    1030 </span>                :<span class="lineCov">        459 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="1031"><span class="lineNum">    1031 </span>                :<span class="lineCov">        459 :     jl_value_t *newv = jl_gc_alloc(ct-&gt;ptls, ((jl_datatype_t*)tuptyp)-&gt;size, tuptyp);</span></a>
+<a name="1030"><span class="lineNum">    1030 </span>                :<span class="lineCov">        461 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="1031"><span class="lineNum">    1031 </span>                :<span class="lineCov">        461 :     jl_value_t *newv = jl_gc_alloc(ct-&gt;ptls, ((jl_datatype_t*)tuptyp)-&gt;size, tuptyp);</span></a>
 <a name="1032"><span class="lineNum">    1032 </span>                :            : </a>
-<a name="1033"><span class="lineNum">    1033 </span>                :<span class="lineCov">        459 :     intrinsic_checked_t op = select_intrinsic_checked(sz2, (const intrinsic_checked_t*)voidlist);</span></a>
-<a name="1034"><span class="lineNum">    1034 </span>                :<span class="lineCov">        459 :     int ovflw = op(sz * host_char_bit, pa, pb, jl_data_ptr(newv));</span></a>
+<a name="1033"><span class="lineNum">    1033 </span>                :<span class="lineCov">        461 :     intrinsic_checked_t op = select_intrinsic_checked(sz2, (const intrinsic_checked_t*)voidlist);</span></a>
+<a name="1034"><span class="lineNum">    1034 </span>                :<span class="lineCov">        461 :     int ovflw = op(sz * host_char_bit, pa, pb, jl_data_ptr(newv));</span></a>
 <a name="1035"><span class="lineNum">    1035 </span>                :            : </a>
-<a name="1036"><span class="lineNum">    1036 </span>                :<span class="lineCov">        459 :     char *ao = (char*)jl_data_ptr(newv) + sz;</span></a>
-<a name="1037"><span class="lineNum">    1037 </span>                :<span class="lineCov">        459 :     *ao = (char)ovflw;</span></a>
-<a name="1038"><span class="lineNum">    1038 </span>                :<span class="lineCov">        459 :     return newv;</span></a>
+<a name="1036"><span class="lineNum">    1036 </span>                :<span class="lineCov">        461 :     char *ao = (char*)jl_data_ptr(newv) + sz;</span></a>
+<a name="1037"><span class="lineNum">    1037 </span>                :<span class="lineCov">        461 :     *ao = (char)ovflw;</span></a>
+<a name="1038"><span class="lineNum">    1038 </span>                :<span class="lineCov">        461 :     return newv;</span></a>
 <a name="1039"><span class="lineNum">    1039 </span>                :            : }</a>
-<a name="1040"><span class="lineNum">    1040 </span>                :<span class="lineCov">       1866 : static inline jl_value_t *jl_intrinsiclambda_checkeddiv(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
+<a name="1040"><span class="lineNum">    1040 </span>                :<span class="lineCov">       1876 : static inline jl_value_t *jl_intrinsiclambda_checkeddiv(jl_value_t *ty, void *pa, void *pb, unsigned sz, unsigned sz2, const void *voidlist)</span></a>
 <a name="1041"><span class="lineNum">    1041 </span>                :            : {</a>
-<a name="1042"><span class="lineNum">    1042 </span>                :<span class="lineCov">       1866 :     void *pr = alloca(sz2);</span></a>
-<a name="1043"><span class="lineNum">    1043 </span>                :<span class="lineCov">       1866 :     intrinsic_checked_t op = select_intrinsic_checked(sz2, (const intrinsic_checked_t*)voidlist);</span></a>
-<a name="1044"><span class="lineNum">    1044 </span>                :<span class="lineCov">       1866 :     int ovflw = op(sz * host_char_bit, pa, pb, pr);</span></a>
-<a name="1045"><span class="lineNum">    1045 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1866 times"> + </span>]:<span class="lineCov">       1866 :     if (ovflw)</span></a>
+<a name="1042"><span class="lineNum">    1042 </span>                :<span class="lineCov">       1876 :     void *pr = alloca(sz2);</span></a>
+<a name="1043"><span class="lineNum">    1043 </span>                :<span class="lineCov">       1876 :     intrinsic_checked_t op = select_intrinsic_checked(sz2, (const intrinsic_checked_t*)voidlist);</span></a>
+<a name="1044"><span class="lineNum">    1044 </span>                :<span class="lineCov">       1876 :     int ovflw = op(sz * host_char_bit, pa, pb, pr);</span></a>
+<a name="1045"><span class="lineNum">    1045 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1876 times"> + </span>]:<span class="lineCov">       1876 :     if (ovflw)</span></a>
 <a name="1046"><span class="lineNum">    1046 </span>                :<span class="lineNoCov">          0 :         jl_throw(jl_diverror_exception);</span></a>
-<a name="1047"><span class="lineNum">    1047 </span>                :<span class="lineCov">       1866 :     return jl_new_bits(ty, pr);</span></a>
+<a name="1047"><span class="lineNum">    1047 </span>                :<span class="lineCov">       1876 :     return jl_new_bits(ty, pr);</span></a>
 <a name="1048"><span class="lineNum">    1048 </span>                :            : }</a>
 <a name="1049"><span class="lineNum">    1049 </span>                :            : </a>
 <a name="1050"><span class="lineNum">    1050 </span>                :            : // floating point</a>
@@ -1228,13 +1228,13 @@
 <a name="1149"><span class="lineNum">    1149 </span>                :            : #define neg_float(pr, a) *pr = -a</a>
 <a name="1150"><span class="lineNum">    1150 </span>                :<span class="lineCov">      33858 : un_iintrinsic_fast(LLVMNeg, neg, neg_int, u)</span></a>
 <a name="1151"><span class="lineNum">    1151 </span>                :            : #define add(a,b) a + b</a>
-<a name="1152"><span class="lineNum">    1152 </span>                :<span class="lineCov">   40908951 : bi_iintrinsic_fast(LLVMAdd, add, add_int, u)</span></a>
-<a name="1153"><span class="lineNum">    1153 </span>                :<span class="lineCov">     107394 : bi_iintrinsic_fast(LLVMAdd, add, add_ptr, u)</span></a>
+<a name="1152"><span class="lineNum">    1152 </span>                :<span class="lineCov">   42198026 : bi_iintrinsic_fast(LLVMAdd, add, add_int, u)</span></a>
+<a name="1153"><span class="lineNum">    1153 </span>                :<span class="lineCov">     112898 : bi_iintrinsic_fast(LLVMAdd, add, add_ptr, u)</span></a>
 <a name="1154"><span class="lineNum">    1154 </span>                :            : #define sub(a,b) a - b</a>
-<a name="1155"><span class="lineNum">    1155 </span>                :<span class="lineCov">    4608200 : bi_iintrinsic_fast(LLVMSub, sub, sub_int, u)</span></a>
+<a name="1155"><span class="lineNum">    1155 </span>                :<span class="lineCov">    4772960 : bi_iintrinsic_fast(LLVMSub, sub, sub_int, u)</span></a>
 <a name="1156"><span class="lineNum">    1156 </span>                :<span class="lineNoCov">          0 : bi_iintrinsic_fast(LLVMSub, sub, sub_ptr, u)</span></a>
 <a name="1157"><span class="lineNum">    1157 </span>                :            : #define mul(a,b) a * b</a>
-<a name="1158"><span class="lineNum">    1158 </span>                :<span class="lineCov">     420130 : bi_iintrinsic_fast(LLVMMul, mul, mul_int, u)</span></a>
+<a name="1158"><span class="lineNum">    1158 </span>                :<span class="lineCov">     438104 : bi_iintrinsic_fast(LLVMMul, mul, mul_int, u)</span></a>
 <a name="1159"><span class="lineNum">    1159 </span>                :            : #define div(a,b) a / b</a>
 <a name="1160"><span class="lineNum">    1160 </span>                :<span class="lineNoCov">          0 : bi_iintrinsic_fast(LLVMSDiv, div, sdiv_int,  )</span></a>
 <a name="1161"><span class="lineNum">    1161 </span>                :<span class="lineNoCov">          0 : bi_iintrinsic_fast(LLVMUDiv, div, udiv_int, u)</span></a>
@@ -1375,15 +1375,15 @@
 <a name="1287"><span class="lineNum">    1287 </span>                :            : </a>
 <a name="1288"><span class="lineNum">    1288 </span>                :            : // same-type comparisons</a>
 <a name="1289"><span class="lineNum">    1289 </span>                :            : #define eq(a,b) a == b</a>
-<a name="1290"><span class="lineNum">    1290 </span>                :<span class="lineCov">     139000 : bool_iintrinsic_fast(LLVMICmpEQ, eq, eq_int, u)</span></a>
+<a name="1290"><span class="lineNum">    1290 </span>                :<span class="lineCov">     152426 : bool_iintrinsic_fast(LLVMICmpEQ, eq, eq_int, u)</span></a>
 <a name="1291"><span class="lineNum">    1291 </span>                :            : #define ne(a,b) a != b</a>
 <a name="1292"><span class="lineNum">    1292 </span>                :<span class="lineNoCov">          0 : bool_iintrinsic_fast(LLVMICmpNE, ne, ne_int, u)</span></a>
 <a name="1293"><span class="lineNum">    1293 </span>                :            : #define lt(a,b) a &lt; b</a>
-<a name="1294"><span class="lineNum">    1294 </span>                :<span class="lineCov">    4962860 : bool_iintrinsic_fast(LLVMICmpSLT, lt, slt_int,  )</span></a>
-<a name="1295"><span class="lineNum">    1295 </span>                :<span class="lineCov">     869570 : bool_iintrinsic_fast(LLVMICmpULT, lt, ult_int, u)</span></a>
+<a name="1294"><span class="lineNum">    1294 </span>                :<span class="lineCov">    5118540 : bool_iintrinsic_fast(LLVMICmpSLT, lt, slt_int,  )</span></a>
+<a name="1295"><span class="lineNum">    1295 </span>                :<span class="lineCov">     878076 : bool_iintrinsic_fast(LLVMICmpULT, lt, ult_int, u)</span></a>
 <a name="1296"><span class="lineNum">    1296 </span>                :            : #define le(a,b) a &lt;= b</a>
-<a name="1297"><span class="lineNum">    1297 </span>                :<span class="lineCov">    4655120 : bool_iintrinsic_fast(LLVMICmpSLE, le, sle_int,  )</span></a>
-<a name="1298"><span class="lineNum">    1298 </span>                :<span class="lineCov">     404624 : bool_iintrinsic_fast(LLVMICmpULE, le, ule_int, u)</span></a>
+<a name="1297"><span class="lineNum">    1297 </span>                :<span class="lineCov">    4766100 : bool_iintrinsic_fast(LLVMICmpSLE, le, sle_int,  )</span></a>
+<a name="1298"><span class="lineNum">    1298 </span>                :<span class="lineCov">     407338 : bool_iintrinsic_fast(LLVMICmpULE, le, ule_int, u)</span></a>
 <a name="1299"><span class="lineNum">    1299 </span>                :            : </a>
 <a name="1300"><span class="lineNum">    1300 </span>                :            : typedef union {</a>
 <a name="1301"><span class="lineNum">    1301 </span>                :            :     float f;</a>
@@ -1428,15 +1428,15 @@
 <a name="1328"><span class="lineNum">    1328 </span>                :            : </a>
 <a name="1329"><span class="lineNum">    1329 </span>                :            : // bitwise operators</a>
 <a name="1330"><span class="lineNum">    1330 </span>                :            : #define and_op(a,b) a &amp; b</a>
-<a name="1331"><span class="lineNum">    1331 </span>                :<span class="lineCov">    2191400 : bi_iintrinsic_fast(LLVMAnd, and_op, and_int, u)</span></a>
+<a name="1331"><span class="lineNum">    1331 </span>                :<span class="lineCov">    2244619 : bi_iintrinsic_fast(LLVMAnd, and_op, and_int, u)</span></a>
 <a name="1332"><span class="lineNum">    1332 </span>                :            : #define or_op(a,b) a | b</a>
-<a name="1333"><span class="lineNum">    1333 </span>                :<span class="lineCov">     276955 : bi_iintrinsic_fast(LLVMOr, or_op, or_int, u)</span></a>
+<a name="1333"><span class="lineNum">    1333 </span>                :<span class="lineCov">     285179 : bi_iintrinsic_fast(LLVMOr, or_op, or_int, u)</span></a>
 <a name="1334"><span class="lineNum">    1334 </span>                :            : #define xor_op(a,b) a ^ b</a>
-<a name="1335"><span class="lineNum">    1335 </span>                :<span class="lineCov">      22004 : bi_iintrinsic_fast(LLVMXor, xor_op, xor_int, u)</span></a>
+<a name="1335"><span class="lineNum">    1335 </span>                :<span class="lineCov">      22114 : bi_iintrinsic_fast(LLVMXor, xor_op, xor_int, u)</span></a>
 <a name="1336"><span class="lineNum">    1336 </span>                :            : #define shl_op(a,b) b &gt;= 8 * sizeof(a) ? 0 : a &lt;&lt; b</a>
-<a name="1337"><span class="lineNum">    1337 </span>        [<span class="branchCov" title="Branch 0 was taken 101149 times"> + </span><span class="branchCov" title="Branch 1 was taken 136383 times"> + </span>]:<span class="lineCov">     475070 : bi_iintrinsic_cnvtb_fast(LLVMShl, shl_op, shl_int, u, 1)</span></a>
+<a name="1337"><span class="lineNum">    1337 </span>        [<span class="branchCov" title="Branch 0 was taken 103111 times"> + </span><span class="branchCov" title="Branch 1 was taken 141653 times"> + </span>]:<span class="lineCov">     489534 : bi_iintrinsic_cnvtb_fast(LLVMShl, shl_op, shl_int, u, 1)</span></a>
 <a name="1338"><span class="lineNum">    1338 </span>                :            : #define lshr_op(a,b) (b &gt;= 8 * sizeof(a)) ? 0 : a &gt;&gt; b</a>
-<a name="1339"><span class="lineNum">    1339 </span>        [<span class="branchCov" title="Branch 0 was taken 185358 times"> + </span><span class="branchCov" title="Branch 1 was taken 50357 times"> + </span>]:<span class="lineCov">     471435 : bi_iintrinsic_cnvtb_fast(LLVMLShr, lshr_op, lshr_int, u, 1)</span></a>
+<a name="1339"><span class="lineNum">    1339 </span>        [<span class="branchCov" title="Branch 0 was taken 191830 times"> + </span><span class="branchCov" title="Branch 1 was taken 51117 times"> + </span>]:<span class="lineCov">     485899 : bi_iintrinsic_cnvtb_fast(LLVMLShr, lshr_op, lshr_int, u, 1)</span></a>
 <a name="1340"><span class="lineNum">    1340 </span>                :            : #define ashr_op(a,b) ((b &lt; 0 || b &gt;= 8 * sizeof(a)) ? a &gt;&gt; (8 * sizeof(a) - 1) : a &gt;&gt; b)</a>
 <a name="1341"><span class="lineNum">    1341 </span>  [<span class="branchCov" title="Branch 0 was taken 33031 times"> + </span><span class="branchCov" title="Branch 1 was taken 7354 times"> + </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchCov" title="Branch 3 was taken 33030 times"> + </span>]:<span class="lineCov">      80772 : bi_iintrinsic_cnvtb_fast(LLVMAShr, ashr_op, ashr_int, , 1)</span></a>
 <a name="1342"><span class="lineNum">    1342 </span>                :            : //#define bswap_op(a) __builtin_bswap(a)</a>
@@ -1452,12 +1452,12 @@
 <a name="1352"><span class="lineNum">    1352 </span>                :            : //uu_iintrinsic_fast(LLVMCountTrailingZeros, cttz_op, cttz_int, u)</a>
 <a name="1353"><span class="lineNum">    1353 </span>                :<span class="lineCov">       9193 : uu_iintrinsic_slow(LLVMCountTrailingZeros, cttz_int, u)</span></a>
 <a name="1354"><span class="lineNum">    1354 </span>                :            : #define not_op(a) ~a</a>
-<a name="1355"><span class="lineNum">    1355 </span>                :<span class="lineCov">    5022123 : un_iintrinsic_fast(LLVMFlipAllBits, not_op, not_int, u)</span></a>
+<a name="1355"><span class="lineNum">    1355 </span>                :<span class="lineCov">    5025993 : un_iintrinsic_fast(LLVMFlipAllBits, not_op, not_int, u)</span></a>
 <a name="1356"><span class="lineNum">    1356 </span>                :            : </a>
 <a name="1357"><span class="lineNum">    1357 </span>                :            : // conversions</a>
-<a name="1358"><span class="lineNum">    1358 </span>                :<span class="lineCov">      69531 : cvt_iintrinsic(LLVMTrunc, trunc_int)</span></a>
+<a name="1358"><span class="lineNum">    1358 </span>                :<span class="lineCov">      76244 : cvt_iintrinsic(LLVMTrunc, trunc_int)</span></a>
 <a name="1359"><span class="lineNum">    1359 </span>                :<span class="lineCov">       4784 : cvt_iintrinsic(LLVMSExt, sext_int)</span></a>
-<a name="1360"><span class="lineNum">    1360 </span>                :<span class="lineCov">      48873 : cvt_iintrinsic(LLVMZExt, zext_int)</span></a>
+<a name="1360"><span class="lineNum">    1360 </span>                :<span class="lineCov">      55586 : cvt_iintrinsic(LLVMZExt, zext_int)</span></a>
 <a name="1361"><span class="lineNum">    1361 </span>                :<span class="lineCov">          4 : cvt_iintrinsic(LLVMSItoFP, sitofp)</span></a>
 <a name="1362"><span class="lineNum">    1362 </span>                :<span class="lineCov">          2 : cvt_iintrinsic(LLVMUItoFP, uitofp)</span></a>
 <a name="1363"><span class="lineNum">    1363 </span>                :<span class="lineCov">          2 : cvt_iintrinsic(LLVMFPtoSI, fptosi)</span></a>
@@ -1527,12 +1527,12 @@
 <a name="1419"><span class="lineNum">    1419 </span>                :            :     /* this test checks for (a - b) &lt; typemin ==&gt; overflow */     \</a>
 <a name="1420"><span class="lineNum">    1420 </span>                :            :     a &lt; uTYPEMIN(t) + b</a>
 <a name="1421"><span class="lineNum">    1421 </span>                :<span class="lineNoCov">          0 : checked_iintrinsic_fast(LLVMSub_uov, check_usub_int, sub, checked_usub_int, u)</span></a>
-<a name="1422"><span class="lineNum">    1422 </span>                :<span class="lineCov">        459 : checked_iintrinsic_slow(LLVMMul_sov, checked_smul_int,  )</span></a>
+<a name="1422"><span class="lineNum">    1422 </span>                :<span class="lineCov">        461 : checked_iintrinsic_slow(LLVMMul_sov, checked_smul_int,  )</span></a>
 <a name="1423"><span class="lineNum">    1423 </span>                :<span class="lineNoCov">          0 : checked_iintrinsic_slow(LLVMMul_uov, checked_umul_int, u)</span></a>
 <a name="1424"><span class="lineNum">    1424 </span>                :            : </a>
-<a name="1425"><span class="lineNum">    1425 </span>                :<span class="lineCov">         64 : checked_iintrinsic_div(LLVMDiv_sov, checked_sdiv_int,  )</span></a>
+<a name="1425"><span class="lineNum">    1425 </span>                :<span class="lineCov">         69 : checked_iintrinsic_div(LLVMDiv_sov, checked_sdiv_int,  )</span></a>
 <a name="1426"><span class="lineNum">    1426 </span>                :<span class="lineNoCov">          0 : checked_iintrinsic_div(LLVMDiv_uov, checked_udiv_int, u)</span></a>
-<a name="1427"><span class="lineNum">    1427 </span>                :<span class="lineCov">       1802 : checked_iintrinsic_div(LLVMRem_sov, checked_srem_int,  )</span></a>
+<a name="1427"><span class="lineNum">    1427 </span>                :<span class="lineCov">       1807 : checked_iintrinsic_div(LLVMRem_sov, checked_srem_int,  )</span></a>
 <a name="1428"><span class="lineNum">    1428 </span>                :<span class="lineNoCov">          0 : checked_iintrinsic_div(LLVMRem_uov, checked_urem_int, u)</span></a>
 <a name="1429"><span class="lineNum">    1429 </span>                :            : </a>
 <a name="1430"><span class="lineNum">    1430 </span>                :            : // functions</a>

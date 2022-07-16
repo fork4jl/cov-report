@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/init.c</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/init.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">353</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -125,7 +125,7 @@
 <a name="47"><span class="lineNum">      47 </span>                :            : </a>
 <a name="48"><span class="lineNum">      48 </span>                :            : JL_DLLEXPORT size_t jl_page_size;</a>
 <a name="49"><span class="lineNum">      49 </span>                :            : </a>
-<a name="50"><span class="lineNum">      50 </span>                :<span class="lineCov">        698 : void jl_init_stack_limits(int ismaster, void **stack_lo, void **stack_hi)</span></a>
+<a name="50"><span class="lineNum">      50 </span>                :<span class="lineCov">        692 : void jl_init_stack_limits(int ismaster, void **stack_lo, void **stack_hi)</span></a>
 <a name="51"><span class="lineNum">      51 </span>                :            : {</a>
 <a name="52"><span class="lineNum">      52 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="53"><span class="lineNum">      53 </span>                :            :     (void)ismaster;</a>
@@ -141,22 +141,22 @@
 <a name="63"><span class="lineNum">      63 </span>                :            :     // Only use pthread_*_np functions to get stack address for non-master</a>
 <a name="64"><span class="lineNum">      64 </span>                :            :     // threads since it seems to return bogus values for master thread on Linux</a>
 <a name="65"><span class="lineNum">      65 </span>                :            :     // and possibly OSX.</a>
-<a name="66"><span class="lineNum">      66 </span>        [<span class="branchCov" title="Branch 0 was taken 124 times"> + </span><span class="branchCov" title="Branch 1 was taken 574 times"> + </span>]:<span class="lineCov">        698 :     if (!ismaster) {</span></a>
+<a name="66"><span class="lineNum">      66 </span>        [<span class="branchCov" title="Branch 0 was taken 119 times"> + </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        692 :     if (!ismaster) {</span></a>
 <a name="67"><span class="lineNum">      67 </span>                :            : #  if defined(_OS_LINUX_)</a>
 <a name="68"><span class="lineNum">      68 </span>                :            :         pthread_attr_t attr;</a>
-<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">        124 :         pthread_getattr_np(pthread_self(), &amp;attr);</span></a>
+<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">        119 :         pthread_getattr_np(pthread_self(), &amp;attr);</span></a>
 <a name="70"><span class="lineNum">      70 </span>                :            :         void *stackaddr;</a>
 <a name="71"><span class="lineNum">      71 </span>                :            :         size_t stacksize;</a>
-<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">        124 :         pthread_attr_getstack(&amp;attr, &amp;stackaddr, &amp;stacksize);</span></a>
-<a name="73"><span class="lineNum">      73 </span>                :<span class="lineCov">        124 :         pthread_attr_destroy(&amp;attr);</span></a>
-<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">        124 :         *stack_lo = (void*)stackaddr;</span></a>
+<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">        118 :         pthread_attr_getstack(&amp;attr, &amp;stackaddr, &amp;stacksize);</span></a>
+<a name="73"><span class="lineNum">      73 </span>                :<span class="lineCov">        119 :         pthread_attr_destroy(&amp;attr);</span></a>
+<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">        119 :         *stack_lo = (void*)stackaddr;</span></a>
 <a name="75"><span class="lineNum">      75 </span>                :            : #pragma GCC diagnostic push</a>
 <a name="76"><span class="lineNum">      76 </span>                :            : #if defined(_COMPILER_GCC_) &amp;&amp; __GNUC__ &gt;= 12</a>
 <a name="77"><span class="lineNum">      77 </span>                :            : #pragma GCC diagnostic ignored &quot;-Wdangling-pointer&quot;</a>
 <a name="78"><span class="lineNum">      78 </span>                :            : #endif</a>
-<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">        124 :         *stack_hi = (void*)&amp;stacksize;</span></a>
+<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">        119 :         *stack_hi = (void*)&amp;stacksize;</span></a>
 <a name="80"><span class="lineNum">      80 </span>                :            : #pragma GCC diagnostic pop</a>
-<a name="81"><span class="lineNum">      81 </span>                :<span class="lineCov">        124 :         return;</span></a>
+<a name="81"><span class="lineNum">      81 </span>                :<span class="lineCov">        119 :         return;</span></a>
 <a name="82"><span class="lineNum">      82 </span>                :            : #  elif defined(_OS_DARWIN_)</a>
 <a name="83"><span class="lineNum">      83 </span>                :            :         extern void *pthread_get_stackaddr_np(pthread_t thread);</a>
 <a name="84"><span class="lineNum">      84 </span>                :            :         extern size_t pthread_get_stacksize_np(pthread_t thread);</a>
@@ -182,16 +182,16 @@
 <a name="104"><span class="lineNum">     104 </span>                :            : #  endif</a>
 <a name="105"><span class="lineNum">     105 </span>                :            :     }</a>
 <a name="106"><span class="lineNum">     106 </span>                :            :     struct rlimit rl;</a>
-<a name="107"><span class="lineNum">     107 </span>                :<span class="lineCov">        574 :     getrlimit(RLIMIT_STACK, &amp;rl);</span></a>
-<a name="108"><span class="lineNum">     108 </span>                :<span class="lineCov">        574 :     size_t stacksize = rl.rlim_cur;</span></a>
+<a name="107"><span class="lineNum">     107 </span>                :<span class="lineCov">        573 :     getrlimit(RLIMIT_STACK, &amp;rl);</span></a>
+<a name="108"><span class="lineNum">     108 </span>                :<span class="lineCov">        573 :     size_t stacksize = rl.rlim_cur;</span></a>
 <a name="109"><span class="lineNum">     109 </span>                :            : // We intentionally leak a stack address here core.StackAddressEscape</a>
 <a name="110"><span class="lineNum">     110 </span>                :            : #  ifndef __clang_analyzer__</a>
-<a name="111"><span class="lineNum">     111 </span>                :<span class="lineCov">        574 :     *stack_hi = (void*)&amp;stacksize;</span></a>
+<a name="111"><span class="lineNum">     111 </span>                :<span class="lineCov">        573 :     *stack_hi = (void*)&amp;stacksize;</span></a>
 <a name="112"><span class="lineNum">     112 </span>                :            : #pragma GCC diagnostic push</a>
 <a name="113"><span class="lineNum">     113 </span>                :            : #if defined(_COMPILER_GCC_) &amp;&amp; __GNUC__ &gt;= 12</a>
 <a name="114"><span class="lineNum">     114 </span>                :            : #pragma GCC diagnostic ignored &quot;-Wdangling-pointer&quot;</a>
 <a name="115"><span class="lineNum">     115 </span>                :            : #endif</a>
-<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">        574 :     *stack_lo = (void*)((char*)*stack_hi - stacksize);</span></a>
+<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">        573 :     *stack_lo = (void*)((char*)*stack_hi - stacksize);</span></a>
 <a name="117"><span class="lineNum">     117 </span>                :            : #pragma GCC diagnostic pop</a>
 <a name="118"><span class="lineNum">     118 </span>                :            : #  else</a>
 <a name="119"><span class="lineNum">     119 </span>                :            :     *stack_hi = 0;</a>
@@ -200,7 +200,7 @@
 <a name="122"><span class="lineNum">     122 </span>                :            : #endif</a>
 <a name="123"><span class="lineNum">     123 </span>                :            : }</a>
 <a name="124"><span class="lineNum">     124 </span>                :            : </a>
-<a name="125"><span class="lineNum">     125 </span>                :<span class="lineCov">        574 : static void jl_prep_sanitizers(void)</span></a>
+<a name="125"><span class="lineNum">     125 </span>                :<span class="lineCov">        573 : static void jl_prep_sanitizers(void)</span></a>
 <a name="126"><span class="lineNum">     126 </span>                :            : {</a>
 <a name="127"><span class="lineNum">     127 </span>                :            : #if !defined(_OS_WINDOWS_)</a>
 <a name="128"><span class="lineNum">     128 </span>                :            : #if defined(_COMPILER_ASAN_ENABLED_) || defined(_COMPILER_MSAN_ENABLED_)</a>
@@ -223,47 +223,47 @@
 <a name="145"><span class="lineNum">     145 </span>                :            :     }</a>
 <a name="146"><span class="lineNum">     146 </span>                :            : #endif</a>
 <a name="147"><span class="lineNum">     147 </span>                :            : #endif</a>
-<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">        574 : }</span></a>
+<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">        573 : }</span></a>
 <a name="149"><span class="lineNum">     149 </span>                :            : </a>
 <a name="150"><span class="lineNum">     150 </span>                :            : struct uv_shutdown_queue_item { uv_handle_t *h; struct uv_shutdown_queue_item *next; };</a>
 <a name="151"><span class="lineNum">     151 </span>                :            : struct uv_shutdown_queue { struct uv_shutdown_queue_item *first; struct uv_shutdown_queue_item *last; };</a>
 <a name="152"><span class="lineNum">     152 </span>                :            : </a>
-<a name="153"><span class="lineNum">     153 </span>                :<span class="lineCov">       2779 : static void jl_uv_exitcleanup_add(uv_handle_t *handle, struct uv_shutdown_queue *queue)</span></a>
+<a name="153"><span class="lineNum">     153 </span>                :<span class="lineCov">       2792 : static void jl_uv_exitcleanup_add(uv_handle_t *handle, struct uv_shutdown_queue *queue)</span></a>
 <a name="154"><span class="lineNum">     154 </span>                :            : {</a>
-<a name="155"><span class="lineNum">     155 </span>                :<span class="lineCov">       2779 :     struct uv_shutdown_queue_item *item = (struct uv_shutdown_queue_item*)malloc_s(sizeof(struct uv_shutdown_queue_item));</span></a>
-<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">       2779 :     item-&gt;h = handle;</span></a>
-<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">       2779 :     item-&gt;next = NULL;</span></a>
-<a name="158"><span class="lineNum">     158 </span>        [<span class="branchCov" title="Branch 0 was taken 2207 times"> + </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span>]:<span class="lineCov">       2779 :     if (queue-&gt;last)</span></a>
-<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov">       2207 :         queue-&gt;last-&gt;next = item;</span></a>
-<a name="160"><span class="lineNum">     160 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchCov" title="Branch 1 was taken 2207 times"> + </span>]:<span class="lineCov">       2779 :     if (!queue-&gt;first)</span></a>
-<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">        572 :         queue-&gt;first = item;</span></a>
-<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">       2779 :     queue-&gt;last = item;</span></a>
-<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">       2779 : }</span></a>
+<a name="155"><span class="lineNum">     155 </span>                :<span class="lineCov">       2792 :     struct uv_shutdown_queue_item *item = (struct uv_shutdown_queue_item*)malloc_s(sizeof(struct uv_shutdown_queue_item));</span></a>
+<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">       2792 :     item-&gt;h = handle;</span></a>
+<a name="157"><span class="lineNum">     157 </span>                :<span class="lineCov">       2792 :     item-&gt;next = NULL;</span></a>
+<a name="158"><span class="lineNum">     158 </span>        [<span class="branchCov" title="Branch 0 was taken 2221 times"> + </span><span class="branchCov" title="Branch 1 was taken 571 times"> + </span>]:<span class="lineCov">       2792 :     if (queue-&gt;last)</span></a>
+<a name="159"><span class="lineNum">     159 </span>                :<span class="lineCov">       2221 :         queue-&gt;last-&gt;next = item;</span></a>
+<a name="160"><span class="lineNum">     160 </span>        [<span class="branchCov" title="Branch 0 was taken 571 times"> + </span><span class="branchCov" title="Branch 1 was taken 2221 times"> + </span>]:<span class="lineCov">       2792 :     if (!queue-&gt;first)</span></a>
+<a name="161"><span class="lineNum">     161 </span>                :<span class="lineCov">        571 :         queue-&gt;first = item;</span></a>
+<a name="162"><span class="lineNum">     162 </span>                :<span class="lineCov">       2792 :     queue-&gt;last = item;</span></a>
+<a name="163"><span class="lineNum">     163 </span>                :<span class="lineCov">       2792 : }</span></a>
 <a name="164"><span class="lineNum">     164 </span>                :            : </a>
-<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">       2779 : static void jl_uv_exitcleanup_walk(uv_handle_t *handle, void *arg)</span></a>
+<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">       2792 : static void jl_uv_exitcleanup_walk(uv_handle_t *handle, void *arg)</span></a>
 <a name="166"><span class="lineNum">     166 </span>                :            : {</a>
-<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">       2779 :     jl_uv_exitcleanup_add(handle, (struct uv_shutdown_queue*)arg);</span></a>
-<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">       2779 : }</span></a>
+<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">       2792 :     jl_uv_exitcleanup_add(handle, (struct uv_shutdown_queue*)arg);</span></a>
+<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">       2792 : }</span></a>
 <a name="169"><span class="lineNum">     169 </span>                :            : </a>
-<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">       2779 : static struct uv_shutdown_queue_item *next_shutdown_queue_item(struct uv_shutdown_queue_item *item)</span></a>
+<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">       2792 : static struct uv_shutdown_queue_item *next_shutdown_queue_item(struct uv_shutdown_queue_item *item)</span></a>
 <a name="171"><span class="lineNum">     171 </span>                :            : {</a>
-<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">       2779 :     struct uv_shutdown_queue_item *rv = item-&gt;next;</span></a>
-<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">       2779 :     free(item);</span></a>
-<a name="174"><span class="lineNum">     174 </span>                :<span class="lineCov">       2779 :     return rv;</span></a>
+<a name="172"><span class="lineNum">     172 </span>                :<span class="lineCov">       2792 :     struct uv_shutdown_queue_item *rv = item-&gt;next;</span></a>
+<a name="173"><span class="lineNum">     173 </span>                :<span class="lineCov">       2792 :     free(item);</span></a>
+<a name="174"><span class="lineNum">     174 </span>                :<span class="lineCov">       2792 :     return rv;</span></a>
 <a name="175"><span class="lineNum">     175 </span>                :            : }</a>
 <a name="176"><span class="lineNum">     176 </span>                :            : </a>
-<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">       2779 : static void jl_close_item_atexit(uv_handle_t *handle)</span></a>
+<a name="177"><span class="lineNum">     177 </span>                :<span class="lineCov">       2792 : static void jl_close_item_atexit(uv_handle_t *handle)</span></a>
 <a name="178"><span class="lineNum">     178 </span>                :            : {</a>
-<a name="179"><span class="lineNum">     179 </span>  [<span class="branchCov" title="Branch 0 was taken 2779 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 2173 times"> + </span><span class="branchCov" title="Branch 3 was taken 606 times"> + </span>]:<span class="lineCov">       2779 :     if (handle-&gt;type != UV_FILE &amp;&amp; uv_is_closing(handle))</span></a>
-<a name="180"><span class="lineNum">     180 </span>                :<span class="lineCov">       2173 :         return;</span></a>
-<a name="181"><span class="lineNum">     181 </span>     [<span class="branchCov" title="Branch 0 was taken 25 times"> + </span><span class="branchCov" title="Branch 1 was taken 581 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>]:<span class="lineCov">        606 :     switch(handle-&gt;type) {</span></a>
+<a name="179"><span class="lineNum">     179 </span>  [<span class="branchCov" title="Branch 0 was taken 2792 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 2187 times"> + </span><span class="branchCov" title="Branch 3 was taken 605 times"> + </span>]:<span class="lineCov">       2792 :     if (handle-&gt;type != UV_FILE &amp;&amp; uv_is_closing(handle))</span></a>
+<a name="180"><span class="lineNum">     180 </span>                :<span class="lineCov">       2187 :         return;</span></a>
+<a name="181"><span class="lineNum">     181 </span>     [<span class="branchCov" title="Branch 0 was taken 25 times"> + </span><span class="branchCov" title="Branch 1 was taken 580 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>]:<span class="lineCov">        605 :     switch(handle-&gt;type) {</span></a>
 <a name="182"><span class="lineNum">     182 </span>                :<span class="lineCov">         25 :     case UV_PROCESS:</span></a>
 <a name="183"><span class="lineNum">     183 </span>                :            :         // cause Julia to forget about the Process object</a>
 <a name="184"><span class="lineNum">     184 </span>                :<span class="lineCov">         25 :         handle-&gt;data = NULL;</span></a>
 <a name="185"><span class="lineNum">     185 </span>                :            :         // and make libuv think it is already dead</a>
 <a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">         25 :         ((uv_process_t*)handle)-&gt;pid = 0;</span></a>
 <a name="187"><span class="lineNum">     187 </span>                :            :         // fall-through</a>
-<a name="188"><span class="lineNum">     188 </span>                :<span class="lineCov">        606 :     case UV_TTY:</span></a>
+<a name="188"><span class="lineNum">     188 </span>                :<span class="lineCov">        605 :     case UV_TTY:</span></a>
 <a name="189"><span class="lineNum">     189 </span>                :            :     case UV_UDP:</a>
 <a name="190"><span class="lineNum">     190 </span>                :            :     case UV_TCP:</a>
 <a name="191"><span class="lineNum">     191 </span>                :            :     case UV_NAMED_PIPE:</a>
@@ -278,8 +278,8 @@
 <a name="200"><span class="lineNum">     200 </span>                :            :     case UV_SIGNAL:</a>
 <a name="201"><span class="lineNum">     201 </span>                :            :     case UV_FILE:</a>
 <a name="202"><span class="lineNum">     202 </span>                :            :         // These will be shutdown as appropriate by jl_close_uv</a>
-<a name="203"><span class="lineNum">     203 </span>                :<span class="lineCov">        606 :         jl_close_uv(handle);</span></a>
-<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">        606 :         break;</span></a>
+<a name="203"><span class="lineNum">     203 </span>                :<span class="lineCov">        605 :         jl_close_uv(handle);</span></a>
+<a name="204"><span class="lineNum">     204 </span>                :<span class="lineCov">        605 :         break;</span></a>
 <a name="205"><span class="lineNum">     205 </span>                :<span class="lineNoCov">          0 :     case UV_HANDLE:</span></a>
 <a name="206"><span class="lineNum">     206 </span>                :            :     case UV_STREAM:</a>
 <a name="207"><span class="lineNum">     207 </span>                :            :     default:</a>
@@ -287,28 +287,28 @@
 <a name="209"><span class="lineNum">     209 </span>                :            :     }</a>
 <a name="210"><span class="lineNum">     210 </span>                :            : }</a>
 <a name="211"><span class="lineNum">     211 </span>                :            : </a>
-<a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">        664 : JL_DLLEXPORT void jl_atexit_hook(int exitcode)</span></a>
+<a name="212"><span class="lineNum">     212 </span>                :<span class="lineCov">        663 : JL_DLLEXPORT void jl_atexit_hook(int exitcode)</span></a>
 <a name="213"><span class="lineNum">     213 </span>                :            : {</a>
-<a name="214"><span class="lineNum">     214 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchCov" title="Branch 1 was taken 640 times"> + </span>]:<span class="lineCov">        664 :     if (jl_all_tls_states == NULL)</span></a>
+<a name="214"><span class="lineNum">     214 </span>        [<span class="branchCov" title="Branch 0 was taken 24 times"> + </span><span class="branchCov" title="Branch 1 was taken 639 times"> + </span>]:<span class="lineCov">        663 :     if (jl_all_tls_states == NULL)</span></a>
 <a name="215"><span class="lineNum">     215 </span>                :<span class="lineCov">         24 :         return;</span></a>
 <a name="216"><span class="lineNum">     216 </span>                :            : </a>
-<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">        640 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">        639 :     jl_task_t *ct = jl_current_task;</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :            : </a>
-<a name="219"><span class="lineNum">     219 </span>        [<span class="branchCov" title="Branch 0 was taken 502 times"> + </span><span class="branchCov" title="Branch 1 was taken 138 times"> + </span>]:<span class="lineCov">        640 :     if (exitcode == 0)</span></a>
-<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">        502 :         jl_write_compiler_output();</span></a>
-<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">        640 :     jl_print_gc_stats(JL_STDERR);</span></a>
-<a name="222"><span class="lineNum">     222 </span>        [<span class="branchCov" title="Branch 0 was taken 7 times"> + </span><span class="branchCov" title="Branch 1 was taken 633 times"> + </span>]:<span class="lineCov">        640 :     if (jl_options.code_coverage)</span></a>
+<a name="219"><span class="lineNum">     219 </span>        [<span class="branchCov" title="Branch 0 was taken 501 times"> + </span><span class="branchCov" title="Branch 1 was taken 138 times"> + </span>]:<span class="lineCov">        639 :     if (exitcode == 0)</span></a>
+<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">        501 :         jl_write_compiler_output();</span></a>
+<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">        639 :     jl_print_gc_stats(JL_STDERR);</span></a>
+<a name="222"><span class="lineNum">     222 </span>        [<span class="branchCov" title="Branch 0 was taken 7 times"> + </span><span class="branchCov" title="Branch 1 was taken 632 times"> + </span>]:<span class="lineCov">        639 :     if (jl_options.code_coverage)</span></a>
 <a name="223"><span class="lineNum">     223 </span>                :<span class="lineCov">          7 :         jl_write_coverage_data(jl_options.output_code_coverage);</span></a>
-<a name="224"><span class="lineNum">     224 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 637 times"> + </span>]:<span class="lineCov">        640 :     if (jl_options.malloc_log)</span></a>
+<a name="224"><span class="lineNum">     224 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 636 times"> + </span>]:<span class="lineCov">        639 :     if (jl_options.malloc_log)</span></a>
 <a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">          3 :         jl_write_malloc_log();</span></a>
-<a name="226"><span class="lineNum">     226 </span>        [<span class="branchCov" title="Branch 0 was taken 633 times"> + </span><span class="branchCov" title="Branch 1 was taken 7 times"> + </span>]:<span class="lineCov">        640 :     if (jl_base_module) {</span></a>
-<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov">        633 :         jl_value_t *f = jl_get_global(jl_base_module, jl_symbol(&quot;_atexit&quot;));</span></a>
-<a name="228"><span class="lineNum">     228 </span>        [<span class="branchCov" title="Branch 0 was taken 633 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        633 :         if (f != NULL) {</span></a>
-<a name="229"><span class="lineNum">     229 </span>  [<span class="branchCov" title="Branch 0 was taken 633 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 633 times"> + </span><span class="branchCov" title="Branch 3 was taken 565 times"> + </span>]:<span class="lineCov">       1198 :             JL_TRY {</span></a>
-<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">        633 :                 size_t last_age = ct-&gt;world_age;</span></a>
-<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">        633 :                 ct-&gt;world_age = jl_get_world_counter();</span></a>
-<a name="232"><span class="lineNum">     232 </span>                :<span class="lineCov">        633 :                 jl_apply(&amp;f, 1);</span></a>
-<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">        565 :                 ct-&gt;world_age = last_age;</span></a>
+<a name="226"><span class="lineNum">     226 </span>        [<span class="branchCov" title="Branch 0 was taken 632 times"> + </span><span class="branchCov" title="Branch 1 was taken 7 times"> + </span>]:<span class="lineCov">        639 :     if (jl_base_module) {</span></a>
+<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov">        632 :         jl_value_t *f = jl_get_global(jl_base_module, jl_symbol(&quot;_atexit&quot;));</span></a>
+<a name="228"><span class="lineNum">     228 </span>        [<span class="branchCov" title="Branch 0 was taken 632 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        632 :         if (f != NULL) {</span></a>
+<a name="229"><span class="lineNum">     229 </span>  [<span class="branchCov" title="Branch 0 was taken 632 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 632 times"> + </span><span class="branchCov" title="Branch 3 was taken 564 times"> + </span>]:<span class="lineCov">       1196 :             JL_TRY {</span></a>
+<a name="230"><span class="lineNum">     230 </span>                :<span class="lineCov">        632 :                 size_t last_age = ct-&gt;world_age;</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">        632 :                 ct-&gt;world_age = jl_get_world_counter();</span></a>
+<a name="232"><span class="lineNum">     232 </span>                :<span class="lineCov">        632 :                 jl_apply(&amp;f, 1);</span></a>
+<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">        564 :                 ct-&gt;world_age = last_age;</span></a>
 <a name="234"><span class="lineNum">     234 </span>                :            :             }</a>
 <a name="235"><span class="lineNum">     235 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :             JL_CATCH {</span></a>
 <a name="236"><span class="lineNum">     236 </span>                :<span class="lineNoCov">          0 :                 jl_printf((JL_STREAM*)STDERR_FILENO, &quot;\natexit hook threw an error: &quot;);</span></a>
@@ -321,23 +321,23 @@
 <a name="243"><span class="lineNum">     243 </span>                :            : </a>
 <a name="244"><span class="lineNum">     244 </span>                :            :     // replace standard output streams with something that we can still print to</a>
 <a name="245"><span class="lineNum">     245 </span>                :            :     // after the finalizers from base/stream.jl close the TTY</a>
-<a name="246"><span class="lineNum">     246 </span>                :<span class="lineCov">        572 :     JL_STDOUT = (uv_stream_t*) STDOUT_FILENO;</span></a>
-<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">        572 :     JL_STDERR = (uv_stream_t*) STDERR_FILENO;</span></a>
+<a name="246"><span class="lineNum">     246 </span>                :<span class="lineCov">        571 :     JL_STDOUT = (uv_stream_t*) STDOUT_FILENO;</span></a>
+<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">        571 :     JL_STDERR = (uv_stream_t*) STDERR_FILENO;</span></a>
 <a name="248"><span class="lineNum">     248 </span>                :            : </a>
-<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">        572 :     jl_gc_run_all_finalizers(ct);</span></a>
+<a name="249"><span class="lineNum">     249 </span>                :<span class="lineCov">        571 :     jl_gc_run_all_finalizers(ct);</span></a>
 <a name="250"><span class="lineNum">     250 </span>                :            : </a>
-<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">        572 :     uv_loop_t *loop = jl_global_event_loop();</span></a>
-<a name="252"><span class="lineNum">     252 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        572 :     if (loop != NULL) {</span></a>
-<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">        572 :         struct uv_shutdown_queue queue = {NULL, NULL};</span></a>
-<a name="254"><span class="lineNum">     254 </span>                :<span class="lineCov">        572 :         JL_UV_LOCK();</span></a>
-<a name="255"><span class="lineNum">     255 </span>                :<span class="lineCov">        572 :         uv_walk(loop, jl_uv_exitcleanup_walk, &amp;queue);</span></a>
-<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">        572 :         struct uv_shutdown_queue_item *item = queue.first;</span></a>
-<a name="257"><span class="lineNum">     257 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        572 :         if (ct != NULL) {</span></a>
-<a name="258"><span class="lineNum">     258 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span>]:<span class="lineCov">       1144 :             while (item) {</span></a>
-<a name="259"><span class="lineNum">     259 </span>  [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 572 times"> + </span><span class="branchCov" title="Branch 3 was taken 572 times"> + </span>]:<span class="lineCov">       1144 :                 JL_TRY {</span></a>
-<a name="260"><span class="lineNum">     260 </span>        [<span class="branchCov" title="Branch 0 was taken 2779 times"> + </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span>]:<span class="lineCov">       3351 :                     while (item) {</span></a>
-<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">       2779 :                         jl_close_item_atexit(item-&gt;h);</span></a>
-<a name="262"><span class="lineNum">     262 </span>                :<span class="lineCov">       2779 :                         item = next_shutdown_queue_item(item);</span></a>
+<a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">        571 :     uv_loop_t *loop = jl_global_event_loop();</span></a>
+<a name="252"><span class="lineNum">     252 </span>        [<span class="branchCov" title="Branch 0 was taken 571 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        571 :     if (loop != NULL) {</span></a>
+<a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">        571 :         struct uv_shutdown_queue queue = {NULL, NULL};</span></a>
+<a name="254"><span class="lineNum">     254 </span>                :<span class="lineCov">        571 :         JL_UV_LOCK();</span></a>
+<a name="255"><span class="lineNum">     255 </span>                :<span class="lineCov">        571 :         uv_walk(loop, jl_uv_exitcleanup_walk, &amp;queue);</span></a>
+<a name="256"><span class="lineNum">     256 </span>                :<span class="lineCov">        571 :         struct uv_shutdown_queue_item *item = queue.first;</span></a>
+<a name="257"><span class="lineNum">     257 </span>        [<span class="branchCov" title="Branch 0 was taken 571 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        571 :         if (ct != NULL) {</span></a>
+<a name="258"><span class="lineNum">     258 </span>        [<span class="branchCov" title="Branch 0 was taken 571 times"> + </span><span class="branchCov" title="Branch 1 was taken 571 times"> + </span>]:<span class="lineCov">       1142 :             while (item) {</span></a>
+<a name="259"><span class="lineNum">     259 </span>  [<span class="branchCov" title="Branch 0 was taken 571 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 571 times"> + </span><span class="branchCov" title="Branch 3 was taken 571 times"> + </span>]:<span class="lineCov">       1142 :                 JL_TRY {</span></a>
+<a name="260"><span class="lineNum">     260 </span>        [<span class="branchCov" title="Branch 0 was taken 2792 times"> + </span><span class="branchCov" title="Branch 1 was taken 571 times"> + </span>]:<span class="lineCov">       3363 :                     while (item) {</span></a>
+<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">       2792 :                         jl_close_item_atexit(item-&gt;h);</span></a>
+<a name="262"><span class="lineNum">     262 </span>                :<span class="lineCov">       2792 :                         item = next_shutdown_queue_item(item);</span></a>
 <a name="263"><span class="lineNum">     263 </span>                :            :                     }</a>
 <a name="264"><span class="lineNum">     264 </span>                :            :                 }</a>
 <a name="265"><span class="lineNum">     265 </span>        [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span>]:<span class="lineNoCov">          0 :                 JL_CATCH {</span></a>
@@ -360,19 +360,19 @@
 <a name="282"><span class="lineNum">     282 </span>                :            :         }</a>
 <a name="283"><span class="lineNum">     283 </span>                :            : </a>
 <a name="284"><span class="lineNum">     284 </span>                :            :         // force libuv to spin until everything has finished closing</a>
-<a name="285"><span class="lineNum">     285 </span>                :<span class="lineCov">        572 :         loop-&gt;stop_flag = 0;</span></a>
-<a name="286"><span class="lineNum">     286 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span>]:<span class="lineCov">        572 :         while (uv_run(loop, UV_RUN_DEFAULT)) { }</span></a>
-<a name="287"><span class="lineNum">     287 </span>                :<span class="lineCov">        572 :         JL_UV_UNLOCK();</span></a>
+<a name="285"><span class="lineNum">     285 </span>                :<span class="lineCov">        571 :         loop-&gt;stop_flag = 0;</span></a>
+<a name="286"><span class="lineNum">     286 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 571 times"> + </span>]:<span class="lineCov">        571 :         while (uv_run(loop, UV_RUN_DEFAULT)) { }</span></a>
+<a name="287"><span class="lineNum">     287 </span>                :<span class="lineCov">        571 :         JL_UV_UNLOCK();</span></a>
 <a name="288"><span class="lineNum">     288 </span>                :            :     }</a>
 <a name="289"><span class="lineNum">     289 </span>                :            : </a>
 <a name="290"><span class="lineNum">     290 </span>                :            :     // TODO: Destroy threads</a>
 <a name="291"><span class="lineNum">     291 </span>                :            : </a>
-<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">        572 :     jl_destroy_timing();</span></a>
+<a name="292"><span class="lineNum">     292 </span>                :<span class="lineCov">        571 :     jl_destroy_timing();</span></a>
 <a name="293"><span class="lineNum">     293 </span>                :            : #ifdef ENABLE_TIMINGS</a>
 <a name="294"><span class="lineNum">     294 </span>                :            :     jl_print_timings();</a>
 <a name="295"><span class="lineNum">     295 </span>                :            : #endif</a>
 <a name="296"><span class="lineNum">     296 </span>                :            : </a>
-<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">        572 :     jl_teardown_codegen();</span></a>
+<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">        571 :     jl_teardown_codegen();</span></a>
 <a name="298"><span class="lineNum">     298 </span>                :            : }</a>
 <a name="299"><span class="lineNum">     299 </span>                :            : </a>
 <a name="300"><span class="lineNum">     300 </span>                :<span class="lineCov">          1 : JL_DLLEXPORT void jl_postoutput_hook(void)</span></a>
@@ -452,24 +452,24 @@
 <a name="374"><span class="lineNum">     374 </span>                :            :     return 0;</a>
 <a name="375"><span class="lineNum">     375 </span>                :            : }</a>
 <a name="376"><span class="lineNum">     376 </span>                :            : #else</a>
-<a name="377"><span class="lineNum">     377 </span>                :<span class="lineCov">       1722 : static int uv_dup(uv_os_fd_t fd, uv_os_fd_t* dupfd) {</span></a>
-<a name="378"><span class="lineNum">     378 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1722 times"> + </span>]:<span class="lineCov">       1722 :     if ((*dupfd = fcntl(fd, F_DUPFD_CLOEXEC, 3)) == -1)</span></a>
+<a name="377"><span class="lineNum">     377 </span>                :<span class="lineCov">       1719 : static int uv_dup(uv_os_fd_t fd, uv_os_fd_t* dupfd) {</span></a>
+<a name="378"><span class="lineNum">     378 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1719 times"> + </span>]:<span class="lineCov">       1719 :     if ((*dupfd = fcntl(fd, F_DUPFD_CLOEXEC, 3)) == -1)</span></a>
 <a name="379"><span class="lineNum">     379 </span>                :<span class="lineNoCov">          0 :         return -errno;</span></a>
-<a name="380"><span class="lineNum">     380 </span>                :<span class="lineCov">       1722 :     return 0;</span></a>
+<a name="380"><span class="lineNum">     380 </span>                :<span class="lineCov">       1719 :     return 0;</span></a>
 <a name="381"><span class="lineNum">     381 </span>                :            : }</a>
 <a name="382"><span class="lineNum">     382 </span>                :            : #endif</a>
 <a name="383"><span class="lineNum">     383 </span>                :            : </a>
-<a name="384"><span class="lineNum">     384 </span>                :<span class="lineCov">       1722 : static void *init_stdio_handle(const char *stdio, uv_os_fd_t fd, int readable)</span></a>
+<a name="384"><span class="lineNum">     384 </span>                :<span class="lineCov">       1719 : static void *init_stdio_handle(const char *stdio, uv_os_fd_t fd, int readable)</span></a>
 <a name="385"><span class="lineNum">     385 </span>                :            : {</a>
 <a name="386"><span class="lineNum">     386 </span>                :            :     void *handle;</a>
 <a name="387"><span class="lineNum">     387 </span>                :            :     int err;</a>
 <a name="388"><span class="lineNum">     388 </span>                :            :     // Duplicate the file descriptor so we can later dup it over if we want to redirect</a>
 <a name="389"><span class="lineNum">     389 </span>                :            :     // STDIO without having to worry about closing the associated libuv object.</a>
 <a name="390"><span class="lineNum">     390 </span>                :            :     // This also helps limit the impact other libraries can cause on our file handle.</a>
-<a name="391"><span class="lineNum">     391 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1722 times"> + </span>]:<span class="lineCov">       1722 :     if ((err = uv_dup(fd, &amp;fd)))</span></a>
+<a name="391"><span class="lineNum">     391 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1719 times"> + </span>]:<span class="lineCov">       1719 :     if ((err = uv_dup(fd, &amp;fd)))</span></a>
 <a name="392"><span class="lineNum">     392 </span>                :<span class="lineNoCov">          0 :         jl_errorf(&quot;error initializing %s in uv_dup: %s (%s %d)&quot;, stdio, uv_strerror(err), uv_err_name(err), err);</span></a>
-<a name="393"><span class="lineNum">     393 </span>  [<span class="branchCov" title="Branch 0 was taken 404 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 529 times"> + </span> :<span class="lineCov">       1722 :     switch(uv_guess_handle(fd)) {</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 788 times"> + </span><span class="branchCov" title="Branch 5 was taken 1 time"> + </span>]
+<a name="393"><span class="lineNum">     393 </span>  [<span class="branchCov" title="Branch 0 was taken 404 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 528 times"> + </span> :<span class="lineCov">       1719 :     switch(uv_guess_handle(fd)) {</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 786 times"> + </span><span class="branchCov" title="Branch 5 was taken 1 time"> + </span>]
 <a name="394"><span class="lineNum">     394 </span>                :<span class="lineCov">        404 :     case UV_TTY:</span></a>
 <a name="395"><span class="lineNum">     395 </span>                :<span class="lineCov">        404 :         handle = malloc_s(sizeof(uv_tty_t));</span></a>
 <a name="396"><span class="lineNum">     396 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 404 times"> + </span>]:<span class="lineCov">        404 :         if ((err = uv_tty_init(jl_io_loop, (uv_tty_t*)handle, fd, 0))) {</span></a>
@@ -500,26 +500,26 @@
 <a name="421"><span class="lineNum">     421 </span>                :            : #endif</a>
 <a name="422"><span class="lineNum">     422 </span>                :            :         // ...and continue on as in the UV_FILE case</a>
 <a name="423"><span class="lineNum">     423 </span>                :            :         JL_FALLTHROUGH;</a>
-<a name="424"><span class="lineNum">     424 </span>                :<span class="lineCov">        529 :     case UV_FILE:</span></a>
-<a name="425"><span class="lineNum">     425 </span>                :<span class="lineCov">        529 :         handle = malloc_s(sizeof(jl_uv_file_t));</span></a>
+<a name="424"><span class="lineNum">     424 </span>                :<span class="lineCov">        528 :     case UV_FILE:</span></a>
+<a name="425"><span class="lineNum">     425 </span>                :<span class="lineCov">        528 :         handle = malloc_s(sizeof(jl_uv_file_t));</span></a>
 <a name="426"><span class="lineNum">     426 </span>                :            :         {</a>
-<a name="427"><span class="lineNum">     427 </span>                :<span class="lineCov">        529 :             jl_uv_file_t *file = (jl_uv_file_t*)handle;</span></a>
-<a name="428"><span class="lineNum">     428 </span>                :<span class="lineCov">        529 :             file-&gt;loop = jl_io_loop;</span></a>
-<a name="429"><span class="lineNum">     429 </span>                :<span class="lineCov">        529 :             file-&gt;type = UV_FILE;</span></a>
-<a name="430"><span class="lineNum">     430 </span>                :<span class="lineCov">        529 :             file-&gt;file = fd;</span></a>
-<a name="431"><span class="lineNum">     431 </span>                :<span class="lineCov">        529 :             file-&gt;data = NULL;</span></a>
+<a name="427"><span class="lineNum">     427 </span>                :<span class="lineCov">        528 :             jl_uv_file_t *file = (jl_uv_file_t*)handle;</span></a>
+<a name="428"><span class="lineNum">     428 </span>                :<span class="lineCov">        528 :             file-&gt;loop = jl_io_loop;</span></a>
+<a name="429"><span class="lineNum">     429 </span>                :<span class="lineCov">        528 :             file-&gt;type = UV_FILE;</span></a>
+<a name="430"><span class="lineNum">     430 </span>                :<span class="lineCov">        528 :             file-&gt;file = fd;</span></a>
+<a name="431"><span class="lineNum">     431 </span>                :<span class="lineCov">        528 :             file-&gt;data = NULL;</span></a>
 <a name="432"><span class="lineNum">     432 </span>                :            :         }</a>
-<a name="433"><span class="lineNum">     433 </span>                :<span class="lineCov">        529 :         break;</span></a>
-<a name="434"><span class="lineNum">     434 </span>                :<span class="lineCov">        788 :     case UV_NAMED_PIPE:</span></a>
-<a name="435"><span class="lineNum">     435 </span>                :<span class="lineCov">        788 :         handle = malloc_s(sizeof(uv_pipe_t));</span></a>
-<a name="436"><span class="lineNum">     436 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 788 times"> + </span>]:<span class="lineCov">        788 :         if ((err = uv_pipe_init(jl_io_loop, (uv_pipe_t*)handle, 0))) {</span></a>
+<a name="433"><span class="lineNum">     433 </span>                :<span class="lineCov">        528 :         break;</span></a>
+<a name="434"><span class="lineNum">     434 </span>                :<span class="lineCov">        786 :     case UV_NAMED_PIPE:</span></a>
+<a name="435"><span class="lineNum">     435 </span>                :<span class="lineCov">        786 :         handle = malloc_s(sizeof(uv_pipe_t));</span></a>
+<a name="436"><span class="lineNum">     436 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 786 times"> + </span>]:<span class="lineCov">        786 :         if ((err = uv_pipe_init(jl_io_loop, (uv_pipe_t*)handle, 0))) {</span></a>
 <a name="437"><span class="lineNum">     437 </span>                :<span class="lineNoCov">          0 :             jl_errorf(&quot;error initializing %s in uv_pipe_init: %s (%s %d)&quot;, stdio, uv_strerror(err), uv_err_name(err), err);</span></a>
 <a name="438"><span class="lineNum">     438 </span>                :            :         }</a>
-<a name="439"><span class="lineNum">     439 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 788 times"> + </span>]:<span class="lineCov">        788 :         if ((err = uv_pipe_open((uv_pipe_t*)handle, fd))) {</span></a>
+<a name="439"><span class="lineNum">     439 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 786 times"> + </span>]:<span class="lineCov">        786 :         if ((err = uv_pipe_open((uv_pipe_t*)handle, fd))) {</span></a>
 <a name="440"><span class="lineNum">     440 </span>                :<span class="lineNoCov">          0 :             jl_errorf(&quot;error initializing %s in uv_pipe_open: %s (%s %d)&quot;, stdio, uv_strerror(err), uv_err_name(err), err);</span></a>
 <a name="441"><span class="lineNum">     441 </span>                :            :         }</a>
-<a name="442"><span class="lineNum">     442 </span>                :<span class="lineCov">        788 :         ((uv_pipe_t*)handle)-&gt;data = NULL;</span></a>
-<a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">        788 :         break;</span></a>
+<a name="442"><span class="lineNum">     442 </span>                :<span class="lineCov">        786 :         ((uv_pipe_t*)handle)-&gt;data = NULL;</span></a>
+<a name="443"><span class="lineNum">     443 </span>                :<span class="lineCov">        786 :         break;</span></a>
 <a name="444"><span class="lineNum">     444 </span>                :<span class="lineCov">          1 :     case UV_TCP:</span></a>
 <a name="445"><span class="lineNum">     445 </span>                :<span class="lineCov">          1 :         handle = malloc_s(sizeof(uv_tcp_t));</span></a>
 <a name="446"><span class="lineNum">     446 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          1 :         if ((err = uv_tcp_init(jl_io_loop, (uv_tcp_t*)handle))) {</span></a>
@@ -531,18 +531,18 @@
 <a name="452"><span class="lineNum">     452 </span>                :<span class="lineCov">          1 :         ((uv_tcp_t*)handle)-&gt;data = NULL;</span></a>
 <a name="453"><span class="lineNum">     453 </span>                :<span class="lineCov">          1 :         break;</span></a>
 <a name="454"><span class="lineNum">     454 </span>                :            :     }</a>
-<a name="455"><span class="lineNum">     455 </span>                :<span class="lineCov">       1722 :     return handle;</span></a>
+<a name="455"><span class="lineNum">     455 </span>                :<span class="lineCov">       1719 :     return handle;</span></a>
 <a name="456"><span class="lineNum">     456 </span>                :            : }</a>
 <a name="457"><span class="lineNum">     457 </span>                :            : </a>
-<a name="458"><span class="lineNum">     458 </span>                :<span class="lineCov">        574 : static void init_stdio(void)</span></a>
+<a name="458"><span class="lineNum">     458 </span>                :<span class="lineCov">        573 : static void init_stdio(void)</span></a>
 <a name="459"><span class="lineNum">     459 </span>                :            : {</a>
-<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">        574 :     JL_STDIN  = (uv_stream_t*)init_stdio_handle(&quot;stdin&quot;, UV_STDIN_FD, 1);</span></a>
-<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">        574 :     JL_STDOUT = (uv_stream_t*)init_stdio_handle(&quot;stdout&quot;, UV_STDOUT_FD, 0);</span></a>
-<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">        574 :     JL_STDERR = (uv_stream_t*)init_stdio_handle(&quot;stderr&quot;, UV_STDERR_FD, 0);</span></a>
-<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">        574 :     jl_flush_cstdio();</span></a>
-<a name="464"><span class="lineNum">     464 </span>                :<span class="lineCov">        574 : }</span></a>
+<a name="460"><span class="lineNum">     460 </span>                :<span class="lineCov">        573 :     JL_STDIN  = (uv_stream_t*)init_stdio_handle(&quot;stdin&quot;, UV_STDIN_FD, 1);</span></a>
+<a name="461"><span class="lineNum">     461 </span>                :<span class="lineCov">        573 :     JL_STDOUT = (uv_stream_t*)init_stdio_handle(&quot;stdout&quot;, UV_STDOUT_FD, 0);</span></a>
+<a name="462"><span class="lineNum">     462 </span>                :<span class="lineCov">        573 :     JL_STDERR = (uv_stream_t*)init_stdio_handle(&quot;stderr&quot;, UV_STDERR_FD, 0);</span></a>
+<a name="463"><span class="lineNum">     463 </span>                :<span class="lineCov">        573 :     jl_flush_cstdio();</span></a>
+<a name="464"><span class="lineNum">     464 </span>                :<span class="lineCov">        573 : }</span></a>
 <a name="465"><span class="lineNum">     465 </span>                :            : </a>
-<a name="466"><span class="lineNum">     466 </span>                :<span class="lineCov">      28822 : int jl_isabspath(const char *in) JL_NOTSAFEPOINT</span></a>
+<a name="466"><span class="lineNum">     466 </span>                :<span class="lineCov">      28807 : int jl_isabspath(const char *in) JL_NOTSAFEPOINT</span></a>
 <a name="467"><span class="lineNum">     467 </span>                :            : {</a>
 <a name="468"><span class="lineNum">     468 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="469"><span class="lineNum">     469 </span>                :            :     char c0 = in[0];</a>
@@ -554,18 +554,18 @@
 <a name="475"><span class="lineNum">     475 </span>                :            :         return c2 == '/' || c2 == '\\'; // absolute path with drive name</a>
 <a name="476"><span class="lineNum">     476 </span>                :            :     }</a>
 <a name="477"><span class="lineNum">     477 </span>                :            : #else</a>
-<a name="478"><span class="lineNum">     478 </span>        [<span class="branchCov" title="Branch 0 was taken 740 times"> + </span><span class="branchCov" title="Branch 1 was taken 28082 times"> + </span>]:<span class="lineCov">      28822 :     if (in[0] == '/') return 1; // absolute path</span></a>
+<a name="478"><span class="lineNum">     478 </span>        [<span class="branchCov" title="Branch 0 was taken 741 times"> + </span><span class="branchCov" title="Branch 1 was taken 28066 times"> + </span>]:<span class="lineCov">      28807 :     if (in[0] == '/') return 1; // absolute path</span></a>
 <a name="479"><span class="lineNum">     479 </span>                :            : #endif</a>
-<a name="480"><span class="lineNum">     480 </span>                :<span class="lineCov">      28082 :     return 0; // relative path</span></a>
+<a name="480"><span class="lineNum">     480 </span>                :<span class="lineCov">      28066 :     return 0; // relative path</span></a>
 <a name="481"><span class="lineNum">     481 </span>                :            : }</a>
 <a name="482"><span class="lineNum">     482 </span>                :            : </a>
-<a name="483"><span class="lineNum">     483 </span>                :<span class="lineCov">       1258 : static char *abspath(const char *in, int nprefix)</span></a>
+<a name="483"><span class="lineNum">     483 </span>                :<span class="lineCov">       1256 : static char *abspath(const char *in, int nprefix)</span></a>
 <a name="484"><span class="lineNum">     484 </span>                :            : { // compute an absolute realpath location, so that chdir doesn't change the file reference</a>
 <a name="485"><span class="lineNum">     485 </span>                :            :   // ignores (copies directly over) nprefix characters at the start of abspath</a>
 <a name="486"><span class="lineNum">     486 </span>                :            : #ifndef _OS_WINDOWS_</a>
-<a name="487"><span class="lineNum">     487 </span>                :<span class="lineCov">       1258 :     char *out = realpath(in + nprefix, NULL);</span></a>
-<a name="488"><span class="lineNum">     488 </span>        [<span class="branchCov" title="Branch 0 was taken 1167 times"> + </span><span class="branchCov" title="Branch 1 was taken 91 times"> + </span>]:<span class="lineCov">       1258 :     if (out) {</span></a>
-<a name="489"><span class="lineNum">     489 </span>        [<span class="branchCov" title="Branch 0 was taken 21 times"> + </span><span class="branchCov" title="Branch 1 was taken 1146 times"> + </span>]:<span class="lineCov">       1167 :         if (nprefix &gt; 0) {</span></a>
+<a name="487"><span class="lineNum">     487 </span>                :<span class="lineCov">       1256 :     char *out = realpath(in + nprefix, NULL);</span></a>
+<a name="488"><span class="lineNum">     488 </span>        [<span class="branchCov" title="Branch 0 was taken 1165 times"> + </span><span class="branchCov" title="Branch 1 was taken 91 times"> + </span>]:<span class="lineCov">       1256 :     if (out) {</span></a>
+<a name="489"><span class="lineNum">     489 </span>        [<span class="branchCov" title="Branch 0 was taken 21 times"> + </span><span class="branchCov" title="Branch 1 was taken 1144 times"> + </span>]:<span class="lineCov">       1165 :         if (nprefix &gt; 0) {</span></a>
 <a name="490"><span class="lineNum">     490 </span>                :<span class="lineCov">         21 :             size_t sz = strlen(out) + 1;</span></a>
 <a name="491"><span class="lineNum">     491 </span>                :<span class="lineCov">         21 :             char *cpy = (char*)malloc_s(sz + nprefix);</span></a>
 <a name="492"><span class="lineNum">     492 </span>                :<span class="lineCov">         21 :             memcpy(cpy, in, nprefix);</span></a>
@@ -606,7 +606,7 @@
 <a name="527"><span class="lineNum">     527 </span>                :            :     }</a>
 <a name="528"><span class="lineNum">     528 </span>                :            :     memcpy(out, in, nprefix);</a>
 <a name="529"><span class="lineNum">     529 </span>                :            : #endif</a>
-<a name="530"><span class="lineNum">     530 </span>                :<span class="lineCov">       1258 :     return out;</span></a>
+<a name="530"><span class="lineNum">     530 </span>                :<span class="lineCov">       1256 :     return out;</span></a>
 <a name="531"><span class="lineNum">     531 </span>                :            : }</a>
 <a name="532"><span class="lineNum">     532 </span>                :            : </a>
 <a name="533"><span class="lineNum">     533 </span>                :            : // create an absolute-path copy of the input path format string</a>
@@ -639,7 +639,7 @@
 <a name="560"><span class="lineNum">     560 </span>                :<span class="lineCov">          1 :     return out;</span></a>
 <a name="561"><span class="lineNum">     561 </span>                :            : }</a>
 <a name="562"><span class="lineNum">     562 </span>                :            : </a>
-<a name="563"><span class="lineNum">     563 </span>                :<span class="lineCov">        574 : static void jl_resolve_sysimg_location(JL_IMAGE_SEARCH rel)</span></a>
+<a name="563"><span class="lineNum">     563 </span>                :<span class="lineCov">        573 : static void jl_resolve_sysimg_location(JL_IMAGE_SEARCH rel)</span></a>
 <a name="564"><span class="lineNum">     564 </span>                :            : {   // this function resolves the paths in jl_options to absolute file locations as needed</a>
 <a name="565"><span class="lineNum">     565 </span>                :            :     // and it replaces the pointers to `julia_bindir`, `julia_bin`, `image_file`, and output file paths</a>
 <a name="566"><span class="lineNum">     566 </span>                :            :     // it may fail, print an error, and exit(1) if any of these paths are longer than JL_PATH_MAX</a>
@@ -647,29 +647,29 @@
 <a name="568"><span class="lineNum">     568 </span>                :            :     // note: if you care about lost memory, you should call the appropriate `free()` function</a>
 <a name="569"><span class="lineNum">     569 </span>                :            :     // on the original pointer for each `char*` you've inserted into `jl_options`, after</a>
 <a name="570"><span class="lineNum">     570 </span>                :            :     // calling `julia_init()`</a>
-<a name="571"><span class="lineNum">     571 </span>                :<span class="lineCov">        574 :     char *free_path = (char*)malloc_s(JL_PATH_MAX);</span></a>
-<a name="572"><span class="lineNum">     572 </span>                :<span class="lineCov">        574 :     size_t path_size = JL_PATH_MAX;</span></a>
-<a name="573"><span class="lineNum">     573 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 574 times"> + </span>]:<span class="lineCov">        574 :     if (uv_exepath(free_path, &amp;path_size)) {</span></a>
+<a name="571"><span class="lineNum">     571 </span>                :<span class="lineCov">        573 :     char *free_path = (char*)malloc_s(JL_PATH_MAX);</span></a>
+<a name="572"><span class="lineNum">     572 </span>                :<span class="lineCov">        573 :     size_t path_size = JL_PATH_MAX;</span></a>
+<a name="573"><span class="lineNum">     573 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        573 :     if (uv_exepath(free_path, &amp;path_size)) {</span></a>
 <a name="574"><span class="lineNum">     574 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;fatal error: unexpected error while retrieving exepath&quot;);</span></a>
 <a name="575"><span class="lineNum">     575 </span>                :            :     }</a>
-<a name="576"><span class="lineNum">     576 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 574 times"> + </span>]:<span class="lineCov">        574 :     if (path_size &gt;= JL_PATH_MAX) {</span></a>
+<a name="576"><span class="lineNum">     576 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        573 :     if (path_size &gt;= JL_PATH_MAX) {</span></a>
 <a name="577"><span class="lineNum">     577 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;fatal error: jl_options.julia_bin path too long&quot;);</span></a>
 <a name="578"><span class="lineNum">     578 </span>                :            :     }</a>
-<a name="579"><span class="lineNum">     579 </span>                :<span class="lineCov">        574 :     jl_options.julia_bin = (char*)malloc_s(path_size + 1);</span></a>
-<a name="580"><span class="lineNum">     580 </span>                :<span class="lineCov">        574 :     memcpy((char*)jl_options.julia_bin, free_path, path_size);</span></a>
-<a name="581"><span class="lineNum">     581 </span>                :<span class="lineCov">        574 :     ((char*)jl_options.julia_bin)[path_size] = '\0';</span></a>
-<a name="582"><span class="lineNum">     582 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">        574 :     if (!jl_options.julia_bindir) {</span></a>
-<a name="583"><span class="lineNum">     583 </span>                :<span class="lineCov">        572 :         jl_options.julia_bindir = getenv(&quot;JULIA_BINDIR&quot;);</span></a>
-<a name="584"><span class="lineNum">     584 </span>        [<span class="branchCov" title="Branch 0 was taken 565 times"> + </span><span class="branchCov" title="Branch 1 was taken 7 times"> + </span>]:<span class="lineCov">        572 :         if (!jl_options.julia_bindir) {</span></a>
-<a name="585"><span class="lineNum">     585 </span>                :<span class="lineCov">        565 :             jl_options.julia_bindir = dirname(free_path);</span></a>
+<a name="579"><span class="lineNum">     579 </span>                :<span class="lineCov">        573 :     jl_options.julia_bin = (char*)malloc_s(path_size + 1);</span></a>
+<a name="580"><span class="lineNum">     580 </span>                :<span class="lineCov">        573 :     memcpy((char*)jl_options.julia_bin, free_path, path_size);</span></a>
+<a name="581"><span class="lineNum">     581 </span>                :<span class="lineCov">        573 :     ((char*)jl_options.julia_bin)[path_size] = '\0';</span></a>
+<a name="582"><span class="lineNum">     582 </span>        [<span class="branchCov" title="Branch 0 was taken 571 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span>]:<span class="lineCov">        573 :     if (!jl_options.julia_bindir) {</span></a>
+<a name="583"><span class="lineNum">     583 </span>                :<span class="lineCov">        571 :         jl_options.julia_bindir = getenv(&quot;JULIA_BINDIR&quot;);</span></a>
+<a name="584"><span class="lineNum">     584 </span>        [<span class="branchCov" title="Branch 0 was taken 564 times"> + </span><span class="branchCov" title="Branch 1 was taken 7 times"> + </span>]:<span class="lineCov">        571 :         if (!jl_options.julia_bindir) {</span></a>
+<a name="585"><span class="lineNum">     585 </span>                :<span class="lineCov">        564 :             jl_options.julia_bindir = dirname(free_path);</span></a>
 <a name="586"><span class="lineNum">     586 </span>                :            :         }</a>
 <a name="587"><span class="lineNum">     587 </span>                :            :     }</a>
-<a name="588"><span class="lineNum">     588 </span>        [<span class="branchCov" title="Branch 0 was taken 574 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        574 :     if (jl_options.julia_bindir)</span></a>
-<a name="589"><span class="lineNum">     589 </span>                :<span class="lineCov">        574 :         jl_options.julia_bindir = abspath(jl_options.julia_bindir, 0);</span></a>
-<a name="590"><span class="lineNum">     590 </span>                :<span class="lineCov">        574 :     free(free_path);</span></a>
-<a name="591"><span class="lineNum">     591 </span>                :<span class="lineCov">        574 :     free_path = NULL;</span></a>
-<a name="592"><span class="lineNum">     592 </span>        [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">        574 :     if (jl_options.image_file) {</span></a>
-<a name="593"><span class="lineNum">     593 </span>  [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 570 times"> + </span><span class="branchCov" title="Branch 2 was taken 3 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">        573 :         if (rel == JL_IMAGE_JULIA_HOME &amp;&amp; !jl_isabspath(jl_options.image_file)) {</span></a>
+<a name="588"><span class="lineNum">     588 </span>        [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        573 :     if (jl_options.julia_bindir)</span></a>
+<a name="589"><span class="lineNum">     589 </span>                :<span class="lineCov">        573 :         jl_options.julia_bindir = abspath(jl_options.julia_bindir, 0);</span></a>
+<a name="590"><span class="lineNum">     590 </span>                :<span class="lineCov">        573 :     free(free_path);</span></a>
+<a name="591"><span class="lineNum">     591 </span>                :<span class="lineCov">        573 :     free_path = NULL;</span></a>
+<a name="592"><span class="lineNum">     592 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">        573 :     if (jl_options.image_file) {</span></a>
+<a name="593"><span class="lineNum">     593 </span>  [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 569 times"> + </span><span class="branchCov" title="Branch 2 was taken 3 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">        572 :         if (rel == JL_IMAGE_JULIA_HOME &amp;&amp; !jl_isabspath(jl_options.image_file)) {</span></a>
 <a name="594"><span class="lineNum">     594 </span>                :            :             // build time path, relative to JULIA_BINDIR</a>
 <a name="595"><span class="lineNum">     595 </span>                :<span class="lineCov">          3 :             free_path = (char*)malloc_s(JL_PATH_MAX);</span></a>
 <a name="596"><span class="lineNum">     596 </span>                :<span class="lineCov">          3 :             int n = snprintf(free_path, JL_PATH_MAX, &quot;%s&quot; PATHSEPSTRING &quot;%s&quot;,</span></a>
@@ -679,38 +679,38 @@
 <a name="600"><span class="lineNum">     600 </span>                :            :             }</a>
 <a name="601"><span class="lineNum">     601 </span>                :<span class="lineCov">          3 :             jl_options.image_file = free_path;</span></a>
 <a name="602"><span class="lineNum">     602 </span>                :            :         }</a>
-<a name="603"><span class="lineNum">     603 </span>        [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        573 :         if (jl_options.image_file)</span></a>
-<a name="604"><span class="lineNum">     604 </span>                :<span class="lineCov">        573 :             jl_options.image_file = abspath(jl_options.image_file, 0);</span></a>
-<a name="605"><span class="lineNum">     605 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 570 times"> + </span>]:<span class="lineCov">        573 :         if (free_path) {</span></a>
+<a name="603"><span class="lineNum">     603 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        572 :         if (jl_options.image_file)</span></a>
+<a name="604"><span class="lineNum">     604 </span>                :<span class="lineCov">        572 :             jl_options.image_file = abspath(jl_options.image_file, 0);</span></a>
+<a name="605"><span class="lineNum">     605 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 569 times"> + </span>]:<span class="lineCov">        572 :         if (free_path) {</span></a>
 <a name="606"><span class="lineNum">     606 </span>                :<span class="lineCov">          3 :             free(free_path);</span></a>
 <a name="607"><span class="lineNum">     607 </span>                :<span class="lineCov">          3 :             free_path = NULL;</span></a>
 <a name="608"><span class="lineNum">     608 </span>                :            :         }</a>
 <a name="609"><span class="lineNum">     609 </span>                :            :     }</a>
-<a name="610"><span class="lineNum">     610 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.outputo)</span></a>
+<a name="610"><span class="lineNum">     610 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.outputo)</span></a>
 <a name="611"><span class="lineNum">     611 </span>                :<span class="lineCov">          1 :         jl_options.outputo = abspath(jl_options.outputo, 0);</span></a>
-<a name="612"><span class="lineNum">     612 </span>        [<span class="branchCov" title="Branch 0 was taken 88 times"> + </span><span class="branchCov" title="Branch 1 was taken 486 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.outputji)</span></a>
+<a name="612"><span class="lineNum">     612 </span>        [<span class="branchCov" title="Branch 0 was taken 88 times"> + </span><span class="branchCov" title="Branch 1 was taken 485 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.outputji)</span></a>
 <a name="613"><span class="lineNum">     613 </span>                :<span class="lineCov">         88 :         jl_options.outputji = abspath(jl_options.outputji, 0);</span></a>
-<a name="614"><span class="lineNum">     614 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 574 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.outputbc)</span></a>
+<a name="614"><span class="lineNum">     614 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.outputbc)</span></a>
 <a name="615"><span class="lineNum">     615 </span>                :<span class="lineNoCov">          0 :         jl_options.outputbc = abspath(jl_options.outputbc, 0);</span></a>
-<a name="616"><span class="lineNum">     616 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 574 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.outputasm)</span></a>
+<a name="616"><span class="lineNum">     616 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.outputasm)</span></a>
 <a name="617"><span class="lineNum">     617 </span>                :<span class="lineNoCov">          0 :         jl_options.outputasm = abspath(jl_options.outputasm, 0);</span></a>
-<a name="618"><span class="lineNum">     618 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 573 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.machine_file)</span></a>
+<a name="618"><span class="lineNum">     618 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 572 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.machine_file)</span></a>
 <a name="619"><span class="lineNum">     619 </span>                :<span class="lineCov">          1 :         jl_options.machine_file = abspath(jl_options.machine_file, 0);</span></a>
-<a name="620"><span class="lineNum">     620 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchCov" title="Branch 1 was taken 566 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.output_code_coverage)</span></a>
+<a name="620"><span class="lineNum">     620 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.output_code_coverage)</span></a>
 <a name="621"><span class="lineNum">     621 </span>                :<span class="lineCov">          8 :         jl_options.output_code_coverage = absformat(jl_options.output_code_coverage);</span></a>
-<a name="622"><span class="lineNum">     622 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 571 times"> + </span>]:<span class="lineCov">        574 :     if (jl_options.tracked_path)</span></a>
+<a name="622"><span class="lineNum">     622 </span>        [<span class="branchCov" title="Branch 0 was taken 3 times"> + </span><span class="branchCov" title="Branch 1 was taken 570 times"> + </span>]:<span class="lineCov">        573 :     if (jl_options.tracked_path)</span></a>
 <a name="623"><span class="lineNum">     623 </span>                :<span class="lineCov">          3 :         jl_options.tracked_path = absformat(jl_options.tracked_path);</span></a>
 <a name="624"><span class="lineNum">     624 </span>                :            : </a>
-<a name="625"><span class="lineNum">     625 </span>                :<span class="lineCov">        574 :     const char **cmdp = jl_options.cmds;</span></a>
-<a name="626"><span class="lineNum">     626 </span>        [<span class="branchCov" title="Branch 0 was taken 323 times"> + </span><span class="branchCov" title="Branch 1 was taken 251 times"> + </span>]:<span class="lineCov">        574 :     if (cmdp) {</span></a>
-<a name="627"><span class="lineNum">     627 </span>        [<span class="branchCov" title="Branch 0 was taken 348 times"> + </span><span class="branchCov" title="Branch 1 was taken 323 times"> + </span>]:<span class="lineCov">        671 :         for (; *cmdp; cmdp++) {</span></a>
-<a name="628"><span class="lineNum">     628 </span>                :<span class="lineCov">        348 :             const char *cmd = *cmdp;</span></a>
-<a name="629"><span class="lineNum">     629 </span>        [<span class="branchCov" title="Branch 0 was taken 21 times"> + </span><span class="branchCov" title="Branch 1 was taken 327 times"> + </span>]:<span class="lineCov">        348 :             if (cmd[0] == 'L') {</span></a>
+<a name="625"><span class="lineNum">     625 </span>                :<span class="lineCov">        573 :     const char **cmdp = jl_options.cmds;</span></a>
+<a name="626"><span class="lineNum">     626 </span>        [<span class="branchCov" title="Branch 0 was taken 322 times"> + </span><span class="branchCov" title="Branch 1 was taken 251 times"> + </span>]:<span class="lineCov">        573 :     if (cmdp) {</span></a>
+<a name="627"><span class="lineNum">     627 </span>        [<span class="branchCov" title="Branch 0 was taken 347 times"> + </span><span class="branchCov" title="Branch 1 was taken 322 times"> + </span>]:<span class="lineCov">        669 :         for (; *cmdp; cmdp++) {</span></a>
+<a name="628"><span class="lineNum">     628 </span>                :<span class="lineCov">        347 :             const char *cmd = *cmdp;</span></a>
+<a name="629"><span class="lineNum">     629 </span>        [<span class="branchCov" title="Branch 0 was taken 21 times"> + </span><span class="branchCov" title="Branch 1 was taken 326 times"> + </span>]:<span class="lineCov">        347 :             if (cmd[0] == 'L') {</span></a>
 <a name="630"><span class="lineNum">     630 </span>                :<span class="lineCov">         21 :                 *cmdp = abspath(cmd, 1);</span></a>
 <a name="631"><span class="lineNum">     631 </span>                :            :             }</a>
 <a name="632"><span class="lineNum">     632 </span>                :            :         }</a>
 <a name="633"><span class="lineNum">     633 </span>                :            :     }</a>
-<a name="634"><span class="lineNum">     634 </span>                :<span class="lineCov">        574 : }</span></a>
+<a name="634"><span class="lineNum">     634 </span>                :<span class="lineCov">        573 : }</span></a>
 <a name="635"><span class="lineNum">     635 </span>                :            : </a>
 <a name="636"><span class="lineNum">     636 </span>                :<span class="lineCov">      20108 : JL_DLLEXPORT int jl_is_file_tracked(jl_sym_t *path)</span></a>
 <a name="637"><span class="lineNum">     637 </span>                :            : {</a>
@@ -719,52 +719,52 @@
 <a name="640"><span class="lineNum">     640 </span>  [<span class="branchCov" title="Branch 0 was taken 611 times"> + </span><span class="branchCov" title="Branch 1 was taken 19497 times"> + </span><span class="branchCov" title="Branch 2 was taken 8 times"> + </span><span class="branchCov" title="Branch 3 was taken 603 times"> + </span>]:<span class="lineCov">      20108 :     return (strlen(path_) &gt;= tpath_len) &amp;&amp; (strncmp(path_, jl_options.tracked_path, tpath_len) == 0);</span></a>
 <a name="641"><span class="lineNum">     641 </span>                :            : }</a>
 <a name="642"><span class="lineNum">     642 </span>                :            : </a>
-<a name="643"><span class="lineNum">     643 </span>                :<span class="lineCov">     134202 : static void jl_set_io_wait(int v)</span></a>
+<a name="643"><span class="lineNum">     643 </span>                :<span class="lineCov">     134544 : static void jl_set_io_wait(int v)</span></a>
 <a name="644"><span class="lineNum">     644 </span>                :            : {</a>
-<a name="645"><span class="lineNum">     645 </span>                :<span class="lineCov">     134202 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="646"><span class="lineNum">     646 </span>                :<span class="lineCov">     134202 :     ct-&gt;ptls-&gt;io_wait = v;</span></a>
-<a name="647"><span class="lineNum">     647 </span>                :<span class="lineCov">     134202 : }</span></a>
+<a name="645"><span class="lineNum">     645 </span>                :<span class="lineCov">     134544 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="646"><span class="lineNum">     646 </span>                :<span class="lineCov">     134544 :     ct-&gt;ptls-&gt;io_wait = v;</span></a>
+<a name="647"><span class="lineNum">     647 </span>                :<span class="lineCov">     134544 : }</span></a>
 <a name="648"><span class="lineNum">     648 </span>                :            : </a>
 <a name="649"><span class="lineNum">     649 </span>                :            : extern jl_mutex_t jl_modules_mutex;</a>
 <a name="650"><span class="lineNum">     650 </span>                :            : </a>
-<a name="651"><span class="lineNum">     651 </span>                :<span class="lineCov">        574 : static void restore_fp_env(void)</span></a>
+<a name="651"><span class="lineNum">     651 </span>                :<span class="lineCov">        573 : static void restore_fp_env(void)</span></a>
 <a name="652"><span class="lineNum">     652 </span>                :            : {</a>
-<a name="653"><span class="lineNum">     653 </span>  [<span class="branchCov" title="Branch 0 was taken 574 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 574 times"> + </span>]:<span class="lineCov">        574 :     if (jl_set_zero_subnormals(0) || jl_set_default_nans(0)) {</span></a>
+<a name="653"><span class="lineNum">     653 </span>  [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 573 times"> + </span>]:<span class="lineCov">        573 :     if (jl_set_zero_subnormals(0) || jl_set_default_nans(0)) {</span></a>
 <a name="654"><span class="lineNum">     654 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;Failed to configure floating point environment&quot;);</span></a>
 <a name="655"><span class="lineNum">     655 </span>                :            :     }</a>
-<a name="656"><span class="lineNum">     656 </span>                :<span class="lineCov">        574 : }</span></a>
+<a name="656"><span class="lineNum">     656 </span>                :<span class="lineCov">        573 : }</span></a>
 <a name="657"><span class="lineNum">     657 </span>                :            : </a>
 <a name="658"><span class="lineNum">     658 </span>                :            : static NOINLINE void _finish_julia_init(JL_IMAGE_SEARCH rel, jl_ptls_t ptls, jl_task_t *ct);</a>
 <a name="659"><span class="lineNum">     659 </span>                :            : </a>
 <a name="660"><span class="lineNum">     660 </span>                :            : JL_DLLEXPORT int jl_default_debug_info_kind;</a>
 <a name="661"><span class="lineNum">     661 </span>                :            : </a>
-<a name="662"><span class="lineNum">     662 </span>                :<span class="lineCov">        574 : JL_DLLEXPORT void julia_init(JL_IMAGE_SEARCH rel)</span></a>
+<a name="662"><span class="lineNum">     662 </span>                :<span class="lineCov">        573 : JL_DLLEXPORT void julia_init(JL_IMAGE_SEARCH rel)</span></a>
 <a name="663"><span class="lineNum">     663 </span>                :            : {</a>
-<a name="664"><span class="lineNum">     664 </span>                :<span class="lineCov">        574 :     jl_default_debug_info_kind = 0;</span></a>
+<a name="664"><span class="lineNum">     664 </span>                :<span class="lineCov">        573 :     jl_default_debug_info_kind = 0;</span></a>
 <a name="665"><span class="lineNum">     665 </span>                :            : </a>
-<a name="666"><span class="lineNum">     666 </span>                :<span class="lineCov">        574 :     jl_init_timing();</span></a>
+<a name="666"><span class="lineNum">     666 </span>                :<span class="lineCov">        573 :     jl_init_timing();</span></a>
 <a name="667"><span class="lineNum">     667 </span>                :            :     // Make sure we finalize the tls callback before starting any threads.</a>
-<a name="668"><span class="lineNum">     668 </span>                :<span class="lineCov">        574 :     (void)jl_get_pgcstack();</span></a>
-<a name="669"><span class="lineNum">     669 </span>                :<span class="lineCov">        574 :     jl_safepoint_init();</span></a>
-<a name="670"><span class="lineNum">     670 </span>                :<span class="lineCov">        574 :     libsupport_init();</span></a>
-<a name="671"><span class="lineNum">     671 </span>                :<span class="lineCov">        574 :     htable_new(&amp;jl_current_modules, 0);</span></a>
-<a name="672"><span class="lineNum">     672 </span>                :<span class="lineCov">        574 :     JL_MUTEX_INIT(&amp;jl_modules_mutex);</span></a>
-<a name="673"><span class="lineNum">     673 </span>                :<span class="lineCov">        574 :     jl_precompile_toplevel_module = NULL;</span></a>
-<a name="674"><span class="lineNum">     674 </span>                :<span class="lineCov">        574 :     ios_set_io_wait_func = jl_set_io_wait;</span></a>
-<a name="675"><span class="lineNum">     675 </span>                :<span class="lineCov">        574 :     jl_io_loop = uv_default_loop(); // this loop will internal events (spawning process etc.),</span></a>
+<a name="668"><span class="lineNum">     668 </span>                :<span class="lineCov">        573 :     (void)jl_get_pgcstack();</span></a>
+<a name="669"><span class="lineNum">     669 </span>                :<span class="lineCov">        573 :     jl_safepoint_init();</span></a>
+<a name="670"><span class="lineNum">     670 </span>                :<span class="lineCov">        573 :     libsupport_init();</span></a>
+<a name="671"><span class="lineNum">     671 </span>                :<span class="lineCov">        573 :     htable_new(&amp;jl_current_modules, 0);</span></a>
+<a name="672"><span class="lineNum">     672 </span>                :<span class="lineCov">        573 :     JL_MUTEX_INIT(&amp;jl_modules_mutex);</span></a>
+<a name="673"><span class="lineNum">     673 </span>                :<span class="lineCov">        573 :     jl_precompile_toplevel_module = NULL;</span></a>
+<a name="674"><span class="lineNum">     674 </span>                :<span class="lineCov">        573 :     ios_set_io_wait_func = jl_set_io_wait;</span></a>
+<a name="675"><span class="lineNum">     675 </span>                :<span class="lineCov">        573 :     jl_io_loop = uv_default_loop(); // this loop will internal events (spawning process etc.),</span></a>
 <a name="676"><span class="lineNum">     676 </span>                :            :                                     // best to call this first, since it also initializes libuv</a>
-<a name="677"><span class="lineNum">     677 </span>                :<span class="lineCov">        574 :     jl_init_uv();</span></a>
-<a name="678"><span class="lineNum">     678 </span>                :<span class="lineCov">        574 :     init_stdio();</span></a>
-<a name="679"><span class="lineNum">     679 </span>                :<span class="lineCov">        574 :     restore_fp_env();</span></a>
-<a name="680"><span class="lineNum">     680 </span>                :<span class="lineCov">        574 :     restore_signals();</span></a>
-<a name="681"><span class="lineNum">     681 </span>                :<span class="lineCov">        574 :     jl_init_intrinsic_properties();</span></a>
+<a name="677"><span class="lineNum">     677 </span>                :<span class="lineCov">        573 :     jl_init_uv();</span></a>
+<a name="678"><span class="lineNum">     678 </span>                :<span class="lineCov">        573 :     init_stdio();</span></a>
+<a name="679"><span class="lineNum">     679 </span>                :<span class="lineCov">        573 :     restore_fp_env();</span></a>
+<a name="680"><span class="lineNum">     680 </span>                :<span class="lineCov">        573 :     restore_signals();</span></a>
+<a name="681"><span class="lineNum">     681 </span>                :<span class="lineCov">        573 :     jl_init_intrinsic_properties();</span></a>
 <a name="682"><span class="lineNum">     682 </span>                :            : </a>
-<a name="683"><span class="lineNum">     683 </span>                :<span class="lineCov">        574 :     jl_page_size = jl_getpagesize();</span></a>
-<a name="684"><span class="lineNum">     684 </span>                :<span class="lineCov">        574 :     jl_prep_sanitizers();</span></a>
+<a name="683"><span class="lineNum">     683 </span>                :<span class="lineCov">        573 :     jl_page_size = jl_getpagesize();</span></a>
+<a name="684"><span class="lineNum">     684 </span>                :<span class="lineCov">        573 :     jl_prep_sanitizers();</span></a>
 <a name="685"><span class="lineNum">     685 </span>                :            :     void *stack_lo, *stack_hi;</a>
-<a name="686"><span class="lineNum">     686 </span>                :<span class="lineCov">        574 :     jl_init_stack_limits(1, &amp;stack_lo, &amp;stack_hi);</span></a>
+<a name="686"><span class="lineNum">     686 </span>                :<span class="lineCov">        573 :     jl_init_stack_limits(1, &amp;stack_lo, &amp;stack_hi);</span></a>
 <a name="687"><span class="lineNum">     687 </span>                :            : </a>
-<a name="688"><span class="lineNum">     688 </span>                :<span class="lineCov">        574 :     jl_libjulia_internal_handle = jl_load_dynamic_library(NULL, JL_RTLD_DEFAULT, 1);</span></a>
+<a name="688"><span class="lineNum">     688 </span>                :<span class="lineCov">        573 :     jl_libjulia_internal_handle = jl_load_dynamic_library(NULL, JL_RTLD_DEFAULT, 1);</span></a>
 <a name="689"><span class="lineNum">     689 </span>                :            : #ifdef _OS_WINDOWS_</a>
 <a name="690"><span class="lineNum">     690 </span>                :            :     jl_exe_handle = GetModuleHandleA(NULL);</a>
 <a name="691"><span class="lineNum">     691 </span>                :            :     jl_RTLD_DEFAULT_handle = jl_libjulia_internal_handle;</a>
@@ -787,63 +787,63 @@
 <a name="708"><span class="lineNum">     708 </span>                :            :     if (jl_dbghelp)</a>
 <a name="709"><span class="lineNum">     709 </span>                :            :         jl_dlsym(jl_dbghelp, &quot;SymRefreshModuleList&quot;, (void **)&amp;hSymRefreshModuleList, 1);</a>
 <a name="710"><span class="lineNum">     710 </span>                :            : #else</a>
-<a name="711"><span class="lineNum">     711 </span>                :<span class="lineCov">        574 :     jl_exe_handle = jl_dlopen(NULL, JL_RTLD_NOW);</span></a>
+<a name="711"><span class="lineNum">     711 </span>                :<span class="lineCov">        573 :     jl_exe_handle = jl_dlopen(NULL, JL_RTLD_NOW);</span></a>
 <a name="712"><span class="lineNum">     712 </span>                :            : #ifdef RTLD_DEFAULT</a>
 <a name="713"><span class="lineNum">     713 </span>                :            :     jl_RTLD_DEFAULT_handle = RTLD_DEFAULT;</a>
 <a name="714"><span class="lineNum">     714 </span>                :            : #else</a>
-<a name="715"><span class="lineNum">     715 </span>                :<span class="lineCov">        574 :     jl_RTLD_DEFAULT_handle = jl_exe_handle;</span></a>
+<a name="715"><span class="lineNum">     715 </span>                :<span class="lineCov">        573 :     jl_RTLD_DEFAULT_handle = jl_exe_handle;</span></a>
 <a name="716"><span class="lineNum">     716 </span>                :            : #endif</a>
 <a name="717"><span class="lineNum">     717 </span>                :            : #endif</a>
 <a name="718"><span class="lineNum">     718 </span>                :            : </a>
-<a name="719"><span class="lineNum">     719 </span>  [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 573 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">        574 :     if ((jl_options.outputo || jl_options.outputbc || jl_options.outputasm) &amp;&amp;</span></a>
-<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 573 times"> + </span>]
+<a name="719"><span class="lineNum">     719 </span>  [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 572 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span> :<span class="lineCov">        573 :     if ((jl_options.outputo || jl_options.outputbc || jl_options.outputasm) &amp;&amp;</span></a>
+<span class="lineNum">         </span>         <span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 572 times"> + </span>]
 <a name="720"><span class="lineNum">     720 </span>  [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 1 time"> + </span>]:<span class="lineCov">          1 :         (jl_options.code_coverage || jl_options.malloc_log)) {</span></a>
 <a name="721"><span class="lineNum">     721 </span>                :<span class="lineNoCov">          0 :         jl_error(&quot;cannot generate code-coverage or track allocation information while generating a .o, .bc, or .s output file&quot;);</span></a>
 <a name="722"><span class="lineNum">     722 </span>                :            :     }</a>
 <a name="723"><span class="lineNum">     723 </span>                :            : </a>
-<a name="724"><span class="lineNum">     724 </span>                :<span class="lineCov">        574 :     jl_init_rand();</span></a>
-<a name="725"><span class="lineNum">     725 </span>                :<span class="lineCov">        574 :     jl_init_profile_lock();</span></a>
-<a name="726"><span class="lineNum">     726 </span>                :<span class="lineCov">        574 :     jl_init_runtime_ccall();</span></a>
-<a name="727"><span class="lineNum">     727 </span>                :<span class="lineCov">        574 :     jl_init_tasks();</span></a>
-<a name="728"><span class="lineNum">     728 </span>                :<span class="lineCov">        574 :     jl_init_threading();</span></a>
-<a name="729"><span class="lineNum">     729 </span>                :<span class="lineCov">        574 :     jl_init_threadinginfra();</span></a>
-<a name="730"><span class="lineNum">     730 </span>        [<span class="branchCov" title="Branch 0 was taken 574 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        574 :     if (jl_options.handle_signals == JL_OPTIONS_HANDLE_SIGNALS_ON)</span></a>
-<a name="731"><span class="lineNum">     731 </span>                :<span class="lineCov">        574 :         jl_install_default_signal_handlers();</span></a>
+<a name="724"><span class="lineNum">     724 </span>                :<span class="lineCov">        573 :     jl_init_rand();</span></a>
+<a name="725"><span class="lineNum">     725 </span>                :<span class="lineCov">        573 :     jl_init_profile_lock();</span></a>
+<a name="726"><span class="lineNum">     726 </span>                :<span class="lineCov">        573 :     jl_init_runtime_ccall();</span></a>
+<a name="727"><span class="lineNum">     727 </span>                :<span class="lineCov">        573 :     jl_init_tasks();</span></a>
+<a name="728"><span class="lineNum">     728 </span>                :<span class="lineCov">        573 :     jl_init_threading();</span></a>
+<a name="729"><span class="lineNum">     729 </span>                :<span class="lineCov">        573 :     jl_init_threadinginfra();</span></a>
+<a name="730"><span class="lineNum">     730 </span>        [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        573 :     if (jl_options.handle_signals == JL_OPTIONS_HANDLE_SIGNALS_ON)</span></a>
+<a name="731"><span class="lineNum">     731 </span>                :<span class="lineCov">        573 :         jl_install_default_signal_handlers();</span></a>
 <a name="732"><span class="lineNum">     732 </span>                :            : </a>
-<a name="733"><span class="lineNum">     733 </span>                :<span class="lineCov">        574 :     jl_gc_init();</span></a>
-<a name="734"><span class="lineNum">     734 </span>                :<span class="lineCov">        574 :     jl_ptls_t ptls = jl_init_threadtls(0);</span></a>
+<a name="733"><span class="lineNum">     733 </span>                :<span class="lineCov">        573 :     jl_gc_init();</span></a>
+<a name="734"><span class="lineNum">     734 </span>                :<span class="lineCov">        573 :     jl_ptls_t ptls = jl_init_threadtls(0);</span></a>
 <a name="735"><span class="lineNum">     735 </span>                :            : #pragma GCC diagnostic push</a>
 <a name="736"><span class="lineNum">     736 </span>                :            : #if defined(_COMPILER_GCC_) &amp;&amp; __GNUC__ &gt;= 12</a>
 <a name="737"><span class="lineNum">     737 </span>                :            : #pragma GCC diagnostic ignored &quot;-Wdangling-pointer&quot;</a>
 <a name="738"><span class="lineNum">     738 </span>                :            : #endif</a>
 <a name="739"><span class="lineNum">     739 </span>                :            :     // warning: this changes `jl_current_task`, so be careful not to call that from this function</a>
-<a name="740"><span class="lineNum">     740 </span>                :<span class="lineCov">        574 :     jl_task_t *ct = jl_init_root_task(ptls, stack_lo, stack_hi);</span></a>
+<a name="740"><span class="lineNum">     740 </span>                :<span class="lineCov">        573 :     jl_task_t *ct = jl_init_root_task(ptls, stack_lo, stack_hi);</span></a>
 <a name="741"><span class="lineNum">     741 </span>                :            : #pragma GCC diagnostic pop</a>
 <a name="742"><span class="lineNum">     742 </span>                :            :     JL_GC_PROMISE_ROOTED(ct);</a>
-<a name="743"><span class="lineNum">     743 </span>                :<span class="lineCov">        574 :     _finish_julia_init(rel, ptls, ct);</span></a>
-<a name="744"><span class="lineNum">     744 </span>                :<span class="lineCov">        567 : }</span></a>
+<a name="743"><span class="lineNum">     743 </span>                :<span class="lineCov">        573 :     _finish_julia_init(rel, ptls, ct);</span></a>
+<a name="744"><span class="lineNum">     744 </span>                :<span class="lineCov">        566 : }</span></a>
 <a name="745"><span class="lineNum">     745 </span>                :            : </a>
-<a name="746"><span class="lineNum">     746 </span>                :<span class="lineCov">        574 : static NOINLINE void _finish_julia_init(JL_IMAGE_SEARCH rel, jl_ptls_t ptls, jl_task_t *ct)</span></a>
+<a name="746"><span class="lineNum">     746 </span>                :<span class="lineCov">        573 : static NOINLINE void _finish_julia_init(JL_IMAGE_SEARCH rel, jl_ptls_t ptls, jl_task_t *ct)</span></a>
 <a name="747"><span class="lineNum">     747 </span>                :            : {</a>
-<a name="748"><span class="lineNum">     748 </span>                :<span class="lineCov">        574 :     jl_resolve_sysimg_location(rel);</span></a>
+<a name="748"><span class="lineNum">     748 </span>                :<span class="lineCov">        573 :     jl_resolve_sysimg_location(rel);</span></a>
 <a name="749"><span class="lineNum">     749 </span>                :            :     // loads sysimg if available, and conditionally sets jl_options.cpu_target</a>
-<a name="750"><span class="lineNum">     750 </span>        [<span class="branchCov" title="Branch 0 was taken 573 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">        574 :     if (jl_options.image_file)</span></a>
-<a name="751"><span class="lineNum">     751 </span>                :<span class="lineCov">        573 :         jl_preload_sysimg_so(jl_options.image_file);</span></a>
-<a name="752"><span class="lineNum">     752 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 568 times"> + </span>]:<span class="lineCov">        568 :     if (jl_options.cpu_target == NULL)</span></a>
+<a name="750"><span class="lineNum">     750 </span>        [<span class="branchCov" title="Branch 0 was taken 572 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">        573 :     if (jl_options.image_file)</span></a>
+<a name="751"><span class="lineNum">     751 </span>                :<span class="lineCov">        572 :         jl_preload_sysimg_so(jl_options.image_file);</span></a>
+<a name="752"><span class="lineNum">     752 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 567 times"> + </span>]:<span class="lineCov">        567 :     if (jl_options.cpu_target == NULL)</span></a>
 <a name="753"><span class="lineNum">     753 </span>                :<span class="lineNoCov">          0 :         jl_options.cpu_target = &quot;native&quot;;</span></a>
 <a name="754"><span class="lineNum">     754 </span>                :            : </a>
-<a name="755"><span class="lineNum">     755 </span>        [<span class="branchCov" title="Branch 0 was taken 567 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">        568 :     if (jl_options.image_file) {</span></a>
-<a name="756"><span class="lineNum">     756 </span>                :<span class="lineCov">        567 :         jl_restore_system_image(jl_options.image_file);</span></a>
+<a name="755"><span class="lineNum">     755 </span>        [<span class="branchCov" title="Branch 0 was taken 566 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">        567 :     if (jl_options.image_file) {</span></a>
+<a name="756"><span class="lineNum">     756 </span>                :<span class="lineCov">        566 :         jl_restore_system_image(jl_options.image_file);</span></a>
 <a name="757"><span class="lineNum">     757 </span>                :            :     } else {</a>
 <a name="758"><span class="lineNum">     758 </span>                :<span class="lineCov">          1 :         jl_init_types();</span></a>
 <a name="759"><span class="lineNum">     759 </span>                :<span class="lineCov">          1 :         jl_init_codegen();</span></a>
 <a name="760"><span class="lineNum">     760 </span>                :            :     }</a>
 <a name="761"><span class="lineNum">     761 </span>                :            : </a>
-<a name="762"><span class="lineNum">     762 </span>                :<span class="lineCov">        567 :     jl_init_common_symbols();</span></a>
-<a name="763"><span class="lineNum">     763 </span>                :<span class="lineCov">        567 :     jl_init_flisp();</span></a>
-<a name="764"><span class="lineNum">     764 </span>                :<span class="lineCov">        567 :     jl_init_serializer();</span></a>
+<a name="762"><span class="lineNum">     762 </span>                :<span class="lineCov">        566 :     jl_init_common_symbols();</span></a>
+<a name="763"><span class="lineNum">     763 </span>                :<span class="lineCov">        566 :     jl_init_flisp();</span></a>
+<a name="764"><span class="lineNum">     764 </span>                :<span class="lineCov">        566 :     jl_init_serializer();</span></a>
 <a name="765"><span class="lineNum">     765 </span>                :            : </a>
-<a name="766"><span class="lineNum">     766 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 566 times"> + </span>]:<span class="lineCov">        567 :     if (!jl_options.image_file) {</span></a>
+<a name="766"><span class="lineNum">     766 </span>        [<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        566 :     if (!jl_options.image_file) {</span></a>
 <a name="767"><span class="lineNum">     767 </span>                :<span class="lineCov">          1 :         jl_core_module = jl_new_module(jl_symbol(&quot;Core&quot;));</span></a>
 <a name="768"><span class="lineNum">     768 </span>                :<span class="lineCov">          1 :         jl_core_module-&gt;parent = jl_core_module;</span></a>
 <a name="769"><span class="lineNum">     769 </span>                :<span class="lineCov">          1 :         jl_type_typename-&gt;mt-&gt;module = jl_core_module;</span></a>
@@ -855,30 +855,30 @@
 <a name="775"><span class="lineNum">     775 </span>                :<span class="lineCov">          1 :         post_boot_hooks();</span></a>
 <a name="776"><span class="lineNum">     776 </span>                :            :     }</a>
 <a name="777"><span class="lineNum">     777 </span>                :            : </a>
-<a name="778"><span class="lineNum">     778 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 565 times"> + </span>]:<span class="lineCov">        567 :     if (jl_base_module == NULL) {</span></a>
+<a name="778"><span class="lineNum">     778 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 564 times"> + </span>]:<span class="lineCov">        566 :     if (jl_base_module == NULL) {</span></a>
 <a name="779"><span class="lineNum">     779 </span>                :            :         // nthreads &gt; 1 requires code in Base</a>
 <a name="780"><span class="lineNum">     780 </span>                :<span class="lineCov">          2 :         jl_n_threads = 1;</span></a>
 <a name="781"><span class="lineNum">     781 </span>                :            :     }</a>
-<a name="782"><span class="lineNum">     782 </span>                :<span class="lineCov">        567 :     jl_start_threads();</span></a>
+<a name="782"><span class="lineNum">     782 </span>                :<span class="lineCov">        566 :     jl_start_threads();</span></a>
 <a name="783"><span class="lineNum">     783 </span>                :            : </a>
-<a name="784"><span class="lineNum">     784 </span>                :<span class="lineCov">        567 :     jl_gc_enable(1);</span></a>
+<a name="784"><span class="lineNum">     784 </span>                :<span class="lineCov">        566 :     jl_gc_enable(1);</span></a>
 <a name="785"><span class="lineNum">     785 </span>                :            : </a>
-<a name="786"><span class="lineNum">     786 </span>  [<span class="branchCov" title="Branch 0 was taken 566 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 88 times"> + </span><span class="branchCov" title="Branch 3 was taken 478 times"> + </span> :<span class="lineCov">        567 :     if (jl_options.image_file &amp;&amp; (!jl_generating_output() || jl_options.incremental) &amp;&amp; jl_module_init_order) {</span></a>
-<span class="lineNum">         </span>   <span class="branchCov" title="Branch 4 was taken 86 times"> + </span><span class="branchCov" title="Branch 5 was taken 2 times"> + </span><span class="branchCov" title="Branch 6 was taken 564 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
-<a name="787"><span class="lineNum">     787 </span>                :<span class="lineCov">        564 :         jl_array_t *init_order = jl_module_init_order;</span></a>
-<a name="788"><span class="lineNum">     788 </span>                :<span class="lineCov">        564 :         JL_GC_PUSH1(&amp;init_order);</span></a>
-<a name="789"><span class="lineNum">     789 </span>                :<span class="lineCov">        564 :         jl_module_init_order = NULL;</span></a>
-<a name="790"><span class="lineNum">     790 </span>                :<span class="lineCov">        564 :         int i, l = jl_array_len(init_order);</span></a>
-<a name="791"><span class="lineNum">     791 </span>        [<span class="branchCov" title="Branch 0 was taken 13536 times"> + </span><span class="branchCov" title="Branch 1 was taken 564 times"> + </span>]:<span class="lineCov">      14100 :         for (i = 0; i &lt; l; i++) {</span></a>
-<a name="792"><span class="lineNum">     792 </span>                :<span class="lineCov">      13536 :             jl_value_t *mod = jl_array_ptr_ref(init_order, i);</span></a>
-<a name="793"><span class="lineNum">     793 </span>                :<span class="lineCov">      13536 :             jl_module_run_initializer((jl_module_t*)mod);</span></a>
+<a name="786"><span class="lineNum">     786 </span>  [<span class="branchCov" title="Branch 0 was taken 565 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 88 times"> + </span><span class="branchCov" title="Branch 3 was taken 477 times"> + </span> :<span class="lineCov">        566 :     if (jl_options.image_file &amp;&amp; (!jl_generating_output() || jl_options.incremental) &amp;&amp; jl_module_init_order) {</span></a>
+<span class="lineNum">         </span>   <span class="branchCov" title="Branch 4 was taken 86 times"> + </span><span class="branchCov" title="Branch 5 was taken 2 times"> + </span><span class="branchCov" title="Branch 6 was taken 563 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
+<a name="787"><span class="lineNum">     787 </span>                :<span class="lineCov">        563 :         jl_array_t *init_order = jl_module_init_order;</span></a>
+<a name="788"><span class="lineNum">     788 </span>                :<span class="lineCov">        563 :         JL_GC_PUSH1(&amp;init_order);</span></a>
+<a name="789"><span class="lineNum">     789 </span>                :<span class="lineCov">        563 :         jl_module_init_order = NULL;</span></a>
+<a name="790"><span class="lineNum">     790 </span>                :<span class="lineCov">        563 :         int i, l = jl_array_len(init_order);</span></a>
+<a name="791"><span class="lineNum">     791 </span>        [<span class="branchCov" title="Branch 0 was taken 13512 times"> + </span><span class="branchCov" title="Branch 1 was taken 563 times"> + </span>]:<span class="lineCov">      14075 :         for (i = 0; i &lt; l; i++) {</span></a>
+<a name="792"><span class="lineNum">     792 </span>                :<span class="lineCov">      13512 :             jl_value_t *mod = jl_array_ptr_ref(init_order, i);</span></a>
+<a name="793"><span class="lineNum">     793 </span>                :<span class="lineCov">      13512 :             jl_module_run_initializer((jl_module_t*)mod);</span></a>
 <a name="794"><span class="lineNum">     794 </span>                :            :         }</a>
-<a name="795"><span class="lineNum">     795 </span>                :<span class="lineCov">        564 :         JL_GC_POP();</span></a>
+<a name="795"><span class="lineNum">     795 </span>                :<span class="lineCov">        563 :         JL_GC_POP();</span></a>
 <a name="796"><span class="lineNum">     796 </span>                :            :     }</a>
 <a name="797"><span class="lineNum">     797 </span>                :            : </a>
-<a name="798"><span class="lineNum">     798 </span>        [<span class="branchCov" title="Branch 0 was taken 567 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        567 :     if (jl_options.handle_signals == JL_OPTIONS_HANDLE_SIGNALS_ON)</span></a>
-<a name="799"><span class="lineNum">     799 </span>                :<span class="lineCov">        567 :         jl_install_sigint_handler();</span></a>
-<a name="800"><span class="lineNum">     800 </span>                :<span class="lineCov">        567 : }</span></a>
+<a name="798"><span class="lineNum">     798 </span>        [<span class="branchCov" title="Branch 0 was taken 566 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">        566 :     if (jl_options.handle_signals == JL_OPTIONS_HANDLE_SIGNALS_ON)</span></a>
+<a name="799"><span class="lineNum">     799 </span>                :<span class="lineCov">        566 :         jl_install_sigint_handler();</span></a>
+<a name="800"><span class="lineNum">     800 </span>                :<span class="lineCov">        566 : }</span></a>
 <a name="801"><span class="lineNum">     801 </span>                :            : </a>
 <a name="802"><span class="lineNum">     802 </span>                :<span class="lineCov">         29 : static jl_value_t *core(const char *name)</span></a>
 <a name="803"><span class="lineNum">     803 </span>                :            : {</a>

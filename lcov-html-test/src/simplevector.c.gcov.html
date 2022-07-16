@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/simplevector.c</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/simplevector.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">56</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -120,50 +120,50 @@
 <a name="42"><span class="lineNum">      42 </span>                :<span class="lineCov">          7 :     return v;</span></a>
 <a name="43"><span class="lineNum">      43 </span>                :            : }</a>
 <a name="44"><span class="lineNum">      44 </span>                :            : </a>
-<a name="45"><span class="lineNum">      45 </span>                :<span class="lineCov">     284603 : JL_DLLEXPORT jl_svec_t *jl_svec2(void *a, void *b)</span></a>
+<a name="45"><span class="lineNum">      45 </span>                :<span class="lineCov">     285726 : JL_DLLEXPORT jl_svec_t *jl_svec2(void *a, void *b)</span></a>
 <a name="46"><span class="lineNum">      46 </span>                :            : {</a>
-<a name="47"><span class="lineNum">      47 </span>                :<span class="lineCov">     284603 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">     284603 :     jl_svec_t *v = (jl_svec_t*)jl_gc_alloc(ct-&gt;ptls, sizeof(void*) * 3,</span></a>
+<a name="47"><span class="lineNum">      47 </span>                :<span class="lineCov">     285726 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="48"><span class="lineNum">      48 </span>                :<span class="lineCov">     285726 :     jl_svec_t *v = (jl_svec_t*)jl_gc_alloc(ct-&gt;ptls, sizeof(void*) * 3,</span></a>
 <a name="49"><span class="lineNum">      49 </span>                :            :                                            jl_simplevector_type);</a>
-<a name="50"><span class="lineNum">      50 </span>                :<span class="lineCov">     284603 :     jl_svec_set_len_unsafe(v, 2);</span></a>
-<a name="51"><span class="lineNum">      51 </span>                :<span class="lineCov">     284603 :     jl_svec_data(v)[0] = (jl_value_t*)a;</span></a>
-<a name="52"><span class="lineNum">      52 </span>                :<span class="lineCov">     284603 :     jl_svec_data(v)[1] = (jl_value_t*)b;</span></a>
-<a name="53"><span class="lineNum">      53 </span>                :<span class="lineCov">     284603 :     return v;</span></a>
+<a name="50"><span class="lineNum">      50 </span>                :<span class="lineCov">     285726 :     jl_svec_set_len_unsafe(v, 2);</span></a>
+<a name="51"><span class="lineNum">      51 </span>                :<span class="lineCov">     285726 :     jl_svec_data(v)[0] = (jl_value_t*)a;</span></a>
+<a name="52"><span class="lineNum">      52 </span>                :<span class="lineCov">     285726 :     jl_svec_data(v)[1] = (jl_value_t*)b;</span></a>
+<a name="53"><span class="lineNum">      53 </span>                :<span class="lineCov">     285726 :     return v;</span></a>
 <a name="54"><span class="lineNum">      54 </span>                :            : }</a>
 <a name="55"><span class="lineNum">      55 </span>                :            : </a>
-<a name="56"><span class="lineNum">      56 </span>                :<span class="lineCov">  871456000 : JL_DLLEXPORT jl_svec_t *jl_alloc_svec_uninit(size_t n)</span></a>
+<a name="56"><span class="lineNum">      56 </span>                :<span class="lineCov">  885489000 : JL_DLLEXPORT jl_svec_t *jl_alloc_svec_uninit(size_t n)</span></a>
 <a name="57"><span class="lineNum">      57 </span>                :            : {</a>
-<a name="58"><span class="lineNum">      58 </span>                :<span class="lineCov">  871456000 :     jl_task_t *ct = jl_current_task;</span></a>
-<a name="59"><span class="lineNum">      59 </span>        [<span class="branchCov" title="Branch 0 was taken 178097 times"> + </span><span class="branchCov" title="Branch 1 was taken 871278000 times"> + </span>]:<span class="lineCov">  871456000 :     if (n == 0) return jl_emptysvec;</span></a>
-<a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">  871278000 :     jl_svec_t *jv = (jl_svec_t*)jl_gc_alloc(ct-&gt;ptls, (n + 1) * sizeof(void*),</span></a>
+<a name="58"><span class="lineNum">      58 </span>                :<span class="lineCov">  885489000 :     jl_task_t *ct = jl_current_task;</span></a>
+<a name="59"><span class="lineNum">      59 </span>        [<span class="branchCov" title="Branch 0 was taken 177999 times"> + </span><span class="branchCov" title="Branch 1 was taken 885311000 times"> + </span>]:<span class="lineCov">  885489000 :     if (n == 0) return jl_emptysvec;</span></a>
+<a name="60"><span class="lineNum">      60 </span>                :<span class="lineCov">  885311000 :     jl_svec_t *jv = (jl_svec_t*)jl_gc_alloc(ct-&gt;ptls, (n + 1) * sizeof(void*),</span></a>
 <a name="61"><span class="lineNum">      61 </span>                :            :                                             jl_simplevector_type);</a>
-<a name="62"><span class="lineNum">      62 </span>                :<span class="lineCov">  871278000 :     jl_svec_set_len_unsafe(jv, n);</span></a>
-<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">  871278000 :     return jv;</span></a>
+<a name="62"><span class="lineNum">      62 </span>                :<span class="lineCov">  885311000 :     jl_svec_set_len_unsafe(jv, n);</span></a>
+<a name="63"><span class="lineNum">      63 </span>                :<span class="lineCov">  885311000 :     return jv;</span></a>
 <a name="64"><span class="lineNum">      64 </span>                :            : }</a>
 <a name="65"><span class="lineNum">      65 </span>                :            : </a>
-<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov"> 3053070000 : JL_DLLEXPORT jl_svec_t *jl_alloc_svec(size_t n)</span></a>
+<a name="66"><span class="lineNum">      66 </span>                :<span class="lineCov"> 2948180000 : JL_DLLEXPORT jl_svec_t *jl_alloc_svec(size_t n)</span></a>
 <a name="67"><span class="lineNum">      67 </span>                :            : {</a>
-<a name="68"><span class="lineNum">      68 </span>        [<span class="branchCov" title="Branch 0 was taken 2359820000 times"> + </span><span class="branchCov" title="Branch 1 was taken 693250000 times"> + </span>]:<span class="lineCov"> 3053070000 :     if (n == 0) return jl_emptysvec;</span></a>
-<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">  693250000 :     jl_svec_t *jv = jl_alloc_svec_uninit(n);</span></a>
-<a name="70"><span class="lineNum">      70 </span>                :<span class="lineCov">  693250000 :     memset(jl_assume_aligned(jl_svec_data(jv), sizeof(void*)), 0, n * sizeof(void*));</span></a>
-<a name="71"><span class="lineNum">      71 </span>                :<span class="lineCov">  693250000 :     return jv;</span></a>
+<a name="68"><span class="lineNum">      68 </span>        [<span class="branchCov" title="Branch 0 was taken 2247410000 times"> + </span><span class="branchCov" title="Branch 1 was taken 700779000 times"> + </span>]:<span class="lineCov"> 2948180000 :     if (n == 0) return jl_emptysvec;</span></a>
+<a name="69"><span class="lineNum">      69 </span>                :<span class="lineCov">  700779000 :     jl_svec_t *jv = jl_alloc_svec_uninit(n);</span></a>
+<a name="70"><span class="lineNum">      70 </span>                :<span class="lineCov">  700779000 :     memset(jl_assume_aligned(jl_svec_data(jv), sizeof(void*)), 0, n * sizeof(void*));</span></a>
+<a name="71"><span class="lineNum">      71 </span>                :<span class="lineCov">  700779000 :     return jv;</span></a>
 <a name="72"><span class="lineNum">      72 </span>                :            : }</a>
 <a name="73"><span class="lineNum">      73 </span>                :            : </a>
-<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">    3105810 : JL_DLLEXPORT jl_svec_t *jl_svec_copy(jl_svec_t *a)</span></a>
+<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">    2977490 : JL_DLLEXPORT jl_svec_t *jl_svec_copy(jl_svec_t *a)</span></a>
 <a name="75"><span class="lineNum">      75 </span>                :            : {</a>
-<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">    3105810 :     size_t n = jl_svec_len(a);</span></a>
-<a name="77"><span class="lineNum">      77 </span>                :<span class="lineCov">    3105810 :     jl_svec_t *c = jl_alloc_svec_uninit(n);</span></a>
-<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">    3105810 :     memmove_refs((void**)jl_svec_data(c), (void**)jl_svec_data(a), n);</span></a>
-<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">    3105810 :     return c;</span></a>
+<a name="76"><span class="lineNum">      76 </span>                :<span class="lineCov">    2977490 :     size_t n = jl_svec_len(a);</span></a>
+<a name="77"><span class="lineNum">      77 </span>                :<span class="lineCov">    2977490 :     jl_svec_t *c = jl_alloc_svec_uninit(n);</span></a>
+<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">    2977490 :     memmove_refs((void**)jl_svec_data(c), (void**)jl_svec_data(a), n);</span></a>
+<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">    2977490 :     return c;</span></a>
 <a name="80"><span class="lineNum">      80 </span>                :            : }</a>
 <a name="81"><span class="lineNum">      81 </span>                :            : </a>
-<a name="82"><span class="lineNum">      82 </span>                :<span class="lineCov">      52082 : JL_DLLEXPORT jl_svec_t *jl_svec_fill(size_t n, jl_value_t *x)</span></a>
+<a name="82"><span class="lineNum">      82 </span>                :<span class="lineCov">      53591 : JL_DLLEXPORT jl_svec_t *jl_svec_fill(size_t n, jl_value_t *x)</span></a>
 <a name="83"><span class="lineNum">      83 </span>                :            : {</a>
-<a name="84"><span class="lineNum">      84 </span>        [<span class="branchCov" title="Branch 0 was taken 4764 times"> + </span><span class="branchCov" title="Branch 1 was taken 47318 times"> + </span>]:<span class="lineCov">      52082 :     if (n == 0) return jl_emptysvec;</span></a>
-<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">      47318 :     jl_svec_t *v = jl_alloc_svec_uninit(n);</span></a>
-<a name="86"><span class="lineNum">      86 </span>        [<span class="branchCov" title="Branch 0 was taken 101819 times"> + </span><span class="branchCov" title="Branch 1 was taken 47318 times"> + </span>]:<span class="lineCov">     149137 :     for (size_t i = 0; i &lt; n; i++)</span></a>
-<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">     101819 :         jl_svec_data(v)[i] = x;</span></a>
-<a name="88"><span class="lineNum">      88 </span>                :<span class="lineCov">      47318 :     return v;</span></a>
+<a name="84"><span class="lineNum">      84 </span>        [<span class="branchCov" title="Branch 0 was taken 4834 times"> + </span><span class="branchCov" title="Branch 1 was taken 48757 times"> + </span>]:<span class="lineCov">      53591 :     if (n == 0) return jl_emptysvec;</span></a>
+<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">      48757 :     jl_svec_t *v = jl_alloc_svec_uninit(n);</span></a>
+<a name="86"><span class="lineNum">      86 </span>        [<span class="branchCov" title="Branch 0 was taken 103837 times"> + </span><span class="branchCov" title="Branch 1 was taken 48757 times"> + </span>]:<span class="lineCov">     152594 :     for (size_t i = 0; i &lt; n; i++)</span></a>
+<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">     103837 :         jl_svec_data(v)[i] = x;</span></a>
+<a name="88"><span class="lineNum">      88 </span>                :<span class="lineCov">      48757 :     return v;</span></a>
 <a name="89"><span class="lineNum">      89 </span>                :            : }</a>
 <a name="90"><span class="lineNum">      90 </span>                :            : </a>
 <a name="91"><span class="lineNum">      91 </span>                :<span class="lineNoCov">          0 : JL_DLLEXPORT size_t (jl_svec_len)(jl_svec_t *t) JL_NOTSAFEPOINT</span></a>
@@ -176,12 +176,12 @@
 <a name="98"><span class="lineNum">      98 </span>                :<span class="lineNoCov">          0 :     return jl_svecref(t, (size_t)i) != NULL;</span></a>
 <a name="99"><span class="lineNum">      99 </span>                :            : }</a>
 <a name="100"><span class="lineNum">     100 </span>                :            : </a>
-<a name="101"><span class="lineNum">     101 </span>                :<span class="lineCov">      15898 : JL_DLLEXPORT jl_value_t *jl_svec_ref(jl_svec_t *t JL_PROPAGATES_ROOT, ssize_t i)</span></a>
+<a name="101"><span class="lineNum">     101 </span>                :<span class="lineCov">      15645 : JL_DLLEXPORT jl_value_t *jl_svec_ref(jl_svec_t *t JL_PROPAGATES_ROOT, ssize_t i)</span></a>
 <a name="102"><span class="lineNum">     102 </span>                :            : {</a>
-<a name="103"><span class="lineNum">     103 </span>                :<span class="lineCov">      15898 :     jl_value_t *v = jl_svecref(t, (size_t)i);</span></a>
-<a name="104"><span class="lineNum">     104 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15898 times"> + </span>]:<span class="lineCov">      15898 :     if (__unlikely(v == NULL))</span></a>
+<a name="103"><span class="lineNum">     103 </span>                :<span class="lineCov">      15645 :     jl_value_t *v = jl_svecref(t, (size_t)i);</span></a>
+<a name="104"><span class="lineNum">     104 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 15645 times"> + </span>]:<span class="lineCov">      15645 :     if (__unlikely(v == NULL))</span></a>
 <a name="105"><span class="lineNum">     105 </span>                :<span class="lineNoCov">          0 :         jl_throw(jl_undefref_exception);</span></a>
-<a name="106"><span class="lineNum">     106 </span>                :<span class="lineCov">      15898 :     return v;</span></a>
+<a name="106"><span class="lineNum">     106 </span>                :<span class="lineCov">      15645 :     return v;</span></a>
 <a name="107"><span class="lineNum">     107 </span>                :            : }</a>
 </pre>
       </td>

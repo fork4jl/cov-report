@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/aotcompile.cpp - functions</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/aotcompile.cpp - functions</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">422</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">17</td>
@@ -76,191 +76,191 @@
       <td width="20%" class="tableHead">Hit count <span class="tableHeadSort"><a href="aotcompile.cpp.func-sort-c.html"><img src="../updown.png" width=10 height=14 alt="Sort by hit count" title="Sort by hit count" border=0></a></span></td>
     </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#604">_Z15addTargetPassesPN4llvm6legacy15PassManagerBaseERKNS_6TripleENS_16TargetIRAnalysisE</a></td>
-              <td class="coverFnHi">1078</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#604">addTargetPasses(llvm::legacy::PassManagerBase*, llvm::Triple const&amp;, llvm::TargetIRAnalysis)</a></td>
+              <td class="coverFnHi">1076</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#611">_Z16addMachinePassesPN4llvm6legacy15PassManagerBaseEi</a></td>
-              <td class="coverFnHi">1054</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#611">addMachinePasses(llvm::legacy::PassManagerBase*, int)</a></td>
+              <td class="coverFnHi">1052</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#621">_Z21addOptimizationPassesPN4llvm6legacy15PassManagerBaseEibbb</a></td>
-              <td class="coverFnHi">1054</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#621">addOptimizationPasses(llvm::legacy::PassManagerBase*, int, bool, bool, bool)</a></td>
+              <td class="coverFnHi">1052</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#62">_Z9addComdatIN4llvm12GlobalObjectEEPT_S3_</a></td>
-              <td class="coverFnHi">81568</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#62">llvm::GlobalObject* addComdat&lt;llvm::GlobalObject&gt;(llvm::GlobalObject*)</a></td>
+              <td class="coverFnHi">81717</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#62">_Z9addComdatIN4llvm14GlobalVariableEEPT_S3_</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#62">llvm::GlobalVariable* addComdat&lt;llvm::GlobalVariable&gt;(llvm::GlobalVariable*)</a></td>
               <td class="coverFnHi">3</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#413">_ZL11emit_resultRSt6vectorIN4llvm16NewArchiveMemberESaIS1_EERNS0_15SmallVectorImplIcEENS0_9StringRefERS_INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISE_EE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#413">emit_result(std::vector&lt;llvm::NewArchiveMember, std::allocator&lt;llvm::NewArchiveMember&gt; &gt;&amp;, llvm::SmallVectorImpl&lt;char&gt;&amp;, llvm::StringRef, std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;&amp;)</a></td>
               <td class="coverFnHi">2</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#152">_ZL12is_safe_charh</a></td>
-              <td class="coverFnHi">1731880</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#152">is_safe_char(unsigned char)</a></td>
+              <td class="coverFnHi">1734410</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#185">_ZL12makeSafeNameRN4llvm12GlobalObjectE</a></td>
-              <td class="coverFnHi">81568</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#185">makeSafeName(llvm::GlobalObject&amp;)</a></td>
+              <td class="coverFnHi">81717</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#134">_ZL17emit_offset_tableRN4llvm6ModuleERKSt6vectorIPNS_11GlobalValueESaIS4_EENS_9StringRefEPNS_4TypeE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#134">emit_offset_table(llvm::Module&amp;, std::vector&lt;llvm::GlobalValue*, std::allocator&lt;llvm::GlobalValue*&gt; &gt; const&amp;, llvm::StringRef, llvm::Type*)</a></td>
               <td class="coverFnHi">2</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#421">_ZL17getDefaultForHostRN4llvm6TripleE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#421">getDefaultForHost(llvm::Triple&amp;)</a></td>
               <td class="coverFnHi">1</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#907">_ZL17registerCallbacksRN4llvm11PassBuilderE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#907">registerCallbacks(llvm::PassBuilder&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#429">_ZL17reportWriterErrorRKN4llvm13ErrorInfoBaseE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#429">reportWriterError(llvm::ErrorInfoBase const&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#211">_ZL18jl_ci_cache_lookupRK13jl_cgparams_tP21_jl_method_instance_tmPP19_jl_code_instance_tPP15_jl_code_info_t</a></td>
-              <td class="coverFnHi">37887</td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#211">jl_ci_cache_lookup(jl_cgparams_t const&amp;, _jl_method_instance_t*, unsigned long, _jl_code_instance_t**, _jl_code_info_t**)</a></td>
+              <td class="coverFnHi">38025</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">_ZN13JuliaPipelineILi0ELb0EE10TPMAdapter3addEPN4llvm4PassE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">JuliaPipeline&lt;0, false&gt;::TPMAdapter::add(llvm::Pass*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">_ZN13JuliaPipelineILi0ELb0EE10TPMAdapterC2EPN4llvm17PMTopLevelManagerE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">JuliaPipeline&lt;0, false&gt;::TPMAdapter::TPMAdapter(llvm::PMTopLevelManager*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">_ZN13JuliaPipelineILi0ELb0EE18preparePassManagerERN4llvm7PMStackE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">JuliaPipeline&lt;0, false&gt;::preparePassManager(llvm::PMStack&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">_ZN13JuliaPipelineILi0ELb0EEC2Ev</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">JuliaPipeline&lt;0, false&gt;::JuliaPipeline()</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">_ZN13JuliaPipelineILi0ELb1EE10TPMAdapter3addEPN4llvm4PassE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">JuliaPipeline&lt;0, true&gt;::TPMAdapter::add(llvm::Pass*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">_ZN13JuliaPipelineILi0ELb1EE10TPMAdapterC2EPN4llvm17PMTopLevelManagerE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">JuliaPipeline&lt;0, true&gt;::TPMAdapter::TPMAdapter(llvm::PMTopLevelManager*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">_ZN13JuliaPipelineILi0ELb1EE18preparePassManagerERN4llvm7PMStackE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">JuliaPipeline&lt;0, true&gt;::preparePassManager(llvm::PMStack&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">_ZN13JuliaPipelineILi0ELb1EEC2Ev</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">JuliaPipeline&lt;0, true&gt;::JuliaPipeline()</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">_ZN13JuliaPipelineILi2ELb0EE10TPMAdapter3addEPN4llvm4PassE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">JuliaPipeline&lt;2, false&gt;::TPMAdapter::add(llvm::Pass*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">_ZN13JuliaPipelineILi2ELb0EE10TPMAdapterC2EPN4llvm17PMTopLevelManagerE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">JuliaPipeline&lt;2, false&gt;::TPMAdapter::TPMAdapter(llvm::PMTopLevelManager*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">_ZN13JuliaPipelineILi2ELb0EE18preparePassManagerERN4llvm7PMStackE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">JuliaPipeline&lt;2, false&gt;::preparePassManager(llvm::PMStack&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">_ZN13JuliaPipelineILi2ELb0EEC2Ev</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">JuliaPipeline&lt;2, false&gt;::JuliaPipeline()</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">_ZN13JuliaPipelineILi2ELb1EE10TPMAdapter3addEPN4llvm4PassE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">JuliaPipeline&lt;2, true&gt;::TPMAdapter::add(llvm::Pass*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">_ZN13JuliaPipelineILi2ELb1EE10TPMAdapterC2EPN4llvm17PMTopLevelManagerE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">JuliaPipeline&lt;2, true&gt;::TPMAdapter::TPMAdapter(llvm::PMTopLevelManager*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">_ZN13JuliaPipelineILi2ELb1EE18preparePassManagerERN4llvm7PMStackE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">JuliaPipeline&lt;2, true&gt;::preparePassManager(llvm::PMStack&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">_ZN13JuliaPipelineILi2ELb1EEC2Ev</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">JuliaPipeline&lt;2, true&gt;::JuliaPipeline()</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">_ZN13JuliaPipelineILi3ELb0EE10TPMAdapter3addEPN4llvm4PassE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">JuliaPipeline&lt;3, false&gt;::TPMAdapter::add(llvm::Pass*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">_ZN13JuliaPipelineILi3ELb0EE10TPMAdapterC2EPN4llvm17PMTopLevelManagerE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">JuliaPipeline&lt;3, false&gt;::TPMAdapter::TPMAdapter(llvm::PMTopLevelManager*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">_ZN13JuliaPipelineILi3ELb0EE18preparePassManagerERN4llvm7PMStackE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">JuliaPipeline&lt;3, false&gt;::preparePassManager(llvm::PMStack&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">_ZN13JuliaPipelineILi3ELb0EEC2Ev</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">JuliaPipeline&lt;3, false&gt;::JuliaPipeline()</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">_ZN13JuliaPipelineILi3ELb1EE10TPMAdapter3addEPN4llvm4PassE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#868">JuliaPipeline&lt;3, true&gt;::TPMAdapter::add(llvm::Pass*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">_ZN13JuliaPipelineILi3ELb1EE10TPMAdapterC2EPN4llvm17PMTopLevelManagerE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#867">JuliaPipeline&lt;3, true&gt;::TPMAdapter::TPMAdapter(llvm::PMTopLevelManager*)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">_ZN13JuliaPipelineILi3ELb1EE18preparePassManagerERN4llvm7PMStackE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#870">JuliaPipeline&lt;3, true&gt;::preparePassManager(llvm::PMStack&amp;)</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">_ZN13JuliaPipelineILi3ELb1EEC2Ev</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#878">JuliaPipeline&lt;3, true&gt;::JuliaPipeline()</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">_ZNK13JuliaPipelineILi0ELb0EE17createPrinterPassERN4llvm11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">JuliaPipeline&lt;0, false&gt;::createPrinterPass(llvm::raw_ostream&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">_ZNK13JuliaPipelineILi0ELb1EE17createPrinterPassERN4llvm11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">JuliaPipeline&lt;0, true&gt;::createPrinterPass(llvm::raw_ostream&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">_ZNK13JuliaPipelineILi2ELb0EE17createPrinterPassERN4llvm11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">JuliaPipeline&lt;2, false&gt;::createPrinterPass(llvm::raw_ostream&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">_ZNK13JuliaPipelineILi2ELb1EE17createPrinterPassERN4llvm11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">JuliaPipeline&lt;2, true&gt;::createPrinterPass(llvm::raw_ostream&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">_ZNK13JuliaPipelineILi3ELb0EE17createPrinterPassERN4llvm11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">JuliaPipeline&lt;3, false&gt;::createPrinterPass(llvm::raw_ostream&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">_ZNK13JuliaPipelineILi3ELb1EE17createPrinterPassERN4llvm11raw_ostreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#879">JuliaPipeline&lt;3, true&gt;::createPrinterPass(llvm::raw_ostream&amp;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#548">_ZZ19jl_dump_native_implENKUlRN4llvm6ModuleENS_9StringRefES2_S2_S2_E_clES1_S2_S2_S2_S2_</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#548">jl_dump_native_impl::{lambda(llvm::Module&amp;, llvm::StringRef, llvm::StringRef, llvm::StringRef, llvm::StringRef)#1}::operator()(llvm::Module&amp;, llvm::StringRef, llvm::StringRef, llvm::StringRef, llvm::StringRef) const</a></td>
               <td class="coverFnHi">2</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#978">_ZZL17registerCallbacksRN4llvm11PassBuilderEENKUlNS_9StringRefERNS_11PassManagerINS_4LoopENS_15AnalysisManagerIS4_JRNS_27LoopStandardAnalysisResultsEEEEJS7_RNS_10LPMUpdaterEEEENS_8ArrayRefINS0_15PipelineElementEEEE1_clES2_SC_SF_</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#978">registerCallbacks(llvm::PassBuilder&amp;)::{lambda(llvm::StringRef, llvm::PassManager&lt;llvm::Loop, llvm::AnalysisManager&lt;llvm::Loop, llvm::LoopStandardAnalysisResults&amp;&gt;, llvm::LoopStandardAnalysisResults&amp;, llvm::LPMUpdater&amp;&gt;&amp;, llvm::ArrayRef&lt;llvm::PassBuilder::PipelineElement&gt;)#3}::operator()(llvm::StringRef, llvm::PassManager&lt;llvm::Loop, llvm::AnalysisManager&lt;llvm::Loop, llvm::LoopStandardAnalysisResults&amp;&gt;, llvm::LoopStandardAnalysisResults&amp;, llvm::LPMUpdater&amp;&gt;&amp;, llvm::ArrayRef&lt;llvm::PassBuilder::PipelineElement&gt;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#944">_ZZL17registerCallbacksRN4llvm11PassBuilderEENKUlNS_9StringRefERNS_11PassManagerINS_6ModuleENS_15AnalysisManagerIS4_JEEEJEEENS_8ArrayRefINS0_15PipelineElementEEEE0_clES2_S8_SB_</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#944">registerCallbacks(llvm::PassBuilder&amp;)::{lambda(llvm::StringRef, llvm::PassManager&lt;llvm::Module, llvm::AnalysisManager&lt;llvm::Module&gt;&gt;&amp;, llvm::ArrayRef&lt;llvm::PassBuilder::PipelineElement&gt;)#2}::operator()(llvm::StringRef, llvm::PassManager&lt;llvm::Module, llvm::AnalysisManager&lt;llvm::Module&gt;&gt;&amp;, llvm::ArrayRef&lt;llvm::PassBuilder::PipelineElement&gt;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
-              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#909">_ZZL17registerCallbacksRN4llvm11PassBuilderEENKUlNS_9StringRefERNS_11PassManagerINS_8FunctionENS_15AnalysisManagerIS4_JEEEJEEENS_8ArrayRefINS0_15PipelineElementEEEE_clES2_S8_SB_</a></td>
+              <td class="coverFn"><a href="aotcompile.cpp.gcov.html#909">registerCallbacks(llvm::PassBuilder&amp;)::{lambda(llvm::StringRef, llvm::PassManager&lt;llvm::Function, llvm::AnalysisManager&lt;llvm::Function&gt;&gt;&amp;, llvm::ArrayRef&lt;llvm::PassBuilder::PipelineElement&gt;)#1}::operator()(llvm::StringRef, llvm::PassManager&lt;llvm::Function, llvm::AnalysisManager&lt;llvm::Function&gt;&gt;&amp;, llvm::ArrayRef&lt;llvm::PassBuilder::PipelineElement&gt;) const</a></td>
               <td class="coverFnLo">0</td>
             </tr>
     <tr>
@@ -277,7 +277,7 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="aotcompile.cpp.gcov.html#86">jl_get_function_id_impl</a></td>
-              <td class="coverFnHi">111731</td>
+              <td class="coverFnHi">111997</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="aotcompile.cpp.gcov.html#124">jl_get_llvm_function_impl</a></td>
@@ -285,7 +285,7 @@
             </tr>
     <tr>
               <td class="coverFn"><a href="aotcompile.cpp.gcov.html#100">jl_get_llvm_gv_impl</a></td>
-              <td class="coverFnHi">2276520</td>
+              <td class="coverFnHi">2278290</td>
             </tr>
     <tr>
               <td class="coverFn"><a href="aotcompile.cpp.gcov.html#114">jl_get_llvm_module_impl</a></td>

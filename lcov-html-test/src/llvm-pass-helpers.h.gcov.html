@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/llvm-pass-helpers.h</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/llvm-pass-helpers.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">5</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -101,11 +101,11 @@
 <a name="23"><span class="lineNum">      23 </span>                :            : </a>
 <a name="24"><span class="lineNum">      24 </span>                :            :         // Creates an intrinsic description with a particular</a>
 <a name="25"><span class="lineNum">      25 </span>                :            :         // name and declaration function.</a>
-<a name="26"><span class="lineNum">      26 </span>                :<span class="lineCov">       6644 :         IntrinsicDescription(</span></a>
+<a name="26"><span class="lineNum">      26 </span>                :<span class="lineCov">       6633 :         IntrinsicDescription(</span></a>
 <a name="27"><span class="lineNum">      27 </span>                :            :             const llvm::StringRef &amp;name,</a>
 <a name="28"><span class="lineNum">      28 </span>                :            :             const DeclarationFunction &amp;declare)</a>
-<a name="29"><span class="lineNum">      29 </span>                :<span class="lineCov">       6644 :             : name(name), declare(declare)</span></a>
-<a name="30"><span class="lineNum">      30 </span>                :<span class="lineCov">       6644 :         { }</span></a>
+<a name="29"><span class="lineNum">      29 </span>                :<span class="lineCov">       6633 :             : name(name), declare(declare)</span></a>
+<a name="30"><span class="lineNum">      30 </span>                :<span class="lineCov">       6633 :         { }</span></a>
 <a name="31"><span class="lineNum">      31 </span>                :            : </a>
 <a name="32"><span class="lineNum">      32 </span>                :            :         // The intrinsic's name.</a>
 <a name="33"><span class="lineNum">      33 </span>                :            :         llvm::StringRef name;</a>
@@ -152,9 +152,9 @@
 <a name="74"><span class="lineNum">      74 </span>                :            :     void initFunctions(llvm::Module &amp;M);</a>
 <a name="75"><span class="lineNum">      75 </span>                :            : </a>
 <a name="76"><span class="lineNum">      76 </span>                :            :     // Gets the LLVM context for this pass context.</a>
-<a name="77"><span class="lineNum">      77 </span>                :<span class="lineCov">    4763560 :     llvm::LLVMContext &amp;getLLVMContext() const</span></a>
+<a name="77"><span class="lineNum">      77 </span>                :<span class="lineCov">    4670860 :     llvm::LLVMContext &amp;getLLVMContext() const</span></a>
 <a name="78"><span class="lineNum">      78 </span>                :            :     {</a>
-<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">    4763560 :         return module-&gt;getContext();</span></a>
+<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">    4670860 :         return module-&gt;getContext();</span></a>
 <a name="80"><span class="lineNum">      80 </span>                :            :     }</a>
 <a name="81"><span class="lineNum">      81 </span>                :            : </a>
 <a name="82"><span class="lineNum">      82 </span>                :            :     // Gets a call to the `julia.get_pgcstack' intrinsic in the entry</a>

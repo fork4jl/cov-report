@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/llvm-propagate-addrspaces.cpp</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/llvm-propagate-addrspaces.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">172</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">16</td>
@@ -139,195 +139,195 @@
 <a name="61"><span class="lineNum">      61 </span>                :            :     void PoisonValues(std::vector&lt;Value *&gt; &amp;Worklist);</a>
 <a name="62"><span class="lineNum">      62 </span>                :            : };</a>
 <a name="63"><span class="lineNum">      63 </span>                :            : </a>
-<a name="64"><span class="lineNum">      64 </span>                :<span class="lineCov">    3148000 : static unsigned getValueAddrSpace(Value *V) {</span></a>
-<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">    3148000 :     return cast&lt;PointerType&gt;(V-&gt;getType())-&gt;getAddressSpace();</span></a>
+<a name="64"><span class="lineNum">      64 </span>                :<span class="lineCov">    2871390 : static unsigned getValueAddrSpace(Value *V) {</span></a>
+<a name="65"><span class="lineNum">      65 </span>                :<span class="lineCov">    2871390 :     return cast&lt;PointerType&gt;(V-&gt;getType())-&gt;getAddressSpace();</span></a>
 <a name="66"><span class="lineNum">      66 </span>                :            : }</a>
 <a name="67"><span class="lineNum">      67 </span>                :            : </a>
-<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">   24341500 : static bool isSpecialAS(unsigned AS) {</span></a>
-<a name="69"><span class="lineNum">      69 </span>  [<span class="branchCov" title="Branch 0 was taken 12434700 times"> + </span><span class="branchCov" title="Branch 1 was taken 11906800 times"> + </span><span class="branchCov" title="Branch 2 was taken 12434700 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">   24341500 :     return AddressSpace::FirstSpecial &lt;= AS &amp;&amp; AS &lt;= AddressSpace::LastSpecial;</span></a>
+<a name="68"><span class="lineNum">      68 </span>                :<span class="lineCov">   20363800 : static bool isSpecialAS(unsigned AS) {</span></a>
+<a name="69"><span class="lineNum">      69 </span>  [<span class="branchCov" title="Branch 0 was taken 10150600 times"> + </span><span class="branchCov" title="Branch 1 was taken 10213200 times"> + </span><span class="branchCov" title="Branch 2 was taken 10150600 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">   20363800 :     return AddressSpace::FirstSpecial &lt;= AS &amp;&amp; AS &lt;= AddressSpace::LastSpecial;</span></a>
 <a name="70"><span class="lineNum">      70 </span>                :            : }</a>
 <a name="71"><span class="lineNum">      71 </span>                :            : </a>
-<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">   71967800 : void PropagateJuliaAddrspacesVisitor::PoisonValues(std::vector&lt;Value *&gt; &amp;Worklist) {</span></a>
-<a name="73"><span class="lineNum">      73 </span>        [<span class="branchCov" title="Branch 0 was taken 70107500 times"> + </span><span class="branchCov" title="Branch 1 was taken 1860260 times"> + </span>]:<span class="lineCov">   71967800 :     while (!Worklist.empty()) {</span></a>
-<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">   70107500 :         Value *CurrentV = Worklist.back();</span></a>
-<a name="75"><span class="lineNum">      75 </span>                :<span class="lineCov">   70107500 :         Worklist.pop_back();</span></a>
-<a name="76"><span class="lineNum">      76 </span>        [<span class="branchCov" title="Branch 0 was taken 75349200 times"> + </span><span class="branchCov" title="Branch 1 was taken 70107500 times"> + </span>]:<span class="lineCov">  145457000 :         for (Value *User : CurrentV-&gt;users()) {</span></a>
-<a name="77"><span class="lineNum">      77 </span>        [<span class="branchCov" title="Branch 0 was taken 7101910 times"> + </span><span class="branchCov" title="Branch 1 was taken 68247300 times"> + </span>]:<span class="lineCov">   75349200 :             if (Visited.count(User))</span></a>
-<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">    7101910 :                 continue;</span></a>
-<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">   68247300 :             Visited.insert(CurrentV);</span></a>
-<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">   68247300 :             Worklist.push_back(User);</span></a>
+<a name="72"><span class="lineNum">      72 </span>                :<span class="lineCov">   58943500 : void PropagateJuliaAddrspacesVisitor::PoisonValues(std::vector&lt;Value *&gt; &amp;Worklist) {</span></a>
+<a name="73"><span class="lineNum">      73 </span>        [<span class="branchCov" title="Branch 0 was taken 57235300 times"> + </span><span class="branchCov" title="Branch 1 was taken 1708190 times"> + </span>]:<span class="lineCov">   58943500 :     while (!Worklist.empty()) {</span></a>
+<a name="74"><span class="lineNum">      74 </span>                :<span class="lineCov">   57235300 :         Value *CurrentV = Worklist.back();</span></a>
+<a name="75"><span class="lineNum">      75 </span>                :<span class="lineCov">   57235300 :         Worklist.pop_back();</span></a>
+<a name="76"><span class="lineNum">      76 </span>        [<span class="branchCov" title="Branch 0 was taken 61980300 times"> + </span><span class="branchCov" title="Branch 1 was taken 57235300 times"> + </span>]:<span class="lineCov">  119216000 :         for (Value *User : CurrentV-&gt;users()) {</span></a>
+<a name="77"><span class="lineNum">      77 </span>        [<span class="branchCov" title="Branch 0 was taken 6453250 times"> + </span><span class="branchCov" title="Branch 1 was taken 55527100 times"> + </span>]:<span class="lineCov">   61980300 :             if (Visited.count(User))</span></a>
+<a name="78"><span class="lineNum">      78 </span>                :<span class="lineCov">    6453250 :                 continue;</span></a>
+<a name="79"><span class="lineNum">      79 </span>                :<span class="lineCov">   55527100 :             Visited.insert(CurrentV);</span></a>
+<a name="80"><span class="lineNum">      80 </span>                :<span class="lineCov">   55527100 :             Worklist.push_back(User);</span></a>
 <a name="81"><span class="lineNum">      81 </span>                :            :         }</a>
 <a name="82"><span class="lineNum">      82 </span>                :            :     }</a>
-<a name="83"><span class="lineNum">      83 </span>                :<span class="lineCov">    1860260 : }</span></a>
+<a name="83"><span class="lineNum">      83 </span>                :<span class="lineCov">    1708190 : }</span></a>
 <a name="84"><span class="lineNum">      84 </span>                :            : </a>
-<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">    8824930 : Value *PropagateJuliaAddrspacesVisitor::LiftPointer(Value *V, Instruction *InsertPt) {</span></a>
-<a name="86"><span class="lineNum">      86 </span>                :<span class="lineCov">   17649900 :     SmallVector&lt;Value *, 4&gt; Stack;</span></a>
-<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">   17649900 :     std::vector&lt;Value *&gt; Worklist;</span></a>
-<a name="88"><span class="lineNum">      88 </span>                :<span class="lineCov">   17649900 :     std::set&lt;Value *&gt; LocalVisited;</span></a>
-<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">    8824930 :     Worklist.push_back(V);</span></a>
+<a name="85"><span class="lineNum">      85 </span>                :<span class="lineCov">    6904980 : Value *PropagateJuliaAddrspacesVisitor::LiftPointer(Value *V, Instruction *InsertPt) {</span></a>
+<a name="86"><span class="lineNum">      86 </span>                :<span class="lineCov">   13810000 :     SmallVector&lt;Value *, 4&gt; Stack;</span></a>
+<a name="87"><span class="lineNum">      87 </span>                :<span class="lineCov">   13810000 :     std::vector&lt;Value *&gt; Worklist;</span></a>
+<a name="88"><span class="lineNum">      88 </span>                :<span class="lineCov">   13810000 :     std::set&lt;Value *&gt; LocalVisited;</span></a>
+<a name="89"><span class="lineNum">      89 </span>                :<span class="lineCov">    6904980 :     Worklist.push_back(V);</span></a>
 <a name="90"><span class="lineNum">      90 </span>                :            :     // Follow pointer casts back, see if we're based on a pointer in</a>
 <a name="91"><span class="lineNum">      91 </span>                :            :     // an untracked address space, in which case we're allowed to drop</a>
 <a name="92"><span class="lineNum">      92 </span>                :            :     // intermediate addrspace casts.</a>
-<a name="93"><span class="lineNum">      93 </span>        [<span class="branchCov" title="Branch 0 was taken 8920240 times"> + </span><span class="branchCov" title="Branch 1 was taken 47588 times"> + </span>]:<span class="lineCov">    8967830 :     while (!Worklist.empty()) {</span></a>
-<a name="94"><span class="lineNum">      94 </span>                :<span class="lineCov">    8920240 :         Value *CurrentV = Worklist.back();</span></a>
-<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">    8920240 :         Worklist.pop_back();</span></a>
-<a name="96"><span class="lineNum">      96 </span>        [<span class="branchCov" title="Branch 0 was taken 1035 times"> + </span><span class="branchCov" title="Branch 1 was taken 8919210 times"> + </span>]:<span class="lineCov">    8920240 :         if (LocalVisited.count(CurrentV)) {</span></a>
-<a name="97"><span class="lineNum">      97 </span>                :<span class="lineCov">       1035 :             continue;</span></a>
+<a name="93"><span class="lineNum">      93 </span>        [<span class="branchCov" title="Branch 0 was taken 7000460 times"> + </span><span class="branchCov" title="Branch 1 was taken 47480 times"> + </span>]:<span class="lineCov">    7047940 :     while (!Worklist.empty()) {</span></a>
+<a name="94"><span class="lineNum">      94 </span>                :<span class="lineCov">    7000460 :         Value *CurrentV = Worklist.back();</span></a>
+<a name="95"><span class="lineNum">      95 </span>                :<span class="lineCov">    7000460 :         Worklist.pop_back();</span></a>
+<a name="96"><span class="lineNum">      96 </span>        [<span class="branchCov" title="Branch 0 was taken 1057 times"> + </span><span class="branchCov" title="Branch 1 was taken 6999400 times"> + </span>]:<span class="lineCov">    7000460 :         if (LocalVisited.count(CurrentV)) {</span></a>
+<a name="97"><span class="lineNum">      97 </span>                :<span class="lineCov">       1057 :             continue;</span></a>
 <a name="98"><span class="lineNum">      98 </span>                :            :         }</a>
 <a name="99"><span class="lineNum">      99 </span>                :            :         while (true) {</a>
-<a name="100"><span class="lineNum">     100 </span>        [<span class="branchCov" title="Branch 0 was taken 4491560 times"> + </span><span class="branchCov" title="Branch 1 was taken 11385200 times"> + </span>]:<span class="lineCov">   15876700 :             if (auto *BCI = dyn_cast&lt;BitCastInst&gt;(CurrentV))</span></a>
-<a name="101"><span class="lineNum">     101 </span>                :<span class="lineCov">    4491560 :                 CurrentV = BCI-&gt;getOperand(0);</span></a>
-<a name="102"><span class="lineNum">     102 </span>        [<span class="branchCov" title="Branch 0 was taken 1266910 times"> + </span><span class="branchCov" title="Branch 1 was taken 10118300 times"> + </span>]:<span class="lineCov">   11385200 :             else if (auto *ACI = dyn_cast&lt;AddrSpaceCastInst&gt;(CurrentV)) {</span></a>
-<a name="103"><span class="lineNum">     103 </span>                :<span class="lineCov">    1266910 :                 CurrentV = ACI-&gt;getOperand(0);</span></a>
-<a name="104"><span class="lineNum">     104 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1266910 times"> + </span>]:<span class="lineCov">    1266910 :                 if (!isSpecialAS(getValueAddrSpace(ACI)))</span></a>
+<a name="100"><span class="lineNum">     100 </span>        [<span class="branchCov" title="Branch 0 was taken 3423660 times"> + </span><span class="branchCov" title="Branch 1 was taken 9208370 times"> + </span>]:<span class="lineCov">   12632000 :             if (auto *BCI = dyn_cast&lt;BitCastInst&gt;(CurrentV))</span></a>
+<a name="101"><span class="lineNum">     101 </span>                :<span class="lineCov">    3423660 :                 CurrentV = BCI-&gt;getOperand(0);</span></a>
+<a name="102"><span class="lineNum">     102 </span>        [<span class="branchCov" title="Branch 0 was taken 1142580 times"> + </span><span class="branchCov" title="Branch 1 was taken 8065790 times"> + </span>]:<span class="lineCov">    9208370 :             else if (auto *ACI = dyn_cast&lt;AddrSpaceCastInst&gt;(CurrentV)) {</span></a>
+<a name="103"><span class="lineNum">     103 </span>                :<span class="lineCov">    1142580 :                 CurrentV = ACI-&gt;getOperand(0);</span></a>
+<a name="104"><span class="lineNum">     104 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1142580 times"> + </span>]:<span class="lineCov">    1142580 :                 if (!isSpecialAS(getValueAddrSpace(ACI)))</span></a>
 <a name="105"><span class="lineNum">     105 </span>                :<span class="lineNoCov">          0 :                     break;</span></a>
 <a name="106"><span class="lineNum">     106 </span>                :            :             }</a>
-<a name="107"><span class="lineNum">     107 </span>        [<span class="branchCov" title="Branch 0 was taken 8091320 times"> + </span><span class="branchCov" title="Branch 1 was taken 2026950 times"> + </span>]:<span class="lineCov">   10118300 :             else if (auto *GEP = dyn_cast&lt;GetElementPtrInst&gt;(CurrentV)) {</span></a>
-<a name="108"><span class="lineNum">     108 </span>        [<span class="branchCov" title="Branch 0 was taken 20203 times"> + </span><span class="branchCov" title="Branch 1 was taken 8071120 times"> + </span>]:<span class="lineCov">    8091320 :                 if (LiftingMap.count(GEP)) {</span></a>
-<a name="109"><span class="lineNum">     109 </span>                :<span class="lineCov">      20203 :                     CurrentV = LiftingMap[GEP];</span></a>
-<a name="110"><span class="lineNum">     110 </span>                :<span class="lineCov">      20203 :                     break;</span></a>
-<a name="111"><span class="lineNum">     111 </span>        [<span class="branchCov" title="Branch 0 was taken 6889410 times"> + </span><span class="branchCov" title="Branch 1 was taken 1181710 times"> + </span>]:<span class="lineCov">    8071120 :                 } else if (Visited.count(GEP)) {</span></a>
-<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">    8777340 :                     return nullptr;</span></a>
+<a name="107"><span class="lineNum">     107 </span>        [<span class="branchCov" title="Branch 0 was taken 6193260 times"> + </span><span class="branchCov" title="Branch 1 was taken 1872530 times"> + </span>]:<span class="lineCov">    8065790 :             else if (auto *GEP = dyn_cast&lt;GetElementPtrInst&gt;(CurrentV)) {</span></a>
+<a name="108"><span class="lineNum">     108 </span>        [<span class="branchCov" title="Branch 0 was taken 19877 times"> + </span><span class="branchCov" title="Branch 1 was taken 6173380 times"> + </span>]:<span class="lineCov">    6193260 :                 if (LiftingMap.count(GEP)) {</span></a>
+<a name="109"><span class="lineNum">     109 </span>                :<span class="lineCov">      19877 :                     CurrentV = LiftingMap[GEP];</span></a>
+<a name="110"><span class="lineNum">     110 </span>                :<span class="lineCov">      19877 :                     break;</span></a>
+<a name="111"><span class="lineNum">     111 </span>        [<span class="branchCov" title="Branch 0 was taken 5124160 times"> + </span><span class="branchCov" title="Branch 1 was taken 1049220 times"> + </span>]:<span class="lineCov">    6173380 :                 } else if (Visited.count(GEP)) {</span></a>
+<a name="112"><span class="lineNum">     112 </span>                :<span class="lineCov">    6857500 :                     return nullptr;</span></a>
 <a name="113"><span class="lineNum">     113 </span>                :            :                 }</a>
-<a name="114"><span class="lineNum">     114 </span>                :<span class="lineCov">    1181710 :                 Stack.push_back(GEP);</span></a>
-<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">    1181710 :                 LocalVisited.insert(GEP);</span></a>
-<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">    1181710 :                 CurrentV = GEP-&gt;getOperand(0);</span></a>
-<a name="117"><span class="lineNum">     117 </span>        [<span class="branchCov" title="Branch 0 was taken 62544 times"> + </span><span class="branchCov" title="Branch 1 was taken 1964400 times"> + </span>]:<span class="lineCov">    2026950 :             } else if (auto *Phi = dyn_cast&lt;PHINode&gt;(CurrentV)) {</span></a>
-<a name="118"><span class="lineNum">     118 </span>        [<span class="branchCov" title="Branch 0 was taken 4763 times"> + </span><span class="branchCov" title="Branch 1 was taken 57781 times"> + </span>]:<span class="lineCov">      62544 :                 if (LiftingMap.count(Phi)) {</span></a>
-<a name="119"><span class="lineNum">     119 </span>                :<span class="lineCov">       4763 :                     break;</span></a>
+<a name="114"><span class="lineNum">     114 </span>                :<span class="lineCov">    1049220 :                 Stack.push_back(GEP);</span></a>
+<a name="115"><span class="lineNum">     115 </span>                :<span class="lineCov">    1049220 :                 LocalVisited.insert(GEP);</span></a>
+<a name="116"><span class="lineNum">     116 </span>                :<span class="lineCov">    1049220 :                 CurrentV = GEP-&gt;getOperand(0);</span></a>
+<a name="117"><span class="lineNum">     117 </span>        [<span class="branchCov" title="Branch 0 was taken 62779 times"> + </span><span class="branchCov" title="Branch 1 was taken 1809750 times"> + </span>]:<span class="lineCov">    1872530 :             } else if (auto *Phi = dyn_cast&lt;PHINode&gt;(CurrentV)) {</span></a>
+<a name="118"><span class="lineNum">     118 </span>        [<span class="branchCov" title="Branch 0 was taken 4776 times"> + </span><span class="branchCov" title="Branch 1 was taken 58003 times"> + </span>]:<span class="lineCov">      62779 :                 if (LiftingMap.count(Phi)) {</span></a>
+<a name="119"><span class="lineNum">     119 </span>                :<span class="lineCov">       4776 :                     break;</span></a>
 <a name="120"><span class="lineNum">     120 </span>                :            :                 }</a>
-<a name="121"><span class="lineNum">     121 </span>        [<span class="branchCov" title="Branch 0 was taken 121568 times"> + </span><span class="branchCov" title="Branch 1 was taken 57781 times"> + </span>]:<span class="lineCov">     179349 :                 for (Value *Incoming : Phi-&gt;incoming_values()) {</span></a>
-<a name="122"><span class="lineNum">     122 </span>                :<span class="lineCov">     121568 :                     Worklist.push_back(Incoming);</span></a>
+<a name="121"><span class="lineNum">     121 </span>        [<span class="branchCov" title="Branch 0 was taken 122061 times"> + </span><span class="branchCov" title="Branch 1 was taken 58003 times"> + </span>]:<span class="lineCov">     180064 :                 for (Value *Incoming : Phi-&gt;incoming_values()) {</span></a>
+<a name="122"><span class="lineNum">     122 </span>                :<span class="lineCov">     122061 :                     Worklist.push_back(Incoming);</span></a>
 <a name="123"><span class="lineNum">     123 </span>                :            :                 }</a>
-<a name="124"><span class="lineNum">     124 </span>                :<span class="lineCov">      57781 :                 Stack.push_back(Phi);</span></a>
-<a name="125"><span class="lineNum">     125 </span>                :<span class="lineCov">      57781 :                 LocalVisited.insert(Phi);</span></a>
-<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">      57781 :                 break;</span></a>
-<a name="127"><span class="lineNum">     127 </span>        [<span class="branchCov" title="Branch 0 was taken 55047 times"> + </span><span class="branchCov" title="Branch 1 was taken 1909360 times"> + </span>]:<span class="lineCov">    1964400 :             } else if (auto *Select = dyn_cast&lt;SelectInst&gt;(CurrentV)) {</span></a>
-<a name="128"><span class="lineNum">     128 </span>        [<span class="branchCov" title="Branch 0 was taken 10017 times"> + </span><span class="branchCov" title="Branch 1 was taken 45030 times"> + </span>]:<span class="lineCov">      55047 :                 if (LiftingMap.count(Select)) {</span></a>
-<a name="129"><span class="lineNum">     129 </span>                :<span class="lineCov">      10017 :                     break;</span></a>
-<a name="130"><span class="lineNum">     130 </span>        [<span class="branchCov" title="Branch 0 was taken 27680 times"> + </span><span class="branchCov" title="Branch 1 was taken 17350 times"> + </span>]:<span class="lineCov">      45030 :                 } else if (Visited.count(Select)) {</span></a>
-<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">      27680 :                     return nullptr;</span></a>
+<a name="124"><span class="lineNum">     124 </span>                :<span class="lineCov">      58003 :                 Stack.push_back(Phi);</span></a>
+<a name="125"><span class="lineNum">     125 </span>                :<span class="lineCov">      58003 :                 LocalVisited.insert(Phi);</span></a>
+<a name="126"><span class="lineNum">     126 </span>                :<span class="lineCov">      58003 :                 break;</span></a>
+<a name="127"><span class="lineNum">     127 </span>        [<span class="branchCov" title="Branch 0 was taken 52483 times"> + </span><span class="branchCov" title="Branch 1 was taken 1757270 times"> + </span>]:<span class="lineCov">    1809750 :             } else if (auto *Select = dyn_cast&lt;SelectInst&gt;(CurrentV)) {</span></a>
+<a name="128"><span class="lineNum">     128 </span>        [<span class="branchCov" title="Branch 0 was taken 10169 times"> + </span><span class="branchCov" title="Branch 1 was taken 42314 times"> + </span>]:<span class="lineCov">      52483 :                 if (LiftingMap.count(Select)) {</span></a>
+<a name="129"><span class="lineNum">     129 </span>                :<span class="lineCov">      10169 :                     break;</span></a>
+<a name="130"><span class="lineNum">     130 </span>        [<span class="branchCov" title="Branch 0 was taken 25150 times"> + </span><span class="branchCov" title="Branch 1 was taken 17164 times"> + </span>]:<span class="lineCov">      42314 :                 } else if (Visited.count(Select)) {</span></a>
+<a name="131"><span class="lineNum">     131 </span>                :<span class="lineCov">      25150 :                     return nullptr;</span></a>
 <a name="132"><span class="lineNum">     132 </span>                :            :                 }</a>
 <a name="133"><span class="lineNum">     133 </span>                :            :                 // Push one of the branches onto the worklist, continue with the other one</a>
 <a name="134"><span class="lineNum">     134 </span>                :            :                 // directly</a>
-<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">      17350 :                 Worklist.push_back(Select-&gt;getOperand(2));</span></a>
-<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">      17350 :                 Stack.push_back(Select);</span></a>
-<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">      17350 :                 LocalVisited.insert(Select);</span></a>
-<a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">      17350 :                 CurrentV = Select-&gt;getOperand(1);</span></a>
-<a name="139"><span class="lineNum">     139 </span>        [<span class="branchCov" title="Branch 0 was taken 28269 times"> + </span><span class="branchCov" title="Branch 1 was taken 1881090 times"> + </span>]:<span class="lineCov">    1909360 :             } else if (isa&lt;ConstantPointerNull&gt;(CurrentV)) {</span></a>
+<a name="135"><span class="lineNum">     135 </span>                :<span class="lineCov">      17164 :                 Worklist.push_back(Select-&gt;getOperand(2));</span></a>
+<a name="136"><span class="lineNum">     136 </span>                :<span class="lineCov">      17164 :                 Stack.push_back(Select);</span></a>
+<a name="137"><span class="lineNum">     137 </span>                :<span class="lineCov">      17164 :                 LocalVisited.insert(Select);</span></a>
+<a name="138"><span class="lineNum">     138 </span>                :<span class="lineCov">      17164 :                 CurrentV = Select-&gt;getOperand(1);</span></a>
+<a name="139"><span class="lineNum">     139 </span>        [<span class="branchCov" title="Branch 0 was taken 28463 times"> + </span><span class="branchCov" title="Branch 1 was taken 1728800 times"> + </span>]:<span class="lineCov">    1757270 :             } else if (isa&lt;ConstantPointerNull&gt;(CurrentV)) {</span></a>
 <a name="140"><span class="lineNum">     140 </span>                :            :                 // It's always legal to lift null pointers into any address space</a>
-<a name="141"><span class="lineNum">     141 </span>                :<span class="lineCov">      28269 :                 break;</span></a>
+<a name="141"><span class="lineNum">     141 </span>                :<span class="lineCov">      28463 :                 break;</span></a>
 <a name="142"><span class="lineNum">     142 </span>                :            :             } else {</a>
 <a name="143"><span class="lineNum">     143 </span>                :            :                 // Ok, we've reached a leaf - check if it is eligible for lifting</a>
-<a name="144"><span class="lineNum">     144 </span>  [<span class="branchCov" title="Branch 0 was taken 1881090 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 1860260 times"> + </span><span class="branchCov" title="Branch 3 was taken 20832 times"> + </span> :<span class="lineCov">    3762170 :                 if (!CurrentV-&gt;getType()-&gt;isPointerTy() ||</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 1860260 times"> + </span><span class="branchCov" title="Branch 5 was taken 20832 times"> + </span>]
-<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">    1881090 :                     isSpecialAS(getValueAddrSpace(CurrentV))) {</span></a>
+<a name="144"><span class="lineNum">     144 </span>  [<span class="branchCov" title="Branch 0 was taken 1728800 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 1708190 times"> + </span><span class="branchCov" title="Branch 3 was taken 20616 times"> + </span> :<span class="lineCov">    3457610 :                 if (!CurrentV-&gt;getType()-&gt;isPointerTy() ||</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 1708190 times"> + </span><span class="branchCov" title="Branch 5 was taken 20616 times"> + </span>]
+<a name="145"><span class="lineNum">     145 </span>                :<span class="lineCov">    1728800 :                     isSpecialAS(getValueAddrSpace(CurrentV))) {</span></a>
 <a name="146"><span class="lineNum">     146 </span>                :            :                     // If not, poison all (recursive) users of this value, to prevent</a>
 <a name="147"><span class="lineNum">     147 </span>                :            :                     // looking at them again in future iterations.</a>
-<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">    1860260 :                     Worklist.clear();</span></a>
-<a name="149"><span class="lineNum">     149 </span>                :<span class="lineCov">    1860260 :                     Worklist.push_back(CurrentV);</span></a>
-<a name="150"><span class="lineNum">     150 </span>                :<span class="lineCov">    1860260 :                     Visited.insert(CurrentV);</span></a>
-<a name="151"><span class="lineNum">     151 </span>                :<span class="lineCov">    1860260 :                     PoisonValues(Worklist);</span></a>
-<a name="152"><span class="lineNum">     152 </span>                :<span class="lineCov">    1860260 :                     return nullptr;</span></a>
+<a name="148"><span class="lineNum">     148 </span>                :<span class="lineCov">    1708190 :                     Worklist.clear();</span></a>
+<a name="149"><span class="lineNum">     149 </span>                :<span class="lineCov">    1708190 :                     Worklist.push_back(CurrentV);</span></a>
+<a name="150"><span class="lineNum">     150 </span>                :<span class="lineCov">    1708190 :                     Visited.insert(CurrentV);</span></a>
+<a name="151"><span class="lineNum">     151 </span>                :<span class="lineCov">    1708190 :                     PoisonValues(Worklist);</span></a>
+<a name="152"><span class="lineNum">     152 </span>                :<span class="lineCov">    1708190 :                     return nullptr;</span></a>
 <a name="153"><span class="lineNum">     153 </span>                :            :                 }</a>
-<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov">      20832 :                 break;</span></a>
+<a name="154"><span class="lineNum">     154 </span>                :<span class="lineCov">      20616 :                 break;</span></a>
 <a name="155"><span class="lineNum">     155 </span>                :            :             }</a>
-<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">    6957530 :         }</span></a>
+<a name="156"><span class="lineNum">     156 </span>                :<span class="lineCov">    5632640 :         }</span></a>
 <a name="157"><span class="lineNum">     157 </span>                :            :     }</a>
 <a name="158"><span class="lineNum">     158 </span>                :            : </a>
 <a name="159"><span class="lineNum">     159 </span>                :            :     // Go through and insert lifted versions of all instructions on the list.</a>
-<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">      95176 :     std::vector&lt;Value *&gt; ToRevisit;</span></a>
-<a name="161"><span class="lineNum">     161 </span>        [<span class="branchCov" title="Branch 0 was taken 54428 times"> + </span><span class="branchCov" title="Branch 1 was taken 47588 times"> + </span>]:<span class="lineCov">     102016 :     for (Value *V : Stack) {</span></a>
-<a name="162"><span class="lineNum">     162 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 54428 times"> + </span>]:<span class="lineCov">      54428 :         if (LiftingMap.count(V))</span></a>
+<a name="160"><span class="lineNum">     160 </span>                :<span class="lineCov">      94960 :     std::vector&lt;Value *&gt; ToRevisit;</span></a>
+<a name="161"><span class="lineNum">     161 </span>        [<span class="branchCov" title="Branch 0 was taken 54254 times"> + </span><span class="branchCov" title="Branch 1 was taken 47480 times"> + </span>]:<span class="lineCov">     101734 :     for (Value *V : Stack) {</span></a>
+<a name="162"><span class="lineNum">     162 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 54254 times"> + </span>]:<span class="lineCov">      54254 :         if (LiftingMap.count(V))</span></a>
 <a name="163"><span class="lineNum">     163 </span>                :<span class="lineNoCov">          0 :             continue;</span></a>
-<a name="164"><span class="lineNum">     164 </span>  [<span class="branchCov" title="Branch 0 was taken 26301 times"> + </span><span class="branchCov" title="Branch 1 was taken 28127 times"> + </span><span class="branchCov" title="Branch 2 was taken 13157 times"> + </span><span class="branchCov" title="Branch 3 was taken 13144 times"> + </span> :<span class="lineCov">      54428 :         if (isa&lt;GetElementPtrInst&gt;(V) || isa&lt;PHINode&gt;(V) || isa&lt;SelectInst&gt;(V)) {</span></a>
-<span class="lineNum">         </span>   <span class="branchCov" title="Branch 4 was taken 13157 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span><span class="branchCov" title="Branch 6 was taken 54428 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
-<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">      54428 :             Instruction *InstV = cast&lt;Instruction&gt;(V);</span></a>
-<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">      54428 :             Instruction *NewV = InstV-&gt;clone();</span></a>
-<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">      54428 :             ToInsert.push_back(std::make_pair(NewV, InstV));</span></a>
-<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">      54428 :             Type *NewRetTy = PointerType::getWithSamePointeeType(cast&lt;PointerType&gt;(InstV-&gt;getType()), AddressSpace::Generic);</span></a>
-<a name="169"><span class="lineNum">     169 </span>                :<span class="lineCov">      54428 :             NewV-&gt;mutateType(NewRetTy);</span></a>
-<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">      54428 :             LiftingMap[InstV] = NewV;</span></a>
-<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">      54428 :             ToRevisit.push_back(NewV);</span></a>
+<a name="164"><span class="lineNum">     164 </span>  [<span class="branchCov" title="Branch 0 was taken 26487 times"> + </span><span class="branchCov" title="Branch 1 was taken 27767 times"> + </span><span class="branchCov" title="Branch 2 was taken 13249 times"> + </span><span class="branchCov" title="Branch 3 was taken 13238 times"> + </span> :<span class="lineCov">      54254 :         if (isa&lt;GetElementPtrInst&gt;(V) || isa&lt;PHINode&gt;(V) || isa&lt;SelectInst&gt;(V)) {</span></a>
+<span class="lineNum">         </span>   <span class="branchCov" title="Branch 4 was taken 13249 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span><span class="branchCov" title="Branch 6 was taken 54254 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
+<a name="165"><span class="lineNum">     165 </span>                :<span class="lineCov">      54254 :             Instruction *InstV = cast&lt;Instruction&gt;(V);</span></a>
+<a name="166"><span class="lineNum">     166 </span>                :<span class="lineCov">      54254 :             Instruction *NewV = InstV-&gt;clone();</span></a>
+<a name="167"><span class="lineNum">     167 </span>                :<span class="lineCov">      54254 :             ToInsert.push_back(std::make_pair(NewV, InstV));</span></a>
+<a name="168"><span class="lineNum">     168 </span>                :<span class="lineCov">      54254 :             Type *NewRetTy = PointerType::getWithSamePointeeType(cast&lt;PointerType&gt;(InstV-&gt;getType()), AddressSpace::Generic);</span></a>
+<a name="169"><span class="lineNum">     169 </span>                :<span class="lineCov">      54254 :             NewV-&gt;mutateType(NewRetTy);</span></a>
+<a name="170"><span class="lineNum">     170 </span>                :<span class="lineCov">      54254 :             LiftingMap[InstV] = NewV;</span></a>
+<a name="171"><span class="lineNum">     171 </span>                :<span class="lineCov">      54254 :             ToRevisit.push_back(NewV);</span></a>
 <a name="172"><span class="lineNum">     172 </span>                :            :         }</a>
 <a name="173"><span class="lineNum">     173 </span>                :            :     }</a>
 <a name="174"><span class="lineNum">     174 </span>                :            : </a>
-<a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">     131434 :     auto CollapseCastsAndLift = [&amp;](Value *CurrentV, Instruction *InsertPt) -&gt; Value * {</span></a>
-<a name="176"><span class="lineNum">     176 </span>                :<span class="lineCov">     131434 :         PointerType *TargetType = PointerType::getWithSamePointeeType(cast&lt;PointerType&gt;(CurrentV-&gt;getType()), AddressSpace::Generic);</span></a>
-<a name="177"><span class="lineNum">     177 </span>        [<span class="branchCov" title="Branch 0 was taken 215580 times"> + </span><span class="branchCov" title="Branch 1 was taken 90012 times"> + </span>]:<span class="lineCov">     305592 :         while (!LiftingMap.count(CurrentV)) {</span></a>
-<a name="178"><span class="lineNum">     178 </span>        [<span class="branchCov" title="Branch 0 was taken 104548 times"> + </span><span class="branchCov" title="Branch 1 was taken 111032 times"> + </span>]:<span class="lineCov">     215580 :             if (isa&lt;BitCastInst&gt;(CurrentV))</span></a>
-<a name="179"><span class="lineNum">     179 </span>                :<span class="lineCov">     104548 :                 CurrentV = cast&lt;BitCastInst&gt;(CurrentV)-&gt;getOperand(0);</span></a>
-<a name="180"><span class="lineNum">     180 </span>        [<span class="branchCov" title="Branch 0 was taken 69610 times"> + </span><span class="branchCov" title="Branch 1 was taken 41422 times"> + </span>]:<span class="lineCov">     111032 :             else if (isa&lt;AddrSpaceCastInst&gt;(CurrentV))</span></a>
-<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">      69610 :                 CurrentV = cast&lt;AddrSpaceCastInst&gt;(CurrentV)-&gt;getOperand(0);</span></a>
+<a name="175"><span class="lineNum">     175 </span>                :<span class="lineCov">     131361 :     auto CollapseCastsAndLift = [&amp;](Value *CurrentV, Instruction *InsertPt) -&gt; Value * {</span></a>
+<a name="176"><span class="lineNum">     176 </span>                :<span class="lineCov">     131361 :         PointerType *TargetType = PointerType::getWithSamePointeeType(cast&lt;PointerType&gt;(CurrentV-&gt;getType()), AddressSpace::Generic);</span></a>
+<a name="177"><span class="lineNum">     177 </span>        [<span class="branchCov" title="Branch 0 was taken 214658 times"> + </span><span class="branchCov" title="Branch 1 was taken 89692 times"> + </span>]:<span class="lineCov">     304350 :         while (!LiftingMap.count(CurrentV)) {</span></a>
+<a name="178"><span class="lineNum">     178 </span>        [<span class="branchCov" title="Branch 0 was taken 103837 times"> + </span><span class="branchCov" title="Branch 1 was taken 110821 times"> + </span>]:<span class="lineCov">     214658 :             if (isa&lt;BitCastInst&gt;(CurrentV))</span></a>
+<a name="179"><span class="lineNum">     179 </span>                :<span class="lineCov">     103837 :                 CurrentV = cast&lt;BitCastInst&gt;(CurrentV)-&gt;getOperand(0);</span></a>
+<a name="180"><span class="lineNum">     180 </span>        [<span class="branchCov" title="Branch 0 was taken 69152 times"> + </span><span class="branchCov" title="Branch 1 was taken 41669 times"> + </span>]:<span class="lineCov">     110821 :             else if (isa&lt;AddrSpaceCastInst&gt;(CurrentV))</span></a>
+<a name="181"><span class="lineNum">     181 </span>                :<span class="lineCov">      69152 :                 CurrentV = cast&lt;AddrSpaceCastInst&gt;(CurrentV)-&gt;getOperand(0);</span></a>
 <a name="182"><span class="lineNum">     182 </span>                :            :             else</a>
-<a name="183"><span class="lineNum">     183 </span>                :<span class="lineCov">      41422 :                 break;</span></a>
+<a name="183"><span class="lineNum">     183 </span>                :<span class="lineCov">      41669 :                 break;</span></a>
 <a name="184"><span class="lineNum">     184 </span>                :            :         }</a>
-<a name="185"><span class="lineNum">     185 </span>        [<span class="branchCov" title="Branch 0 was taken 24037 times"> + </span><span class="branchCov" title="Branch 1 was taken 107397 times"> + </span>]:<span class="lineCov">     131434 :         if (isa&lt;ConstantPointerNull&gt;(CurrentV)) {</span></a>
-<a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">      24037 :             return ConstantPointerNull::get(TargetType);</span></a>
+<a name="185"><span class="lineNum">     185 </span>        [<span class="branchCov" title="Branch 0 was taken 24222 times"> + </span><span class="branchCov" title="Branch 1 was taken 107139 times"> + </span>]:<span class="lineCov">     131361 :         if (isa&lt;ConstantPointerNull&gt;(CurrentV)) {</span></a>
+<a name="186"><span class="lineNum">     186 </span>                :<span class="lineCov">      24222 :             return ConstantPointerNull::get(TargetType);</span></a>
 <a name="187"><span class="lineNum">     187 </span>                :            :         }</a>
-<a name="188"><span class="lineNum">     188 </span>        [<span class="branchCov" title="Branch 0 was taken 90012 times"> + </span><span class="branchCov" title="Branch 1 was taken 17385 times"> + </span>]:<span class="lineCov">     107397 :         if (LiftingMap.count(CurrentV))</span></a>
-<a name="189"><span class="lineNum">     189 </span>                :<span class="lineCov">      90012 :             CurrentV = LiftingMap[CurrentV];</span></a>
-<a name="190"><span class="lineNum">     190 </span>        [<span class="branchCov" title="Branch 0 was taken 82952 times"> + </span><span class="branchCov" title="Branch 1 was taken 24445 times"> + </span>]:<span class="lineCov">     107397 :         if (CurrentV-&gt;getType() != TargetType) {</span></a>
-<a name="191"><span class="lineNum">     191 </span>                :<span class="lineCov">      82952 :             auto *BCI = new BitCastInst(CurrentV, TargetType);</span></a>
-<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">      82952 :             ToInsert.push_back(std::make_pair(BCI, InsertPt));</span></a>
-<a name="193"><span class="lineNum">     193 </span>                :<span class="lineCov">      82952 :             CurrentV = BCI;</span></a>
+<a name="188"><span class="lineNum">     188 </span>        [<span class="branchCov" title="Branch 0 was taken 89692 times"> + </span><span class="branchCov" title="Branch 1 was taken 17447 times"> + </span>]:<span class="lineCov">     107139 :         if (LiftingMap.count(CurrentV))</span></a>
+<a name="189"><span class="lineNum">     189 </span>                :<span class="lineCov">      89692 :             CurrentV = LiftingMap[CurrentV];</span></a>
+<a name="190"><span class="lineNum">     190 </span>        [<span class="branchCov" title="Branch 0 was taken 82575 times"> + </span><span class="branchCov" title="Branch 1 was taken 24564 times"> + </span>]:<span class="lineCov">     107139 :         if (CurrentV-&gt;getType() != TargetType) {</span></a>
+<a name="191"><span class="lineNum">     191 </span>                :<span class="lineCov">      82575 :             auto *BCI = new BitCastInst(CurrentV, TargetType);</span></a>
+<a name="192"><span class="lineNum">     192 </span>                :<span class="lineCov">      82575 :             ToInsert.push_back(std::make_pair(BCI, InsertPt));</span></a>
+<a name="193"><span class="lineNum">     193 </span>                :<span class="lineCov">      82575 :             CurrentV = BCI;</span></a>
 <a name="194"><span class="lineNum">     194 </span>                :            :         }</a>
-<a name="195"><span class="lineNum">     195 </span>                :<span class="lineCov">     107397 :         return CurrentV;</span></a>
-<a name="196"><span class="lineNum">     196 </span>                :<span class="lineCov">      47588 :     };</span></a>
+<a name="195"><span class="lineNum">     195 </span>                :<span class="lineCov">     107139 :         return CurrentV;</span></a>
+<a name="196"><span class="lineNum">     196 </span>                :<span class="lineCov">      47480 :     };</span></a>
 <a name="197"><span class="lineNum">     197 </span>                :            : </a>
 <a name="198"><span class="lineNum">     198 </span>                :            :     // Now go through and update the operands</a>
-<a name="199"><span class="lineNum">     199 </span>        [<span class="branchCov" title="Branch 0 was taken 54428 times"> + </span><span class="branchCov" title="Branch 1 was taken 47588 times"> + </span>]:<span class="lineCov">     102016 :     for (Value *V : ToRevisit) {</span></a>
-<a name="200"><span class="lineNum">     200 </span>        [<span class="branchCov" title="Branch 0 was taken 28127 times"> + </span><span class="branchCov" title="Branch 1 was taken 26301 times"> + </span>]:<span class="lineCov">      54428 :         if (GetElementPtrInst *NewGEP = dyn_cast&lt;GetElementPtrInst&gt;(V)) {</span></a>
-<a name="201"><span class="lineNum">     201 </span>                :<span class="lineCov">      28127 :             NewGEP-&gt;setOperand(GetElementPtrInst::getPointerOperandIndex(),</span></a>
+<a name="199"><span class="lineNum">     199 </span>        [<span class="branchCov" title="Branch 0 was taken 54254 times"> + </span><span class="branchCov" title="Branch 1 was taken 47480 times"> + </span>]:<span class="lineCov">     101734 :     for (Value *V : ToRevisit) {</span></a>
+<a name="200"><span class="lineNum">     200 </span>        [<span class="branchCov" title="Branch 0 was taken 27767 times"> + </span><span class="branchCov" title="Branch 1 was taken 26487 times"> + </span>]:<span class="lineCov">      54254 :         if (GetElementPtrInst *NewGEP = dyn_cast&lt;GetElementPtrInst&gt;(V)) {</span></a>
+<a name="201"><span class="lineNum">     201 </span>                :<span class="lineCov">      27767 :             NewGEP-&gt;setOperand(GetElementPtrInst::getPointerOperandIndex(),</span></a>
 <a name="202"><span class="lineNum">     202 </span>                :            :                 CollapseCastsAndLift(NewGEP-&gt;getOperand(GetElementPtrInst::getPointerOperandIndex()),</a>
 <a name="203"><span class="lineNum">     203 </span>                :            :                 NewGEP));</a>
-<a name="204"><span class="lineNum">     204 </span>        [<span class="branchCov" title="Branch 0 was taken 13144 times"> + </span><span class="branchCov" title="Branch 1 was taken 13157 times"> + </span>]:<span class="lineCov">      26301 :         } else if (PHINode *NewPhi = dyn_cast&lt;PHINode&gt;(V)) {</span></a>
-<a name="205"><span class="lineNum">     205 </span>        [<span class="branchCov" title="Branch 0 was taken 29405 times"> + </span><span class="branchCov" title="Branch 1 was taken 13144 times"> + </span>]:<span class="lineCov">      42549 :             for (size_t i = 0; i &lt; NewPhi-&gt;getNumIncomingValues(); ++i) {</span></a>
-<a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">      29405 :                 NewPhi-&gt;setIncomingValue(i, CollapseCastsAndLift(NewPhi-&gt;getIncomingValue(i),</span></a>
+<a name="204"><span class="lineNum">     204 </span>        [<span class="branchCov" title="Branch 0 was taken 13238 times"> + </span><span class="branchCov" title="Branch 1 was taken 13249 times"> + </span>]:<span class="lineCov">      26487 :         } else if (PHINode *NewPhi = dyn_cast&lt;PHINode&gt;(V)) {</span></a>
+<a name="205"><span class="lineNum">     205 </span>        [<span class="branchCov" title="Branch 0 was taken 29616 times"> + </span><span class="branchCov" title="Branch 1 was taken 13238 times"> + </span>]:<span class="lineCov">      42854 :             for (size_t i = 0; i &lt; NewPhi-&gt;getNumIncomingValues(); ++i) {</span></a>
+<a name="206"><span class="lineNum">     206 </span>                :<span class="lineCov">      29616 :                 NewPhi-&gt;setIncomingValue(i, CollapseCastsAndLift(NewPhi-&gt;getIncomingValue(i),</span></a>
 <a name="207"><span class="lineNum">     207 </span>                :            :                     NewPhi-&gt;getIncomingBlock(i)-&gt;getTerminator()));</a>
 <a name="208"><span class="lineNum">     208 </span>                :            :             }</a>
-<a name="209"><span class="lineNum">     209 </span>        [<span class="branchCov" title="Branch 0 was taken 13157 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      13157 :         } else if (SelectInst *NewSelect = dyn_cast&lt;SelectInst&gt;(V)) {</span></a>
-<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">      13157 :             NewSelect-&gt;setOperand(1, CollapseCastsAndLift(NewSelect-&gt;getOperand(1), NewSelect));</span></a>
-<a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">      13157 :             NewSelect-&gt;setOperand(2, CollapseCastsAndLift(NewSelect-&gt;getOperand(2), NewSelect));</span></a>
+<a name="209"><span class="lineNum">     209 </span>        [<span class="branchCov" title="Branch 0 was taken 13249 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">      13249 :         } else if (SelectInst *NewSelect = dyn_cast&lt;SelectInst&gt;(V)) {</span></a>
+<a name="210"><span class="lineNum">     210 </span>                :<span class="lineCov">      13249 :             NewSelect-&gt;setOperand(1, CollapseCastsAndLift(NewSelect-&gt;getOperand(1), NewSelect));</span></a>
+<a name="211"><span class="lineNum">     211 </span>                :<span class="lineCov">      13249 :             NewSelect-&gt;setOperand(2, CollapseCastsAndLift(NewSelect-&gt;getOperand(2), NewSelect));</span></a>
 <a name="212"><span class="lineNum">     212 </span>                :            :         } else {</a>
 <a name="213"><span class="lineNum">     213 </span>                :            :             assert(false &amp;&amp; &quot;Shouldn't have reached here&quot;);</a>
 <a name="214"><span class="lineNum">     214 </span>                :            :         }</a>
 <a name="215"><span class="lineNum">     215 </span>                :            :     }</a>
 <a name="216"><span class="lineNum">     216 </span>                :            : </a>
-<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">      47588 :     return CollapseCastsAndLift(V, InsertPt);</span></a>
+<a name="217"><span class="lineNum">     217 </span>                :<span class="lineCov">      47480 :     return CollapseCastsAndLift(V, InsertPt);</span></a>
 <a name="218"><span class="lineNum">     218 </span>                :            : }</a>
 <a name="219"><span class="lineNum">     219 </span>                :            : </a>
-<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">   18076300 : void PropagateJuliaAddrspacesVisitor::visitMemop(Instruction &amp;I, Type *T, unsigned OpIndex) {</span></a>
-<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">   18076300 :     Value *Original = I.getOperand(OpIndex);</span></a>
-<a name="222"><span class="lineNum">     222 </span>                :<span class="lineCov">   18076300 :     unsigned AS = Original-&gt;getType()-&gt;getPointerAddressSpace();</span></a>
-<a name="223"><span class="lineNum">     223 </span>        [<span class="branchCov" title="Branch 0 was taken 9796120 times"> + </span><span class="branchCov" title="Branch 1 was taken 8280170 times"> + </span>]:<span class="lineCov">   18076300 :     if (!isSpecialAS(AS))</span></a>
-<a name="224"><span class="lineNum">     224 </span>                :<span class="lineCov">    9796120 :         return;</span></a>
-<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">    8280170 :     Value *Replacement = LiftPointer(Original, &amp;I);</span></a>
-<a name="226"><span class="lineNum">     226 </span>        [<span class="branchCov" title="Branch 0 was taken 8244580 times"> + </span><span class="branchCov" title="Branch 1 was taken 35595 times"> + </span>]:<span class="lineCov">    8280170 :     if (!Replacement)</span></a>
-<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov">    8244580 :         return;</span></a>
-<a name="228"><span class="lineNum">     228 </span>                :<span class="lineCov">      35595 :     I.setOperand(OpIndex, Replacement);</span></a>
+<a name="220"><span class="lineNum">     220 </span>                :<span class="lineCov">   14977900 : void PropagateJuliaAddrspacesVisitor::visitMemop(Instruction &amp;I, Type *T, unsigned OpIndex) {</span></a>
+<a name="221"><span class="lineNum">     221 </span>                :<span class="lineCov">   14977900 :     Value *Original = I.getOperand(OpIndex);</span></a>
+<a name="222"><span class="lineNum">     222 </span>                :<span class="lineCov">   14977900 :     unsigned AS = Original-&gt;getType()-&gt;getPointerAddressSpace();</span></a>
+<a name="223"><span class="lineNum">     223 </span>        [<span class="branchCov" title="Branch 0 was taken 8530320 times"> + </span><span class="branchCov" title="Branch 1 was taken 6447600 times"> + </span>]:<span class="lineCov">   14977900 :     if (!isSpecialAS(AS))</span></a>
+<a name="224"><span class="lineNum">     224 </span>                :<span class="lineCov">    8530320 :         return;</span></a>
+<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov">    6447600 :     Value *Replacement = LiftPointer(Original, &amp;I);</span></a>
+<a name="226"><span class="lineNum">     226 </span>        [<span class="branchCov" title="Branch 0 was taken 6412220 times"> + </span><span class="branchCov" title="Branch 1 was taken 35379 times"> + </span>]:<span class="lineCov">    6447600 :     if (!Replacement)</span></a>
+<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov">    6412220 :         return;</span></a>
+<a name="228"><span class="lineNum">     228 </span>                :<span class="lineCov">      35379 :     I.setOperand(OpIndex, Replacement);</span></a>
 <a name="229"><span class="lineNum">     229 </span>                :            : }</a>
 <a name="230"><span class="lineNum">     230 </span>                :            : </a>
-<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">   12381400 : void PropagateJuliaAddrspacesVisitor::visitLoadInst(LoadInst &amp;LI) {</span></a>
-<a name="232"><span class="lineNum">     232 </span>                :<span class="lineCov">   12381400 :     visitMemop(LI, LI.getType(), LoadInst::getPointerOperandIndex());</span></a>
-<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">   12381400 : }</span></a>
+<a name="231"><span class="lineNum">     231 </span>                :<span class="lineCov">   10193800 : void PropagateJuliaAddrspacesVisitor::visitLoadInst(LoadInst &amp;LI) {</span></a>
+<a name="232"><span class="lineNum">     232 </span>                :<span class="lineCov">   10193800 :     visitMemop(LI, LI.getType(), LoadInst::getPointerOperandIndex());</span></a>
+<a name="233"><span class="lineNum">     233 </span>                :<span class="lineCov">   10193800 : }</span></a>
 <a name="234"><span class="lineNum">     234 </span>                :            : </a>
-<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">    5682610 : void PropagateJuliaAddrspacesVisitor::visitStoreInst(StoreInst &amp;SI) {</span></a>
-<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov">    5682610 :     visitMemop(SI, SI.getValueOperand()-&gt;getType(), StoreInst::getPointerOperandIndex());</span></a>
-<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">    5682610 : }</span></a>
+<a name="235"><span class="lineNum">     235 </span>                :<span class="lineCov">    4775440 : void PropagateJuliaAddrspacesVisitor::visitStoreInst(StoreInst &amp;SI) {</span></a>
+<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov">    4775440 :     visitMemop(SI, SI.getValueOperand()-&gt;getType(), StoreInst::getPointerOperandIndex());</span></a>
+<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov">    4775440 : }</span></a>
 <a name="238"><span class="lineNum">     238 </span>                :            : </a>
-<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">       9679 : void PropagateJuliaAddrspacesVisitor::visitAtomicCmpXchgInst(AtomicCmpXchgInst &amp;SI) {</span></a>
-<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">       9679 :     visitMemop(SI, SI.getNewValOperand()-&gt;getType(), AtomicCmpXchgInst::getPointerOperandIndex());</span></a>
-<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">       9679 : }</span></a>
+<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov">       6019 : void PropagateJuliaAddrspacesVisitor::visitAtomicCmpXchgInst(AtomicCmpXchgInst &amp;SI) {</span></a>
+<a name="240"><span class="lineNum">     240 </span>                :<span class="lineCov">       6019 :     visitMemop(SI, SI.getNewValOperand()-&gt;getType(), AtomicCmpXchgInst::getPointerOperandIndex());</span></a>
+<a name="241"><span class="lineNum">     241 </span>                :<span class="lineCov">       6019 : }</span></a>
 <a name="242"><span class="lineNum">     242 </span>                :            : </a>
-<a name="243"><span class="lineNum">     243 </span>                :<span class="lineCov">       2644 : void PropagateJuliaAddrspacesVisitor::visitAtomicRMWInst(AtomicRMWInst &amp;SI) {</span></a>
-<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">       2644 :     visitMemop(SI, SI.getType(), AtomicRMWInst::getPointerOperandIndex());</span></a>
-<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">       2644 : }</span></a>
+<a name="243"><span class="lineNum">     243 </span>                :<span class="lineCov">       2653 : void PropagateJuliaAddrspacesVisitor::visitAtomicRMWInst(AtomicRMWInst &amp;SI) {</span></a>
+<a name="244"><span class="lineNum">     244 </span>                :<span class="lineCov">       2653 :     visitMemop(SI, SI.getType(), AtomicRMWInst::getPointerOperandIndex());</span></a>
+<a name="245"><span class="lineNum">     245 </span>                :<span class="lineCov">       2653 : }</span></a>
 <a name="246"><span class="lineNum">     246 </span>                :            : </a>
-<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">       2724 : void PropagateJuliaAddrspacesVisitor::visitMemSetInst(MemSetInst &amp;MI) {</span></a>
-<a name="248"><span class="lineNum">     248 </span>                :<span class="lineCov">       2724 :     unsigned AS = MI.getDestAddressSpace();</span></a>
-<a name="249"><span class="lineNum">     249 </span>        [<span class="branchCov" title="Branch 0 was taken 2718 times"> + </span><span class="branchCov" title="Branch 1 was taken 6 times"> + </span>]:<span class="lineCov">       2724 :     if (!isSpecialAS(AS))</span></a>
-<a name="250"><span class="lineNum">     250 </span>                :<span class="lineCov">       2718 :         return;</span></a>
+<a name="247"><span class="lineNum">     247 </span>                :<span class="lineCov">       2747 : void PropagateJuliaAddrspacesVisitor::visitMemSetInst(MemSetInst &amp;MI) {</span></a>
+<a name="248"><span class="lineNum">     248 </span>                :<span class="lineCov">       2747 :     unsigned AS = MI.getDestAddressSpace();</span></a>
+<a name="249"><span class="lineNum">     249 </span>        [<span class="branchCov" title="Branch 0 was taken 2741 times"> + </span><span class="branchCov" title="Branch 1 was taken 6 times"> + </span>]:<span class="lineCov">       2747 :     if (!isSpecialAS(AS))</span></a>
+<a name="250"><span class="lineNum">     250 </span>                :<span class="lineCov">       2741 :         return;</span></a>
 <a name="251"><span class="lineNum">     251 </span>                :<span class="lineCov">          6 :     Value *Replacement = LiftPointer(MI.getRawDest());</span></a>
 <a name="252"><span class="lineNum">     252 </span>        [<span class="branchCov" title="Branch 0 was taken 6 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">          6 :     if (!Replacement)</span></a>
 <a name="253"><span class="lineNum">     253 </span>                :<span class="lineCov">          6 :         return;</span></a>
@@ -337,63 +337,63 @@
 <a name="257"><span class="lineNum">     257 </span>                :<span class="lineNoCov">          0 :     MI.setArgOperand(0, Replacement);</span></a>
 <a name="258"><span class="lineNum">     258 </span>                :            : }</a>
 <a name="259"><span class="lineNum">     259 </span>                :            : </a>
-<a name="260"><span class="lineNum">     260 </span>                :<span class="lineCov">    1177420 : void PropagateJuliaAddrspacesVisitor::visitMemTransferInst(MemTransferInst &amp;MTI) {</span></a>
-<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">    1177420 :     unsigned DestAS = MTI.getDestAddressSpace();</span></a>
-<a name="262"><span class="lineNum">     262 </span>                :<span class="lineCov">    1177420 :     unsigned SrcAS = MTI.getSourceAddressSpace();</span></a>
-<a name="263"><span class="lineNum">     263 </span>  [<span class="branchCov" title="Branch 0 was taken 971947 times"> + </span><span class="branchCov" title="Branch 1 was taken 205471 times"> + </span><span class="branchCov" title="Branch 2 was taken 694853 times"> + </span><span class="branchCov" title="Branch 3 was taken 277094 times"> + </span> :<span class="lineCov">    1177420 :     if (!isSpecialAS(DestAS) &amp;&amp; !isSpecialAS(SrcAS))</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 694853 times"> + </span><span class="branchCov" title="Branch 5 was taken 482565 times"> + </span>]
-<a name="264"><span class="lineNum">     264 </span>                :<span class="lineCov">     694853 :         return;</span></a>
-<a name="265"><span class="lineNum">     265 </span>                :<span class="lineCov">     482565 :     Value *Dest = MTI.getRawDest();</span></a>
-<a name="266"><span class="lineNum">     266 </span>        [<span class="branchCov" title="Branch 0 was taken 205471 times"> + </span><span class="branchCov" title="Branch 1 was taken 277094 times"> + </span>]:<span class="lineCov">     482565 :     if (isSpecialAS(DestAS)) {</span></a>
-<a name="267"><span class="lineNum">     267 </span>                :<span class="lineCov">     205471 :         Value *Replacement = LiftPointer(Dest, &amp;MTI);</span></a>
-<a name="268"><span class="lineNum">     268 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 205469 times"> + </span>]:<span class="lineCov">     205471 :         if (Replacement)</span></a>
+<a name="260"><span class="lineNum">     260 </span>                :<span class="lineCov">     957881 : void PropagateJuliaAddrspacesVisitor::visitMemTransferInst(MemTransferInst &amp;MTI) {</span></a>
+<a name="261"><span class="lineNum">     261 </span>                :<span class="lineCov">     957881 :     unsigned DestAS = MTI.getDestAddressSpace();</span></a>
+<a name="262"><span class="lineNum">     262 </span>                :<span class="lineCov">     957881 :     unsigned SrcAS = MTI.getSourceAddressSpace();</span></a>
+<a name="263"><span class="lineNum">     263 </span>  [<span class="branchCov" title="Branch 0 was taken 764229 times"> + </span><span class="branchCov" title="Branch 1 was taken 193652 times"> + </span><span class="branchCov" title="Branch 2 was taken 563044 times"> + </span><span class="branchCov" title="Branch 3 was taken 201185 times"> + </span> :<span class="lineCov">     957881 :     if (!isSpecialAS(DestAS) &amp;&amp; !isSpecialAS(SrcAS))</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 563044 times"> + </span><span class="branchCov" title="Branch 5 was taken 394837 times"> + </span>]
+<a name="264"><span class="lineNum">     264 </span>                :<span class="lineCov">     563044 :         return;</span></a>
+<a name="265"><span class="lineNum">     265 </span>                :<span class="lineCov">     394837 :     Value *Dest = MTI.getRawDest();</span></a>
+<a name="266"><span class="lineNum">     266 </span>        [<span class="branchCov" title="Branch 0 was taken 193652 times"> + </span><span class="branchCov" title="Branch 1 was taken 201185 times"> + </span>]:<span class="lineCov">     394837 :     if (isSpecialAS(DestAS)) {</span></a>
+<a name="267"><span class="lineNum">     267 </span>                :<span class="lineCov">     193652 :         Value *Replacement = LiftPointer(Dest, &amp;MTI);</span></a>
+<a name="268"><span class="lineNum">     268 </span>        [<span class="branchCov" title="Branch 0 was taken 2 times"> + </span><span class="branchCov" title="Branch 1 was taken 193650 times"> + </span>]:<span class="lineCov">     193652 :         if (Replacement)</span></a>
 <a name="269"><span class="lineNum">     269 </span>                :<span class="lineCov">          2 :             Dest = Replacement;</span></a>
 <a name="270"><span class="lineNum">     270 </span>                :            :     }</a>
-<a name="271"><span class="lineNum">     271 </span>                :<span class="lineCov">     482565 :     Value *Src = MTI.getRawSource();</span></a>
-<a name="272"><span class="lineNum">     272 </span>        [<span class="branchCov" title="Branch 0 was taken 339283 times"> + </span><span class="branchCov" title="Branch 1 was taken 143282 times"> + </span>]:<span class="lineCov">     482565 :     if (isSpecialAS(SrcAS)) {</span></a>
-<a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">     339283 :         Value *Replacement = LiftPointer(Src, &amp;MTI);</span></a>
-<a name="274"><span class="lineNum">     274 </span>        [<span class="branchCov" title="Branch 0 was taken 11991 times"> + </span><span class="branchCov" title="Branch 1 was taken 327292 times"> + </span>]:<span class="lineCov">     339283 :         if (Replacement)</span></a>
-<a name="275"><span class="lineNum">     275 </span>                :<span class="lineCov">      11991 :             Src = Replacement;</span></a>
+<a name="271"><span class="lineNum">     271 </span>                :<span class="lineCov">     394837 :     Value *Src = MTI.getRawSource();</span></a>
+<a name="272"><span class="lineNum">     272 </span>        [<span class="branchCov" title="Branch 0 was taken 263719 times"> + </span><span class="branchCov" title="Branch 1 was taken 131118 times"> + </span>]:<span class="lineCov">     394837 :     if (isSpecialAS(SrcAS)) {</span></a>
+<a name="273"><span class="lineNum">     273 </span>                :<span class="lineCov">     263719 :         Value *Replacement = LiftPointer(Src, &amp;MTI);</span></a>
+<a name="274"><span class="lineNum">     274 </span>        [<span class="branchCov" title="Branch 0 was taken 12099 times"> + </span><span class="branchCov" title="Branch 1 was taken 251620 times"> + </span>]:<span class="lineCov">     263719 :         if (Replacement)</span></a>
+<a name="275"><span class="lineNum">     275 </span>                :<span class="lineCov">      12099 :             Src = Replacement;</span></a>
 <a name="276"><span class="lineNum">     276 </span>                :            :     }</a>
-<a name="277"><span class="lineNum">     277 </span>  [<span class="branchCov" title="Branch 0 was taken 482563 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 470572 times"> + </span><span class="branchCov" title="Branch 3 was taken 11991 times"> + </span> :<span class="lineCov">     482565 :     if (Dest == MTI.getRawDest() &amp;&amp; Src == MTI.getRawSource())</span></a>
-<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 470572 times"> + </span><span class="branchCov" title="Branch 5 was taken 11993 times"> + </span>]
-<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">     470572 :         return;</span></a>
-<a name="279"><span class="lineNum">     279 </span>                :<span class="lineCov">      11993 :     Function *TheFn = Intrinsic::getDeclaration(MTI.getModule(), MTI.getIntrinsicID(),</span></a>
-<a name="280"><span class="lineNum">     280 </span>                :<span class="lineCov">      11993 :         {Dest-&gt;getType(), Src-&gt;getType(),</span></a>
-<a name="281"><span class="lineNum">     281 </span>                :<span class="lineCov">      11993 :          MTI.getOperand(2)-&gt;getType()});</span></a>
-<a name="282"><span class="lineNum">     282 </span>                :<span class="lineCov">      11993 :     MTI.setCalledFunction(TheFn);</span></a>
-<a name="283"><span class="lineNum">     283 </span>                :<span class="lineCov">      11993 :     MTI.setArgOperand(0, Dest);</span></a>
-<a name="284"><span class="lineNum">     284 </span>                :<span class="lineCov">      11993 :     MTI.setArgOperand(1, Src);</span></a>
+<a name="277"><span class="lineNum">     277 </span>  [<span class="branchCov" title="Branch 0 was taken 394835 times"> + </span><span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 382736 times"> + </span><span class="branchCov" title="Branch 3 was taken 12099 times"> + </span> :<span class="lineCov">     394837 :     if (Dest == MTI.getRawDest() &amp;&amp; Src == MTI.getRawSource())</span></a>
+<span class="lineNum">         </span>         <span class="branchCov" title="Branch 4 was taken 382736 times"> + </span><span class="branchCov" title="Branch 5 was taken 12101 times"> + </span>]
+<a name="278"><span class="lineNum">     278 </span>                :<span class="lineCov">     382736 :         return;</span></a>
+<a name="279"><span class="lineNum">     279 </span>                :<span class="lineCov">      12101 :     Function *TheFn = Intrinsic::getDeclaration(MTI.getModule(), MTI.getIntrinsicID(),</span></a>
+<a name="280"><span class="lineNum">     280 </span>                :<span class="lineCov">      12101 :         {Dest-&gt;getType(), Src-&gt;getType(),</span></a>
+<a name="281"><span class="lineNum">     281 </span>                :<span class="lineCov">      12101 :          MTI.getOperand(2)-&gt;getType()});</span></a>
+<a name="282"><span class="lineNum">     282 </span>                :<span class="lineCov">      12101 :     MTI.setCalledFunction(TheFn);</span></a>
+<a name="283"><span class="lineNum">     283 </span>                :<span class="lineCov">      12101 :     MTI.setArgOperand(0, Dest);</span></a>
+<a name="284"><span class="lineNum">     284 </span>                :<span class="lineCov">      12101 :     MTI.setArgOperand(1, Src);</span></a>
 <a name="285"><span class="lineNum">     285 </span>                :            : }</a>
 <a name="286"><span class="lineNum">     286 </span>                :            : </a>
-<a name="287"><span class="lineNum">     287 </span>                :<span class="lineCov">     626994 : bool propagateJuliaAddrspaces(Function &amp;F) {</span></a>
-<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">     626994 :     PropagateJuliaAddrspacesVisitor visitor;</span></a>
-<a name="289"><span class="lineNum">     289 </span>                :<span class="lineCov">     626994 :     visitor.visit(F);</span></a>
-<a name="290"><span class="lineNum">     290 </span>        [<span class="branchCov" title="Branch 0 was taken 137380 times"> + </span><span class="branchCov" title="Branch 1 was taken 626994 times"> + </span>]:<span class="lineCov">     764374 :     for (auto it : visitor.ToInsert)</span></a>
-<a name="291"><span class="lineNum">     291 </span>                :<span class="lineCov">     137380 :         it.first-&gt;insertBefore(it.second);</span></a>
-<a name="292"><span class="lineNum">     292 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 626994 times"> + </span>]:<span class="lineCov">     626994 :     for (Instruction *I : visitor.ToDelete)</span></a>
+<a name="287"><span class="lineNum">     287 </span>                :<span class="lineCov">     614971 : bool propagateJuliaAddrspaces(Function &amp;F) {</span></a>
+<a name="288"><span class="lineNum">     288 </span>                :<span class="lineCov">     614971 :     PropagateJuliaAddrspacesVisitor visitor;</span></a>
+<a name="289"><span class="lineNum">     289 </span>                :<span class="lineCov">     614971 :     visitor.visit(F);</span></a>
+<a name="290"><span class="lineNum">     290 </span>        [<span class="branchCov" title="Branch 0 was taken 136829 times"> + </span><span class="branchCov" title="Branch 1 was taken 614971 times"> + </span>]:<span class="lineCov">     751800 :     for (auto it : visitor.ToInsert)</span></a>
+<a name="291"><span class="lineNum">     291 </span>                :<span class="lineCov">     136829 :         it.first-&gt;insertBefore(it.second);</span></a>
+<a name="292"><span class="lineNum">     292 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 614971 times"> + </span>]:<span class="lineCov">     614971 :     for (Instruction *I : visitor.ToDelete)</span></a>
 <a name="293"><span class="lineNum">     293 </span>                :<span class="lineNoCov">          0 :         I-&gt;eraseFromParent();</span></a>
-<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     626994 :     visitor.ToInsert.clear();</span></a>
-<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">     626994 :     visitor.ToDelete.clear();</span></a>
-<a name="296"><span class="lineNum">     296 </span>                :<span class="lineCov">     626994 :     visitor.LiftingMap.clear();</span></a>
-<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     626994 :     visitor.Visited.clear();</span></a>
-<a name="298"><span class="lineNum">     298 </span>                :<span class="lineCov">     626994 :     return true;</span></a>
+<a name="294"><span class="lineNum">     294 </span>                :<span class="lineCov">     614971 :     visitor.ToInsert.clear();</span></a>
+<a name="295"><span class="lineNum">     295 </span>                :<span class="lineCov">     614971 :     visitor.ToDelete.clear();</span></a>
+<a name="296"><span class="lineNum">     296 </span>                :<span class="lineCov">     614971 :     visitor.LiftingMap.clear();</span></a>
+<a name="297"><span class="lineNum">     297 </span>                :<span class="lineCov">     614971 :     visitor.Visited.clear();</span></a>
+<a name="298"><span class="lineNum">     298 </span>                :<span class="lineCov">     614971 :     return true;</span></a>
 <a name="299"><span class="lineNum">     299 </span>                :            : }</a>
 <a name="300"><span class="lineNum">     300 </span>                :            : </a>
 <a name="301"><span class="lineNum">     301 </span>                :            : struct PropagateJuliaAddrspacesLegacy : FunctionPass {</a>
 <a name="302"><span class="lineNum">     302 </span>                :            :     static char ID;</a>
 <a name="303"><span class="lineNum">     303 </span>                :            : </a>
-<a name="304"><span class="lineNum">     304 </span>                :<span class="lineCov">        575 :     PropagateJuliaAddrspacesLegacy() : FunctionPass(ID) {}</span></a>
-<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">     626994 :     bool runOnFunction(Function &amp;F) override {</span></a>
-<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">     626994 :         return propagateJuliaAddrspaces(F);</span></a>
+<a name="304"><span class="lineNum">     304 </span>                :<span class="lineCov">        574 :     PropagateJuliaAddrspacesLegacy() : FunctionPass(ID) {}</span></a>
+<a name="305"><span class="lineNum">     305 </span>                :<span class="lineCov">     614971 :     bool runOnFunction(Function &amp;F) override {</span></a>
+<a name="306"><span class="lineNum">     306 </span>                :<span class="lineCov">     614971 :         return propagateJuliaAddrspaces(F);</span></a>
 <a name="307"><span class="lineNum">     307 </span>                :            :     }</a>
 <a name="308"><span class="lineNum">     308 </span>                :            : };</a>
 <a name="309"><span class="lineNum">     309 </span>                :            : </a>
 <a name="310"><span class="lineNum">     310 </span>                :            : char PropagateJuliaAddrspacesLegacy::ID = 0;</a>
 <a name="311"><span class="lineNum">     311 </span>                :            : static RegisterPass&lt;PropagateJuliaAddrspacesLegacy&gt; X(&quot;PropagateJuliaAddrspaces&quot;, &quot;Propagate (non-)rootedness information&quot;, false, false);</a>
 <a name="312"><span class="lineNum">     312 </span>                :            : </a>
-<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">        575 : Pass *createPropagateJuliaAddrspaces() {</span></a>
-<a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov">        575 :     return new PropagateJuliaAddrspacesLegacy();</span></a>
+<a name="313"><span class="lineNum">     313 </span>                :<span class="lineCov">        574 : Pass *createPropagateJuliaAddrspaces() {</span></a>
+<a name="314"><span class="lineNum">     314 </span>                :<span class="lineCov">        574 :     return new PropagateJuliaAddrspacesLegacy();</span></a>
 <a name="315"><span class="lineNum">     315 </span>                :            : }</a>
 <a name="316"><span class="lineNum">     316 </span>                :            : </a>
 <a name="317"><span class="lineNum">     317 </span>                :<span class="lineNoCov">          0 : PreservedAnalyses PropagateJuliaAddrspacesPass::run(Function &amp;F, FunctionAnalysisManager &amp;AM) {</span></a>

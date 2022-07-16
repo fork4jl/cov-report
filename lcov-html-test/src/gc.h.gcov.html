@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - [test only] commit 0a2d6137a4 - src/gc.h</title>
+  <title>LCOV - [test only] commit 0f242327d2cc9bd130497f44b6350c924185606a - src/gc.h</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">[test only] commit 0a2d6137a4</td>
+            <td class="headerValue">[test only] commit 0f242327d2cc9bd130497f44b6350c924185606a</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">96</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-07-16 20:00:38</td>
+            <td class="headerValue">2022-07-16 23:42:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">28</td>
@@ -298,23 +298,23 @@
 <a name="220"><span class="lineNum">     220 </span>                :            : // Pop a data struct from the mark data stack (i.e. decrease the stack pointer)</a>
 <a name="221"><span class="lineNum">     221 </span>                :            : // This should be used after dispatch and therefore the pc stack pointer is already popped from</a>
 <a name="222"><span class="lineNum">     222 </span>                :            : // the stack.</a>
-<a name="223"><span class="lineNum">     223 </span>                :<span class="lineCov"> 2033810000 : STATIC_INLINE void *gc_pop_markdata_(jl_gc_mark_sp_t *sp, size_t size)</span></a>
+<a name="223"><span class="lineNum">     223 </span>                :<span class="lineCov"> 1595300000 : STATIC_INLINE void *gc_pop_markdata_(jl_gc_mark_sp_t *sp, size_t size)</span></a>
 <a name="224"><span class="lineNum">     224 </span>                :            : {</a>
-<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov"> 2033810000 :     jl_gc_mark_data_t *data = (jl_gc_mark_data_t *)(((char*)sp-&gt;data) - size);</span></a>
-<a name="226"><span class="lineNum">     226 </span>                :<span class="lineCov"> 2033810000 :     sp-&gt;data = data;</span></a>
-<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov"> 2033810000 :     return data;</span></a>
+<a name="225"><span class="lineNum">     225 </span>                :<span class="lineCov"> 1595300000 :     jl_gc_mark_data_t *data = (jl_gc_mark_data_t *)(((char*)sp-&gt;data) - size);</span></a>
+<a name="226"><span class="lineNum">     226 </span>                :<span class="lineCov"> 1595300000 :     sp-&gt;data = data;</span></a>
+<a name="227"><span class="lineNum">     227 </span>                :<span class="lineCov"> 1595300000 :     return data;</span></a>
 <a name="228"><span class="lineNum">     228 </span>                :            : }</a>
 <a name="229"><span class="lineNum">     229 </span>                :            : #define gc_pop_markdata(sp, type) ((type*)gc_pop_markdata_(sp, sizeof(type)))</a>
 <a name="230"><span class="lineNum">     230 </span>                :            : </a>
 <a name="231"><span class="lineNum">     231 </span>                :            : // Re-push a frame to the mark stack (both data and pc)</a>
 <a name="232"><span class="lineNum">     232 </span>                :            : // The data and pc are expected to be on the stack (or updated in place) already.</a>
 <a name="233"><span class="lineNum">     233 </span>                :            : // Mainly useful to pause the current scanning in order to scan an new object.</a>
-<a name="234"><span class="lineNum">     234 </span>                :<span class="lineCov"> 2009950000 : STATIC_INLINE void *gc_repush_markdata_(jl_gc_mark_sp_t *sp, size_t size) JL_NOTSAFEPOINT</span></a>
+<a name="234"><span class="lineNum">     234 </span>                :<span class="lineCov"> 1580710000 : STATIC_INLINE void *gc_repush_markdata_(jl_gc_mark_sp_t *sp, size_t size) JL_NOTSAFEPOINT</span></a>
 <a name="235"><span class="lineNum">     235 </span>                :            : {</a>
-<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov"> 2009950000 :     jl_gc_mark_data_t *data = sp-&gt;data;</span></a>
-<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov"> 2009950000 :     sp-&gt;pc++;</span></a>
-<a name="238"><span class="lineNum">     238 </span>                :<span class="lineCov"> 2009950000 :     sp-&gt;data = (jl_gc_mark_data_t *)(((char*)sp-&gt;data) + size);</span></a>
-<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov"> 2009950000 :     return data;</span></a>
+<a name="236"><span class="lineNum">     236 </span>                :<span class="lineCov"> 1580710000 :     jl_gc_mark_data_t *data = sp-&gt;data;</span></a>
+<a name="237"><span class="lineNum">     237 </span>                :<span class="lineCov"> 1580710000 :     sp-&gt;pc++;</span></a>
+<a name="238"><span class="lineNum">     238 </span>                :<span class="lineCov"> 1580710000 :     sp-&gt;data = (jl_gc_mark_data_t *)(((char*)sp-&gt;data) + size);</span></a>
+<a name="239"><span class="lineNum">     239 </span>                :<span class="lineCov"> 1580710000 :     return data;</span></a>
 <a name="240"><span class="lineNum">     240 </span>                :            : }</a>
 <a name="241"><span class="lineNum">     241 </span>                :            : #define gc_repush_markdata(sp, type) ((type*)gc_repush_markdata_(sp, sizeof(type)))</a>
 <a name="242"><span class="lineNum">     242 </span>                :            : </a>
@@ -459,9 +459,9 @@
 <a name="381"><span class="lineNum">     381 </span>                :            : #ifdef __clang_gcanalyzer__</a>
 <a name="382"><span class="lineNum">     382 </span>                :            : unsigned ffs_u32(uint32_t bitvec) JL_NOTSAFEPOINT;</a>
 <a name="383"><span class="lineNum">     383 </span>                :            : #else</a>
-<a name="384"><span class="lineNum">     384 </span>                :<span class="lineCov">  550939870 : STATIC_INLINE unsigned ffs_u32(uint32_t bitvec)</span></a>
+<a name="384"><span class="lineNum">     384 </span>                :<span class="lineCov">  450552500 : STATIC_INLINE unsigned ffs_u32(uint32_t bitvec)</span></a>
 <a name="385"><span class="lineNum">     385 </span>                :            : {</a>
-<a name="386"><span class="lineNum">     386 </span>                :<span class="lineCov">  550939870 :     return __builtin_ffs(bitvec) - 1;</span></a>
+<a name="386"><span class="lineNum">     386 </span>                :<span class="lineCov">  450552500 :     return __builtin_ffs(bitvec) - 1;</span></a>
 <a name="387"><span class="lineNum">     387 </span>                :            : }</a>
 <a name="388"><span class="lineNum">     388 </span>                :            : #endif</a>
 <a name="389"><span class="lineNum">     389 </span>                :            : </a>
@@ -472,68 +472,68 @@
 <a name="394"><span class="lineNum">     394 </span>                :            : extern arraylist_t to_finalize;</a>
 <a name="395"><span class="lineNum">     395 </span>                :            : extern int64_t lazy_freed_pages;</a>
 <a name="396"><span class="lineNum">     396 </span>                :            : </a>
-<a name="397"><span class="lineNum">     397 </span>                :<span class="lineCov">    2719810 : STATIC_INLINE bigval_t *bigval_header(jl_taggedvalue_t *o) JL_NOTSAFEPOINT</span></a>
+<a name="397"><span class="lineNum">     397 </span>                :<span class="lineCov">    2176080 : STATIC_INLINE bigval_t *bigval_header(jl_taggedvalue_t *o) JL_NOTSAFEPOINT</span></a>
 <a name="398"><span class="lineNum">     398 </span>                :            : {</a>
-<a name="399"><span class="lineNum">     399 </span>                :<span class="lineCov">    2719810 :     return container_of(o, bigval_t, header);</span></a>
+<a name="399"><span class="lineNum">     399 </span>                :<span class="lineCov">    2176080 :     return container_of(o, bigval_t, header);</span></a>
 <a name="400"><span class="lineNum">     400 </span>                :            : }</a>
 <a name="401"><span class="lineNum">     401 </span>                :            : </a>
 <a name="402"><span class="lineNum">     402 </span>                :            : // round an address inside a gcpage's data to its beginning</a>
-<a name="403"><span class="lineNum">     403 </span>                :<span class="lineCov">26955500838 : STATIC_INLINE char *gc_page_data(void *x) JL_NOTSAFEPOINT</span></a>
+<a name="403"><span class="lineNum">     403 </span>                :<span class="lineCov">24979900849 : STATIC_INLINE char *gc_page_data(void *x) JL_NOTSAFEPOINT</span></a>
 <a name="404"><span class="lineNum">     404 </span>                :            : {</a>
-<a name="405"><span class="lineNum">     405 </span>                :<span class="lineCov">26955500838 :     return (char*)(((uintptr_t)x &gt;&gt; GC_PAGE_LG2) &lt;&lt; GC_PAGE_LG2);</span></a>
+<a name="405"><span class="lineNum">     405 </span>                :<span class="lineCov">24979900849 :     return (char*)(((uintptr_t)x &gt;&gt; GC_PAGE_LG2) &lt;&lt; GC_PAGE_LG2);</span></a>
 <a name="406"><span class="lineNum">     406 </span>                :            : }</a>
 <a name="407"><span class="lineNum">     407 </span>                :            : </a>
-<a name="408"><span class="lineNum">     408 </span>                :<span class="lineCov">  166422000 : STATIC_INLINE jl_taggedvalue_t *page_pfl_beg(jl_gc_pagemeta_t *p) JL_NOTSAFEPOINT</span></a>
+<a name="408"><span class="lineNum">     408 </span>                :<span class="lineCov">   97379800 : STATIC_INLINE jl_taggedvalue_t *page_pfl_beg(jl_gc_pagemeta_t *p) JL_NOTSAFEPOINT</span></a>
 <a name="409"><span class="lineNum">     409 </span>                :            : {</a>
-<a name="410"><span class="lineNum">     410 </span>                :<span class="lineCov">  166422000 :     return (jl_taggedvalue_t*)(p-&gt;data + p-&gt;fl_begin_offset);</span></a>
+<a name="410"><span class="lineNum">     410 </span>                :<span class="lineCov">   97379800 :     return (jl_taggedvalue_t*)(p-&gt;data + p-&gt;fl_begin_offset);</span></a>
 <a name="411"><span class="lineNum">     411 </span>                :            : }</a>
 <a name="412"><span class="lineNum">     412 </span>                :            : </a>
-<a name="413"><span class="lineNum">     413 </span>                :<span class="lineCov">  166422000 : STATIC_INLINE jl_taggedvalue_t *page_pfl_end(jl_gc_pagemeta_t *p) JL_NOTSAFEPOINT</span></a>
+<a name="413"><span class="lineNum">     413 </span>                :<span class="lineCov">   97379800 : STATIC_INLINE jl_taggedvalue_t *page_pfl_end(jl_gc_pagemeta_t *p) JL_NOTSAFEPOINT</span></a>
 <a name="414"><span class="lineNum">     414 </span>                :            : {</a>
-<a name="415"><span class="lineNum">     415 </span>                :<span class="lineCov">  166422000 :     return (jl_taggedvalue_t*)(p-&gt;data + p-&gt;fl_end_offset);</span></a>
+<a name="415"><span class="lineNum">     415 </span>                :<span class="lineCov">   97379800 :     return (jl_taggedvalue_t*)(p-&gt;data + p-&gt;fl_end_offset);</span></a>
 <a name="416"><span class="lineNum">     416 </span>                :            : }</a>
 <a name="417"><span class="lineNum">     417 </span>                :            : </a>
-<a name="418"><span class="lineNum">     418 </span>                :<span class="lineCov">72771537600 : STATIC_INLINE int gc_marked(uintptr_t bits) JL_NOTSAFEPOINT</span></a>
+<a name="418"><span class="lineNum">     418 </span>                :<span class="lineCov">60905395890 : STATIC_INLINE int gc_marked(uintptr_t bits) JL_NOTSAFEPOINT</span></a>
 <a name="419"><span class="lineNum">     419 </span>                :            : {</a>
-<a name="420"><span class="lineNum">     420 </span>                :<span class="lineCov">72771537600 :     return (bits &amp; GC_MARKED) != 0;</span></a>
+<a name="420"><span class="lineNum">     420 </span>                :<span class="lineCov">60905395890 :     return (bits &amp; GC_MARKED) != 0;</span></a>
 <a name="421"><span class="lineNum">     421 </span>                :            : }</a>
 <a name="422"><span class="lineNum">     422 </span>                :            : </a>
-<a name="423"><span class="lineNum">     423 </span>                :<span class="lineCov">18330800000 : STATIC_INLINE int gc_old(uintptr_t bits) JL_NOTSAFEPOINT</span></a>
+<a name="423"><span class="lineNum">     423 </span>                :<span class="lineCov">14728900000 : STATIC_INLINE int gc_old(uintptr_t bits) JL_NOTSAFEPOINT</span></a>
 <a name="424"><span class="lineNum">     424 </span>                :            : {</a>
-<a name="425"><span class="lineNum">     425 </span>                :<span class="lineCov">18330800000 :     return (bits &amp; GC_OLD) != 0;</span></a>
+<a name="425"><span class="lineNum">     425 </span>                :<span class="lineCov">14728900000 :     return (bits &amp; GC_OLD) != 0;</span></a>
 <a name="426"><span class="lineNum">     426 </span>                :            : }</a>
 <a name="427"><span class="lineNum">     427 </span>                :            : </a>
-<a name="428"><span class="lineNum">     428 </span>                :<span class="lineCov">    2317710 : STATIC_INLINE uintptr_t gc_set_bits(uintptr_t tag, int bits) JL_NOTSAFEPOINT</span></a>
+<a name="428"><span class="lineNum">     428 </span>                :<span class="lineCov">    2304200 : STATIC_INLINE uintptr_t gc_set_bits(uintptr_t tag, int bits) JL_NOTSAFEPOINT</span></a>
 <a name="429"><span class="lineNum">     429 </span>                :            : {</a>
-<a name="430"><span class="lineNum">     430 </span>                :<span class="lineCov">    2317710 :     return (tag &amp; ~(uintptr_t)3) | bits;</span></a>
+<a name="430"><span class="lineNum">     430 </span>                :<span class="lineCov">    2304200 :     return (tag &amp; ~(uintptr_t)3) | bits;</span></a>
 <a name="431"><span class="lineNum">     431 </span>                :            : }</a>
 <a name="432"><span class="lineNum">     432 </span>                :            : </a>
-<a name="433"><span class="lineNum">     433 </span>                :<span class="lineCov">   65282500 : STATIC_INLINE uintptr_t gc_ptr_tag(void *v, uintptr_t mask) JL_NOTSAFEPOINT</span></a>
+<a name="433"><span class="lineNum">     433 </span>                :<span class="lineCov">   59606100 : STATIC_INLINE uintptr_t gc_ptr_tag(void *v, uintptr_t mask) JL_NOTSAFEPOINT</span></a>
 <a name="434"><span class="lineNum">     434 </span>                :            : {</a>
-<a name="435"><span class="lineNum">     435 </span>                :<span class="lineCov">   65282500 :     return ((uintptr_t)v) &amp; mask;</span></a>
+<a name="435"><span class="lineNum">     435 </span>                :<span class="lineCov">   59606100 :     return ((uintptr_t)v) &amp; mask;</span></a>
 <a name="436"><span class="lineNum">     436 </span>                :            : }</a>
 <a name="437"><span class="lineNum">     437 </span>                :            : </a>
-<a name="438"><span class="lineNum">     438 </span>                :<span class="lineCov">    9407410 : STATIC_INLINE void *gc_ptr_clear_tag(void *v, uintptr_t mask) JL_NOTSAFEPOINT</span></a>
+<a name="438"><span class="lineNum">     438 </span>                :<span class="lineCov">    8952920 : STATIC_INLINE void *gc_ptr_clear_tag(void *v, uintptr_t mask) JL_NOTSAFEPOINT</span></a>
 <a name="439"><span class="lineNum">     439 </span>                :            : {</a>
-<a name="440"><span class="lineNum">     440 </span>                :<span class="lineCov">    9407410 :     return (void*)(((uintptr_t)v) &amp; ~mask);</span></a>
+<a name="440"><span class="lineNum">     440 </span>                :<span class="lineCov">    8952920 :     return (void*)(((uintptr_t)v) &amp; ~mask);</span></a>
 <a name="441"><span class="lineNum">     441 </span>                :            : }</a>
 <a name="442"><span class="lineNum">     442 </span>                :            : </a>
 <a name="443"><span class="lineNum">     443 </span>                :            : NOINLINE uintptr_t gc_get_stack_ptr(void);</a>
 <a name="444"><span class="lineNum">     444 </span>                :            : </a>
-<a name="445"><span class="lineNum">     445 </span>                :<span class="lineCov"> 2018490000 : STATIC_INLINE jl_gc_pagemeta_t *page_metadata(void *_data) JL_NOTSAFEPOINT</span></a>
+<a name="445"><span class="lineNum">     445 </span>                :<span class="lineCov"> 1456360000 : STATIC_INLINE jl_gc_pagemeta_t *page_metadata(void *_data) JL_NOTSAFEPOINT</span></a>
 <a name="446"><span class="lineNum">     446 </span>                :            : {</a>
-<a name="447"><span class="lineNum">     447 </span>                :<span class="lineCov"> 2018490000 :     uintptr_t data = ((uintptr_t)_data);</span></a>
+<a name="447"><span class="lineNum">     447 </span>                :<span class="lineCov"> 1456360000 :     uintptr_t data = ((uintptr_t)_data);</span></a>
 <a name="448"><span class="lineNum">     448 </span>                :            :     unsigned i;</a>
-<a name="449"><span class="lineNum">     449 </span>                :<span class="lineCov"> 2018490000 :     i = REGION_INDEX(data);</span></a>
-<a name="450"><span class="lineNum">     450 </span>                :<span class="lineCov"> 2018490000 :     pagetable1_t *r1 = memory_map.meta1[i];</span></a>
-<a name="451"><span class="lineNum">     451 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 2018490000 times"> + </span>]:<span class="lineCov"> 2018490000 :     if (!r1)</span></a>
+<a name="449"><span class="lineNum">     449 </span>                :<span class="lineCov"> 1456360000 :     i = REGION_INDEX(data);</span></a>
+<a name="450"><span class="lineNum">     450 </span>                :<span class="lineCov"> 1456360000 :     pagetable1_t *r1 = memory_map.meta1[i];</span></a>
+<a name="451"><span class="lineNum">     451 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1456360000 times"> + </span>]:<span class="lineCov"> 1456360000 :     if (!r1)</span></a>
 <a name="452"><span class="lineNum">     452 </span>                :<span class="lineNoCov">          0 :         return NULL;</span></a>
-<a name="453"><span class="lineNum">     453 </span>                :<span class="lineCov"> 2018490000 :     i = REGION1_INDEX(data);</span></a>
-<a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov"> 2018490000 :     pagetable0_t *r0 = r1-&gt;meta0[i];</span></a>
-<a name="455"><span class="lineNum">     455 </span>        [<span class="branchCov" title="Branch 0 was taken 2715230 times"> + </span><span class="branchCov" title="Branch 1 was taken 2015780000 times"> + </span>]:<span class="lineCov"> 2018490000 :     if (!r0)</span></a>
-<a name="456"><span class="lineNum">     456 </span>                :<span class="lineCov">    2715230 :         return NULL;</span></a>
-<a name="457"><span class="lineNum">     457 </span>                :<span class="lineCov"> 2015780000 :     i = REGION0_INDEX(data);</span></a>
-<a name="458"><span class="lineNum">     458 </span>                :<span class="lineCov"> 2015780000 :     return r0-&gt;meta[i];</span></a>
+<a name="453"><span class="lineNum">     453 </span>                :<span class="lineCov"> 1456360000 :     i = REGION1_INDEX(data);</span></a>
+<a name="454"><span class="lineNum">     454 </span>                :<span class="lineCov"> 1456360000 :     pagetable0_t *r0 = r1-&gt;meta0[i];</span></a>
+<a name="455"><span class="lineNum">     455 </span>        [<span class="branchCov" title="Branch 0 was taken 2171570 times"> + </span><span class="branchCov" title="Branch 1 was taken 1454190000 times"> + </span>]:<span class="lineCov"> 1456360000 :     if (!r0)</span></a>
+<a name="456"><span class="lineNum">     456 </span>                :<span class="lineCov">    2171570 :         return NULL;</span></a>
+<a name="457"><span class="lineNum">     457 </span>                :<span class="lineCov"> 1454190000 :     i = REGION0_INDEX(data);</span></a>
+<a name="458"><span class="lineNum">     458 </span>                :<span class="lineCov"> 1454190000 :     return r0-&gt;meta[i];</span></a>
 <a name="459"><span class="lineNum">     459 </span>                :            : }</a>
 <a name="460"><span class="lineNum">     460 </span>                :            : </a>
 <a name="461"><span class="lineNum">     461 </span>                :            : struct jl_gc_metadata_ext {</a>
@@ -545,51 +545,51 @@
 <a name="467"><span class="lineNum">     467 </span>                :            :     unsigned pagetable0_i32, pagetable0_i;</a>
 <a name="468"><span class="lineNum">     468 </span>                :            : };</a>
 <a name="469"><span class="lineNum">     469 </span>                :            : </a>
-<a name="470"><span class="lineNum">     470 </span>                :<span class="lineCov">    1795780 : STATIC_INLINE struct jl_gc_metadata_ext page_metadata_ext(void *_data) JL_NOTSAFEPOINT</span></a>
+<a name="470"><span class="lineNum">     470 </span>                :<span class="lineCov">    4466610 : STATIC_INLINE struct jl_gc_metadata_ext page_metadata_ext(void *_data) JL_NOTSAFEPOINT</span></a>
 <a name="471"><span class="lineNum">     471 </span>                :            : {</a>
-<a name="472"><span class="lineNum">     472 </span>                :<span class="lineCov">    1795780 :     uintptr_t data = (uintptr_t)_data;</span></a>
+<a name="472"><span class="lineNum">     472 </span>                :<span class="lineCov">    4466610 :     uintptr_t data = (uintptr_t)_data;</span></a>
 <a name="473"><span class="lineNum">     473 </span>                :            :     struct jl_gc_metadata_ext info;</a>
 <a name="474"><span class="lineNum">     474 </span>                :            :     unsigned i;</a>
-<a name="475"><span class="lineNum">     475 </span>                :<span class="lineCov">    1795780 :     i = REGION_INDEX(data);</span></a>
-<a name="476"><span class="lineNum">     476 </span>                :<span class="lineCov">    1795780 :     info.pagetable_i = i % 32;</span></a>
-<a name="477"><span class="lineNum">     477 </span>                :<span class="lineCov">    1795780 :     info.pagetable_i32 = i / 32;</span></a>
-<a name="478"><span class="lineNum">     478 </span>                :<span class="lineCov">    1795780 :     info.pagetable1 = memory_map.meta1[i];</span></a>
-<a name="479"><span class="lineNum">     479 </span>                :<span class="lineCov">    1795780 :     i = REGION1_INDEX(data);</span></a>
-<a name="480"><span class="lineNum">     480 </span>                :<span class="lineCov">    1795780 :     info.pagetable1_i = i % 32;</span></a>
-<a name="481"><span class="lineNum">     481 </span>                :<span class="lineCov">    1795780 :     info.pagetable1_i32 = i / 32;</span></a>
-<a name="482"><span class="lineNum">     482 </span>                :<span class="lineCov">    1795780 :     info.pagetable0 = info.pagetable1-&gt;meta0[i];</span></a>
-<a name="483"><span class="lineNum">     483 </span>                :<span class="lineCov">    1795780 :     i = REGION0_INDEX(data);</span></a>
-<a name="484"><span class="lineNum">     484 </span>                :<span class="lineCov">    1795780 :     info.pagetable0_i = i % 32;</span></a>
-<a name="485"><span class="lineNum">     485 </span>                :<span class="lineCov">    1795780 :     info.pagetable0_i32 = i / 32;</span></a>
-<a name="486"><span class="lineNum">     486 </span>                :<span class="lineCov">    1795780 :     info.meta = info.pagetable0-&gt;meta[i];</span></a>
-<a name="487"><span class="lineNum">     487 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 1795780 times"> + </span>]:<span class="lineCov">    1795780 :     assert(info.meta);</span></a>
-<a name="488"><span class="lineNum">     488 </span>                :<span class="lineCov">    1795780 :     return info;</span></a>
+<a name="475"><span class="lineNum">     475 </span>                :<span class="lineCov">    4466610 :     i = REGION_INDEX(data);</span></a>
+<a name="476"><span class="lineNum">     476 </span>                :<span class="lineCov">    4466610 :     info.pagetable_i = i % 32;</span></a>
+<a name="477"><span class="lineNum">     477 </span>                :<span class="lineCov">    4466610 :     info.pagetable_i32 = i / 32;</span></a>
+<a name="478"><span class="lineNum">     478 </span>                :<span class="lineCov">    4466610 :     info.pagetable1 = memory_map.meta1[i];</span></a>
+<a name="479"><span class="lineNum">     479 </span>                :<span class="lineCov">    4466610 :     i = REGION1_INDEX(data);</span></a>
+<a name="480"><span class="lineNum">     480 </span>                :<span class="lineCov">    4466610 :     info.pagetable1_i = i % 32;</span></a>
+<a name="481"><span class="lineNum">     481 </span>                :<span class="lineCov">    4466610 :     info.pagetable1_i32 = i / 32;</span></a>
+<a name="482"><span class="lineNum">     482 </span>                :<span class="lineCov">    4466610 :     info.pagetable0 = info.pagetable1-&gt;meta0[i];</span></a>
+<a name="483"><span class="lineNum">     483 </span>                :<span class="lineCov">    4466610 :     i = REGION0_INDEX(data);</span></a>
+<a name="484"><span class="lineNum">     484 </span>                :<span class="lineCov">    4466610 :     info.pagetable0_i = i % 32;</span></a>
+<a name="485"><span class="lineNum">     485 </span>                :<span class="lineCov">    4466610 :     info.pagetable0_i32 = i / 32;</span></a>
+<a name="486"><span class="lineNum">     486 </span>                :<span class="lineCov">    4466610 :     info.meta = info.pagetable0-&gt;meta[i];</span></a>
+<a name="487"><span class="lineNum">     487 </span>        [<span class="branchNoCov" title="Branch 0 was not taken"> - </span><span class="branchCov" title="Branch 1 was taken 4466610 times"> + </span>]:<span class="lineCov">    4466610 :     assert(info.meta);</span></a>
+<a name="488"><span class="lineNum">     488 </span>                :<span class="lineCov">    4466610 :     return info;</span></a>
 <a name="489"><span class="lineNum">     489 </span>                :            : }</a>
 <a name="490"><span class="lineNum">     490 </span>                :            : </a>
-<a name="491"><span class="lineNum">     491 </span>                :<span class="lineCov">    1624670 : STATIC_INLINE void gc_big_object_unlink(const bigval_t *hdr) JL_NOTSAFEPOINT</span></a>
+<a name="491"><span class="lineNum">     491 </span>                :<span class="lineCov">    1202370 : STATIC_INLINE void gc_big_object_unlink(const bigval_t *hdr) JL_NOTSAFEPOINT</span></a>
 <a name="492"><span class="lineNum">     492 </span>                :            : {</a>
-<a name="493"><span class="lineNum">     493 </span>                :<span class="lineCov">    1624670 :     *hdr-&gt;prev = hdr-&gt;next;</span></a>
-<a name="494"><span class="lineNum">     494 </span>        [<span class="branchCov" title="Branch 0 was taken 385490 times"> + </span><span class="branchCov" title="Branch 1 was taken 1239180 times"> + </span>]:<span class="lineCov">    1624670 :     if (hdr-&gt;next) {</span></a>
-<a name="495"><span class="lineNum">     495 </span>                :<span class="lineCov">     385490 :         hdr-&gt;next-&gt;prev = hdr-&gt;prev;</span></a>
+<a name="493"><span class="lineNum">     493 </span>                :<span class="lineCov">    1202370 :     *hdr-&gt;prev = hdr-&gt;next;</span></a>
+<a name="494"><span class="lineNum">     494 </span>        [<span class="branchCov" title="Branch 0 was taken 337903 times"> + </span><span class="branchCov" title="Branch 1 was taken 864465 times"> + </span>]:<span class="lineCov">    1202370 :     if (hdr-&gt;next) {</span></a>
+<a name="495"><span class="lineNum">     495 </span>                :<span class="lineCov">     337903 :         hdr-&gt;next-&gt;prev = hdr-&gt;prev;</span></a>
 <a name="496"><span class="lineNum">     496 </span>                :            :     }</a>
-<a name="497"><span class="lineNum">     497 </span>                :<span class="lineCov">    1624670 : }</span></a>
+<a name="497"><span class="lineNum">     497 </span>                :<span class="lineCov">    1202370 : }</span></a>
 <a name="498"><span class="lineNum">     498 </span>                :            : </a>
-<a name="499"><span class="lineNum">     499 </span>                :<span class="lineCov">   12420800 : STATIC_INLINE void gc_big_object_link(bigval_t *hdr, bigval_t **list) JL_NOTSAFEPOINT</span></a>
+<a name="499"><span class="lineNum">     499 </span>                :<span class="lineCov">   10388400 : STATIC_INLINE void gc_big_object_link(bigval_t *hdr, bigval_t **list) JL_NOTSAFEPOINT</span></a>
 <a name="500"><span class="lineNum">     500 </span>                :            : {</a>
-<a name="501"><span class="lineNum">     501 </span>                :<span class="lineCov">   12420800 :     hdr-&gt;next = *list;</span></a>
-<a name="502"><span class="lineNum">     502 </span>                :<span class="lineCov">   12420800 :     hdr-&gt;prev = list;</span></a>
-<a name="503"><span class="lineNum">     503 </span>        [<span class="branchCov" title="Branch 0 was taken 12418600 times"> + </span><span class="branchCov" title="Branch 1 was taken 2201 times"> + </span>]:<span class="lineCov">   12420800 :     if (*list)</span></a>
-<a name="504"><span class="lineNum">     504 </span>                :<span class="lineCov">   12418600 :         (*list)-&gt;prev = &amp;hdr-&gt;next;</span></a>
-<a name="505"><span class="lineNum">     505 </span>                :<span class="lineCov">   12420800 :     *list = hdr;</span></a>
-<a name="506"><span class="lineNum">     506 </span>                :<span class="lineCov">   12420800 : }</span></a>
+<a name="501"><span class="lineNum">     501 </span>                :<span class="lineCov">   10388400 :     hdr-&gt;next = *list;</span></a>
+<a name="502"><span class="lineNum">     502 </span>                :<span class="lineCov">   10388400 :     hdr-&gt;prev = list;</span></a>
+<a name="503"><span class="lineNum">     503 </span>        [<span class="branchCov" title="Branch 0 was taken 10386300 times"> + </span><span class="branchCov" title="Branch 1 was taken 2064 times"> + </span>]:<span class="lineCov">   10388400 :     if (*list)</span></a>
+<a name="504"><span class="lineNum">     504 </span>                :<span class="lineCov">   10386300 :         (*list)-&gt;prev = &amp;hdr-&gt;next;</span></a>
+<a name="505"><span class="lineNum">     505 </span>                :<span class="lineCov">   10388400 :     *list = hdr;</span></a>
+<a name="506"><span class="lineNum">     506 </span>                :<span class="lineCov">   10388400 : }</span></a>
 <a name="507"><span class="lineNum">     507 </span>                :            : </a>
-<a name="508"><span class="lineNum">     508 </span>                :<span class="lineCov">      48480 : STATIC_INLINE void gc_mark_sp_init(jl_gc_mark_cache_t *gc_cache, jl_gc_mark_sp_t *sp)</span></a>
+<a name="508"><span class="lineNum">     508 </span>                :<span class="lineCov">      42072 : STATIC_INLINE void gc_mark_sp_init(jl_gc_mark_cache_t *gc_cache, jl_gc_mark_sp_t *sp)</span></a>
 <a name="509"><span class="lineNum">     509 </span>                :            : {</a>
-<a name="510"><span class="lineNum">     510 </span>                :<span class="lineCov">      48480 :     sp-&gt;pc = gc_cache-&gt;pc_stack;</span></a>
-<a name="511"><span class="lineNum">     511 </span>                :<span class="lineCov">      48480 :     sp-&gt;data = gc_cache-&gt;data_stack;</span></a>
-<a name="512"><span class="lineNum">     512 </span>                :<span class="lineCov">      48480 :     sp-&gt;pc_start = gc_cache-&gt;pc_stack;</span></a>
-<a name="513"><span class="lineNum">     513 </span>                :<span class="lineCov">      48480 :     sp-&gt;pc_end = gc_cache-&gt;pc_stack_end;</span></a>
-<a name="514"><span class="lineNum">     514 </span>                :<span class="lineCov">      48480 : }</span></a>
+<a name="510"><span class="lineNum">     510 </span>                :<span class="lineCov">      42072 :     sp-&gt;pc = gc_cache-&gt;pc_stack;</span></a>
+<a name="511"><span class="lineNum">     511 </span>                :<span class="lineCov">      42072 :     sp-&gt;data = gc_cache-&gt;data_stack;</span></a>
+<a name="512"><span class="lineNum">     512 </span>                :<span class="lineCov">      42072 :     sp-&gt;pc_start = gc_cache-&gt;pc_stack;</span></a>
+<a name="513"><span class="lineNum">     513 </span>                :<span class="lineCov">      42072 :     sp-&gt;pc_end = gc_cache-&gt;pc_stack_end;</span></a>
+<a name="514"><span class="lineNum">     514 </span>                :<span class="lineCov">      42072 : }</span></a>
 <a name="515"><span class="lineNum">     515 </span>                :            : </a>
 <a name="516"><span class="lineNum">     516 </span>                :            : void gc_mark_queue_all_roots(jl_ptls_t ptls, jl_gc_mark_sp_t *sp);</a>
 <a name="517"><span class="lineNum">     517 </span>                :            : void gc_mark_queue_finlist(jl_gc_mark_cache_t *gc_cache, jl_gc_mark_sp_t *sp,</a>
@@ -649,25 +649,25 @@
 <a name="571"><span class="lineNum">     571 </span>                :            :                      uint64_t sweep);</a>
 <a name="572"><span class="lineNum">     572 </span>                :            : #else</a>
 <a name="573"><span class="lineNum">     573 </span>                :            : #define gc_time_pool_start()</a>
-<a name="574"><span class="lineNum">     574 </span>                :<span class="lineCov">  541206000 : STATIC_INLINE void gc_time_count_page(int freedall, int pg_skpd) JL_NOTSAFEPOINT</span></a>
+<a name="574"><span class="lineNum">     574 </span>                :<span class="lineCov">  432737000 : STATIC_INLINE void gc_time_count_page(int freedall, int pg_skpd) JL_NOTSAFEPOINT</span></a>
 <a name="575"><span class="lineNum">     575 </span>                :            : {</a>
 <a name="576"><span class="lineNum">     576 </span>                :            :     (void)freedall;</a>
 <a name="577"><span class="lineNum">     577 </span>                :            :     (void)pg_skpd;</a>
-<a name="578"><span class="lineNum">     578 </span>                :<span class="lineCov">  541206000 : }</span></a>
+<a name="578"><span class="lineNum">     578 </span>                :<span class="lineCov">  432737000 : }</span></a>
 <a name="579"><span class="lineNum">     579 </span>                :            : #define gc_time_pool_end(sweep_full) (void)(sweep_full)</a>
 <a name="580"><span class="lineNum">     580 </span>                :            : #define gc_time_sysimg_end(t0) (void)(t0)</a>
 <a name="581"><span class="lineNum">     581 </span>                :            : #define gc_time_big_start()</a>
-<a name="582"><span class="lineNum">     582 </span>                :<span class="lineCov">   12923900 : STATIC_INLINE void gc_time_count_big(int old_bits, int bits) JL_NOTSAFEPOINT</span></a>
+<a name="582"><span class="lineNum">     582 </span>                :<span class="lineCov">   10888500 : STATIC_INLINE void gc_time_count_big(int old_bits, int bits) JL_NOTSAFEPOINT</span></a>
 <a name="583"><span class="lineNum">     583 </span>                :            : {</a>
 <a name="584"><span class="lineNum">     584 </span>                :            :     (void)old_bits;</a>
 <a name="585"><span class="lineNum">     585 </span>                :            :     (void)bits;</a>
-<a name="586"><span class="lineNum">     586 </span>                :<span class="lineCov">   12923900 : }</span></a>
+<a name="586"><span class="lineNum">     586 </span>                :<span class="lineCov">   10888500 : }</span></a>
 <a name="587"><span class="lineNum">     587 </span>                :            : #define gc_time_big_end()</a>
 <a name="588"><span class="lineNum">     588 </span>                :            : #define gc_time_mallocd_array_start()</a>
-<a name="589"><span class="lineNum">     589 </span>                :<span class="lineCov"> 1191950000 : STATIC_INLINE void gc_time_count_mallocd_array(int bits) JL_NOTSAFEPOINT</span></a>
+<a name="589"><span class="lineNum">     589 </span>                :<span class="lineCov">  919307000 : STATIC_INLINE void gc_time_count_mallocd_array(int bits) JL_NOTSAFEPOINT</span></a>
 <a name="590"><span class="lineNum">     590 </span>                :            : {</a>
 <a name="591"><span class="lineNum">     591 </span>                :            :     (void)bits;</a>
-<a name="592"><span class="lineNum">     592 </span>                :<span class="lineCov"> 1191950000 : }</span></a>
+<a name="592"><span class="lineNum">     592 </span>                :<span class="lineCov">  919307000 : }</span></a>
 <a name="593"><span class="lineNum">     593 </span>                :            : #define gc_time_mallocd_array_end()</a>
 <a name="594"><span class="lineNum">     594 </span>                :            : #define gc_time_mark_pause(t0, scanned_bytes, perm_scanned_bytes)</a>
 <a name="595"><span class="lineNum">     595 </span>                :            : #define gc_time_sweep_pause(gc_end_t, actual_allocd, live_bytes,        \</a>
@@ -679,9 +679,9 @@
 <a name="601"><span class="lineNum">     601 </span>                :            : #ifdef MEMFENCE</a>
 <a name="602"><span class="lineNum">     602 </span>                :            : void gc_verify_tags(void);</a>
 <a name="603"><span class="lineNum">     603 </span>                :            : #else</a>
-<a name="604"><span class="lineNum">     604 </span>                :<span class="lineCov">      16160 : static inline void gc_verify_tags(void)</span></a>
+<a name="604"><span class="lineNum">     604 </span>                :<span class="lineCov">      14024 : static inline void gc_verify_tags(void)</span></a>
 <a name="605"><span class="lineNum">     605 </span>                :            : {</a>
-<a name="606"><span class="lineNum">     606 </span>                :<span class="lineCov">      16160 : }</span></a>
+<a name="606"><span class="lineNum">     606 </span>                :<span class="lineCov">      14024 : }</span></a>
 <a name="607"><span class="lineNum">     607 </span>                :            : #endif</a>
 <a name="608"><span class="lineNum">     608 </span>                :            : </a>
 <a name="609"><span class="lineNum">     609 </span>                :            : </a>
@@ -738,24 +738,24 @@
 <a name="660"><span class="lineNum">     660 </span>                :            : void gc_scrub(void);</a>
 <a name="661"><span class="lineNum">     661 </span>                :            : #else</a>
 <a name="662"><span class="lineNum">     662 </span>                :            : #define gc_sweep_always_full 0</a>
-<a name="663"><span class="lineNum">     663 </span>                :<span class="lineCov">15860600000 : static inline int jl_gc_debug_check_other(void)</span></a>
+<a name="663"><span class="lineNum">     663 </span>                :<span class="lineCov">14829900000 : static inline int jl_gc_debug_check_other(void)</span></a>
 <a name="664"><span class="lineNum">     664 </span>                :            : {</a>
-<a name="665"><span class="lineNum">     665 </span>                :<span class="lineCov">15860600000 :     return 0;</span></a>
+<a name="665"><span class="lineNum">     665 </span>                :<span class="lineCov">14829900000 :     return 0;</span></a>
 <a name="666"><span class="lineNum">     666 </span>                :            : }</a>
 <a name="667"><span class="lineNum">     667 </span>                :            : static inline int gc_debug_check_pool(void)</a>
 <a name="668"><span class="lineNum">     668 </span>                :            : {</a>
 <a name="669"><span class="lineNum">     669 </span>                :            :     return 0;</a>
 <a name="670"><span class="lineNum">     670 </span>                :            : }</a>
-<a name="671"><span class="lineNum">     671 </span>                :<span class="lineCov">      15518 : static inline void jl_gc_debug_print(void)</span></a>
+<a name="671"><span class="lineNum">     671 </span>                :<span class="lineCov">      13380 : static inline void jl_gc_debug_print(void)</span></a>
 <a name="672"><span class="lineNum">     672 </span>                :            : {</a>
-<a name="673"><span class="lineNum">     673 </span>                :<span class="lineCov">      15518 : }</span></a>
-<a name="674"><span class="lineNum">     674 </span>                :<span class="lineCov">   10080900 : static inline void gc_scrub_record_task(jl_task_t *ta) JL_NOTSAFEPOINT</span></a>
+<a name="673"><span class="lineNum">     673 </span>                :<span class="lineCov">      13380 : }</span></a>
+<a name="674"><span class="lineNum">     674 </span>                :<span class="lineCov">    1231860 : static inline void gc_scrub_record_task(jl_task_t *ta) JL_NOTSAFEPOINT</span></a>
 <a name="675"><span class="lineNum">     675 </span>                :            : {</a>
 <a name="676"><span class="lineNum">     676 </span>                :            :     (void)ta;</a>
-<a name="677"><span class="lineNum">     677 </span>                :<span class="lineCov">   10080900 : }</span></a>
-<a name="678"><span class="lineNum">     678 </span>                :<span class="lineCov">      16160 : static inline void gc_scrub(void)</span></a>
+<a name="677"><span class="lineNum">     677 </span>                :<span class="lineCov">    1231860 : }</span></a>
+<a name="678"><span class="lineNum">     678 </span>                :<span class="lineCov">      14024 : static inline void gc_scrub(void)</span></a>
 <a name="679"><span class="lineNum">     679 </span>                :            : {</a>
-<a name="680"><span class="lineNum">     680 </span>                :<span class="lineCov">      16160 : }</span></a>
+<a name="680"><span class="lineNum">     680 </span>                :<span class="lineCov">      14024 : }</span></a>
 <a name="681"><span class="lineNum">     681 </span>                :            : #endif</a>
 <a name="682"><span class="lineNum">     682 </span>                :            : </a>
 <a name="683"><span class="lineNum">     683 </span>                :            : #ifdef OBJPROFILE</a>
@@ -763,17 +763,17 @@
 <a name="685"><span class="lineNum">     685 </span>                :            : void objprofile_printall(void);</a>
 <a name="686"><span class="lineNum">     686 </span>                :            : void objprofile_reset(void);</a>
 <a name="687"><span class="lineNum">     687 </span>                :            : #else</a>
-<a name="688"><span class="lineNum">     688 </span>                :<span class="lineCov"> 2738700000 : static inline void objprofile_count(void *ty, int old, int sz) JL_NOTSAFEPOINT</span></a>
+<a name="688"><span class="lineNum">     688 </span>                :<span class="lineCov"> 2129970000 : static inline void objprofile_count(void *ty, int old, int sz) JL_NOTSAFEPOINT</span></a>
 <a name="689"><span class="lineNum">     689 </span>                :            : {</a>
-<a name="690"><span class="lineNum">     690 </span>                :<span class="lineCov"> 2738700000 : }</span></a>
+<a name="690"><span class="lineNum">     690 </span>                :<span class="lineCov"> 2129970000 : }</span></a>
 <a name="691"><span class="lineNum">     691 </span>                :            : </a>
-<a name="692"><span class="lineNum">     692 </span>                :<span class="lineCov">      16160 : static inline void objprofile_printall(void)</span></a>
+<a name="692"><span class="lineNum">     692 </span>                :<span class="lineCov">      14024 : static inline void objprofile_printall(void)</span></a>
 <a name="693"><span class="lineNum">     693 </span>                :            : {</a>
-<a name="694"><span class="lineNum">     694 </span>                :<span class="lineCov">      16160 : }</span></a>
+<a name="694"><span class="lineNum">     694 </span>                :<span class="lineCov">      14024 : }</span></a>
 <a name="695"><span class="lineNum">     695 </span>                :            : </a>
-<a name="696"><span class="lineNum">     696 </span>                :<span class="lineCov">      16160 : static inline void objprofile_reset(void)</span></a>
+<a name="696"><span class="lineNum">     696 </span>                :<span class="lineCov">      14024 : static inline void objprofile_reset(void)</span></a>
 <a name="697"><span class="lineNum">     697 </span>                :            : {</a>
-<a name="698"><span class="lineNum">     698 </span>                :<span class="lineCov">      16160 : }</span></a>
+<a name="698"><span class="lineNum">     698 </span>                :<span class="lineCov">      14024 : }</span></a>
 <a name="699"><span class="lineNum">     699 </span>                :            : #endif</a>
 <a name="700"><span class="lineNum">     700 </span>                :            : </a>
 <a name="701"><span class="lineNum">     701 </span>                :            : #ifdef MEMPROFILE</a>
