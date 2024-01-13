@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/s_ilogb.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - s_ilogb.c<span style="font-size: 80%;"> (source / <a href="s_ilogb.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">69.2&nbsp;%</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">9</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">50.0&nbsp;%</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">8</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* @(#)s_ilogb.c 5.1 93/09/24 */</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : /*</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  * ====================================================</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  *</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * Developed at SunPro, a Sun Microsystems, Inc. business.</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  * is preserved.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * ====================================================</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  */</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             : </span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/s_ilogb.c,v 1.10 2008/02/22 02:30:35 das Exp $&quot;);</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : /* ilogb(double x)</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             :  * return the binary exponent of non-zero x</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  * ilogb(0) = FP_ILOGB0</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  * ilogb(NaN) = FP_ILOGBNAN (no signal is raised)</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             :  * ilogb(inf) = INT_MAX (no signal is raised)</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             :  */</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : </span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : #include &lt;limits.h&gt;</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : </span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : </span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : OLM_DLLEXPORT int</span>
+<span id="L29"><span class="lineNum">      29</span>                 :<span class="tlaGNC tlaBgGNC">         369 : ilogb(double x)</span></span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : {</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             :         int32_t hx,lx,ix;</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : </span>
+<span id="L33"><span class="lineNum">      33</span>                 :<span class="tlaGNC">         369 :         EXTRACT_WORDS(hx,lx,x);</span></span>
+<span id="L34"><span class="lineNum">      34</span>                 :<span class="tlaGNC">         369 :         hx &amp;= 0x7fffffff;</span></span>
+<span id="L35"><span class="lineNum">      35</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 368 times"> + </span>]:<span class="tlaGNC">         369 :         if(hx&lt;0x00100000) {</span></span>
+<span id="L36"><span class="lineNum">      36</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :             if((hx|lx)==0)</span></span>
+<span id="L37"><span class="lineNum">      37</span>                 :<span class="tlaGNC">           1 :                 return FP_ILOGB0;</span></span>
+<span id="L38"><span class="lineNum">      38</span>                 :             :             else                        /* subnormal x */</span>
+<span id="L39"><span class="lineNum">      39</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC tlaBgUNC">           0 :                 if(hx==0) {</span></span>
+<span id="L40"><span class="lineNum">      40</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :                     for (ix = -1043; lx&gt;0; lx&lt;&lt;=1) ix -=1;</span></span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :                 } else {</span>
+<span id="L42"><span class="lineNum">      42</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :                     for (ix = -1022,hx&lt;&lt;=11; hx&gt;0; hx&lt;&lt;=1) ix -=1;</span></span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :                 }</span>
+<span id="L44"><span class="lineNum">      44</span>                 :<span class="tlaUNC">           0 :             return ix;</span></span>
+<span id="L45"><span class="lineNum">      45</span>                 :             :         }</span>
+<span id="L46"><span class="lineNum">      46</span>         [<span class="tlaGBC" title="Branch 0 was taken 365 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 3 times"> + </span>]:<span class="tlaGNC tlaBgGNC">         368 :         else if (hx&lt;0x7ff00000) return (hx&gt;&gt;20)-1023;</span></span>
+<span id="L47"><span class="lineNum">      47</span>   [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 2 was not taken"> - </span><span class="tlaGBC" title="Branch 3 was taken 2 times"> + </span>]:<span class="tlaGNC">           3 :         else if (hx&gt;0x7ff00000 || lx!=0) return FP_ILOGBNAN;</span></span>
+<span id="L48"><span class="lineNum">      48</span>                 :<span class="tlaGNC">           2 :         else return INT_MAX;</span></span>
+<span id="L49"><span class="lineNum">      49</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

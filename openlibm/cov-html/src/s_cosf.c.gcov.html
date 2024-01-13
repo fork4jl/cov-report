@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/s_cosf.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - s_cosf.c<span style="font-size: 80%;"> (source / <a href="s_cosf.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">74.1&nbsp;%</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntry">20</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">60.7&nbsp;%</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">17</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* s_cosf.c -- float version of s_cos.c.</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Conversion to float by Ian Lance Taylor, Cygnus Support, ian@cygnus.com.</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  * Optimized by Bruce D. Evans.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  */</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : </span>
+<span id="L6"><span class="lineNum">       6</span>                 :             : /*</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * ====================================================</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  *</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * Developed at SunPro, a Sun Microsystems, Inc. business.</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * is preserved.</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  * ====================================================</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             :  */</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : </span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/s_cosf.c,v 1.18 2008/02/25 22:19:17 bde Exp $&quot;);</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : </span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : #include &lt;float.h&gt;</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : </span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : //#define       INLINE_KERNEL_COSDF</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : //#define       INLINE_KERNEL_SINDF</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : //#define INLINE_REM_PIO2F</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : //#include &quot;e_rem_pio2f.c&quot;</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : //#include &quot;k_cosf.c&quot;</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : //#include &quot;k_sinf.c&quot;</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : </span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : /* Small multiples of pi/2 rounded to double precision. */</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : static const double</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : c1pio2 = 1*M_PI_2,                      /* 0x3FF921FB, 0x54442D18 */</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : c2pio2 = 2*M_PI_2,                      /* 0x400921FB, 0x54442D18 */</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : c3pio2 = 3*M_PI_2,                      /* 0x4012D97C, 0x7F3321D2 */</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : c4pio2 = 4*M_PI_2;                      /* 0x401921FB, 0x54442D18 */</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : </span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : OLM_DLLEXPORT float</span>
+<span id="L39"><span class="lineNum">      39</span>                 :<span class="tlaGNC tlaBgGNC">          90 : cosf(float x)</span></span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : {</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :         double y;</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             :         int32_t n, hx, ix;</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : </span>
+<span id="L44"><span class="lineNum">      44</span>                 :<span class="tlaGNC">          90 :         GET_FLOAT_WORD(hx,x);</span></span>
+<span id="L45"><span class="lineNum">      45</span>                 :<span class="tlaGNC">          90 :         ix = hx &amp; 0x7fffffff;</span></span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : </span>
+<span id="L47"><span class="lineNum">      47</span>         [<span class="tlaGBC" title="Branch 0 was taken 4 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 86 times"> + </span>]:<span class="tlaGNC">          90 :         if(ix &lt;= 0x3f490fda) {               /* |x| ~&lt;= pi/4 */</span></span>
+<span id="L48"><span class="lineNum">      48</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 1 time"> + </span>]:<span class="tlaGNC">           4 :             if(ix&lt;0x39800000)                /* |x| &lt; 2**-12 */</span></span>
+<span id="L49"><span class="lineNum">      49</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           3 :                 if(((int)x)==0) return 1.0;     /* 1 with inexact if x != 0 */</span></span>
+<span id="L50"><span class="lineNum">      50</span>                 :<span class="tlaGNC">           1 :             return __kernel_cosdf(x);</span></span>
+<span id="L51"><span class="lineNum">      51</span>                 :             :         }</span>
+<span id="L52"><span class="lineNum">      52</span>         [<span class="tlaGBC" title="Branch 0 was taken 19 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 67 times"> + </span>]:<span class="tlaGNC">          86 :         if(ix&lt;=0x407b53d1) {         /* |x| ~&lt;= 5*pi/4 */</span></span>
+<span id="L53"><span class="lineNum">      53</span>         [<span class="tlaGBC" title="Branch 0 was taken 19 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          19 :             if(ix&lt;=0x4016cbe3) {     /* |x|  ~&gt; 3*pi/4 */</span></span>
+<span id="L54"><span class="lineNum">      54</span>         [<span class="tlaGBC" title="Branch 0 was taken 19 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          19 :                 if(hx&gt;0)</span></span>
+<span id="L55"><span class="lineNum">      55</span>                 :<span class="tlaGNC">          19 :                     return __kernel_sindf(c1pio2 - x);</span></span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :                 else</span>
+<span id="L57"><span class="lineNum">      57</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                     return __kernel_sindf(x + c1pio2);</span></span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :             } else</span>
+<span id="L59"><span class="lineNum">      59</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :                 return -__kernel_cosdf(x + (hx &gt; 0 ? -c2pio2 : c2pio2));</span></span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :         }</span>
+<span id="L61"><span class="lineNum">      61</span>         [<span class="tlaGBC" title="Branch 0 was taken 16 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 51 times"> + </span>]:<span class="tlaGNC tlaBgGNC">          67 :         if(ix&lt;=0x40e231d5) {         /* |x| ~&lt;= 9*pi/4 */</span></span>
+<span id="L62"><span class="lineNum">      62</span>         [<span class="tlaGBC" title="Branch 0 was taken 16 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          16 :             if(ix&lt;=0x40afeddf) {     /* |x|  ~&gt; 7*pi/4 */</span></span>
+<span id="L63"><span class="lineNum">      63</span>         [<span class="tlaGBC" title="Branch 0 was taken 16 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          16 :                 if(hx&gt;0)</span></span>
+<span id="L64"><span class="lineNum">      64</span>                 :<span class="tlaGNC">          16 :                     return __kernel_sindf(x - c3pio2);</span></span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :                 else</span>
+<span id="L66"><span class="lineNum">      66</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                     return __kernel_sindf(-c3pio2 - x);</span></span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :             } else</span>
+<span id="L68"><span class="lineNum">      68</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :                 return __kernel_cosdf(x + (hx &gt; 0 ? -c4pio2 : c4pio2));</span></span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :         }</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             : </span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :     /* cos(Inf or NaN) is NaN */</span>
+<span id="L72"><span class="lineNum">      72</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 48 times"> + </span>]:<span class="tlaGNC tlaBgGNC">          51 :         else if (ix&gt;=0x7f800000) return x-x;</span></span>
+<span id="L73"><span class="lineNum">      73</span>                 :             : </span>
+<span id="L74"><span class="lineNum">      74</span>                 :             :     /* general argument reduction needed */</span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :         else {</span>
+<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaGNC">          48 :             n = __ieee754_rem_pio2f(x,&amp;y);</span></span>
+<span id="L77"><span class="lineNum">      77</span>   [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 24 times"> + </span><span class="tlaGBC" title="Branch 2 was taken 24 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">          48 :             switch(n&amp;3) {</span></span>
+<span id="L78"><span class="lineNum">      78</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 case 0: return  __kernel_cosdf(y);</span></span>
+<span id="L79"><span class="lineNum">      79</span>                 :<span class="tlaGNC tlaBgGNC">          24 :                 case 1: return  __kernel_sindf(-y);</span></span>
+<span id="L80"><span class="lineNum">      80</span>                 :<span class="tlaGNC">          24 :                 case 2: return -__kernel_cosdf(y);</span></span>
+<span id="L81"><span class="lineNum">      81</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 default:</span></span>
+<span id="L82"><span class="lineNum">      82</span>                 :<span class="tlaUNC">           0 :                         return  __kernel_sindf(y);</span></span>
+<span id="L83"><span class="lineNum">      83</span>                 :             :             }</span>
+<span id="L84"><span class="lineNum">      84</span>                 :             :         }</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

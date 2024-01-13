@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/k_tanf.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - k_tanf.c<span style="font-size: 80%;"> (source / <a href="k_tanf.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">10</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* k_tanf.c -- float version of k_tan.c</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Conversion to float by Ian Lance Taylor, Cygnus Support, ian@cygnus.com.</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  * Optimized by Bruce D. Evans.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  */</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : </span>
+<span id="L6"><span class="lineNum">       6</span>                 :             : /*</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * ====================================================</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  *</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  * is preserved.</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * ====================================================</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  */</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : #ifndef INLINE_KERNEL_TANDF</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/k_tanf.c,v 1.23 2009/06/03 08:16:34 ed Exp $&quot;);</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : #endif</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : </span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : </span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : </span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : /* |tan(x)/x - t(x)| &lt; 2**-25.5 (~[-2e-08, 2e-08]). */</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : static const double</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : T[] =  {</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :   0x15554d3418c99f.0p-54,       /* 0.333331395030791399758 */</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             :   0x1112fd38999f72.0p-55,       /* 0.133392002712976742718 */</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             :   0x1b54c91d865afe.0p-57,       /* 0.0533812378445670393523 */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             :   0x191df3908c33ce.0p-58,       /* 0.0245283181166547278873 */</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             :   0x185dadfcecf44e.0p-61,       /* 0.00297435743359967304927 */</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             :   0x1362b9bf971bcd.0p-59,       /* 0.00946564784943673166728 */</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : };</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : </span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : #ifndef INLINE_KERNEL_TANDF</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : extern</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : #endif</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             : //__inline float</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : OLM_DLLEXPORT float</span>
+<span id="L41"><span class="lineNum">      41</span>                 :<span class="tlaGNC tlaBgGNC">           2 : __kernel_tandf(double x, int iy)</span></span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : {</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :         double z,r,w,s,t,u;</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             : </span>
+<span id="L45"><span class="lineNum">      45</span>                 :<span class="tlaGNC">           2 :         z       =  x*x;</span></span>
+<span id="L46"><span class="lineNum">      46</span>                 :             :         /*</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             :          * Split up the polynomial into small independent terms to give</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             :          * opportunities for parallel evaluation.  The chosen splitting is</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             :          * micro-optimized for Athlons (XP, X64).  It costs 2 multiplications</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             :          * relative to Horner's method on sequential machines.</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             :          *</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             :          * We add the small terms from lowest degree up for efficiency on</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             :          * non-sequential machines (the lowest degree terms tend to be ready</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :          * earlier).  Apart from this, we don't care about order of</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :          * operations, and don't need to to care since we have precision to</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :          * spare.  However, the chosen splitting is good for accuracy too,</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             :          * and would give results as accurate as Horner's method if the</span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :          * small terms were added from highest degree down.</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             :          */</span>
+<span id="L60"><span class="lineNum">      60</span>                 :<span class="tlaGNC">           2 :         r = T[4]+z*T[5];</span></span>
+<span id="L61"><span class="lineNum">      61</span>                 :<span class="tlaGNC">           2 :         t = T[2]+z*T[3];</span></span>
+<span id="L62"><span class="lineNum">      62</span>                 :<span class="tlaGNC">           2 :         w = z*z;</span></span>
+<span id="L63"><span class="lineNum">      63</span>                 :<span class="tlaGNC">           2 :         s = z*x;</span></span>
+<span id="L64"><span class="lineNum">      64</span>                 :<span class="tlaGNC">           2 :         u = T[0]+z*T[1];</span></span>
+<span id="L65"><span class="lineNum">      65</span>                 :<span class="tlaGNC">           2 :         r = (x+s*u)+(s*w)*(t+w*r);</span></span>
+<span id="L66"><span class="lineNum">      66</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 1 time"> + </span>]:<span class="tlaGNC">           2 :         if(iy==1) return r;</span></span>
+<span id="L67"><span class="lineNum">      67</span>                 :<span class="tlaGNC">           1 :         else return -1.0/r;</span></span>
+<span id="L68"><span class="lineNum">      68</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

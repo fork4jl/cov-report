@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/e_logf.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - e_logf.c<span style="font-size: 80%;"> (source / <a href="e_logf.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryMed">87.8&nbsp;%</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">36</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">72.7&nbsp;%</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntry">16</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* e_logf.c -- float version of e_log.c.</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Conversion to float by Ian Lance Taylor, Cygnus Support, ian@cygnus.com.</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  */</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             : </span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : /*</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * ====================================================</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  *</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  * Developed at SunPro, a Sun Microsystems, Inc. business.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  * is preserved.</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * ====================================================</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  */</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/e_logf.c,v 1.11 2008/03/29 16:37:59 das Exp $&quot;);</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : </span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : </span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : </span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : static const float</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : ln2_hi =   6.9313812256e-01,    /* 0x3f317180 */</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : ln2_lo =   9.0580006145e-06,    /* 0x3717f7d1 */</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : two25 =    3.355443200e+07,     /* 0x4c000000 */</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : /* |(log(1+s)-log(1-s))/s - Lg(s)| &lt; 2**-34.24 (~[-4.95e-11, 4.97e-11]). */</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : Lg1 =      0xaaaaaa.0p-24,      /* 0.66666662693 */</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : Lg2 =      0xccce13.0p-25,      /* 0.40000972152 */</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : Lg3 =      0x91e9ee.0p-25,      /* 0.28498786688 */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : Lg4 =      0xf89e26.0p-26;      /* 0.24279078841 */</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : </span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : static const float zero   =  0.0;</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : </span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : OLM_DLLEXPORT float</span>
+<span id="L36"><span class="lineNum">      36</span>                 :<span class="tlaGNC tlaBgGNC">          63 : __ieee754_logf(float x)</span></span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : {</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             :         float hfsq,f,s,z,R,w,t1,t2,dk;</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             :         int32_t k,ix,i,j;</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : </span>
+<span id="L41"><span class="lineNum">      41</span>                 :<span class="tlaGNC">          63 :         GET_FLOAT_WORD(ix,x);</span></span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : </span>
+<span id="L43"><span class="lineNum">      43</span>                 :<span class="tlaGNC">          63 :         k=0;</span></span>
+<span id="L44"><span class="lineNum">      44</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 60 times"> + </span>]:<span class="tlaGNC">          63 :         if (ix &lt; 0x00800000) {                       /* x &lt; 2**-126  */</span></span>
+<span id="L45"><span class="lineNum">      45</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 1 time"> + </span>]:<span class="tlaGNC">           3 :             if ((ix&amp;0x7fffffff)==0)</span></span>
+<span id="L46"><span class="lineNum">      46</span>                 :<span class="tlaGNC">           2 :                 return -two25/zero;             /* log(+-0)=-inf */</span></span>
+<span id="L47"><span class="lineNum">      47</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           1 :             if (ix&lt;0) return (x-x)/zero;     /* log(-#) = NaN */</span></span>
+<span id="L48"><span class="lineNum">      48</span>                 :<span class="tlaUNC tlaBgUNC">           0 :             k -= 25; x *= two25; /* subnormal number, scale up x */</span></span>
+<span id="L49"><span class="lineNum">      49</span>                 :<span class="tlaUNC">           0 :             GET_FLOAT_WORD(ix,x);</span></span>
+<span id="L50"><span class="lineNum">      50</span>                 :             :         }</span>
+<span id="L51"><span class="lineNum">      51</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 59 times"> + </span>]:<span class="tlaGNC tlaBgGNC">          60 :         if (ix &gt;= 0x7f800000) return x+x;</span></span>
+<span id="L52"><span class="lineNum">      52</span>                 :<span class="tlaGNC">          59 :         k += (ix&gt;&gt;23)-127;</span></span>
+<span id="L53"><span class="lineNum">      53</span>                 :<span class="tlaGNC">          59 :         ix &amp;= 0x007fffff;</span></span>
+<span id="L54"><span class="lineNum">      54</span>                 :<span class="tlaGNC">          59 :         i = (ix+(0x95f64&lt;&lt;3))&amp;0x800000;</span></span>
+<span id="L55"><span class="lineNum">      55</span>                 :<span class="tlaGNC">          59 :         SET_FLOAT_WORD(x,ix|(i^0x3f800000));    /* normalize x or x/2 */</span></span>
+<span id="L56"><span class="lineNum">      56</span>                 :<span class="tlaGNC">          59 :         k += (i&gt;&gt;23);</span></span>
+<span id="L57"><span class="lineNum">      57</span>                 :<span class="tlaGNC">          59 :         f = x-(float)1.0;</span></span>
+<span id="L58"><span class="lineNum">      58</span>         [<span class="tlaGBC" title="Branch 0 was taken 20 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 39 times"> + </span>]:<span class="tlaGNC">          59 :         if((0x007fffff&amp;(0x8000+ix))&lt;0xc000) {    /* -2**-9 &lt;= f &lt; 2**-9 */</span></span>
+<span id="L59"><span class="lineNum">      59</span>         [<span class="tlaGBC" title="Branch 0 was taken 20 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          20 :             if(f==zero) {</span></span>
+<span id="L60"><span class="lineNum">      60</span>         [<span class="tlaGBC" title="Branch 0 was taken 13 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 7 times"> + </span>]:<span class="tlaGNC">          20 :                 if(k==0) {</span></span>
+<span id="L61"><span class="lineNum">      61</span>                 :<span class="tlaGNC">          13 :                     return zero;</span></span>
+<span id="L62"><span class="lineNum">      62</span>                 :             :                 } else {</span>
+<span id="L63"><span class="lineNum">      63</span>                 :<span class="tlaGNC">           7 :                     dk=(float)k;</span></span>
+<span id="L64"><span class="lineNum">      64</span>                 :<span class="tlaGNC">           7 :                     return dk*ln2_hi+dk*ln2_lo;</span></span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :                 }</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :             }</span>
+<span id="L67"><span class="lineNum">      67</span>                 :<span class="tlaUNC tlaBgUNC">           0 :             R = f*f*((float)0.5-(float)0.33333333333333333*f);</span></span>
+<span id="L68"><span class="lineNum">      68</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :             if(k==0) return f-R; else {dk=(float)k;</span></span>
+<span id="L69"><span class="lineNum">      69</span>                 :<span class="tlaUNC">           0 :                      return dk*ln2_hi-((R-dk*ln2_lo)-f);}</span></span>
+<span id="L70"><span class="lineNum">      70</span>                 :             :         }</span>
+<span id="L71"><span class="lineNum">      71</span>                 :<span class="tlaGNC tlaBgGNC">          39 :         s = f/((float)2.0+f);</span></span>
+<span id="L72"><span class="lineNum">      72</span>                 :<span class="tlaGNC">          39 :         dk = (float)k;</span></span>
+<span id="L73"><span class="lineNum">      73</span>                 :<span class="tlaGNC">          39 :         z = s*s;</span></span>
+<span id="L74"><span class="lineNum">      74</span>                 :<span class="tlaGNC">          39 :         i = ix-(0x6147a&lt;&lt;3);</span></span>
+<span id="L75"><span class="lineNum">      75</span>                 :<span class="tlaGNC">          39 :         w = z*z;</span></span>
+<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaGNC">          39 :         j = (0x6b851&lt;&lt;3)-ix;</span></span>
+<span id="L77"><span class="lineNum">      77</span>                 :<span class="tlaGNC">          39 :         t1= w*(Lg2+w*Lg4);</span></span>
+<span id="L78"><span class="lineNum">      78</span>                 :<span class="tlaGNC">          39 :         t2= z*(Lg1+w*Lg3);</span></span>
+<span id="L79"><span class="lineNum">      79</span>                 :<span class="tlaGNC">          39 :         i |= j;</span></span>
+<span id="L80"><span class="lineNum">      80</span>                 :<span class="tlaGNC">          39 :         R = t2+t1;</span></span>
+<span id="L81"><span class="lineNum">      81</span>         [<span class="tlaGBC" title="Branch 0 was taken 10 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 29 times"> + </span>]:<span class="tlaGNC">          39 :         if(i&gt;0) {</span></span>
+<span id="L82"><span class="lineNum">      82</span>                 :<span class="tlaGNC">          10 :             hfsq=(float)0.5*f*f;</span></span>
+<span id="L83"><span class="lineNum">      83</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 10 times"> + </span>]:<span class="tlaGNC">          10 :             if(k==0) return f-(hfsq-s*(hfsq+R)); else</span></span>
+<span id="L84"><span class="lineNum">      84</span>                 :<span class="tlaGNC">          10 :                      return dk*ln2_hi-((hfsq-(s*(hfsq+R)+dk*ln2_lo))-f);</span></span>
+<span id="L85"><span class="lineNum">      85</span>                 :             :         } else {</span>
+<span id="L86"><span class="lineNum">      86</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 29 times"> + </span>]:<span class="tlaGNC">          29 :             if(k==0) return f-s*(f-R); else</span></span>
+<span id="L87"><span class="lineNum">      87</span>                 :<span class="tlaGNC">          29 :                      return dk*ln2_hi-((s*(f-R)-dk*ln2_lo)-f);</span></span>
+<span id="L88"><span class="lineNum">      88</span>                 :             :         }</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/e_exp.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - e_exp.c<span style="font-size: 80%;"> (source / <a href="e_exp.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryMed">89.5&nbsp;%</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">34</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">70.0&nbsp;%</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">21</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : </span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : /* @(#)e_exp.c 1.6 04/04/22 */</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             : /*</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  * ====================================================</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  * Copyright (C) 2004 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  *</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * software is freely granted, provided that this notice </span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  * is preserved.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * ====================================================</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  */</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             : </span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/e_exp.c,v 1.14 2011/10/21 06:26:38 das Exp $&quot;);</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : /* __ieee754_exp(x)</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             :  * Returns the exponential of x.</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  *</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  * Method</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             :  *   1. Argument reduction:</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             :  *      Reduce x to an r so that |r| &lt;= 0.5*ln2 ~ 0.34658.</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             :  *      Given x, find r and integer k such that</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             :  *</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             :  *               x = k*ln2 + r,  |r| &lt;= 0.5*ln2.  </span>
+<span id="L25"><span class="lineNum">      25</span>                 :             :  *</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  *      Here r will be represented as r = hi-lo for better </span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  *      accuracy.</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :  *</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             :  *   2. Approximation of exp(r) by a special rational function on</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             :  *      the interval [0,0.34658]:</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             :  *      Write</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             :  *          R(r**2) = r*(exp(r)+1)/(exp(r)-1) = 2 + r*r/6 - r**4/360 + ...</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             :  *      We use a special Remes algorithm on [0,0.34658] to generate </span>
+<span id="L34"><span class="lineNum">      34</span>                 :             :  *      a polynomial of degree 5 to approximate R. The maximum error </span>
+<span id="L35"><span class="lineNum">      35</span>                 :             :  *      of this polynomial approximation is bounded by 2**-59. In</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             :  *      other words,</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             :  *          R(z) ~ 2.0 + P1*z + P2*z**2 + P3*z**3 + P4*z**4 + P5*z**5</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             :  *      (where z=r*r, and the values of P1 to P5 are listed below)</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             :  *      and</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             :  *          |                  5          |     -59</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :  *          | 2.0+P1*z+...+P5*z   -  R(z) | &lt;= 2 </span>
+<span id="L42"><span class="lineNum">      42</span>                 :             :  *          |                             |</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :  *      The computation of exp(r) thus becomes</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             :  *                             2*r</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             :  *              exp(r) = 1 + -------</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             :  *                            R - r</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             :  *                                 r*R1(r)      </span>
+<span id="L48"><span class="lineNum">      48</span>                 :             :  *                     = 1 + r + ----------- (for better accuracy)</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             :  *                                2 - R1(r)</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             :  *      where</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             :  *                               2       4             10</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             :  *              R1(r) = r - (P1*r  + P2*r  + ... + P5*r   ).</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             :  *      </span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :  *   3. Scale back to obtain exp(x):</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :  *      From step 1, we have</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :  *         exp(x) = 2^k * exp(r)</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             :  *</span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :  * Special cases:</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             :  *      exp(INF) is INF, exp(NaN) is NaN;</span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :  *      exp(-INF) is 0, and</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             :  *      for finite argument, only exp(0)=1 is exact.</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             :  *</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             :  * Accuracy:</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             :  *      according to an error analysis, the error is always less than</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :  *      1 ulp (unit in the last place).</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :  *</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :  * Misc. info.</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             :  *      For IEEE double </span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :  *          if x &gt;  7.09782712893383973096e+02 then exp(x) overflow</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             :  *          if x &lt; -7.45133219101941108420e+02 then exp(x) underflow</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :  *</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             :  * Constants:</span>
+<span id="L73"><span class="lineNum">      73</span>                 :             :  * The hexadecimal values are the intended ones for the following </span>
+<span id="L74"><span class="lineNum">      74</span>                 :             :  * constants. The decimal values may be used, provided that the </span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :  * compiler will convert from decimal to binary accurately enough</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             :  * to produce the hexadecimal values shown.</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :  */</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             : </span>
+<span id="L79"><span class="lineNum">      79</span>                 :             : #include &lt;float.h&gt;</span>
+<span id="L80"><span class="lineNum">      80</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L81"><span class="lineNum">      81</span>                 :             : </span>
+<span id="L82"><span class="lineNum">      82</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L83"><span class="lineNum">      83</span>                 :             : </span>
+<span id="L84"><span class="lineNum">      84</span>                 :             : static const double</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : one     = 1.0,</span>
+<span id="L86"><span class="lineNum">      86</span>                 :             : halF[2] = {0.5,-0.5,},</span>
+<span id="L87"><span class="lineNum">      87</span>                 :             : huge    = 1.0e+300,</span>
+<span id="L88"><span class="lineNum">      88</span>                 :             : o_threshold=  7.09782712893383973096e+02,  /* 0x40862E42, 0xFEFA39EF */</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             : u_threshold= -7.45133219101941108420e+02,  /* 0xc0874910, 0xD52D3051 */</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             : ln2HI[2]   ={ 6.93147180369123816490e-01,  /* 0x3fe62e42, 0xfee00000 */</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             :              -6.93147180369123816490e-01,},/* 0xbfe62e42, 0xfee00000 */</span>
+<span id="L92"><span class="lineNum">      92</span>                 :             : ln2LO[2]   ={ 1.90821492927058770002e-10,  /* 0x3dea39ef, 0x35793c76 */</span>
+<span id="L93"><span class="lineNum">      93</span>                 :             :              -1.90821492927058770002e-10,},/* 0xbdea39ef, 0x35793c76 */</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             : invln2 =  1.44269504088896338700e+00, /* 0x3ff71547, 0x652b82fe */</span>
+<span id="L95"><span class="lineNum">      95</span>                 :             : P1   =  1.66666666666666019037e-01, /* 0x3FC55555, 0x5555553E */</span>
+<span id="L96"><span class="lineNum">      96</span>                 :             : P2   = -2.77777777770155933842e-03, /* 0xBF66C16C, 0x16BEBD93 */</span>
+<span id="L97"><span class="lineNum">      97</span>                 :             : P3   =  6.61375632143793436117e-05, /* 0x3F11566A, 0xAF25DE2C */</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             : P4   = -1.65339022054652515390e-06, /* 0xBEBBBD41, 0xC5D26BF1 */</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             : P5   =  4.13813679705723846039e-08; /* 0x3E663769, 0x72BEA4D0 */</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             : </span>
+<span id="L101"><span class="lineNum">     101</span>                 :             : static volatile double</span>
+<span id="L102"><span class="lineNum">     102</span>                 :             : twom1000= 9.33263618503218878990e-302;     /* 2**-1000=0x01700000,0*/</span>
+<span id="L103"><span class="lineNum">     103</span>                 :             : </span>
+<span id="L104"><span class="lineNum">     104</span>                 :             : OLM_DLLEXPORT double</span>
+<span id="L105"><span class="lineNum">     105</span>                 :<span class="tlaGNC tlaBgGNC">          23 : __ieee754_exp(double x) /* default IEEE double exp */</span></span>
+<span id="L106"><span class="lineNum">     106</span>                 :             : {</span>
+<span id="L107"><span class="lineNum">     107</span>                 :<span class="tlaGNC">          23 :         double y,hi=0.0,lo=0.0,c,t,twopk;</span></span>
+<span id="L108"><span class="lineNum">     108</span>                 :<span class="tlaGNC">          23 :         int32_t k=0,xsb;</span></span>
+<span id="L109"><span class="lineNum">     109</span>                 :             :         u_int32_t hx;</span>
+<span id="L110"><span class="lineNum">     110</span>                 :             : </span>
+<span id="L111"><span class="lineNum">     111</span>                 :<span class="tlaGNC">          23 :         GET_HIGH_WORD(hx,x);</span></span>
+<span id="L112"><span class="lineNum">     112</span>                 :<span class="tlaGNC">          23 :         xsb = (hx&gt;&gt;31)&amp;1;             /* sign bit of x */</span></span>
+<span id="L113"><span class="lineNum">     113</span>                 :<span class="tlaGNC">          23 :         hx &amp;= 0x7fffffff;           /* high word of |x| */</span></span>
+<span id="L114"><span class="lineNum">     114</span>                 :             : </span>
+<span id="L115"><span class="lineNum">     115</span>                 :             :     /* filter out non-finite argument */</span>
+<span id="L116"><span class="lineNum">     116</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 20 times"> + </span>]:<span class="tlaGNC">          23 :         if(hx &gt;= 0x40862E42) {                       /* if |x|&gt;=709.78... */</span></span>
+<span id="L117"><span class="lineNum">     117</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           3 :             if(hx&gt;=0x7ff00000) {</span></span>
+<span id="L118"><span class="lineNum">     118</span>                 :             :                 u_int32_t lx;</span>
+<span id="L119"><span class="lineNum">     119</span>                 :<span class="tlaGNC">           3 :                 GET_LOW_WORD(lx,x);</span></span>
+<span id="L120"><span class="lineNum">     120</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           3 :                 if(((hx&amp;0xfffff)|lx)!=0)</span></span>
+<span id="L121"><span class="lineNum">     121</span>                 :<span class="tlaGNC">           1 :                      return x+x;                /* NaN */</span></span>
+<span id="L122"><span class="lineNum">     122</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 1 time"> + </span>]:<span class="tlaGNC">           2 :                 else return (xsb==0)? x:0.0;    /* exp(+-inf)={inf,0} */</span></span>
+<span id="L123"><span class="lineNum">     123</span>                 :             :             }</span>
+<span id="L124"><span class="lineNum">     124</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC tlaBgUNC">           0 :             if(x &gt; o_threshold) return huge*huge; /* overflow */</span></span>
+<span id="L125"><span class="lineNum">     125</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :             if(x &lt; u_threshold) return twom1000*twom1000; /* underflow */</span></span>
+<span id="L126"><span class="lineNum">     126</span>                 :             :         }</span>
+<span id="L127"><span class="lineNum">     127</span>                 :             : </span>
+<span id="L128"><span class="lineNum">     128</span>                 :             :         /* this implementation gives 2.7182818284590455 for exp(1.0),</span>
+<span id="L129"><span class="lineNum">     129</span>                 :             :            which is well within the allowable error. however,</span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :            2.718281828459045 is closer to the true value so we prefer that</span>
+<span id="L131"><span class="lineNum">     131</span>                 :             :            answer, given that 1.0 is such an important argument value. */</span>
+<span id="L132"><span class="lineNum">     132</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 19 times"> + </span>]:<span class="tlaGNC tlaBgGNC">          20 :         if (x == 1.0)</span></span>
+<span id="L133"><span class="lineNum">     133</span>                 :<span class="tlaGNC">           1 :             return 2.718281828459045235360;</span></span>
+<span id="L134"><span class="lineNum">     134</span>                 :             : </span>
+<span id="L135"><span class="lineNum">     135</span>                 :             :     /* argument reduction */</span>
+<span id="L136"><span class="lineNum">     136</span>         [<span class="tlaGBC" title="Branch 0 was taken 11 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">          19 :         if(hx &gt; 0x3fd62e42) {                /* if  |x| &gt; 0.5 ln2 */ </span></span>
+<span id="L137"><span class="lineNum">     137</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">          11 :             if(hx &lt; 0x3FF0A2B2) {    /* and |x| &lt; 1.5 ln2 */</span></span>
+<span id="L138"><span class="lineNum">     138</span>                 :<span class="tlaGNC">           3 :                 hi = x-ln2HI[xsb]; lo=ln2LO[xsb]; k = 1-xsb-xsb;</span></span>
+<span id="L139"><span class="lineNum">     139</span>                 :             :             } else {</span>
+<span id="L140"><span class="lineNum">     140</span>                 :<span class="tlaGNC">           8 :                 k  = (int)(invln2*x+halF[xsb]);</span></span>
+<span id="L141"><span class="lineNum">     141</span>                 :<span class="tlaGNC">           8 :                 t  = k;</span></span>
+<span id="L142"><span class="lineNum">     142</span>                 :<span class="tlaGNC">           8 :                 hi = x - t*ln2HI[0];    /* t*ln2HI is exact here */</span></span>
+<span id="L143"><span class="lineNum">     143</span>                 :<span class="tlaGNC">           8 :                 lo = t*ln2LO[0];</span></span>
+<span id="L144"><span class="lineNum">     144</span>                 :             :             }</span>
+<span id="L145"><span class="lineNum">     145</span>                 :<span class="tlaGNC">          11 :             STRICT_ASSIGN(double, x, hi - lo);</span></span>
+<span id="L146"><span class="lineNum">     146</span>                 :             :         } </span>
+<span id="L147"><span class="lineNum">     147</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 5 times"> + </span>]:<span class="tlaGNC">           8 :         else if(hx &lt; 0x3e300000)  {  /* when |x|&lt;2**-28 */</span></span>
+<span id="L148"><span class="lineNum">     148</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           3 :             if(huge+x&gt;one) return one+x;/* trigger inexact */</span></span>
+<span id="L149"><span class="lineNum">     149</span>                 :             :         }</span>
+<span id="L150"><span class="lineNum">     150</span>                 :<span class="tlaGNC">           5 :         else k = 0;</span></span>
+<span id="L151"><span class="lineNum">     151</span>                 :             : </span>
+<span id="L152"><span class="lineNum">     152</span>                 :             :     /* x is now in primary range */</span>
+<span id="L153"><span class="lineNum">     153</span>                 :<span class="tlaGNC">          16 :         t  = x*x;</span></span>
+<span id="L154"><span class="lineNum">     154</span>         [<span class="tlaGBC" title="Branch 0 was taken 16 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          16 :         if(k &gt;= -1021)</span></span>
+<span id="L155"><span class="lineNum">     155</span>                 :<span class="tlaGNC">          16 :             INSERT_WORDS(twopk,0x3ff00000+(k&lt;&lt;20), 0);</span></span>
+<span id="L156"><span class="lineNum">     156</span>                 :             :         else</span>
+<span id="L157"><span class="lineNum">     157</span>                 :<span class="tlaUNC tlaBgUNC">           0 :             INSERT_WORDS(twopk,0x3ff00000+((k+1000)&lt;&lt;20), 0);</span></span>
+<span id="L158"><span class="lineNum">     158</span>                 :<span class="tlaGNC tlaBgGNC">          16 :         c  = x - t*(P1+t*(P2+t*(P3+t*(P4+t*P5))));</span></span>
+<span id="L159"><span class="lineNum">     159</span>         [<span class="tlaGBC" title="Branch 0 was taken 5 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 11 times"> + </span>]:<span class="tlaGNC">          16 :         if(k==0)        return one-((x*c)/(c-2.0)-x); </span></span>
+<span id="L160"><span class="lineNum">     160</span>                 :<span class="tlaGNC">          11 :         else            y = one-((lo-(x*c)/(2.0-c))-hi);</span></span>
+<span id="L161"><span class="lineNum">     161</span>         [<span class="tlaGBC" title="Branch 0 was taken 11 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          11 :         if(k &gt;= -1021) {</span></span>
+<span id="L162"><span class="lineNum">     162</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 11 times"> + </span>]:<span class="tlaGNC">          11 :             if (k==1024) return y*2.0*0x1p1023;</span></span>
+<span id="L163"><span class="lineNum">     163</span>                 :<span class="tlaGNC">          11 :             return y*twopk;</span></span>
+<span id="L164"><span class="lineNum">     164</span>                 :             :         } else {</span>
+<span id="L165"><span class="lineNum">     165</span>                 :<span class="tlaUNC tlaBgUNC">           0 :             return y*twopk*twom1000;</span></span>
+<span id="L166"><span class="lineNum">     166</span>                 :             :         }</span>
+<span id="L167"><span class="lineNum">     167</span>                 :             : }</span>
+<span id="L168"><span class="lineNum">     168</span>                 :             : </span>
+<span id="L169"><span class="lineNum">     169</span>                 :             : #if (LDBL_MANT_DIG == 53)</span>
+<span id="L170"><span class="lineNum">     170</span>                 :             : openlibm_weak_reference(exp, expl);</span>
+<span id="L171"><span class="lineNum">     171</span>                 :             : #endif</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - bsdsrc/b_log.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory bsdsrc">bsdsrc</a> - b_log.c<span style="font-size: 80%;"> (source / <a href="b_log.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /*</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Copyright (c) 1992, 1993</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  *      The Regents of the University of California.  All rights reserved.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  *</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  * Redistribution and use in source and binary forms, with or without</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * modification, are permitted provided that the following conditions</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * are met:</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * 1. Redistributions of source code must retain the above copyright</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  *    notice, this list of conditions and the following disclaimer.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * 2. Redistributions in binary form must reproduce the above copyright</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  *    notice, this list of conditions and the following disclaimer in the</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  *    documentation and/or other materials provided with the distribution.</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * 3. Neither the name of the University nor the names of its contributors</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  *    may be used to endorse or promote products derived from this software</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             :  *    without specific prior written permission.</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             :  *</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             :  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             :  * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             :  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             :  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             :  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             :  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             :  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  * SUCH DAMAGE.</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :  */</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : </span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : /* @(#)log.c    8.2 (Berkeley) 11/30/93 */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/bsdsrc/b_log.c,v 1.9 2008/02/22 02:26:51 das Exp $&quot;);</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : </span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : </span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : #include &quot;mathimpl.h&quot;</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : </span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : /* Table-driven natural logarithm.</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             :  *</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             :  * This code was derived, with minor modifications, from:</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :  *      Peter Tang, &quot;Table-Driven Implementation of the</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             :  *      Logarithm in IEEE Floating-Point arithmetic.&quot; ACM Trans.</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :  *      Math Software, vol 16. no 4, pp 378-400, Dec 1990).</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             :  *</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             :  * Calculates log(2^m*F*(1+f/F)), |f/j| &lt;= 1/256,</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             :  * where F = j/128 for j an integer in [0, 128].</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             :  *</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             :  * log(2^m) = log2_hi*m + log2_tail*m</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             :  * since m is an integer, the dominant term is exact.</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             :  * m has at most 10 digits (for subnormal numbers),</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             :  * and log2_hi has 11 trailing zero bits.</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             :  *</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             :  * log(F) = logF_hi[j] + logF_lo[j] is in tabular form in log_table.h</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :  * logF_hi[] + 512 is exact.</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :  *</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :  * log(1+f/F) = 2*f/(2*F + f) + 1/12 * (2*f/(2*F + f))**3 + ...</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             :  * the leading term is calculated to extra precision in two</span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :  * parts, the larger of which adds exactly to the dominant</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             :  * m and F terms.</span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :  * There are two cases:</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             :  *      1. when m, j are non-zero (m | j), use absolute</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             :  *         precision for the leading term.</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             :  *      2. when m = j = 0, |1-x| &lt; 1/256, and log(x) ~= (x-1).</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             :  *         In this case, use a relative precision of 24 bits.</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :  * (This is done differently in the original paper)</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :  *</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :  * Special cases:</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             :  *      0       return signalling -Inf</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :  *      neg     return signalling NaN</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             :  *      +Inf    return +Inf</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             : */</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             : </span>
+<span id="L73"><span class="lineNum">      73</span>                 :             : #define N 128</span>
+<span id="L74"><span class="lineNum">      74</span>                 :             : </span>
+<span id="L75"><span class="lineNum">      75</span>                 :             : /* Table of log(Fj) = logF_head[j] + logF_tail[j], for Fj = 1+j/128.</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             :  * Used for generation of extend precision logarithms.</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :  * The constant 35184372088832 is 2^45, so the divide is exact.</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             :  * It ensures correct reading of logF_head, even for inaccurate</span>
+<span id="L79"><span class="lineNum">      79</span>                 :             :  * decimal-to-binary conversion routines.  (Everybody gets the</span>
+<span id="L80"><span class="lineNum">      80</span>                 :             :  * right answer for integers less than 2^53.)</span>
+<span id="L81"><span class="lineNum">      81</span>                 :             :  * Values for log(F) were generated using error &lt; 10^-57 absolute</span>
+<span id="L82"><span class="lineNum">      82</span>                 :             :  * with the bc -l package.</span>
+<span id="L83"><span class="lineNum">      83</span>                 :             : */</span>
+<span id="L84"><span class="lineNum">      84</span>                 :             : static double   A1 =      .08333333333333178827;</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : static double   A2 =      .01250000000377174923;</span>
+<span id="L86"><span class="lineNum">      86</span>                 :             : static double   A3 =     .002232139987919447809;</span>
+<span id="L87"><span class="lineNum">      87</span>                 :             : static double   A4 =    .0004348877777076145742;</span>
+<span id="L88"><span class="lineNum">      88</span>                 :             : </span>
+<span id="L89"><span class="lineNum">      89</span>                 :             : static double logF_head[N+1] = {</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             :         0.,</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             :         .007782140442060381246,</span>
+<span id="L92"><span class="lineNum">      92</span>                 :             :         .015504186535963526694,</span>
+<span id="L93"><span class="lineNum">      93</span>                 :             :         .023167059281547608406,</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             :         .030771658666765233647,</span>
+<span id="L95"><span class="lineNum">      95</span>                 :             :         .038318864302141264488,</span>
+<span id="L96"><span class="lineNum">      96</span>                 :             :         .045809536031242714670,</span>
+<span id="L97"><span class="lineNum">      97</span>                 :             :         .053244514518837604555,</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             :         .060624621816486978786,</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             :         .067950661908525944454,</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             :         .075223421237524235039,</span>
+<span id="L101"><span class="lineNum">     101</span>                 :             :         .082443669210988446138,</span>
+<span id="L102"><span class="lineNum">     102</span>                 :             :         .089612158689760690322,</span>
+<span id="L103"><span class="lineNum">     103</span>                 :             :         .096729626458454731618,</span>
+<span id="L104"><span class="lineNum">     104</span>                 :             :         .103796793681567578460,</span>
+<span id="L105"><span class="lineNum">     105</span>                 :             :         .110814366340264314203,</span>
+<span id="L106"><span class="lineNum">     106</span>                 :             :         .117783035656430001836,</span>
+<span id="L107"><span class="lineNum">     107</span>                 :             :         .124703478501032805070,</span>
+<span id="L108"><span class="lineNum">     108</span>                 :             :         .131576357788617315236,</span>
+<span id="L109"><span class="lineNum">     109</span>                 :             :         .138402322859292326029,</span>
+<span id="L110"><span class="lineNum">     110</span>                 :             :         .145182009844575077295,</span>
+<span id="L111"><span class="lineNum">     111</span>                 :             :         .151916042025732167530,</span>
+<span id="L112"><span class="lineNum">     112</span>                 :             :         .158605030176659056451,</span>
+<span id="L113"><span class="lineNum">     113</span>                 :             :         .165249572895390883786,</span>
+<span id="L114"><span class="lineNum">     114</span>                 :             :         .171850256926518341060,</span>
+<span id="L115"><span class="lineNum">     115</span>                 :             :         .178407657472689606947,</span>
+<span id="L116"><span class="lineNum">     116</span>                 :             :         .184922338493834104156,</span>
+<span id="L117"><span class="lineNum">     117</span>                 :             :         .191394852999565046047,</span>
+<span id="L118"><span class="lineNum">     118</span>                 :             :         .197825743329758552135,</span>
+<span id="L119"><span class="lineNum">     119</span>                 :             :         .204215541428766300668,</span>
+<span id="L120"><span class="lineNum">     120</span>                 :             :         .210564769107350002741,</span>
+<span id="L121"><span class="lineNum">     121</span>                 :             :         .216873938300523150246,</span>
+<span id="L122"><span class="lineNum">     122</span>                 :             :         .223143551314024080056,</span>
+<span id="L123"><span class="lineNum">     123</span>                 :             :         .229374101064877322642,</span>
+<span id="L124"><span class="lineNum">     124</span>                 :             :         .235566071312860003672,</span>
+<span id="L125"><span class="lineNum">     125</span>                 :             :         .241719936886966024758,</span>
+<span id="L126"><span class="lineNum">     126</span>                 :             :         .247836163904594286577,</span>
+<span id="L127"><span class="lineNum">     127</span>                 :             :         .253915209980732470285,</span>
+<span id="L128"><span class="lineNum">     128</span>                 :             :         .259957524436686071567,</span>
+<span id="L129"><span class="lineNum">     129</span>                 :             :         .265963548496984003577,</span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :         .271933715484010463114,</span>
+<span id="L131"><span class="lineNum">     131</span>                 :             :         .277868451003087102435,</span>
+<span id="L132"><span class="lineNum">     132</span>                 :             :         .283768173130738432519,</span>
+<span id="L133"><span class="lineNum">     133</span>                 :             :         .289633292582948342896,</span>
+<span id="L134"><span class="lineNum">     134</span>                 :             :         .295464212893421063199,</span>
+<span id="L135"><span class="lineNum">     135</span>                 :             :         .301261330578199704177,</span>
+<span id="L136"><span class="lineNum">     136</span>                 :             :         .307025035294827830512,</span>
+<span id="L137"><span class="lineNum">     137</span>                 :             :         .312755710004239517729,</span>
+<span id="L138"><span class="lineNum">     138</span>                 :             :         .318453731118097493890,</span>
+<span id="L139"><span class="lineNum">     139</span>                 :             :         .324119468654316733591,</span>
+<span id="L140"><span class="lineNum">     140</span>                 :             :         .329753286372579168528,</span>
+<span id="L141"><span class="lineNum">     141</span>                 :             :         .335355541920762334484,</span>
+<span id="L142"><span class="lineNum">     142</span>                 :             :         .340926586970454081892,</span>
+<span id="L143"><span class="lineNum">     143</span>                 :             :         .346466767346100823488,</span>
+<span id="L144"><span class="lineNum">     144</span>                 :             :         .351976423156884266063,</span>
+<span id="L145"><span class="lineNum">     145</span>                 :             :         .357455888922231679316,</span>
+<span id="L146"><span class="lineNum">     146</span>                 :             :         .362905493689140712376,</span>
+<span id="L147"><span class="lineNum">     147</span>                 :             :         .368325561158599157352,</span>
+<span id="L148"><span class="lineNum">     148</span>                 :             :         .373716409793814818840,</span>
+<span id="L149"><span class="lineNum">     149</span>                 :             :         .379078352934811846353,</span>
+<span id="L150"><span class="lineNum">     150</span>                 :             :         .384411698910298582632,</span>
+<span id="L151"><span class="lineNum">     151</span>                 :             :         .389716751140440464951,</span>
+<span id="L152"><span class="lineNum">     152</span>                 :             :         .394993808240542421117,</span>
+<span id="L153"><span class="lineNum">     153</span>                 :             :         .400243164127459749579,</span>
+<span id="L154"><span class="lineNum">     154</span>                 :             :         .405465108107819105498,</span>
+<span id="L155"><span class="lineNum">     155</span>                 :             :         .410659924985338875558,</span>
+<span id="L156"><span class="lineNum">     156</span>                 :             :         .415827895143593195825,</span>
+<span id="L157"><span class="lineNum">     157</span>                 :             :         .420969294644237379543,</span>
+<span id="L158"><span class="lineNum">     158</span>                 :             :         .426084395310681429691,</span>
+<span id="L159"><span class="lineNum">     159</span>                 :             :         .431173464818130014464,</span>
+<span id="L160"><span class="lineNum">     160</span>                 :             :         .436236766774527495726,</span>
+<span id="L161"><span class="lineNum">     161</span>                 :             :         .441274560805140936281,</span>
+<span id="L162"><span class="lineNum">     162</span>                 :             :         .446287102628048160113,</span>
+<span id="L163"><span class="lineNum">     163</span>                 :             :         .451274644139630254358,</span>
+<span id="L164"><span class="lineNum">     164</span>                 :             :         .456237433481874177232,</span>
+<span id="L165"><span class="lineNum">     165</span>                 :             :         .461175715122408291790,</span>
+<span id="L166"><span class="lineNum">     166</span>                 :             :         .466089729924533457960,</span>
+<span id="L167"><span class="lineNum">     167</span>                 :             :         .470979715219073113985,</span>
+<span id="L168"><span class="lineNum">     168</span>                 :             :         .475845904869856894947,</span>
+<span id="L169"><span class="lineNum">     169</span>                 :             :         .480688529345570714212,</span>
+<span id="L170"><span class="lineNum">     170</span>                 :             :         .485507815781602403149,</span>
+<span id="L171"><span class="lineNum">     171</span>                 :             :         .490303988045525329653,</span>
+<span id="L172"><span class="lineNum">     172</span>                 :             :         .495077266798034543171,</span>
+<span id="L173"><span class="lineNum">     173</span>                 :             :         .499827869556611403822,</span>
+<span id="L174"><span class="lineNum">     174</span>                 :             :         .504556010751912253908,</span>
+<span id="L175"><span class="lineNum">     175</span>                 :             :         .509261901790523552335,</span>
+<span id="L176"><span class="lineNum">     176</span>                 :             :         .513945751101346104405,</span>
+<span id="L177"><span class="lineNum">     177</span>                 :             :         .518607764208354637958,</span>
+<span id="L178"><span class="lineNum">     178</span>                 :             :         .523248143765158602036,</span>
+<span id="L179"><span class="lineNum">     179</span>                 :             :         .527867089620485785417,</span>
+<span id="L180"><span class="lineNum">     180</span>                 :             :         .532464798869114019908,</span>
+<span id="L181"><span class="lineNum">     181</span>                 :             :         .537041465897345915436,</span>
+<span id="L182"><span class="lineNum">     182</span>                 :             :         .541597282432121573947,</span>
+<span id="L183"><span class="lineNum">     183</span>                 :             :         .546132437597407260909,</span>
+<span id="L184"><span class="lineNum">     184</span>                 :             :         .550647117952394182793,</span>
+<span id="L185"><span class="lineNum">     185</span>                 :             :         .555141507540611200965,</span>
+<span id="L186"><span class="lineNum">     186</span>                 :             :         .559615787935399566777,</span>
+<span id="L187"><span class="lineNum">     187</span>                 :             :         .564070138285387656651,</span>
+<span id="L188"><span class="lineNum">     188</span>                 :             :         .568504735352689749561,</span>
+<span id="L189"><span class="lineNum">     189</span>                 :             :         .572919753562018740922,</span>
+<span id="L190"><span class="lineNum">     190</span>                 :             :         .577315365035246941260,</span>
+<span id="L191"><span class="lineNum">     191</span>                 :             :         .581691739635061821900,</span>
+<span id="L192"><span class="lineNum">     192</span>                 :             :         .586049045003164792433,</span>
+<span id="L193"><span class="lineNum">     193</span>                 :             :         .590387446602107957005,</span>
+<span id="L194"><span class="lineNum">     194</span>                 :             :         .594707107746216934174,</span>
+<span id="L195"><span class="lineNum">     195</span>                 :             :         .599008189645246602594,</span>
+<span id="L196"><span class="lineNum">     196</span>                 :             :         .603290851438941899687,</span>
+<span id="L197"><span class="lineNum">     197</span>                 :             :         .607555250224322662688,</span>
+<span id="L198"><span class="lineNum">     198</span>                 :             :         .611801541106615331955,</span>
+<span id="L199"><span class="lineNum">     199</span>                 :             :         .616029877215623855590,</span>
+<span id="L200"><span class="lineNum">     200</span>                 :             :         .620240409751204424537,</span>
+<span id="L201"><span class="lineNum">     201</span>                 :             :         .624433288012369303032,</span>
+<span id="L202"><span class="lineNum">     202</span>                 :             :         .628608659422752680256,</span>
+<span id="L203"><span class="lineNum">     203</span>                 :             :         .632766669570628437213,</span>
+<span id="L204"><span class="lineNum">     204</span>                 :             :         .636907462236194987781,</span>
+<span id="L205"><span class="lineNum">     205</span>                 :             :         .641031179420679109171,</span>
+<span id="L206"><span class="lineNum">     206</span>                 :             :         .645137961373620782978,</span>
+<span id="L207"><span class="lineNum">     207</span>                 :             :         .649227946625615004450,</span>
+<span id="L208"><span class="lineNum">     208</span>                 :             :         .653301272011958644725,</span>
+<span id="L209"><span class="lineNum">     209</span>                 :             :         .657358072709030238911,</span>
+<span id="L210"><span class="lineNum">     210</span>                 :             :         .661398482245203922502,</span>
+<span id="L211"><span class="lineNum">     211</span>                 :             :         .665422632544505177065,</span>
+<span id="L212"><span class="lineNum">     212</span>                 :             :         .669430653942981734871,</span>
+<span id="L213"><span class="lineNum">     213</span>                 :             :         .673422675212350441142,</span>
+<span id="L214"><span class="lineNum">     214</span>                 :             :         .677398823590920073911,</span>
+<span id="L215"><span class="lineNum">     215</span>                 :             :         .681359224807238206267,</span>
+<span id="L216"><span class="lineNum">     216</span>                 :             :         .685304003098281100392,</span>
+<span id="L217"><span class="lineNum">     217</span>                 :             :         .689233281238557538017,</span>
+<span id="L218"><span class="lineNum">     218</span>                 :             :         .693147180560117703862</span>
+<span id="L219"><span class="lineNum">     219</span>                 :             : };</span>
+<span id="L220"><span class="lineNum">     220</span>                 :             : </span>
+<span id="L221"><span class="lineNum">     221</span>                 :             : static double logF_tail[N+1] = {</span>
+<span id="L222"><span class="lineNum">     222</span>                 :             :         0.,</span>
+<span id="L223"><span class="lineNum">     223</span>                 :             :         -.00000000000000543229938420049,</span>
+<span id="L224"><span class="lineNum">     224</span>                 :             :          .00000000000000172745674997061,</span>
+<span id="L225"><span class="lineNum">     225</span>                 :             :         -.00000000000001323017818229233,</span>
+<span id="L226"><span class="lineNum">     226</span>                 :             :         -.00000000000001154527628289872,</span>
+<span id="L227"><span class="lineNum">     227</span>                 :             :         -.00000000000000466529469958300,</span>
+<span id="L228"><span class="lineNum">     228</span>                 :             :          .00000000000005148849572685810,</span>
+<span id="L229"><span class="lineNum">     229</span>                 :             :         -.00000000000002532168943117445,</span>
+<span id="L230"><span class="lineNum">     230</span>                 :             :         -.00000000000005213620639136504,</span>
+<span id="L231"><span class="lineNum">     231</span>                 :             :         -.00000000000001819506003016881,</span>
+<span id="L232"><span class="lineNum">     232</span>                 :             :          .00000000000006329065958724544,</span>
+<span id="L233"><span class="lineNum">     233</span>                 :             :          .00000000000008614512936087814,</span>
+<span id="L234"><span class="lineNum">     234</span>                 :             :         -.00000000000007355770219435028,</span>
+<span id="L235"><span class="lineNum">     235</span>                 :             :          .00000000000009638067658552277,</span>
+<span id="L236"><span class="lineNum">     236</span>                 :             :          .00000000000007598636597194141,</span>
+<span id="L237"><span class="lineNum">     237</span>                 :             :          .00000000000002579999128306990,</span>
+<span id="L238"><span class="lineNum">     238</span>                 :             :         -.00000000000004654729747598444,</span>
+<span id="L239"><span class="lineNum">     239</span>                 :             :         -.00000000000007556920687451336,</span>
+<span id="L240"><span class="lineNum">     240</span>                 :             :          .00000000000010195735223708472,</span>
+<span id="L241"><span class="lineNum">     241</span>                 :             :         -.00000000000017319034406422306,</span>
+<span id="L242"><span class="lineNum">     242</span>                 :             :         -.00000000000007718001336828098,</span>
+<span id="L243"><span class="lineNum">     243</span>                 :             :          .00000000000010980754099855238,</span>
+<span id="L244"><span class="lineNum">     244</span>                 :             :         -.00000000000002047235780046195,</span>
+<span id="L245"><span class="lineNum">     245</span>                 :             :         -.00000000000008372091099235912,</span>
+<span id="L246"><span class="lineNum">     246</span>                 :             :          .00000000000014088127937111135,</span>
+<span id="L247"><span class="lineNum">     247</span>                 :             :          .00000000000012869017157588257,</span>
+<span id="L248"><span class="lineNum">     248</span>                 :             :          .00000000000017788850778198106,</span>
+<span id="L249"><span class="lineNum">     249</span>                 :             :          .00000000000006440856150696891,</span>
+<span id="L250"><span class="lineNum">     250</span>                 :             :          .00000000000016132822667240822,</span>
+<span id="L251"><span class="lineNum">     251</span>                 :             :         -.00000000000007540916511956188,</span>
+<span id="L252"><span class="lineNum">     252</span>                 :             :         -.00000000000000036507188831790,</span>
+<span id="L253"><span class="lineNum">     253</span>                 :             :          .00000000000009120937249914984,</span>
+<span id="L254"><span class="lineNum">     254</span>                 :             :          .00000000000018567570959796010,</span>
+<span id="L255"><span class="lineNum">     255</span>                 :             :         -.00000000000003149265065191483,</span>
+<span id="L256"><span class="lineNum">     256</span>                 :             :         -.00000000000009309459495196889,</span>
+<span id="L257"><span class="lineNum">     257</span>                 :             :          .00000000000017914338601329117,</span>
+<span id="L258"><span class="lineNum">     258</span>                 :             :         -.00000000000001302979717330866,</span>
+<span id="L259"><span class="lineNum">     259</span>                 :             :          .00000000000023097385217586939,</span>
+<span id="L260"><span class="lineNum">     260</span>                 :             :          .00000000000023999540484211737,</span>
+<span id="L261"><span class="lineNum">     261</span>                 :             :          .00000000000015393776174455408,</span>
+<span id="L262"><span class="lineNum">     262</span>                 :             :         -.00000000000036870428315837678,</span>
+<span id="L263"><span class="lineNum">     263</span>                 :             :          .00000000000036920375082080089,</span>
+<span id="L264"><span class="lineNum">     264</span>                 :             :         -.00000000000009383417223663699,</span>
+<span id="L265"><span class="lineNum">     265</span>                 :             :          .00000000000009433398189512690,</span>
+<span id="L266"><span class="lineNum">     266</span>                 :             :          .00000000000041481318704258568,</span>
+<span id="L267"><span class="lineNum">     267</span>                 :             :         -.00000000000003792316480209314,</span>
+<span id="L268"><span class="lineNum">     268</span>                 :             :          .00000000000008403156304792424,</span>
+<span id="L269"><span class="lineNum">     269</span>                 :             :         -.00000000000034262934348285429,</span>
+<span id="L270"><span class="lineNum">     270</span>                 :             :          .00000000000043712191957429145,</span>
+<span id="L271"><span class="lineNum">     271</span>                 :             :         -.00000000000010475750058776541,</span>
+<span id="L272"><span class="lineNum">     272</span>                 :             :         -.00000000000011118671389559323,</span>
+<span id="L273"><span class="lineNum">     273</span>                 :             :          .00000000000037549577257259853,</span>
+<span id="L274"><span class="lineNum">     274</span>                 :             :          .00000000000013912841212197565,</span>
+<span id="L275"><span class="lineNum">     275</span>                 :             :          .00000000000010775743037572640,</span>
+<span id="L276"><span class="lineNum">     276</span>                 :             :          .00000000000029391859187648000,</span>
+<span id="L277"><span class="lineNum">     277</span>                 :             :         -.00000000000042790509060060774,</span>
+<span id="L278"><span class="lineNum">     278</span>                 :             :          .00000000000022774076114039555,</span>
+<span id="L279"><span class="lineNum">     279</span>                 :             :          .00000000000010849569622967912,</span>
+<span id="L280"><span class="lineNum">     280</span>                 :             :         -.00000000000023073801945705758,</span>
+<span id="L281"><span class="lineNum">     281</span>                 :             :          .00000000000015761203773969435,</span>
+<span id="L282"><span class="lineNum">     282</span>                 :             :          .00000000000003345710269544082,</span>
+<span id="L283"><span class="lineNum">     283</span>                 :             :         -.00000000000041525158063436123,</span>
+<span id="L284"><span class="lineNum">     284</span>                 :             :          .00000000000032655698896907146,</span>
+<span id="L285"><span class="lineNum">     285</span>                 :             :         -.00000000000044704265010452446,</span>
+<span id="L286"><span class="lineNum">     286</span>                 :             :          .00000000000034527647952039772,</span>
+<span id="L287"><span class="lineNum">     287</span>                 :             :         -.00000000000007048962392109746,</span>
+<span id="L288"><span class="lineNum">     288</span>                 :             :          .00000000000011776978751369214,</span>
+<span id="L289"><span class="lineNum">     289</span>                 :             :         -.00000000000010774341461609578,</span>
+<span id="L290"><span class="lineNum">     290</span>                 :             :          .00000000000021863343293215910,</span>
+<span id="L291"><span class="lineNum">     291</span>                 :             :          .00000000000024132639491333131,</span>
+<span id="L292"><span class="lineNum">     292</span>                 :             :          .00000000000039057462209830700,</span>
+<span id="L293"><span class="lineNum">     293</span>                 :             :         -.00000000000026570679203560751,</span>
+<span id="L294"><span class="lineNum">     294</span>                 :             :          .00000000000037135141919592021,</span>
+<span id="L295"><span class="lineNum">     295</span>                 :             :         -.00000000000017166921336082431,</span>
+<span id="L296"><span class="lineNum">     296</span>                 :             :         -.00000000000028658285157914353,</span>
+<span id="L297"><span class="lineNum">     297</span>                 :             :         -.00000000000023812542263446809,</span>
+<span id="L298"><span class="lineNum">     298</span>                 :             :          .00000000000006576659768580062,</span>
+<span id="L299"><span class="lineNum">     299</span>                 :             :         -.00000000000028210143846181267,</span>
+<span id="L300"><span class="lineNum">     300</span>                 :             :          .00000000000010701931762114254,</span>
+<span id="L301"><span class="lineNum">     301</span>                 :             :          .00000000000018119346366441110,</span>
+<span id="L302"><span class="lineNum">     302</span>                 :             :          .00000000000009840465278232627,</span>
+<span id="L303"><span class="lineNum">     303</span>                 :             :         -.00000000000033149150282752542,</span>
+<span id="L304"><span class="lineNum">     304</span>                 :             :         -.00000000000018302857356041668,</span>
+<span id="L305"><span class="lineNum">     305</span>                 :             :         -.00000000000016207400156744949,</span>
+<span id="L306"><span class="lineNum">     306</span>                 :             :          .00000000000048303314949553201,</span>
+<span id="L307"><span class="lineNum">     307</span>                 :             :         -.00000000000071560553172382115,</span>
+<span id="L308"><span class="lineNum">     308</span>                 :             :          .00000000000088821239518571855,</span>
+<span id="L309"><span class="lineNum">     309</span>                 :             :         -.00000000000030900580513238244,</span>
+<span id="L310"><span class="lineNum">     310</span>                 :             :         -.00000000000061076551972851496,</span>
+<span id="L311"><span class="lineNum">     311</span>                 :             :          .00000000000035659969663347830,</span>
+<span id="L312"><span class="lineNum">     312</span>                 :             :          .00000000000035782396591276383,</span>
+<span id="L313"><span class="lineNum">     313</span>                 :             :         -.00000000000046226087001544578,</span>
+<span id="L314"><span class="lineNum">     314</span>                 :             :          .00000000000062279762917225156,</span>
+<span id="L315"><span class="lineNum">     315</span>                 :             :          .00000000000072838947272065741,</span>
+<span id="L316"><span class="lineNum">     316</span>                 :             :          .00000000000026809646615211673,</span>
+<span id="L317"><span class="lineNum">     317</span>                 :             :         -.00000000000010960825046059278,</span>
+<span id="L318"><span class="lineNum">     318</span>                 :             :          .00000000000002311949383800537,</span>
+<span id="L319"><span class="lineNum">     319</span>                 :             :         -.00000000000058469058005299247,</span>
+<span id="L320"><span class="lineNum">     320</span>                 :             :         -.00000000000002103748251144494,</span>
+<span id="L321"><span class="lineNum">     321</span>                 :             :         -.00000000000023323182945587408,</span>
+<span id="L322"><span class="lineNum">     322</span>                 :             :         -.00000000000042333694288141916,</span>
+<span id="L323"><span class="lineNum">     323</span>                 :             :         -.00000000000043933937969737844,</span>
+<span id="L324"><span class="lineNum">     324</span>                 :             :          .00000000000041341647073835565,</span>
+<span id="L325"><span class="lineNum">     325</span>                 :             :          .00000000000006841763641591466,</span>
+<span id="L326"><span class="lineNum">     326</span>                 :             :          .00000000000047585534004430641,</span>
+<span id="L327"><span class="lineNum">     327</span>                 :             :          .00000000000083679678674757695,</span>
+<span id="L328"><span class="lineNum">     328</span>                 :             :         -.00000000000085763734646658640,</span>
+<span id="L329"><span class="lineNum">     329</span>                 :             :          .00000000000021913281229340092,</span>
+<span id="L330"><span class="lineNum">     330</span>                 :             :         -.00000000000062242842536431148,</span>
+<span id="L331"><span class="lineNum">     331</span>                 :             :         -.00000000000010983594325438430,</span>
+<span id="L332"><span class="lineNum">     332</span>                 :             :          .00000000000065310431377633651,</span>
+<span id="L333"><span class="lineNum">     333</span>                 :             :         -.00000000000047580199021710769,</span>
+<span id="L334"><span class="lineNum">     334</span>                 :             :         -.00000000000037854251265457040,</span>
+<span id="L335"><span class="lineNum">     335</span>                 :             :          .00000000000040939233218678664,</span>
+<span id="L336"><span class="lineNum">     336</span>                 :             :          .00000000000087424383914858291,</span>
+<span id="L337"><span class="lineNum">     337</span>                 :             :          .00000000000025218188456842882,</span>
+<span id="L338"><span class="lineNum">     338</span>                 :             :         -.00000000000003608131360422557,</span>
+<span id="L339"><span class="lineNum">     339</span>                 :             :         -.00000000000050518555924280902,</span>
+<span id="L340"><span class="lineNum">     340</span>                 :             :          .00000000000078699403323355317,</span>
+<span id="L341"><span class="lineNum">     341</span>                 :             :         -.00000000000067020876961949060,</span>
+<span id="L342"><span class="lineNum">     342</span>                 :             :          .00000000000016108575753932458,</span>
+<span id="L343"><span class="lineNum">     343</span>                 :             :          .00000000000058527188436251509,</span>
+<span id="L344"><span class="lineNum">     344</span>                 :             :         -.00000000000035246757297904791,</span>
+<span id="L345"><span class="lineNum">     345</span>                 :             :         -.00000000000018372084495629058,</span>
+<span id="L346"><span class="lineNum">     346</span>                 :             :          .00000000000088606689813494916,</span>
+<span id="L347"><span class="lineNum">     347</span>                 :             :          .00000000000066486268071468700,</span>
+<span id="L348"><span class="lineNum">     348</span>                 :             :          .00000000000063831615170646519,</span>
+<span id="L349"><span class="lineNum">     349</span>                 :             :          .00000000000025144230728376072,</span>
+<span id="L350"><span class="lineNum">     350</span>                 :             :         -.00000000000017239444525614834</span>
+<span id="L351"><span class="lineNum">     351</span>                 :             : };</span>
+<span id="L352"><span class="lineNum">     352</span>                 :             : </span>
+<span id="L353"><span class="lineNum">     353</span>                 :             : #if 0</span>
+<span id="L354"><span class="lineNum">     354</span>                 :             : OLM_DLLEXPORT double</span>
+<span id="L355"><span class="lineNum">     355</span>                 :             : #ifdef _ANSI_SOURCE</span>
+<span id="L356"><span class="lineNum">     356</span>                 :             : log(double x)</span>
+<span id="L357"><span class="lineNum">     357</span>                 :             : #else</span>
+<span id="L358"><span class="lineNum">     358</span>                 :             : log(x) double x;</span>
+<span id="L359"><span class="lineNum">     359</span>                 :             : #endif</span>
+<span id="L360"><span class="lineNum">     360</span>                 :             : {</span>
+<span id="L361"><span class="lineNum">     361</span>                 :             :         int m, j;</span>
+<span id="L362"><span class="lineNum">     362</span>                 :             :         double F, f, g, q, u, u2, v, zero = 0.0, one = 1.0;</span>
+<span id="L363"><span class="lineNum">     363</span>                 :             :         volatile double u1;</span>
+<span id="L364"><span class="lineNum">     364</span>                 :             : </span>
+<span id="L365"><span class="lineNum">     365</span>                 :             :         /* Catch special cases */</span>
+<span id="L366"><span class="lineNum">     366</span>                 :             :         if (x &lt;= 0)</span>
+<span id="L367"><span class="lineNum">     367</span>                 :             :                 if (x == zero)  /* log(0) = -Inf */</span>
+<span id="L368"><span class="lineNum">     368</span>                 :             :                         return (-one/zero);</span>
+<span id="L369"><span class="lineNum">     369</span>                 :             :                 else            /* log(neg) = NaN */</span>
+<span id="L370"><span class="lineNum">     370</span>                 :             :                         return (zero/zero);</span>
+<span id="L371"><span class="lineNum">     371</span>                 :             :         else if (!finite(x))</span>
+<span id="L372"><span class="lineNum">     372</span>                 :             :                 return (x+x);           /* x = NaN, Inf */</span>
+<span id="L373"><span class="lineNum">     373</span>                 :             : </span>
+<span id="L374"><span class="lineNum">     374</span>                 :             :         /* Argument reduction: 1 &lt;= g &lt; 2; x/2^m = g;     */</span>
+<span id="L375"><span class="lineNum">     375</span>                 :             :         /* y = F*(1 + f/F) for |f| &lt;= 2^-8           */</span>
+<span id="L376"><span class="lineNum">     376</span>                 :             : </span>
+<span id="L377"><span class="lineNum">     377</span>                 :             :         m = logb(x);</span>
+<span id="L378"><span class="lineNum">     378</span>                 :             :         g = ldexp(x, -m);</span>
+<span id="L379"><span class="lineNum">     379</span>                 :             :         if (m == -1022) {</span>
+<span id="L380"><span class="lineNum">     380</span>                 :             :                 j = logb(g), m += j;</span>
+<span id="L381"><span class="lineNum">     381</span>                 :             :                 g = ldexp(g, -j);</span>
+<span id="L382"><span class="lineNum">     382</span>                 :             :         }</span>
+<span id="L383"><span class="lineNum">     383</span>                 :             :         j = N*(g-1) + .5;</span>
+<span id="L384"><span class="lineNum">     384</span>                 :             :         F = (1.0/N) * j + 1;    /* F*128 is an integer in [128, 512] */</span>
+<span id="L385"><span class="lineNum">     385</span>                 :             :         f = g - F;</span>
+<span id="L386"><span class="lineNum">     386</span>                 :             : </span>
+<span id="L387"><span class="lineNum">     387</span>                 :             :         /* Approximate expansion for log(1+f/F) ~= u + q */</span>
+<span id="L388"><span class="lineNum">     388</span>                 :             :         g = 1/(2*F+f);</span>
+<span id="L389"><span class="lineNum">     389</span>                 :             :         u = 2*f*g;</span>
+<span id="L390"><span class="lineNum">     390</span>                 :             :         v = u*u;</span>
+<span id="L391"><span class="lineNum">     391</span>                 :             :         q = u*v*(A1 + v*(A2 + v*(A3 + v*A4)));</span>
+<span id="L392"><span class="lineNum">     392</span>                 :             : </span>
+<span id="L393"><span class="lineNum">     393</span>                 :             :     /* case 1: u1 = u rounded to 2^-43 absolute.  Since u &lt; 2^-8,</span>
+<span id="L394"><span class="lineNum">     394</span>                 :             :      *         u1 has at most 35 bits, and F*u1 is exact, as F has &lt; 8 bits.</span>
+<span id="L395"><span class="lineNum">     395</span>                 :             :      *         It also adds exactly to |m*log2_hi + log_F_head[j] | &lt; 750</span>
+<span id="L396"><span class="lineNum">     396</span>                 :             :     */</span>
+<span id="L397"><span class="lineNum">     397</span>                 :             :         if (m | j)</span>
+<span id="L398"><span class="lineNum">     398</span>                 :             :                 u1 = u + 513, u1 -= 513;</span>
+<span id="L399"><span class="lineNum">     399</span>                 :             : </span>
+<span id="L400"><span class="lineNum">     400</span>                 :             :     /* case 2:  |1-x| &lt; 1/256. The m- and j- dependent terms are zero;</span>
+<span id="L401"><span class="lineNum">     401</span>                 :             :      *          u1 = u to 24 bits.</span>
+<span id="L402"><span class="lineNum">     402</span>                 :             :     */</span>
+<span id="L403"><span class="lineNum">     403</span>                 :             :         else</span>
+<span id="L404"><span class="lineNum">     404</span>                 :             :                 u1 = u, TRUNC(u1);</span>
+<span id="L405"><span class="lineNum">     405</span>                 :             :         u2 = (2.0*(f - F*u1) - u1*f) * g;</span>
+<span id="L406"><span class="lineNum">     406</span>                 :             :                         /* u1 + u2 = 2f/(2F+f) to extra precision.      */</span>
+<span id="L407"><span class="lineNum">     407</span>                 :             : </span>
+<span id="L408"><span class="lineNum">     408</span>                 :             :         /* log(x) = log(2^m*F*(1+f/F)) =                                */</span>
+<span id="L409"><span class="lineNum">     409</span>                 :             :         /* (m*log2_hi+logF_head[j]+u1) + (m*log2_lo+logF_tail[j]+q);    */</span>
+<span id="L410"><span class="lineNum">     410</span>                 :             :         /* (exact) + (tiny)                                             */</span>
+<span id="L411"><span class="lineNum">     411</span>                 :             : </span>
+<span id="L412"><span class="lineNum">     412</span>                 :             :         u1 += m*logF_head[N] + logF_head[j];            /* exact */</span>
+<span id="L413"><span class="lineNum">     413</span>                 :             :         u2 = (u2 + logF_tail[j]) + q;                   /* tiny */</span>
+<span id="L414"><span class="lineNum">     414</span>                 :             :         u2 += logF_tail[N]*m;</span>
+<span id="L415"><span class="lineNum">     415</span>                 :             :         return (u1 + u2);</span>
+<span id="L416"><span class="lineNum">     416</span>                 :             : }</span>
+<span id="L417"><span class="lineNum">     417</span>                 :             : #endif</span>
+<span id="L418"><span class="lineNum">     418</span>                 :             : </span>
+<span id="L419"><span class="lineNum">     419</span>                 :             : /*</span>
+<span id="L420"><span class="lineNum">     420</span>                 :             :  * Extra precision variant, returning struct {double a, b;};</span>
+<span id="L421"><span class="lineNum">     421</span>                 :             :  * log(x) = a+b to 63 bits, with a rounded to 26 bits.</span>
+<span id="L422"><span class="lineNum">     422</span>                 :             :  */</span>
+<span id="L423"><span class="lineNum">     423</span>                 :             : struct Double</span>
+<span id="L424"><span class="lineNum">     424</span>                 :             : #ifdef _ANSI_SOURCE</span>
+<span id="L425"><span class="lineNum">     425</span>                 :             : __log__D(double x)</span>
+<span id="L426"><span class="lineNum">     426</span>                 :             : #else</span>
+<span id="L427"><span class="lineNum">     427</span>                 :<span class="tlaUNC tlaBgUNC">           0 : __log__D(x) double x;</span></span>
+<span id="L428"><span class="lineNum">     428</span>                 :             : #endif</span>
+<span id="L429"><span class="lineNum">     429</span>                 :             : {</span>
+<span id="L430"><span class="lineNum">     430</span>                 :             :         int m, j;</span>
+<span id="L431"><span class="lineNum">     431</span>                 :             :         double F, f, g, q, u, v, u2;</span>
+<span id="L432"><span class="lineNum">     432</span>                 :             :         volatile double u1;</span>
+<span id="L433"><span class="lineNum">     433</span>                 :             :         struct Double r;</span>
+<span id="L434"><span class="lineNum">     434</span>                 :             : </span>
+<span id="L435"><span class="lineNum">     435</span>                 :             :         /* Argument reduction: 1 &lt;= g &lt; 2; x/2^m = g;     */</span>
+<span id="L436"><span class="lineNum">     436</span>                 :             :         /* y = F*(1 + f/F) for |f| &lt;= 2^-8           */</span>
+<span id="L437"><span class="lineNum">     437</span>                 :             : </span>
+<span id="L438"><span class="lineNum">     438</span>                 :<span class="tlaUNC">           0 :         m = logb(x);</span></span>
+<span id="L439"><span class="lineNum">     439</span>                 :<span class="tlaUNC">           0 :         g = ldexp(x, -m);</span></span>
+<span id="L440"><span class="lineNum">     440</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         if (m == -1022) {</span></span>
+<span id="L441"><span class="lineNum">     441</span>                 :<span class="tlaUNC">           0 :                 j = logb(g), m += j;</span></span>
+<span id="L442"><span class="lineNum">     442</span>                 :<span class="tlaUNC">           0 :                 g = ldexp(g, -j);</span></span>
+<span id="L443"><span class="lineNum">     443</span>                 :             :         }</span>
+<span id="L444"><span class="lineNum">     444</span>                 :<span class="tlaUNC">           0 :         j = N*(g-1) + .5;</span></span>
+<span id="L445"><span class="lineNum">     445</span>                 :<span class="tlaUNC">           0 :         F = (1.0/N) * j + 1;</span></span>
+<span id="L446"><span class="lineNum">     446</span>                 :<span class="tlaUNC">           0 :         f = g - F;</span></span>
+<span id="L447"><span class="lineNum">     447</span>                 :             : </span>
+<span id="L448"><span class="lineNum">     448</span>                 :<span class="tlaUNC">           0 :         g = 1/(2*F+f);</span></span>
+<span id="L449"><span class="lineNum">     449</span>                 :<span class="tlaUNC">           0 :         u = 2*f*g;</span></span>
+<span id="L450"><span class="lineNum">     450</span>                 :<span class="tlaUNC">           0 :         v = u*u;</span></span>
+<span id="L451"><span class="lineNum">     451</span>                 :<span class="tlaUNC">           0 :         q = u*v*(A1 + v*(A2 + v*(A3 + v*A4)));</span></span>
+<span id="L452"><span class="lineNum">     452</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         if (m | j)</span></span>
+<span id="L453"><span class="lineNum">     453</span>                 :<span class="tlaUNC">           0 :                 u1 = u + 513, u1 -= 513;</span></span>
+<span id="L454"><span class="lineNum">     454</span>                 :             :         else</span>
+<span id="L455"><span class="lineNum">     455</span>                 :<span class="tlaUNC">           0 :                 u1 = u, TRUNC(u1);</span></span>
+<span id="L456"><span class="lineNum">     456</span>                 :<span class="tlaUNC">           0 :         u2 = (2.0*(f - F*u1) - u1*f) * g;</span></span>
+<span id="L457"><span class="lineNum">     457</span>                 :             : </span>
+<span id="L458"><span class="lineNum">     458</span>                 :<span class="tlaUNC">           0 :         u1 += m*logF_head[N] + logF_head[j];</span></span>
+<span id="L459"><span class="lineNum">     459</span>                 :             : </span>
+<span id="L460"><span class="lineNum">     460</span>                 :<span class="tlaUNC">           0 :         u2 +=  logF_tail[j]; u2 += q;</span></span>
+<span id="L461"><span class="lineNum">     461</span>                 :<span class="tlaUNC">           0 :         u2 += logF_tail[N]*m;</span></span>
+<span id="L462"><span class="lineNum">     462</span>                 :<span class="tlaUNC">           0 :         r.a = u1 + u2;                  /* Only difference is here */</span></span>
+<span id="L463"><span class="lineNum">     463</span>                 :<span class="tlaUNC">           0 :         TRUNC(r.a);</span></span>
+<span id="L464"><span class="lineNum">     464</span>                 :<span class="tlaUNC">           0 :         r.b = (u1 - r.a) + u2;</span></span>
+<span id="L465"><span class="lineNum">     465</span>                 :<span class="tlaUNC">           0 :         return (r);</span></span>
+<span id="L466"><span class="lineNum">     466</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

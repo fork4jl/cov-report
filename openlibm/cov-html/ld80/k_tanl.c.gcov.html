@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - ld80/k_tanl.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory ld80">ld80</a> - k_tanl.c<span style="font-size: 80%;"> (source / <a href="k_tanl.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* From: @(#)k_tan.c 1.5 04/04/22 SMI */</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : </span>
+<span id="L3"><span class="lineNum">       3</span>                 :             : /*</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  * ====================================================</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  * Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * Copyright (c) 2008 Steven G. Kargl, David Schultz, Bruce D. Evans.</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  *</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * is preserved.</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * ====================================================</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  */</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : </span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/ld80/k_tanl.c,v 1.3 2008/02/18 15:39:52 bde Exp $&quot;);</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : </span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : /*</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  * ld80 version of k_tan.c.  See ../src/k_tan.c for most comments.</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  */</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : </span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : </span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : </span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : /*</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  * Domain [-0.67434, 0.67434], range ~[-2.25e-22, 1.921e-22]</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  * |tan(x)/x - t(x)| &lt; 2**-71.9</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :  *</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             :  * See k_cosl.c for more details about the polynomial.</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             :  */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : #if defined(__amd64__) || defined(__i386__)</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : /* Long double constants are slow on these arches, and broken on i386. */</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : static const volatile double</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : T3hi =  0.33333333333333331,            /*  0x15555555555555.0p-54 */</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : T3lo =  1.8350121769317163e-17,         /*  0x15280000000000.0p-108 */</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : T5hi =  0.13333333333333336,            /*  0x11111111111112.0p-55 */</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : T5lo =  1.3051083651294260e-17,         /*  0x1e180000000000.0p-109 */</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : T7hi =  0.053968253968250494,           /*  0x1ba1ba1ba1b827.0p-57 */</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             : T7lo =  3.1509625637859973e-18,         /*  0x1d100000000000.0p-111 */</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : pio4_hi =  0.78539816339744828,         /*  0x1921fb54442d18.0p-53 */</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             : pio4_lo =  3.0628711372715500e-17,      /*  0x11a80000000000.0p-107 */</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : pio4lo_hi = -1.2541394031670831e-20,    /* -0x1d9cceba3f91f2.0p-119 */</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : pio4lo_lo =  6.1493048227390915e-37;    /*  0x1a280000000000.0p-173 */</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             : #define T3      ((long double)T3hi + T3lo)</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             : #define T5      ((long double)T5hi + T5lo)</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : #define T7      ((long double)T7hi + T7lo)</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             : #define pio4    ((long double)pio4_hi + pio4_lo)</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             : #define pio4lo  ((long double)pio4lo_hi + pio4lo_lo)</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             : #else</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             : static const long double</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             : T3 =   0.333333333333333333180L,        /*  0xaaaaaaaaaaaaaaa5.0p-65 */</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             : T5 =   0.133333333333333372290L,        /*  0x88888888888893c3.0p-66 */</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             : T7 =   0.0539682539682504975744L,       /*  0xdd0dd0dd0dc13ba2.0p-68 */</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             : pio4 = 0.785398163397448309628L,        /*  0xc90fdaa22168c235.0p-64 */</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             : pio4lo = -1.25413940316708300586e-20L;  /* -0xece675d1fc8f8cbb.0p-130 */</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             : #endif</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             : </span>
+<span id="L58"><span class="lineNum">      58</span>                 :             : static const double</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             : T9  =  0.021869488536312216,            /*  0x1664f4882cc1c2.0p-58 */</span>
+<span id="L60"><span class="lineNum">      60</span>                 :             : T11 =  0.0088632355256619590,           /*  0x1226e355c17612.0p-59 */</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             : T13 =  0.0035921281113786528,           /*  0x1d6d3d185d7ff8.0p-61 */</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             : T15 =  0.0014558334756312418,           /*  0x17da354aa3f96b.0p-62 */</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             : T17 =  0.00059003538700862256,          /*  0x13559358685b83.0p-63 */</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             : T19 =  0.00023907843576635544,          /*  0x1f56242026b5be.0p-65 */</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             : T21 =  0.000097154625656538905,         /*  0x1977efc26806f4.0p-66 */</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             : T23 =  0.000038440165747303162,         /*  0x14275a09b3ceac.0p-67 */</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             : T25 =  0.000018082171885432524,         /*  0x12f5e563e5487e.0p-68 */</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             : T27 =  0.0000024196006108814377,        /*  0x144c0d80cc6896.0p-71 */</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             : T29 =  0.0000078293456938132840,        /*  0x106b59141a6cb3.0p-69 */</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             : T31 = -0.0000032609076735050182,        /* -0x1b5abef3ba4b59.0p-71 */</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             : T33 =  0.0000023261313142559411;        /*  0x13835436c0c87f.0p-71 */</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             : </span>
+<span id="L73"><span class="lineNum">      73</span>                 :             : long double</span>
+<span id="L74"><span class="lineNum">      74</span>                 :<span class="tlaUNC tlaBgUNC">           0 : __kernel_tanl(long double x, long double y, int iy) {</span></span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :         long double z, r, v, w, s;</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             :         long double osign;</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :         int i;</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             : </span>
+<span id="L79"><span class="lineNum">      79</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         iy = (iy == 1 ? -1 : 1);        /* XXX recover original interface */</span></span>
+<span id="L80"><span class="lineNum">      80</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         osign = (x &gt;= 0 ? 1.0 : -1.0);       /* XXX slow, probably wrong for -0 */</span></span>
+<span id="L81"><span class="lineNum">      81</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         if (fabsl(x) &gt;= 0.67434) {</span></span>
+<span id="L82"><span class="lineNum">      82</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :                 if (x &lt; 0) {</span></span>
+<span id="L83"><span class="lineNum">      83</span>                 :<span class="tlaUNC">           0 :                         x = -x;</span></span>
+<span id="L84"><span class="lineNum">      84</span>                 :<span class="tlaUNC">           0 :                         y = -y;</span></span>
+<span id="L85"><span class="lineNum">      85</span>                 :             :                 }</span>
+<span id="L86"><span class="lineNum">      86</span>                 :<span class="tlaUNC">           0 :                 z = pio4 - x;</span></span>
+<span id="L87"><span class="lineNum">      87</span>                 :<span class="tlaUNC">           0 :                 w = pio4lo - y;</span></span>
+<span id="L88"><span class="lineNum">      88</span>                 :<span class="tlaUNC">           0 :                 x = z + w;</span></span>
+<span id="L89"><span class="lineNum">      89</span>                 :<span class="tlaUNC">           0 :                 y = 0.0;</span></span>
+<span id="L90"><span class="lineNum">      90</span>                 :<span class="tlaUNC">           0 :                 i = 1;</span></span>
+<span id="L91"><span class="lineNum">      91</span>                 :             :         } else</span>
+<span id="L92"><span class="lineNum">      92</span>                 :<span class="tlaUNC">           0 :                 i = 0;</span></span>
+<span id="L93"><span class="lineNum">      93</span>                 :<span class="tlaUNC">           0 :         z = x * x;</span></span>
+<span id="L94"><span class="lineNum">      94</span>                 :<span class="tlaUNC">           0 :         w = z * z;</span></span>
+<span id="L95"><span class="lineNum">      95</span>                 :<span class="tlaUNC">           0 :         r = T5 + w * (T9 + w * (T13 + w * (T17 + w * (T21 +</span></span>
+<span id="L96"><span class="lineNum">      96</span>                 :<span class="tlaUNC">           0 :             w * (T25 + w * (T29 + w * T33))))));</span></span>
+<span id="L97"><span class="lineNum">      97</span>                 :<span class="tlaUNC">           0 :         v = z * (T7 + w * (T11 + w * (T15 + w * (T19 + w * (T23 +</span></span>
+<span id="L98"><span class="lineNum">      98</span>                 :<span class="tlaUNC">           0 :             w * (T27 + w * T31))))));</span></span>
+<span id="L99"><span class="lineNum">      99</span>                 :<span class="tlaUNC">           0 :         s = z * x;</span></span>
+<span id="L100"><span class="lineNum">     100</span>                 :<span class="tlaUNC">           0 :         r = y + z * (s * (r + v) + y);</span></span>
+<span id="L101"><span class="lineNum">     101</span>                 :<span class="tlaUNC">           0 :         r += T3 * s;</span></span>
+<span id="L102"><span class="lineNum">     102</span>                 :<span class="tlaUNC">           0 :         w = x + r;</span></span>
+<span id="L103"><span class="lineNum">     103</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         if (i == 1) {</span></span>
+<span id="L104"><span class="lineNum">     104</span>                 :<span class="tlaUNC">           0 :                 v = (long double) iy;</span></span>
+<span id="L105"><span class="lineNum">     105</span>                 :<span class="tlaUNC">           0 :                 return osign *</span></span>
+<span id="L106"><span class="lineNum">     106</span>                 :<span class="tlaUNC">           0 :                         (v - 2.0 * (x - (w * w / (w + v) - r)));</span></span>
+<span id="L107"><span class="lineNum">     107</span>                 :             :         }</span>
+<span id="L108"><span class="lineNum">     108</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :         if (iy == 1)</span></span>
+<span id="L109"><span class="lineNum">     109</span>                 :<span class="tlaUNC">           0 :                 return w;</span></span>
+<span id="L110"><span class="lineNum">     110</span>                 :             :         else {</span>
+<span id="L111"><span class="lineNum">     111</span>                 :             :                 /*</span>
+<span id="L112"><span class="lineNum">     112</span>                 :             :                  * if allow error up to 2 ulp, simply return</span>
+<span id="L113"><span class="lineNum">     113</span>                 :             :                  * -1.0 / (x+r) here</span>
+<span id="L114"><span class="lineNum">     114</span>                 :             :                  */</span>
+<span id="L115"><span class="lineNum">     115</span>                 :             :                 /* compute -1.0 / (x+r) accurately */</span>
+<span id="L116"><span class="lineNum">     116</span>                 :             :                 long double a, t;</span>
+<span id="L117"><span class="lineNum">     117</span>                 :<span class="tlaUNC">           0 :                 z = w;</span></span>
+<span id="L118"><span class="lineNum">     118</span>                 :<span class="tlaUNC">           0 :                 z = z + 0x1p32 - 0x1p32;</span></span>
+<span id="L119"><span class="lineNum">     119</span>                 :<span class="tlaUNC">           0 :                 v = r - (z - x);        /* z+v = r+x */</span></span>
+<span id="L120"><span class="lineNum">     120</span>                 :<span class="tlaUNC">           0 :                 t = a = -1.0 / w;       /* a = -1.0/w */</span></span>
+<span id="L121"><span class="lineNum">     121</span>                 :<span class="tlaUNC">           0 :                 t = t + 0x1p32 - 0x1p32;</span></span>
+<span id="L122"><span class="lineNum">     122</span>                 :<span class="tlaUNC">           0 :                 s = 1.0 + t * z;</span></span>
+<span id="L123"><span class="lineNum">     123</span>                 :<span class="tlaUNC">           0 :                 return t + a * (s + t * v);</span></span>
+<span id="L124"><span class="lineNum">     124</span>                 :             :         }</span>
+<span id="L125"><span class="lineNum">     125</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/k_exp.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - k_exp.c<span style="font-size: 80%;"> (source / <a href="k_exp.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryHi">-</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /*-</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Copyright (c) 2011 David Schultz &lt;das@FreeBSD.ORG&gt;</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  * All rights reserved.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  *</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  * Redistribution and use in source and binary forms, with or without</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * modification, are permitted provided that the following conditions</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * are met:</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * 1. Redistributions of source code must retain the above copyright</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  *    notice, this list of conditions and the following disclaimer.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * 2. Redistributions in binary form must reproduce the above copyright</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  *    notice, this list of conditions and the following disclaimer in the</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  *    documentation and/or other materials provided with the distribution.</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  *</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             :  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             :  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             :  * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             :  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             :  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             :  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             :  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             :  * SUCH DAMAGE.</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             :  */</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : </span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/k_exp.c,v 1.1 2011/10/21 06:27:56 das Exp $&quot;);</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : </span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : #include &lt;openlibm_complex.h&gt;</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : </span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : </span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : static const u_int32_t k = 1799;                /* constant for reduction */</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : static const double kln2 =  1246.97177782734161156;     /* k * ln2 */</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : </span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : /*</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             :  * Compute exp(x), scaled to avoid spurious overflow.  An exponent is</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             :  * returned separately in 'expt'.</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :  *</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             :  * Input:  ln(DBL_MAX) &lt;= x &lt; ln(2 * DBL_MAX / DBL_MIN_DENORM) ~= 1454.91</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :  * Output: 2**1023 &lt;= y &lt; 2**1024</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             :  */</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             : static double</span>
+<span id="L46"><span class="lineNum">      46</span>                 :<span class="tlaUNC tlaBgUNC">           0 : __frexp_exp(double x, int *expt)</span></span>
+<span id="L47"><span class="lineNum">      47</span>                 :             : {</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             :         double exp_x;</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             :         u_int32_t hx;</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             : </span>
+<span id="L51"><span class="lineNum">      51</span>                 :             :         /*</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             :          * We use exp(x) = exp(x - kln2) * 2**k, carefully chosen to</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             :          * minimize |exp(kln2) - 2**k|.  We also scale the exponent of</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :          * exp_x to MAX_EXP so that the result can be multiplied by</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :          * a tiny number without losing accuracy due to denormalization.</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :          */</span>
+<span id="L57"><span class="lineNum">      57</span>                 :<span class="tlaUNC">           0 :         exp_x = exp(x - kln2);</span></span>
+<span id="L58"><span class="lineNum">      58</span>                 :<span class="tlaUNC">           0 :         GET_HIGH_WORD(hx, exp_x);</span></span>
+<span id="L59"><span class="lineNum">      59</span>                 :<span class="tlaUNC">           0 :         *expt = (hx &gt;&gt; 20) - (0x3ff + 1023) + k;</span></span>
+<span id="L60"><span class="lineNum">      60</span>                 :<span class="tlaUNC">           0 :         SET_HIGH_WORD(exp_x, (hx &amp; 0xfffff) | ((0x3ff + 1023) &lt;&lt; 20));</span></span>
+<span id="L61"><span class="lineNum">      61</span>                 :<span class="tlaUNC">           0 :         return (exp_x);</span></span>
+<span id="L62"><span class="lineNum">      62</span>                 :             : }</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             : </span>
+<span id="L64"><span class="lineNum">      64</span>                 :             : /*</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :  * __ldexp_exp(x, expt) and __ldexp_cexp(x, expt) compute exp(x) * 2**expt.</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :  * They are intended for large arguments (real part &gt;= ln(DBL_MAX))</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :  * where care is needed to avoid overflow.</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             :  *</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :  * The present implementation is narrowly tailored for our hyperbolic and</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             :  * exponential functions.  We assume expt is small (0 or -1), and the caller</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :  * has filtered out very large x, for which overflow would be inevitable.</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             :  */</span>
+<span id="L73"><span class="lineNum">      73</span>                 :             : </span>
+<span id="L74"><span class="lineNum">      74</span>                 :             : OLM_DLLEXPORT double</span>
+<span id="L75"><span class="lineNum">      75</span>                 :<span class="tlaUNC">           0 : __ldexp_exp(double x, int expt)</span></span>
+<span id="L76"><span class="lineNum">      76</span>                 :             : {</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :         double exp_x, scale;</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             :         int ex_expt;</span>
+<span id="L79"><span class="lineNum">      79</span>                 :             : </span>
+<span id="L80"><span class="lineNum">      80</span>                 :<span class="tlaUNC">           0 :         exp_x = __frexp_exp(x, &amp;ex_expt);</span></span>
+<span id="L81"><span class="lineNum">      81</span>                 :<span class="tlaUNC">           0 :         expt += ex_expt;</span></span>
+<span id="L82"><span class="lineNum">      82</span>                 :<span class="tlaUNC">           0 :         INSERT_WORDS(scale, (0x3ff + expt) &lt;&lt; 20, 0);</span></span>
+<span id="L83"><span class="lineNum">      83</span>                 :<span class="tlaUNC">           0 :         return (exp_x * scale);</span></span>
+<span id="L84"><span class="lineNum">      84</span>                 :             : }</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : </span>
+<span id="L86"><span class="lineNum">      86</span>                 :             : OLM_DLLEXPORT double complex</span>
+<span id="L87"><span class="lineNum">      87</span>                 :<span class="tlaUNC">           0 : __ldexp_cexp(double complex z, int expt)</span></span>
+<span id="L88"><span class="lineNum">      88</span>                 :             : {</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             :         double x, y, exp_x, scale1, scale2;</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             :         int ex_expt, half_expt;</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             : </span>
+<span id="L92"><span class="lineNum">      92</span>                 :<span class="tlaUNC">           0 :         x = creal(z);</span></span>
+<span id="L93"><span class="lineNum">      93</span>                 :<span class="tlaUNC">           0 :         y = cimag(z);</span></span>
+<span id="L94"><span class="lineNum">      94</span>                 :<span class="tlaUNC">           0 :         exp_x = __frexp_exp(x, &amp;ex_expt);</span></span>
+<span id="L95"><span class="lineNum">      95</span>                 :<span class="tlaUNC">           0 :         expt += ex_expt;</span></span>
+<span id="L96"><span class="lineNum">      96</span>                 :             : </span>
+<span id="L97"><span class="lineNum">      97</span>                 :             :         /*</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             :          * Arrange so that scale1 * scale2 == 2**expt.  We use this to</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             :          * compensate for scalbn being horrendously slow.</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             :          */</span>
+<span id="L101"><span class="lineNum">     101</span>                 :<span class="tlaUNC">           0 :         half_expt = expt / 2;</span></span>
+<span id="L102"><span class="lineNum">     102</span>                 :<span class="tlaUNC">           0 :         INSERT_WORDS(scale1, (0x3ff + half_expt) &lt;&lt; 20, 0);</span></span>
+<span id="L103"><span class="lineNum">     103</span>                 :<span class="tlaUNC">           0 :         half_expt = expt - half_expt;</span></span>
+<span id="L104"><span class="lineNum">     104</span>                 :<span class="tlaUNC">           0 :         INSERT_WORDS(scale2, (0x3ff + half_expt) &lt;&lt; 20, 0);</span></span>
+<span id="L105"><span class="lineNum">     105</span>                 :             : </span>
+<span id="L106"><span class="lineNum">     106</span>                 :<span class="tlaUNC">           0 :         return (CMPLX(cos(y) * exp_x * scale1 * scale2,</span></span>
+<span id="L107"><span class="lineNum">     107</span>                 :             :             sin(y) * exp_x * scale1 * scale2));</span>
+<span id="L108"><span class="lineNum">     108</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

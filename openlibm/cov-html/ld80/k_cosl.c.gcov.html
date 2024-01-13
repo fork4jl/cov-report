@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - ld80/k_cosl.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory ld80">ld80</a> - k_cosl.c<span style="font-size: 80%;"> (source / <a href="k_cosl.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryHi">-</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* From: @(#)k_cos.c 1.3 95/01/18 */</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : /*</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  * ====================================================</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  * Copyright (c) 2008 Steven G. Kargl, David Schultz, Bruce D. Evans.</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  *</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * Developed at SunSoft, a Sun Microsystems, Inc. business.</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  * software is freely granted, provided that this notice </span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * is preserved.</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * ====================================================</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  */</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : </span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/ld80/k_cosl.c,v 1.1 2008/02/17 07:32:14 das Exp $&quot;);</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : </span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : /*</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  * ld80 version of k_cos.c.  See ../src/k_cos.c for most comments.</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  */</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : </span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : </span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : /*</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             :  * Domain [-0.7854, 0.7854], range ~[-2.43e-23, 2.425e-23]:</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             :  * |cos(x) - c(x)| &lt; 2**-75.1</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  *</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  * The coefficients of c(x) were generated by a pari-gp script using</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :  * a Remez algorithm that searches for the best higher coefficients</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             :  * after rounding leading coefficients to a specified precision.</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             :  *</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             :  * Simpler methods like Chebyshev or basic Remez barely suffice for</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             :  * cos() in 64-bit precision, because we want the coefficient of x^2</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             :  * to be precisely -0.5 so that multiplying by it is exact, and plain</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             :  * rounding of the coefficients of a good polynomial approximation only</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             :  * gives this up to about 64-bit precision.  Plain rounding also gives</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             :  * a mediocre approximation for the coefficient of x^4, but a rounding</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             :  * error of 0.5 ulps for this coefficient would only contribute ~0.01</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             :  * ulps to the final error, so this is unimportant.  Rounding errors in</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             :  * higher coefficients are even less important.</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             :  *</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :  * In fact, coefficients above the x^4 one only need to have 53-bit</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             :  * precision, and this is more efficient.  We get this optimization</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :  * almost for free from the complications needed to search for the best</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             :  * higher coefficients.</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             :  */</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : static const double</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             : one = 1.0;</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             : </span>
+<span id="L49"><span class="lineNum">      49</span>                 :             : #if defined(__amd64__) || defined(__i386__)</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             : /* Long double constants are slow on these arches, and broken on i386. */</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             : static const volatile double</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             : C1hi = 0.041666666666666664,            /*  0x15555555555555.0p-57 */</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             : C1lo = 2.2598839032744733e-18;          /*  0x14d80000000000.0p-111 */</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             : #define C1      ((long double)C1hi + C1lo)</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             : #else</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             : static const long double</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             : C1 =  0.0416666666666666666136L;        /*  0xaaaaaaaaaaaaaa9b.0p-68 */</span>
+<span id="L58"><span class="lineNum">      58</span>                 :             : #endif</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             : </span>
+<span id="L60"><span class="lineNum">      60</span>                 :             : static const double</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             : C2 = -0.0013888888888888874,            /* -0x16c16c16c16c10.0p-62 */</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             : C3 =  0.000024801587301571716,          /*  0x1a01a01a018e22.0p-68 */</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             : C4 = -0.00000027557319215507120,        /* -0x127e4fb7602f22.0p-74 */</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             : C5 =  0.0000000020876754400407278,      /*  0x11eed8caaeccf1.0p-81 */</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             : C6 = -1.1470297442401303e-11,           /* -0x19393412bd1529.0p-89 */</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             : C7 =  4.7383039476436467e-14;           /*  0x1aac9d9af5c43e.0p-97 */</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             : </span>
+<span id="L68"><span class="lineNum">      68</span>                 :             : long double</span>
+<span id="L69"><span class="lineNum">      69</span>                 :<span class="tlaUNC tlaBgUNC">           0 : __kernel_cosl(long double x, long double y)</span></span>
+<span id="L70"><span class="lineNum">      70</span>                 :             : {</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :         long double hz,z,r,w;</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             : </span>
+<span id="L73"><span class="lineNum">      73</span>                 :<span class="tlaUNC">           0 :         z  = x*x;</span></span>
+<span id="L74"><span class="lineNum">      74</span>                 :<span class="tlaUNC">           0 :         r  = z*(C1+z*(C2+z*(C3+z*(C4+z*(C5+z*(C6+z*C7))))));</span></span>
+<span id="L75"><span class="lineNum">      75</span>                 :<span class="tlaUNC">           0 :         hz = 0.5*z;</span></span>
+<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaUNC">           0 :         w  = one-hz;</span></span>
+<span id="L77"><span class="lineNum">      77</span>                 :<span class="tlaUNC">           0 :         return w + (((one-w)-hz) + (z*r-x*y));</span></span>
+<span id="L78"><span class="lineNum">      78</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

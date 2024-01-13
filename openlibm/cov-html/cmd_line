@@ -1,0 +1,1 @@
+genhtml -j 4 --branch-coverage --output-directory cov-html/ cov-html/app.info

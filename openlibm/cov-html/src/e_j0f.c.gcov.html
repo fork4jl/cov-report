@@ -1,0 +1,422 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/e_j0f.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - e_j0f.c<span style="font-size: 80%;"> (source / <a href="e_j0f.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">97.4&nbsp;%</td>
+            <td class="headerCovTableEntry">76</td>
+            <td class="headerCovTableEntry">74</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryMed">76.1&nbsp;%</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">35</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* e_j0f.c -- float version of e_j0.c.</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Conversion to float by Ian Lance Taylor, Cygnus Support, ian@cygnus.com.</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  */</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             : </span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : /*</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * ====================================================</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  *</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  * Developed at SunPro, a Sun Microsystems, Inc. business.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  * is preserved.</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * ====================================================</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  */</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : #include &lt;assert.h&gt;</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : </span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : </span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : static float pzerof(float), qzerof(float);</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : </span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : static const float</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : huge    = 1e30,</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : one     = 1.0,</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : invsqrtpi=  5.6418961287e-01, /* 0x3f106ebb */</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : tpi      =  6.3661974669e-01, /* 0x3f22f983 */</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             :                 /* R0/S0 on [0, 2.00] */</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : R02  =  1.5625000000e-02, /* 0x3c800000 */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : R03  = -1.8997929874e-04, /* 0xb947352e */</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : R04  =  1.8295404516e-06, /* 0x35f58e88 */</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : R05  = -4.6183270541e-09, /* 0xb19eaf3c */</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : S01  =  1.5619102865e-02, /* 0x3c7fe744 */</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : S02  =  1.1692678527e-04, /* 0x38f53697 */</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : S03  =  5.1354652442e-07, /* 0x3509daa6 */</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : S04  =  1.1661400734e-09; /* 0x30a045e8 */</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : </span>
+<span id="L39"><span class="lineNum">      39</span>                 :             : static const float zero = 0.0;</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : </span>
+<span id="L41"><span class="lineNum">      41</span>                 :             : OLM_DLLEXPORT float</span>
+<span id="L42"><span class="lineNum">      42</span>                 :<span class="tlaGNC tlaBgGNC">          49 : __ieee754_j0f(float x)</span></span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : {</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             :         float z, s,c,ss,cc,r,u,v;</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             :         int32_t hx,ix;</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : </span>
+<span id="L47"><span class="lineNum">      47</span>                 :<span class="tlaGNC">          49 :         GET_FLOAT_WORD(hx,x);</span></span>
+<span id="L48"><span class="lineNum">      48</span>                 :<span class="tlaGNC">          49 :         ix = hx&amp;0x7fffffff;</span></span>
+<span id="L49"><span class="lineNum">      49</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 46 times"> + </span>]:<span class="tlaGNC">          49 :         if(ix&gt;=0x7f800000) return one/(x*x);</span></span>
+<span id="L50"><span class="lineNum">      50</span>                 :<span class="tlaGNC">          46 :         x = fabsf(x);</span></span>
+<span id="L51"><span class="lineNum">      51</span>         [<span class="tlaGBC" title="Branch 0 was taken 10 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 36 times"> + </span>]:<span class="tlaGNC">          46 :         if(ix &gt;= 0x40000000) {       /* |x| &gt;= 2.0 */</span></span>
+<span id="L52"><span class="lineNum">      52</span>                 :<span class="tlaGNC">          10 :                 s = sinf(x);</span></span>
+<span id="L53"><span class="lineNum">      53</span>                 :<span class="tlaGNC">          10 :                 c = cosf(x);</span></span>
+<span id="L54"><span class="lineNum">      54</span>                 :<span class="tlaGNC">          10 :                 ss = s-c;</span></span>
+<span id="L55"><span class="lineNum">      55</span>                 :<span class="tlaGNC">          10 :                 cc = s+c;</span></span>
+<span id="L56"><span class="lineNum">      56</span>         [<span class="tlaGBC" title="Branch 0 was taken 10 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          10 :                 if(ix&lt;0x7f000000) {  /* make sure x+x not overflow */</span></span>
+<span id="L57"><span class="lineNum">      57</span>                 :<span class="tlaGNC">          10 :                     z = -cosf(x+x);</span></span>
+<span id="L58"><span class="lineNum">      58</span>         [<span class="tlaGBC" title="Branch 0 was taken 6 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 4 times"> + </span>]:<span class="tlaGNC">          10 :                     if ((s*c)&lt;zero) cc = z/ss;</span></span>
+<span id="L59"><span class="lineNum">      59</span>                 :<span class="tlaGNC">           4 :                     else            ss = z/cc;</span></span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :                 }</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             :         /*</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             :          * j0(x) = 1/sqrt(pi) * (P(0,x)*cc - Q(0,x)*ss) / sqrt(x)</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             :          * y0(x) = 1/sqrt(pi) * (P(0,x)*ss + Q(0,x)*cc) / sqrt(x)</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             :          */</span>
+<span id="L65"><span class="lineNum">      65</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 10 times"> + </span>]:<span class="tlaGNC">          10 :                 if(ix&gt;0x58000000) z = (invsqrtpi*cc)/sqrtf(x); /* |x|&gt;2**49 */</span></span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :                 else {</span>
+<span id="L67"><span class="lineNum">      67</span>                 :<span class="tlaGNC">          10 :                     u = pzerof(x); v = qzerof(x);</span></span>
+<span id="L68"><span class="lineNum">      68</span>                 :<span class="tlaGNC">          10 :                     z = invsqrtpi*(u*cc-v*ss)/sqrtf(x);</span></span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :                 }</span>
+<span id="L70"><span class="lineNum">      70</span>                 :<span class="tlaGNC">          10 :                 return z;</span></span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :         }</span>
+<span id="L72"><span class="lineNum">      72</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 33 times"> + </span>]:<span class="tlaGNC">          36 :         if(ix&lt;0x3b000000) {  /* |x| &lt; 2**-9 */</span></span>
+<span id="L73"><span class="lineNum">      73</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           3 :             if(huge+x&gt;one) { /* raise inexact if x != 0 */</span></span>
+<span id="L74"><span class="lineNum">      74</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           3 :                 if(ix&lt;0x39800000) return one;        /* |x|&lt;2**-12 */</span></span>
+<span id="L75"><span class="lineNum">      75</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 else          return one - x*x/4;</span></span>
+<span id="L76"><span class="lineNum">      76</span>                 :             :             }</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :         }</span>
+<span id="L78"><span class="lineNum">      78</span>                 :<span class="tlaGNC tlaBgGNC">          33 :         z = x*x;</span></span>
+<span id="L79"><span class="lineNum">      79</span>                 :<span class="tlaGNC">          33 :         r =  z*(R02+z*(R03+z*(R04+z*R05)));</span></span>
+<span id="L80"><span class="lineNum">      80</span>                 :<span class="tlaGNC">          33 :         s =  one+z*(S01+z*(S02+z*(S03+z*S04)));</span></span>
+<span id="L81"><span class="lineNum">      81</span>         [<span class="tlaGBC" title="Branch 0 was taken 16 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 17 times"> + </span>]:<span class="tlaGNC">          33 :         if(ix &lt; 0x3F800000) {        /* |x| &lt; 1.00 */</span></span>
+<span id="L82"><span class="lineNum">      82</span>                 :<span class="tlaGNC">          16 :             return one + z*((float)-0.25+(r/s));</span></span>
+<span id="L83"><span class="lineNum">      83</span>                 :             :         } else {</span>
+<span id="L84"><span class="lineNum">      84</span>                 :<span class="tlaGNC">          17 :             u = (float)0.5*x;</span></span>
+<span id="L85"><span class="lineNum">      85</span>                 :<span class="tlaGNC">          17 :             return((one+u)*(one-u)+z*(r/s));</span></span>
+<span id="L86"><span class="lineNum">      86</span>                 :             :         }</span>
+<span id="L87"><span class="lineNum">      87</span>                 :             : }</span>
+<span id="L88"><span class="lineNum">      88</span>                 :             : </span>
+<span id="L89"><span class="lineNum">      89</span>                 :             : static const float</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             : u00  = -7.3804296553e-02, /* 0xbd9726b5 */</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             : u01  =  1.7666645348e-01, /* 0x3e34e80d */</span>
+<span id="L92"><span class="lineNum">      92</span>                 :             : u02  = -1.3818567619e-02, /* 0xbc626746 */</span>
+<span id="L93"><span class="lineNum">      93</span>                 :             : u03  =  3.4745343146e-04, /* 0x39b62a69 */</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             : u04  = -3.8140706238e-06, /* 0xb67ff53c */</span>
+<span id="L95"><span class="lineNum">      95</span>                 :             : u05  =  1.9559013964e-08, /* 0x32a802ba */</span>
+<span id="L96"><span class="lineNum">      96</span>                 :             : u06  = -3.9820518410e-11, /* 0xae2f21eb */</span>
+<span id="L97"><span class="lineNum">      97</span>                 :             : v01  =  1.2730483897e-02, /* 0x3c509385 */</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             : v02  =  7.6006865129e-05, /* 0x389f65e0 */</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             : v03  =  2.5915085189e-07, /* 0x348b216c */</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             : v04  =  4.4111031494e-10; /* 0x2ff280c2 */</span>
+<span id="L101"><span class="lineNum">     101</span>                 :             : </span>
+<span id="L102"><span class="lineNum">     102</span>                 :             : OLM_DLLEXPORT float</span>
+<span id="L103"><span class="lineNum">     103</span>                 :<span class="tlaGNC">          30 : __ieee754_y0f(float x)</span></span>
+<span id="L104"><span class="lineNum">     104</span>                 :             : {</span>
+<span id="L105"><span class="lineNum">     105</span>                 :             :         float z, s,c,ss,cc,u,v;</span>
+<span id="L106"><span class="lineNum">     106</span>                 :             :         int32_t hx,ix;</span>
+<span id="L107"><span class="lineNum">     107</span>                 :             : </span>
+<span id="L108"><span class="lineNum">     108</span>                 :<span class="tlaGNC">          30 :         GET_FLOAT_WORD(hx,x);</span></span>
+<span id="L109"><span class="lineNum">     109</span>                 :<span class="tlaGNC">          30 :         ix = 0x7fffffff&amp;hx;</span></span>
+<span id="L110"><span class="lineNum">     110</span>                 :             :     /* Y0(NaN) is NaN, y0(-inf) is Nan, y0(inf) is 0  */</span>
+<span id="L111"><span class="lineNum">     111</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 27 times"> + </span>]:<span class="tlaGNC">          30 :         if(ix&gt;=0x7f800000) return  one/(x+x*x);</span></span>
+<span id="L112"><span class="lineNum">     112</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 26 times"> + </span>]:<span class="tlaGNC">          27 :         if(ix==0) return -one/zero;</span></span>
+<span id="L113"><span class="lineNum">     113</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 1 was taken 25 times"> + </span>]:<span class="tlaGNC">          26 :         if(hx&lt;0) return zero/zero;</span></span>
+<span id="L114"><span class="lineNum">     114</span>         [<span class="tlaGBC" title="Branch 0 was taken 10 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 15 times"> + </span>]:<span class="tlaGNC">          25 :         if(ix &gt;= 0x40000000) {  /* |x| &gt;= 2.0 */</span></span>
+<span id="L115"><span class="lineNum">     115</span>                 :             :         /* y0(x) = sqrt(2/(pi*x))*(p0(x)*sin(x0)+q0(x)*cos(x0))</span>
+<span id="L116"><span class="lineNum">     116</span>                 :             :          * where x0 = x-pi/4</span>
+<span id="L117"><span class="lineNum">     117</span>                 :             :          *      Better formula:</span>
+<span id="L118"><span class="lineNum">     118</span>                 :             :          *              cos(x0) = cos(x)cos(pi/4)+sin(x)sin(pi/4)</span>
+<span id="L119"><span class="lineNum">     119</span>                 :             :          *                      =  1/sqrt(2) * (sin(x) + cos(x))</span>
+<span id="L120"><span class="lineNum">     120</span>                 :             :          *              sin(x0) = sin(x)cos(3pi/4)-cos(x)sin(3pi/4)</span>
+<span id="L121"><span class="lineNum">     121</span>                 :             :          *                      =  1/sqrt(2) * (sin(x) - cos(x))</span>
+<span id="L122"><span class="lineNum">     122</span>                 :             :          * To avoid cancellation, use</span>
+<span id="L123"><span class="lineNum">     123</span>                 :             :          *              sin(x) +- cos(x) = -cos(2x)/(sin(x) -+ cos(x))</span>
+<span id="L124"><span class="lineNum">     124</span>                 :             :          * to compute the worse one.</span>
+<span id="L125"><span class="lineNum">     125</span>                 :             :          */</span>
+<span id="L126"><span class="lineNum">     126</span>                 :<span class="tlaGNC">          10 :                 s = sinf(x);</span></span>
+<span id="L127"><span class="lineNum">     127</span>                 :<span class="tlaGNC">          10 :                 c = cosf(x);</span></span>
+<span id="L128"><span class="lineNum">     128</span>                 :<span class="tlaGNC">          10 :                 ss = s-c;</span></span>
+<span id="L129"><span class="lineNum">     129</span>                 :<span class="tlaGNC">          10 :                 cc = s+c;</span></span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :         /*</span>
+<span id="L131"><span class="lineNum">     131</span>                 :             :          * j0(x) = 1/sqrt(pi) * (P(0,x)*cc - Q(0,x)*ss) / sqrt(x)</span>
+<span id="L132"><span class="lineNum">     132</span>                 :             :          * y0(x) = 1/sqrt(pi) * (P(0,x)*ss + Q(0,x)*cc) / sqrt(x)</span>
+<span id="L133"><span class="lineNum">     133</span>                 :             :          */</span>
+<span id="L134"><span class="lineNum">     134</span>         [<span class="tlaGBC" title="Branch 0 was taken 10 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">          10 :                 if(ix&lt;0x7f000000) {  /* make sure x+x not overflow */</span></span>
+<span id="L135"><span class="lineNum">     135</span>                 :<span class="tlaGNC">          10 :                     z = -cosf(x+x);</span></span>
+<span id="L136"><span class="lineNum">     136</span>         [<span class="tlaGBC" title="Branch 0 was taken 6 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 4 times"> + </span>]:<span class="tlaGNC">          10 :                     if ((s*c)&lt;zero) cc = z/ss;</span></span>
+<span id="L137"><span class="lineNum">     137</span>                 :<span class="tlaGNC">           4 :                     else            ss = z/cc;</span></span>
+<span id="L138"><span class="lineNum">     138</span>                 :             :                 }</span>
+<span id="L139"><span class="lineNum">     139</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 10 times"> + </span>]:<span class="tlaGNC">          10 :                 if(ix&gt;0x58000000) z = (invsqrtpi*ss)/sqrtf(x); /* |x|&gt;2**49 */</span></span>
+<span id="L140"><span class="lineNum">     140</span>                 :             :                 else {</span>
+<span id="L141"><span class="lineNum">     141</span>                 :<span class="tlaGNC">          10 :                     u = pzerof(x); v = qzerof(x);</span></span>
+<span id="L142"><span class="lineNum">     142</span>                 :<span class="tlaGNC">          10 :                     z = invsqrtpi*(u*ss+v*cc)/sqrtf(x);</span></span>
+<span id="L143"><span class="lineNum">     143</span>                 :             :                 }</span>
+<span id="L144"><span class="lineNum">     144</span>                 :<span class="tlaGNC">          10 :                 return z;</span></span>
+<span id="L145"><span class="lineNum">     145</span>                 :             :         }</span>
+<span id="L146"><span class="lineNum">     146</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 15 times"> + </span>]:<span class="tlaGNC">          15 :         if(ix&lt;=0x39000000) { /* x &lt; 2**-13 */</span></span>
+<span id="L147"><span class="lineNum">     147</span>                 :<span class="tlaUNC tlaBgUNC">           0 :             return(u00 + tpi*__ieee754_logf(x));</span></span>
+<span id="L148"><span class="lineNum">     148</span>                 :             :         }</span>
+<span id="L149"><span class="lineNum">     149</span>                 :<span class="tlaGNC tlaBgGNC">          15 :         z = x*x;</span></span>
+<span id="L150"><span class="lineNum">     150</span>                 :<span class="tlaGNC">          15 :         u = u00+z*(u01+z*(u02+z*(u03+z*(u04+z*(u05+z*u06)))));</span></span>
+<span id="L151"><span class="lineNum">     151</span>                 :<span class="tlaGNC">          15 :         v = one+z*(v01+z*(v02+z*(v03+z*v04)));</span></span>
+<span id="L152"><span class="lineNum">     152</span>                 :<span class="tlaGNC">          15 :         return(u/v + tpi*(__ieee754_j0f(x)*__ieee754_logf(x)));</span></span>
+<span id="L153"><span class="lineNum">     153</span>                 :             : }</span>
+<span id="L154"><span class="lineNum">     154</span>                 :             : </span>
+<span id="L155"><span class="lineNum">     155</span>                 :             : /* The asymptotic expansions of pzero is</span>
+<span id="L156"><span class="lineNum">     156</span>                 :             :  *      1 - 9/128 s^2 + 11025/98304 s^4 - ...,  where s = 1/x.</span>
+<span id="L157"><span class="lineNum">     157</span>                 :             :  * For x &gt;= 2, We approximate pzero by</span>
+<span id="L158"><span class="lineNum">     158</span>                 :             :  *      pzero(x) = 1 + (R/S)</span>
+<span id="L159"><span class="lineNum">     159</span>                 :             :  * where  R = pR0 + pR1*s^2 + pR2*s^4 + ... + pR5*s^10</span>
+<span id="L160"><span class="lineNum">     160</span>                 :             :  *        S = 1 + pS0*s^2 + ... + pS4*s^10</span>
+<span id="L161"><span class="lineNum">     161</span>                 :             :  * and</span>
+<span id="L162"><span class="lineNum">     162</span>                 :             :  *      | pzero(x)-1-R/S | &lt;= 2  ** ( -60.26)</span>
+<span id="L163"><span class="lineNum">     163</span>                 :             :  */</span>
+<span id="L164"><span class="lineNum">     164</span>                 :             : static const float pR8[6] = { /* for x in [inf, 8]=1/[0,0.125] */</span>
+<span id="L165"><span class="lineNum">     165</span>                 :             :   0.0000000000e+00, /* 0x00000000 */</span>
+<span id="L166"><span class="lineNum">     166</span>                 :             :  -7.0312500000e-02, /* 0xbd900000 */</span>
+<span id="L167"><span class="lineNum">     167</span>                 :             :  -8.0816707611e+00, /* 0xc1014e86 */</span>
+<span id="L168"><span class="lineNum">     168</span>                 :             :  -2.5706311035e+02, /* 0xc3808814 */</span>
+<span id="L169"><span class="lineNum">     169</span>                 :             :  -2.4852163086e+03, /* 0xc51b5376 */</span>
+<span id="L170"><span class="lineNum">     170</span>                 :             :  -5.2530439453e+03, /* 0xc5a4285a */</span>
+<span id="L171"><span class="lineNum">     171</span>                 :             : };</span>
+<span id="L172"><span class="lineNum">     172</span>                 :             : static const float pS8[5] = {</span>
+<span id="L173"><span class="lineNum">     173</span>                 :             :   1.1653436279e+02, /* 0x42e91198 */</span>
+<span id="L174"><span class="lineNum">     174</span>                 :             :   3.8337448730e+03, /* 0x456f9beb */</span>
+<span id="L175"><span class="lineNum">     175</span>                 :             :   4.0597855469e+04, /* 0x471e95db */</span>
+<span id="L176"><span class="lineNum">     176</span>                 :             :   1.1675296875e+05, /* 0x47e4087c */</span>
+<span id="L177"><span class="lineNum">     177</span>                 :             :   4.7627726562e+04, /* 0x473a0bba */</span>
+<span id="L178"><span class="lineNum">     178</span>                 :             : };</span>
+<span id="L179"><span class="lineNum">     179</span>                 :             : static const float pR5[6] = { /* for x in [8,4.5454]=1/[0.125,0.22001] */</span>
+<span id="L180"><span class="lineNum">     180</span>                 :             :  -1.1412546255e-11, /* 0xad48c58a */</span>
+<span id="L181"><span class="lineNum">     181</span>                 :             :  -7.0312492549e-02, /* 0xbd8fffff */</span>
+<span id="L182"><span class="lineNum">     182</span>                 :             :  -4.1596107483e+00, /* 0xc0851b88 */</span>
+<span id="L183"><span class="lineNum">     183</span>                 :             :  -6.7674766541e+01, /* 0xc287597b */</span>
+<span id="L184"><span class="lineNum">     184</span>                 :             :  -3.3123129272e+02, /* 0xc3a59d9b */</span>
+<span id="L185"><span class="lineNum">     185</span>                 :             :  -3.4643338013e+02, /* 0xc3ad3779 */</span>
+<span id="L186"><span class="lineNum">     186</span>                 :             : };</span>
+<span id="L187"><span class="lineNum">     187</span>                 :             : static const float pS5[5] = {</span>
+<span id="L188"><span class="lineNum">     188</span>                 :             :   6.0753936768e+01, /* 0x42730408 */</span>
+<span id="L189"><span class="lineNum">     189</span>                 :             :   1.0512523193e+03, /* 0x44836813 */</span>
+<span id="L190"><span class="lineNum">     190</span>                 :             :   5.9789707031e+03, /* 0x45bad7c4 */</span>
+<span id="L191"><span class="lineNum">     191</span>                 :             :   9.6254453125e+03, /* 0x461665c8 */</span>
+<span id="L192"><span class="lineNum">     192</span>                 :             :   2.4060581055e+03, /* 0x451660ee */</span>
+<span id="L193"><span class="lineNum">     193</span>                 :             : };</span>
+<span id="L194"><span class="lineNum">     194</span>                 :             : </span>
+<span id="L195"><span class="lineNum">     195</span>                 :             : static const float pR3[6] = {/* for x in [4.547,2.8571]=1/[0.2199,0.35001] */</span>
+<span id="L196"><span class="lineNum">     196</span>                 :             :  -2.5470459075e-09, /* 0xb12f081b */</span>
+<span id="L197"><span class="lineNum">     197</span>                 :             :  -7.0311963558e-02, /* 0xbd8fffb8 */</span>
+<span id="L198"><span class="lineNum">     198</span>                 :             :  -2.4090321064e+00, /* 0xc01a2d95 */</span>
+<span id="L199"><span class="lineNum">     199</span>                 :             :  -2.1965976715e+01, /* 0xc1afba52 */</span>
+<span id="L200"><span class="lineNum">     200</span>                 :             :  -5.8079170227e+01, /* 0xc2685112 */</span>
+<span id="L201"><span class="lineNum">     201</span>                 :             :  -3.1447946548e+01, /* 0xc1fb9565 */</span>
+<span id="L202"><span class="lineNum">     202</span>                 :             : };</span>
+<span id="L203"><span class="lineNum">     203</span>                 :             : static const float pS3[5] = {</span>
+<span id="L204"><span class="lineNum">     204</span>                 :             :   3.5856033325e+01, /* 0x420f6c94 */</span>
+<span id="L205"><span class="lineNum">     205</span>                 :             :   3.6151397705e+02, /* 0x43b4c1ca */</span>
+<span id="L206"><span class="lineNum">     206</span>                 :             :   1.1936077881e+03, /* 0x44953373 */</span>
+<span id="L207"><span class="lineNum">     207</span>                 :             :   1.1279968262e+03, /* 0x448cffe6 */</span>
+<span id="L208"><span class="lineNum">     208</span>                 :             :   1.7358093262e+02, /* 0x432d94b8 */</span>
+<span id="L209"><span class="lineNum">     209</span>                 :             : };</span>
+<span id="L210"><span class="lineNum">     210</span>                 :             : </span>
+<span id="L211"><span class="lineNum">     211</span>                 :             : static const float pR2[6] = {/* for x in [2.8570,2]=1/[0.3499,0.5] */</span>
+<span id="L212"><span class="lineNum">     212</span>                 :             :  -8.8753431271e-08, /* 0xb3be98b7 */</span>
+<span id="L213"><span class="lineNum">     213</span>                 :             :  -7.0303097367e-02, /* 0xbd8ffb12 */</span>
+<span id="L214"><span class="lineNum">     214</span>                 :             :  -1.4507384300e+00, /* 0xbfb9b1cc */</span>
+<span id="L215"><span class="lineNum">     215</span>                 :             :  -7.6356959343e+00, /* 0xc0f4579f */</span>
+<span id="L216"><span class="lineNum">     216</span>                 :             :  -1.1193166733e+01, /* 0xc1331736 */</span>
+<span id="L217"><span class="lineNum">     217</span>                 :             :  -3.2336456776e+00, /* 0xc04ef40d */</span>
+<span id="L218"><span class="lineNum">     218</span>                 :             : };</span>
+<span id="L219"><span class="lineNum">     219</span>                 :             : static const float pS2[5] = {</span>
+<span id="L220"><span class="lineNum">     220</span>                 :             :   2.2220300674e+01, /* 0x41b1c32d */</span>
+<span id="L221"><span class="lineNum">     221</span>                 :             :   1.3620678711e+02, /* 0x430834f0 */</span>
+<span id="L222"><span class="lineNum">     222</span>                 :             :   2.7047027588e+02, /* 0x43873c32 */</span>
+<span id="L223"><span class="lineNum">     223</span>                 :             :   1.5387539673e+02, /* 0x4319e01a */</span>
+<span id="L224"><span class="lineNum">     224</span>                 :             :   1.4657617569e+01, /* 0x416a859a */</span>
+<span id="L225"><span class="lineNum">     225</span>                 :             : };</span>
+<span id="L226"><span class="lineNum">     226</span>                 :             : </span>
+<span id="L227"><span class="lineNum">     227</span>                 :<span class="tlaGNC">          20 :         static float pzerof(float x)</span></span>
+<span id="L228"><span class="lineNum">     228</span>                 :             : {</span>
+<span id="L229"><span class="lineNum">     229</span>                 :             :         const float *p,*q;</span>
+<span id="L230"><span class="lineNum">     230</span>                 :             :         float z,r,s;</span>
+<span id="L231"><span class="lineNum">     231</span>                 :             :         int32_t ix;</span>
+<span id="L232"><span class="lineNum">     232</span>                 :<span class="tlaGNC">          20 :         GET_FLOAT_WORD(ix,x);</span></span>
+<span id="L233"><span class="lineNum">     233</span>                 :<span class="tlaGNC">          20 :         ix &amp;= 0x7fffffff;</span></span>
+<span id="L234"><span class="lineNum">     234</span>         [<span class="tlaGBC" title="Branch 0 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">          20 :         if(ix&gt;=0x41000000)     {p = pR8; q= pS8;}</span></span>
+<span id="L235"><span class="lineNum">     235</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">           8 :         else if(ix&gt;=0x409173eb){p = pR5; q= pS5;}</span></span>
+<span id="L236"><span class="lineNum">     236</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">           8 :         else if(ix&gt;=0x4036d917){p = pR3; q= pS3;}</span></span>
+<span id="L237"><span class="lineNum">     237</span>                 :<span class="tlaGNC">           8 :         else                   {p = pR2; q= pS2;}       /* ix&gt;=0x40000000 */</span></span>
+<span id="L238"><span class="lineNum">     238</span>                 :<span class="tlaGNC">          20 :         z = one/(x*x);</span></span>
+<span id="L239"><span class="lineNum">     239</span>                 :<span class="tlaGNC">          20 :         r = p[0]+z*(p[1]+z*(p[2]+z*(p[3]+z*(p[4]+z*p[5]))));</span></span>
+<span id="L240"><span class="lineNum">     240</span>                 :<span class="tlaGNC">          20 :         s = one+z*(q[0]+z*(q[1]+z*(q[2]+z*(q[3]+z*q[4]))));</span></span>
+<span id="L241"><span class="lineNum">     241</span>                 :<span class="tlaGNC">          20 :         return one+ r/s;</span></span>
+<span id="L242"><span class="lineNum">     242</span>                 :             : }</span>
+<span id="L243"><span class="lineNum">     243</span>                 :             : </span>
+<span id="L244"><span class="lineNum">     244</span>                 :             : </span>
+<span id="L245"><span class="lineNum">     245</span>                 :             : /* For x &gt;= 8, the asymptotic expansions of qzero is</span>
+<span id="L246"><span class="lineNum">     246</span>                 :             :  *      -1/8 s + 75/1024 s^3 - ..., where s = 1/x.</span>
+<span id="L247"><span class="lineNum">     247</span>                 :             :  * We approximate pzero by</span>
+<span id="L248"><span class="lineNum">     248</span>                 :             :  *      qzero(x) = s*(-1.25 + (R/S))</span>
+<span id="L249"><span class="lineNum">     249</span>                 :             :  * where  R = qR0 + qR1*s^2 + qR2*s^4 + ... + qR5*s^10</span>
+<span id="L250"><span class="lineNum">     250</span>                 :             :  *        S = 1 + qS0*s^2 + ... + qS5*s^12</span>
+<span id="L251"><span class="lineNum">     251</span>                 :             :  * and</span>
+<span id="L252"><span class="lineNum">     252</span>                 :             :  *      | qzero(x)/s +1.25-R/S | &lt;= 2  ** ( -61.22)</span>
+<span id="L253"><span class="lineNum">     253</span>                 :             :  */</span>
+<span id="L254"><span class="lineNum">     254</span>                 :             : static const float qR8[6] = { /* for x in [inf, 8]=1/[0,0.125] */</span>
+<span id="L255"><span class="lineNum">     255</span>                 :             :   0.0000000000e+00, /* 0x00000000 */</span>
+<span id="L256"><span class="lineNum">     256</span>                 :             :   7.3242187500e-02, /* 0x3d960000 */</span>
+<span id="L257"><span class="lineNum">     257</span>                 :             :   1.1768206596e+01, /* 0x413c4a93 */</span>
+<span id="L258"><span class="lineNum">     258</span>                 :             :   5.5767340088e+02, /* 0x440b6b19 */</span>
+<span id="L259"><span class="lineNum">     259</span>                 :             :   8.8591972656e+03, /* 0x460a6cca */</span>
+<span id="L260"><span class="lineNum">     260</span>                 :             :   3.7014625000e+04, /* 0x471096a0 */</span>
+<span id="L261"><span class="lineNum">     261</span>                 :             : };</span>
+<span id="L262"><span class="lineNum">     262</span>                 :             : static const float qS8[6] = {</span>
+<span id="L263"><span class="lineNum">     263</span>                 :             :   1.6377603149e+02, /* 0x4323c6aa */</span>
+<span id="L264"><span class="lineNum">     264</span>                 :             :   8.0983447266e+03, /* 0x45fd12c2 */</span>
+<span id="L265"><span class="lineNum">     265</span>                 :             :   1.4253829688e+05, /* 0x480b3293 */</span>
+<span id="L266"><span class="lineNum">     266</span>                 :             :   8.0330925000e+05, /* 0x49441ed4 */</span>
+<span id="L267"><span class="lineNum">     267</span>                 :             :   8.4050156250e+05, /* 0x494d3359 */</span>
+<span id="L268"><span class="lineNum">     268</span>                 :             :  -3.4389928125e+05, /* 0xc8a7eb69 */</span>
+<span id="L269"><span class="lineNum">     269</span>                 :             : };</span>
+<span id="L270"><span class="lineNum">     270</span>                 :             : </span>
+<span id="L271"><span class="lineNum">     271</span>                 :             : static const float qR5[6] = { /* for x in [8,4.5454]=1/[0.125,0.22001] */</span>
+<span id="L272"><span class="lineNum">     272</span>                 :             :   1.8408595828e-11, /* 0x2da1ec79 */</span>
+<span id="L273"><span class="lineNum">     273</span>                 :             :   7.3242180049e-02, /* 0x3d95ffff */</span>
+<span id="L274"><span class="lineNum">     274</span>                 :             :   5.8356351852e+00, /* 0x40babd86 */</span>
+<span id="L275"><span class="lineNum">     275</span>                 :             :   1.3511157227e+02, /* 0x43071c90 */</span>
+<span id="L276"><span class="lineNum">     276</span>                 :             :   1.0272437744e+03, /* 0x448067cd */</span>
+<span id="L277"><span class="lineNum">     277</span>                 :             :   1.9899779053e+03, /* 0x44f8bf4b */</span>
+<span id="L278"><span class="lineNum">     278</span>                 :             : };</span>
+<span id="L279"><span class="lineNum">     279</span>                 :             : static const float qS5[6] = {</span>
+<span id="L280"><span class="lineNum">     280</span>                 :             :   8.2776611328e+01, /* 0x42a58da0 */</span>
+<span id="L281"><span class="lineNum">     281</span>                 :             :   2.0778142090e+03, /* 0x4501dd07 */</span>
+<span id="L282"><span class="lineNum">     282</span>                 :             :   1.8847289062e+04, /* 0x46933e94 */</span>
+<span id="L283"><span class="lineNum">     283</span>                 :             :   5.6751113281e+04, /* 0x475daf1d */</span>
+<span id="L284"><span class="lineNum">     284</span>                 :             :   3.5976753906e+04, /* 0x470c88c1 */</span>
+<span id="L285"><span class="lineNum">     285</span>                 :             :  -5.3543427734e+03, /* 0xc5a752be */</span>
+<span id="L286"><span class="lineNum">     286</span>                 :             : };</span>
+<span id="L287"><span class="lineNum">     287</span>                 :             : </span>
+<span id="L288"><span class="lineNum">     288</span>                 :             : static const float qR3[6] = {/* for x in [4.547,2.8571]=1/[0.2199,0.35001] */</span>
+<span id="L289"><span class="lineNum">     289</span>                 :             :   4.3774099900e-09, /* 0x3196681b */</span>
+<span id="L290"><span class="lineNum">     290</span>                 :             :   7.3241114616e-02, /* 0x3d95ff70 */</span>
+<span id="L291"><span class="lineNum">     291</span>                 :             :   3.3442313671e+00, /* 0x405607e3 */</span>
+<span id="L292"><span class="lineNum">     292</span>                 :             :   4.2621845245e+01, /* 0x422a7cc5 */</span>
+<span id="L293"><span class="lineNum">     293</span>                 :             :   1.7080809021e+02, /* 0x432acedf */</span>
+<span id="L294"><span class="lineNum">     294</span>                 :             :   1.6673394775e+02, /* 0x4326bbe4 */</span>
+<span id="L295"><span class="lineNum">     295</span>                 :             : };</span>
+<span id="L296"><span class="lineNum">     296</span>                 :             : static const float qS3[6] = {</span>
+<span id="L297"><span class="lineNum">     297</span>                 :             :   4.8758872986e+01, /* 0x42430916 */</span>
+<span id="L298"><span class="lineNum">     298</span>                 :             :   7.0968920898e+02, /* 0x44316c1c */</span>
+<span id="L299"><span class="lineNum">     299</span>                 :             :   3.7041481934e+03, /* 0x4567825f */</span>
+<span id="L300"><span class="lineNum">     300</span>                 :             :   6.4604252930e+03, /* 0x45c9e367 */</span>
+<span id="L301"><span class="lineNum">     301</span>                 :             :   2.5163337402e+03, /* 0x451d4557 */</span>
+<span id="L302"><span class="lineNum">     302</span>                 :             :  -1.4924745178e+02, /* 0xc3153f59 */</span>
+<span id="L303"><span class="lineNum">     303</span>                 :             : };</span>
+<span id="L304"><span class="lineNum">     304</span>                 :             : </span>
+<span id="L305"><span class="lineNum">     305</span>                 :             : static const float qR2[6] = {/* for x in [2.8570,2]=1/[0.3499,0.5] */</span>
+<span id="L306"><span class="lineNum">     306</span>                 :             :   1.5044444979e-07, /* 0x342189db */</span>
+<span id="L307"><span class="lineNum">     307</span>                 :             :   7.3223426938e-02, /* 0x3d95f62a */</span>
+<span id="L308"><span class="lineNum">     308</span>                 :             :   1.9981917143e+00, /* 0x3fffc4bf */</span>
+<span id="L309"><span class="lineNum">     309</span>                 :             :   1.4495602608e+01, /* 0x4167edfd */</span>
+<span id="L310"><span class="lineNum">     310</span>                 :             :   3.1666231155e+01, /* 0x41fd5471 */</span>
+<span id="L311"><span class="lineNum">     311</span>                 :             :   1.6252708435e+01, /* 0x4182058c */</span>
+<span id="L312"><span class="lineNum">     312</span>                 :             : };</span>
+<span id="L313"><span class="lineNum">     313</span>                 :             : static const float qS2[6] = {</span>
+<span id="L314"><span class="lineNum">     314</span>                 :             :   3.0365585327e+01, /* 0x41f2ecb8 */</span>
+<span id="L315"><span class="lineNum">     315</span>                 :             :   2.6934811401e+02, /* 0x4386ac8f */</span>
+<span id="L316"><span class="lineNum">     316</span>                 :             :   8.4478375244e+02, /* 0x44533229 */</span>
+<span id="L317"><span class="lineNum">     317</span>                 :             :   8.8293585205e+02, /* 0x445cbbe5 */</span>
+<span id="L318"><span class="lineNum">     318</span>                 :             :   2.1266638184e+02, /* 0x4354aa98 */</span>
+<span id="L319"><span class="lineNum">     319</span>                 :             :  -5.3109550476e+00, /* 0xc0a9f358 */</span>
+<span id="L320"><span class="lineNum">     320</span>                 :             : };</span>
+<span id="L321"><span class="lineNum">     321</span>                 :             : </span>
+<span id="L322"><span class="lineNum">     322</span>                 :<span class="tlaGNC">          20 :         static float qzerof(float x)</span></span>
+<span id="L323"><span class="lineNum">     323</span>                 :             : {</span>
+<span id="L324"><span class="lineNum">     324</span>                 :             :         const float *p,*q;</span>
+<span id="L325"><span class="lineNum">     325</span>                 :             :         float s,r,z;</span>
+<span id="L326"><span class="lineNum">     326</span>                 :             :         int32_t ix;</span>
+<span id="L327"><span class="lineNum">     327</span>                 :<span class="tlaGNC">          20 :         GET_FLOAT_WORD(ix,x);</span></span>
+<span id="L328"><span class="lineNum">     328</span>                 :<span class="tlaGNC">          20 :         ix &amp;= 0x7fffffff;</span></span>
+<span id="L329"><span class="lineNum">     329</span>         [<span class="tlaGBC" title="Branch 0 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">          20 :         if(ix&gt;=0x41000000)     {p = qR8; q= qS8;}</span></span>
+<span id="L330"><span class="lineNum">     330</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">           8 :         else if(ix&gt;=0x409173eb){p = qR5; q= qS5;}</span></span>
+<span id="L331"><span class="lineNum">     331</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">           8 :         else if(ix&gt;=0x4036d917){p = qR3; q= qS3;}</span></span>
+<span id="L332"><span class="lineNum">     332</span>                 :<span class="tlaGNC">           8 :         else                   {p = qR2; q= qS2;}       /* ix&gt;=0x40000000 */</span></span>
+<span id="L333"><span class="lineNum">     333</span>                 :<span class="tlaGNC">          20 :         z = one/(x*x);</span></span>
+<span id="L334"><span class="lineNum">     334</span>                 :<span class="tlaGNC">          20 :         r = p[0]+z*(p[1]+z*(p[2]+z*(p[3]+z*(p[4]+z*p[5]))));</span></span>
+<span id="L335"><span class="lineNum">     335</span>                 :<span class="tlaGNC">          20 :         s = one+z*(q[0]+z*(q[1]+z*(q[2]+z*(q[3]+z*(q[4]+z*q[5])))));</span></span>
+<span id="L336"><span class="lineNum">     336</span>                 :<span class="tlaGNC">          20 :         return (-(float).125 + r/s)/x;</span></span>
+<span id="L337"><span class="lineNum">     337</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - src/k_cosf.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src">src</a> - k_cosf.c<span style="font-size: 80%;"> (source / <a href="k_cosf.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryHi">-</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /* k_cosf.c -- float version of k_cos.c</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Conversion to float by Ian Lance Taylor, Cygnus Support, ian@cygnus.com.</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  * Debugged and optimized by Bruce D. Evans.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  */</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : </span>
+<span id="L6"><span class="lineNum">       6</span>                 :             : /*</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * ====================================================</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  *</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * Developed at SunPro, a Sun Microsystems, Inc. business.</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  * Permission to use, copy, modify, and distribute this</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  * software is freely granted, provided that this notice</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * is preserved.</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  * ====================================================</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             :  */</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : </span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : #ifndef INLINE_KERNEL_COSDF</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/src/k_cosf.c,v 1.18 2009/06/03 08:16:34 ed Exp $&quot;);</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : #endif</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : </span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : </span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : #include &quot;math_private.h&quot;</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : </span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : /* |cos(x) - c(x)| &lt; 2**-34.1 (~[-5.37e-11, 5.295e-11]). */</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : static const double</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : one =  1.0,</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : C0  = -0x1ffffffd0c5e81.0p-54,  /* -0.499999997251031003120 */</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : C1  =  0x155553e1053a42.0p-57,  /*  0.0416666233237390631894 */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : C2  = -0x16c087e80f1e27.0p-62,  /* -0.00138867637746099294692 */</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : C3  =  0x199342e0ee5069.0p-68;  /*  0.0000243904487962774090654 */</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : </span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : #ifndef INLINE_KERNEL_COSDF</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : extern</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : #endif</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : //__inline float</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : OLM_DLLEXPORT float</span>
+<span id="L39"><span class="lineNum">      39</span>                 :<span class="tlaGNC tlaBgGNC">          53 : __kernel_cosdf(double x)</span></span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : {</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             :         double r, w, z;</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : </span>
+<span id="L43"><span class="lineNum">      43</span>                 :             :         /* Try to optimize for parallel evaluation as in k_tanf.c. */</span>
+<span id="L44"><span class="lineNum">      44</span>                 :<span class="tlaGNC">          53 :         z = x*x;</span></span>
+<span id="L45"><span class="lineNum">      45</span>                 :<span class="tlaGNC">          53 :         w = z*z;</span></span>
+<span id="L46"><span class="lineNum">      46</span>                 :<span class="tlaGNC">          53 :         r = C2+z*C3;</span></span>
+<span id="L47"><span class="lineNum">      47</span>                 :<span class="tlaGNC">          53 :         return ((one+z*C0) + w*C1) + (w*z)*r;</span></span>
+<span id="L48"><span class="lineNum">      48</span>                 :             : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - bsdsrc/b_tgamma.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory bsdsrc">bsdsrc</a> - b_tgamma.c<span style="font-size: 80%;"> (source / <a href="b_tgamma.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">65.6&nbsp;%</td>
+            <td class="headerCovTableEntry">122</td>
+            <td class="headerCovTableEntry">80</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-01-11 15:52:50</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryMed">83.3&nbsp;%</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">5</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">65.8&nbsp;%</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">25</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /*-</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             :  * Copyright (c) 1992, 1993</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             :  *      The Regents of the University of California.  All rights reserved.</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             :  *</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             :  * Redistribution and use in source and binary forms, with or without</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             :  * modification, are permitted provided that the following conditions</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             :  * are met:</span>
+<span id="L8"><span class="lineNum">       8</span>                 :             :  * 1. Redistributions of source code must retain the above copyright</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             :  *    notice, this list of conditions and the following disclaimer.</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             :  * 2. Redistributions in binary form must reproduce the above copyright</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             :  *    notice, this list of conditions and the following disclaimer in the</span>
+<span id="L12"><span class="lineNum">      12</span>                 :             :  *    documentation and/or other materials provided with the distribution.</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             :  * 3. Neither the name of the University nor the names of its contributors</span>
+<span id="L14"><span class="lineNum">      14</span>                 :             :  *    may be used to endorse or promote products derived from this software</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             :  *    without specific prior written permission.</span>
+<span id="L16"><span class="lineNum">      16</span>                 :             :  *</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             :  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             :  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             :  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             :  * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE</span>
+<span id="L21"><span class="lineNum">      21</span>                 :             :  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             :  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             :  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             :  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             :  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             :  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             :  * SUCH DAMAGE.</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             :  */</span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : </span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : /* @(#)gamma.c  8.1 (Berkeley) 6/4/93 */</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : #include &quot;cdefs-compat.h&quot;</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : //__FBSDID(&quot;$FreeBSD: src/lib/msun/bsdsrc/b_tgamma.c,v 1.10 2008/02/22 02:26:51 das Exp $&quot;);</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : </span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : /*</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             :  * This code by P. McIlroy, Oct 1992;</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             :  *</span>
+<span id="L37"><span class="lineNum">      37</span>                 :             :  * The financial support of UUNET Communications Services is greatfully</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             :  * acknowledged.</span>
+<span id="L39"><span class="lineNum">      39</span>                 :             :  */</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : </span>
+<span id="L41"><span class="lineNum">      41</span>                 :             : #include &lt;float.h&gt;</span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : #include &lt;openlibm_math.h&gt;</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : </span>
+<span id="L44"><span class="lineNum">      44</span>                 :             : #include &quot;mathimpl.h&quot;</span>
+<span id="L45"><span class="lineNum">      45</span>                 :             : </span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : /* METHOD:</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             :  * x &lt; 0: Use reflection formula, G(x) = pi/(sin(pi*x)*x*G(x))</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             :  *      At negative integers, return NaN and raise invalid.</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             :  *</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             :  * x &lt; 6.5:</span>
+<span id="L51"><span class="lineNum">      51</span>                 :             :  *      Use argument reduction G(x+1) = xG(x) to reach the</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             :  *      range [1.066124,2.066124].  Use a rational</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             :  *      approximation centered at the minimum (x0+1) to</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :  *      ensure monotonicity.</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :  *</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :  * x &gt;= 6.5: Use the asymptotic approximation (Stirling's formula)</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             :  *      adjusted for equal-ripples:</span>
+<span id="L58"><span class="lineNum">      58</span>                 :             :  *</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             :  *      log(G(x)) ~= (x-.5)*(log(x)-1) + .5(log(2*pi)-1) + 1/x*P(1/(x*x))</span>
+<span id="L60"><span class="lineNum">      60</span>                 :             :  *</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             :  *      Keep extra precision in multiplying (x-.5)(log(x)-1), to</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             :  *      avoid premature round-off.</span>
+<span id="L63"><span class="lineNum">      63</span>                 :             :  *</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             :  * Special values:</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             :  *      -Inf:                   return NaN and raise invalid;</span>
+<span id="L66"><span class="lineNum">      66</span>                 :             :  *      negative integer:       return NaN and raise invalid;</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             :  *      other x ~&lt; 177.79:   return +-0 and raise underflow;</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             :  *      +-0:                    return +-Inf and raise divide-by-zero;</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             :  *      finite x ~&gt; 171.63:  return +Inf and raise overflow;</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             :  *      +Inf:                   return +Inf;</span>
+<span id="L71"><span class="lineNum">      71</span>                 :             :  *      NaN:                    return NaN.</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             :  *</span>
+<span id="L73"><span class="lineNum">      73</span>                 :             :  * Accuracy: tgamma(x) is accurate to within</span>
+<span id="L74"><span class="lineNum">      74</span>                 :             :  *      x &gt; 0:  error provably &lt; 0.9ulp.</span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :  *      Maximum observed in 1,000,000 trials was .87ulp.</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             :  *      x &lt; 0:</span>
+<span id="L77"><span class="lineNum">      77</span>                 :             :  *      Maximum observed error &lt; 4ulp in 1,000,000 trials.</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             :  */</span>
+<span id="L79"><span class="lineNum">      79</span>                 :             : </span>
+<span id="L80"><span class="lineNum">      80</span>                 :             : static double neg_gam(double);</span>
+<span id="L81"><span class="lineNum">      81</span>                 :             : static double small_gam(double);</span>
+<span id="L82"><span class="lineNum">      82</span>                 :             : static double smaller_gam(double);</span>
+<span id="L83"><span class="lineNum">      83</span>                 :             : static struct Double large_gam(double);</span>
+<span id="L84"><span class="lineNum">      84</span>                 :             : static struct Double ratfun_gam(double, double);</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : </span>
+<span id="L86"><span class="lineNum">      86</span>                 :             : /*</span>
+<span id="L87"><span class="lineNum">      87</span>                 :             :  * Rational approximation, A0 + x*x*P(x)/Q(x), on the interval</span>
+<span id="L88"><span class="lineNum">      88</span>                 :             :  * [1.066.., 2.066..] accurate to 4.25e-19.</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             :  */</span>
+<span id="L90"><span class="lineNum">      90</span>                 :             : #define LEFT -.3955078125       /* left boundary for rat. approx */</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             : #define x0 .461632144968362356785       /* xmin - 1 */</span>
+<span id="L92"><span class="lineNum">      92</span>                 :             : </span>
+<span id="L93"><span class="lineNum">      93</span>                 :             : #define a0_hi 0.88560319441088874992</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             : #define a0_lo -.00000000000000004996427036469019695</span>
+<span id="L95"><span class="lineNum">      95</span>                 :             : #define P0       6.21389571821820863029017800727e-01</span>
+<span id="L96"><span class="lineNum">      96</span>                 :             : #define P1       2.65757198651533466104979197553e-01</span>
+<span id="L97"><span class="lineNum">      97</span>                 :             : #define P2       5.53859446429917461063308081748e-03</span>
+<span id="L98"><span class="lineNum">      98</span>                 :             : #define P3       1.38456698304096573887145282811e-03</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             : #define P4       2.40659950032711365819348969808e-03</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             : #define Q0       1.45019531250000000000000000000e+00</span>
+<span id="L101"><span class="lineNum">     101</span>                 :             : #define Q1       1.06258521948016171343454061571e+00</span>
+<span id="L102"><span class="lineNum">     102</span>                 :             : #define Q2      -2.07474561943859936441469926649e-01</span>
+<span id="L103"><span class="lineNum">     103</span>                 :             : #define Q3      -1.46734131782005422506287573015e-01</span>
+<span id="L104"><span class="lineNum">     104</span>                 :             : #define Q4       3.07878176156175520361557573779e-02</span>
+<span id="L105"><span class="lineNum">     105</span>                 :             : #define Q5       5.12449347980666221336054633184e-03</span>
+<span id="L106"><span class="lineNum">     106</span>                 :             : #define Q6      -1.76012741431666995019222898833e-03</span>
+<span id="L107"><span class="lineNum">     107</span>                 :             : #define Q7       9.35021023573788935372153030556e-05</span>
+<span id="L108"><span class="lineNum">     108</span>                 :             : #define Q8       6.13275507472443958924745652239e-06</span>
+<span id="L109"><span class="lineNum">     109</span>                 :             : /*</span>
+<span id="L110"><span class="lineNum">     110</span>                 :             :  * Constants for large x approximation (x in [6, Inf])</span>
+<span id="L111"><span class="lineNum">     111</span>                 :             :  * (Accurate to 2.8*10^-19 absolute)</span>
+<span id="L112"><span class="lineNum">     112</span>                 :             :  */</span>
+<span id="L113"><span class="lineNum">     113</span>                 :             : #define lns2pi_hi 0.418945312500000</span>
+<span id="L114"><span class="lineNum">     114</span>                 :             : #define lns2pi_lo -.000006779295327258219670263595</span>
+<span id="L115"><span class="lineNum">     115</span>                 :             : #define Pa0      8.33333333333333148296162562474e-02</span>
+<span id="L116"><span class="lineNum">     116</span>                 :             : #define Pa1     -2.77777777774548123579378966497e-03</span>
+<span id="L117"><span class="lineNum">     117</span>                 :             : #define Pa2      7.93650778754435631476282786423e-04</span>
+<span id="L118"><span class="lineNum">     118</span>                 :             : #define Pa3     -5.95235082566672847950717262222e-04</span>
+<span id="L119"><span class="lineNum">     119</span>                 :             : #define Pa4      8.41428560346653702135821806252e-04</span>
+<span id="L120"><span class="lineNum">     120</span>                 :             : #define Pa5     -1.89773526463879200348872089421e-03</span>
+<span id="L121"><span class="lineNum">     121</span>                 :             : #define Pa6      5.69394463439411649408050664078e-03</span>
+<span id="L122"><span class="lineNum">     122</span>                 :             : #define Pa7     -1.44705562421428915453880392761e-02</span>
+<span id="L123"><span class="lineNum">     123</span>                 :             : </span>
+<span id="L124"><span class="lineNum">     124</span>                 :             : static const double zero = 0., one = 1.0, tiny = 1e-300;</span>
+<span id="L125"><span class="lineNum">     125</span>                 :             : </span>
+<span id="L126"><span class="lineNum">     126</span>                 :             : OLM_DLLEXPORT double</span>
+<span id="L127"><span class="lineNum">     127</span>                 :<span class="tlaGNC tlaBgGNC">          28 : tgamma(x)</span></span>
+<span id="L128"><span class="lineNum">     128</span>                 :             :         double x;</span>
+<span id="L129"><span class="lineNum">     129</span>                 :             : {</span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :         struct Double u;</span>
+<span id="L131"><span class="lineNum">     131</span>                 :             : </span>
+<span id="L132"><span class="lineNum">     132</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 26 times"> + </span>]:<span class="tlaGNC">          28 :         if (isgreaterequal(x, 6)) {</span></span>
+<span id="L133"><span class="lineNum">     133</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           2 :                 if(x &gt; 171.63)</span></span>
+<span id="L134"><span class="lineNum">     134</span>                 :<span class="tlaGNC">           2 :                         return (x / zero);</span></span>
+<span id="L135"><span class="lineNum">     135</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 u = large_gam(x);</span></span>
+<span id="L136"><span class="lineNum">     136</span>                 :<span class="tlaUNC">           0 :                 return(__exp__D(u.a, u.b));</span></span>
+<span id="L137"><span class="lineNum">     137</span>         [<span class="tlaGBC" title="Branch 0 was taken 6 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 20 times"> + </span>]:<span class="tlaGNC tlaBgGNC">          26 :         } else if (isgreaterequal(x, 1.0 + LEFT + x0))</span></span>
+<span id="L138"><span class="lineNum">     138</span>                 :<span class="tlaGNC">           6 :                 return (small_gam(x));</span></span>
+<span id="L139"><span class="lineNum">     139</span>         [<span class="tlaGBC" title="Branch 0 was taken 8 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 12 times"> + </span>]:<span class="tlaGNC">          20 :         else if (isgreater(x, 1.e-17))</span></span>
+<span id="L140"><span class="lineNum">     140</span>                 :<span class="tlaGNC">           8 :                 return (smaller_gam(x));</span></span>
+<span id="L141"><span class="lineNum">     141</span>         [<span class="tlaGBC" title="Branch 0 was taken 4 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">          12 :         else if (isgreater(x, -1.e-17)) {</span></span>
+<span id="L142"><span class="lineNum">     142</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 4 times"> + </span>]:<span class="tlaGNC">           4 :                 if (x != 0.0)</span></span>
+<span id="L143"><span class="lineNum">     143</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                         u.a = one - tiny;       /* raise inexact */</span></span>
+<span id="L144"><span class="lineNum">     144</span>                 :<span class="tlaGNC tlaBgGNC">           4 :                 return (one/x);</span></span>
+<span id="L145"><span class="lineNum">     145</span>         [<span class="tlaGBC" title="Branch 0 was taken 4 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 4 times"> + </span>]:<span class="tlaGNC">           8 :         } else if (!isfinite(x))</span></span>
+<span id="L146"><span class="lineNum">     146</span>                 :<span class="tlaGNC">           4 :                 return (x - x);         /* x is NaN or -Inf */</span></span>
+<span id="L147"><span class="lineNum">     147</span>                 :             :         else</span>
+<span id="L148"><span class="lineNum">     148</span>                 :<span class="tlaGNC">           4 :                 return (neg_gam(x));</span></span>
+<span id="L149"><span class="lineNum">     149</span>                 :             : }</span>
+<span id="L150"><span class="lineNum">     150</span>                 :             : /*</span>
+<span id="L151"><span class="lineNum">     151</span>                 :             :  * Accurate to max(ulp(1/128) absolute, 2^-66 relative) error.</span>
+<span id="L152"><span class="lineNum">     152</span>                 :             :  */</span>
+<span id="L153"><span class="lineNum">     153</span>                 :             : static struct Double</span>
+<span id="L154"><span class="lineNum">     154</span>                 :<span class="tlaUNC tlaBgUNC">           0 : large_gam(x)</span></span>
+<span id="L155"><span class="lineNum">     155</span>                 :             :         double x;</span>
+<span id="L156"><span class="lineNum">     156</span>                 :             : {</span>
+<span id="L157"><span class="lineNum">     157</span>                 :             :         double z, p;</span>
+<span id="L158"><span class="lineNum">     158</span>                 :             :         struct Double t, u, v;</span>
+<span id="L159"><span class="lineNum">     159</span>                 :             : </span>
+<span id="L160"><span class="lineNum">     160</span>                 :<span class="tlaUNC">           0 :         z = one/(x*x);</span></span>
+<span id="L161"><span class="lineNum">     161</span>                 :<span class="tlaUNC">           0 :         p = Pa0+z*(Pa1+z*(Pa2+z*(Pa3+z*(Pa4+z*(Pa5+z*(Pa6+z*Pa7))))));</span></span>
+<span id="L162"><span class="lineNum">     162</span>                 :<span class="tlaUNC">           0 :         p = p/x;</span></span>
+<span id="L163"><span class="lineNum">     163</span>                 :             : </span>
+<span id="L164"><span class="lineNum">     164</span>                 :<span class="tlaUNC">           0 :         u = __log__D(x);</span></span>
+<span id="L165"><span class="lineNum">     165</span>                 :<span class="tlaUNC">           0 :         u.a -= one;</span></span>
+<span id="L166"><span class="lineNum">     166</span>                 :<span class="tlaUNC">           0 :         v.a = (x -= .5);</span></span>
+<span id="L167"><span class="lineNum">     167</span>                 :<span class="tlaUNC">           0 :         TRUNC(v.a);</span></span>
+<span id="L168"><span class="lineNum">     168</span>                 :<span class="tlaUNC">           0 :         v.b = x - v.a;</span></span>
+<span id="L169"><span class="lineNum">     169</span>                 :<span class="tlaUNC">           0 :         t.a = v.a*u.a;                  /* t = (x-.5)*(log(x)-1) */</span></span>
+<span id="L170"><span class="lineNum">     170</span>                 :<span class="tlaUNC">           0 :         t.b = v.b*u.a + x*u.b;</span></span>
+<span id="L171"><span class="lineNum">     171</span>                 :             :         /* return t.a + t.b + lns2pi_hi + lns2pi_lo + p */</span>
+<span id="L172"><span class="lineNum">     172</span>                 :<span class="tlaUNC">           0 :         t.b += lns2pi_lo; t.b += p;</span></span>
+<span id="L173"><span class="lineNum">     173</span>                 :<span class="tlaUNC">           0 :         u.a = lns2pi_hi + t.b; u.a += t.a;</span></span>
+<span id="L174"><span class="lineNum">     174</span>                 :<span class="tlaUNC">           0 :         u.b = t.a - u.a;</span></span>
+<span id="L175"><span class="lineNum">     175</span>                 :<span class="tlaUNC">           0 :         u.b += lns2pi_hi; u.b += t.b;</span></span>
+<span id="L176"><span class="lineNum">     176</span>                 :<span class="tlaUNC">           0 :         return (u);</span></span>
+<span id="L177"><span class="lineNum">     177</span>                 :             : }</span>
+<span id="L178"><span class="lineNum">     178</span>                 :             : /*</span>
+<span id="L179"><span class="lineNum">     179</span>                 :             :  * Good to &lt; 1 ulp.  (provably .90 ulp; .87 ulp on 1,000,000 runs.)</span>
+<span id="L180"><span class="lineNum">     180</span>                 :             :  * It also has correct monotonicity.</span>
+<span id="L181"><span class="lineNum">     181</span>                 :             :  */</span>
+<span id="L182"><span class="lineNum">     182</span>                 :             : static double</span>
+<span id="L183"><span class="lineNum">     183</span>                 :<span class="tlaGNC tlaBgGNC">           6 : small_gam(x)</span></span>
+<span id="L184"><span class="lineNum">     184</span>                 :             :         double x;</span>
+<span id="L185"><span class="lineNum">     185</span>                 :             : {</span>
+<span id="L186"><span class="lineNum">     186</span>                 :             :         double y, ym1, t;</span>
+<span id="L187"><span class="lineNum">     187</span>                 :             :         struct Double yy, r;</span>
+<span id="L188"><span class="lineNum">     188</span>                 :<span class="tlaGNC">           6 :         y = x - one;</span></span>
+<span id="L189"><span class="lineNum">     189</span>                 :<span class="tlaGNC">           6 :         ym1 = y - one;</span></span>
+<span id="L190"><span class="lineNum">     190</span>         [<span class="tlaGBC" title="Branch 0 was taken 4 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           6 :         if (y &lt;= 1.0 + (LEFT + x0)) {</span></span>
+<span id="L191"><span class="lineNum">     191</span>                 :<span class="tlaGNC">           4 :                 yy = ratfun_gam(y - x0, 0);</span></span>
+<span id="L192"><span class="lineNum">     192</span>                 :<span class="tlaGNC">           4 :                 return (yy.a + yy.b);</span></span>
+<span id="L193"><span class="lineNum">     193</span>                 :             :         }</span>
+<span id="L194"><span class="lineNum">     194</span>                 :<span class="tlaGNC">           2 :         r.a = y;</span></span>
+<span id="L195"><span class="lineNum">     195</span>                 :<span class="tlaGNC">           2 :         TRUNC(r.a);</span></span>
+<span id="L196"><span class="lineNum">     196</span>                 :<span class="tlaGNC">           2 :         yy.a = r.a - one;</span></span>
+<span id="L197"><span class="lineNum">     197</span>                 :<span class="tlaGNC">           2 :         y = ym1;</span></span>
+<span id="L198"><span class="lineNum">     198</span>                 :<span class="tlaGNC">           2 :         yy.b = r.b = y - yy.a;</span></span>
+<span id="L199"><span class="lineNum">     199</span>                 :             :         /* Argument reduction: G(x+1) = x*G(x) */</span>
+<span id="L200"><span class="lineNum">     200</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           4 :         for (ym1 = y-one; ym1 &gt; LEFT + x0; y = ym1--, yy.a--) {</span></span>
+<span id="L201"><span class="lineNum">     201</span>                 :<span class="tlaGNC">           2 :                 t = r.a*yy.a;</span></span>
+<span id="L202"><span class="lineNum">     202</span>                 :<span class="tlaGNC">           2 :                 r.b = r.a*yy.b + y*r.b;</span></span>
+<span id="L203"><span class="lineNum">     203</span>                 :<span class="tlaGNC">           2 :                 r.a = t;</span></span>
+<span id="L204"><span class="lineNum">     204</span>                 :<span class="tlaGNC">           2 :                 TRUNC(r.a);</span></span>
+<span id="L205"><span class="lineNum">     205</span>                 :<span class="tlaGNC">           2 :                 r.b += (t - r.a);</span></span>
+<span id="L206"><span class="lineNum">     206</span>                 :             :         }</span>
+<span id="L207"><span class="lineNum">     207</span>                 :             :         /* Return r*tgamma(y). */</span>
+<span id="L208"><span class="lineNum">     208</span>                 :<span class="tlaGNC">           2 :         yy = ratfun_gam(y - x0, 0);</span></span>
+<span id="L209"><span class="lineNum">     209</span>                 :<span class="tlaGNC">           2 :         y = r.b*(yy.a + yy.b) + r.a*yy.b;</span></span>
+<span id="L210"><span class="lineNum">     210</span>                 :<span class="tlaGNC">           2 :         y += yy.a*r.a;</span></span>
+<span id="L211"><span class="lineNum">     211</span>                 :<span class="tlaGNC">           2 :         return (y);</span></span>
+<span id="L212"><span class="lineNum">     212</span>                 :             : }</span>
+<span id="L213"><span class="lineNum">     213</span>                 :             : /*</span>
+<span id="L214"><span class="lineNum">     214</span>                 :             :  * Good on (0, 1+x0+LEFT].  Accurate to 1ulp.</span>
+<span id="L215"><span class="lineNum">     215</span>                 :             :  */</span>
+<span id="L216"><span class="lineNum">     216</span>                 :             : static double</span>
+<span id="L217"><span class="lineNum">     217</span>                 :<span class="tlaGNC">           8 : smaller_gam(x)</span></span>
+<span id="L218"><span class="lineNum">     218</span>                 :             :         double x;</span>
+<span id="L219"><span class="lineNum">     219</span>                 :             : {</span>
+<span id="L220"><span class="lineNum">     220</span>                 :             :         double t, d;</span>
+<span id="L221"><span class="lineNum">     221</span>                 :             :         struct Double r, xx;</span>
+<span id="L222"><span class="lineNum">     222</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 8 times"> + </span>]:<span class="tlaGNC">           8 :         if (x &lt; x0 + LEFT) {</span></span>
+<span id="L223"><span class="lineNum">     223</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 t = x, TRUNC(t);</span></span>
+<span id="L224"><span class="lineNum">     224</span>                 :<span class="tlaUNC">           0 :                 d = (t+x)*(x-t);</span></span>
+<span id="L225"><span class="lineNum">     225</span>                 :<span class="tlaUNC">           0 :                 t *= t;</span></span>
+<span id="L226"><span class="lineNum">     226</span>                 :<span class="tlaUNC">           0 :                 xx.a = (t + x), TRUNC(xx.a);</span></span>
+<span id="L227"><span class="lineNum">     227</span>                 :<span class="tlaUNC">           0 :                 xx.b = x - xx.a; xx.b += t; xx.b += d;</span></span>
+<span id="L228"><span class="lineNum">     228</span>                 :<span class="tlaUNC">           0 :                 t = (one-x0); t += x;</span></span>
+<span id="L229"><span class="lineNum">     229</span>                 :<span class="tlaUNC">           0 :                 d = (one-x0); d -= t; d += x;</span></span>
+<span id="L230"><span class="lineNum">     230</span>                 :<span class="tlaUNC">           0 :                 x = xx.a + xx.b;</span></span>
+<span id="L231"><span class="lineNum">     231</span>                 :             :         } else {</span>
+<span id="L232"><span class="lineNum">     232</span>                 :<span class="tlaGNC tlaBgGNC">           8 :                 xx.a =  x, TRUNC(xx.a);</span></span>
+<span id="L233"><span class="lineNum">     233</span>                 :<span class="tlaGNC">           8 :                 xx.b = x - xx.a;</span></span>
+<span id="L234"><span class="lineNum">     234</span>                 :<span class="tlaGNC">           8 :                 t = x - x0;</span></span>
+<span id="L235"><span class="lineNum">     235</span>                 :<span class="tlaGNC">           8 :                 d = (-x0 -t); d += x;</span></span>
+<span id="L236"><span class="lineNum">     236</span>                 :             :         }</span>
+<span id="L237"><span class="lineNum">     237</span>                 :<span class="tlaGNC">           8 :         r = ratfun_gam(t, d);</span></span>
+<span id="L238"><span class="lineNum">     238</span>                 :<span class="tlaGNC">           8 :         d = r.a/x, TRUNC(d);</span></span>
+<span id="L239"><span class="lineNum">     239</span>                 :<span class="tlaGNC">           8 :         r.a -= d*xx.a; r.a -= d*xx.b; r.a += r.b;</span></span>
+<span id="L240"><span class="lineNum">     240</span>                 :<span class="tlaGNC">           8 :         return (d + r.a/x);</span></span>
+<span id="L241"><span class="lineNum">     241</span>                 :             : }</span>
+<span id="L242"><span class="lineNum">     242</span>                 :             : /*</span>
+<span id="L243"><span class="lineNum">     243</span>                 :             :  * returns (z+c)^2 * P(z)/Q(z) + a0</span>
+<span id="L244"><span class="lineNum">     244</span>                 :             :  */</span>
+<span id="L245"><span class="lineNum">     245</span>                 :             : static struct Double</span>
+<span id="L246"><span class="lineNum">     246</span>                 :<span class="tlaGNC">          14 : ratfun_gam(z, c)</span></span>
+<span id="L247"><span class="lineNum">     247</span>                 :             :         double z, c;</span>
+<span id="L248"><span class="lineNum">     248</span>                 :             : {</span>
+<span id="L249"><span class="lineNum">     249</span>                 :             :         double p, q;</span>
+<span id="L250"><span class="lineNum">     250</span>                 :             :         struct Double r, t;</span>
+<span id="L251"><span class="lineNum">     251</span>                 :             : </span>
+<span id="L252"><span class="lineNum">     252</span>                 :<span class="tlaGNC">          14 :         q = Q0 +z*(Q1+z*(Q2+z*(Q3+z*(Q4+z*(Q5+z*(Q6+z*(Q7+z*Q8)))))));</span></span>
+<span id="L253"><span class="lineNum">     253</span>                 :<span class="tlaGNC">          14 :         p = P0 + z*(P1 + z*(P2 + z*(P3 + z*P4)));</span></span>
+<span id="L254"><span class="lineNum">     254</span>                 :             : </span>
+<span id="L255"><span class="lineNum">     255</span>                 :             :         /* return r.a + r.b = a0 + (z+c)^2*p/q, with r.a truncated to 26 bits. */</span>
+<span id="L256"><span class="lineNum">     256</span>                 :<span class="tlaGNC">          14 :         p = p/q;</span></span>
+<span id="L257"><span class="lineNum">     257</span>                 :<span class="tlaGNC">          14 :         t.a = z, TRUNC(t.a);            /* t ~= z + c */</span></span>
+<span id="L258"><span class="lineNum">     258</span>                 :<span class="tlaGNC">          14 :         t.b = (z - t.a) + c;</span></span>
+<span id="L259"><span class="lineNum">     259</span>                 :<span class="tlaGNC">          14 :         t.b *= (t.a + z);</span></span>
+<span id="L260"><span class="lineNum">     260</span>                 :<span class="tlaGNC">          14 :         q = (t.a *= t.a);               /* t = (z+c)^2 */</span></span>
+<span id="L261"><span class="lineNum">     261</span>                 :<span class="tlaGNC">          14 :         TRUNC(t.a);</span></span>
+<span id="L262"><span class="lineNum">     262</span>                 :<span class="tlaGNC">          14 :         t.b += (q - t.a);</span></span>
+<span id="L263"><span class="lineNum">     263</span>                 :<span class="tlaGNC">          14 :         r.a = p, TRUNC(r.a);            /* r = P/Q */</span></span>
+<span id="L264"><span class="lineNum">     264</span>                 :<span class="tlaGNC">          14 :         r.b = p - r.a;</span></span>
+<span id="L265"><span class="lineNum">     265</span>                 :<span class="tlaGNC">          14 :         t.b = t.b*p + t.a*r.b + a0_lo;</span></span>
+<span id="L266"><span class="lineNum">     266</span>                 :<span class="tlaGNC">          14 :         t.a *= r.a;                     /* t = (z+c)^2*(P/Q) */</span></span>
+<span id="L267"><span class="lineNum">     267</span>                 :<span class="tlaGNC">          14 :         r.a = t.a + a0_hi, TRUNC(r.a);</span></span>
+<span id="L268"><span class="lineNum">     268</span>                 :<span class="tlaGNC">          14 :         r.b = ((a0_hi-r.a) + t.a) + t.b;</span></span>
+<span id="L269"><span class="lineNum">     269</span>                 :<span class="tlaGNC">          14 :         return (r);                     /* r = a0 + t */</span></span>
+<span id="L270"><span class="lineNum">     270</span>                 :             : }</span>
+<span id="L271"><span class="lineNum">     271</span>                 :             : </span>
+<span id="L272"><span class="lineNum">     272</span>                 :             : static double</span>
+<span id="L273"><span class="lineNum">     273</span>                 :<span class="tlaGNC">           4 : neg_gam(x)</span></span>
+<span id="L274"><span class="lineNum">     274</span>                 :             :         double x;</span>
+<span id="L275"><span class="lineNum">     275</span>                 :             : {</span>
+<span id="L276"><span class="lineNum">     276</span>                 :<span class="tlaGNC">           4 :         int sgn = 1;</span></span>
+<span id="L277"><span class="lineNum">     277</span>                 :             :         struct Double lg, lsine;</span>
+<span id="L278"><span class="lineNum">     278</span>                 :             :         double y, z;</span>
+<span id="L279"><span class="lineNum">     279</span>                 :             : </span>
+<span id="L280"><span class="lineNum">     280</span>                 :<span class="tlaGNC">           4 :         y = ceil(x);</span></span>
+<span id="L281"><span class="lineNum">     281</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           4 :         if (y == x)             /* Negative integer. */</span></span>
+<span id="L282"><span class="lineNum">     282</span>                 :<span class="tlaGNC">           2 :                 return ((x - x) / zero);</span></span>
+<span id="L283"><span class="lineNum">     283</span>                 :<span class="tlaGNC">           2 :         z = y - x;</span></span>
+<span id="L284"><span class="lineNum">     284</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           2 :         if (z &gt; 0.5)</span></span>
+<span id="L285"><span class="lineNum">     285</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 z = one - z;</span></span>
+<span id="L286"><span class="lineNum">     286</span>                 :<span class="tlaGNC tlaBgGNC">           2 :         y = 0.5 * y;</span></span>
+<span id="L287"><span class="lineNum">     287</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           2 :         if (y == ceil(y))</span></span>
+<span id="L288"><span class="lineNum">     288</span>                 :<span class="tlaGNC">           2 :                 sgn = -1;</span></span>
+<span id="L289"><span class="lineNum">     289</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           2 :         if (z &lt; .25)</span></span>
+<span id="L290"><span class="lineNum">     290</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 z = sin(M_PI*z);</span></span>
+<span id="L291"><span class="lineNum">     291</span>                 :             :         else</span>
+<span id="L292"><span class="lineNum">     292</span>                 :<span class="tlaGNC tlaBgGNC">           2 :                 z = cos(M_PI*(0.5-z));</span></span>
+<span id="L293"><span class="lineNum">     293</span>                 :             :         /* Special case: G(1-x) = Inf; G(x) may be nonzero. */</span>
+<span id="L294"><span class="lineNum">     294</span>         [<span class="tlaUNC" title="Branch 0 was not taken"> - </span><span class="tlaGBC" title="Branch 1 was taken 2 times"> + </span>]:<span class="tlaGNC">           2 :         if (x &lt; -170) {</span></span>
+<span id="L295"><span class="lineNum">     295</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC tlaBgUNC">           0 :                 if (x &lt; -190)</span></span>
+<span id="L296"><span class="lineNum">     296</span>                 :<span class="tlaUNC">           0 :                         return ((double)sgn*tiny*tiny);</span></span>
+<span id="L297"><span class="lineNum">     297</span>                 :<span class="tlaUNC">           0 :                 y = one - x;            /* exact: 128 &lt; |x| &lt; 255 */</span></span>
+<span id="L298"><span class="lineNum">     298</span>                 :<span class="tlaUNC">           0 :                 lg = large_gam(y);</span></span>
+<span id="L299"><span class="lineNum">     299</span>                 :<span class="tlaUNC">           0 :                 lsine = __log__D(M_PI/z);       /* = TRUNC(log(u)) + small */</span></span>
+<span id="L300"><span class="lineNum">     300</span>                 :<span class="tlaUNC">           0 :                 lg.a -= lsine.a;                /* exact (opposite signs) */</span></span>
+<span id="L301"><span class="lineNum">     301</span>                 :<span class="tlaUNC">           0 :                 lg.b -= lsine.b;</span></span>
+<span id="L302"><span class="lineNum">     302</span>                 :<span class="tlaUNC">           0 :                 y = -(lg.a + lg.b);</span></span>
+<span id="L303"><span class="lineNum">     303</span>                 :<span class="tlaUNC">           0 :                 z = (y + lg.a) + lg.b;</span></span>
+<span id="L304"><span class="lineNum">     304</span>                 :<span class="tlaUNC">           0 :                 y = __exp__D(y, z);</span></span>
+<span id="L305"><span class="lineNum">     305</span>         [<span class="tlaUNC" title="Branch 0 was not executed"> # </span><span class="tlaUNC" title="Branch 1 was not executed"> # </span>]:<span class="tlaUNC">           0 :                 if (sgn &lt; 0) y = -y;</span></span>
+<span id="L306"><span class="lineNum">     306</span>                 :<span class="tlaUNC">           0 :                 return (y);</span></span>
+<span id="L307"><span class="lineNum">     307</span>                 :             :         }</span>
+<span id="L308"><span class="lineNum">     308</span>                 :<span class="tlaGNC tlaBgGNC">           2 :         y = one-x;</span></span>
+<span id="L309"><span class="lineNum">     309</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           2 :         if (one-y == x)</span></span>
+<span id="L310"><span class="lineNum">     310</span>                 :<span class="tlaGNC">           2 :                 y = tgamma(y);</span></span>
+<span id="L311"><span class="lineNum">     311</span>                 :             :         else            /* 1-x is inexact */</span>
+<span id="L312"><span class="lineNum">     312</span>                 :<span class="tlaUNC tlaBgUNC">           0 :                 y = -x*tgamma(-x);</span></span>
+<span id="L313"><span class="lineNum">     313</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC tlaBgGNC">           2 :         if (sgn &lt; 0) y = -y;</span></span>
+<span id="L314"><span class="lineNum">     314</span>                 :<span class="tlaGNC">           2 :         return (M_PI / (y*z));</span></span>
+<span id="L315"><span class="lineNum">     315</span>                 :             : }</span>
+<span id="L316"><span class="lineNum">     316</span>                 :             : </span>
+<span id="L317"><span class="lineNum">     317</span>                 :             : #if (LDBL_MANT_DIG == 53)</span>
+<span id="L318"><span class="lineNum">     318</span>                 :             : openlibm_weak_reference(tgamma, tgammal);</span>
+<span id="L319"><span class="lineNum">     319</span>                 :             : #endif</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-115.g950771e</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
